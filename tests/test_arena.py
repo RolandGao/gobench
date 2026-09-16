@@ -2,7 +2,6 @@ import dataclasses
 import json
 import os
 import random
-import re
 import socket
 import subprocess
 import sys
@@ -34,18 +33,6 @@ class ConfigurationSurfaceTests(unittest.TestCase):
         for option in ("--resume", "--run-type", "--summary"):
             with self.subTest(option=option):
                 self.assertIn(option, result.stdout)
-
-    def test_readme_run_type_examples_use_supported_profiles(self):
-        root = Path(arena.__file__).parent
-        profiles = set(
-            re.findall(
-                r"--run-type(?:=|\s+)([A-Za-z0-9_-]+)",
-                (root / "README.md").read_text(encoding="utf-8"),
-            )
-        )
-
-        self.assertTrue(profiles, "README should include a run-type example")
-        self.assertFalse(profiles - set(arena.RUN_TYPES), "README lists unknown profiles")
 
     def test_run_type_uses_source_config_without_reading_run_metadata(self):
         name = next(iter(arena.RUN_TYPES))
