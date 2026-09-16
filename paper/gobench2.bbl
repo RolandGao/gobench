@@ -1,0 +1,146 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{ARC Prize
+  Foundation}(2026{\natexlab{a}})]{arcprizefoundation2026arcagi3}
+{ARC Prize Foundation}.
+\newblock {ARC-AGI-3}: A new challenge for frontier agentic intelligence.
+\newblock \emph{arXiv preprint arXiv:2603.24621}, 2026{\natexlab{a}}.
+\newblock \doi{10.48550/arXiv.2603.24621}.
+
+\bibitem[{ARC Prize
+  Foundation}(2026{\natexlab{b}})]{arcprizefoundation2026leaderboard}
+{ARC Prize Foundation}.
+\newblock {ARC Prize} leaderboard, 2026{\natexlab{b}}.
+\newblock URL \url{https://arcprize.org/leaderboard}.
+
+\bibitem[Bradley and Terry(1952)]{bradley1952rank}
+Ralph~Allan Bradley and Milton~E. Terry.
+\newblock Rank analysis of incomplete block designs: {I}. the method of paired
+  comparisons.
+\newblock \emph{Biometrika}, 39\penalty0 (3--4):\penalty0 324--345, 1952.
+\newblock \doi{10.1093/biomet/39.3-4.324}.
+
+\bibitem[Chollet(2019)]{chollet2019measure}
+Fran{\c{c}}ois Chollet.
+\newblock On the measure of intelligence.
+\newblock \emph{arXiv preprint arXiv:1911.01547}, 2019.
+\newblock \doi{10.48550/arXiv.1911.01547}.
+
+\bibitem[Chollet et~al.(2025)Chollet, Knoop, Kamradt, Landers, and
+  Pinkard]{chollet2025arcagi2}
+Fran{\c{c}}ois Chollet, Mike Knoop, Gregory Kamradt, Bryan Landers, and Henry
+  Pinkard.
+\newblock {ARC-AGI-2}: A new challenge for frontier {AI} reasoning systems.
+\newblock \emph{arXiv preprint arXiv:2505.11831}, 2025.
+\newblock \doi{10.48550/arXiv.2505.11831}.
+
+\bibitem[{Dubesor}(2026)]{dubesor2026leaderboard}
+{Dubesor}.
+\newblock {AI} chess leaderboard, 2026.
+\newblock URL \url{https://dubesor.de/chess/chess-leaderboard}.
+
+\bibitem[{Kaggle}(2026)]{kaggle2026gamearena}
+{Kaggle}.
+\newblock {Game Arena}, 2026.
+\newblock URL \url{https://www.kaggle.com/game-arena}.
+
+\bibitem[Karpathy(2024)]{karpathy2024jagged}
+Andrej Karpathy.
+\newblock Jagged intelligence.
+\newblock Post on {X}, July 2024.
+\newblock URL \url{https://x.com/karpathy/status/1816531576228053133}.
+\newblock Posted July 25, 2024.
+
+\bibitem[Kolasani et~al.(2025)Kolasani, Saplin, Crispino, Montgomery, Davis,
+  Zaharia, Wang, and Wang]{kolasani2025llmchess}
+Sai Kolasani, Maxim Saplin, Nicholas Crispino, Kyle Montgomery, Jared~Quincy
+  Davis, Matei Zaharia, Chi Wang, and Chenguang Wang.
+\newblock {LLM CHESS}: Benchmarking reasoning and instruction-following in
+  {LLMs} through chess.
+\newblock \emph{arXiv preprint arXiv:2512.01992}, 2025.
+\newblock \doi{10.48550/arXiv.2512.01992}.
+
+\bibitem[Ma et~al.(2026)Ma, Li, Chen, Li, Ye, Guo, Lin, and Chen]{ma2026logos}
+Yichuan Ma, Linyang Li, Yongkang Chen, Peiji Li, Jiasheng Ye, Qipeng Guo, Dahua
+  Lin, and Kai Chen.
+\newblock Mixing expert knowledge: Bring human thoughts back to the game of
+  {Go}.
+\newblock \emph{arXiv preprint arXiv:2601.16447}, 2026.
+\newblock \doi{10.48550/arXiv.2601.16447}.
+
+\bibitem[Provost et~al.(2026)Provost, Ilenic, Solinas, and
+  Beardsell]{provost2026gtowizard}
+Marc-Antoine Provost, Nejc Ilenic, Christopher Solinas, and Philippe Beardsell.
+\newblock {GTO Wizard Benchmark}.
+\newblock \emph{arXiv preprint arXiv:2603.23660}, 2026.
+\newblock \doi{10.48550/arXiv.2603.23660}.
+
+\bibitem[Salgado(2026)]{rodriguezsalgado2026pixels}
+Alberto Gonzalo~Rodriguez Salgado.
+\newblock From pixels to {BFS}: High maze accuracy does not imply visual
+  planning.
+\newblock In \emph{Proceedings of the 4th Workshop on Advances in Language and
+  Vision Research ({ALVR})}, pages 164--179. Association for Computational
+  Linguistics, 2026.
+\newblock \doi{10.18653/v1/2026.alvr-main.13}.
+\newblock URL \url{https://aclanthology.org/2026.alvr-main.13/}.
+
+\bibitem[Silver et~al.(2016)Silver, Huang, Maddison, Guez, Sifre, van~den
+  Driessche, Schrittwieser, Antonoglou, Panneershelvam, Lanctot, Dieleman,
+  Grewe, Nham, Kalchbrenner, Sutskever, Lillicrap, Leach, Kavukcuoglu, Graepel,
+  and Hassabis]{silver2016alphago}
+David Silver, Aja Huang, Chris~J. Maddison, Arthur Guez, Laurent Sifre, George
+  van~den Driessche, Julian Schrittwieser, Ioannis Antonoglou, Veda
+  Panneershelvam, Marc Lanctot, Sander Dieleman, Dominik Grewe, John Nham, Nal
+  Kalchbrenner, Ilya Sutskever, Timothy Lillicrap, Madeleine Leach, Koray
+  Kavukcuoglu, Thore Graepel, and Demis Hassabis.
+\newblock Mastering the game of {Go} with deep neural networks and tree search.
+\newblock \emph{Nature}, 529:\penalty0 484--489, 2016.
+\newblock \doi{10.1038/nature16961}.
+
+\bibitem[Silver et~al.(2018)Silver, Hubert, Schrittwieser, Antonoglou, Lai,
+  Guez, Lanctot, Sifre, Kumaran, Graepel, Lillicrap, Simonyan, and
+  Hassabis]{silver2018alphazero}
+David Silver, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew
+  Lai, Arthur Guez, Marc Lanctot, Laurent Sifre, Dharshan Kumaran, Thore
+  Graepel, Timothy Lillicrap, Karen Simonyan, and Demis Hassabis.
+\newblock A general reinforcement learning algorithm that masters chess, shogi,
+  and {Go} through self-play.
+\newblock \emph{Science}, 362\penalty0 (6419):\penalty0 1140--1144, 2018.
+\newblock \doi{10.1126/science.aar6404}.
+
+\bibitem[Tierney and Kadane(1986)]{tierney1986accurate}
+Luke Tierney and Joseph~B. Kadane.
+\newblock Accurate approximations for posterior moments and marginal densities.
+\newblock \emph{Journal of the American Statistical Association}, 81\penalty0
+  (393):\penalty0 82--86, 1986.
+\newblock \doi{10.1080/01621459.1986.10478240}.
+
+\bibitem[Wang et~al.(2023)Wang, Gleave, Tseng, Pelrine, Belrose, Miller,
+  Dennis, Duan, Pogrebniak, Levine, and Russell]{wang2023adversarial}
+Tony~Tong Wang, Adam Gleave, Tom Tseng, Kellin Pelrine, Nora Belrose, Joseph
+  Miller, Michael~D. Dennis, Yawen Duan, Viktor Pogrebniak, Sergey Levine, and
+  Stuart Russell.
+\newblock Adversarial policies beat superhuman {Go} {AIs}.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}, volume 202 of \emph{Proceedings of Machine Learning Research},
+  pages 35655--35739, 2023.
+\newblock URL \url{https://proceedings.mlr.press/v202/wang23g.html}.
+
+\bibitem[Wu(2019)]{wu2019katago}
+David~J. Wu.
+\newblock Accelerating self-play learning in {Go}.
+\newblock \emph{arXiv preprint arXiv:1902.10565}, 2019.
+\newblock \doi{10.48550/arXiv.1902.10565}.
+
+\bibitem[Wu(2023)]{wu2023katagobooks}
+David~J. Wu.
+\newblock {KataGo} opening books: 9x9 highlights and discoveries, 2023.
+\newblock URL \url{https://katagobooks.org/9x9highlights.html}.
+
+\end{thebibliography}

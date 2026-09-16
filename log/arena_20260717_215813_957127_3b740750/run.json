@@ -1,0 +1,1192 @@
+{
+  "started_at": "2026-07-17T21:58:13.957967+00:00",
+  "total_games": 100000,
+  "batch_policy": {
+    "rule": "information-gain weighted sampling with paired colors",
+    "games_per_batch": 4000,
+    "sampled_pairs_per_batch": 2000,
+    "sampling": "with replacement",
+    "random_seed": 1729
+  },
+  "batch_sizes": [
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000,
+    4000
+  ],
+  "anchor": "kata1-random",
+  "prior_elo_sd": 10000.0,
+  "color_advantage_prior_elo_sd": 10000.0,
+  "color_advantage_model": "average_elo_piecewise_linear_250",
+  "color_advantage_node_spacing_elo": 250.0,
+  "rating_model": "regularized Bradley-Terry with a jointly fitted 250-Elo piecewise-linear Black advantage over no-color baseline matchup average Elo",
+  "confidence_level": 0.95,
+  "ci_method": "Laplace covariance from regularized color-adjusted Bradley-Terry information, including all piecewise color parameters",
+  "board_size": 9,
+  "komi": 7.0,
+  "rules": "tromp-taylor",
+  "max_moves": 1000,
+  "move_cap_policy": "Discard capped attempts without ratings and replay only their scheduled game slots at the same cap",
+  "max_visits": 1,
+  "players": [
+    "kata1-random",
+    "kata1-b6c96-s1248000-d550347-temp-0.3",
+    "kata1-b6c96-s1995008-d1329786-temp-0.9",
+    "kata1-b6c96-s938496-d1208807-temp-0.3",
+    "kata1-b6c96-s1995008-d1329786-temp-0.3",
+    "kata1-b6c96-s4136960-d1510003-temp-0.9",
+    "kata1-b6c96-s4136960-d1510003-temp-0.7",
+    "kata1-b6c96-s6127360-d1754797-temp-0.9",
+    "kata1-b6c96-s5214720-d1690538-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.5",
+    "kata1-b6c96-s5214720-d1690538-temp-0.5",
+    "kata1-b6c96-s4136960-d1510003-temp-0.3",
+    "kata1-b6c96-s8080640-d1961030-temp-0.7",
+    "kata1-b6c96-s10014464-d2201128-temp-0.9",
+    "kata1-b6c96-s4136960-d1510003",
+    "kata1-b6c96-s8982784-d2082583-temp-0.7",
+    "kata1-b6c96-s8080640-d1961030-temp-0.5",
+    "kata1-b6c96-s8982784-d2082583-temp-0.5",
+    "kata1-b6c96-s8080640-d1961030-temp-0.3",
+    "kata1-b6c96-s8982784-d2082583-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.9",
+    "kata1-b6c96-s10014464-d2201128-temp-0.3",
+    "kata1-b6c96-s14649344-d2727367-temp-0.9",
+    "kata1-b6c96-s11888896-d2416753-temp-0.5",
+    "kata1-b6c96-s11888896-d2416753",
+    "kata1-b6c96-s12849664-d2510774-temp-0.5",
+    "kata1-b6c96-s13733120-d2631546-temp-0.5",
+    "kata1-b6c96-s13733120-d2631546-temp-0.3",
+    "kata1-b6c96-s16525312-d2925067-temp-0.7",
+    "kata1-b6c96-s14649344-d2727367-temp-0.3",
+    "kata1-b6c96-s16525312-d2925067-temp-0.5",
+    "kata1-b6c96-s16525312-d2925067",
+    "kata1-b6c96-s17434112-d3038653",
+    "kata1-b6c96-s18429184-d3197121",
+    "kata1-b6c96-s19408128-d3280178",
+    "kata1-b6c96-s21371392-d3529696",
+    "kata1-b6c96-s23401472-d3742377",
+    "kata1-b6c96-s25461504-d4002500",
+    "kata1-b6c96-s27415296-d4256697",
+    "kata1-b6c96-s29422336-d4533650",
+    "kata1-b6c96-s32344832-d4917369",
+    "kata1-b6c96-s35356160-d5299514",
+    "kata1-b6c96-s39339776-d5828519",
+    "kata1-b6c96-s45189632-d6589032",
+    "kata1-b6c96-s52864512-d7635581",
+    "kata1-b6c96-s69427456-d10051148",
+    "kata1-b6c96-s95425792-d14091095",
+    "kata1-b6c96-s165180416-d25130434"
+  ],
+  "bots": [
+    {
+      "name": "kata1-random",
+      "kind": "uniform_random"
+    },
+    {
+      "name": "kata1-b6c96-s1248000-d550347-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1248000-d550347",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1248000-d550347.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s1995008-d1329786-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1995008-d1329786",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1995008-d1329786.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s938496-d1208807-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s938496-d1208807",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s938496-d1208807.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s1995008-d1329786-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1995008-d1329786",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1995008-d1329786.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s6127360-d1754797-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s6127360-d1754797",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s6127360-d1754797.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s5214720-d1690538-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s5214720-d1690538",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s5214720-d1690538.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s5214720-d1690538-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s5214720-d1690538",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s5214720-d1690538.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s10014464-d2201128-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s10014464-d2201128",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s10014464-d2201128.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s10014464-d2201128-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s10014464-d2201128",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s10014464-d2201128.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s14649344-d2727367-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s14649344-d2727367",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s14649344-d2727367.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s11888896-d2416753-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s11888896-d2416753",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s11888896-d2416753.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s11888896-d2416753",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s11888896-d2416753",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s11888896-d2416753.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s12849664-d2510774-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s12849664-d2510774",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s12849664-d2510774.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s16525312-d2925067-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s16525312-d2925067",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s16525312-d2925067.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s14649344-d2727367-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s14649344-d2727367",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s14649344-d2727367.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s16525312-d2925067-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s16525312-d2925067",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s16525312-d2925067.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s16525312-d2925067",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s16525312-d2925067",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s16525312-d2925067.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s17434112-d3038653",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s17434112-d3038653",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s17434112-d3038653.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s18429184-d3197121",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s18429184-d3197121",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s18429184-d3197121.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s19408128-d3280178",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s19408128-d3280178",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s19408128-d3280178.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s21371392-d3529696",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s21371392-d3529696",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s21371392-d3529696.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s23401472-d3742377",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s23401472-d3742377",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s23401472-d3742377.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s25461504-d4002500",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s25461504-d4002500",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s25461504-d4002500.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s27415296-d4256697",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s27415296-d4256697",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s27415296-d4256697.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s29422336-d4533650",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s29422336-d4533650",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s29422336-d4533650.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s32344832-d4917369",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s32344832-d4917369",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s32344832-d4917369.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s35356160-d5299514",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s35356160-d5299514",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s35356160-d5299514.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s39339776-d5828519",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s39339776-d5828519",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s39339776-d5828519.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s45189632-d6589032",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s45189632-d6589032",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s45189632-d6589032.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s52864512-d7635581",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s52864512-d7635581",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s52864512-d7635581.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s69427456-d10051148",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s69427456-d10051148",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s69427456-d10051148.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s95425792-d14091095",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s95425792-d14091095",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s95425792-d14091095.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s165180416-d25130434",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s165180416-d25130434",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s165180416-d25130434.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    }
+  ],
+  "random_bot_note": "Uniform-random games use KataGoGameEngine because katago match does not support arbitrary policy bots. They remain in the same blind batch. Move-capped attempts are discarded and replayed without scoring.",
+  "completed_games": 100000,
+  "color_advantage_curve": [
+    {
+      "average_elo": 52.946135026468944,
+      "black_advantage_elo": -25.002401749698176,
+      "black_advantage_95_ci": [
+        -41.96432683170107,
+        -8.04047666769528
+      ]
+    },
+    {
+      "average_elo": 250.0,
+      "black_advantage_elo": -203.9843776714114,
+      "black_advantage_95_ci": [
+        -223.13861301051398,
+        -184.83014233230884
+      ]
+    },
+    {
+      "average_elo": 500.0,
+      "black_advantage_elo": -41.929546318726125,
+      "black_advantage_95_ci": [
+        -59.855747795213055,
+        -24.003344842239194
+      ]
+    },
+    {
+      "average_elo": 750.0,
+      "black_advantage_elo": -70.1375256521419,
+      "black_advantage_95_ci": [
+        -86.46079172093174,
+        -53.81425958335207
+      ]
+    },
+    {
+      "average_elo": 1000.0,
+      "black_advantage_elo": -64.93268675686868,
+      "black_advantage_95_ci": [
+        -80.54763006658486,
+        -49.31774344715249
+      ]
+    },
+    {
+      "average_elo": 1250.0,
+      "black_advantage_elo": -93.17741821473615,
+      "black_advantage_95_ci": [
+        -110.80092139610062,
+        -75.55391503337168
+      ]
+    },
+    {
+      "average_elo": 1500.0,
+      "black_advantage_elo": -48.387683631504856,
+      "black_advantage_95_ci": [
+        -65.16442080711937,
+        -31.610946455890335
+      ]
+    },
+    {
+      "average_elo": 1750.0,
+      "black_advantage_elo": -51.480715960498316,
+      "black_advantage_95_ci": [
+        -66.60353685610363,
+        -36.357895064893
+      ]
+    },
+    {
+      "average_elo": 2000.0,
+      "black_advantage_elo": -35.716979537158856,
+      "black_advantage_95_ci": [
+        -51.94047655266673,
+        -19.493482521650982
+      ]
+    },
+    {
+      "average_elo": 2250.0,
+      "black_advantage_elo": -3.5071806426408654,
+      "black_advantage_95_ci": [
+        -22.136992400413266,
+        15.122631115131536
+      ]
+    },
+    {
+      "average_elo": 2500.0,
+      "black_advantage_elo": -20.99217900334911,
+      "black_advantage_95_ci": [
+        -40.82248743268985,
+        -1.1618705740083755
+      ]
+    },
+    {
+      "average_elo": 2750.0,
+      "black_advantage_elo": -49.84836936197539,
+      "black_advantage_95_ci": [
+        -68.08479639463236,
+        -31.611942329318413
+      ]
+    },
+    {
+      "average_elo": 3000.0,
+      "black_advantage_elo": 7.405173716574006,
+      "black_advantage_95_ci": [
+        -8.73979172844706,
+        23.55013916159507
+      ]
+    },
+    {
+      "average_elo": 3328.332109823772,
+      "black_advantage_elo": -0.7505989173978597,
+      "black_advantage_95_ci": [
+        -22.3890489279879,
+        20.887851093192182
+      ]
+    }
+  ],
+  "finished_at": "2026-07-17T23:25:41.624334+00:00",
+  "elapsed_seconds": 5247.665531815961,
+  "untracked_log_dir": "untracked_log/arena_20260717_215813_957127_3b740750",
+  "arena_log_schema_version": 2,
+  "report_file": "report.md",
+  "llm_calls_file": "llm_calls.jsonl",
+  "past_run_dirs": [],
+  "ratings": [
+    {
+      "player": "kata1-b6c96-s165180416-d25130434",
+      "elo": 3443.0,
+      "ci_low": 3397.0,
+      "ci_high": 3489.0,
+      "ci_width": 92.0,
+      "games": 1842,
+      "wins": 1494,
+      "losses": 271,
+      "draws": 77
+    },
+    {
+      "player": "kata1-b6c96-s95425792-d14091095",
+      "elo": 3375.0,
+      "ci_low": 3330.0,
+      "ci_high": 3420.0,
+      "ci_width": 90.0,
+      "games": 1950,
+      "wins": 1504,
+      "losses": 375,
+      "draws": 71
+    },
+    {
+      "player": "kata1-b6c96-s69427456-d10051148",
+      "elo": 3341.0,
+      "ci_low": 3297.0,
+      "ci_high": 3385.0,
+      "ci_width": 88.0,
+      "games": 2122,
+      "wins": 1595,
+      "losses": 469,
+      "draws": 58
+    },
+    {
+      "player": "kata1-b6c96-s52864512-d7635581",
+      "elo": 3250.0,
+      "ci_low": 3207.0,
+      "ci_high": 3293.0,
+      "ci_width": 86.0,
+      "games": 2346,
+      "wins": 1675,
+      "losses": 603,
+      "draws": 68
+    },
+    {
+      "player": "kata1-b6c96-s45189632-d6589032",
+      "elo": 3182.0,
+      "ci_low": 3140.0,
+      "ci_high": 3224.0,
+      "ci_width": 84.0,
+      "games": 2460,
+      "wins": 1677,
+      "losses": 706,
+      "draws": 77
+    },
+    {
+      "player": "kata1-b6c96-s39339776-d5828519",
+      "elo": 3134.0,
+      "ci_low": 3092.0,
+      "ci_high": 3176.0,
+      "ci_width": 84.0,
+      "games": 2514,
+      "wins": 1673,
+      "losses": 784,
+      "draws": 57
+    },
+    {
+      "player": "kata1-b6c96-s35356160-d5299514",
+      "elo": 3065.0,
+      "ci_low": 3024.0,
+      "ci_high": 3106.0,
+      "ci_width": 82.0,
+      "games": 2790,
+      "wins": 1801,
+      "losses": 903,
+      "draws": 86
+    },
+    {
+      "player": "kata1-b6c96-s32344832-d4917369",
+      "elo": 3018.0,
+      "ci_low": 2977.0,
+      "ci_high": 3059.0,
+      "ci_width": 82.0,
+      "games": 2844,
+      "wins": 1781,
+      "losses": 1001,
+      "draws": 62
+    },
+    {
+      "player": "kata1-b6c96-s29422336-d4533650",
+      "elo": 2945.0,
+      "ci_low": 2904.0,
+      "ci_high": 2986.0,
+      "ci_width": 82.0,
+      "games": 3038,
+      "wins": 1892,
+      "losses": 1081,
+      "draws": 65
+    },
+    {
+      "player": "kata1-b6c96-s27415296-d4256697",
+      "elo": 2898.0,
+      "ci_low": 2858.0,
+      "ci_high": 2938.0,
+      "ci_width": 80.0,
+      "games": 3052,
+      "wins": 1823,
+      "losses": 1146,
+      "draws": 83
+    },
+    {
+      "player": "kata1-b6c96-s25461504-d4002500",
+      "elo": 2824.0,
+      "ci_low": 2784.0,
+      "ci_high": 2864.0,
+      "ci_width": 80.0,
+      "games": 3386,
+      "wins": 2039,
+      "losses": 1266,
+      "draws": 81
+    },
+    {
+      "player": "kata1-b6c96-s23401472-d3742377",
+      "elo": 2742.0,
+      "ci_low": 2703.0,
+      "ci_high": 2781.0,
+      "ci_width": 78.0,
+      "games": 3532,
+      "wins": 2052,
+      "losses": 1404,
+      "draws": 76
+    },
+    {
+      "player": "kata1-b6c96-s21371392-d3529696",
+      "elo": 2681.0,
+      "ci_low": 2643.0,
+      "ci_high": 2719.0,
+      "ci_width": 76.0,
+      "games": 3850,
+      "wins": 2190,
+      "losses": 1573,
+      "draws": 87
+    },
+    {
+      "player": "kata1-b6c96-s19408128-d3280178",
+      "elo": 2549.0,
+      "ci_low": 2512.0,
+      "ci_high": 2586.0,
+      "ci_width": 74.0,
+      "games": 3906,
+      "wins": 2147,
+      "losses": 1687,
+      "draws": 72
+    },
+    {
+      "player": "kata1-b6c96-s18429184-d3197121",
+      "elo": 2474.0,
+      "ci_low": 2437.0,
+      "ci_high": 2511.0,
+      "ci_width": 74.0,
+      "games": 4072,
+      "wins": 2208,
+      "losses": 1774,
+      "draws": 90
+    },
+    {
+      "player": "kata1-b6c96-s17434112-d3038653",
+      "elo": 2393.0,
+      "ci_low": 2357.0,
+      "ci_high": 2429.0,
+      "ci_width": 72.0,
+      "games": 4106,
+      "wins": 2254,
+      "losses": 1778,
+      "draws": 74
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067",
+      "elo": 2329.0,
+      "ci_low": 2293.0,
+      "ci_high": 2365.0,
+      "ci_width": 72.0,
+      "games": 4084,
+      "wins": 2122,
+      "losses": 1891,
+      "draws": 71
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067-temp-0.5",
+      "elo": 2244.0,
+      "ci_low": 2209.0,
+      "ci_high": 2279.0,
+      "ci_width": 70.0,
+      "games": 3978,
+      "wins": 2053,
+      "losses": 1844,
+      "draws": 81
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367-temp-0.3",
+      "elo": 2157.0,
+      "ci_low": 2123.0,
+      "ci_high": 2191.0,
+      "ci_width": 68.0,
+      "games": 4134,
+      "wins": 2212,
+      "losses": 1867,
+      "draws": 55
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067-temp-0.7",
+      "elo": 2088.0,
+      "ci_low": 2054.0,
+      "ci_high": 2122.0,
+      "ci_width": 68.0,
+      "games": 4010,
+      "wins": 2077,
+      "losses": 1864,
+      "draws": 69
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.3",
+      "elo": 2050.0,
+      "ci_low": 2016.0,
+      "ci_high": 2084.0,
+      "ci_width": 68.0,
+      "games": 4160,
+      "wins": 2180,
+      "losses": 1918,
+      "draws": 62
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.5",
+      "elo": 1994.0,
+      "ci_low": 1961.0,
+      "ci_high": 2027.0,
+      "ci_width": 66.0,
+      "games": 4128,
+      "wins": 2123,
+      "losses": 1936,
+      "draws": 69
+    },
+    {
+      "player": "kata1-b6c96-s12849664-d2510774-temp-0.5",
+      "elo": 1927.0,
+      "ci_low": 1894.0,
+      "ci_high": 1960.0,
+      "ci_width": 66.0,
+      "games": 4274,
+      "wins": 2223,
+      "losses": 1986,
+      "draws": 65
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753",
+      "elo": 1871.0,
+      "ci_low": 1838.0,
+      "ci_high": 1904.0,
+      "ci_width": 66.0,
+      "games": 4238,
+      "wins": 2208,
+      "losses": 1959,
+      "draws": 71
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753-temp-0.5",
+      "elo": 1801.0,
+      "ci_low": 1769.0,
+      "ci_high": 1833.0,
+      "ci_width": 64.0,
+      "games": 4308,
+      "wins": 2321,
+      "losses": 1907,
+      "draws": 80
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367-temp-0.9",
+      "elo": 1735.0,
+      "ci_low": 1703.0,
+      "ci_high": 1767.0,
+      "ci_width": 64.0,
+      "games": 4296,
+      "wins": 2271,
+      "losses": 1975,
+      "draws": 50
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128-temp-0.3",
+      "elo": 1671.0,
+      "ci_low": 1640.0,
+      "ci_high": 1702.0,
+      "ci_width": 62.0,
+      "games": 4512,
+      "wins": 2443,
+      "losses": 2006,
+      "draws": 63
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.9",
+      "elo": 1649.0,
+      "ci_low": 1618.0,
+      "ci_high": 1680.0,
+      "ci_width": 62.0,
+      "games": 4580,
+      "wins": 2381,
+      "losses": 2135,
+      "draws": 64
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+      "elo": 1574.0,
+      "ci_low": 1543.0,
+      "ci_high": 1605.0,
+      "ci_width": 62.0,
+      "games": 4742,
+      "wins": 2454,
+      "losses": 2226,
+      "draws": 62
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.3",
+      "elo": 1462.0,
+      "ci_low": 1432.0,
+      "ci_high": 1492.0,
+      "ci_width": 60.0,
+      "games": 4998,
+      "wins": 2544,
+      "losses": 2386,
+      "draws": 68
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.5",
+      "elo": 1415.0,
+      "ci_low": 1386.0,
+      "ci_high": 1444.0,
+      "ci_width": 58.0,
+      "games": 5052,
+      "wins": 2528,
+      "losses": 2455,
+      "draws": 69
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.5",
+      "elo": 1291.0,
+      "ci_low": 1263.0,
+      "ci_high": 1319.0,
+      "ci_width": 56.0,
+      "games": 5090,
+      "wins": 2440,
+      "losses": 2579,
+      "draws": 71
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.7",
+      "elo": 1172.0,
+      "ci_low": 1144.0,
+      "ci_high": 1200.0,
+      "ci_width": 56.0,
+      "games": 5090,
+      "wins": 2404,
+      "losses": 2615,
+      "draws": 71
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003",
+      "elo": 1143.0,
+      "ci_low": 1116.0,
+      "ci_high": 1170.0,
+      "ci_width": 54.0,
+      "games": 5180,
+      "wins": 2529,
+      "losses": 2592,
+      "draws": 59
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128-temp-0.9",
+      "elo": 1095.0,
+      "ci_low": 1068.0,
+      "ci_high": 1122.0,
+      "ci_width": 54.0,
+      "games": 4894,
+      "wins": 2339,
+      "losses": 2490,
+      "draws": 65
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.7",
+      "elo": 1037.0,
+      "ci_low": 1010.0,
+      "ci_high": 1064.0,
+      "ci_width": 54.0,
+      "games": 4932,
+      "wins": 2341,
+      "losses": 2526,
+      "draws": 65
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.3",
+      "elo": 959.0,
+      "ci_low": 933.0,
+      "ci_high": 985.0,
+      "ci_width": 52.0,
+      "games": 4876,
+      "wins": 2371,
+      "losses": 2461,
+      "draws": 44
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538-temp-0.5",
+      "elo": 899.0,
+      "ci_low": 874.0,
+      "ci_high": 924.0,
+      "ci_width": 50.0,
+      "games": 5102,
+      "wins": 2433,
+      "losses": 2634,
+      "draws": 35
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.5",
+      "elo": 768.0,
+      "ci_low": 744.0,
+      "ci_high": 792.0,
+      "ci_width": 48.0,
+      "games": 5234,
+      "wins": 2422,
+      "losses": 2770,
+      "draws": 42
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538-temp-0.7",
+      "elo": 729.0,
+      "ci_low": 705.0,
+      "ci_high": 753.0,
+      "ci_width": 48.0,
+      "games": 5136,
+      "wins": 2424,
+      "losses": 2677,
+      "draws": 35
+    },
+    {
+      "player": "kata1-b6c96-s6127360-d1754797-temp-0.9",
+      "elo": 674.0,
+      "ci_low": 651.0,
+      "ci_high": 697.0,
+      "ci_width": 46.0,
+      "games": 5124,
+      "wins": 2336,
+      "losses": 2730,
+      "draws": 58
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.7",
+      "elo": 598.0,
+      "ci_low": 575.0,
+      "ci_high": 621.0,
+      "ci_width": 46.0,
+      "games": 5132,
+      "wins": 2205,
+      "losses": 2883,
+      "draws": 44
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.9",
+      "elo": 480.0,
+      "ci_low": 458.0,
+      "ci_high": 502.0,
+      "ci_width": 44.0,
+      "games": 5056,
+      "wins": 2019,
+      "losses": 2997,
+      "draws": 40
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786-temp-0.3",
+      "elo": 357.0,
+      "ci_low": 337.0,
+      "ci_high": 377.0,
+      "ci_width": 40.0,
+      "games": 5408,
+      "wins": 1897,
+      "losses": 3474,
+      "draws": 37
+    },
+    {
+      "player": "kata1-b6c96-s938496-d1208807-temp-0.3",
+      "elo": 243.0,
+      "ci_low": 225.0,
+      "ci_high": 261.0,
+      "ci_width": 36.0,
+      "games": 4962,
+      "wins": 1432,
+      "losses": 3482,
+      "draws": 48
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786-temp-0.9",
+      "elo": 154.0,
+      "ci_low": 136.0,
+      "ci_high": 172.0,
+      "ci_width": 36.0,
+      "games": 4580,
+      "wins": 1110,
+      "losses": 3432,
+      "draws": 38
+    },
+    {
+      "player": "kata1-b6c96-s1248000-d550347-temp-0.3",
+      "elo": 104.0,
+      "ci_low": 86.0,
+      "ci_high": 122.0,
+      "ci_width": 36.0,
+      "games": 4032,
+      "wins": 900,
+      "losses": 3093,
+      "draws": 39
+    },
+    {
+      "player": "kata1-random",
+      "elo": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "ci_width": 0.0,
+      "games": 6868,
+      "wins": 955,
+      "losses": 5891,
+      "draws": 22
+    }
+  ],
+  "llm_comparisons": [],
+  "migration": {
+    "source": "arena_logs2/arena_20260717_215813_957127_3b740750/run.json",
+    "method": "migrate_arena_logs.py",
+    "original_files_preserved": false,
+    "source_files_privacy_sanitized": true
+  },
+  "tracked_log_privacy_schema_version": 1
+}

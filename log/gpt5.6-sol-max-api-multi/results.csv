@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt5.6-sol-max-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+2.0,gpt5.6-sol-max-api-multi,1,74,openai_responses_api,37,0,0,2566.521810,2.547816000000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,gpt5.6-sol-max-api-multi,W+R,gpt5.6-sol-max-api-multi,0,23,openai_responses_api,11,0,0,911.603070,0.755995200000
+3,2,gpt5.6-sol-max-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,B+R,gpt5.6-sol-max-api-multi,1,66,openai_responses_api,33,1,0,2373.180506,2.290138400000
+4,2,kata1-b6c96-s11888896-d2416753-temp-0.5,gpt5.6-sol-max-api-multi,B+12.0,kata1-b6c96-s11888896-d2416753-temp-0.5,1,101,openai_responses_api,50,0,0,3726.829586,4.504202400000
+5,3,gpt5.6-sol-max-api-multi,kata1-b6c96-s10825472-d2300510,B+6.0,gpt5.6-sol-max-api-multi,1,61,openai_responses_api,31,0,0,2088.976551,2.104018400000
+6,3,kata1-b6c96-s10825472-d2300510,gpt5.6-sol-max-api-multi,W+8.0,gpt5.6-sol-max-api-multi,0,87,openai_responses_api,43,0,0,3106.908027,3.465083200000
+7,4,gpt5.6-sol-max-api-multi,kata1-b6c96-s13733120-d2631546-temp-0.5,B+R,gpt5.6-sol-max-api-multi,1,60,openai_responses_api,30,1,0,2077.557534,2.101510400000
+8,4,kata1-b6c96-s13733120-d2631546-temp-0.5,gpt5.6-sol-max-api-multi,B+2.0,kata1-b6c96-s13733120-d2631546-temp-0.5,1,81,openai_responses_api,40,0,0,4298.433418,4.946367200000
+9,5,gpt5.6-sol-max-api-multi,kata1-b6c96-s13733120-d2631546-temp-0.5,W+26.0,kata1-b6c96-s13733120-d2631546-temp-0.5,0,84,openai_responses_api,42,1,0,2591.202191,2.854472800000
+10,5,kata1-b6c96-s13733120-d2631546-temp-0.5,gpt5.6-sol-max-api-multi,W+R,gpt5.6-sol-max-api-multi,0,71,openai_responses_api,35,0,0,3198.180539,3.102721600000
+11,6,gpt5.6-sol-max-api-multi,kata1-b6c96-s12849664-d2510774,W+20.0,kata1-b6c96-s12849664-d2510774,0,88,openai_responses_api,44,0,0,2736.822408,3.205125600000
+12,6,kata1-b6c96-s12849664-d2510774,gpt5.6-sol-max-api-multi,W+10.0,gpt5.6-sol-max-api-multi,0,62,openai_responses_api,31,0,0,2256.211612,2.174220800000
+13,7,gpt5.6-sol-max-api-multi,kata1-b6c96-s13733120-d2631546-temp-0.5,B+R,gpt5.6-sol-max-api-multi,1,80,openai_responses_api,40,1,0,2745.970083,2.451813600000
+14,7,kata1-b6c96-s13733120-d2631546-temp-0.5,gpt5.6-sol-max-api-multi,B+2.0,kata1-b6c96-s13733120-d2631546-temp-0.5,1,98,openai_responses_api,49,0,0,6133.145870,5.318040000000

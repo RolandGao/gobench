@@ -1,0 +1,26 @@
+target_elo,elo,game,loser,native_result,judge1_cleaned_result,judge2_cleaned_result,judge1_dead,judge2_dead,loser_passed_second,sgf
+1000,1011.0,64,B,W+14,B+10,B+10,A1 A8 C9 G1 G2 G6 H2 H5 H6 J1 J6 J8,A1 A8 C9 G1 G2 G6 H2 H5 H6 J1 J6 J8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_1000_game_064.sgf
+2000,2002.0,2,W,B+1,W+6,W+6,H2 H5 J3,H2 H5 J3,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_002.sgf
+2000,2002.0,5,B,W+7,B+4,B+4,A8 B8 D2 H1 H2 H3,A8 B8 D2 H1 H2 H3,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_005.sgf
+2000,2002.0,10,B,W+9,B+4,B+4,A1 A3 B1 B2 B3 D8,A1 A3 B1 B2 B3 D8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_010.sgf
+2000,2002.0,11,B,W+2,B+2,B+2,C5,C5,False,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_011.sgf
+2000,2002.0,19,B,W+6,B+4,B+4,A2 B1 B2 B3 C2 C3 D3 E3 F2 G2 H8,A2 B1 B2 B3 C2 C3 D3 E3 F2 G2 H8,False,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_019.sgf
+2000,2002.0,22,W,B+11,W+6,W+6,A2 B2 C1 C4 J3,A2 B2 C1 C4 J3,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_022.sgf
+2000,2002.0,24,B,W+2,B+16,B+16,C3 D9 H3,C3 D9 H3,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_024.sgf
+2000,2002.0,28,B,W+21,B+6,B+6,H2,H2,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_028.sgf
+2000,2002.0,33,B,W+2,B+2,B+2,A8 B5 B6 C6 C7 H2,A8 B5 B6 C6 C7 H2,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_033.sgf
+2000,2002.0,41,B,W+16,B+4,B+4,F8 G8,F8 G8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_041.sgf
+2000,2002.0,49,B,W+6,B+4,B+4,A2 B1 B2 C2 D2 D6 F8,A2 B1 B2 C2 D2 D6 F8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_049.sgf
+2000,2002.0,65,B,W+1,B+8,B+8,E5 E6 F6 J8,E5 E6 F6 J8,False,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_065.sgf
+2000,2002.0,66,B,W+22,B+2,B+2,A8 A9 B8 C7 C8 C9 D8 G8 G9 H8,A8 A9 B8 C7 C8 C9 D8 G8 G9 H8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_066.sgf
+2000,2002.0,67,B,W+6,B+4,B+4,D8,D8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_067.sgf
+2000,2002.0,68,B,W+1,B+10,B+10,B3 C9 H3 H8,B3 C9 H3 H8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_068.sgf
+2000,2002.0,75,B,W+9,B+2,B+2,B7 C7 D7 D8 E8,B7 C7 D7 D8 E8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_075.sgf
+2000,2002.0,78,B,W+22,B+4,B+4,D8,D8,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_078.sgf
+2000,2002.0,79,B,W+1,B+2,B+2,B2 C5,B2 C5,False,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_079.sgf
+2000,2002.0,85,B,W+26,B+6,B+6,A3 B1 B2 B3 D2 G2 H1 H2 H3 J2,A3 B1 B2 B3 D2 G2 H1 H2 H3 J2,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_085.sgf
+2000,2002.0,86,W,B+6,W+10,W+10,F2,F2,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_086.sgf
+2000,2002.0,95,W,B+1,W+6,W+6,G8,G8,False,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_095.sgf
+2000,2002.0,97,W,B+1,W+8,W+8,A7 C5,A7 C5,False,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_097.sgf
+2000,2002.0,98,B,W+9,B+4,B+4,D7 E7 E8 E9,D7 E7 E8 E9,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_098.sgf
+2000,2002.0,100,B,W+24,B+2,B+2,H2 H4 H6 H7 H8 H9 J1 J2 J3 J4 J5 J6,H2 H4 H6 H7 H8 H9 J1 J2 J3 J4 J5 J6,True,untracked_log/arena_20260905_004446_255059_katago_selfmatches/confirmed_sgfs/elo_2000_game_100.sgf

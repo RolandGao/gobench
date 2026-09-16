@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,grok-4.6-xhigh-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,W+8.0,kata1-b6c96-s8080640-d1961030-temp-0.7,0,84,xai_responses_api,42,0,0,1517.454521,2.257572000000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,grok-4.6-xhigh-api-multi,W+R,grok-4.6-xhigh-api-multi,0,85,xai_responses_api,42,0,0,1799.056140,2.898954000000
+3,2,grok-4.6-xhigh-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,W+2.0,kata1-b6c96-s8080640-d1961030-temp-0.7,0,90,xai_responses_api,45,0,0,1511.990474,2.457340000000
+4,2,kata1-b6c96-s8080640-d1961030-temp-0.7,grok-4.6-xhigh-api-multi,W+8.0,grok-4.6-xhigh-api-multi,0,81,xai_responses_api,40,0,0,1514.565730,1.928398000000
+5,3,grok-4.6-xhigh-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+8.0,grok-4.6-xhigh-api-multi,1,96,xai_responses_api,48,1,0,1179.961498,2.500656000000
+6,3,kata1-b6c96-s8080640-d1961030-temp-0.7,grok-4.6-xhigh-api-multi,W+R,grok-4.6-xhigh-api-multi,0,43,xai_responses_api,21,1,0,705.551121,0.747294000000
+7,4,grok-4.6-xhigh-api-multi,kata1-b6c96-s8982784-d2082583-temp-0.7,W+16.0,kata1-b6c96-s8982784-d2082583-temp-0.7,0,86,xai_responses_api,43,1,0,1048.427285,1.758016000000
+8,4,kata1-b6c96-s8982784-d2082583-temp-0.7,grok-4.6-xhigh-api-multi,B+6.0,kata1-b6c96-s8982784-d2082583-temp-0.7,1,75,xai_responses_api,37,1,0,1412.305925,2.115824000000
+9,5,grok-4.6-xhigh-api-multi,kata1-b6c96-s10014464-d2201128-temp-0.9,W+2.0,kata1-b6c96-s10014464-d2201128-temp-0.9,0,80,xai_responses_api,40,0,0,1491.210726,2.164860000000
+10,5,kata1-b6c96-s10014464-d2201128-temp-0.9,grok-4.6-xhigh-api-multi,W+R,grok-4.6-xhigh-api-multi,0,55,xai_responses_api,27,1,0,1089.104690,1.205066000000
+11,6,grok-4.6-xhigh-api-multi,kata1-b6c96-s10014464-d2201128-temp-0.9,W+6.0,kata1-b6c96-s10014464-d2201128-temp-0.9,0,59,xai_responses_api,30,0,0,1095.557207,1.146036000000
+12,6,kata1-b6c96-s10014464-d2201128-temp-0.9,grok-4.6-xhigh-api-multi,W+R,grok-4.6-xhigh-api-multi,0,25,xai_responses_api,12,1,0,371.674789,0.319934000000
+13,7,grok-4.6-xhigh-api-multi,kata1-b6c96-s10014464-d2201128-temp-0.9,W+6.0,kata1-b6c96-s10014464-d2201128-temp-0.9,0,68,xai_responses_api,34,0,0,1232.697774,1.629580000000
+14,7,kata1-b6c96-s10014464-d2201128-temp-0.9,grok-4.6-xhigh-api-multi,W+10.0,grok-4.6-xhigh-api-multi,0,79,xai_responses_api,39,3,0,1422.876495,1.738474000000

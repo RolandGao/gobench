@@ -1,0 +1,178 @@
+[
+  {
+    "run": "arena_20260826_054944_814746_52d18cc7",
+    "game": 26,
+    "move_number": 56,
+    "move": "A9",
+    "path": "untracked_log/arena_20260826_054944_814746_52d18cc7/batch-013/llm-calls.jsonl",
+    "line": 51,
+    "listed_legal": true,
+    "ko_illegal_list": "F5, E6",
+    "output": "A9"
+  },
+  {
+    "run": "arena_20260826_054944_814746_52d18cc7",
+    "game": 2,
+    "move_number": 70,
+    "move": "A9",
+    "path": "untracked_log/arena_20260826_054944_814746_52d18cc7/batch-001/llm-calls.jsonl",
+    "line": 75,
+    "listed_legal": true,
+    "ko_illegal_list": "E6",
+    "output": "A9"
+  },
+  {
+    "run": "arena_20260826_185411_172712_18e992e8",
+    "game": 11,
+    "move_number": 51,
+    "move": "A7",
+    "path": "untracked_log/arena_20260826_185411_172712_18e992e8/batch-006/llm-calls.jsonl",
+    "line": 33,
+    "listed_legal": true,
+    "ko_illegal_list": "F1",
+    "output": "A7"
+  },
+  {
+    "run": "arena_20260826_185411_172712_18e992e8",
+    "game": 13,
+    "move_number": 153,
+    "move": "C4",
+    "path": "untracked_log/arena_20260826_185411_172712_18e992e8/batch-007/llm-calls.jsonl",
+    "line": 83,
+    "listed_legal": true,
+    "ko_illegal_list": "G1, A2, B7, G7, F8, H8, D9",
+    "output": "C4"
+  },
+  {
+    "run": "arena_20260826_185411_172712_18e992e8",
+    "game": 1,
+    "move_number": 51,
+    "move": "G5",
+    "path": "untracked_log/arena_20260826_185411_172712_18e992e8/batch-001/llm-calls.jsonl",
+    "line": 38,
+    "listed_legal": true,
+    "ko_illegal_list": "A3",
+    "output": "G5"
+  },
+  {
+    "run": "arena_20260826_185411_172712_18e992e8",
+    "game": 8,
+    "move_number": 66,
+    "move": "F9",
+    "path": "untracked_log/arena_20260826_185411_172712_18e992e8/batch-004/llm-calls.jsonl",
+    "line": 65,
+    "listed_legal": true,
+    "ko_illegal_list": "G5",
+    "output": "F9"
+  },
+  {
+    "run": "arena_20260827_024210_866072_76061f5a",
+    "game": 1,
+    "move_number": 35,
+    "move": "G6",
+    "path": "untracked_log/arena_20260827_024210_866072_76061f5a/batch-001/llm-calls.jsonl",
+    "line": 47,
+    "listed_legal": true,
+    "ko_illegal_list": "none",
+    "output": "G6"
+  },
+  {
+    "run": "arena_20260827_054505_007832_dbf67ee8",
+    "game": 5,
+    "move_number": 63,
+    "move": "J5",
+    "path": "untracked_log/arena_20260827_054505_007832_dbf67ee8/batch-003/llm-calls.jsonl",
+    "line": 73,
+    "listed_legal": true,
+    "ko_illegal_list": "none",
+    "output": "J5"
+  },
+  {
+    "run": "arena_20260827_231719_610088_eb49a7a4",
+    "game": 9,
+    "move_number": 155,
+    "move": "E4",
+    "path": "untracked_log/arena_20260827_231719_610088_eb49a7a4/batch-005/llm-calls.jsonl",
+    "line": 78,
+    "listed_legal": true,
+    "ko_illegal_list": "J1, J5, E7, D9, J9",
+    "output": "E4"
+  },
+  {
+    "run": "arena_20260827_231719_610088_eb49a7a4",
+    "game": 8,
+    "move_number": 22,
+    "move": "G5",
+    "path": "untracked_log/arena_20260827_231719_610088_eb49a7a4/batch-004/llm-calls.jsonl",
+    "line": 86,
+    "listed_legal": true,
+    "ko_illegal_list": "none",
+    "output": "G5"
+  },
+  {
+    "run": "arena_20260829_055421_573962_ed29283d",
+    "game": 20,
+    "move_number": 48,
+    "move": "B8",
+    "path": "untracked_log/arena_20260829_055421_573962_ed29283d/batch-010/llm-calls.jsonl",
+    "line": 54,
+    "listed_legal": true,
+    "ko_illegal_list": "A9",
+    "output": "B8"
+  },
+  {
+    "run": "arena_20260829_055421_573962_ed29283d",
+    "game": 17,
+    "move_number": 45,
+    "move": "E9",
+    "path": "untracked_log/arena_20260829_055421_573962_ed29283d/batch-009/llm-calls.jsonl",
+    "line": 24,
+    "listed_legal": true,
+    "ko_illegal_list": "C5",
+    "output": "E9"
+  },
+  {
+    "run": "arena_20260829_055421_573962_ed29283d",
+    "game": 22,
+    "move_number": 16,
+    "move": "G4",
+    "path": "untracked_log/arena_20260829_055421_573962_ed29283d/batch-011/llm-calls.jsonl",
+    "line": 62,
+    "listed_legal": true,
+    "ko_illegal_list": "none",
+    "output": "G4"
+  },
+  {
+    "run": "arena_20260829_055421_573962_ed29283d",
+    "game": 2,
+    "move_number": 76,
+    "move": "A2",
+    "path": "untracked_log/arena_20260829_055421_573962_ed29283d/batch-001/llm-calls.jsonl",
+    "line": 80,
+    "listed_legal": true,
+    "ko_illegal_list": "E8",
+    "output": "A2"
+  },
+  {
+    "run": "arena_20260829_075436_193500_7bf0a61a",
+    "game": 5,
+    "move_number": 141,
+    "move": "A8",
+    "path": "untracked_log/arena_20260829_075436_193500_7bf0a61a/batch-003/llm-calls.jsonl",
+    "line": 71,
+    "listed_legal": true,
+    "ko_illegal_list": "A1, C1, F1, J1, G6",
+    "output": "A8"
+  },
+  {
+    "run": "arena_20260829_075436_193500_7bf0a61a",
+    "game": 7,
+    "move_number": 65,
+    "move": "E9",
+    "path": "untracked_log/arena_20260829_075436_193500_7bf0a61a/batch-004/llm-calls.jsonl",
+    "line": 33,
+    "listed_legal": true,
+    "ko_illegal_list": "none",
+    "output": "E9"
+  }
+]

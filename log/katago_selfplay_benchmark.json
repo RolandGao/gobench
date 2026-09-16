@@ -1,0 +1,4637 @@
+{
+  "method": "Base players use measured CPU full-game timings from three isolated one-visit self-play games. Each playout player's CPU time is estimated as its playout count multiplied by the same network's measured one-visit CPU time. Timers include genmove calls only and report half of the two-color self-play total per player-game.",
+  "katago": "KataGo v1.16.5",
+  "machine": {
+    "platform": "Linux-6.12.100+deb13-cloud-amd64-x86_64-with-glibc2.41",
+    "allowed_cpu_ids": [
+      0
+    ]
+  },
+  "settings": {
+    "board_size": 9,
+    "komi": 7.0,
+    "rules": "tromp-taylor",
+    "backend_label": "gcp-n1-1vcpu",
+    "katago_binary": ".venv/katago/v1.16.5-eigenavx2/squashfs-root/AppRun",
+    "max_visits": 1,
+    "max_playouts": null,
+    "num_search_threads": 1,
+    "num_eigen_threads_per_model": 1,
+    "max_game_moves": 1000,
+    "games_per_network": 3,
+    "warmup_moves": 2
+  },
+  "requested_networks": 96,
+  "completed_networks": 96,
+  "results": [
+    {
+      "player": "kata1-b10c128-s108710656-d44395882",
+      "network": "kata1-b10c128-s108710656-d44395882",
+      "elo": 3493,
+      "elo_ci_95": 32,
+      "arena_games": 4182,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.6725944723334578,
+      "isolated_mean_genmove_seconds_per_player_game": 0.3362972361667289,
+      "measured_median_genmove_seconds_per_game": 0.6452118240000573,
+      "measured_stdev_genmove_seconds_per_game": 0.05111828364990991,
+      "measured_mean_seconds_per_move": 0.016953658397800112,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 43,
+          "black_genmove_seconds": 0.3734757699997999,
+          "white_genmove_seconds": 0.35809492300018064,
+          "total_genmove_seconds": 0.7315706929999806,
+          "seconds_per_move": 0.017013271930232107,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 38,
+          "black_genmove_seconds": 0.32355819099996097,
+          "white_genmove_seconds": 0.3216536330000963,
+          "total_genmove_seconds": 0.6452118240000573,
+          "seconds_per_move": 0.016979258526317296,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 38,
+          "black_genmove_seconds": 0.3177637010002172,
+          "white_genmove_seconds": 0.3232371990001184,
+          "total_genmove_seconds": 0.6410009000003356,
+          "seconds_per_move": 0.016868444736850938,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s146897408-d54258564",
+      "network": "kata1-b10c128-s146897408-d54258564",
+      "elo": 3507,
+      "elo_ci_95": 32,
+      "arena_games": 4092,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.6083615063331157,
+      "isolated_mean_genmove_seconds_per_player_game": 0.30418075316655785,
+      "measured_median_genmove_seconds_per_game": 0.5866447649997326,
+      "measured_stdev_genmove_seconds_per_game": 0.05932832549210885,
+      "measured_mean_seconds_per_move": 0.01615435661507374,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 36,
+          "black_genmove_seconds": 0.29216895499985185,
+          "white_genmove_seconds": 0.29447580999988077,
+          "total_genmove_seconds": 0.5866447649997326,
+          "seconds_per_move": 0.016295687916659238,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 35,
+          "black_genmove_seconds": 0.2905828890001203,
+          "white_genmove_seconds": 0.2723685459998251,
+          "total_genmove_seconds": 0.5629514349999454,
+          "seconds_per_move": 0.016084326714284152,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 42,
+          "black_genmove_seconds": 0.34043085999996947,
+          "white_genmove_seconds": 0.3350574589996995,
+          "total_genmove_seconds": 0.675488318999669,
+          "seconds_per_move": 0.016083055214277834,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s182492416-d63545831",
+      "network": "kata1-b10c128-s182492416-d63545831",
+      "elo": 3534,
+      "elo_ci_95": 32,
+      "arena_games": 4210,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.9669270156667835,
+      "isolated_mean_genmove_seconds_per_player_game": 0.48346350783339176,
+      "measured_median_genmove_seconds_per_game": 0.9518572150002456,
+      "measured_stdev_genmove_seconds_per_game": 0.2387177859332663,
+      "measured_mean_seconds_per_move": 0.018156405399902258,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 37,
+          "black_genmove_seconds": 0.3796017859999665,
+          "white_genmove_seconds": 0.35649935899994034,
+          "total_genmove_seconds": 0.7361011449999069,
+          "seconds_per_move": 0.019894625540538023,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 69,
+          "black_genmove_seconds": 0.616581910999912,
+          "white_genmove_seconds": 0.5962407760002861,
+          "total_genmove_seconds": 1.2128226870001981,
+          "seconds_per_move": 0.01757714039130722,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 56,
+          "black_genmove_seconds": 0.4803427150002335,
+          "white_genmove_seconds": 0.47151450000001205,
+          "total_genmove_seconds": 0.9518572150002456,
+          "seconds_per_move": 0.01699745026786153,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s258941696-d77667876",
+      "network": "kata1-b10c128-s258941696-d77667876",
+      "elo": 3527,
+      "elo_ci_95": 32,
+      "arena_games": 4302,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.8500147133333561,
+      "isolated_mean_genmove_seconds_per_player_game": 0.42500735666667805,
+      "measured_median_genmove_seconds_per_game": 0.8140292439995847,
+      "measured_stdev_genmove_seconds_per_game": 0.1577195039847116,
+      "measured_mean_seconds_per_move": 0.016135653214052255,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 44,
+          "black_genmove_seconds": 0.35493600699999206,
+          "white_genmove_seconds": 0.35846152400006304,
+          "total_genmove_seconds": 0.7133975310000551,
+          "seconds_per_move": 0.01621358025000125,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 63,
+          "black_genmove_seconds": 0.5224267050001572,
+          "white_genmove_seconds": 0.5001906600002712,
+          "total_genmove_seconds": 1.0226173650004284,
+          "seconds_per_move": 0.016232021666673466,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 51,
+          "black_genmove_seconds": 0.4156082519997426,
+          "white_genmove_seconds": 0.39842099199984204,
+          "total_genmove_seconds": 0.8140292439995847,
+          "seconds_per_move": 0.015961357725482052,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s356821760-d90717864",
+      "network": "kata1-b10c128-s356821760-d90717864",
+      "elo": 3554,
+      "elo_ci_95": 32,
+      "arena_games": 4166,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.7871619100000089,
+      "isolated_mean_genmove_seconds_per_player_game": 0.39358095500000445,
+      "measured_median_genmove_seconds_per_game": 0.7790387459998556,
+      "measured_stdev_genmove_seconds_per_game": 0.19052445092157982,
+      "measured_mean_seconds_per_move": 0.016186897730302085,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 37,
+          "black_genmove_seconds": 0.30897315399988656,
+          "white_genmove_seconds": 0.2918558080001503,
+          "total_genmove_seconds": 0.6008289620000369,
+          "seconds_per_move": 0.01623862059459559,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 61,
+          "black_genmove_seconds": 0.4988581389998217,
+          "white_genmove_seconds": 0.4827598830003126,
+          "total_genmove_seconds": 0.9816180220001343,
+          "seconds_per_move": 0.016092098721313678,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 48,
+          "black_genmove_seconds": 0.3880111950001037,
+          "white_genmove_seconds": 0.39102755099975184,
+          "total_genmove_seconds": 0.7790387459998556,
+          "seconds_per_move": 0.01622997387499699,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s41138688-d27396855",
+      "network": "kata1-b10c128-s41138688-d27396855",
+      "elo": 3386,
+      "elo_ci_95": 32,
+      "arena_games": 4032,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.5964392720001873,
+      "isolated_mean_genmove_seconds_per_player_game": 0.29821963600009366,
+      "measured_median_genmove_seconds_per_game": 0.6593304559999069,
+      "measured_stdev_genmove_seconds_per_game": 0.16868777500939622,
+      "measured_mean_seconds_per_move": 0.01613270562471998,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 45,
+          "black_genmove_seconds": 0.3714784410001357,
+          "white_genmove_seconds": 0.3531682680004451,
+          "total_genmove_seconds": 0.7246467090005808,
+          "seconds_per_move": 0.016103260200012907,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 41,
+          "black_genmove_seconds": 0.3386994480001704,
+          "white_genmove_seconds": 0.32063100799973654,
+          "total_genmove_seconds": 0.6593304559999069,
+          "seconds_per_move": 0.016081230634144072,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 25,
+          "black_genmove_seconds": 0.21090140799992696,
+          "white_genmove_seconds": 0.19443924300014714,
+          "total_genmove_seconds": 0.4053406510000741,
+          "seconds_per_move": 0.016213626040002965,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s501483520-d110698189",
+      "network": "kata1-b10c128-s501483520-d110698189",
+      "elo": 3564,
+      "elo_ci_95": 32,
+      "arena_games": 4152,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.6089160420001841,
+      "isolated_mean_genmove_seconds_per_player_game": 0.30445802100009206,
+      "measured_median_genmove_seconds_per_game": 0.6465314009999474,
+      "measured_stdev_genmove_seconds_per_game": 0.10791581396334099,
+      "measured_mean_seconds_per_move": 0.016173407372678125,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 30,
+          "black_genmove_seconds": 0.24284829499981697,
+          "white_genmove_seconds": 0.2443784050000204,
+          "total_genmove_seconds": 0.48722669999983736,
+          "seconds_per_move": 0.016240889999994578,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 40,
+          "black_genmove_seconds": 0.32462475099998755,
+          "white_genmove_seconds": 0.3219066499999599,
+          "total_genmove_seconds": 0.6465314009999474,
+          "seconds_per_move": 0.016163285024998687,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 43,
+          "black_genmove_seconds": 0.35375185300051726,
+          "white_genmove_seconds": 0.3392381720002504,
+          "total_genmove_seconds": 0.6929900250007677,
+          "seconds_per_move": 0.016116047093041107,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s56992512-d31122236",
+      "network": "kata1-b10c128-s56992512-d31122236",
+      "elo": 3436,
+      "elo_ci_95": 32,
+      "arena_games": 4154,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.638243337333544,
+      "isolated_mean_genmove_seconds_per_player_game": 0.319121668666772,
+      "measured_median_genmove_seconds_per_game": 0.6780459040001006,
+      "measured_stdev_genmove_seconds_per_game": 0.12693778595930422,
+      "measured_mean_seconds_per_move": 0.016082536492247116,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 42,
+          "black_genmove_seconds": 0.3383168430001433,
+          "white_genmove_seconds": 0.33972906099995726,
+          "total_genmove_seconds": 0.6780459040001006,
+          "seconds_per_move": 0.01614395009524049,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 31,
+          "black_genmove_seconds": 0.2575426550000657,
+          "white_genmove_seconds": 0.23863140700018448,
+          "total_genmove_seconds": 0.49617406200025016,
+          "seconds_per_move": 0.016005614903233874,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 46,
+          "black_genmove_seconds": 0.3711034240001254,
+          "white_genmove_seconds": 0.36940662200015595,
+          "total_genmove_seconds": 0.7405100460002814,
+          "seconds_per_move": 0.016098044478266987,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b10c128-s82632704-d37596868",
+      "network": "kata1-b10c128-s82632704-d37596868",
+      "elo": 3457,
+      "elo_ci_95": 32,
+      "arena_games": 4078,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.8610102093331685,
+      "isolated_mean_genmove_seconds_per_player_game": 0.43050510466658426,
+      "measured_median_genmove_seconds_per_game": 0.7183706320001875,
+      "measured_stdev_genmove_seconds_per_game": 0.3549516554791548,
+      "measured_mean_seconds_per_move": 0.016250087098298404,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 44,
+          "black_genmove_seconds": 0.36156001800031845,
+          "white_genmove_seconds": 0.356810613999869,
+          "total_genmove_seconds": 0.7183706320001875,
+          "seconds_per_move": 0.016326605272731533,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 78,
+          "black_genmove_seconds": 0.6335892879999392,
+          "white_genmove_seconds": 0.6315035999996326,
+          "total_genmove_seconds": 1.2650928879995718,
+          "seconds_per_move": 0.0162191395897381,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 37,
+          "black_genmove_seconds": 0.3057662329993036,
+          "white_genmove_seconds": 0.29380087500044283,
+          "total_genmove_seconds": 0.5995671079997464,
+          "seconds_per_move": 0.01620451643242558,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b15c192-s1062526208-d272346422",
+      "network": "kata1-b15c192-s1062526208-d272346422",
+      "elo": 3750,
+      "elo_ci_95": 33,
+      "arena_games": 4152,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 2.2158127253336866,
+      "isolated_mean_genmove_seconds_per_player_game": 1.1079063626668433,
+      "measured_median_genmove_seconds_per_game": 2.0528061310010344,
+      "measured_stdev_genmove_seconds_per_game": 0.6058443014087282,
+      "measured_mean_seconds_per_move": 0.04412086537510496,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 47,
+          "black_genmove_seconds": 1.0474159220007095,
+          "white_genmove_seconds": 1.0053902090003248,
+          "total_genmove_seconds": 2.0528061310010344,
+          "seconds_per_move": 0.04367672619151137,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 66,
+          "black_genmove_seconds": 1.443300338000654,
+          "white_genmove_seconds": 1.4431837040001483,
+          "total_genmove_seconds": 2.886484042000802,
+          "seconds_per_move": 0.04373460669698185,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 38,
+          "black_genmove_seconds": 0.8514060379991406,
+          "white_genmove_seconds": 0.8567419650000829,
+          "total_genmove_seconds": 1.7081480029992235,
+          "seconds_per_move": 0.04495126323682167,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b15c192-s172540416-d88080224",
+      "network": "kata1-b15c192-s172540416-d88080224",
+      "elo": 3634,
+      "elo_ci_95": 33,
+      "arena_games": 4092,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 2.0062793823332563,
+      "isolated_mean_genmove_seconds_per_player_game": 1.0031396911666282,
+      "measured_median_genmove_seconds_per_game": 1.9192211899994618,
+      "measured_stdev_genmove_seconds_per_game": 0.41619864883519786,
+      "measured_mean_seconds_per_move": 0.046557510821748284,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 38,
+          "black_genmove_seconds": 0.8219104209999841,
+          "white_genmove_seconds": 0.8185852570004499,
+          "total_genmove_seconds": 1.640495678000434,
+          "seconds_per_move": 0.04317093889474827,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 39,
+          "black_genmove_seconds": 0.9897181789995102,
+          "white_genmove_seconds": 0.9295030109999516,
+          "total_genmove_seconds": 1.9192211899994618,
+          "seconds_per_move": 0.04921079974357594,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 52,
+          "black_genmove_seconds": 1.2294338149995383,
+          "white_genmove_seconds": 1.2296874640003352,
+          "total_genmove_seconds": 2.4591212789998735,
+          "seconds_per_move": 0.04729079382692065,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b15c192-s230670592-d99188084",
+      "network": "kata1-b15c192-s230670592-d99188084",
+      "elo": 3637,
+      "elo_ci_95": 33,
+      "arena_games": 4280,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 2.200545599667066,
+      "isolated_mean_genmove_seconds_per_player_game": 1.100272799833533,
+      "measured_median_genmove_seconds_per_game": 2.029150444000379,
+      "measured_stdev_genmove_seconds_per_game": 0.39182361135002164,
+      "measured_mean_seconds_per_move": 0.04727748627475355,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 45,
+          "black_genmove_seconds": 1.0399223110000548,
+          "white_genmove_seconds": 0.9892281330003243,
+          "total_genmove_seconds": 2.029150444000379,
+          "seconds_per_move": 0.045092232088897316,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 42,
+          "black_genmove_seconds": 0.9633557409999867,
+          "white_genmove_seconds": 0.9602670869999201,
+          "total_genmove_seconds": 1.9236228279999068,
+          "seconds_per_move": 0.0458005435238073,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 52,
+          "black_genmove_seconds": 1.3278002460006064,
+          "white_genmove_seconds": 1.3210632810003062,
+          "total_genmove_seconds": 2.6488635270009127,
+          "seconds_per_move": 0.050939683211556015,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b15c192-s315428352-d115173910",
+      "network": "kata1-b15c192-s315428352-d115173910",
+      "elo": 3688,
+      "elo_ci_95": 33,
+      "arena_games": 4204,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 2.3156336660003185,
+      "isolated_mean_genmove_seconds_per_player_game": 1.1578168330001593,
+      "measured_median_genmove_seconds_per_game": 2.0972214010005246,
+      "measured_stdev_genmove_seconds_per_game": 0.44834500187756327,
+      "measured_mean_seconds_per_move": 0.04825097288633157,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 47,
+          "black_genmove_seconds": 1.0714857250000023,
+          "white_genmove_seconds": 1.0257356760005223,
+          "total_genmove_seconds": 2.0972214010005246,
+          "seconds_per_move": 0.04462173193618137,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 57,
+          "black_genmove_seconds": 1.4234194240004854,
+          "white_genmove_seconds": 1.4079118290001134,
+          "total_genmove_seconds": 2.8313312530005987,
+          "seconds_per_move": 0.04967247812281752,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 40,
+          "black_genmove_seconds": 1.0166039100001854,
+          "white_genmove_seconds": 1.0017444339996473,
+          "total_genmove_seconds": 2.0183483439998327,
+          "seconds_per_move": 0.050458708599995815,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b15c192-s449394432-d140458288",
+      "network": "kata1-b15c192-s449394432-d140458288",
+      "elo": 3699,
+      "elo_ci_95": 33,
+      "arena_games": 4210,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 2.282165381333319,
+      "isolated_mean_genmove_seconds_per_player_game": 1.1410826906666596,
+      "measured_median_genmove_seconds_per_game": 2.2876161129993307,
+      "measured_stdev_genmove_seconds_per_game": 0.14802792536472387,
+      "measured_mean_seconds_per_move": 0.04503667503033892,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 54,
+          "black_genmove_seconds": 1.2155093490000581,
+          "white_genmove_seconds": 1.2118833070005621,
+          "total_genmove_seconds": 2.4273926560006203,
+          "seconds_per_move": 0.04495171585186334,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 48,
+          "black_genmove_seconds": 1.0714819589998115,
+          "white_genmove_seconds": 1.0600054160001946,
+          "total_genmove_seconds": 2.131487375000006,
+          "seconds_per_move": 0.04440598697916679,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 50,
+          "black_genmove_seconds": 1.1319268249997094,
+          "white_genmove_seconds": 1.1556892879996212,
+          "total_genmove_seconds": 2.2876161129993307,
+          "seconds_per_move": 0.045752322259986614,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b15c192-s798345984-d202388589",
+      "network": "kata1-b15c192-s798345984-d202388589",
+      "elo": 3748,
+      "elo_ci_95": 33,
+      "arena_games": 4258,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 2.2030608593339216,
+      "isolated_mean_genmove_seconds_per_player_game": 1.1015304296669608,
+      "measured_median_genmove_seconds_per_game": 1.8201271459995496,
+      "measured_stdev_genmove_seconds_per_game": 0.8013625307757578,
+      "measured_mean_seconds_per_move": 0.04611387449058157,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 67,
+          "black_genmove_seconds": 1.5940256870014764,
+          "white_genmove_seconds": 1.5300246360004621,
+          "total_genmove_seconds": 3.1240503230019385,
+          "seconds_per_move": 0.04662761676122296,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 38,
+          "black_genmove_seconds": 0.9060467349995633,
+          "white_genmove_seconds": 0.9140804109999863,
+          "total_genmove_seconds": 1.8201271459995496,
+          "seconds_per_move": 0.04789808278946183,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 38,
+          "black_genmove_seconds": 0.8361678940000274,
+          "white_genmove_seconds": 0.8288372150002488,
+          "total_genmove_seconds": 1.6650051090002762,
+          "seconds_per_move": 0.0438159239210599,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "network": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "elo": 4123,
+      "elo_ci_95": 34,
+      "arena_games": 3790,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 8.71660975133318,
+      "isolated_mean_genmove_seconds_per_player_game": 4.35830487566659,
+      "measured_median_genmove_seconds_per_game": 8.184167798000772,
+      "measured_stdev_genmove_seconds_per_game": 1.5958611464043733,
+      "measured_mean_seconds_per_move": 0.16133436082005378,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 47,
+          "black_genmove_seconds": 3.817602885999804,
+          "white_genmove_seconds": 3.637434671000392,
+          "total_genmove_seconds": 7.455037557000196,
+          "seconds_per_move": 0.1586178203617063,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 65,
+          "black_genmove_seconds": 5.323611258998881,
+          "white_genmove_seconds": 5.187012639999693,
+          "total_genmove_seconds": 10.510623898998574,
+          "seconds_per_move": 0.1617019061384396,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 50,
+          "black_genmove_seconds": 4.104029397999966,
+          "white_genmove_seconds": 4.080138400000806,
+          "total_genmove_seconds": 8.184167798000772,
+          "seconds_per_move": 0.16368335596001543,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256-s241116160-d150094945",
+      "network": "kata1-b20c256-s241116160-d150094945",
+      "elo": 3734,
+      "elo_ci_95": 33,
+      "arena_games": 4294,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 5.487927166999877,
+      "isolated_mean_genmove_seconds_per_player_game": 2.7439635834999385,
+      "measured_median_genmove_seconds_per_game": 4.858877917000655,
+      "measured_stdev_genmove_seconds_per_game": 1.2607811865419498,
+      "measured_mean_seconds_per_move": 0.10837960595511965,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 42,
+          "black_genmove_seconds": 2.360653693000131,
+          "white_genmove_seconds": 2.304787992999991,
+          "total_genmove_seconds": 4.665441686000122,
+          "seconds_per_move": 0.1110819449047648,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 64,
+          "black_genmove_seconds": 3.469235542999513,
+          "white_genmove_seconds": 3.4702263549993404,
+          "total_genmove_seconds": 6.939461897998854,
+          "seconds_per_move": 0.10842909215623209,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 46,
+          "black_genmove_seconds": 2.4284908290001113,
+          "white_genmove_seconds": 2.4303870880005434,
+          "total_genmove_seconds": 4.858877917000655,
+          "seconds_per_move": 0.10562778080436205,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256x2-s1039565568-d285739972",
+      "network": "kata1-b20c256x2-s1039565568-d285739972",
+      "elo": 3839,
+      "elo_ci_95": 33,
+      "arena_games": 4016,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 5.255365151666941,
+      "isolated_mean_genmove_seconds_per_player_game": 2.6276825758334703,
+      "measured_median_genmove_seconds_per_game": 5.171137593000822,
+      "measured_stdev_genmove_seconds_per_game": 0.8020992262730797,
+      "measured_mean_seconds_per_move": 0.13794701336263057,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 47,
+          "black_genmove_seconds": 2.651344337000637,
+          "white_genmove_seconds": 2.5197932560001846,
+          "total_genmove_seconds": 5.171137593000822,
+          "seconds_per_move": 0.11002420410640046,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 29,
+          "black_genmove_seconds": 2.3292889879992345,
+          "white_genmove_seconds": 2.169414344000188,
+          "total_genmove_seconds": 4.4987033319994225,
+          "seconds_per_move": 0.15512770110342836,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 41,
+          "black_genmove_seconds": 3.130095346000644,
+          "white_genmove_seconds": 2.9661591839999346,
+          "total_genmove_seconds": 6.096254530000579,
+          "seconds_per_move": 0.1486891348780629,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256x2-s1610809600-d384128195",
+      "network": "kata1-b20c256x2-s1610809600-d384128195",
+      "elo": 3845,
+      "elo_ci_95": 33,
+      "arena_games": 4080,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 4.251300593999304,
+      "isolated_mean_genmove_seconds_per_player_game": 2.125650296999652,
+      "measured_median_genmove_seconds_per_game": 4.489537006999171,
+      "measured_stdev_genmove_seconds_per_game": 0.6024965544400934,
+      "measured_mean_seconds_per_move": 0.10724540576405296,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 42,
+          "black_genmove_seconds": 2.251360186999591,
+          "white_genmove_seconds": 2.2381768199995804,
+          "total_genmove_seconds": 4.489537006999171,
+          "seconds_per_move": 0.10689373826188503,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 44,
+          "black_genmove_seconds": 2.345056840999405,
+          "white_genmove_seconds": 2.3531950269994013,
+          "total_genmove_seconds": 4.698251867998806,
+          "seconds_per_move": 0.10677845154542741,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 33,
+          "black_genmove_seconds": 1.8387850079996042,
+          "white_genmove_seconds": 1.7273278990003291,
+          "total_genmove_seconds": 3.5661129069999333,
+          "seconds_per_move": 0.10806402748484646,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256x2-s2430231552-d525879064",
+      "network": "kata1-b20c256x2-s2430231552-d525879064",
+      "elo": 3860,
+      "elo_ci_95": 33,
+      "arena_games": 4136,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 4.463906457333603,
+      "isolated_mean_genmove_seconds_per_player_game": 2.2319532286668013,
+      "measured_median_genmove_seconds_per_game": 4.232355803000928,
+      "measured_stdev_genmove_seconds_per_game": 0.46690252782064046,
+      "measured_mean_seconds_per_move": 0.10718315697763958,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 47,
+          "black_genmove_seconds": 2.56111279799984,
+          "white_genmove_seconds": 2.4402159849998952,
+          "total_genmove_seconds": 5.001328782999735,
+          "seconds_per_move": 0.10641125070212203,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 39,
+          "black_genmove_seconds": 2.1555072630010272,
+          "white_genmove_seconds": 2.076848539999901,
+          "total_genmove_seconds": 4.232355803000928,
+          "seconds_per_move": 0.10852194366669046,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 39,
+          "black_genmove_seconds": 2.1316074840003694,
+          "white_genmove_seconds": 2.0264273019997745,
+          "total_genmove_seconds": 4.158034786000144,
+          "seconds_per_move": 0.10661627656410626,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256x2-s3354994176-d716845198",
+      "network": "kata1-b20c256x2-s3354994176-d716845198",
+      "elo": 3896,
+      "elo_ci_95": 33,
+      "arena_games": 4102,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 5.372614766667084,
+      "isolated_mean_genmove_seconds_per_player_game": 2.686307383333542,
+      "measured_median_genmove_seconds_per_game": 4.452521549000494,
+      "measured_stdev_genmove_seconds_per_game": 2.2365639628967484,
+      "measured_mean_seconds_per_move": 0.10906967210118265,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 41,
+          "black_genmove_seconds": 2.2729277770001772,
+          "white_genmove_seconds": 2.1795937720003167,
+          "total_genmove_seconds": 4.452521549000494,
+          "seconds_per_move": 0.10859808656098766,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 34,
+          "black_genmove_seconds": 1.8783507630002987,
+          "white_genmove_seconds": 1.864504469999929,
+          "total_genmove_seconds": 3.7428552330002276,
+          "seconds_per_move": 0.11008397744118316,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 73,
+          "black_genmove_seconds": 4.006503919000579,
+          "white_genmove_seconds": 3.9159635989999515,
+          "total_genmove_seconds": 7.922467518000531,
+          "seconds_per_move": 0.10852695230137713,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256x2-s5055114240-d1149032340",
+      "network": "kata1-b20c256x2-s5055114240-d1149032340",
+      "elo": 3929,
+      "elo_ci_95": 34,
+      "arena_games": 3952,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 7.129978615999259,
+      "isolated_mean_genmove_seconds_per_player_game": 3.5649893079996295,
+      "measured_median_genmove_seconds_per_game": 7.222992341998861,
+      "measured_stdev_genmove_seconds_per_game": 1.3747176982567952,
+      "measured_mean_seconds_per_move": 0.10753285108056061,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 79,
+          "black_genmove_seconds": 4.280340516000479,
+          "white_genmove_seconds": 4.175486906999367,
+          "total_genmove_seconds": 8.455827422999846,
+          "seconds_per_move": 0.10703579016455501,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 53,
+          "black_genmove_seconds": 2.9100450690000343,
+          "white_genmove_seconds": 2.801071013999035,
+          "total_genmove_seconds": 5.7111160829990695,
+          "seconds_per_move": 0.10775690722639754,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 67,
+          "black_genmove_seconds": 3.6694727719993807,
+          "white_genmove_seconds": 3.55351956999948,
+          "total_genmove_seconds": 7.222992341998861,
+          "seconds_per_move": 0.10780585585072927,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b20c256x2-s668214784-d222255714",
+      "network": "kata1-b20c256x2-s668214784-d222255714",
+      "elo": 3795,
+      "elo_ci_95": 33,
+      "arena_games": 4098,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 5.88653977699975,
+      "isolated_mean_genmove_seconds_per_player_game": 2.943269888499875,
+      "measured_median_genmove_seconds_per_game": 6.104110374999436,
+      "measured_stdev_genmove_seconds_per_game": 0.6783877870962609,
+      "measured_mean_seconds_per_move": 0.1119039199616864,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 57,
+          "black_genmove_seconds": 3.2638271199991777,
+          "white_genmove_seconds": 3.165623042999414,
+          "total_genmove_seconds": 6.429450162998592,
+          "seconds_per_move": 0.11279737128067704,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 56,
+          "black_genmove_seconds": 3.0408288819999143,
+          "white_genmove_seconds": 3.063281492999522,
+          "total_genmove_seconds": 6.104110374999436,
+          "seconds_per_move": 0.1090019709821328,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 45,
+          "black_genmove_seconds": 2.6488595929999974,
+          "white_genmove_seconds": 2.4771992000012233,
+          "total_genmove_seconds": 5.126058793001221,
+          "seconds_per_move": 0.11391241762224935,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "network": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "elo": 4193,
+      "elo_ci_95": 34,
+      "arena_games": 3648,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 16.727039147000216,
+      "isolated_mean_genmove_seconds_per_player_game": 8.363519573500108,
+      "measured_median_genmove_seconds_per_game": 19.419309773999203,
+      "measured_stdev_genmove_seconds_per_game": 5.334872948912039,
+      "measured_mean_seconds_per_move": 0.42804653542609394,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 46,
+          "black_genmove_seconds": 9.700287435999599,
+          "white_genmove_seconds": 9.719022337999604,
+          "total_genmove_seconds": 19.419309773999203,
+          "seconds_per_move": 0.42215890813041745,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 46,
+          "black_genmove_seconds": 10.086543019000146,
+          "white_genmove_seconds": 10.092759353000929,
+          "total_genmove_seconds": 20.179302372001075,
+          "seconds_per_move": 0.43868048634784945,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 25,
+          "black_genmove_seconds": 5.509909121999726,
+          "white_genmove_seconds": 5.0725961730006475,
+          "total_genmove_seconds": 10.582505295000374,
+          "seconds_per_move": 0.4233002118000149,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "network": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "elo": 4154,
+      "elo_ci_95": 34,
+      "arena_games": 3544,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 24.877108863666763,
+      "isolated_mean_genmove_seconds_per_player_game": 12.438554431833381,
+      "measured_median_genmove_seconds_per_game": 25.23095008199971,
+      "measured_stdev_genmove_seconds_per_game": 0.9198142849166654,
+      "measured_mean_seconds_per_move": 0.41696072212510954,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 61,
+          "black_genmove_seconds": 12.969168817000536,
+          "white_genmove_seconds": 12.59828849199971,
+          "total_genmove_seconds": 25.567457309000247,
+          "seconds_per_move": 0.4191386444098401,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 57,
+          "black_genmove_seconds": 12.11478896700055,
+          "white_genmove_seconds": 11.718130232999783,
+          "total_genmove_seconds": 23.832919200000333,
+          "seconds_per_move": 0.41812138947369004,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 61,
+          "black_genmove_seconds": 12.820379659000082,
+          "white_genmove_seconds": 12.410570422999626,
+          "total_genmove_seconds": 25.23095008199971,
+          "seconds_per_move": 0.4136221324917985,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "network": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "elo": 4185,
+      "elo_ci_95": 34,
+      "arena_games": 3492,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 21.274317443999962,
+      "isolated_mean_genmove_seconds_per_player_game": 10.637158721999981,
+      "measured_median_genmove_seconds_per_game": 23.282950650999737,
+      "measured_stdev_genmove_seconds_per_game": 4.143230955601544,
+      "measured_mean_seconds_per_move": 0.41679461987970245,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 40,
+          "black_genmove_seconds": 8.261313733999941,
+          "white_genmove_seconds": 8.248313823000444,
+          "total_genmove_seconds": 16.509627557000385,
+          "seconds_per_move": 0.41274068892500965,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 58,
+          "black_genmove_seconds": 12.016787655000144,
+          "white_genmove_seconds": 12.01358646899962,
+          "total_genmove_seconds": 24.030374123999763,
+          "seconds_per_move": 0.4143167952413752,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 55,
+          "black_genmove_seconds": 11.901032504000113,
+          "white_genmove_seconds": 11.381918146999624,
+          "total_genmove_seconds": 23.282950650999737,
+          "seconds_per_move": 0.4233263754727225,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b40c256-s11840935168-d2898845681",
+      "network": "kata1-b40c256-s11840935168-d2898845681",
+      "elo": 4066,
+      "elo_ci_95": 34,
+      "arena_games": 3772,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 8.939478239666263,
+      "isolated_mean_genmove_seconds_per_player_game": 4.4697391198331315,
+      "measured_median_genmove_seconds_per_game": 9.11084844800007,
+      "measured_stdev_genmove_seconds_per_game": 1.0488565179747154,
+      "measured_mean_seconds_per_move": 0.20627362128016064,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 38,
+          "black_genmove_seconds": 3.9044272879998516,
+          "white_genmove_seconds": 3.911062334999542,
+          "total_genmove_seconds": 7.815489622999394,
+          "seconds_per_move": 0.20567077955261562,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 44,
+          "black_genmove_seconds": 4.558716585000411,
+          "white_genmove_seconds": 4.5521318629996586,
+          "total_genmove_seconds": 9.11084844800007,
+          "seconds_per_move": 0.20706473745454704,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 48,
+          "black_genmove_seconds": 4.957209029999149,
+          "white_genmove_seconds": 4.934887618000175,
+          "total_genmove_seconds": 9.892096647999324,
+          "seconds_per_move": 0.20608534683331925,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b40c256-s5793846528-d1395151722",
+      "network": "kata1-b40c256-s5793846528-d1395151722",
+      "elo": 3991,
+      "elo_ci_95": 34,
+      "arena_games": 3854,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 12.061976698999691,
+      "isolated_mean_genmove_seconds_per_player_game": 6.030988349499846,
+      "measured_median_genmove_seconds_per_game": 13.013485570000284,
+      "measured_stdev_genmove_seconds_per_game": 2.2388064707264568,
+      "measured_mean_seconds_per_move": 0.20781980561542907,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 65,
+          "black_genmove_seconds": 6.95860959100014,
+          "white_genmove_seconds": 6.709253266999667,
+          "total_genmove_seconds": 13.667862857999808,
+          "seconds_per_move": 0.21027481319999705,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 63,
+          "black_genmove_seconds": 6.611560681000128,
+          "white_genmove_seconds": 6.401924889000156,
+          "total_genmove_seconds": 13.013485570000284,
+          "seconds_per_move": 0.20656326301587752,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 46,
+          "black_genmove_seconds": 4.745942077999189,
+          "white_genmove_seconds": 4.758639590999792,
+          "total_genmove_seconds": 9.50458166899898,
+          "seconds_per_move": 0.20662134063041263,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b40c256-s8049900800-d1952632576",
+      "network": "kata1-b40c256-s8049900800-d1952632576",
+      "elo": 4058,
+      "elo_ci_95": 34,
+      "arena_games": 3832,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 9.238635628332835,
+      "isolated_mean_genmove_seconds_per_player_game": 4.6193178141664175,
+      "measured_median_genmove_seconds_per_game": 9.069733506999228,
+      "measured_stdev_genmove_seconds_per_game": 0.2946567012759192,
+      "measured_mean_seconds_per_move": 0.20995386736450591,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 43,
+          "black_genmove_seconds": 4.637512158999925,
+          "white_genmove_seconds": 4.429788238999663,
+          "total_genmove_seconds": 9.067300397999588,
+          "seconds_per_move": 0.2108674511162695,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 45,
+          "black_genmove_seconds": 4.933357837999893,
+          "white_genmove_seconds": 4.645515141999795,
+          "total_genmove_seconds": 9.578872979999687,
+          "seconds_per_move": 0.21286384399999306,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 44,
+          "black_genmove_seconds": 4.534820848999743,
+          "white_genmove_seconds": 4.5349126579994845,
+          "total_genmove_seconds": 9.069733506999228,
+          "seconds_per_move": 0.20613030697725518,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b40c256x2-s4120339456-d1045882697",
+      "network": "kata1-b40c256x2-s4120339456-d1045882697",
+      "elo": 4023,
+      "elo_ci_95": 34,
+      "arena_games": 3950,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 8.937074918999846,
+      "isolated_mean_genmove_seconds_per_player_game": 4.468537459499923,
+      "measured_median_genmove_seconds_per_game": 9.163423523999654,
+      "measured_stdev_genmove_seconds_per_game": 0.4130884475529772,
+      "measured_mean_seconds_per_move": 0.20780507539800108,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 44,
+          "black_genmove_seconds": 4.600790529999813,
+          "white_genmove_seconds": 4.586726363999787,
+          "total_genmove_seconds": 9.1875168939996,
+          "seconds_per_move": 0.20880720213635454,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 41,
+          "black_genmove_seconds": 4.340484067999569,
+          "white_genmove_seconds": 4.119800271000713,
+          "total_genmove_seconds": 8.460284339000282,
+          "seconds_per_move": 0.206348398512202,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 44,
+          "black_genmove_seconds": 4.566377793999891,
+          "white_genmove_seconds": 4.597045729999763,
+          "total_genmove_seconds": 9.163423523999654,
+          "seconds_per_move": 0.2082596255454467,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b40c256x2-s4833666560-d1179059206",
+      "network": "kata1-b40c256x2-s4833666560-d1179059206",
+      "elo": 3983,
+      "elo_ci_95": 33,
+      "arena_games": 4016,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 8.207327411666256,
+      "isolated_mean_genmove_seconds_per_player_game": 4.103663705833128,
+      "measured_median_genmove_seconds_per_game": 8.968091607998758,
+      "measured_stdev_genmove_seconds_per_game": 1.8363336470523146,
+      "measured_mean_seconds_per_move": 0.20892079980232775,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 29,
+          "black_genmove_seconds": 3.1635227809999833,
+          "white_genmove_seconds": 2.949348543000042,
+          "total_genmove_seconds": 6.112871324000025,
+          "seconds_per_move": 0.21078866634482846,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 46,
+          "black_genmove_seconds": 4.775753438999345,
+          "white_genmove_seconds": 4.765265864000639,
+          "total_genmove_seconds": 9.541019302999985,
+          "seconds_per_move": 0.20741346310869532,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 43,
+          "black_genmove_seconds": 4.599166401999582,
+          "white_genmove_seconds": 4.368925205999176,
+          "total_genmove_seconds": 8.968091607998758,
+          "seconds_per_move": 0.2085602699534595,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b60c320-s6678602752-d3043834427",
+      "network": "kata1-b60c320-s6678602752-d3043834427",
+      "elo": 4097,
+      "elo_ci_95": 34,
+      "arena_games": 3814,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 24.679679460665813,
+      "isolated_mean_genmove_seconds_per_player_game": 12.339839730332907,
+      "measured_median_genmove_seconds_per_game": 24.584855028999527,
+      "measured_stdev_genmove_seconds_per_game": 0.688059621307893,
+      "measured_mean_seconds_per_move": 0.5071015906635938,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 48,
+          "black_genmove_seconds": 12.094511155000419,
+          "white_genmove_seconds": 11.949439036999365,
+          "total_genmove_seconds": 24.043950191999784,
+          "seconds_per_move": 0.5009156289999955,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 50,
+          "black_genmove_seconds": 12.67979401099933,
+          "white_genmove_seconds": 12.730439149998801,
+          "total_genmove_seconds": 25.410233160998132,
+          "seconds_per_move": 0.5082046632199626,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 48,
+          "black_genmove_seconds": 12.316398320999497,
+          "white_genmove_seconds": 12.26845670800003,
+          "total_genmove_seconds": 24.584855028999527,
+          "seconds_per_move": 0.5121844797708235,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128",
+      "network": "kata1-b6c96-s10014464-d2201128",
+      "elo": 1651,
+      "elo_ci_95": 27,
+      "arena_games": 3338,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.543139920666969,
+      "isolated_mean_genmove_seconds_per_player_game": 0.2715699603334845,
+      "measured_median_genmove_seconds_per_game": 0.5333863579994613,
+      "measured_stdev_genmove_seconds_per_game": 0.021347411855754752,
+      "measured_mean_seconds_per_move": 0.007619028016276674,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 69,
+          "black_genmove_seconds": 0.2682307740010401,
+          "white_genmove_seconds": 0.26018074999979035,
+          "total_genmove_seconds": 0.5284115240008305,
+          "seconds_per_move": 0.007658138028997543,
+          "result": "B+1.0"
+        },
+        {
+          "game": 2,
+          "moves": 69,
+          "black_genmove_seconds": 0.26699679900002593,
+          "white_genmove_seconds": 0.2663895589994354,
+          "total_genmove_seconds": 0.5333863579994613,
+          "seconds_per_move": 0.007730237072455961,
+          "result": "B+6.0"
+        },
+        {
+          "game": 3,
+          "moves": 76,
+          "black_genmove_seconds": 0.2831168570005502,
+          "white_genmove_seconds": 0.2845050230000652,
+          "total_genmove_seconds": 0.5676218800006154,
+          "seconds_per_move": 0.0074687089473765185,
+          "result": "W+3.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s103950080-d15368530",
+      "network": "kata1-b6c96-s103950080-d15368530",
+      "elo": 3274,
+      "elo_ci_95": 31,
+      "arena_games": 4044,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.2764353199998671,
+      "isolated_mean_genmove_seconds_per_player_game": 0.13821765999993355,
+      "measured_median_genmove_seconds_per_game": 0.3096273619992189,
+      "measured_stdev_genmove_seconds_per_game": 0.05750452733804199,
+      "measured_mean_seconds_per_move": 0.007819778472505623,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 27,
+          "black_genmove_seconds": 0.11001343700036159,
+          "white_genmove_seconds": 0.10002137500009667,
+          "total_genmove_seconds": 0.21003481200045826,
+          "seconds_per_move": 0.007779067111128084,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 39,
+          "black_genmove_seconds": 0.15863221099994007,
+          "white_genmove_seconds": 0.15101157499998408,
+          "total_genmove_seconds": 0.30964378599992415,
+          "seconds_per_move": 0.00793958425640831,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 40,
+          "black_genmove_seconds": 0.15536111999995228,
+          "white_genmove_seconds": 0.15426624199926664,
+          "total_genmove_seconds": 0.3096273619992189,
+          "seconds_per_move": 0.007740684049980473,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s10825472-d2300510",
+      "network": "kata1-b6c96-s10825472-d2300510",
+      "elo": 1740,
+      "elo_ci_95": 28,
+      "arena_games": 3414,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.5695596596661593,
+      "isolated_mean_genmove_seconds_per_player_game": 0.28477982983307965,
+      "measured_median_genmove_seconds_per_game": 0.5412094859996159,
+      "measured_stdev_genmove_seconds_per_game": 0.17851450036402042,
+      "measured_mean_seconds_per_move": 0.007833425403882592,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 95,
+          "black_genmove_seconds": 0.3840803509997386,
+          "white_genmove_seconds": 0.37647245900006965,
+          "total_genmove_seconds": 0.7605528099998082,
+          "seconds_per_move": 0.00800581905262956,
+          "result": "W+13.0"
+        },
+        {
+          "game": 2,
+          "moves": 68,
+          "black_genmove_seconds": 0.2692513519991735,
+          "white_genmove_seconds": 0.27195813400044244,
+          "total_genmove_seconds": 0.5412094859996159,
+          "seconds_per_move": 0.007958963029406116,
+          "result": "W+26.0"
+        },
+        {
+          "game": 3,
+          "moves": 54,
+          "black_genmove_seconds": 0.20337956700018367,
+          "white_genmove_seconds": 0.20353711599886992,
+          "total_genmove_seconds": 0.4069166829990536,
+          "seconds_per_move": 0.007535494129612103,
+          "result": "W+6.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s108812288-d16129874",
+      "network": "kata1-b6c96-s108812288-d16129874",
+      "elo": 3268,
+      "elo_ci_95": 31,
+      "arena_games": 3952,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.33674000133328263,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16837000066664132,
+      "measured_median_genmove_seconds_per_game": 0.3528891519999888,
+      "measured_stdev_genmove_seconds_per_game": 0.06915712997775626,
+      "measured_mean_seconds_per_move": 0.007428777144530136,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 53,
+          "black_genmove_seconds": 0.20197863100042923,
+          "white_genmove_seconds": 0.19441501900041658,
+          "total_genmove_seconds": 0.3963936500008458,
+          "seconds_per_move": 0.007479125471714072,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 35,
+          "black_genmove_seconds": 0.1332597029995668,
+          "white_genmove_seconds": 0.12767749899944647,
+          "total_genmove_seconds": 0.26093720199901327,
+          "seconds_per_move": 0.007455348628543236,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 48,
+          "black_genmove_seconds": 0.17640404899975692,
+          "white_genmove_seconds": 0.1764851030002319,
+          "total_genmove_seconds": 0.3528891519999888,
+          "seconds_per_move": 0.0073518573333331005,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s115648256-d17228996",
+      "network": "kata1-b6c96-s115648256-d17228996",
+      "elo": 3288,
+      "elo_ci_95": 31,
+      "arena_games": 4090,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3698724389992852,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1849362194996426,
+      "measured_median_genmove_seconds_per_game": 0.4007553299995834,
+      "measured_stdev_genmove_seconds_per_game": 0.10621070894519702,
+      "measured_mean_seconds_per_move": 0.007354074402865639,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 34,
+          "black_genmove_seconds": 0.1261163479998686,
+          "white_genmove_seconds": 0.1255265139993753,
+          "total_genmove_seconds": 0.2516428619992439,
+          "seconds_per_move": 0.0074012606470365856,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 62,
+          "black_genmove_seconds": 0.2304627440000786,
+          "white_genmove_seconds": 0.22675638099894968,
+          "total_genmove_seconds": 0.4572191249990283,
+          "seconds_per_move": 0.00737450201611336,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 55,
+          "black_genmove_seconds": 0.20437378699966757,
+          "white_genmove_seconds": 0.19638154299991584,
+          "total_genmove_seconds": 0.4007553299995834,
+          "seconds_per_move": 0.007286460545446971,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753",
+      "network": "kata1-b6c96-s11888896-d2416753",
+      "elo": 1817,
+      "elo_ci_95": 26,
+      "arena_games": 6304,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.5246120559993415,
+      "isolated_mean_genmove_seconds_per_player_game": 0.26230602799967073,
+      "measured_median_genmove_seconds_per_game": 0.5254482049990656,
+      "measured_stdev_genmove_seconds_per_game": 0.02138470915226601,
+      "measured_mean_seconds_per_move": 0.007251758520916701,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 75,
+          "black_genmove_seconds": 0.2765585529998589,
+          "white_genmove_seconds": 0.2690078739999535,
+          "total_genmove_seconds": 0.5455664269998124,
+          "seconds_per_move": 0.007274219026664165,
+          "result": "B+2.0"
+        },
+        {
+          "game": 2,
+          "moves": 72,
+          "black_genmove_seconds": 0.26073380999946494,
+          "white_genmove_seconds": 0.2647143949996007,
+          "total_genmove_seconds": 0.5254482049990656,
+          "seconds_per_move": 0.007297891736098134,
+          "result": "W+10.0"
+        },
+        {
+          "game": 3,
+          "moves": 70,
+          "black_genmove_seconds": 0.2522447389994795,
+          "white_genmove_seconds": 0.25057679699966684,
+          "total_genmove_seconds": 0.5028215359991464,
+          "seconds_per_move": 0.007183164799987805,
+          "result": "W+7.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s122554112-d18283013",
+      "network": "kata1-b6c96-s122554112-d18283013",
+      "elo": 3302,
+      "elo_ci_95": 32,
+      "arena_games": 3926,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.34552804599995096,
+      "isolated_mean_genmove_seconds_per_player_game": 0.17276402299997548,
+      "measured_median_genmove_seconds_per_game": 0.3248120369994467,
+      "measured_stdev_genmove_seconds_per_game": 0.12011267116181404,
+      "measured_mean_seconds_per_move": 0.007198403386866235,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 66,
+          "black_genmove_seconds": 0.23734824699954515,
+          "white_genmove_seconds": 0.23730307200094103,
+          "total_genmove_seconds": 0.4746513190004862,
+          "seconds_per_move": 0.007191686651522518,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 33,
+          "black_genmove_seconds": 0.12354453500029194,
+          "white_genmove_seconds": 0.11357624699962798,
+          "total_genmove_seconds": 0.23712078199991993,
+          "seconds_per_move": 0.007185478242421816,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 45,
+          "black_genmove_seconds": 0.16635711399931097,
+          "white_genmove_seconds": 0.15845492300013575,
+          "total_genmove_seconds": 0.3248120369994467,
+          "seconds_per_move": 0.0072180452666543715,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s1248000-d550347",
+      "network": "kata1-b6c96-s1248000-d550347",
+      "elo": 121,
+      "elo_ci_95": 21,
+      "arena_games": 2506,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 1.0746347683339081,
+      "isolated_mean_genmove_seconds_per_player_game": 0.5373173841669541,
+      "measured_median_genmove_seconds_per_game": 1.1760393150000255,
+      "measured_stdev_genmove_seconds_per_game": 0.4129811547648919,
+      "measured_mean_seconds_per_move": 0.007531255716492448,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 87,
+          "black_genmove_seconds": 0.3151333059997796,
+          "white_genmove_seconds": 0.3052632270007507,
+          "total_genmove_seconds": 0.6203965330005303,
+          "seconds_per_move": 0.007130994632190003,
+          "result": "W+8.0"
+        },
+        {
+          "game": 2,
+          "moves": 178,
+          "black_genmove_seconds": 0.7187241010010439,
+          "white_genmove_seconds": 0.7087443560001248,
+          "total_genmove_seconds": 1.4274684570011686,
+          "seconds_per_move": 0.008019485713489712,
+          "result": "W+88.0"
+        },
+        {
+          "game": 3,
+          "moves": 158,
+          "black_genmove_seconds": 0.5866567199998372,
+          "white_genmove_seconds": 0.5893825950001883,
+          "total_genmove_seconds": 1.1760393150000255,
+          "seconds_per_move": 0.0074432868037976295,
+          "result": "W+66.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s12849664-d2510774",
+      "network": "kata1-b6c96-s12849664-d2510774",
+      "elo": 1940,
+      "elo_ci_95": 28,
+      "arena_games": 3572,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.47578549799967124,
+      "isolated_mean_genmove_seconds_per_player_game": 0.23789274899983562,
+      "measured_median_genmove_seconds_per_game": 0.4955878859998393,
+      "measured_stdev_genmove_seconds_per_game": 0.03507904049390155,
+      "measured_mean_seconds_per_move": 0.007211808473616956,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 60,
+          "black_genmove_seconds": 0.21732588299892086,
+          "white_genmove_seconds": 0.21795714399968347,
+          "total_genmove_seconds": 0.4352830269986043,
+          "seconds_per_move": 0.007254717116643406,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 68,
+          "black_genmove_seconds": 0.252220597999667,
+          "white_genmove_seconds": 0.24336728800017227,
+          "total_genmove_seconds": 0.4955878859998393,
+          "seconds_per_move": 0.00728805714705646,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 70,
+          "black_genmove_seconds": 0.2485579710012189,
+          "white_genmove_seconds": 0.24792760999935126,
+          "total_genmove_seconds": 0.49648558100057016,
+          "seconds_per_move": 0.0070926511571510024,
+          "result": "W+4.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s130521856-d19523626",
+      "network": "kata1-b6c96-s130521856-d19523626",
+      "elo": 3295,
+      "elo_ci_95": 31,
+      "arena_games": 4086,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.28605487066730956,
+      "isolated_mean_genmove_seconds_per_player_game": 0.14302743533365478,
+      "measured_median_genmove_seconds_per_game": 0.20687390200032496,
+      "measured_stdev_genmove_seconds_per_game": 0.1381618901154388,
+      "measured_mean_seconds_per_move": 0.007099861897479599,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 29,
+          "black_genmove_seconds": 0.10567059300024084,
+          "white_genmove_seconds": 0.10003107300030933,
+          "total_genmove_seconds": 0.20570166600055018,
+          "seconds_per_move": 0.0070931608965706956,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 29,
+          "black_genmove_seconds": 0.10792468200020267,
+          "white_genmove_seconds": 0.0989492200001223,
+          "total_genmove_seconds": 0.20687390200032496,
+          "seconds_per_move": 0.007133582827597413,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 63,
+          "black_genmove_seconds": 0.2263782700003958,
+          "white_genmove_seconds": 0.2192107740006577,
+          "total_genmove_seconds": 0.4455890440010535,
+          "seconds_per_move": 0.00707284196827069,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546",
+      "network": "kata1-b6c96-s13733120-d2631546",
+      "elo": 1976,
+      "elo_ci_95": 29,
+      "arena_games": 3464,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.48460895633282536,
+      "isolated_mean_genmove_seconds_per_player_game": 0.24230447816641268,
+      "measured_median_genmove_seconds_per_game": 0.4590928019988496,
+      "measured_stdev_genmove_seconds_per_game": 0.07005889438389823,
+      "measured_mean_seconds_per_move": 0.007359566560866433,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 64,
+          "black_genmove_seconds": 0.2304036269988501,
+          "white_genmove_seconds": 0.22868917499999952,
+          "total_genmove_seconds": 0.4590928019988496,
+          "seconds_per_move": 0.007173325031232025,
+          "result": "B+2.0"
+        },
+        {
+          "game": 2,
+          "moves": 73,
+          "black_genmove_seconds": 0.2864997729998322,
+          "white_genmove_seconds": 0.2773499129989432,
+          "total_genmove_seconds": 0.5638496859987754,
+          "seconds_per_move": 0.007723968301353088,
+          "result": "B+2.0"
+        },
+        {
+          "game": 3,
+          "moves": 60,
+          "black_genmove_seconds": 0.2152948320001542,
+          "white_genmove_seconds": 0.21558954900069693,
+          "total_genmove_seconds": 0.43088438100085114,
+          "seconds_per_move": 0.007181406350014186,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s141089536-d21243181",
+      "network": "kata1-b6c96-s141089536-d21243181",
+      "elo": 3300,
+      "elo_ci_95": 32,
+      "arena_games": 3914,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3425967093332171,
+      "isolated_mean_genmove_seconds_per_player_game": 0.17129835466660856,
+      "measured_median_genmove_seconds_per_game": 0.37582247599971197,
+      "measured_stdev_genmove_seconds_per_game": 0.06528775048476385,
+      "measured_mean_seconds_per_move": 0.007446526500965019,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 52,
+          "black_genmove_seconds": 0.19357257199999367,
+          "white_genmove_seconds": 0.19101608900041356,
+          "total_genmove_seconds": 0.38458866100040723,
+          "seconds_per_move": 0.00739593578846937,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 36,
+          "black_genmove_seconds": 0.13422070000024178,
+          "white_genmove_seconds": 0.13315829099929033,
+          "total_genmove_seconds": 0.2673789909995321,
+          "seconds_per_move": 0.007427194194431447,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 50,
+          "black_genmove_seconds": 0.19001139300007708,
+          "white_genmove_seconds": 0.1858110829996349,
+          "total_genmove_seconds": 0.37582247599971197,
+          "seconds_per_move": 0.007516449519994239,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367",
+      "network": "kata1-b6c96-s14649344-d2727367",
+      "elo": 2106,
+      "elo_ci_95": 29,
+      "arena_games": 4006,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.5170745060001233,
+      "isolated_mean_genmove_seconds_per_player_game": 0.25853725300006164,
+      "measured_median_genmove_seconds_per_game": 0.5433273499995721,
+      "measured_stdev_genmove_seconds_per_game": 0.057592045934913405,
+      "measured_mean_seconds_per_move": 0.007400901278065251,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 72,
+          "black_genmove_seconds": 0.26825173899965193,
+          "white_genmove_seconds": 0.2750756109999202,
+          "total_genmove_seconds": 0.5433273499995721,
+          "seconds_per_move": 0.007546213194438501,
+          "result": "W+6.0"
+        },
+        {
+          "game": 2,
+          "moves": 60,
+          "black_genmove_seconds": 0.22770964300025298,
+          "white_genmove_seconds": 0.22332403000064005,
+          "total_genmove_seconds": 0.45103367300089303,
+          "seconds_per_move": 0.007517227883348217,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 78,
+          "black_genmove_seconds": 0.2770955469998171,
+          "white_genmove_seconds": 0.2797669480000877,
+          "total_genmove_seconds": 0.5568624949999048,
+          "seconds_per_move": 0.007139262756409036,
+          "result": "W+16.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s152505856-d23152636",
+      "network": "kata1-b6c96-s152505856-d23152636",
+      "elo": 3312,
+      "elo_ci_95": 32,
+      "arena_games": 3998,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.31358287700027176,
+      "isolated_mean_genmove_seconds_per_player_game": 0.15679143850013588,
+      "measured_median_genmove_seconds_per_game": 0.3151690999998209,
+      "measured_stdev_genmove_seconds_per_game": 0.06776480965875699,
+      "measured_mean_seconds_per_move": 0.00763848704546134,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 50,
+          "black_genmove_seconds": 0.19246939700065013,
+          "white_genmove_seconds": 0.18807125299986183,
+          "total_genmove_seconds": 0.38054065000051196,
+          "seconds_per_move": 0.007610813000010239,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 33,
+          "black_genmove_seconds": 0.12653626700034692,
+          "white_genmove_seconds": 0.11850261400013551,
+          "total_genmove_seconds": 0.24503888100048243,
+          "seconds_per_move": 0.007425420636378256,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 40,
+          "black_genmove_seconds": 0.1566244570001345,
+          "white_genmove_seconds": 0.1585446429996864,
+          "total_genmove_seconds": 0.3151690999998209,
+          "seconds_per_move": 0.007879227499995523,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s15704832-d2832803",
+      "network": "kata1-b6c96-s15704832-d2832803",
+      "elo": 2160,
+      "elo_ci_95": 29,
+      "arena_games": 3898,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.4894585790002566,
+      "isolated_mean_genmove_seconds_per_player_game": 0.2447292895001283,
+      "measured_median_genmove_seconds_per_game": 0.47639953099997,
+      "measured_stdev_genmove_seconds_per_game": 0.04389294778052048,
+      "measured_mean_seconds_per_move": 0.007413099778442673,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 72,
+          "black_genmove_seconds": 0.26748498900019513,
+          "white_genmove_seconds": 0.2709140420006406,
+          "total_genmove_seconds": 0.5383990310008357,
+          "seconds_per_move": 0.007477764319456052,
+          "result": "W+14.0"
+        },
+        {
+          "game": 2,
+          "moves": 63,
+          "black_genmove_seconds": 0.24348801500036643,
+          "white_genmove_seconds": 0.23291151599960358,
+          "total_genmove_seconds": 0.47639953099997,
+          "seconds_per_move": 0.007561897317459841,
+          "result": "B+2.0"
+        },
+        {
+          "game": 3,
+          "moves": 63,
+          "black_genmove_seconds": 0.2299923180003134,
+          "white_genmove_seconds": 0.22358485699965058,
+          "total_genmove_seconds": 0.453577174999964,
+          "seconds_per_move": 0.007199637698412127,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s165180416-d25130434",
+      "network": "kata1-b6c96-s165180416-d25130434",
+      "elo": 3310,
+      "elo_ci_95": 31,
+      "arena_games": 5016,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.37577280366667765,
+      "isolated_mean_genmove_seconds_per_player_game": 0.18788640183333882,
+      "measured_median_genmove_seconds_per_game": 0.3877721890000885,
+      "measured_stdev_genmove_seconds_per_game": 0.09992537086193974,
+      "measured_mean_seconds_per_move": 0.007134971813014449,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 66,
+          "black_genmove_seconds": 0.23595377500009818,
+          "white_genmove_seconds": 0.23320288999957484,
+          "total_genmove_seconds": 0.469156664999673,
+          "seconds_per_move": 0.007108434318176864,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 38,
+          "black_genmove_seconds": 0.13365536700007397,
+          "white_genmove_seconds": 0.1367341900001975,
+          "total_genmove_seconds": 0.27038955700027145,
+          "seconds_per_move": 0.00711551465790188,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 54,
+          "black_genmove_seconds": 0.19436570099946948,
+          "white_genmove_seconds": 0.193406488000619,
+          "total_genmove_seconds": 0.3877721890000885,
+          "seconds_per_move": 0.007180966462964601,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067",
+      "network": "kata1-b6c96-s16525312-d2925067",
+      "elo": 2241,
+      "elo_ci_95": 28,
+      "arena_games": 6818,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.43819295900001026,
+      "isolated_mean_genmove_seconds_per_player_game": 0.21909647950000513,
+      "measured_median_genmove_seconds_per_game": 0.48157066000044324,
+      "measured_stdev_genmove_seconds_per_game": 0.08801051391663789,
+      "measured_mean_seconds_per_move": 0.00714768765709489,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 67,
+          "black_genmove_seconds": 0.24315290500067022,
+          "white_genmove_seconds": 0.23841775499977302,
+          "total_genmove_seconds": 0.48157066000044324,
+          "seconds_per_move": 0.007187621791051392,
+          "result": "B+6.0"
+        },
+        {
+          "game": 2,
+          "moves": 47,
+          "black_genmove_seconds": 0.17208640199964975,
+          "white_genmove_seconds": 0.16482730599977913,
+          "total_genmove_seconds": 0.3369137079994289,
+          "seconds_per_move": 0.007168376765945296,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 70,
+          "black_genmove_seconds": 0.24769723799977328,
+          "white_genmove_seconds": 0.24839727100038544,
+          "total_genmove_seconds": 0.4960945090001587,
+          "seconds_per_move": 0.007087064414287982,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s17434112-d3038653",
+      "network": "kata1-b6c96-s17434112-d3038653",
+      "elo": 2308,
+      "elo_ci_95": 28,
+      "arena_games": 6898,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.6313840610004414,
+      "isolated_mean_genmove_seconds_per_player_game": 0.3156920305002207,
+      "measured_median_genmove_seconds_per_game": 0.6332299230009539,
+      "measured_stdev_genmove_seconds_per_game": 0.11127726474463819,
+      "measured_mean_seconds_per_move": 0.008464204886068251,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 80,
+          "black_genmove_seconds": 0.3158224270021037,
+          "white_genmove_seconds": 0.3174074959988502,
+          "total_genmove_seconds": 0.6332299230009539,
+          "seconds_per_move": 0.007915374037511923,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 58,
+          "black_genmove_seconds": 0.26274371300019084,
+          "white_genmove_seconds": 0.2564516349996211,
+          "total_genmove_seconds": 0.5191953479998119,
+          "seconds_per_move": 0.00895164393103124,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 87,
+          "black_genmove_seconds": 0.3724975140000879,
+          "white_genmove_seconds": 0.3692293980004706,
+          "total_genmove_seconds": 0.7417269120005585,
+          "seconds_per_move": 0.008525596689661592,
+          "result": "B+6.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s175395328-d26788732",
+      "network": "kata1-b6c96-s175395328-d26788732",
+      "elo": 3330,
+      "elo_ci_95": 32,
+      "arena_games": 3996,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3357884639999611,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16789423199998055,
+      "measured_median_genmove_seconds_per_game": 0.2672329069994248,
+      "measured_stdev_genmove_seconds_per_game": 0.14186082999495486,
+      "measured_mean_seconds_per_move": 0.007182644784880557,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 69,
+          "black_genmove_seconds": 0.24844694300008996,
+          "white_genmove_seconds": 0.2504587220000758,
+          "total_genmove_seconds": 0.49890566500016575,
+          "seconds_per_move": 0.007230516884060373,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 37,
+          "black_genmove_seconds": 0.1377668409998023,
+          "white_genmove_seconds": 0.12946606599962251,
+          "total_genmove_seconds": 0.2672329069994248,
+          "seconds_per_move": 0.007222510999984454,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 34,
+          "black_genmove_seconds": 0.12128863100019771,
+          "white_genmove_seconds": 0.11993818900009501,
+          "total_genmove_seconds": 0.24122682000029272,
+          "seconds_per_move": 0.007094906470596844,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s18429184-d3197121",
+      "network": "kata1-b6c96-s18429184-d3197121",
+      "elo": 2383,
+      "elo_ci_95": 29,
+      "arena_games": 7048,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.40992110833296164,
+      "isolated_mean_genmove_seconds_per_player_game": 0.20496055416648082,
+      "measured_median_genmove_seconds_per_game": 0.4457571849991382,
+      "measured_stdev_genmove_seconds_per_game": 0.09699724274872457,
+      "measured_mean_seconds_per_move": 0.007147757027553878,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 42,
+          "black_genmove_seconds": 0.15153375300019434,
+          "white_genmove_seconds": 0.1485710209994977,
+          "total_genmove_seconds": 0.30010477399969204,
+          "seconds_per_move": 0.00714535176189743,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 63,
+          "black_genmove_seconds": 0.2278616849989703,
+          "white_genmove_seconds": 0.21789550000016789,
+          "total_genmove_seconds": 0.4457571849991382,
+          "seconds_per_move": 0.007075510873002193,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 67,
+          "black_genmove_seconds": 0.24623224099991603,
+          "white_genmove_seconds": 0.2376691250001386,
+          "total_genmove_seconds": 0.4839013660000546,
+          "seconds_per_move": 0.007222408447762009,
+          "result": "B+10.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s19408128-d3280178",
+      "network": "kata1-b6c96-s19408128-d3280178",
+      "elo": 2454,
+      "elo_ci_95": 29,
+      "arena_games": 6898,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3904001616669272,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1952000808334636,
+      "measured_median_genmove_seconds_per_game": 0.3505083270003979,
+      "measured_stdev_genmove_seconds_per_game": 0.14515307819723747,
+      "measured_mean_seconds_per_move": 0.007086267045466287,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 77,
+          "black_genmove_seconds": 0.27961028700019597,
+          "white_genmove_seconds": 0.2717176959995413,
+          "total_genmove_seconds": 0.5513279829997373,
+          "seconds_per_move": 0.0071601036753212634,
+          "result": "B+2.0"
+        },
+        {
+          "game": 2,
+          "moves": 50,
+          "black_genmove_seconds": 0.1760075950007831,
+          "white_genmove_seconds": 0.1745007319996148,
+          "total_genmove_seconds": 0.3505083270003979,
+          "seconds_per_move": 0.0070101665400079585,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 38,
+          "black_genmove_seconds": 0.135363591000214,
+          "white_genmove_seconds": 0.13400058400043235,
+          "total_genmove_seconds": 0.26936417500064636,
+          "seconds_per_move": 0.007088530921069641,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786",
+      "network": "kata1-b6c96-s1995008-d1329786",
+      "elo": 524,
+      "elo_ci_95": 22,
+      "arena_games": 2990,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 1.2762338853330373,
+      "isolated_mean_genmove_seconds_per_player_game": 0.6381169426665186,
+      "measured_median_genmove_seconds_per_game": 1.2322177920000286,
+      "measured_stdev_genmove_seconds_per_game": 0.15043425042320777,
+      "measured_mean_seconds_per_move": 0.007390564762435935,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 167,
+          "black_genmove_seconds": 0.6194615149993297,
+          "white_genmove_seconds": 0.6127562770006989,
+          "total_genmove_seconds": 1.2322177920000286,
+          "seconds_per_move": 0.007378549652694782,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 195,
+          "black_genmove_seconds": 0.7261375779980881,
+          "white_genmove_seconds": 0.7176289269991685,
+          "total_genmove_seconds": 1.4437665049972566,
+          "seconds_per_move": 0.007403930794857726,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 156,
+          "black_genmove_seconds": 0.5802468500003215,
+          "white_genmove_seconds": 0.572470509001505,
+          "total_genmove_seconds": 1.1527173590018265,
+          "seconds_per_move": 0.007389213839755298,
+          "result": "W+88.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s20302336-d3388395",
+      "network": "kata1-b6c96-s20302336-d3388395",
+      "elo": 2491,
+      "elo_ci_95": 31,
+      "arena_games": 4380,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.42940172433304724,
+      "isolated_mean_genmove_seconds_per_player_game": 0.21470086216652362,
+      "measured_median_genmove_seconds_per_game": 0.3957001050000599,
+      "measured_stdev_genmove_seconds_per_game": 0.07473340709449385,
+      "measured_mean_seconds_per_move": 0.007544727857722658,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 64,
+          "black_genmove_seconds": 0.2590000039995175,
+          "white_genmove_seconds": 0.25605102400027135,
+          "total_genmove_seconds": 0.5150510279997889,
+          "seconds_per_move": 0.008047672312496701,
+          "result": "W+13.0"
+        },
+        {
+          "game": 2,
+          "moves": 52,
+          "black_genmove_seconds": 0.18877783099969747,
+          "white_genmove_seconds": 0.18867620899959547,
+          "total_genmove_seconds": 0.37745403999929295,
+          "seconds_per_move": 0.007258731538447942,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 54,
+          "black_genmove_seconds": 0.19837037399997826,
+          "white_genmove_seconds": 0.19732973100008167,
+          "total_genmove_seconds": 0.3957001050000599,
+          "seconds_per_move": 0.007327779722223332,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s21371392-d3529696",
+      "network": "kata1-b6c96-s21371392-d3529696",
+      "elo": 2578,
+      "elo_ci_95": 29,
+      "arena_games": 6950,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.38901721733259365,
+      "isolated_mean_genmove_seconds_per_player_game": 0.19450860866629682,
+      "measured_median_genmove_seconds_per_game": 0.3420159019988205,
+      "measured_stdev_genmove_seconds_per_game": 0.08777202547885823,
+      "measured_mean_seconds_per_move": 0.007117765100084771,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 48,
+          "black_genmove_seconds": 0.17243605499925252,
+          "white_genmove_seconds": 0.16957984699956796,
+          "total_genmove_seconds": 0.3420159019988205,
+          "seconds_per_move": 0.007125331291642094,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 47,
+          "black_genmove_seconds": 0.1713288939990889,
+          "white_genmove_seconds": 0.16342597099992417,
+          "total_genmove_seconds": 0.3347548649990131,
+          "seconds_per_move": 0.007122443936149215,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 69,
+          "black_genmove_seconds": 0.249686329999804,
+          "white_genmove_seconds": 0.24059455500014337,
+          "total_genmove_seconds": 0.4902808849999474,
+          "seconds_per_move": 0.007105520072463006,
+          "result": "B+4.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s22371328-d3612586",
+      "network": "kata1-b6c96-s22371328-d3612586",
+      "elo": 2603,
+      "elo_ci_95": 31,
+      "arena_games": 4392,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.39048548933343835,
+      "isolated_mean_genmove_seconds_per_player_game": 0.19524274466671918,
+      "measured_median_genmove_seconds_per_game": 0.43943469599980745,
+      "measured_stdev_genmove_seconds_per_game": 0.09278069744778598,
+      "measured_mean_seconds_per_move": 0.007446227993091341,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 60,
+          "black_genmove_seconds": 0.21943436700007624,
+          "white_genmove_seconds": 0.2200003289997312,
+          "total_genmove_seconds": 0.43943469599980745,
+          "seconds_per_move": 0.007323911599996791,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 37,
+          "black_genmove_seconds": 0.14463709400024527,
+          "white_genmove_seconds": 0.1388435600001685,
+          "total_genmove_seconds": 0.2834806540004138,
+          "seconds_per_move": 0.00766163929730848,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 61,
+          "black_genmove_seconds": 0.23077591000060238,
+          "white_genmove_seconds": 0.2177652079994914,
+          "total_genmove_seconds": 0.4485411180000938,
+          "seconds_per_move": 0.007353133081968751,
+          "result": "B+2.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s23401472-d3742377",
+      "network": "kata1-b6c96-s23401472-d3742377",
+      "elo": 2637,
+      "elo_ci_95": 29,
+      "arena_games": 6548,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.4003077106663113,
+      "isolated_mean_genmove_seconds_per_player_game": 0.20015385533315566,
+      "measured_median_genmove_seconds_per_game": 0.4190168579996225,
+      "measured_stdev_genmove_seconds_per_game": 0.06420296245126937,
+      "measured_mean_seconds_per_move": 0.007279811119050987,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 62,
+          "black_genmove_seconds": 0.22804079800062027,
+          "white_genmove_seconds": 0.22503718299935827,
+          "total_genmove_seconds": 0.45307798099997854,
+          "seconds_per_move": 0.007307709370967396,
+          "result": "B+2.0"
+        },
+        {
+          "game": 2,
+          "moves": 58,
+          "black_genmove_seconds": 0.20841880000057245,
+          "white_genmove_seconds": 0.21059805799905007,
+          "total_genmove_seconds": 0.4190168579996225,
+          "seconds_per_move": 0.007224428586200388,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 45,
+          "black_genmove_seconds": 0.1692147909996038,
+          "white_genmove_seconds": 0.15961350199972912,
+          "total_genmove_seconds": 0.3288282929993329,
+          "seconds_per_move": 0.007307295399985176,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s24455424-d3879081",
+      "network": "kata1-b6c96-s24455424-d3879081",
+      "elo": 2692,
+      "elo_ci_95": 31,
+      "arena_games": 4216,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.38979895566656825,
+      "isolated_mean_genmove_seconds_per_player_game": 0.19489947783328412,
+      "measured_median_genmove_seconds_per_game": 0.4101862719994642,
+      "measured_stdev_genmove_seconds_per_game": 0.065518122657041,
+      "measured_mean_seconds_per_move": 0.007348948066914759,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 61,
+          "black_genmove_seconds": 0.22375616900012574,
+          "white_genmove_seconds": 0.21894344200018168,
+          "total_genmove_seconds": 0.4426996110003074,
+          "seconds_per_move": 0.007257370672136187,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 44,
+          "black_genmove_seconds": 0.15939966600012667,
+          "white_genmove_seconds": 0.1571113179998065,
+          "total_genmove_seconds": 0.31651098399993316,
+          "seconds_per_move": 0.007193431454543936,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 54,
+          "black_genmove_seconds": 0.20978582200041274,
+          "white_genmove_seconds": 0.2004004499990515,
+          "total_genmove_seconds": 0.4101862719994642,
+          "seconds_per_move": 0.007596042074064152,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s25461504-d4002500",
+      "network": "kata1-b6c96-s25461504-d4002500",
+      "elo": 2718,
+      "elo_ci_95": 30,
+      "arena_games": 6352,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.36990345899986704,
+      "isolated_mean_genmove_seconds_per_player_game": 0.18495172949993352,
+      "measured_median_genmove_seconds_per_game": 0.4402767249994213,
+      "measured_stdev_genmove_seconds_per_game": 0.13889763924155313,
+      "measured_mean_seconds_per_move": 0.008026180547702549,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 29,
+          "black_genmove_seconds": 0.10946714900023835,
+          "white_genmove_seconds": 0.10043678999977601,
+          "total_genmove_seconds": 0.20990393900001436,
+          "seconds_per_move": 0.0072380668620694606,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 59,
+          "black_genmove_seconds": 0.224518668999508,
+          "white_genmove_seconds": 0.21575805599991327,
+          "total_genmove_seconds": 0.4402767249994213,
+          "seconds_per_move": 0.0074623173728715474,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 49,
+          "black_genmove_seconds": 0.2354377210003804,
+          "white_genmove_seconds": 0.22409199199978502,
+          "total_genmove_seconds": 0.45952971300016543,
+          "seconds_per_move": 0.009378157408166641,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s26363136-d4119819",
+      "network": "kata1-b6c96-s26363136-d4119819",
+      "elo": 2738,
+      "elo_ci_95": 31,
+      "arena_games": 4218,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.4712904343334685,
+      "isolated_mean_genmove_seconds_per_player_game": 0.23564521716673426,
+      "measured_median_genmove_seconds_per_game": 0.509431204999828,
+      "measured_stdev_genmove_seconds_per_game": 0.07629948920703591,
+      "measured_mean_seconds_per_move": 0.007815646633286964,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 49,
+          "black_genmove_seconds": 0.19664126600014242,
+          "white_genmove_seconds": 0.18679962000010164,
+          "total_genmove_seconds": 0.38344088600024406,
+          "seconds_per_move": 0.007825324204086614,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 64,
+          "black_genmove_seconds": 0.25271920900036093,
+          "white_genmove_seconds": 0.25671199599946704,
+          "total_genmove_seconds": 0.509431204999828,
+          "seconds_per_move": 0.007959862578122312,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 68,
+          "black_genmove_seconds": 0.2600086279999232,
+          "white_genmove_seconds": 0.2609905840004103,
+          "total_genmove_seconds": 0.5209992120003335,
+          "seconds_per_move": 0.007661753117651963,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s27415296-d4256697",
+      "network": "kata1-b6c96-s27415296-d4256697",
+      "elo": 2786,
+      "elo_ci_95": 30,
+      "arena_games": 6010,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3264694929999526,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1632347464999763,
+      "measured_median_genmove_seconds_per_game": 0.34274107700002787,
+      "measured_stdev_genmove_seconds_per_game": 0.031354701413423544,
+      "measured_mean_seconds_per_move": 0.007476560670387475,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 47,
+          "black_genmove_seconds": 0.17690121300006467,
+          "white_genmove_seconds": 0.16944219999982124,
+          "total_genmove_seconds": 0.3463434129998859,
+          "seconds_per_move": 0.007369008787231615,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 39,
+          "black_genmove_seconds": 0.14991628499956278,
+          "white_genmove_seconds": 0.14040770400038127,
+          "total_genmove_seconds": 0.29032398899994405,
+          "seconds_per_move": 0.007444204846152411,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 45,
+          "black_genmove_seconds": 0.17546799600063423,
+          "white_genmove_seconds": 0.16727308099939364,
+          "total_genmove_seconds": 0.34274107700002787,
+          "seconds_per_move": 0.0076164683777783975,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s28460288-d4388379",
+      "network": "kata1-b6c96-s28460288-d4388379",
+      "elo": 2812,
+      "elo_ci_95": 31,
+      "arena_games": 3976,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.33570652533361073,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16785326266680536,
+      "measured_median_genmove_seconds_per_game": 0.28067776900070385,
+      "measured_stdev_genmove_seconds_per_game": 0.14551119339351962,
+      "measured_mean_seconds_per_move": 0.007245086587939796,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 31,
+          "black_genmove_seconds": 0.116411068999696,
+          "white_genmove_seconds": 0.10932389200024772,
+          "total_genmove_seconds": 0.22573496099994372,
+          "seconds_per_move": 0.007281772935482055,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 69,
+          "black_genmove_seconds": 0.2531782129997282,
+          "white_genmove_seconds": 0.24752863300045647,
+          "total_genmove_seconds": 0.5007068460001847,
+          "seconds_per_move": 0.007256620956524415,
+          "result": "W+2.0"
+        },
+        {
+          "game": 3,
+          "moves": 39,
+          "black_genmove_seconds": 0.14552739500049938,
+          "white_genmove_seconds": 0.13515037400020447,
+          "total_genmove_seconds": 0.28067776900070385,
+          "seconds_per_move": 0.007196865871812919,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s29422336-d4533650",
+      "network": "kata1-b6c96-s29422336-d4533650",
+      "elo": 2835,
+      "elo_ci_95": 30,
+      "arena_games": 6082,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.40368273233328483,
+      "isolated_mean_genmove_seconds_per_player_game": 0.20184136616664242,
+      "measured_median_genmove_seconds_per_game": 0.36976001999983055,
+      "measured_stdev_genmove_seconds_per_game": 0.11677093823829697,
+      "measured_mean_seconds_per_move": 0.007574269162169018,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 41,
+          "black_genmove_seconds": 0.15711363099967457,
+          "white_genmove_seconds": 0.1505154619997029,
+          "total_genmove_seconds": 0.30762909299937746,
+          "seconds_per_move": 0.007503148609740913,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 71,
+          "black_genmove_seconds": 0.2738142590001189,
+          "white_genmove_seconds": 0.25984482500052763,
+          "total_genmove_seconds": 0.5336590840006465,
+          "seconds_per_move": 0.007516325126769669,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 48,
+          "black_genmove_seconds": 0.18499542300014582,
+          "white_genmove_seconds": 0.18476459699968473,
+          "total_genmove_seconds": 0.36976001999983055,
+          "seconds_per_move": 0.00770333374999647,
+          "result": "W+4.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s30394624-d4635675",
+      "network": "kata1-b6c96-s30394624-d4635675",
+      "elo": 2865,
+      "elo_ci_95": 31,
+      "arena_games": 4068,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.41659226866636345,
+      "isolated_mean_genmove_seconds_per_player_game": 0.20829613433318173,
+      "measured_median_genmove_seconds_per_game": 0.43703281799912475,
+      "measured_stdev_genmove_seconds_per_game": 0.04026612610495859,
+      "measured_mean_seconds_per_move": 0.007962149654164209,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 57,
+          "black_genmove_seconds": 0.2253629109995927,
+          "white_genmove_seconds": 0.21717535000061616,
+          "total_genmove_seconds": 0.4425382610002089,
+          "seconds_per_move": 0.007763829140354542,
+          "result": "B+4.0"
+        },
+        {
+          "game": 2,
+          "moves": 47,
+          "black_genmove_seconds": 0.190352411999811,
+          "white_genmove_seconds": 0.17985331499994572,
+          "total_genmove_seconds": 0.37020572699975673,
+          "seconds_per_move": 0.007876717595739505,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 53,
+          "black_genmove_seconds": 0.22544941899946025,
+          "white_genmove_seconds": 0.2115833989996645,
+          "total_genmove_seconds": 0.43703281799912475,
+          "seconds_per_move": 0.00824590222639858,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s31390976-d4781382",
+      "network": "kata1-b6c96-s31390976-d4781382",
+      "elo": 2861,
+      "elo_ci_95": 31,
+      "arena_games": 4030,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3184940319996106,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1592470159998053,
+      "measured_median_genmove_seconds_per_game": 0.3185376159990483,
+      "measured_stdev_genmove_seconds_per_game": 0.017157781517020382,
+      "measured_mean_seconds_per_move": 0.007652816948623651,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 41,
+          "black_genmove_seconds": 0.17048933200021565,
+          "white_genmove_seconds": 0.16514064799980588,
+          "total_genmove_seconds": 0.33562998000002153,
+          "seconds_per_move": 0.008186097073171257,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 40,
+          "black_genmove_seconds": 0.1512219289998029,
+          "white_genmove_seconds": 0.1500925709999592,
+          "total_genmove_seconds": 0.3013144999997621,
+          "seconds_per_move": 0.007532862499994053,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 44,
+          "black_genmove_seconds": 0.15862320299970634,
+          "white_genmove_seconds": 0.15991441299934195,
+          "total_genmove_seconds": 0.3185376159990483,
+          "seconds_per_move": 0.007239491272705643,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s32344832-d4917369",
+      "network": "kata1-b6c96-s32344832-d4917369",
+      "elo": 2901,
+      "elo_ci_95": 30,
+      "arena_games": 5712,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3379016683334915,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16895083416674575,
+      "measured_median_genmove_seconds_per_game": 0.37012694900022325,
+      "measured_stdev_genmove_seconds_per_game": 0.05593036055285021,
+      "measured_mean_seconds_per_move": 0.007781695830580299,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 36,
+          "black_genmove_seconds": 0.13487574900022992,
+          "white_genmove_seconds": 0.13844314700054383,
+          "total_genmove_seconds": 0.27331889600077375,
+          "seconds_per_move": 0.007592191555577049,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 47,
+          "black_genmove_seconds": 0.1892366670001593,
+          "white_genmove_seconds": 0.18089028200006396,
+          "total_genmove_seconds": 0.37012694900022325,
+          "seconds_per_move": 0.007875041468089856,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 47,
+          "black_genmove_seconds": 0.1891438949996882,
+          "white_genmove_seconds": 0.18111526499978936,
+          "total_genmove_seconds": 0.37025915999947756,
+          "seconds_per_move": 0.007877854468073991,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s33239552-d5016295",
+      "network": "kata1-b6c96-s33239552-d5016295",
+      "elo": 2919,
+      "elo_ci_95": 31,
+      "arena_games": 4124,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3931328466668826,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1965664233334413,
+      "measured_median_genmove_seconds_per_game": 0.3479028119995746,
+      "measured_stdev_genmove_seconds_per_game": 0.08009421152406382,
+      "measured_mean_seconds_per_move": 0.007482723197530649,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 45,
+          "black_genmove_seconds": 0.17673488099944734,
+          "white_genmove_seconds": 0.17116793100012728,
+          "total_genmove_seconds": 0.3479028119995746,
+          "seconds_per_move": 0.007731173599990547,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 47,
+          "black_genmove_seconds": 0.17758141400008753,
+          "white_genmove_seconds": 0.16830397299986544,
+          "total_genmove_seconds": 0.34588538699995297,
+          "seconds_per_move": 0.007359263553190489,
+          "result": "B+4.0"
+        },
+        {
+          "game": 3,
+          "moves": 66,
+          "black_genmove_seconds": 0.24389426800075853,
+          "white_genmove_seconds": 0.24171607300036158,
+          "total_genmove_seconds": 0.4856103410011201,
+          "seconds_per_move": 0.007357732439410911,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s35356160-d5299514",
+      "network": "kata1-b6c96-s35356160-d5299514",
+      "elo": 2944,
+      "elo_ci_95": 30,
+      "arena_games": 5668,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3484178863335122,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1742089431667561,
+      "measured_median_genmove_seconds_per_game": 0.3580857670003752,
+      "measured_stdev_genmove_seconds_per_game": 0.02525718360926401,
+      "measured_mean_seconds_per_move": 0.0072673506819644846,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 50,
+          "black_genmove_seconds": 0.17799378000017896,
+          "white_genmove_seconds": 0.18009198700019624,
+          "total_genmove_seconds": 0.3580857670003752,
+          "seconds_per_move": 0.007161715340007504,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 43,
+          "black_genmove_seconds": 0.1635541490002197,
+          "white_genmove_seconds": 0.15620073099989895,
+          "total_genmove_seconds": 0.31975488000011865,
+          "seconds_per_move": 0.007436160000002759,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 51,
+          "black_genmove_seconds": 0.1874864700002945,
+          "white_genmove_seconds": 0.17992654199974822,
+          "total_genmove_seconds": 0.3674130120000427,
+          "seconds_per_move": 0.007204176705883191,
+          "result": "B+4.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s37368064-d5536083",
+      "network": "kata1-b6c96-s37368064-d5536083",
+      "elo": 2986,
+      "elo_ci_95": 31,
+      "arena_games": 4004,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.30372837266668284,
+      "isolated_mean_genmove_seconds_per_player_game": 0.15186418633334142,
+      "measured_median_genmove_seconds_per_game": 0.3236240049996013,
+      "measured_stdev_genmove_seconds_per_game": 0.07660084009322479,
+      "measured_mean_seconds_per_move": 0.007115244407269164,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 45,
+          "black_genmove_seconds": 0.1660402859995429,
+          "white_genmove_seconds": 0.1575837190000584,
+          "total_genmove_seconds": 0.3236240049996013,
+          "seconds_per_move": 0.007191644555546696,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 31,
+          "black_genmove_seconds": 0.1126703040006305,
+          "white_genmove_seconds": 0.10647238299929995,
+          "total_genmove_seconds": 0.21914268699993045,
+          "seconds_per_move": 0.007069118935481627,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 52,
+          "black_genmove_seconds": 0.184699387000137,
+          "white_genmove_seconds": 0.18371903900037978,
+          "total_genmove_seconds": 0.3684184260005168,
+          "seconds_per_move": 0.007084969730779169,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s39339776-d5828519",
+      "network": "kata1-b6c96-s39339776-d5828519",
+      "elo": 3013,
+      "elo_ci_95": 30,
+      "arena_games": 5508,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.40046671666641487,
+      "isolated_mean_genmove_seconds_per_player_game": 0.20023335833320743,
+      "measured_median_genmove_seconds_per_game": 0.376966377999679,
+      "measured_stdev_genmove_seconds_per_game": 0.1219374996063936,
+      "measured_mean_seconds_per_move": 0.007774908193323417,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 40,
+          "black_genmove_seconds": 0.1474914949999402,
+          "white_genmove_seconds": 0.14449829599971054,
+          "total_genmove_seconds": 0.2919897909996507,
+          "seconds_per_move": 0.007299744774991268,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 68,
+          "black_genmove_seconds": 0.2646643019995736,
+          "white_genmove_seconds": 0.2677796790003413,
+          "total_genmove_seconds": 0.5324439809999149,
+          "seconds_per_move": 0.007830058544116395,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 46,
+          "black_genmove_seconds": 0.189816332999726,
+          "white_genmove_seconds": 0.18715004499995302,
+          "total_genmove_seconds": 0.376966377999679,
+          "seconds_per_move": 0.008194921260862588,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s41312768-d6061202",
+      "network": "kata1-b6c96-s41312768-d6061202",
+      "elo": 3036,
+      "elo_ci_95": 31,
+      "arena_games": 3908,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3571332699996977,
+      "isolated_mean_genmove_seconds_per_player_game": 0.17856663499984884,
+      "measured_median_genmove_seconds_per_game": 0.362065426999834,
+      "measured_stdev_genmove_seconds_per_game": 0.08829472466424174,
+      "measured_mean_seconds_per_move": 0.007423625642806357,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 57,
+          "black_genmove_seconds": 0.2246749109999655,
+          "white_genmove_seconds": 0.21818362800058821,
+          "total_genmove_seconds": 0.4428585390005537,
+          "seconds_per_move": 0.007769448052641293,
+          "result": "W+4.0"
+        },
+        {
+          "game": 2,
+          "moves": 36,
+          "black_genmove_seconds": 0.13375760599888054,
+          "white_genmove_seconds": 0.13271823799982485,
+          "total_genmove_seconds": 0.2664758439987054,
+          "seconds_per_move": 0.007402106777741817,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 51,
+          "black_genmove_seconds": 0.18450383299932582,
+          "white_genmove_seconds": 0.1775615940005082,
+          "total_genmove_seconds": 0.362065426999834,
+          "seconds_per_move": 0.007099322098035961,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003",
+      "network": "kata1-b6c96-s4136960-d1510003",
+      "elo": 1102,
+      "elo_ci_95": 22,
+      "arena_games": 7038,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.9766852986667042,
+      "isolated_mean_genmove_seconds_per_player_game": 0.4883426493333521,
+      "measured_median_genmove_seconds_per_game": 0.9020880149989807,
+      "measured_stdev_genmove_seconds_per_game": 0.15530954290428364,
+      "measured_mean_seconds_per_move": 0.007251077098976086,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 121,
+          "black_genmove_seconds": 0.43700363199991443,
+          "white_genmove_seconds": 0.4357447320010124,
+          "total_genmove_seconds": 0.8727483640009268,
+          "seconds_per_move": 0.007212796396701874,
+          "result": "B+20.0"
+        },
+        {
+          "game": 2,
+          "moves": 159,
+          "black_genmove_seconds": 0.57883502300092,
+          "white_genmove_seconds": 0.576384493999285,
+          "total_genmove_seconds": 1.155219517000205,
+          "seconds_per_move": 0.007265531553460409,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 124,
+          "black_genmove_seconds": 0.44879530099956355,
+          "white_genmove_seconds": 0.4532927139994172,
+          "total_genmove_seconds": 0.9020880149989807,
+          "seconds_per_move": 0.007274903346765974,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s43286272-d6326857",
+      "network": "kata1-b6c96-s43286272-d6326857",
+      "elo": 3064,
+      "elo_ci_95": 31,
+      "arena_games": 3980,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.359151124332584,
+      "isolated_mean_genmove_seconds_per_player_game": 0.179575562166292,
+      "measured_median_genmove_seconds_per_game": 0.33741446599879055,
+      "measured_stdev_genmove_seconds_per_game": 0.039944085441782934,
+      "measured_mean_seconds_per_move": 0.007080281686492234,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 56,
+          "black_genmove_seconds": 0.20160796100003608,
+          "white_genmove_seconds": 0.20364171000005626,
+          "total_genmove_seconds": 0.40524967100009235,
+          "seconds_per_move": 0.007236601267858792,
+          "result": "W+4.0"
+        },
+        {
+          "game": 2,
+          "moves": 48,
+          "black_genmove_seconds": 0.16775445500002206,
+          "white_genmove_seconds": 0.16966001099876848,
+          "total_genmove_seconds": 0.33741446599879055,
+          "seconds_per_move": 0.0070294680416414694,
+          "result": "B+2.0"
+        },
+        {
+          "game": 3,
+          "moves": 48,
+          "black_genmove_seconds": 0.16807751199939958,
+          "white_genmove_seconds": 0.16671172399946954,
+          "total_genmove_seconds": 0.3347892359988691,
+          "seconds_per_move": 0.00697477574997644,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s45189632-d6589032",
+      "network": "kata1-b6c96-s45189632-d6589032",
+      "elo": 3067,
+      "elo_ci_95": 30,
+      "arena_games": 5476,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.32606556299977757,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16303278149988878,
+      "measured_median_genmove_seconds_per_game": 0.2789728789998662,
+      "measured_stdev_genmove_seconds_per_game": 0.10840429092539608,
+      "measured_mean_seconds_per_move": 0.007138676226696231,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 63,
+          "black_genmove_seconds": 0.227851953999334,
+          "white_genmove_seconds": 0.22219998099990335,
+          "total_genmove_seconds": 0.45005193499923735,
+          "seconds_per_move": 0.007143681507924402,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 35,
+          "black_genmove_seconds": 0.12816321300010713,
+          "white_genmove_seconds": 0.12100866200012206,
+          "total_genmove_seconds": 0.2491718750002292,
+          "seconds_per_move": 0.007119196428577977,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 39,
+          "black_genmove_seconds": 0.1429744560000472,
+          "white_genmove_seconds": 0.135998422999819,
+          "total_genmove_seconds": 0.2789728789998662,
+          "seconds_per_move": 0.007153150743586314,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s46949632-d6822967",
+      "network": "kata1-b6c96-s46949632-d6822967",
+      "elo": 3080,
+      "elo_ci_95": 31,
+      "arena_games": 3874,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3392897906664227,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16964489533321134,
+      "measured_median_genmove_seconds_per_game": 0.3714156689993615,
+      "measured_stdev_genmove_seconds_per_game": 0.06004044702242306,
+      "measured_mean_seconds_per_move": 0.007163661364511315,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 51,
+          "black_genmove_seconds": 0.19015676999924835,
+          "white_genmove_seconds": 0.18125889900011316,
+          "total_genmove_seconds": 0.3714156689993615,
+          "seconds_per_move": 0.007282660176458069,
+          "result": "B+4.0"
+        },
+        {
+          "game": 2,
+          "moves": 53,
+          "black_genmove_seconds": 0.19320128900062628,
+          "white_genmove_seconds": 0.18323083699965537,
+          "total_genmove_seconds": 0.37643212600028164,
+          "seconds_per_move": 0.00710249294340154,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 38,
+          "black_genmove_seconds": 0.13509472199984884,
+          "white_genmove_seconds": 0.13492685499977597,
+          "total_genmove_seconds": 0.2700215769996248,
+          "seconds_per_move": 0.007105830973674337,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s48921344-d7092247",
+      "network": "kata1-b6c96-s48921344-d7092247",
+      "elo": 3108,
+      "elo_ci_95": 31,
+      "arena_games": 4000,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.2638353940003526,
+      "isolated_mean_genmove_seconds_per_player_game": 0.1319176970001763,
+      "measured_median_genmove_seconds_per_game": 0.25125593500069954,
+      "measured_stdev_genmove_seconds_per_game": 0.02661817834581717,
+      "measured_mean_seconds_per_move": 0.007196686297476799,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 35,
+          "black_genmove_seconds": 0.13020375200062517,
+          "white_genmove_seconds": 0.12105218300007436,
+          "total_genmove_seconds": 0.25125593500069954,
+          "seconds_per_move": 0.007178741000019986,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 41,
+          "black_genmove_seconds": 0.15092837099950884,
+          "white_genmove_seconds": 0.14348348399971655,
+          "total_genmove_seconds": 0.2944118549992254,
+          "seconds_per_move": 0.00718077695120062,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 34,
+          "black_genmove_seconds": 0.12418687300055353,
+          "white_genmove_seconds": 0.12165151900057936,
+          "total_genmove_seconds": 0.2458383920011329,
+          "seconds_per_move": 0.007230540941209791,
+          "result": "B+24.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s50894592-d7380655",
+      "network": "kata1-b6c96-s50894592-d7380655",
+      "elo": 3115,
+      "elo_ci_95": 31,
+      "arena_games": 3950,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.2605035550001655,
+      "isolated_mean_genmove_seconds_per_player_game": 0.13025177750008274,
+      "measured_median_genmove_seconds_per_game": 0.2970951089994287,
+      "measured_stdev_genmove_seconds_per_game": 0.11382123927140264,
+      "measured_mean_seconds_per_move": 0.007294064965763049,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 19,
+          "black_genmove_seconds": 0.06964677200016922,
+          "white_genmove_seconds": 0.06324006499994539,
+          "total_genmove_seconds": 0.1328868370001146,
+          "seconds_per_move": 0.006994044052637611,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 41,
+          "black_genmove_seconds": 0.15250883999988218,
+          "white_genmove_seconds": 0.14458626899954652,
+          "total_genmove_seconds": 0.2970951089994287,
+          "seconds_per_move": 0.007246222170717773,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 46,
+          "black_genmove_seconds": 0.1743686590004927,
+          "white_genmove_seconds": 0.17716006000046036,
+          "total_genmove_seconds": 0.35152871900095306,
+          "seconds_per_move": 0.007641928673933762,
+          "result": "W+4.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538",
+      "network": "kata1-b6c96-s5214720-d1690538",
+      "elo": 1166,
+      "elo_ci_95": 26,
+      "arena_games": 3426,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.7625702503329043,
+      "isolated_mean_genmove_seconds_per_player_game": 0.38128512516645213,
+      "measured_median_genmove_seconds_per_game": 0.7757013479981651,
+      "measured_stdev_genmove_seconds_per_game": 0.0598179442950786,
+      "measured_mean_seconds_per_move": 0.007381801640227466,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 94,
+          "black_genmove_seconds": 0.3474512979996689,
+          "white_genmove_seconds": 0.34982634699963455,
+          "total_genmove_seconds": 0.6972776449993034,
+          "seconds_per_move": 0.007417847287226632,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 105,
+          "black_genmove_seconds": 0.3918540229997234,
+          "white_genmove_seconds": 0.38384732499844176,
+          "total_genmove_seconds": 0.7757013479981651,
+          "seconds_per_move": 0.007387631885696811,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 111,
+          "black_genmove_seconds": 0.40927514100053486,
+          "white_genmove_seconds": 0.40545661700070923,
+          "total_genmove_seconds": 0.8147317580012441,
+          "seconds_per_move": 0.007339925747758956,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s52864512-d7635581",
+      "network": "kata1-b6c96-s52864512-d7635581",
+      "elo": 3117,
+      "elo_ci_95": 31,
+      "arena_games": 5218,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.33247383933318514,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16623691966659257,
+      "measured_median_genmove_seconds_per_game": 0.35233987899960084,
+      "measured_stdev_genmove_seconds_per_game": 0.06367924453057215,
+      "measured_mean_seconds_per_move": 0.0071818892280973365,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 36,
+          "black_genmove_seconds": 0.13064724500009106,
+          "white_genmove_seconds": 0.13058247000026313,
+          "total_genmove_seconds": 0.2612297150003542,
+          "seconds_per_move": 0.007256380972232061,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 53,
+          "black_genmove_seconds": 0.19963622899990696,
+          "white_genmove_seconds": 0.18421569499969337,
+          "total_genmove_seconds": 0.38385192399960033,
+          "seconds_per_move": 0.007242489132067931,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 50,
+          "black_genmove_seconds": 0.17654449699944053,
+          "white_genmove_seconds": 0.17579538200016032,
+          "total_genmove_seconds": 0.35233987899960084,
+          "seconds_per_move": 0.007046797579992017,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s55682304-d7995124",
+      "network": "kata1-b6c96-s55682304-d7995124",
+      "elo": 3150,
+      "elo_ci_95": 31,
+      "arena_games": 3884,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.264177177666852,
+      "isolated_mean_genmove_seconds_per_player_game": 0.132088588833426,
+      "measured_median_genmove_seconds_per_game": 0.2512114179992295,
+      "measured_stdev_genmove_seconds_per_game": 0.05132602637702451,
+      "measured_mean_seconds_per_move": 0.00714016148425201,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 35,
+          "black_genmove_seconds": 0.12884407399974407,
+          "white_genmove_seconds": 0.12236734399948546,
+          "total_genmove_seconds": 0.2512114179992295,
+          "seconds_per_move": 0.007177469085692272,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 45,
+          "black_genmove_seconds": 0.16434002899995903,
+          "white_genmove_seconds": 0.1564027380004518,
+          "total_genmove_seconds": 0.3207427670004108,
+          "seconds_per_move": 0.007127617044453574,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 31,
+          "black_genmove_seconds": 0.11350717800019083,
+          "white_genmove_seconds": 0.10707017000072483,
+          "total_genmove_seconds": 0.22057734800091566,
+          "seconds_per_move": 0.007115398322610183,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s56669696-d8173106",
+      "network": "kata1-b6c96-s56669696-d8173106",
+      "elo": 3145,
+      "elo_ci_95": 31,
+      "arena_games": 3996,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.4311576783340267,
+      "isolated_mean_genmove_seconds_per_player_game": 0.21557883916701334,
+      "measured_median_genmove_seconds_per_game": 0.4628844080016279,
+      "measured_stdev_genmove_seconds_per_game": 0.05956080738775818,
+      "measured_mean_seconds_per_move": 0.007871105971205453,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 65,
+          "black_genmove_seconds": 0.23484864600095534,
+          "white_genmove_seconds": 0.22803576200067255,
+          "total_genmove_seconds": 0.4628844080016279,
+          "seconds_per_move": 0.007121298584640429,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 63,
+          "black_genmove_seconds": 0.2377967009999793,
+          "white_genmove_seconds": 0.23034220300041852,
+          "total_genmove_seconds": 0.4681389040003978,
+          "seconds_per_move": 0.007430776253974569,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 40,
+          "black_genmove_seconds": 0.179519112999742,
+          "white_genmove_seconds": 0.1829306100003123,
+          "total_genmove_seconds": 0.3624497230000543,
+          "seconds_per_move": 0.009061243075001358,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s59560704-d8589539",
+      "network": "kata1-b6c96-s59560704-d8589539",
+      "elo": 3178,
+      "elo_ci_95": 31,
+      "arena_games": 3988,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.3591569370003829,
+      "isolated_mean_genmove_seconds_per_player_game": 0.17957846850019146,
+      "measured_median_genmove_seconds_per_game": 0.3272633310004949,
+      "measured_stdev_genmove_seconds_per_game": 0.1064392055709554,
+      "measured_mean_seconds_per_move": 0.007547366267585819,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 36,
+          "black_genmove_seconds": 0.1366096419999394,
+          "white_genmove_seconds": 0.13570108800058733,
+          "total_genmove_seconds": 0.27231073000052675,
+          "seconds_per_move": 0.007564186944459077,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 64,
+          "black_genmove_seconds": 0.23933333199988738,
+          "white_genmove_seconds": 0.23856341800023984,
+          "total_genmove_seconds": 0.4778967500001272,
+          "seconds_per_move": 0.007467136718751988,
+          "result": "B+R"
+        },
+        {
+          "game": 3,
+          "moves": 43,
+          "black_genmove_seconds": 0.16616819400042004,
+          "white_genmove_seconds": 0.16109513700007483,
+          "total_genmove_seconds": 0.3272633310004949,
+          "seconds_per_move": 0.007610775139546392,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s6127360-d1754797",
+      "network": "kata1-b6c96-s6127360-d1754797",
+      "elo": 1246,
+      "elo_ci_95": 26,
+      "arena_games": 3460,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.7673870326674054,
+      "isolated_mean_genmove_seconds_per_player_game": 0.3836935163337027,
+      "measured_median_genmove_seconds_per_game": 0.8450375550009994,
+      "measured_stdev_genmove_seconds_per_game": 0.1702534608156846,
+      "measured_mean_seconds_per_move": 0.007352732417396231,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 78,
+          "black_genmove_seconds": 0.28511772199954066,
+          "white_genmove_seconds": 0.28703420899955745,
+          "total_genmove_seconds": 0.5721519309990981,
+          "seconds_per_move": 0.007335281166655104,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 115,
+          "black_genmove_seconds": 0.4250988630010397,
+          "white_genmove_seconds": 0.4199386919999597,
+          "total_genmove_seconds": 0.8450375550009994,
+          "seconds_per_move": 0.007348152652182603,
+          "result": "W+14.0"
+        },
+        {
+          "game": 3,
+          "moves": 120,
+          "black_genmove_seconds": 0.44371601400234795,
+          "white_genmove_seconds": 0.44125559799977054,
+          "total_genmove_seconds": 0.8849716120021185,
+          "seconds_per_move": 0.007374763433350987,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s63439616-d9138325",
+      "network": "kata1-b6c96-s63439616-d9138325",
+      "elo": 3166,
+      "elo_ci_95": 31,
+      "arena_games": 4086,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.27967905833293116,
+      "isolated_mean_genmove_seconds_per_player_game": 0.13983952916646558,
+      "measured_median_genmove_seconds_per_game": 0.283543519999057,
+      "measured_stdev_genmove_seconds_per_game": 0.0270384207688415,
+      "measured_mean_seconds_per_move": 0.007047226551886569,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 40,
+          "black_genmove_seconds": 0.14136586299900955,
+          "white_genmove_seconds": 0.14217765700004747,
+          "total_genmove_seconds": 0.283543519999057,
+          "seconds_per_move": 0.007088587999976426,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 43,
+          "black_genmove_seconds": 0.1561181499992017,
+          "white_genmove_seconds": 0.14845917599950553,
+          "total_genmove_seconds": 0.30457732599870724,
+          "seconds_per_move": 0.007083193627876913,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 36,
+          "black_genmove_seconds": 0.1250830900003166,
+          "white_genmove_seconds": 0.12583323900071264,
+          "total_genmove_seconds": 0.2509163290010292,
+          "seconds_per_move": 0.006969898027806367,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s65341184-d9428755",
+      "network": "kata1-b6c96-s65341184-d9428755",
+      "elo": 3187,
+      "elo_ci_95": 31,
+      "arena_games": 4054,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.32886644800055365,
+      "isolated_mean_genmove_seconds_per_player_game": 0.16443322400027682,
+      "measured_median_genmove_seconds_per_game": 0.24370661500006463,
+      "measured_stdev_genmove_seconds_per_game": 0.1636367461527579,
+      "measured_mean_seconds_per_move": 0.007357892263337019,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 72,
+          "black_genmove_seconds": 0.2586797360008859,
+          "white_genmove_seconds": 0.25884139300069364,
+          "total_genmove_seconds": 0.5175211290015795,
+          "seconds_per_move": 0.007187793458355272,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 31,
+          "black_genmove_seconds": 0.11700992399983079,
+          "white_genmove_seconds": 0.10836167600018598,
+          "total_genmove_seconds": 0.22537160000001677,
+          "seconds_per_move": 0.007270051612903766,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 32,
+          "black_genmove_seconds": 0.11914280900009544,
+          "white_genmove_seconds": 0.12456380599996919,
+          "total_genmove_seconds": 0.24370661500006463,
+          "seconds_per_move": 0.00761583171875202,
+          "result": "W+2.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s69427456-d10051148",
+      "network": "kata1-b6c96-s69427456-d10051148",
+      "elo": 3196,
+      "elo_ci_95": 31,
+      "arena_games": 5188,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.37263624033297066,
+      "isolated_mean_genmove_seconds_per_player_game": 0.18631812016648533,
+      "measured_median_genmove_seconds_per_game": 0.38024098700043396,
+      "measured_stdev_genmove_seconds_per_game": 0.07629601546006258,
+      "measured_mean_seconds_per_move": 0.007674749492850012,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 56,
+          "black_genmove_seconds": 0.22327856599940787,
+          "white_genmove_seconds": 0.22156653599950005,
+          "total_genmove_seconds": 0.4448451019989079,
+          "seconds_per_move": 0.007943662535694784,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 49,
+          "black_genmove_seconds": 0.19813240900066376,
+          "white_genmove_seconds": 0.1821085779997702,
+          "total_genmove_seconds": 0.38024098700043396,
+          "seconds_per_move": 0.007760020142865999,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 40,
+          "black_genmove_seconds": 0.1457668040002318,
+          "white_genmove_seconds": 0.14705582799933836,
+          "total_genmove_seconds": 0.29282263199957015,
+          "seconds_per_move": 0.007320565799989254,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s73091584-d10630987",
+      "network": "kata1-b6c96-s73091584-d10630987",
+      "elo": 3226,
+      "elo_ci_95": 31,
+      "arena_games": 4026,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.2656205089992909,
+      "isolated_mean_genmove_seconds_per_player_game": 0.13281025449964545,
+      "measured_median_genmove_seconds_per_game": 0.22622742099883908,
+      "measured_stdev_genmove_seconds_per_game": 0.06900101427633398,
+      "measured_mean_seconds_per_move": 0.0074943820024889465,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 30,
+          "black_genmove_seconds": 0.1110507129983489,
+          "white_genmove_seconds": 0.11517670800049018,
+          "total_genmove_seconds": 0.22622742099883908,
+          "seconds_per_move": 0.007540914033294636,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 31,
+          "black_genmove_seconds": 0.11644187999991118,
+          "white_genmove_seconds": 0.1088978570001018,
+          "total_genmove_seconds": 0.22533973700001297,
+          "seconds_per_move": 0.007269023774193967,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 45,
+          "black_genmove_seconds": 0.17524127200067596,
+          "white_genmove_seconds": 0.1700530969983447,
+          "total_genmove_seconds": 0.34529436899902066,
+          "seconds_per_move": 0.007673208199978237,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s78659584-d11478487",
+      "network": "kata1-b6c96-s78659584-d11478487",
+      "elo": 3225,
+      "elo_ci_95": 31,
+      "arena_games": 4106,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.37135363566706775,
+      "isolated_mean_genmove_seconds_per_player_game": 0.18567681783353387,
+      "measured_median_genmove_seconds_per_game": 0.33307778600055826,
+      "measured_stdev_genmove_seconds_per_game": 0.07693189971769321,
+      "measured_mean_seconds_per_move": 0.007766978783822838,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 42,
+          "black_genmove_seconds": 0.16837134900060846,
+          "white_genmove_seconds": 0.1647064369999498,
+          "total_genmove_seconds": 0.33307778600055826,
+          "seconds_per_move": 0.007930423476203768,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 41,
+          "black_genmove_seconds": 0.1648366919998807,
+          "white_genmove_seconds": 0.15623054500065336,
+          "total_genmove_seconds": 0.3210672370005341,
+          "seconds_per_move": 0.007830908219525222,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 61,
+          "black_genmove_seconds": 0.23392655000043305,
+          "white_genmove_seconds": 0.2259893339996779,
+          "total_genmove_seconds": 0.45991588400011096,
+          "seconds_per_move": 0.007539604655739524,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030",
+      "network": "kata1-b6c96-s8080640-d1961030",
+      "elo": 1520,
+      "elo_ci_95": 27,
+      "arena_games": 3454,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.7016371083338223,
+      "isolated_mean_genmove_seconds_per_player_game": 0.35081855416691116,
+      "measured_median_genmove_seconds_per_game": 0.7266139029984515,
+      "measured_stdev_genmove_seconds_per_game": 0.4062541603609694,
+      "measured_mean_seconds_per_move": 0.007519786753859308,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 139,
+          "black_genmove_seconds": 0.5563408680027351,
+          "white_genmove_seconds": 0.5384857480007668,
+          "total_genmove_seconds": 1.0948266160035018,
+          "seconds_per_move": 0.007876450474845337,
+          "result": "B+6.0"
+        },
+        {
+          "game": 2,
+          "moves": 39,
+          "black_genmove_seconds": 0.14564474999906452,
+          "white_genmove_seconds": 0.13782605600044917,
+          "total_genmove_seconds": 0.2834708059995137,
+          "seconds_per_move": 0.007268482205115736,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 98,
+          "black_genmove_seconds": 0.3641238539985352,
+          "white_genmove_seconds": 0.3624900489999163,
+          "total_genmove_seconds": 0.7266139029984515,
+          "seconds_per_move": 0.007414427581616852,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s83588096-d12203675",
+      "network": "kata1-b6c96-s83588096-d12203675",
+      "elo": 3246,
+      "elo_ci_95": 31,
+      "arena_games": 4006,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.2851062053341593,
+      "isolated_mean_genmove_seconds_per_player_game": 0.14255310266707966,
+      "measured_median_genmove_seconds_per_game": 0.2894887020011083,
+      "measured_stdev_genmove_seconds_per_game": 0.06376728069165156,
+      "measured_mean_seconds_per_move": 0.007169146394220827,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 31,
+          "black_genmove_seconds": 0.11309864199984077,
+          "white_genmove_seconds": 0.1061620819991731,
+          "total_genmove_seconds": 0.21926072399901386,
+          "seconds_per_move": 0.00707292658061335,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 41,
+          "black_genmove_seconds": 0.14826596600050834,
+          "white_genmove_seconds": 0.14122273600059998,
+          "total_genmove_seconds": 0.2894887020011083,
+          "seconds_per_move": 0.00706070004880752,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 47,
+          "black_genmove_seconds": 0.17750061800143158,
+          "white_genmove_seconds": 0.16906857200092418,
+          "total_genmove_seconds": 0.34656919000235575,
+          "seconds_per_move": 0.007373812553241612,
+          "result": "W+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s89508352-d13124432",
+      "network": "kata1-b6c96-s89508352-d13124432",
+      "elo": 3247,
+      "elo_ci_95": 31,
+      "arena_games": 3974,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.31520104933451876,
+      "isolated_mean_genmove_seconds_per_player_game": 0.15760052466725938,
+      "measured_median_genmove_seconds_per_game": 0.30966077300035977,
+      "measured_stdev_genmove_seconds_per_game": 0.01035610835315392,
+      "measured_mean_seconds_per_move": 0.007110307084846235,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 44,
+          "black_genmove_seconds": 0.15534689400010393,
+          "white_genmove_seconds": 0.15431387900025584,
+          "total_genmove_seconds": 0.30966077300035977,
+          "seconds_per_move": 0.0070377448409172675,
+          "result": "B+R"
+        },
+        {
+          "game": 2,
+          "moves": 43,
+          "black_genmove_seconds": 0.1588008999997328,
+          "white_genmove_seconds": 0.14999270700218403,
+          "total_genmove_seconds": 0.3087936070019168,
+          "seconds_per_move": 0.007181246674463182,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 46,
+          "black_genmove_seconds": 0.1640391200016893,
+          "white_genmove_seconds": 0.16310964799959038,
+          "total_genmove_seconds": 0.3271487680012797,
+          "seconds_per_move": 0.007111929739158254,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583",
+      "network": "kata1-b6c96-s8982784-d2082583",
+      "elo": 1570,
+      "elo_ci_95": 27,
+      "arena_games": 3368,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.6221092816678416,
+      "isolated_mean_genmove_seconds_per_player_game": 0.3110546408339208,
+      "measured_median_genmove_seconds_per_game": 0.6380651940007738,
+      "measured_stdev_genmove_seconds_per_game": 0.1697183020928,
+      "measured_mean_seconds_per_move": 0.008140607876872727,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 74,
+          "black_genmove_seconds": 0.3225378590004766,
+          "white_genmove_seconds": 0.31552733500029717,
+          "total_genmove_seconds": 0.6380651940007738,
+          "seconds_per_move": 0.008622502621632078,
+          "result": "B+6.0"
+        },
+        {
+          "game": 2,
+          "moves": 98,
+          "black_genmove_seconds": 0.3911251020012969,
+          "white_genmove_seconds": 0.39216106000048967,
+          "total_genmove_seconds": 0.7832861620017866,
+          "seconds_per_move": 0.00799271593879374,
+          "result": "W+10.0"
+        },
+        {
+          "game": 3,
+          "moves": 57,
+          "black_genmove_seconds": 0.22611019000123633,
+          "white_genmove_seconds": 0.21886629899972831,
+          "total_genmove_seconds": 0.44497648900096465,
+          "seconds_per_move": 0.007806605070192363,
+          "result": "W+8.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s938496-d1208807",
+      "network": "kata1-b6c96-s938496-d1208807",
+      "elo": 331,
+      "elo_ci_95": 21,
+      "arena_games": 2854,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.9980186346670052,
+      "isolated_mean_genmove_seconds_per_player_game": 0.4990093173335026,
+      "measured_median_genmove_seconds_per_game": 1.0986888229972465,
+      "measured_stdev_genmove_seconds_per_game": 0.29653838651895575,
+      "measured_mean_seconds_per_move": 0.007394236962588035,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 168,
+          "black_genmove_seconds": 0.6182277610014353,
+          "white_genmove_seconds": 0.6128885750013069,
+          "total_genmove_seconds": 1.2311163360027422,
+          "seconds_per_move": 0.007328073428587751,
+          "result": "W+88.0"
+        },
+        {
+          "game": 2,
+          "moves": 147,
+          "black_genmove_seconds": 0.5506463259980592,
+          "white_genmove_seconds": 0.5480424969991873,
+          "total_genmove_seconds": 1.0986888229972465,
+          "seconds_per_move": 0.007474073625831608,
+          "result": "B+74.0"
+        },
+        {
+          "game": 3,
+          "moves": 90,
+          "black_genmove_seconds": 0.3311369530006232,
+          "white_genmove_seconds": 0.3331137920004039,
+          "total_genmove_seconds": 0.6642507450010271,
+          "seconds_per_move": 0.007380563833344745,
+          "result": "W+12.0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b6c96-s95425792-d14091095",
+      "network": "kata1-b6c96-s95425792-d14091095",
+      "elo": 3258,
+      "elo_ci_95": 31,
+      "arena_games": 5038,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 0.2942934966661899,
+      "isolated_mean_genmove_seconds_per_player_game": 0.14714674833309496,
+      "measured_median_genmove_seconds_per_game": 0.2475384089993895,
+      "measured_stdev_genmove_seconds_per_game": 0.1078330427643168,
+      "measured_mean_seconds_per_move": 0.00709875525260839,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 35,
+          "black_genmove_seconds": 0.12587865599925863,
+          "white_genmove_seconds": 0.12165975300013088,
+          "total_genmove_seconds": 0.2475384089993895,
+          "seconds_per_move": 0.007072525971411128,
+          "result": "W+R"
+        },
+        {
+          "game": 2,
+          "moves": 31,
+          "black_genmove_seconds": 0.11090627200019298,
+          "white_genmove_seconds": 0.10682260299972768,
+          "total_genmove_seconds": 0.21772887499992066,
+          "seconds_per_move": 0.007023512096771634,
+          "result": "W+R"
+        },
+        {
+          "game": 3,
+          "moves": 58,
+          "black_genmove_seconds": 0.2085414629996194,
+          "white_genmove_seconds": 0.20907174299964026,
+          "total_genmove_seconds": 0.41761320599925966,
+          "seconds_per_move": 0.007200227689642408,
+          "result": "B+R"
+        }
+      ]
+    },
+    {
+      "player": "kata1-zhizi-b40c768nbt-fdx6c",
+      "network": "kata1-zhizi-b40c768nbt-fdx6c",
+      "elo": 4210,
+      "elo_ci_95": 36,
+      "arena_games": 2742,
+      "max_visits": 1,
+      "max_playouts": null,
+      "timing_backend": "cpu-eigenavx2",
+      "timing_estimated": false,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 48.64961973100056,
+      "isolated_mean_genmove_seconds_per_player_game": 24.32480986550028,
+      "measured_median_genmove_seconds_per_game": 52.39016881700218,
+      "measured_stdev_genmove_seconds_per_game": 11.439588595369276,
+      "measured_mean_seconds_per_move": 1.1788038322184555,
+      "game_timings": [
+        {
+          "game": 1,
+          "moves": 30,
+          "black_genmove_seconds": 17.95245806399953,
+          "white_genmove_seconds": 17.85554232800041,
+          "total_genmove_seconds": 35.80800039199994,
+          "seconds_per_move": 1.1936000130666646,
+          "result": "0"
+        },
+        {
+          "game": 2,
+          "moves": 49,
+          "black_genmove_seconds": 29.53321239199977,
+          "white_genmove_seconds": 28.217477591999796,
+          "total_genmove_seconds": 57.750689983999564,
+          "seconds_per_move": 1.1785855098775422,
+          "result": "0"
+        },
+        {
+          "game": 3,
+          "moves": 45,
+          "black_genmove_seconds": 26.90276748800079,
+          "white_genmove_seconds": 25.487401329001386,
+          "total_genmove_seconds": 52.39016881700218,
+          "seconds_per_move": 1.1642259737111595,
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+      "network": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "elo": 4273,
+      "elo_ci_95": 34,
+      "arena_games": 2950,
+      "max_visits": 100000000,
+      "max_playouts": 60,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 522.9965850799908,
+      "isolated_mean_genmove_seconds_per_player_game": 261.4982925399954,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 261.4982925399954,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b18c384nbt-s9761732864-d4253420187",
+        "base_seconds_per_player_game": 4.35830487566659,
+        "playout_multiplier": 60,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+      "network": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "elo": 4339,
+      "elo_ci_95": 35,
+      "arena_games": 2946,
+      "max_visits": 100000000,
+      "max_playouts": 60,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 1003.6223488200129,
+      "isolated_mean_genmove_seconds_per_player_game": 501.81117441000646,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 501.81117441000646,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b28c512nbt-s12313658112-d5687582971",
+        "base_seconds_per_player_game": 8.363519573500108,
+        "playout_multiplier": 60,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+      "network": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "elo": 4300,
+      "elo_ci_95": 35,
+      "arena_games": 2960,
+      "max_visits": 100000000,
+      "max_playouts": 60,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 1492.6265318200058,
+      "isolated_mean_genmove_seconds_per_player_game": 746.3132659100029,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 746.3132659100029,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b28c512nbt-s7229617920-d4333415784",
+        "base_seconds_per_player_game": 12.438554431833381,
+        "playout_multiplier": 60,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+      "network": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "elo": 4325,
+      "elo_ci_95": 35,
+      "arena_games": 2900,
+      "max_visits": 100000000,
+      "max_playouts": 60,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 1276.4590466399977,
+      "isolated_mean_genmove_seconds_per_player_game": 638.2295233199989,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 638.2295233199989,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b28c512nbt-s8566598912-d4691918754",
+        "base_seconds_per_player_game": 10.637158721999981,
+        "playout_multiplier": 60,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187-playouts600",
+      "network": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "elo": 4362,
+      "elo_ci_95": 35,
+      "arena_games": 2844,
+      "max_visits": 100000000,
+      "max_playouts": 600,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 5229.965850799908,
+      "isolated_mean_genmove_seconds_per_player_game": 2614.982925399954,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 2614.982925399954,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b18c384nbt-s9761732864-d4253420187",
+        "base_seconds_per_player_game": 4.35830487566659,
+        "playout_multiplier": 600,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+      "network": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "elo": 4377,
+      "elo_ci_95": 35,
+      "arena_games": 2806,
+      "max_visits": 100000000,
+      "max_playouts": 600,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 10036.22348820013,
+      "isolated_mean_genmove_seconds_per_player_game": 5018.111744100065,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 5018.111744100065,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b28c512nbt-s12313658112-d5687582971",
+        "base_seconds_per_player_game": 8.363519573500108,
+        "playout_multiplier": 600,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+      "network": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "elo": 4377,
+      "elo_ci_95": 35,
+      "arena_games": 2852,
+      "max_visits": 100000000,
+      "max_playouts": 600,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 14926.265318200058,
+      "isolated_mean_genmove_seconds_per_player_game": 7463.132659100029,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 7463.132659100029,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b28c512nbt-s7229617920-d4333415784",
+        "base_seconds_per_player_game": 12.438554431833381,
+        "playout_multiplier": 600,
+        "base_cpu_games": 3
+      }
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+      "network": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "elo": 4420,
+      "elo_ci_95": 35,
+      "arena_games": 2698,
+      "max_visits": 100000000,
+      "max_playouts": 600,
+      "games": 3,
+      "isolated_mean_genmove_seconds_per_game_both_colors": 12764.590466399977,
+      "isolated_mean_genmove_seconds_per_player_game": 6382.295233199989,
+      "timing_backend": "cpu-eigenavx2-estimated",
+      "timing_estimated": true,
+      "cpu_estimate": {
+        "seconds_per_player_game": 6382.295233199989,
+        "method": "same network's measured one-visit CPU time multiplied by the playout count",
+        "base_player": "kata1-b28c512nbt-s8566598912-d4691918754",
+        "base_seconds_per_player_game": 10.637158721999981,
+        "playout_multiplier": 600,
+        "base_cpu_games": 3
+      }
+    }
+  ],
+  "ratings_snapshot": {
+    "source": "log/arena_20260805_183049_592918_47e467f1/run.json",
+    "arena_games": 318148,
+    "color_advantage_model": "average_elo_negative_exponential"
+  },
+  "playout_benchmark": {
+    "cpu": "KataGo Eigen/AVX2 build",
+    "method": "one_visit_cpu_time_times_playout_count",
+    "one_visit_cpu_games_per_network": 3,
+    "cpu_full_game_values_are_estimates": true,
+    "playout_multipliers": [
+      60,
+      600
+    ]
+  },
+  "requested_players": 104,
+  "completed_players": 104
+}

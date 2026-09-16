@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gemini-3.6-flash-high-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+10.0,gemini-3.6-flash-high-api-multi,1,85,google_interactions_api,43,0,0,311.851409,1.009690950000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,gemini-3.6-flash-high-api-multi,W+R,gemini-3.6-flash-high-api-multi,0,79,google_interactions_api,39,0,0,241.790138,0.817184400000
+3,2,gemini-3.6-flash-high-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,W+32.0,kata1-b6c96-s11888896-d2416753-temp-0.5,0,63,google_interactions_api,32,0,0,189.513135,0.589919250000
+4,2,kata1-b6c96-s11888896-d2416753-temp-0.5,gemini-3.6-flash-high-api-multi,0,,0.5,59,google_interactions_api,29,0,0,151.578728,0.508254300000
+5,3,gemini-3.6-flash-high-api-multi,kata1-b6c96-s8982784-d2082583,B+12.0,gemini-3.6-flash-high-api-multi,1,104,google_interactions_api,52,0,0,259.537608,1.026891450000
+6,3,kata1-b6c96-s8982784-d2082583,gemini-3.6-flash-high-api-multi,B+14.0,kata1-b6c96-s8982784-d2082583,1,72,google_interactions_api,36,0,0,182.092322,0.610360800000
+7,4,gemini-3.6-flash-high-api-multi,kata1-b6c96-s13733120-d2631546-temp-0.9,0,,0.5,99,google_interactions_api,50,0,0,219.211073,0.863661000000
+8,4,kata1-b6c96-s13733120-d2631546-temp-0.9,gemini-3.6-flash-high-api-multi,B+74.0,kata1-b6c96-s13733120-d2631546-temp-0.9,1,87,google_interactions_api,43,0,0,224.429752,0.764043750000
+9,5,gemini-3.6-flash-high-api-multi,kata1-b6c96-s8982784-d2082583-temp-0.3,W+39.0,kata1-b6c96-s8982784-d2082583-temp-0.3,0,81,google_interactions_api,41,0,0,258.062056,0.827942550000
+10,5,kata1-b6c96-s8982784-d2082583-temp-0.3,gemini-3.6-flash-high-api-multi,B+38.0,kata1-b6c96-s8982784-d2082583-temp-0.3,1,121,google_interactions_api,60,0,0,261.504299,1.091190300000
+11,6,gemini-3.6-flash-high-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.3,W+38.0,kata1-b6c96-s8080640-d1961030-temp-0.3,0,100,google_interactions_api,50,0,0,340.121685,1.157238300000
+12,6,kata1-b6c96-s8080640-d1961030-temp-0.3,gemini-3.6-flash-high-api-multi,B+74.0,kata1-b6c96-s8080640-d1961030-temp-0.3,1,175,google_interactions_api,87,0,0,311.068642,1.592966100000
+13,7,gemini-3.6-flash-high-api-multi,kata1-b6c96-s8982784-d2082583-temp-0.5,B+6.0,gemini-3.6-flash-high-api-multi,1,86,google_interactions_api,43,0,0,286.279597,0.947415150000
+14,7,kata1-b6c96-s8982784-d2082583-temp-0.5,gemini-3.6-flash-high-api-multi,B+74.0,kata1-b6c96-s8982784-d2082583-temp-0.5,1,115,google_interactions_api,57,0,0,298.527398,1.123526700000

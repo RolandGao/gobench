@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+R,muse-spark-1.3-contributor-high-api-multi,1,64,meta_responses_api,32,1,0,961.806492,0.038566152000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,muse-spark-1.3-contributor-high-api-multi,W+18.0,muse-spark-1.3-contributor-high-api-multi,0,94,meta_responses_api,47,2,0,2086.657691,0.083260480000
+3,2,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,B+R,muse-spark-1.3-contributor-high-api-multi,1,64,meta_responses_api,32,3,0,2564.135908,0.086406990000
+4,2,kata1-b6c96-s11888896-d2416753-temp-0.5,muse-spark-1.3-contributor-high-api-multi,B+R,kata1-b6c96-s11888896-d2416753-temp-0.5,1,74,meta_responses_api,37,1,0,796.822089,0.030989682000
+5,3,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s10825472-d2300510,W+14.0,kata1-b6c96-s10825472-d2300510,0,45,meta_responses_api,23,1,0,1149.784245,0.050821152000
+6,3,kata1-b6c96-s10825472-d2300510,muse-spark-1.3-contributor-high-api-multi,W+2.0,muse-spark-1.3-contributor-high-api-multi,0,77,meta_responses_api,38,3,0,2449.159147,0.105793072000
+7,4,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,W+R,kata1-b6c96-s11888896-d2416753-temp-0.5,0,111,meta_responses_api,56,2,0,3331.862077,0.117127978000
+8,4,kata1-b6c96-s11888896-d2416753-temp-0.5,muse-spark-1.3-contributor-high-api-multi,B+22.0,kata1-b6c96-s11888896-d2416753-temp-0.5,1,76,meta_responses_api,38,2,0,1987.336280,0.110979762000
+9,5,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s10014464-d2201128-temp-0.3,W+4.0,kata1-b6c96-s10014464-d2201128-temp-0.3,0,75,meta_responses_api,38,1,0,1645.970524,0.085587344000
+10,5,kata1-b6c96-s10014464-d2201128-temp-0.3,muse-spark-1.3-contributor-high-api-multi,B+14.0,kata1-b6c96-s10014464-d2201128-temp-0.3,1,79,meta_responses_api,39,1,0,1182.136115,0.059703228000
+11,6,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s8982784-d2082583-temp-0.3,B+R,muse-spark-1.3-contributor-high-api-multi,1,38,meta_responses_api,19,1,0,466.327932,0.024312290000
+12,6,kata1-b6c96-s8982784-d2082583-temp-0.3,muse-spark-1.3-contributor-high-api-multi,B+R,kata1-b6c96-s8982784-d2082583-temp-0.3,1,68,meta_responses_api,34,1,0,825.343486,0.033212792000
+13,7,muse-spark-1.3-contributor-high-api-multi,kata1-b6c96-s8080640-d1961030,W+R,kata1-b6c96-s8080640-d1961030,0,67,meta_responses_api,34,1,0,1136.905135,0.064271312000
+14,7,kata1-b6c96-s8080640-d1961030,muse-spark-1.3-contributor-high-api-multi,B+10.0,kata1-b6c96-s8080640-d1961030,1,74,meta_responses_api,37,1,0,2784.729065,0.107193318000

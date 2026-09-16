@@ -1,0 +1,458 @@
+run,game,llm,llm_color,result,move_number,color,move,actor,kind,first_violation_in_game,repeats_positions_after_moves,captured_stones,suicide_stones,log,line
+arena_20260718_061501_196878_3d7b72be,1,gpt-5.4-low-api,B,B+R,57,B,G2,llm,simple_ko,True,[55],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,1
+arena_20260718_061501_196878_3d7b72be,1,gpt-5.4-low-api,B,B+R,61,B,G2,llm,simple_ko,False,[59],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,1
+arena_20260718_061501_196878_3d7b72be,1,gpt-5.4-low-api,B,B+R,65,B,G2,llm,simple_ko,False,[63],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,1
+arena_20260718_061501_196878_3d7b72be,1,gpt-5.4-low-api,B,B+R,77,B,A6,llm,other_positional_superko,False,[74],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,1
+arena_20260718_061501_196878_3d7b72be,1,gpt-5.4-low-api,B,B+R,81,B,A6,llm,simple_ko,False,[79],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,1
+arena_20260718_061501_196878_3d7b72be,2,gpt-5.4-low-api,W,W+10.0,84,W,D1,llm,simple_ko,True,[82],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,2
+arena_20260718_061501_196878_3d7b72be,6,gpt-5.4-low-api,W,B+46.0,74,W,E9,llm,simple_ko,True,[72],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,6
+arena_20260718_061501_196878_3d7b72be,14,gpt-5.4-low-api,W,B+74.0,246,W,E9,llm,simple_ko,True,[244],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,14
+arena_20260718_061501_196878_3d7b72be,14,gpt-5.4-low-api,W,B+74.0,250,W,E9,llm,simple_ko,False,[248],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,14
+arena_20260718_061501_196878_3d7b72be,14,gpt-5.4-low-api,W,B+74.0,264,W,D8,llm,simple_ko,False,[262],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,14
+arena_20260718_061501_196878_3d7b72be,14,gpt-5.4-low-api,W,B+74.0,268,W,A5,llm,simple_ko,False,[266],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,14
+arena_20260718_061501_196878_3d7b72be,15,gpt-5.4-low-api,B,W+26.0,85,B,H1,llm,simple_ko,True,[83],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,15
+arena_20260718_061501_196878_3d7b72be,15,gpt-5.4-low-api,B,W+26.0,93,B,E1,llm,simple_ko,False,[91],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,15
+arena_20260718_061501_196878_3d7b72be,15,gpt-5.4-low-api,B,W+26.0,103,B,E1,llm,simple_ko,False,[101],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,15
+arena_20260718_061501_196878_3d7b72be,18,gpt-5.4-low-api,W,W+12.0,46,W,F6,llm,simple_ko,True,[44],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,18
+arena_20260718_061501_196878_3d7b72be,18,gpt-5.4-low-api,W,W+12.0,66,W,F8,llm,simple_ko,False,[64],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,18
+arena_20260718_061501_196878_3d7b72be,18,gpt-5.4-low-api,W,W+12.0,70,W,F8,llm,simple_ko,False,[68],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,18
+arena_20260718_061501_196878_3d7b72be,18,gpt-5.4-low-api,W,W+12.0,74,W,F8,llm,simple_ko,False,[72],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,18
+arena_20260718_061501_196878_3d7b72be,18,gpt-5.4-low-api,W,W+12.0,78,W,F8,llm,simple_ko,False,[76],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,18
+arena_20260718_061501_196878_3d7b72be,18,gpt-5.4-low-api,W,W+12.0,92,W,E1,llm,simple_ko,False,"[89, 90]",1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,18
+arena_20260718_061501_196878_3d7b72be,20,gpt-5.4-low-api,W,B+41.0,64,W,H9,llm,simple_ko,True,[62],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,20
+arena_20260718_061501_196878_3d7b72be,24,gpt-5.4-low-api,W,W+R,86,W,B9,llm,simple_ko,True,[84],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,24
+arena_20260718_061501_196878_3d7b72be,24,gpt-5.4-low-api,W,W+R,94,W,A8,llm,simple_ko,False,[92],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,24
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,271,B,G9,llm,simple_ko,True,[269],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,277,B,E2,llm,other_positional_superko,False,[274],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,283,B,E2,llm,other_positional_superko,False,[280],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,287,B,E2,llm,simple_ko,False,[285],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,291,B,E2,llm,simple_ko,False,[289],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,295,B,E2,llm,simple_ko,False,[293],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,299,B,E2,llm,simple_ko,False,[297],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,303,B,E2,llm,simple_ko,False,[301],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,315,B,E2,llm,simple_ko,False,[313],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,325,B,E2,llm,simple_ko,False,[323],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,329,B,E2,llm,simple_ko,False,[327],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,331,B,F8,llm,simple_ko,False,"[327, 329]",1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,25,gpt-5.4-low-api,B,W+7.0,349,B,A4,llm,simple_ko,False,"[346, 347]",1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,25
+arena_20260718_061501_196878_3d7b72be,27,gpt-5.4-low-api,B,B+R,11,B,E5,llm,simple_ko,True,[9],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,27
+arena_20260718_061501_196878_3d7b72be,30,gpt-5.4-low-api,W,B+74.0,242,W,H1,llm,simple_ko,True,[240],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,30
+arena_20260718_061501_196878_3d7b72be,30,gpt-5.4-low-api,W,B+74.0,246,W,H1,llm,simple_ko,False,[244],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,30
+arena_20260718_061501_196878_3d7b72be,32,gpt-5.4-low-api,W,B+14.0,70,W,A5,llm,simple_ko,True,[68],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,32
+arena_20260718_061501_196878_3d7b72be,32,gpt-5.4-low-api,W,B+14.0,74,W,A5,llm,simple_ko,False,[72],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,32
+arena_20260718_061501_196878_3d7b72be,33,gpt-5.4-low-api,B,B+R,73,B,E1,llm,simple_ko,True,[71],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,33
+arena_20260718_061501_196878_3d7b72be,35,gpt-5.4-low-api,B,B+R,103,B,D1,llm,other_positional_superko,True,[100],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,35
+arena_20260718_061501_196878_3d7b72be,36,gpt-5.4-low-api,W,W+R,72,W,J5,llm,simple_ko,True,[70],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,36
+arena_20260718_061501_196878_3d7b72be,40,gpt-5.4-low-api,W,W+R,58,W,D9,llm,simple_ko,True,[56],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,40
+arena_20260718_061501_196878_3d7b72be,40,gpt-5.4-low-api,W,W+R,62,W,D9,llm,simple_ko,False,[60],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,40
+arena_20260718_061501_196878_3d7b72be,40,gpt-5.4-low-api,W,W+R,76,W,B6,llm,simple_ko,False,[74],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,40
+arena_20260718_061501_196878_3d7b72be,40,gpt-5.4-low-api,W,W+R,94,W,J1,llm,simple_ko,False,[92],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,40
+arena_20260718_061501_196878_3d7b72be,41,gpt-5.4-low-api,B,W+88.0,61,B,H9,llm,simple_ko,True,[59],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,41
+arena_20260718_061501_196878_3d7b72be,41,gpt-5.4-low-api,B,W+88.0,65,B,H9,llm,simple_ko,False,[63],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,41
+arena_20260718_061501_196878_3d7b72be,44,gpt-5.4-low-api,W,W+R,98,W,J9,llm,simple_ko,True,[96],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,44
+arena_20260718_061501_196878_3d7b72be,44,gpt-5.4-low-api,W,W+R,276,W,A6,llm,simple_ko,False,[274],1,0,log/arena_20260718_061501_196878_3d7b72be/llm_games.jsonl,44
+arena_20260723_001746_534175_faf8daad,11,gemini-3.6-flash-high-api,B,W+22.0,57,B,D9,llm,other_positional_superko,True,[54],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,11
+arena_20260723_001746_534175_faf8daad,11,gemini-3.6-flash-high-api,B,W+22.0,95,B,J3,llm,other_positional_superko,False,[92],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,11
+arena_20260723_001746_534175_faf8daad,19,gemini-3.6-flash-high-api,B,B+2.0,51,B,H5,llm,simple_ko,True,[49],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,19
+arena_20260723_001746_534175_faf8daad,19,gemini-3.6-flash-high-api,B,B+2.0,55,B,H5,llm,simple_ko,False,[53],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,19
+arena_20260723_001746_534175_faf8daad,19,gemini-3.6-flash-high-api,B,B+2.0,81,B,A5,llm,simple_ko,False,[79],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,19
+arena_20260723_001746_534175_faf8daad,19,gemini-3.6-flash-high-api,B,B+2.0,89,B,A5,llm,simple_ko,False,[87],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,19
+arena_20260723_001746_534175_faf8daad,19,gemini-3.6-flash-high-api,B,B+2.0,93,B,A5,llm,simple_ko,False,[91],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,19
+arena_20260723_001746_534175_faf8daad,19,gemini-3.6-flash-high-api,B,B+2.0,111,B,J4,llm,other_positional_superko,False,[108],1,0,log/arena_20260723_001746_534175_faf8daad/llm_games.jsonl,19
+arena_20260723_173702_334483_0c232340,18,gemini-3.1-pro-high-api,W,B+74.0,82,W,H1,llm,simple_ko,True,[80],1,0,log/arena_20260723_173702_334483_0c232340/llm_games.jsonl,18
+arena_20260723_173702_334483_0c232340,18,gemini-3.1-pro-high-api,W,B+74.0,88,W,H1,llm,simple_ko,False,[86],1,0,log/arena_20260723_173702_334483_0c232340/llm_games.jsonl,18
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,54,W,A3,llm,simple_ko,True,[52],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,62,W,C1,llm,simple_ko,False,[60],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,66,W,C1,llm,simple_ko,False,[64],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,70,W,C1,llm,simple_ko,False,[68],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,74,W,C1,llm,simple_ko,False,[72],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,78,W,C1,llm,simple_ko,False,[76],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,82,W,C1,llm,simple_ko,False,[80],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,4,gpt5.6-sol-low-api,W,W+R,86,W,C1,llm,simple_ko,False,[84],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,4
+arena_20260723_205921_431630_42e71474,8,gpt5.6-sol-low-api,W,B+74.0,66,W,G9,llm,simple_ko,True,[64],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,8
+arena_20260723_205921_431630_42e71474,10,gpt5.6-sol-low-api,W,B+74.0,82,W,J1,llm,simple_ko,True,[80],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,10
+arena_20260723_205921_431630_42e71474,10,gpt5.6-sol-low-api,W,B+74.0,106,W,A1,llm,simple_ko,False,[104],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,10
+arena_20260723_205921_431630_42e71474,10,gpt5.6-sol-low-api,W,B+74.0,110,W,A1,llm,simple_ko,False,[108],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,10
+arena_20260723_205921_431630_42e71474,10,gpt5.6-sol-low-api,W,B+74.0,118,W,A1,llm,simple_ko,False,[116],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,10
+arena_20260723_205921_431630_42e71474,15,gpt5.6-sol-low-api,B,B+1.0,47,B,A7,llm,simple_ko,True,[45],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,15
+arena_20260723_205921_431630_42e71474,16,gpt5.6-sol-low-api,W,B+12.0,54,W,A6,llm,simple_ko,True,[52],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,16
+arena_20260723_205921_431630_42e71474,16,gpt5.6-sol-low-api,W,B+12.0,58,W,A6,llm,simple_ko,False,[56],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,16
+arena_20260723_205921_431630_42e71474,16,gpt5.6-sol-low-api,W,B+12.0,62,W,A6,llm,simple_ko,False,[60],1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,16
+arena_20260723_205921_431630_42e71474,16,gpt5.6-sol-low-api,W,B+12.0,64,W,C9,llm,simple_ko,False,"[60, 62]",1,0,log/arena_20260723_205921_431630_42e71474/llm_games.jsonl,16
+arena_20260724_053334_256504_92b016a9,7,gpt5.6-sol-high-api,B,B+R,77,B,H9,llm,simple_ko,True,[75],1,0,log/arena_20260724_053334_256504_92b016a9/llm_games.jsonl,7
+arena_20260724_053334_256504_92b016a9,7,gpt5.6-sol-high-api,B,B+R,85,B,H9,llm,simple_ko,False,[83],1,0,log/arena_20260724_053334_256504_92b016a9/llm_games.jsonl,7
+arena_20260724_053334_256504_92b016a9,11,gpt5.6-sol-high-api,B,W+10.0,87,B,C2,llm,other_positional_superko,True,[84],0,0,log/arena_20260724_053334_256504_92b016a9/llm_games.jsonl,11
+arena_20260724_053334_256504_92b016a9,12,gpt5.6-sol-high-api,W,W+R,72,W,A2,llm,simple_ko,True,[70],1,0,log/arena_20260724_053334_256504_92b016a9/llm_games.jsonl,12
+arena_20260724_053334_256504_92b016a9,12,gpt5.6-sol-high-api,W,W+R,76,W,A2,llm,simple_ko,False,[74],1,0,log/arena_20260724_053334_256504_92b016a9/llm_games.jsonl,12
+arena_20260730_235227_254687_84a63641,4,opus-5-high-api,W,W+4.0,58,W,A2,llm,simple_ko,True,[56],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,4
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,78,W,G5,llm,simple_ko,True,[76],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,80,W,A9,llm,simple_ko,False,"[76, 78]",1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,84,W,G5,llm,simple_ko,False,[82],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,88,W,G5,llm,simple_ko,False,[86],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,92,W,G5,llm,simple_ko,False,[90],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,96,W,G5,llm,simple_ko,False,[94],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,100,W,G5,llm,simple_ko,False,[98],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,104,W,G5,llm,simple_ko,False,[102],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,108,W,G5,llm,simple_ko,False,[106],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,112,W,G5,llm,simple_ko,False,[110],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,116,W,G5,llm,simple_ko,False,[114],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,120,W,G5,llm,simple_ko,False,[118],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,124,W,G5,llm,simple_ko,False,[122],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,128,W,G5,llm,simple_ko,False,"[125, 126]",1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,132,W,G5,llm,simple_ko,False,[130],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260730_235227_254687_84a63641,14,opus-5-high-api,W,B+74.0,136,W,G5,llm,simple_ko,False,[134],1,0,log/arena_20260730_235227_254687_84a63641/llm_games.jsonl,14
+arena_20260731_044901_270838_7068701f,1,grok-4.5-high-api,B,B+R,27,B,C3,llm,simple_ko,True,[25],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,1
+arena_20260731_044901_270838_7068701f,1,grok-4.5-high-api,B,B+R,87,B,A5,llm,other_positional_superko,False,[84],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,1
+arena_20260731_044901_270838_7068701f,5,grok-4.5-high-api,B,B+2.0,73,B,J9,llm,simple_ko,True,[71],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,5
+arena_20260731_044901_270838_7068701f,7,grok-4.5-high-api,B,W+88.0,77,B,J8,llm,other_positional_superko,True,[74],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,7
+arena_20260731_044901_270838_7068701f,7,grok-4.5-high-api,B,W+88.0,119,B,G8,llm,simple_ko,False,[117],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,7
+arena_20260731_044901_270838_7068701f,12,grok-4.5-high-api,W,W+12.0,36,W,H9,llm,simple_ko,True,[34],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,12
+arena_20260731_044901_270838_7068701f,13,grok-4.5-high-api,B,W+6.0,97,B,A9,llm,simple_ko,True,[95],1,0,log/arena_20260731_044901_270838_7068701f/llm_games.jsonl,13
+arena_20260807_184513_963568_b2aa1679,8,DeepSeek-V4-Flash-0731-high-api,W,B+74.0,66,W,E6,llm,simple_ko,True,[64],1,0,log/arena_20260807_184513_963568_b2aa1679/llm_games.jsonl,6
+arena_20260807_184513_963568_b2aa1679,8,DeepSeek-V4-Flash-0731-high-api,W,B+74.0,70,W,E6,llm,simple_ko,False,[68],1,0,log/arena_20260807_184513_963568_b2aa1679/llm_games.jsonl,6
+arena_20260807_223534_789082_9ae5a490,4,kimi-k3-high-api,W,W+R,68,W,E1,llm,simple_ko,True,[66],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,4
+arena_20260807_223534_789082_9ae5a490,4,kimi-k3-high-api,W,W+R,76,W,J1,llm,simple_ko,False,[74],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,4
+arena_20260807_223534_789082_9ae5a490,4,kimi-k3-high-api,W,W+R,84,W,J1,llm,simple_ko,False,[82],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,4
+arena_20260807_223534_789082_9ae5a490,4,kimi-k3-high-api,W,W+R,88,W,J1,llm,simple_ko,False,[86],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,4
+arena_20260807_223534_789082_9ae5a490,15,muse-spark-1.2-openrouter-high-api,B,W+88.0,75,B,C1,llm,simple_ko,True,[73],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,13
+arena_20260807_223534_789082_9ae5a490,15,muse-spark-1.2-openrouter-high-api,B,W+88.0,79,B,C1,llm,simple_ko,False,[77],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,13
+arena_20260807_223534_789082_9ae5a490,15,muse-spark-1.2-openrouter-high-api,B,W+88.0,83,B,C1,llm,simple_ko,False,[81],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,13
+arena_20260807_223534_789082_9ae5a490,15,muse-spark-1.2-openrouter-high-api,B,W+88.0,87,B,C1,llm,simple_ko,False,[85],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,13
+arena_20260807_223534_789082_9ae5a490,15,muse-spark-1.2-openrouter-high-api,B,W+88.0,107,B,J7,llm,other_positional_superko,False,[104],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,13
+arena_20260807_223534_789082_9ae5a490,16,muse-spark-1.2-openrouter-high-api,W,B+74.0,106,W,H1,llm,other_positional_superko,True,[103],0,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,14
+arena_20260807_223534_789082_9ae5a490,20,muse-spark-1.2-openrouter-high-api,W,B+6.0,58,W,B3,llm,simple_ko,True,[56],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,18
+arena_20260807_223534_789082_9ae5a490,22,kimi-k3-high-api,W,B+12.0,66,W,A8,llm,simple_ko,True,[64],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,24
+arena_20260807_223534_789082_9ae5a490,22,kimi-k3-high-api,W,B+12.0,72,W,A8,llm,simple_ko,False,[70],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,24
+arena_20260807_223534_789082_9ae5a490,27,kimi-k3-high-api,B,B+R,45,B,A5,llm,simple_ko,True,[43],1,0,log/arena_20260807_223534_789082_9ae5a490/llm_games.jsonl,25
+arena_20260816_235957_455970_01f2f68b,3,gpt5.6-sol-low-codex-single,B,B+6.0,61,B,H9,llm,simple_ko,True,[59],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,3
+arena_20260816_235957_455970_01f2f68b,3,gpt5.6-sol-low-codex-single,B,B+6.0,65,B,H9,llm,simple_ko,False,[63],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,3
+arena_20260816_235957_455970_01f2f68b,5,gpt5.6-sol-low-codex-single,B,W+14.0,35,B,D1,llm,simple_ko,True,[33],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,5
+arena_20260816_235957_455970_01f2f68b,5,gpt5.6-sol-low-codex-single,B,W+14.0,39,B,D1,llm,simple_ko,False,[37],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,5
+arena_20260816_235957_455970_01f2f68b,5,gpt5.6-sol-low-codex-single,B,W+14.0,43,B,D1,llm,simple_ko,False,[41],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,5
+arena_20260816_235957_455970_01f2f68b,9,gpt5.6-sol-low-codex-single,B,W+18.0,57,B,H1,llm,simple_ko,True,[55],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,9
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,62,W,J4,llm,simple_ko,True,[60],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,66,W,J4,llm,simple_ko,False,[64],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,72,W,J4,llm,simple_ko,False,[70],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,76,W,J4,llm,simple_ko,False,[74],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,80,W,J4,llm,simple_ko,False,[78],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,84,W,J4,llm,simple_ko,False,[82],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,88,W,J4,llm,simple_ko,False,[86],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,92,W,J4,llm,simple_ko,False,[90],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,96,W,J4,llm,simple_ko,False,[94],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,100,W,E9,llm,simple_ko,False,[98],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,102,W,J4,llm,simple_ko,False,"[98, 100]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,108,W,E9,llm,simple_ko,False,"[105, 106]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,110,W,J4,llm,simple_ko,False,"[105, 106, 108]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,112,W,B3,llm,simple_ko,False,"[105, 106, 108, 110]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,116,W,B3,llm,simple_ko,False,[114],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,118,W,J4,llm,simple_ko,False,"[114, 116]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,120,W,E9,llm,simple_ko,False,"[114, 116, 118]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,124,W,E9,llm,simple_ko,False,[122],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,126,W,J4,llm,simple_ko,False,"[122, 124]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,130,W,J4,llm,simple_ko,False,"[127, 128]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,132,W,E9,llm,simple_ko,False,"[127, 128, 130]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,136,W,E9,llm,simple_ko,False,[134],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,138,W,J4,llm,simple_ko,False,"[134, 136]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,142,W,J4,llm,simple_ko,False,"[139, 140]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,10,gpt5.6-sol-low-codex-single,W,B+40.0,144,W,E9,llm,simple_ko,False,"[139, 140, 142]",1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,10
+arena_20260816_235957_455970_01f2f68b,11,gpt5.6-sol-low-codex-single,B,B+4.0,27,B,C5,llm,simple_ko,True,[25],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,11
+arena_20260816_235957_455970_01f2f68b,11,gpt5.6-sol-low-codex-single,B,B+4.0,31,B,C5,llm,simple_ko,False,[29],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,11
+arena_20260816_235957_455970_01f2f68b,11,gpt5.6-sol-low-codex-single,B,B+4.0,35,B,C5,llm,simple_ko,False,[33],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,11
+arena_20260816_235957_455970_01f2f68b,11,gpt5.6-sol-low-codex-single,B,B+4.0,39,B,C5,llm,simple_ko,False,[37],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,11
+arena_20260816_235957_455970_01f2f68b,12,gpt5.6-sol-low-codex-single,W,W+8.0,50,W,G8,llm,simple_ko,True,[48],1,0,log/arena_20260816_235957_455970_01f2f68b/llm_games.jsonl,12
+arena_20260817_000316_430979_943e7b31,5,gpt5.6-luna-low-codex-single,B,B+R,47,B,B5,llm,simple_ko,True,[45],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,5
+arena_20260817_000316_430979_943e7b31,5,gpt5.6-luna-low-codex-single,B,B+R,65,B,B5,llm,simple_ko,False,[63],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,5
+arena_20260817_000316_430979_943e7b31,5,gpt5.6-luna-low-codex-single,B,B+R,69,B,B5,llm,simple_ko,False,[67],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,5
+arena_20260817_000316_430979_943e7b31,7,gpt5.6-luna-low-codex-single,B,W+88.0,29,B,D4,llm,simple_ko,True,[27],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,7
+arena_20260817_000316_430979_943e7b31,7,gpt5.6-luna-low-codex-single,B,W+88.0,39,B,D4,llm,simple_ko,False,[37],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,7
+arena_20260817_000316_430979_943e7b31,7,gpt5.6-luna-low-codex-single,B,W+88.0,43,B,D4,llm,simple_ko,False,[41],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,7
+arena_20260817_000316_430979_943e7b31,11,gpt5.6-luna-low-codex-single,B,0,63,B,B4,llm,simple_ko,True,[61],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,11
+arena_20260817_000316_430979_943e7b31,12,gpt5.6-luna-low-codex-single,W,W+R,366,W,E4,llm,simple_ko,True,[364],1,0,log/arena_20260817_000316_430979_943e7b31/llm_games.jsonl,12
+arena_20260817_052814_571091_83fe9770,7,gpt5.6-luna-high-codex-single,B,W+24.0,13,B,E5,llm,simple_ko,True,[11],1,0,log/arena_20260817_052814_571091_83fe9770/llm_games.jsonl,7
+arena_20260817_052814_571091_83fe9770,7,gpt5.6-luna-high-codex-single,B,W+24.0,17,B,E5,llm,simple_ko,False,[15],1,0,log/arena_20260817_052814_571091_83fe9770/llm_games.jsonl,7
+arena_20260817_052814_571091_83fe9770,7,gpt5.6-luna-high-codex-single,B,W+24.0,27,B,E5,llm,simple_ko,False,[25],1,0,log/arena_20260817_052814_571091_83fe9770/llm_games.jsonl,7
+arena_20260817_052814_571091_83fe9770,10,gpt5.6-luna-high-codex-single,W,0,88,W,C1,llm,simple_ko,True,[86],1,0,log/arena_20260817_052814_571091_83fe9770/llm_games.jsonl,10
+arena_20260817_052814_571091_83fe9770,10,gpt5.6-luna-high-codex-single,W,0,92,W,C1,llm,simple_ko,False,[90],1,0,log/arena_20260817_052814_571091_83fe9770/llm_games.jsonl,10
+arena_20260817_052814_571091_83fe9770,13,gpt5.6-luna-high-codex-single,B,W+88.0,75,B,C8,llm,simple_ko,True,[73],1,0,log/arena_20260817_052814_571091_83fe9770/llm_games.jsonl,13
+arena_20260817_052838_126442_c39efeda,1,gpt5.6-luna-high-codex-multi,B,B+R,57,B,F6,llm,simple_ko,True,[55],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,1
+arena_20260817_052838_126442_c39efeda,1,gpt5.6-luna-high-codex-multi,B,B+R,71,B,D8,llm,simple_ko,False,[69],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,1
+arena_20260817_052838_126442_c39efeda,1,gpt5.6-luna-high-codex-multi,B,B+R,77,B,D8,llm,simple_ko,False,[75],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,1
+arena_20260817_052838_126442_c39efeda,1,gpt5.6-luna-high-codex-multi,B,B+R,81,B,D8,llm,simple_ko,False,[79],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,1
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,84,W,G3,llm,simple_ko,True,[82],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,88,W,G3,llm,simple_ko,False,[86],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,94,W,G3,llm,simple_ko,False,[92],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,96,W,E1,llm,simple_ko,False,"[92, 94]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,100,W,E1,llm,simple_ko,False,[98],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,102,W,G3,llm,simple_ko,False,"[98, 100]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,106,W,G3,llm,simple_ko,False,[104],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,134,W,C5,llm,simple_ko,False,"[131, 132]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,138,W,E1,llm,simple_ko,False,"[135, 136]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,142,W,C5,llm,simple_ko,False,[140],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,150,W,C5,llm,simple_ko,False,[148],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,154,W,C5,llm,simple_ko,False,[152],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,158,W,J3,llm,simple_ko,False,"[155, 156]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,166,W,E1,llm,simple_ko,False,"[163, 164]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,168,W,C5,llm,simple_ko,False,"[163, 164, 166]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,172,W,C5,llm,simple_ko,False,"[169, 170]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,176,W,E1,llm,simple_ko,False,"[173, 174]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,2,gpt5.6-luna-high-codex-multi,W,B+24.0,178,W,C5,llm,simple_ko,False,"[173, 174, 176]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,2
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,69,B,F2,llm,simple_ko,True,[67],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,75,B,C3,llm,simple_ko,False,[73],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,79,B,C3,llm,simple_ko,False,[77],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,81,B,J3,llm,simple_ko,False,"[77, 79]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,83,B,F2,llm,simple_ko,False,"[77, 79, 81]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,85,B,J8,llm,simple_ko,False,"[77, 79, 81, 83]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,89,B,C3,llm,simple_ko,False,[87],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,93,B,C3,llm,simple_ko,False,[91],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,3,gpt5.6-luna-high-codex-multi,B,B+1.0,95,B,F2,llm,simple_ko,False,"[91, 93]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,3
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,43,B,G5,llm,simple_ko,True,[41],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,47,B,G5,llm,simple_ko,False,[45],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,65,B,F8,llm,simple_ko,False,[63],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,81,B,F8,llm,simple_ko,False,[79],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,91,B,F8,llm,simple_ko,False,[89],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,95,B,F8,llm,simple_ko,False,[93],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,103,B,G9,llm,simple_ko,False,[101],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,107,B,G9,llm,simple_ko,False,[105],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,109,B,J3,llm,simple_ko,False,"[105, 107]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,113,B,J3,llm,simple_ko,False,[111],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,117,B,J3,llm,simple_ko,False,[115],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,121,B,G9,llm,simple_ko,False,[119],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,123,B,J3,llm,simple_ko,False,"[119, 121]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,127,B,G9,llm,simple_ko,False,[125],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,129,B,J3,llm,simple_ko,False,"[125, 127]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,137,B,J3,llm,simple_ko,False,[135],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,141,B,J3,llm,simple_ko,False,[139],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,143,B,G9,llm,simple_ko,False,"[139, 141]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,149,B,G9,llm,simple_ko,False,[147],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,151,B,J3,llm,simple_ko,False,"[147, 149]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,155,B,J3,llm,simple_ko,False,[153],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,159,B,G9,llm,simple_ko,False,[157],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,161,B,J3,llm,simple_ko,False,"[157, 159]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,165,B,G9,llm,simple_ko,False,[163],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,167,B,J3,llm,simple_ko,False,"[163, 165]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,171,B,J3,llm,simple_ko,False,[169],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,173,B,G9,llm,simple_ko,False,"[169, 171]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,177,B,J3,llm,simple_ko,False,[175],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,179,B,G9,llm,simple_ko,False,"[175, 177]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,183,B,J3,llm,simple_ko,False,[181],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,185,B,G9,llm,simple_ko,False,"[181, 183]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,189,B,J3,llm,simple_ko,False,[187],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,191,B,G9,llm,simple_ko,False,"[187, 189]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,195,B,J3,llm,simple_ko,False,[193],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,197,B,G9,llm,simple_ko,False,"[193, 195]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,201,B,G9,llm,simple_ko,False,[199],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,203,B,J3,llm,simple_ko,False,"[199, 201]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,207,B,J3,llm,simple_ko,False,[205],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,217,B,J7,llm,simple_ko,False,"[214, 215]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,221,B,J7,llm,simple_ko,False,"[218, 219]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,225,B,J7,llm,simple_ko,False,"[222, 223]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,227,B,G9,llm,simple_ko,False,"[222, 223, 225]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,233,B,J7,llm,simple_ko,False,"[230, 231]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,237,B,J7,llm,simple_ko,False,"[234, 235]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,239,B,G9,llm,simple_ko,False,"[234, 235, 237]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,243,B,G9,llm,simple_ko,False,"[240, 241]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,245,B,J7,llm,simple_ko,False,"[240, 241, 243]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,249,B,G9,llm,simple_ko,False,"[246, 247]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,251,B,J7,llm,simple_ko,False,"[246, 247, 249]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,257,B,G9,llm,simple_ko,False,"[254, 255]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,259,B,J7,llm,simple_ko,False,"[254, 255, 257]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,263,B,J7,llm,simple_ko,False,"[260, 261]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,265,B,G9,llm,simple_ko,False,"[260, 261, 263]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,269,B,J7,llm,simple_ko,False,"[266, 267]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,5,gpt5.6-luna-high-codex-multi,B,W+76.0,271,B,G9,llm,simple_ko,False,"[266, 267, 269]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,5
+arena_20260817_052838_126442_c39efeda,7,gpt5.6-luna-high-codex-multi,B,B+R,41,B,F6,llm,simple_ko,True,[39],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,7
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,60,W,F9,llm,simple_ko,True,[58],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,64,W,F9,llm,simple_ko,False,[62],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,70,W,G2,llm,simple_ko,False,[68],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,74,W,G2,llm,simple_ko,False,[72],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,78,W,G2,llm,simple_ko,False,[76],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,82,W,G2,llm,simple_ko,False,[80],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,84,W,F9,llm,simple_ko,False,"[80, 82]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,88,W,G2,llm,simple_ko,False,[86],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,92,W,G2,llm,simple_ko,False,[90],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,96,W,G2,llm,simple_ko,False,[94],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,98,W,F9,llm,simple_ko,False,"[94, 96]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,102,W,F9,llm,simple_ko,False,[100],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,106,W,F9,llm,simple_ko,False,[104],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,110,W,G2,llm,simple_ko,False,[108],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,114,W,G2,llm,simple_ko,False,[112],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,118,W,G2,llm,simple_ko,False,[116],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,122,W,G2,llm,simple_ko,False,[120],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,126,W,G2,llm,simple_ko,False,[124],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,130,W,G2,llm,simple_ko,False,"[127, 128]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,134,W,G2,llm,simple_ko,False,"[131, 132]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,138,W,G2,llm,simple_ko,False,"[135, 136]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,8,gpt5.6-luna-high-codex-multi,W,W+6.0,142,W,G2,llm,simple_ko,False,"[139, 140]",1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,8
+arena_20260817_052838_126442_c39efeda,9,gpt5.6-luna-high-codex-multi,B,B+R,81,B,J4,llm,simple_ko,True,[79],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,9
+arena_20260817_052838_126442_c39efeda,9,gpt5.6-luna-high-codex-multi,B,B+R,87,B,J4,llm,simple_ko,False,[85],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,9
+arena_20260817_052838_126442_c39efeda,9,gpt5.6-luna-high-codex-multi,B,B+R,93,B,J4,llm,simple_ko,False,[91],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,9
+arena_20260817_052838_126442_c39efeda,9,gpt5.6-luna-high-codex-multi,B,B+R,97,B,J4,llm,simple_ko,False,[95],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,9
+arena_20260817_052838_126442_c39efeda,9,gpt5.6-luna-high-codex-multi,B,B+R,101,B,J4,llm,simple_ko,False,[99],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,9
+arena_20260817_052838_126442_c39efeda,9,gpt5.6-luna-high-codex-multi,B,B+R,105,B,J4,llm,simple_ko,False,[103],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,9
+arena_20260817_052838_126442_c39efeda,10,gpt5.6-luna-high-codex-multi,W,B+74.0,70,W,J9,llm,simple_ko,True,[68],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,10
+arena_20260817_052838_126442_c39efeda,10,gpt5.6-luna-high-codex-multi,W,B+74.0,178,W,C5,llm,other_positional_superko,False,[175],0,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,10
+arena_20260817_052838_126442_c39efeda,11,gpt5.6-luna-high-codex-multi,B,W+88.0,67,B,C8,llm,simple_ko,True,[65],1,0,log/arena_20260817_052838_126442_c39efeda/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,9,gpt5.6-luna-high-codex-workspace,B,W+14.0,33,B,D4,llm,simple_ko,True,[31],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,9
+arena_20260817_065559_213696_f822d790,9,gpt5.6-luna-high-codex-workspace,B,W+14.0,49,B,D4,llm,simple_ko,False,[47],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,9
+arena_20260817_065559_213696_f822d790,9,gpt5.6-luna-high-codex-workspace,B,W+14.0,61,B,D4,llm,simple_ko,False,[59],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,9
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,87,B,F7,llm,simple_ko,True,[85],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,91,B,F7,llm,simple_ko,False,[89],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,97,B,F7,llm,simple_ko,False,[95],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,105,B,F7,llm,simple_ko,False,[103],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,109,B,F7,llm,simple_ko,False,[107],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,113,B,F7,llm,simple_ko,False,[111],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,119,B,F7,llm,simple_ko,False,[117],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,123,B,F7,llm,simple_ko,False,[121],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,127,B,F7,llm,simple_ko,False,[125],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,131,B,F7,llm,simple_ko,False,[129],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,135,B,F7,llm,simple_ko,False,[133],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,139,B,F7,llm,simple_ko,False,[137],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,143,B,F7,llm,simple_ko,False,[141],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,11,gpt5.6-luna-high-codex-workspace,B,B+2.0,147,B,F7,llm,simple_ko,False,[145],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,11
+arena_20260817_065559_213696_f822d790,12,gpt5.6-luna-high-codex-workspace,W,W+34.0,62,W,F7,llm,simple_ko,True,[60],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,12
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,52,W,E3,llm,simple_ko,True,[50],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,56,W,E3,llm,simple_ko,False,[54],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,60,W,E3,llm,simple_ko,False,[58],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,64,W,E3,llm,simple_ko,False,[62],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,68,W,E3,llm,simple_ko,False,[66],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,72,W,E3,llm,simple_ko,False,[70],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,74,W,C2,llm,simple_ko,False,"[70, 72]",1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,82,W,E3,llm,simple_ko,False,[80],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,86,W,E3,llm,simple_ko,False,[84],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,90,W,E3,llm,simple_ko,False,[88],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,94,W,E3,llm,simple_ko,False,[92],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,98,W,B1,llm,simple_ko,False,[96],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,106,W,D4,llm,simple_ko,False,[104],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,110,W,D4,llm,simple_ko,False,[108],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260817_065559_213696_f822d790,14,gpt5.6-luna-high-codex-workspace,W,W+45.0,114,W,D4,llm,simple_ko,False,[112],1,0,log/arena_20260817_065559_213696_f822d790/llm_games.jsonl,14
+arena_20260818_021103_083881_b776e37a,5,gpt5.6-sol-high-codex-multi,B,B+R,61,B,H1,llm,simple_ko,True,[59],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,1
+arena_20260818_021103_083881_b776e37a,9,gpt5.6-sol-high-codex-multi,B,B+12.0,55,B,J7,llm,simple_ko,True,[53],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,5
+arena_20260818_021103_083881_b776e37a,9,gpt5.6-sol-high-codex-multi,B,B+12.0,59,B,J7,llm,simple_ko,False,[57],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,5
+arena_20260818_021103_083881_b776e37a,21,gpt5.6-luna-max-codex-multi,B,W+36.0,75,B,C6,llm,simple_ko,True,[73],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,19
+arena_20260818_021103_083881_b776e37a,21,gpt5.6-luna-max-codex-multi,B,W+36.0,79,B,C6,llm,simple_ko,False,[77],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,19
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,43,B,G4,llm,simple_ko,True,[41],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,67,B,D9,llm,simple_ko,False,[65],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,91,B,C1,llm,simple_ko,False,[89],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,95,B,C1,llm,simple_ko,False,[93],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,99,B,G2,llm,simple_ko,False,"[96, 97]",1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,101,B,D9,llm,simple_ko,False,"[96, 97, 99]",1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,103,B,C1,llm,simple_ko,False,"[96, 97, 99, 101]",1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,107,B,C1,llm,simple_ko,False,[105],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,109,B,D9,llm,simple_ko,False,"[105, 107]",1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,113,B,C1,llm,simple_ko,False,[111],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,117,B,C1,llm,simple_ko,False,[115],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,121,B,C1,llm,simple_ko,False,[119],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,125,B,C1,llm,simple_ko,False,[123],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,129,B,C1,llm,simple_ko,False,[127],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,25,gpt5.6-luna-max-codex-multi,B,B+2.0,133,B,C1,llm,simple_ko,False,[131],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,23
+arena_20260818_021103_083881_b776e37a,27,gpt5.6-luna-max-codex-multi,B,B+R,49,B,C3,llm,simple_ko,True,[47],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,25
+arena_20260818_021103_083881_b776e37a,27,gpt5.6-luna-max-codex-multi,B,B+R,53,B,C3,llm,simple_ko,False,[51],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,25
+arena_20260818_021103_083881_b776e37a,27,gpt5.6-luna-max-codex-multi,B,B+R,57,B,C3,llm,simple_ko,False,[55],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,25
+arena_20260818_021103_083881_b776e37a,27,gpt5.6-luna-max-codex-multi,B,B+R,63,B,C3,llm,simple_ko,False,[61],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,25
+arena_20260818_021103_083881_b776e37a,1,gpt5.6-luna-max-codex-single,B,W+10.0,63,B,D9,llm,simple_ko,True,[61],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,29
+arena_20260818_021103_083881_b776e37a,1,gpt5.6-luna-max-codex-single,B,W+10.0,69,B,D9,llm,simple_ko,False,[67],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,29
+arena_20260818_021103_083881_b776e37a,38,gpt5.6-luna-max-codex-single,W,B+20.0,82,W,H1,llm,simple_ko,True,[80],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,38
+arena_20260818_021103_083881_b776e37a,38,gpt5.6-luna-max-codex-single,W,B+20.0,96,W,C1,llm,simple_ko,False,[94],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,38
+arena_20260818_021103_083881_b776e37a,38,gpt5.6-luna-max-codex-single,W,B+20.0,100,W,C1,llm,simple_ko,False,[98],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,38
+arena_20260818_021103_083881_b776e37a,38,gpt5.6-luna-max-codex-single,W,B+20.0,110,W,A3,llm,simple_ko,False,[108],1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,38
+arena_20260818_021103_083881_b776e37a,38,gpt5.6-luna-max-codex-single,W,B+20.0,114,W,A3,llm,simple_ko,False,"[111, 112]",1,0,log/arena_20260818_021103_083881_b776e37a/llm_games.jsonl,38
+arena_20260818_035858_741335_f255e7e6,4,gpt5.6-sol-max-codex-multi,W,W+R,30,W,E1,llm,simple_ko,True,[28],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,4
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,38,W,G1,llm,simple_ko,True,[36],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,52,W,G1,llm,simple_ko,False,[50],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,56,W,G1,llm,simple_ko,False,[54],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,60,W,G1,llm,simple_ko,False,[58],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,64,W,G1,llm,simple_ko,False,[62],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,68,W,G1,llm,simple_ko,False,[66],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,72,W,G1,llm,simple_ko,False,[70],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,76,W,G1,llm,simple_ko,False,[74],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,80,W,G1,llm,simple_ko,False,[78],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,84,W,G1,llm,simple_ko,False,[82],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,88,W,G1,llm,simple_ko,False,[86],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,92,W,G1,llm,simple_ko,False,[90],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,96,W,G1,llm,simple_ko,False,[94],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,100,W,G1,llm,simple_ko,False,[98],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,104,W,G1,llm,simple_ko,False,[102],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,108,W,G1,llm,simple_ko,False,[106],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,10,gpt5.6-sol-max-codex-multi,W,W+18.0,112,W,G1,llm,simple_ko,False,[110],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,10
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,58,W,D9,llm,simple_ko,True,[56],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,62,W,D9,llm,simple_ko,False,[60],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,70,W,D9,llm,simple_ko,False,[68],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,74,W,D9,llm,simple_ko,False,[72],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,78,W,D9,llm,simple_ko,False,[76],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,82,W,D9,llm,simple_ko,False,[80],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,86,W,D9,llm,simple_ko,False,[84],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260818_035858_741335_f255e7e6,14,gpt5.6-sol-max-codex-multi,W,W+4.0,90,W,D9,llm,simple_ko,False,[88],1,0,log/arena_20260818_035858_741335_f255e7e6/llm_games.jsonl,14
+arena_20260826_054944_814746_52d18cc7,2,gpt5.6-sol-low-codex-workspace,W,W+8.0,70,W,A9,llm,simple_ko,True,[68],1,0,log/arena_20260826_054944_814746_52d18cc7/llm_games.jsonl,2
+arena_20260826_054944_814746_52d18cc7,26,gpt5.6-sol-high-codex-workspace,W,B+28.0,56,W,A9,llm,simple_ko,True,[54],1,0,log/arena_20260826_054944_814746_52d18cc7/llm_games.jsonl,26
+arena_20260826_185411_172712_18e992e8,1,gpt5.6-sol-max-codex-workspace,B,B+R,51,B,G5,llm,simple_ko,True,[49],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,1
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,66,W,F9,llm,simple_ko,True,[64],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,72,W,F9,llm,simple_ko,False,[70],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,76,W,F9,llm,simple_ko,False,[74],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,80,W,F9,llm,simple_ko,False,[78],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,84,W,F9,llm,simple_ko,False,[82],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,88,W,F9,llm,simple_ko,False,[86],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,92,W,F9,llm,simple_ko,False,[90],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,96,W,F9,llm,simple_ko,False,[94],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,100,W,F9,llm,simple_ko,False,[98],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,104,W,F9,llm,simple_ko,False,[102],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,108,W,A9,llm,simple_ko,False,[106],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,110,W,F9,llm,simple_ko,False,"[106, 108]",1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,114,W,F9,llm,simple_ko,False,[112],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,118,W,F9,llm,simple_ko,False,[116],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,122,W,F9,llm,simple_ko,False,[120],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,8,gpt5.6-sol-max-codex-workspace,W,W+10.0,126,W,F9,llm,simple_ko,False,[124],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,8
+arena_20260826_185411_172712_18e992e8,11,gpt5.6-sol-max-codex-workspace,B,W+10.0,51,B,A7,llm,simple_ko,True,[49],1,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,11
+arena_20260826_185411_172712_18e992e8,13,gpt5.6-sol-max-codex-workspace,B,W+88.0,153,B,C4,llm,other_positional_superko,True,[150],0,0,log/arena_20260826_185411_172712_18e992e8/llm_games.jsonl,13
+arena_20260827_024210_866072_76061f5a,1,gpt5.6-sol-high-prime-isolated,B,B+R,35,B,G6,llm,simple_ko,True,[33],1,0,log/arena_20260827_024210_866072_76061f5a/llm_games.jsonl,1
+arena_20260827_054505_007832_dbf67ee8,5,gpt5.6-sol-low-codex-multi,B,B+4.0,63,B,J5,llm,simple_ko,True,[61],1,0,log/arena_20260827_054505_007832_dbf67ee8/llm_games.jsonl,5
+arena_20260827_231719_610088_eb49a7a4,8,gpt5.6-sol-max-codex-workspace-continual,W,B+6.0,22,W,G5,llm,simple_ko,True,[20],1,0,log/arena_20260827_231719_610088_eb49a7a4/llm_games.jsonl,8
+arena_20260827_231719_610088_eb49a7a4,8,gpt5.6-sol-max-codex-workspace-continual,W,B+6.0,26,W,G5,llm,simple_ko,False,[24],1,0,log/arena_20260827_231719_610088_eb49a7a4/llm_games.jsonl,8
+arena_20260827_231719_610088_eb49a7a4,8,gpt5.6-sol-max-codex-workspace-continual,W,B+6.0,80,W,A8,llm,simple_ko,False,[78],1,0,log/arena_20260827_231719_610088_eb49a7a4/llm_games.jsonl,8
+arena_20260827_231719_610088_eb49a7a4,9,gpt5.6-sol-max-codex-workspace-continual,B,W+88.0,155,B,E4,llm,other_positional_superko,True,[152],0,0,log/arena_20260827_231719_610088_eb49a7a4/llm_games.jsonl,9
+arena_20260829_055421_573962_ed29283d,2,gpt5.6-sol-high-codex-workspace-continual2,W,B+26.0,76,W,A2,llm,other_positional_superko,True,[73],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,6
+arena_20260829_055421_573962_ed29283d,17,gpt5.6-sol-low-codex-workspace-continual2,B,W+6.0,45,B,E9,llm,other_positional_superko,True,[42],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,15
+arena_20260829_055421_573962_ed29283d,17,gpt5.6-sol-low-codex-workspace-continual2,B,W+6.0,93,B,E9,llm,simple_ko,False,[91],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,15
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,48,W,B8,llm,simple_ko,True,[46],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,78,W,E1,llm,simple_ko,False,[76],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,82,W,E1,llm,simple_ko,False,"[79, 80]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,86,W,E1,llm,simple_ko,False,"[83, 84]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,90,W,E1,llm,simple_ko,False,"[87, 88]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,94,W,E1,llm,simple_ko,False,"[91, 92]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,98,W,E1,llm,simple_ko,False,"[95, 96]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,102,W,E1,llm,simple_ko,False,"[99, 100]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,106,W,E1,llm,simple_ko,False,[104],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,110,W,E1,llm,simple_ko,False,"[107, 108]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,114,W,E1,llm,simple_ko,False,"[111, 112]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,118,W,E1,llm,simple_ko,False,"[115, 116]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,122,W,E1,llm,simple_ko,False,[120],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,126,W,E1,llm,simple_ko,False,"[123, 124]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,130,W,E1,llm,simple_ko,False,"[127, 128]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,134,W,E1,llm,simple_ko,False,"[131, 132]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,138,W,E1,llm,simple_ko,False,"[135, 136]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,142,W,E1,llm,simple_ko,False,"[139, 140]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,146,W,E1,llm,simple_ko,False,"[143, 144]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,20,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,150,W,E1,llm,simple_ko,False,"[147, 148]",1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,20
+arena_20260829_055421_573962_ed29283d,22,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,16,W,G4,llm,simple_ko,True,[14],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,22
+arena_20260829_055421_573962_ed29283d,22,gpt5.6-sol-high-codex-workspace-continual2,W,W+R,20,W,G4,llm,simple_ko,False,[18],1,0,log/arena_20260829_055421_573962_ed29283d/llm_games.jsonl,22
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,141,B,A8,llm,simple_ko,True,[139],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,145,B,A8,llm,simple_ko,False,"[142, 143]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,149,B,A8,llm,simple_ko,False,"[146, 147]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,153,B,A8,llm,simple_ko,False,"[150, 151]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,157,B,A8,llm,simple_ko,False,"[154, 155]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,161,B,A8,llm,simple_ko,False,"[158, 159]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,165,B,A8,llm,simple_ko,False,"[162, 163]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,169,B,A8,llm,simple_ko,False,"[166, 167]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,173,B,A8,llm,simple_ko,False,"[170, 171]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,5,gpt5.6-sol-high-codex-workspace-continual3,B,B+16.0,177,B,A8,llm,simple_ko,False,"[174, 175]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,5
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,65,B,E9,llm,simple_ko,True,[63],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,75,B,E9,llm,simple_ko,False,[73],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,79,B,E9,llm,simple_ko,False,[77],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,83,B,E9,llm,simple_ko,False,[81],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,87,B,E9,llm,simple_ko,False,[85],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,91,B,E9,llm,simple_ko,False,[89],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,97,B,E9,llm,simple_ko,False,[95],1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,101,B,E9,llm,simple_ko,False,"[98, 99]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,105,B,E9,llm,simple_ko,False,"[102, 103]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,109,B,E9,llm,simple_ko,False,"[106, 107]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,113,B,E9,llm,simple_ko,False,"[110, 111]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7
+arena_20260829_075436_193500_7bf0a61a,7,gpt5.6-sol-high-codex-workspace-continual3,B,W+12.0,117,B,E9,llm,simple_ko,False,"[114, 115]",1,0,log/arena_20260829_075436_193500_7bf0a61a/llm_games.jsonl,7

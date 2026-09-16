@@ -1,0 +1,7442 @@
+[
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "2025_human_panel",
+    "score": 0.98,
+    "costPerTask": 17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "2025_human_panel",
+    "score": 1,
+    "costPerTask": 17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "2025_human_panel",
+    "score": 1,
+    "costPerTask": 17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Private_Eval",
+    "modelId": "2025_human_panel",
+    "score": 1,
+    "costPerTask": 17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "ARChitects",
+    "score": 0.56,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "ARChitects",
+    "score": 0.035,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "NVARC_2025",
+    "score": 0.2764,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "ARChitects",
+    "score": 0.025,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Private_Eval",
+    "modelId": "ARChitects",
+    "score": 0.031,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Claude 3.7",
+    "score": 0.136,
+    "costPerTask": 0.058,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Claude 3.7",
+    "score": 0,
+    "costPerTask": 0.12,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Claude 3.7",
+    "score": 0,
+    "costPerTask": 0.12,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Claude 3.7 Thinking 16K",
+    "score": 0.286,
+    "costPerTask": 0.33,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Claude 3.7 Thinking 16K",
+    "score": 0.008,
+    "costPerTask": 0.57,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Claude 3.7 Thinking 16K",
+    "score": 0.007,
+    "costPerTask": 0.51,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Claude 3.7 Thinking 1K",
+    "score": 0.116,
+    "costPerTask": 0.07,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Claude 3.7 Thinking 1K",
+    "score": 0.008,
+    "costPerTask": 0.14,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Claude 3.7 Thinking 1K",
+    "score": 0.004,
+    "costPerTask": 0.14,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Claude 3.7 Thinking 8K",
+    "score": 0.212,
+    "costPerTask": 0.21,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Claude 3.7 Thinking 8K",
+    "score": 0,
+    "costPerTask": 0.36,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Claude 3.7 Thinking 8K",
+    "score": 0.009,
+    "costPerTask": 0.36,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Gemini 1.5 Pro",
+    "score": 0,
+    "costPerTask": 0.04,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Gemini 1.5 Pro",
+    "score": 0.008,
+    "costPerTask": 0.04,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Gemini 2.0 Flash",
+    "score": 0.013,
+    "costPerTask": 0.004,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-4-5-2025-02-27",
+    "score": 0.103,
+    "costPerTask": 0.29,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-4-5-2025-02-27",
+    "score": 0,
+    "costPerTask": 2.07,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-4-5-2025-02-27",
+    "score": 0.008,
+    "costPerTask": 2.1,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-4o-2024-11-20",
+    "score": 0.045,
+    "costPerTask": 0.05,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-4o-2024-11-20",
+    "score": 0,
+    "costPerTask": 0.08,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-4o-2024-11-20",
+    "score": 0,
+    "costPerTask": 0.08,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-4o-mini-2024-07-18",
+    "score": 0,
+    "costPerTask": 0.01,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-4o-mini-2024-07-18",
+    "score": 0,
+    "costPerTask": 0.01,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Icecuber",
+    "score": 0.17,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Icecuber",
+    "score": 0.029,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Icecuber",
+    "score": 0.016,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Private_Eval",
+    "modelId": "Icecuber",
+    "score": 0.004,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "mturker",
+    "score": 0.77,
+    "costPerTask": 3,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-preview-low",
+    "score": 0.757,
+    "costPerTask": 200,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-preview-low",
+    "score": 0.04,
+    "costPerTask": 200,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "R1",
+    "score": 0.158,
+    "costPerTask": 0.06,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "R1",
+    "score": 0.003,
+    "costPerTask": 0.08,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "R1",
+    "score": 0.013,
+    "costPerTask": 0.08,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "stem_grad",
+    "score": 0.98,
+    "costPerTask": 10,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Llama-4-Maverick-17B-128E-Instruct-FP8-together",
+    "score": 0.0438,
+    "costPerTask": 0.0078,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "Llama-4-Maverick-17B-128E-Instruct-FP8-together",
+    "score": 0.0712,
+    "costPerTask": 0.0065,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Llama-4-Maverick-17B-128E-Instruct-FP8-together",
+    "score": 0,
+    "costPerTask": 0.0126,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Llama-4-Maverick-17B-128E-Instruct-FP8-together",
+    "score": 0,
+    "costPerTask": 0.0121,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "Llama-4-Scout-17B-16E-Instruct-together",
+    "score": 0.005,
+    "costPerTask": 0.0041,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "Llama-4-Scout-17B-16E-Instruct-together",
+    "score": 0.0238,
+    "costPerTask": 0.0036,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "Llama-4-Scout-17B-16E-Instruct-together",
+    "score": 0,
+    "costPerTask": 0.006,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "Llama-4-Scout-17B-16E-Instruct-together",
+    "score": 0,
+    "costPerTask": 0.0062,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-4-1-nano-2025-04-14",
+    "score": 0,
+    "costPerTask": 0.0021,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-4-1-nano-2025-04-14",
+    "score": 0.0175,
+    "costPerTask": 0.0018,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-4-1-nano-2025-04-14",
+    "score": 0,
+    "costPerTask": 0.0036,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-4-1-nano-2025-04-14",
+    "score": 0,
+    "costPerTask": 0.0036,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-4-1-mini-2025-04-14",
+    "score": 0.035,
+    "costPerTask": 0.0078,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-4-1-mini-2025-04-14",
+    "score": 0.0725,
+    "costPerTask": 0.0066,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-4-1-mini-2025-04-14",
+    "score": 0,
+    "costPerTask": 0.0136,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-4-1-mini-2025-04-14",
+    "score": 0,
+    "costPerTask": 0.0139,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-4-1-2025-04-14",
+    "score": 0.055,
+    "costPerTask": 0.039,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-4-1-2025-04-14",
+    "score": 0.1175,
+    "costPerTask": 0.032,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-4-1-2025-04-14",
+    "score": 0,
+    "costPerTask": 0.069,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-4-1-2025-04-14",
+    "score": 0.0042,
+    "costPerTask": 0.0691,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o1-mini-2024-09-12",
+    "score": 0.1316,
+    "costPerTask": 0.1239,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o1-mini-2024-09-12",
+    "score": 0.14,
+    "costPerTask": 0.135,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o1-mini-2024-09-12",
+    "score": 0,
+    "costPerTask": 0.1838,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o1-mini-2024-09-12",
+    "score": 0.0083,
+    "costPerTask": 0.1907,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-mini-2025-01-31-medium",
+    "score": 0.3063,
+    "costPerTask": 0.165,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-mini-2025-01-31-low",
+    "score": 0.1738,
+    "costPerTask": 0.0442,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-mini-2025-01-31-low",
+    "score": 0.145,
+    "costPerTask": 0.0519,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-mini-2025-01-31-low",
+    "score": 0,
+    "costPerTask": 0.0596,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-mini-2025-01-31-low",
+    "score": 0,
+    "costPerTask": 0.0623,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-mini-2025-01-31-medium",
+    "score": 0.2233,
+    "costPerTask": 0.1907,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-mini-2025-01-31-medium",
+    "score": 0,
+    "costPerTask": 0.2723,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-mini-2025-01-31-medium",
+    "score": 0.0208,
+    "costPerTask": 0.2843,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-mini-2025-01-31-high",
+    "score": 0.4658,
+    "costPerTask": 0.3048,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-mini-2025-01-31-high",
+    "score": 0.345,
+    "costPerTask": 0.3989,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-mini-2025-01-31-high",
+    "score": 0,
+    "costPerTask": 0.6072,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-mini-2025-01-31-high",
+    "score": 0.0299,
+    "costPerTask": 0.5472,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-2025-04-16-low",
+    "score": 0.4761,
+    "costPerTask": 0.1591,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-2025-04-16-low",
+    "score": 0.415,
+    "costPerTask": 0.1764,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-2025-04-16-low",
+    "score": 0.0266,
+    "costPerTask": 0.245,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-2025-04-16-low",
+    "score": 0.0199,
+    "costPerTask": 0.2343,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-2025-04-16-medium",
+    "score": 0.5671,
+    "costPerTask": 0.2613,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-2025-04-16-medium",
+    "score": 0.5383,
+    "costPerTask": 0.2882,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-2025-04-16-medium",
+    "score": 0.0449,
+    "costPerTask": 0.4994,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-2025-04-16-medium",
+    "score": 0.0298,
+    "costPerTask": 0.4787,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-2025-04-16-high",
+    "score": 0.6425,
+    "costPerTask": 0.4041,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-2025-04-16-high",
+    "score": 0.6083,
+    "costPerTask": 0.5002,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-2025-04-16-high",
+    "score": 0.0292,
+    "costPerTask": 0.9001,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-2025-04-16-high",
+    "score": 0.0653,
+    "costPerTask": 0.8339,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o4-mini-2025-04-16-low",
+    "score": 0.2762,
+    "costPerTask": 0.0359,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o4-mini-2025-04-16-low",
+    "score": 0.2133,
+    "costPerTask": 0.0406,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o4-mini-2025-04-16-low",
+    "score": 0.0028,
+    "costPerTask": 0.0518,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o4-mini-2025-04-16-low",
+    "score": 0.0167,
+    "costPerTask": 0.05,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o4-mini-2025-04-16-medium",
+    "score": 0.5025,
+    "costPerTask": 0.129,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o4-mini-2025-04-16-medium",
+    "score": 0.4183,
+    "costPerTask": 0.15,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o4-mini-2025-04-16-medium",
+    "score": 0.0222,
+    "costPerTask": 0.237,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o4-mini-2025-04-16-medium",
+    "score": 0.0236,
+    "costPerTask": 0.2311,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o4-mini-2025-04-16-high",
+    "score": 0.6803,
+    "costPerTask": 0.3246,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o4-mini-2025-04-16-high",
+    "score": 0.5867,
+    "costPerTask": 0.4058,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o4-mini-2025-04-16-high",
+    "score": 0.0752,
+    "costPerTask": 0.8822,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o4-mini-2025-04-16-high",
+    "score": 0.0611,
+    "costPerTask": 0.856,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20",
+    "score": 0.363,
+    "costPerTask": 0.033,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20",
+    "score": 0.3333,
+    "costPerTask": 0.0371,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20",
+    "score": 0.0194,
+    "costPerTask": 0.0586,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20",
+    "score": 0.0169,
+    "costPerTask": 0.057,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-1k",
+    "score": 0.1796,
+    "costPerTask": 0.0231,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-1k",
+    "score": 0.16,
+    "costPerTask": 0.0356,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-1k",
+    "score": 0,
+    "costPerTask": 0.0348,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-1k",
+    "score": 0.0216,
+    "costPerTask": 0.0302,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-8k",
+    "score": 0.3453,
+    "costPerTask": 0.1158,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-8k",
+    "score": 0.2583,
+    "costPerTask": 0.1344,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-8k",
+    "score": 0.0111,
+    "costPerTask": 0.2047,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-8k",
+    "score": 0.0212,
+    "costPerTask": 0.1994,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-16k",
+    "score": 0.36,
+    "costPerTask": 0.1846,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-16k",
+    "score": 0.3333,
+    "costPerTask": 0.2134,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-16k",
+    "score": 0.0111,
+    "costPerTask": 0.324,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-16k",
+    "score": 0.0198,
+    "costPerTask": 0.3173,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-24k",
+    "score": 0.3912,
+    "costPerTask": 0.1858,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-24k",
+    "score": 0.3233,
+    "costPerTask": 0.1971,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-24k",
+    "score": 0.0264,
+    "costPerTask": 0.3305,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-flash-preview-05-20-thinking-24k",
+    "score": 0.0254,
+    "costPerTask": 0.3191,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "codex-mini-latest",
+    "score": 0.3338,
+    "costPerTask": 0.1269,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "codex-mini-latest",
+    "score": 0.2733,
+    "costPerTask": 0.1597,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "codex-mini-latest",
+    "score": 0,
+    "costPerTask": 0.2272,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "codex-mini-latest",
+    "score": 0.0127,
+    "costPerTask": 0.23,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514",
+    "score": 0.33,
+    "costPerTask": 0.0696,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514",
+    "score": 0.2383,
+    "costPerTask": 0.0806,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514",
+    "score": 0.0208,
+    "costPerTask": 0.1311,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514",
+    "score": 0.0127,
+    "costPerTask": 0.1272,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514-thinking-1k",
+    "score": 0.313,
+    "costPerTask": 0.0811,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514-thinking-1k",
+    "score": 0.28,
+    "costPerTask": 0.0937,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514-thinking-1k",
+    "score": 0.0125,
+    "costPerTask": 0.1466,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514-thinking-1k",
+    "score": 0.0085,
+    "costPerTask": 0.1425,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514-thinking-8k-bedrock",
+    "score": 0.4862,
+    "costPerTask": 0.1936,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514-thinking-8k-bedrock",
+    "score": 0.29,
+    "costPerTask": 0.1952,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514-thinking-8k-bedrock",
+    "score": 0.0292,
+    "costPerTask": 0.2724,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514-thinking-8k-bedrock",
+    "score": 0.0212,
+    "costPerTask": 0.2654,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514-thinking-16k-bedrock",
+    "score": 0.5675,
+    "costPerTask": 0.322,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514-thinking-16k-bedrock",
+    "score": 0.4,
+    "costPerTask": 0.3658,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-20250514-thinking-16k-bedrock",
+    "score": 0.0444,
+    "costPerTask": 0.5102,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-20250514-thinking-16k-bedrock",
+    "score": 0.0593,
+    "costPerTask": 0.4857,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-20250514-thinking-16k",
+    "score": 0.5425,
+    "costPerTask": 1.1405,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-20250514-thinking-16k",
+    "score": 0.3567,
+    "costPerTask": 1.2496,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-20250514-thinking-16k",
+    "score": 0.0333,
+    "costPerTask": 2.0182,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-20250514-thinking-16k",
+    "score": 0.0861,
+    "costPerTask": 1.9284,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-20250514-thinking-8k",
+    "score": 0.4562,
+    "costPerTask": 0.7817,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-20250514-thinking-8k",
+    "score": 0.3067,
+    "costPerTask": 0.7408,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-20250514-thinking-8k",
+    "score": 0.025,
+    "costPerTask": 1.2021,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-20250514-thinking-8k",
+    "score": 0.0452,
+    "costPerTask": 1.1569,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-20250514-thinking-1k",
+    "score": 0.4331,
+    "costPerTask": 0.4236,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-20250514-thinking-1k",
+    "score": 0.27,
+    "costPerTask": 0.5021,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-20250514-thinking-1k",
+    "score": 0.0043,
+    "costPerTask": 0.7578,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-20250514-thinking-1k",
+    "score": 0,
+    "costPerTask": 0.7503,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-20250514",
+    "score": 0.355,
+    "costPerTask": 0.3485,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-20250514",
+    "score": 0.225,
+    "costPerTask": 0.4036,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-20250514",
+    "score": 0.0125,
+    "costPerTask": 0.6634,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-20250514",
+    "score": 0.0127,
+    "costPerTask": 0.6388,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek_r1_0528-openrouter",
+    "score": 0.2698,
+    "costPerTask": 0.047,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek_r1_0528-openrouter",
+    "score": 0.2121,
+    "costPerTask": 0.0464,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek_r1_0528-openrouter",
+    "score": 0.0029,
+    "costPerTask": 0.0495,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek_r1_0528-openrouter",
+    "score": 0.0112,
+    "costPerTask": 0.0527,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "grok-3-openrouter",
+    "score": 0.0838,
+    "costPerTask": 0.0735,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "grok-3-openrouter",
+    "score": 0.055,
+    "costPerTask": 0.0931,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "grok-3-openrouter",
+    "score": 0,
+    "costPerTask": 0.1402,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "grok-3-openrouter",
+    "score": 0,
+    "costPerTask": 0.1421,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "grok-3-mini-beta-low-openrouter",
+    "score": 0.1762,
+    "costPerTask": 0.0087,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "grok-3-mini-beta-low-openrouter",
+    "score": 0.165,
+    "costPerTask": 0.0099,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "grok-3-mini-beta-low-openrouter",
+    "score": 0,
+    "costPerTask": 0.013,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "grok-3-mini-beta-low-openrouter",
+    "score": 0.0042,
+    "costPerTask": 0.0131,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-pro-preview-openrouter",
+    "score": 0.43,
+    "costPerTask": 0.5032,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-pro-preview-openrouter",
+    "score": 0.33,
+    "costPerTask": 0.5694,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-pro-preview-openrouter",
+    "score": 0.0111,
+    "costPerTask": 0.8233,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-pro-preview-openrouter",
+    "score": 0.0375,
+    "costPerTask": 0.8126,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-pro-preview-05-06-thinking-1k",
+    "score": 0.4819,
+    "costPerTask": 0.4802,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-pro-preview-05-06-thinking-1k",
+    "score": 0.3133,
+    "costPerTask": 0.5866,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-pro-preview-05-06-thinking-1k",
+    "score": 0.0133,
+    "costPerTask": 0.7947,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-pro-preview-05-06-thinking-1k",
+    "score": 0.0344,
+    "costPerTask": 0.8037,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-pro-2025-06-10-low",
+    "score": 0.5088,
+    "costPerTask": 1.5093,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-pro-2025-06-10-low",
+    "score": 0.4433,
+    "costPerTask": 1.6382,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-pro-2025-06-10-low",
+    "score": 0.0194,
+    "costPerTask": 2.455,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-pro-2025-06-10-low",
+    "score": 0.0205,
+    "costPerTask": 2.2293,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-pro-2025-06-10-medium",
+    "score": 0.5806,
+    "costPerTask": 2.546,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-pro-2025-06-10-medium",
+    "score": 0.57,
+    "costPerTask": 3.1766,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-pro-2025-06-10-medium",
+    "score": 0.0347,
+    "costPerTask": 5.1645,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-pro-2025-06-10-medium",
+    "score": 0.0194,
+    "costPerTask": 4.7441,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "o3-pro-2025-06-10-high",
+    "score": 0.6334,
+    "costPerTask": 3.9228,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "o3-pro-2025-06-10-high",
+    "score": 0.5933,
+    "costPerTask": 4.16,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "o3-pro-2025-06-10-high",
+    "score": 0.0389,
+    "costPerTask": 9.1492,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "o3-pro-2025-06-10-high",
+    "score": 0.0486,
+    "costPerTask": 7.5516,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "magistral-small-2506",
+    "score": 0.0862,
+    "costPerTask": 0.0289,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "magistral-small-2506",
+    "score": 0.05,
+    "costPerTask": 0.0399,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "magistral-small-2506",
+    "score": 0,
+    "costPerTask": 0.0495,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "magistral-small-2506",
+    "score": 0,
+    "costPerTask": 0.0488,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "magistral-medium-2506",
+    "score": 0.089,
+    "costPerTask": 0.1069,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "magistral-medium-2506",
+    "score": 0.0591,
+    "costPerTask": 0.1015,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "magistral-medium-2506",
+    "score": 0,
+    "costPerTask": 0.1061,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "magistral-medium-2506",
+    "score": 0,
+    "costPerTask": 0.1079,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "magistral-medium-2506-thinking",
+    "score": 0.0799,
+    "costPerTask": 0.1059,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "magistral-medium-2506-thinking",
+    "score": 0.0612,
+    "costPerTask": 0.0989,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "magistral-medium-2506-thinking",
+    "score": 0,
+    "costPerTask": 0.1242,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "magistral-medium-2506-thinking",
+    "score": 0,
+    "costPerTask": 0.123,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-1k",
+    "score": 0.175,
+    "costPerTask": 0.048,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-1k",
+    "score": 0.16,
+    "costPerTask": 0.0573,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-1k",
+    "score": 0.0042,
+    "costPerTask": 0.0879,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-1k",
+    "score": 0,
+    "costPerTask": 0.0885,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-8k",
+    "score": 0.4419,
+    "costPerTask": 0.2605,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-8k",
+    "score": 0.295,
+    "costPerTask": 0.2947,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-8k",
+    "score": 0.0264,
+    "costPerTask": 0.4493,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-8k",
+    "score": 0.0292,
+    "costPerTask": 0.4439,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-16k",
+    "score": 0.5643,
+    "costPerTask": 0.3964,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-16k",
+    "score": 0.41,
+    "costPerTask": 0.4839,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-16k",
+    "score": 0.0514,
+    "costPerTask": 0.7222,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-16k",
+    "score": 0.0403,
+    "costPerTask": 0.7145,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-32k",
+    "score": 0.5588,
+    "costPerTask": 0.4164,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-32k",
+    "score": 0.37,
+    "costPerTask": 0.5123,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-32k",
+    "score": 0.0458,
+    "costPerTask": 0.7628,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-2-5-pro-2025-06-17-thinking-32k",
+    "score": 0.0486,
+    "costPerTask": 0.757,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "grok-4-0709",
+    "score": 0.7374,
+    "costPerTask": 0.8179,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "grok-4-0709",
+    "score": 0.6667,
+    "costPerTask": 1.0136,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "grok-4-0709",
+    "score": 0.2115,
+    "costPerTask": 2.0759,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "grok-4-0709",
+    "score": 0.15975,
+    "costPerTask": 2.1659,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "qwen3-235b-a22b-instruct-2507",
+    "score": 0.17,
+    "costPerTask": 0.0021,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "qwen3-235b-a22b-instruct-2507",
+    "score": 0.11,
+    "costPerTask": 0.0025,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "qwen3-235b-a22b-instruct-2507",
+    "score": 0.0083,
+    "costPerTask": 0.0045,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "qwen3-235b-a22b-instruct-2507",
+    "score": 0.0125,
+    "costPerTask": 0.0044,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-high",
+    "score": 0.6588,
+    "costPerTask": 0.3924,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-high",
+    "score": 0.6567,
+    "costPerTask": 0.5087,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-high",
+    "score": 0.0958,
+    "costPerTask": 0.774,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-high",
+    "score": 0.0986,
+    "costPerTask": 0.7302,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-medium",
+    "score": 0.634,
+    "costPerTask": 0.2478,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-medium",
+    "score": 0.5617,
+    "costPerTask": 0.3301,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-medium",
+    "score": 0.0763,
+    "costPerTask": 0.4753,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-medium",
+    "score": 0.0749,
+    "costPerTask": 0.4486,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-low",
+    "score": 0.4837,
+    "costPerTask": 0.1296,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-low",
+    "score": 0.44,
+    "costPerTask": 0.1531,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-low",
+    "score": 0.025,
+    "costPerTask": 0.2001,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-low",
+    "score": 0.0194,
+    "costPerTask": 0.1896,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-low",
+    "score": 0.0194,
+    "costPerTask": 0.1896,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-minimal",
+    "score": 0.1115,
+    "costPerTask": 0.0244,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-minimal",
+    "score": 0.06,
+    "costPerTask": 0.0335,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2025-08-07-minimal",
+    "score": 0,
+    "costPerTask": 0.0543,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2025-08-07-minimal",
+    "score": 0,
+    "costPerTask": 0.0562,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-high",
+    "score": 0.6152,
+    "costPerTask": 0.0936,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-high",
+    "score": 0.5433,
+    "costPerTask": 0.116,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-high",
+    "score": 0.0583,
+    "costPerTask": 0.215,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-high",
+    "score": 0.0444,
+    "costPerTask": 0.1977,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-medium",
+    "score": 0.4625,
+    "costPerTask": 0.039,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-medium",
+    "score": 0.3733,
+    "costPerTask": 0.0401,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-medium",
+    "score": 0.0056,
+    "costPerTask": 0.0674,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-medium",
+    "score": 0.0403,
+    "costPerTask": 0.0629,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-low",
+    "score": 0.2438,
+    "costPerTask": 0.0136,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-low",
+    "score": 0.2633,
+    "costPerTask": 0.0135,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-low",
+    "score": 0.0028,
+    "costPerTask": 0.0193,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-low",
+    "score": 0.0083,
+    "costPerTask": 0.0189,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-minimal",
+    "score": 0.0714,
+    "costPerTask": 0.0051,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-minimal",
+    "score": 0.0533,
+    "costPerTask": 0.0057,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-mini-2025-08-07-minimal",
+    "score": 0,
+    "costPerTask": 0.0087,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-mini-2025-08-07-minimal",
+    "score": 0.0167,
+    "costPerTask": 0.0094,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-high",
+    "score": 0.2967,
+    "costPerTask": 0.0245,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-high",
+    "score": 0.1667,
+    "costPerTask": 0.0292,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-high",
+    "score": 0.003,
+    "costPerTask": 0.0321,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-high",
+    "score": 0.0261,
+    "costPerTask": 0.0295,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-medium",
+    "score": 0.2082,
+    "costPerTask": 0.0119,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-medium",
+    "score": 0.2071,
+    "costPerTask": 0.0124,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-medium",
+    "score": 0,
+    "costPerTask": 0.0147,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-medium",
+    "score": 0.0088,
+    "costPerTask": 0.0137,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-low",
+    "score": 0.1181,
+    "costPerTask": 0.0031,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-low",
+    "score": 0.0404,
+    "costPerTask": 0.0033,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-low",
+    "score": 0,
+    "costPerTask": 0.0035,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-low",
+    "score": 0,
+    "costPerTask": 0.0033,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-minimal",
+    "score": 0.0275,
+    "costPerTask": 0.0012,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-minimal",
+    "score": 0.015,
+    "costPerTask": 0.0015,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-nano-2025-08-07-minimal",
+    "score": 0,
+    "costPerTask": 0.0026,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-nano-2025-08-07-minimal",
+    "score": 0,
+    "costPerTask": 0.0025,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "hrm-2-2508",
+    "score": 0.32,
+    "costPerTask": 1.48,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "hrm-2-2508",
+    "score": 0.02,
+    "costPerTask": 1.68,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "jeremy_sept_2025",
+    "score": 0.796,
+    "costPerTask": 8.42,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "jeremy_sept_2025",
+    "score": 0.2944,
+    "costPerTask": 30.4,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "eric_pang_sept_2025",
+    "score": 0.771,
+    "costPerTask": 2.56,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "eric_pang_sept_2025",
+    "score": 0.26,
+    "costPerTask": 3.97,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929",
+    "score": 0.3538,
+    "costPerTask": 0.0691,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929",
+    "score": 0.255,
+    "costPerTask": 0.0808,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929",
+    "score": 0.0375,
+    "costPerTask": 0.1313,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929",
+    "score": 0.0375,
+    "costPerTask": 0.1295,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-1k",
+    "score": 0.3662,
+    "costPerTask": 0.0823,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-1k",
+    "score": 0.31,
+    "costPerTask": 0.0928,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-1k",
+    "score": 0.0208,
+    "costPerTask": 0.1424,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-1k",
+    "score": 0.0583,
+    "costPerTask": 0.1424,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-8k",
+    "score": 0.535,
+    "costPerTask": 0.1681,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-8k",
+    "score": 0.465,
+    "costPerTask": 0.1776,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-8k",
+    "score": 0.0486,
+    "costPerTask": 0.2409,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-8k",
+    "score": 0.0694,
+    "costPerTask": 0.2349,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-16k",
+    "score": 0.6362,
+    "costPerTask": 0.2423,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-16k",
+    "score": 0.4833,
+    "costPerTask": 0.2683,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-16k",
+    "score": 0.0653,
+    "costPerTask": 0.3557,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-16k",
+    "score": 0.0694,
+    "costPerTask": 0.3499,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-32k",
+    "score": 0.7375,
+    "costPerTask": 0.4419,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-32k",
+    "score": 0.6367,
+    "costPerTask": 0.5193,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-32k",
+    "score": 0.1472,
+    "costPerTask": 0.8403,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-sonnet-4-5-20250929-thinking-32k",
+    "score": 0.1361,
+    "costPerTask": 0.7589,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-pro-2025-10-06",
+    "score": 0.77,
+    "costPerTask": 4.0316,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-pro-2025-10-06",
+    "score": 0.7017,
+    "costPerTask": 4.7785,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-pro-2025-10-06",
+    "score": 0.1333,
+    "costPerTask": 8.0107,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-pro-2025-10-06",
+    "score": 0.1833,
+    "costPerTask": 7.1432,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "trm-2025-10-07",
+    "score": 0.44,
+    "costPerTask": 0.39465,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "trm-2025-10-07",
+    "score": 0.4,
+    "costPerTask": 1.7638,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "trm-2025-10-07",
+    "score": 0.05,
+    "costPerTask": 1.8,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "trm-2025-10-07",
+    "score": 0.0625,
+    "costPerTask": 2.1,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001",
+    "score": 0.2662,
+    "costPerTask": 0.0223,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001",
+    "score": 0.1433,
+    "costPerTask": 0.0263,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001",
+    "score": 0,
+    "costPerTask": 0.0432,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001",
+    "score": 0.0125,
+    "costPerTask": 0.0426,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-1k",
+    "score": 0.2712,
+    "costPerTask": 0.0268,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-1k",
+    "score": 0.1683,
+    "costPerTask": 0.0306,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-1k",
+    "score": 0,
+    "costPerTask": 0.0478,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-1k",
+    "score": 0.0125,
+    "costPerTask": 0.0471,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-8k",
+    "score": 0.45,
+    "costPerTask": 0.0644,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-8k",
+    "score": 0.255,
+    "costPerTask": 0.0687,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-8k",
+    "score": 0.0208,
+    "costPerTask": 0.0952,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-8k",
+    "score": 0.0167,
+    "costPerTask": 0.0909,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-16k",
+    "score": 0.5138,
+    "costPerTask": 0.0979,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-16k",
+    "score": 0.3733,
+    "costPerTask": 0.1042,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-16k",
+    "score": 0.0417,
+    "costPerTask": 0.1432,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-16k",
+    "score": 0.0278,
+    "costPerTask": 0.1392,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-32k",
+    "score": 0.6288,
+    "costPerTask": 0.2139,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-32k",
+    "score": 0.4767,
+    "costPerTask": 0.2558,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-haiku-4-5-20251001-thinking-32k",
+    "score": 0.0514,
+    "costPerTask": 0.3927,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-haiku-4-5-20251001-thinking-32k",
+    "score": 0.0403,
+    "costPerTask": 0.3766,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "grok-4-fast-reasoning",
+    "score": 0.5813,
+    "costPerTask": 0.0278,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "grok-4-fast-reasoning",
+    "score": 0.485,
+    "costPerTask": 0.0307,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "grok-4-fast-reasoning",
+    "score": 0.0458,
+    "costPerTask": 0.0614,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "grok-4-fast-reasoning",
+    "score": 0.0528,
+    "costPerTask": 0.061,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-none",
+    "score": 0.1238,
+    "costPerTask": 0.0275,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-none",
+    "score": 0,
+    "costPerTask": 0.0591,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-none",
+    "score": 0.0583,
+    "costPerTask": 0.0338,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-none",
+    "score": 0.0042,
+    "costPerTask": 0.0581,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-low",
+    "score": 0.44,
+    "costPerTask": 0.0929,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-low",
+    "score": 0.0222,
+    "costPerTask": 0.1348,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-low",
+    "score": 0.3317,
+    "costPerTask": 0.1,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-low",
+    "score": 0.0194,
+    "costPerTask": 0.129,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-medium",
+    "score": 0.6886,
+    "costPerTask": 0.2563,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-medium",
+    "score": 0.084,
+    "costPerTask": 0.4599,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-medium",
+    "score": 0.5767,
+    "costPerTask": 0.3149,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-medium",
+    "score": 0.0653,
+    "costPerTask": 0.4206,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-high",
+    "score": 0.7712,
+    "costPerTask": 0.546,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-1-2025-11-13-thinking-high",
+    "score": 0.1833,
+    "costPerTask": 1.2166,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-high",
+    "score": 0.7283,
+    "costPerTask": 0.674,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-1-2025-11-13-thinking-high",
+    "score": 0.1764,
+    "costPerTask": 1.1704,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-pro-preview",
+    "score": 0.75,
+    "costPerTask": 0.4926,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-pro-preview",
+    "score": 0.3111,
+    "costPerTask": 0.8109,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-deep-think-preview",
+    "score": 0.875,
+    "costPerTask": 44.25900135,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-deep-think-preview",
+    "score": 0.4514,
+    "costPerTask": 77.16309638,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-none",
+    "score": 0.5261,
+    "costPerTask": 0.11,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-none",
+    "score": 0.0708,
+    "costPerTask": 0.22,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-none",
+    "score": 0.4,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-none",
+    "score": 0.0778,
+    "costPerTask": 0.22,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-1k",
+    "score": 0.5132,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-1k",
+    "score": 0.05,
+    "costPerTask": 0.23,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-1k",
+    "score": 0.3517,
+    "costPerTask": 0.15,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-1k",
+    "score": 0.0944,
+    "costPerTask": 0.23,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-8k",
+    "score": 0.701,
+    "costPerTask": 0.34,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-8k",
+    "score": 0.1042,
+    "costPerTask": 0.49,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-8k",
+    "score": 0.5867,
+    "costPerTask": 0.38,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-8k",
+    "score": 0.1389,
+    "costPerTask": 0.48,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-16k",
+    "score": 0.8161,
+    "costPerTask": 0.52,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-16k",
+    "score": 0.2417,
+    "costPerTask": 0.82,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-16k",
+    "score": 0.72,
+    "costPerTask": 0.62,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-16k",
+    "score": 0.2278,
+    "costPerTask": 0.79,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-32k",
+    "score": 0.8662,
+    "costPerTask": 0.76,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-5-20251101-thinking-32k",
+    "score": 0.2815,
+    "costPerTask": 1.37,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-32k",
+    "score": 0.7583,
+    "costPerTask": 0.95,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-32k",
+    "score": 0.3056,
+    "costPerTask": 1.29,
+    "resultsUrl": "",
+    "display": false
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-64k",
+    "score": 0.8,
+    "costPerTask": 1.47,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-5-20251101-thinking-64k",
+    "score": 0.3764,
+    "costPerTask": 2.4,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "poetiq-arc-agi-gemini-3-d_v1",
+    "score": 0.54,
+    "costPerTask": 30.568,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-none",
+    "score": 0.165,
+    "costPerTask": 0.0385,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-none",
+    "score": 0,
+    "costPerTask": 0.0824,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-none",
+    "score": 0.1233,
+    "costPerTask": 0.0472,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-none",
+    "score": 0.0083,
+    "costPerTask": 0.0818,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-low",
+    "score": 0.6591,
+    "costPerTask": 0.1338,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-low",
+    "score": 0.0833,
+    "costPerTask": 0.2738,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-low",
+    "score": 0.5567,
+    "costPerTask": 0.1657,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-low",
+    "score": 0.0972,
+    "costPerTask": 0.2642,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-medium",
+    "score": 0.8062,
+    "costPerTask": 0.2777,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-medium",
+    "score": 0.2764,
+    "costPerTask": 0.7876,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-medium",
+    "score": 0.7267,
+    "costPerTask": 0.3448,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-medium",
+    "score": 0.2667,
+    "costPerTask": 0.7594,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-high",
+    "score": 0.9025,
+    "costPerTask": 0.402,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-high",
+    "score": 0.3992,
+    "costPerTask": 1.4903,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-high",
+    "score": 0.7867,
+    "costPerTask": 0.5196,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-high",
+    "score": 0.4333,
+    "costPerTask": 1.393,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-xhigh",
+    "score": 0.95,
+    "costPerTask": 0.65,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-2025-12-11-thinking-xhigh",
+    "score": 0.5981,
+    "costPerTask": 2.054,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-xhigh",
+    "score": 0.8617,
+    "costPerTask": 0.96,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-2025-12-11-thinking-xhigh",
+    "score": 0.5291,
+    "costPerTask": 1.8982,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-pro-2025-12-11-medium",
+    "score": 0.9025,
+    "costPerTask": 3.2418,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-pro-2025-12-11-medium",
+    "score": 0.3792,
+    "costPerTask": 9.5162,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-pro-2025-12-11-medium",
+    "score": 0.8117,
+    "costPerTask": 3.9774,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-pro-2025-12-11-medium",
+    "score": 0.3847,
+    "costPerTask": 8.9928,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-pro-2025-12-11-high",
+    "score": 0.9462,
+    "costPerTask": 4.6384,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-2-pro-2025-12-11-high",
+    "score": 0.5168,
+    "costPerTask": 16.662,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-pro-2025-12-11-high",
+    "score": 0.8567,
+    "costPerTask": 5.8694,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-2-pro-2025-12-11-high",
+    "score": 0.5416,
+    "costPerTask": 15.721,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -2,
+    "labelOffsetY": -10
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-2-pro-2025-12-11-xhigh",
+    "score": 0.9761,
+    "costPerTask": 7.7201,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-2-pro-2025-12-11-xhigh",
+    "score": 0.905,
+    "costPerTask": 11.6542,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-minimal",
+    "score": 0.3187,
+    "costPerTask": 0.0105,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-minimal",
+    "score": 0.0208,
+    "costPerTask": 0.0208,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-minimal",
+    "score": 0.215,
+    "costPerTask": 0.012,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-minimal",
+    "score": 0.0333,
+    "costPerTask": 0.0205,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-low",
+    "score": 0.3816,
+    "costPerTask": 0.0154,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-low",
+    "score": 0.0125,
+    "costPerTask": 0.0255,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-low",
+    "score": 0.29,
+    "costPerTask": 0.0163,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-low",
+    "score": 0.0125,
+    "costPerTask": 0.0249,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-medium",
+    "score": 0.6791,
+    "costPerTask": 0.0535,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-medium",
+    "score": 0.1528,
+    "costPerTask": 0.0825,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-medium",
+    "score": 0.5767,
+    "costPerTask": 0.0612,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-medium",
+    "score": 0.1278,
+    "costPerTask": 0.0824,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-high",
+    "score": 0.8833,
+    "costPerTask": 0.1353,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-flash-preview-thinking-high",
+    "score": 0.3403,
+    "costPerTask": 0.2399,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-high",
+    "score": 0.8467,
+    "costPerTask": 0.1743,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-flash-preview-thinking-high",
+    "score": 0.3361,
+    "costPerTask": 0.2314,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "grok-4.20-beta-0309b-reasoning",
+    "score": 0.955,
+    "costPerTask": 0.24,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "grok-4.20-beta-0309b-reasoning",
+    "score": 0.895,
+    "costPerTask": 0.35,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "grok-4.20-beta-0309b-reasoning",
+    "score": 0.6361,
+    "costPerTask": 0.96,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "grok-4.20-beta-0309b-reasoning",
+    "score": 0.6514,
+    "costPerTask": 0.92,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "johan_land_gpt_5_2_refine",
+    "score": 0.945,
+    "costPerTask": 11.4,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "johan_land_gpt_5_2_refine",
+    "score": 0.729,
+    "costPerTask": 38.99,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-low",
+    "score": 0.896,
+    "costPerTask": 0.4105,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-low",
+    "score": 0.5986,
+    "costPerTask": 2.3966,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-low",
+    "score": 0.86,
+    "costPerTask": 0.648,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-low",
+    "score": 0.6458,
+    "costPerTask": 2.2507,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-medium",
+    "score": 0.9475,
+    "costPerTask": 0.6183,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-medium",
+    "score": 0.7361,
+    "costPerTask": 3.0162,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-medium",
+    "score": 0.92,
+    "costPerTask": 0.9647,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-medium",
+    "score": 0.6625,
+    "costPerTask": 2.7209,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-high",
+    "score": 0.9625,
+    "costPerTask": 0.8727,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-high",
+    "score": 0.7903,
+    "costPerTask": 3.8092,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-high",
+    "score": 0.94,
+    "costPerTask": 1.3948,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-high",
+    "score": 0.6917,
+    "costPerTask": 3.4719,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": false
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-max",
+    "score": 0.9675,
+    "costPerTask": 1.2958,
+    "resultsUrl": "",
+    "display": true,
+    "displayLabel": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-opus-4-6-thinking-120K-max",
+    "score": 0.7485,
+    "costPerTask": 3.7707,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-max",
+    "score": 0.93,
+    "costPerTask": 1.8791,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -17,
+    "labelOffsetY": -13
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-opus-4-6-thinking-120K-max",
+    "score": 0.6875,
+    "costPerTask": 3.641,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-opus-4-8-low",
+    "score": 0.88,
+    "costPerTask": 0.6711,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-opus-4-8-medium",
+    "score": 0.915,
+    "costPerTask": 0.9115,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-opus-4-8-high",
+    "score": 0.92,
+    "costPerTask": 1.0416,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-opus-4-8-max",
+    "score": 0.925,
+    "costPerTask": 2.332,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-opus-4-8-low",
+    "score": 0.6222,
+    "costPerTask": 1.6818,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-opus-4-8-medium",
+    "score": 0.7167,
+    "costPerTask": 2.3896,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-opus-4-8-high",
+    "score": 0.7208,
+    "costPerTask": 2.7425,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini_3_deep_think_022026",
+    "score": 0.96,
+    "costPerTask": 7.171,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -2,
+    "labelOffsetY": -8
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini_3_deep_think_022026",
+    "score": 0.8458,
+    "costPerTask": 13.6213,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude_sonnet_4_6_max",
+    "score": 0.9575,
+    "costPerTask": 1.0867,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude_sonnet_4_6_max",
+    "score": 0.6236,
+    "costPerTask": 2.8905,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude_sonnet_4_6_max",
+    "score": 0.86,
+    "costPerTask": 1.452,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude_sonnet_4_6_max",
+    "score": 0.5833,
+    "costPerTask": 2.7179,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude_sonnet_4_6_high",
+    "score": 0.9525,
+    "costPerTask": 0.8007,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude_sonnet_4_6_high",
+    "score": 0.6569,
+    "costPerTask": 2.985,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude_sonnet_4_6_high",
+    "score": 0.865,
+    "costPerTask": 1.1908,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude_sonnet_4_6_high",
+    "score": 0.6042,
+    "costPerTask": 2.6966,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-1-pro-preview",
+    "score": 0.9724,
+    "costPerTask": 0.3727,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-1-pro-preview",
+    "score": 0.8807,
+    "costPerTask": 0.9789,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-1-pro-preview",
+    "score": 0.98,
+    "costPerTask": 0.5223,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-1-pro-preview",
+    "score": 0.7708,
+    "costPerTask": 0.9622,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "kimi-k2.5",
+    "score": 0.7312,
+    "costPerTask": 0.14,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "kimi-k2.5",
+    "score": 0.6533,
+    "costPerTask": 0.15,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "kimi-k2.5",
+    "score": 0.1208,
+    "costPerTask": 0.3,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "kimi-k2.5",
+    "score": 0.1181,
+    "costPerTask": 0.28,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "minimax-m2.5",
+    "score": 0.5913,
+    "costPerTask": 0.09,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "minimax-m2.5",
+    "score": 0.6367,
+    "costPerTask": 0.07,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "minimax-m2.5",
+    "score": 0.0542,
+    "costPerTask": 0.19,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "minimax-m2.5",
+    "score": 0.0486,
+    "costPerTask": 0.17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v3.2",
+    "score": 0.6162,
+    "costPerTask": 0.07,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v3.2",
+    "score": 0.0389,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v3.2",
+    "score": 0.57,
+    "costPerTask": 0.08,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v3.2",
+    "score": 0.0403,
+    "costPerTask": 0.12,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "glm-5",
+    "score": 0.5863,
+    "costPerTask": 0.14,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "glm-5",
+    "score": 0.4467,
+    "costPerTask": 0.17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "glm-5",
+    "score": 0.0542,
+    "costPerTask": 0.29,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "glm-5",
+    "score": 0.0486,
+    "costPerTask": 0.27,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-low",
+    "score": 0.8,
+    "costPerTask": 0.12,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-low",
+    "score": 0.6817,
+    "costPerTask": 0.15,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-low",
+    "score": 0.2319,
+    "costPerTask": 0.29,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-low",
+    "score": 0.2917,
+    "costPerTask": 0.27,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-medium",
+    "score": 0.92,
+    "costPerTask": 0.21,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-medium",
+    "score": 0.8617,
+    "costPerTask": 0.25,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-medium",
+    "score": 0.5819,
+    "costPerTask": 0.73,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-medium",
+    "score": 0.5542,
+    "costPerTask": 0.68,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-high",
+    "score": 0.9562,
+    "costPerTask": 0.27,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-high",
+    "score": 0.9267,
+    "costPerTask": 0.37,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-high",
+    "score": 0.7583,
+    "costPerTask": 1.08,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-high",
+    "score": 0.675,
+    "costPerTask": 1.02,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-xhigh",
+    "score": 0.9638,
+    "costPerTask": 0.43,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-xhigh",
+    "score": 0.9367,
+    "costPerTask": 0.62,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-xhigh",
+    "score": 0.8417,
+    "costPerTask": 1.57,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-xhigh",
+    "score": 0.7395,
+    "costPerTask": 1.52,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-pro-xhigh",
+    "score": 0.9825,
+    "costPerTask": 5.38,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-pro-xhigh",
+    "score": 0.945,
+    "costPerTask": 7.21,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-pro-xhigh",
+    "score": 0.9221,
+    "costPerTask": 17.6,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-pro-xhigh",
+    "score": 0.8333,
+    "costPerTask": 16.41,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-mini-xhigh",
+    "score": 0.7512,
+    "costPerTask": 0.35,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-mini-xhigh",
+    "score": 0.1778,
+    "costPerTask": 0.81,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-mini-xhigh",
+    "score": 0.6367,
+    "costPerTask": 0.51,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-mini-xhigh",
+    "score": 0.189,
+    "costPerTask": 0.75,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-mini-high",
+    "score": 0.6625,
+    "costPerTask": 0.22,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-mini-high",
+    "score": 0.0701,
+    "costPerTask": 0.62,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-mini-high",
+    "score": 0.58,
+    "costPerTask": 0.27,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-mini-high",
+    "score": 0.1319,
+    "costPerTask": 0.56,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-mini-medium",
+    "score": 0.5538,
+    "costPerTask": 0.14,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-mini-medium",
+    "score": 0.0542,
+    "costPerTask": 0.33,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-mini-medium",
+    "score": 0.4083,
+    "costPerTask": 0.16,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-mini-medium",
+    "score": 0.0444,
+    "costPerTask": 0.33,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-mini-low",
+    "score": 0.3175,
+    "costPerTask": 0.03,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-mini-low",
+    "score": 0.0083,
+    "costPerTask": 0.06,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-mini-low",
+    "score": 0.13,
+    "costPerTask": 0.04,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-mini-low",
+    "score": 0.0111,
+    "costPerTask": 0.06,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-nano-xhigh",
+    "score": 0.4788,
+    "costPerTask": 0.1,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-nano-xhigh",
+    "score": 0.0417,
+    "costPerTask": 0.21,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-nano-xhigh",
+    "score": 0.515,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-nano-xhigh",
+    "score": 0.0569,
+    "costPerTask": 0.16,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-nano-high",
+    "score": 0.5162,
+    "costPerTask": 0.06,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-nano-high",
+    "score": 0.0514,
+    "costPerTask": 0.15,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-nano-high",
+    "score": 0.3817,
+    "costPerTask": 0.07,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-nano-high",
+    "score": 0.0361,
+    "costPerTask": 0.13,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-nano-medium",
+    "score": 0.4338,
+    "costPerTask": 0.04,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-nano-medium",
+    "score": 0.0347,
+    "costPerTask": 0.06,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-nano-medium",
+    "score": 0.33,
+    "costPerTask": 0.04,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-nano-medium",
+    "score": 0.0194,
+    "costPerTask": 0.06,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-4-nano-low",
+    "score": 0.2462,
+    "costPerTask": 0.01,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-4-nano-low",
+    "score": 0,
+    "costPerTask": 0.02,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-4-nano-low",
+    "score": 0.1833,
+    "costPerTask": 0.01,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-4-nano-low",
+    "score": 0.0153,
+    "costPerTask": 0.01,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "anthropic-opus-4-6-max-effort",
+    "score": 0.0051,
+    "cost": 8866.2,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -15
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "xai-grok-4-20-beta-0309-reasoning",
+    "score": 0.0009,
+    "cost": 3775,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -15
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-4-2026-03-05-high",
+    "score": 0.0021,
+    "cost": 5187.41,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -15
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "google-gemini-3-1-pro-preview",
+    "score": 0.0042,
+    "cost": 2213.53,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -15
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-4-7-low",
+    "score": 0.945,
+    "costPerTask": 0.48,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-4-7-low",
+    "score": 0.7157,
+    "costPerTask": 2.62,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-4-7-low",
+    "score": 0.91,
+    "costPerTask": 0.76,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-4-7-low",
+    "score": 0.6208,
+    "costPerTask": 2.38,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-4-7-medium",
+    "score": 0.9612,
+    "costPerTask": 0.62,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-4-7-medium",
+    "score": 0.8194,
+    "costPerTask": 3.25,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-4-7-medium",
+    "score": 0.91,
+    "costPerTask": 1.04,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-4-7-medium",
+    "score": 0.675,
+    "costPerTask": 2.96,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-4-7-high",
+    "score": 0.9663,
+    "costPerTask": 0.84,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-4-7-high",
+    "score": 0.8069,
+    "costPerTask": 3.55,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-4-7-high",
+    "score": 0.935,
+    "costPerTask": 1.41,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-4-7-high",
+    "score": 0.6833,
+    "costPerTask": 3.17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "claude-4-7-max",
+    "score": 0.97,
+    "costPerTask": 1.77,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "claude-4-7-max",
+    "score": 0.8223,
+    "costPerTask": 8.21,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "claude-4-7-max",
+    "score": 0.92,
+    "costPerTask": 2.58,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "claude-4-7-max",
+    "score": 0.7583,
+    "costPerTask": 7.43,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-low",
+    "score": 0.8225,
+    "costPerTask": 0.17,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-low",
+    "score": 0.3431,
+    "costPerTask": 0.37,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-low",
+    "score": 0.7617,
+    "costPerTask": 0.2,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-low",
+    "score": 0.3333,
+    "costPerTask": 0.35,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-medium",
+    "score": 0.965,
+    "costPerTask": 0.3,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-medium",
+    "score": 0.7069,
+    "costPerTask": 0.97,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-medium",
+    "score": 0.9217,
+    "costPerTask": 0.39,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-medium",
+    "score": 0.7042,
+    "costPerTask": 0.86,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-high",
+    "score": 0.9738,
+    "costPerTask": 0.41,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-high",
+    "score": 0.8222,
+    "costPerTask": 1.53,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-high",
+    "score": 0.945,
+    "costPerTask": 0.56,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-high",
+    "score": 0.8333,
+    "costPerTask": 1.45,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-xhigh",
+    "score": 0.975,
+    "costPerTask": 0.52,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-5-2026-04-22-thinking-xhigh",
+    "score": 0.9056,
+    "costPerTask": 1.91,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-xhigh",
+    "score": 0.95,
+    "costPerTask": 0.73,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-5-2026-04-22-thinking-xhigh",
+    "score": 0.85,
+    "costPerTask": 1.87,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-5-pro-2026-04-23-high",
+    "score": 0.98,
+    "costPerTask": 3.18,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-5-pro-2026-04-23-high",
+    "score": 0.9014,
+    "costPerTask": 10.44,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-5-pro-2026-04-23-high",
+    "score": 0.965,
+    "costPerTask": 4.53,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-5-pro-2026-04-23-high",
+    "score": 0.8458,
+    "costPerTask": 10.51,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gpt-5-5-pro-2026-04-23-xhigh",
+    "score": 0.9799,
+    "costPerTask": 3.27,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gpt-5-5-pro-2026-04-23-xhigh",
+    "score": 0.9042,
+    "costPerTask": 11.1,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gpt-5-5-pro-2026-04-23-xhigh",
+    "score": 0.95,
+    "costPerTask": 4.52,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gpt-5-5-pro-2026-04-23-xhigh",
+    "score": 0.8416,
+    "costPerTask": 10.76,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-5-2026-04-23-high",
+    "score": 0.0043,
+    "cost": 10000,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -35
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "anthropic-opus-4-7-high",
+    "score": 0.0018,
+    "cost": 10000,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -15
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "anthropic-opus-4-8-high",
+    "score": 0.0152,
+    "cost": 10000,
+    "resultsUrl": "",
+    "display": true,
+    "labelOffsetX": -100,
+    "labelOffsetY": -15
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-5-flash-minimal",
+    "score": 0.58,
+    "costPerTask": 0.055,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-5-flash-minimal",
+    "score": 0.0917,
+    "costPerTask": 0.1001,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-5-flash-minimal",
+    "score": 0.4883,
+    "costPerTask": 0.0645,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-5-flash-minimal",
+    "score": 0.0889,
+    "costPerTask": 0.1074,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-5-flash-high",
+    "score": 0.96,
+    "costPerTask": 0.3201,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-5-flash-high",
+    "score": 0.7208,
+    "costPerTask": 0.9001,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-5-flash-high",
+    "score": 0.925,
+    "costPerTask": 0.4278,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-5-flash-high",
+    "score": 0.7208,
+    "costPerTask": 0.8503,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-low",
+    "score": 0.845,
+    "costPerTask": 0.14,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-low",
+    "score": 0.745,
+    "costPerTask": 0.17,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-low",
+    "score": 0.3847,
+    "costPerTask": 0.33,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-low",
+    "score": 0.425,
+    "costPerTask": 0.32,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-medium",
+    "score": 0.9387,
+    "costPerTask": 0.17,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-medium",
+    "score": 0.925,
+    "costPerTask": 0.22,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-medium",
+    "score": 0.7069,
+    "costPerTask": 0.49,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-medium",
+    "score": 0.6708,
+    "costPerTask": 0.47,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-high",
+    "score": 0.9725,
+    "costPerTask": 0.22,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-high",
+    "score": 0.97,
+    "costPerTask": 0.3,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-high",
+    "score": 0.8611,
+    "costPerTask": 0.77,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-high",
+    "score": 0.8542,
+    "costPerTask": 0.74,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-xhigh",
+    "score": 0.9875,
+    "costPerTask": 0.28,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-xhigh",
+    "score": 0.975,
+    "costPerTask": 0.4,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-xhigh",
+    "score": 0.9194,
+    "costPerTask": 1.03,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-xhigh",
+    "score": 0.9,
+    "costPerTask": 1.04,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-max",
+    "score": 0.99,
+    "costPerTask": 0.37,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-max",
+    "score": 0.965,
+    "costPerTask": 0.54,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-sol-max",
+    "score": 0.9375,
+    "costPerTask": 1.52,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-max",
+    "score": 0.925,
+    "costPerTask": 1.44,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-low",
+    "score": 0.0033,
+    "cost": 12805.6,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-medium",
+    "score": 0.0107,
+    "cost": 12971.17,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-high",
+    "score": 0.0215,
+    "cost": 15176.07,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-xhigh",
+    "score": 0.0699,
+    "cost": 19216.38,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-sol-max",
+    "score": 0.0778,
+    "cost": 25064.11,
+    "resultsUrl": "/results/openai-gpt-5-6-sol",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-low",
+    "score": 0.7075,
+    "costPerTask": 0.08,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-low",
+    "score": 0.6017,
+    "costPerTask": 0.09,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-low",
+    "score": 0.1486,
+    "costPerTask": 0.17,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-low",
+    "score": 0.1875,
+    "costPerTask": 0.17,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-medium",
+    "score": 0.8475,
+    "costPerTask": 0.1,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-medium",
+    "score": 0.77,
+    "costPerTask": 0.13,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-medium",
+    "score": 0.3889,
+    "costPerTask": 0.28,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-medium",
+    "score": 0.375,
+    "costPerTask": 0.27,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-high",
+    "score": 0.9575,
+    "costPerTask": 0.15,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-high",
+    "score": 0.92,
+    "costPerTask": 0.19,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-high",
+    "score": 0.7389,
+    "costPerTask": 0.58,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-high",
+    "score": 0.6708,
+    "costPerTask": 0.55,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-xhigh",
+    "score": 0.9563,
+    "costPerTask": 0.19,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-xhigh",
+    "score": 0.94,
+    "costPerTask": 0.26,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-xhigh",
+    "score": 0.8264,
+    "costPerTask": 0.74,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-xhigh",
+    "score": 0.7417,
+    "costPerTask": 0.69,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-max",
+    "score": 0.9825,
+    "costPerTask": 0.32,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-max",
+    "score": 0.965,
+    "costPerTask": 0.55,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-terra-max",
+    "score": 0.9132,
+    "costPerTask": 1.18,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-max",
+    "score": 0.839,
+    "costPerTask": 1.09,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-low",
+    "score": 0.4738,
+    "costPerTask": 0.03,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-low",
+    "score": 0.3417,
+    "costPerTask": 0.04,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-low",
+    "score": 0.0278,
+    "costPerTask": 0.07,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-low",
+    "score": 0.0514,
+    "costPerTask": 0.07,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-medium",
+    "score": 0.6438,
+    "costPerTask": 0.05,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-medium",
+    "score": 0.565,
+    "costPerTask": 0.06,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-medium",
+    "score": 0.0764,
+    "costPerTask": 0.11,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-medium",
+    "score": 0.0736,
+    "costPerTask": 0.11,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-high",
+    "score": 0.7925,
+    "costPerTask": 0.09,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-high",
+    "score": 0.765,
+    "costPerTask": 0.13,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-high",
+    "score": 0.3014,
+    "costPerTask": 0.3,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-high",
+    "score": 0.2931,
+    "costPerTask": 0.29,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-xhigh",
+    "score": 0.9,
+    "costPerTask": 0.13,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-xhigh",
+    "score": 0.8767,
+    "costPerTask": 0.21,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-xhigh",
+    "score": 0.5139,
+    "costPerTask": 0.53,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-xhigh",
+    "score": 0.4764,
+    "costPerTask": 0.54,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-max",
+    "score": 0.9075,
+    "costPerTask": 0.18,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-max",
+    "score": 0.88,
+    "costPerTask": 0.32,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-max",
+    "score": 0.6017,
+    "costPerTask": 0.69,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-max",
+    "score": 0.5954,
+    "costPerTask": 0.67,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-low",
+    "score": 0.0001,
+    "cost": 5068.48,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-medium",
+    "score": 0.0008,
+    "cost": 5895.31,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-high",
+    "score": 0.0049,
+    "cost": 5881.39,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-xhigh",
+    "score": 0.0065,
+    "cost": 6804.04,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-terra-max",
+    "score": 0.008,
+    "cost": 7918.31,
+    "resultsUrl": "/results/openai-gpt-5-6-terra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-low",
+    "score": 0.0017,
+    "cost": 2307.49,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-medium",
+    "score": 0.0017,
+    "cost": 2379.13,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-high",
+    "score": 0.001,
+    "cost": 2482.44,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-xhigh",
+    "score": 0.0002,
+    "cost": 2801.59,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-max",
+    "score": 0.0018,
+    "cost": 3189.42,
+    "resultsUrl": "/results/openai-gpt-5-6-luna",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "glm-5.2",
+    "score": 0.80375,
+    "costPerTask": 0.1747,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "glm-5.2",
+    "score": 0.77,
+    "costPerTask": 0.1916,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "glm-5.2",
+    "score": 0.2083,
+    "costPerTask": 0.2294,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "glm-5.2",
+    "score": 0.22775,
+    "costPerTask": 0.2501,
+    "resultsUrl": "",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling",
+    "score": 0.90625,
+    "costPerTask": 0.21569280526315787,
+    "resultsUrl": "/results/thinky-inkling",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling",
+    "score": 0.795,
+    "costPerTask": 0.30047416199999993,
+    "resultsUrl": "/results/thinky-inkling",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling",
+    "score": 0.37777777777777777,
+    "costPerTask": 0.7133307604166669,
+    "resultsUrl": "/results/thinky-inkling",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling",
+    "score": 0.36527777777777776,
+    "costPerTask": 0.6420766277310923,
+    "resultsUrl": "/results/thinky-inkling",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-5-high",
+    "score": 0.9475,
+    "costPerTask": 0.24,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-5-high",
+    "score": 0.8567,
+    "costPerTask": 0.33,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-5-high",
+    "score": 0.5819,
+    "costPerTask": 0.81,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-5-high",
+    "score": 0.5264,
+    "costPerTask": 0.78,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-5-medium",
+    "score": 0.925,
+    "costPerTask": 0.23,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-5-medium",
+    "score": 0.8717,
+    "costPerTask": 0.31,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-5-medium",
+    "score": 0.575,
+    "costPerTask": 0.75,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-5-medium",
+    "score": 0.5264,
+    "costPerTask": 0.75,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-5-low",
+    "score": 0.86,
+    "costPerTask": 0.13,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-5-low",
+    "score": 0.7917,
+    "costPerTask": 0.18,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-5-low",
+    "score": 0.3625,
+    "costPerTask": 0.4,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-5-low",
+    "score": 0.3306,
+    "costPerTask": 0.4,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "xai-grok-4-5-high",
+    "score": 0.003,
+    "cost": 6892.87,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "xai-grok-4-5-medium",
+    "score": 0.0032,
+    "cost": 8458.3,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "xai-grok-4-5-low",
+    "score": 0.0026,
+    "cost": 8718.48,
+    "resultsUrl": "/results/xai-grok-4-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-opus-5-high",
+    "score": 0.99,
+    "costPerTask": 0.27,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-opus-5-high",
+    "score": 0.975,
+    "costPerTask": 0.47,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-opus-5-high",
+    "score": 0.9319,
+    "costPerTask": 1.32,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-opus-5-high",
+    "score": 0.8833,
+    "costPerTask": 1.45,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-opus-5-max",
+    "score": 0.99,
+    "costPerTask": 0.42,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-opus-5-max",
+    "score": 0.975,
+    "costPerTask": 0.7,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-opus-5-max",
+    "score": 0.9706,
+    "costPerTask": 2.07,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-opus-5-max",
+    "score": 0.9042,
+    "costPerTask": 2.06,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "anthropic-claude-opus-5-high",
+    "score": 0.3016,
+    "cost": 20657.37,
+    "resultsUrl": "/results/anthropic-claude-opus-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling-small-xhigh",
+    "score": 0.89375,
+    "costPerTask": 0.08376425325000007,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling-small-xhigh",
+    "score": 0.84,
+    "costPerTask": 0.11498211,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling-small-xhigh",
+    "score": 0.39305555555555555,
+    "costPerTask": 0.2580068700000001,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling-small-xhigh",
+    "score": 0.40138888888888885,
+    "costPerTask": 0.23255201249999993,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling-small-high",
+    "score": 0.86625,
+    "costPerTask": 0.052885362000000005,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling-small-high",
+    "score": 0.78,
+    "costPerTask": 0.06685550999999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling-small-high",
+    "score": 0.2569444444444444,
+    "costPerTask": 0.14285760500000003,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling-small-high",
+    "score": 0.33055555555555555,
+    "costPerTask": 0.132909555,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling-small-medium",
+    "score": 0.7775,
+    "costPerTask": 0.02800050299999998,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling-small-medium",
+    "score": 0.67,
+    "costPerTask": 0.03488058600000001,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling-small-medium",
+    "score": 0.1361111111111111,
+    "costPerTask": 0.06787850499999998,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling-small-medium",
+    "score": 0.13611111111111113,
+    "costPerTask": 0.06378986500000002,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling-small-low",
+    "score": 0.66125,
+    "costPerTask": 0.021636156000000007,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling-small-low",
+    "score": 0.525,
+    "costPerTask": 0.026465645999999992,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling-small-low",
+    "score": 0.06388888888888888,
+    "costPerTask": 0.05634094499999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling-small-low",
+    "score": 0.04861111111111112,
+    "costPerTask": 0.05589815499999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling-small-minimal",
+    "score": 0.61625,
+    "costPerTask": 0.02165799,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling-small-minimal",
+    "score": 0.485,
+    "costPerTask": 0.02370018599999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling-small-minimal",
+    "score": 0.029166666666666664,
+    "costPerTask": 0.05487035499999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling-small-minimal",
+    "score": 0.04027777777777777,
+    "costPerTask": 0.05303395499999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "thinky-inkling-small-none",
+    "score": 0.11125,
+    "costPerTask": 0.005578305000000001,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "thinky-inkling-small-none",
+    "score": 0.055,
+    "costPerTask": 0.005879189999999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "thinky-inkling-small-none",
+    "score": 0,
+    "costPerTask": 0.011877404999999999,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "thinky-inkling-small-none",
+    "score": 0,
+    "costPerTask": 0.010745875000000005,
+    "resultsUrl": "/results/thinky-inkling-small",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "moonshot-kimi-k3-max",
+    "score": 0.94875,
+    "costPerTask": 0.5450828250000002,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "moonshot-kimi-k3-max",
+    "score": 0.945,
+    "costPerTask": 0.7704815999999995,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "moonshot-kimi-k3-max",
+    "score": 0.6166666666666667,
+    "costPerTask": 1.656023325000001,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "moonshot-kimi-k3-max",
+    "score": 0.6041666666666666,
+    "costPerTask": 1.5926940250000003,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "moonshot-kimi-k3-high",
+    "score": 0.92875,
+    "costPerTask": 0.36425031000000013,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "moonshot-kimi-k3-high",
+    "score": 0.8666666666666666,
+    "costPerTask": 0.47977101000000005,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "moonshot-kimi-k3-high",
+    "score": 0.5319444444444444,
+    "costPerTask": 0.9772032999999999,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "moonshot-kimi-k3-high",
+    "score": 0.55,
+    "costPerTask": 0.9472229249999998,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "moonshot-kimi-k3-low",
+    "score": 0.7575,
+    "costPerTask": 0.16573716000000002,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "moonshot-kimi-k3-low",
+    "score": 0.6566666666666666,
+    "costPerTask": 0.18061866,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "moonshot-kimi-k3-low",
+    "score": 0.1611111111111111,
+    "costPerTask": 0.2610624250000001,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "moonshot-kimi-k3-low",
+    "score": 0.12361111111111112,
+    "costPerTask": 0.2541386750000001,
+    "resultsUrl": "/results/moonshot-kimi-k3",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-max",
+    "score": 0.97625,
+    "costPerTask": 1.4118586999999994,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-max",
+    "score": 0.985,
+    "costPerTask": 2.1101577000000007,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-max",
+    "score": 0.9638888888888889,
+    "costPerTask": 5.6868593333333335,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-max",
+    "score": 0.8916666666666667,
+    "costPerTask": 5.449076000000001,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-xhigh",
+    "score": 0.97875,
+    "costPerTask": 0.6759305750000004,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-xhigh",
+    "score": 0.985,
+    "costPerTask": 1.0224337000000001,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-xhigh",
+    "score": 0.9333333333333333,
+    "costPerTask": 2.9111818333333335,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-xhigh",
+    "score": 0.8833333333333333,
+    "costPerTask": 3.0043564166666665,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-high",
+    "score": 0.98,
+    "costPerTask": 0.5133332000000003,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-high",
+    "score": 0.955,
+    "costPerTask": 0.7666246999999999,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-high",
+    "score": 0.9388888888888889,
+    "costPerTask": 2.250282666666668,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-high",
+    "score": 0.875,
+    "costPerTask": 2.4358764166666664,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-medium",
+    "score": 0.98,
+    "costPerTask": 0.42189944999999957,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-medium",
+    "score": 0.925,
+    "costPerTask": 0.6638002000000002,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-medium",
+    "score": 0.875,
+    "costPerTask": 1.8249255833333327,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-medium",
+    "score": 0.825,
+    "costPerTask": 1.9269780833333334,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-low",
+    "score": 0.965,
+    "costPerTask": 0.35456869999999974,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-low",
+    "score": 0.905,
+    "costPerTask": 0.5076897000000001,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-low",
+    "score": 0.8041666666666667,
+    "costPerTask": 1.4865834999999996,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-low",
+    "score": 0.7680555555555555,
+    "costPerTask": 1.4489280833333338,
+    "resultsUrl": "/results/anthropic-claude-fable-5",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-max",
+    "score": 0.9475,
+    "costPerTask": 0.015125951425000006,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-max",
+    "score": 0.89,
+    "costPerTask": 0.020511353200000002,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-max",
+    "score": 0.638888888888889,
+    "costPerTask": 0.04386672874999998,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-max",
+    "score": 0.6138888888888888,
+    "costPerTask": 0.04163034416666667,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-high",
+    "score": 0.925,
+    "costPerTask": 0.016012147775000016,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-high",
+    "score": 0.87,
+    "costPerTask": 0.021402901000000005,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-high",
+    "score": 0.5986111111111111,
+    "costPerTask": 0.04887240150000004,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-high",
+    "score": 0.5597222222222221,
+    "costPerTask": 0.0453381305,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-low",
+    "score": 0.93,
+    "costPerTask": 0.009161565400000002,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-low",
+    "score": 0.84,
+    "costPerTask": 0.0117880906,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-low",
+    "score": 0.47361111111111115,
+    "costPerTask": 0.02170095416666666,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-low",
+    "score": 0.4597222222222222,
+    "costPerTask": 0.0206284715,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-none",
+    "score": 0.1925,
+    "costPerTask": 0.0017226313000000015,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-none",
+    "score": 0.11833333333333335,
+    "costPerTask": 0.0023310715999999994,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-flash-0731-none",
+    "score": 0,
+    "costPerTask": 0.0036550930000000003,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-flash-0731-none",
+    "score": 0.020833333333333332,
+    "costPerTask": 0.0037609368333333336,
+    "resultsUrl": "/results/deepseek-v4-flash-0731",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-max-2026-07-30",
+    "score": 0.9125,
+    "costPerTask": 0.041845892999999974,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-max-2026-07-30",
+    "score": 0.9066666666666666,
+    "costPerTask": 0.06538362,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-max-2026-07-30",
+    "score": 0.6416666666666667,
+    "costPerTask": 0.1898519750000001,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-max-2026-07-30",
+    "score": 0.5958333333333333,
+    "costPerTask": 0.17671712499999995,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-xhigh-2026-07-30",
+    "score": 0.875,
+    "costPerTask": 0.029353337999999996,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-xhigh-2026-07-30",
+    "score": 0.85,
+    "costPerTask": 0.045517572,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-xhigh-2026-07-30",
+    "score": 0.5208333333333334,
+    "costPerTask": 0.13458391999999994,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-xhigh-2026-07-30",
+    "score": 0.4347222222222222,
+    "costPerTask": 0.13048743000000002,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-high-2026-07-30",
+    "score": 0.8075,
+    "costPerTask": 0.019937271,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-high-2026-07-30",
+    "score": 0.78,
+    "costPerTask": 0.027887351999999997,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-high-2026-07-30",
+    "score": 0.3472222222222222,
+    "costPerTask": 0.06646769000000001,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-high-2026-07-30",
+    "score": 0.3333333333333333,
+    "costPerTask": 0.06253926000000003,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-medium-2026-07-30",
+    "score": 0.63875,
+    "costPerTask": 0.009549944999999999,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-medium-2026-07-30",
+    "score": 0.54,
+    "costPerTask": 0.01202556,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-medium-2026-07-30",
+    "score": 0.07361111111111111,
+    "costPerTask": 0.022676189999999995,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-medium-2026-07-30",
+    "score": 0.0736111111111111,
+    "costPerTask": 0.02209704,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-low-2026-07-30",
+    "score": 0.4925,
+    "costPerTask": 0.006671390999999995,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-low-2026-07-30",
+    "score": 0.395,
+    "costPerTask": 0.008206092,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-low-2026-07-30",
+    "score": 0.04027777777777777,
+    "costPerTask": 0.013789379999999993,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-low-2026-07-30",
+    "score": 0.03611111111111111,
+    "costPerTask": 0.013629859999999995,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-none-2026-07-30",
+    "score": 0.14125,
+    "costPerTask": 0.003822444000000002,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-none-2026-07-30",
+    "score": 0.03333333333333333,
+    "costPerTask": 0.004658280000000002,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-5-6-luna-none-2026-07-30",
+    "score": 0,
+    "costPerTask": 0.00837579,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-5-6-luna-none-2026-07-30",
+    "score": 0.008333333333333333,
+    "costPerTask": 0.008186350000000002,
+    "resultsUrl": "/results/openai-gpt-5-6-luna-2026-07-30",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-high",
+    "score": 0.66375,
+    "costPerTask": 0.07732991824999999,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-high",
+    "score": 0.535,
+    "costPerTask": 0.092850542,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-high",
+    "score": 0.07916666666666666,
+    "costPerTask": 0.14696105666666673,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-high",
+    "score": 0.10277777777777779,
+    "costPerTask": 0.13899638250000004,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-medium",
+    "score": 0.47,
+    "costPerTask": 0.030726074500000006,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-medium",
+    "score": 0.3233333333333333,
+    "costPerTask": 0.03326929199999999,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-medium",
+    "score": 0.01944444444444444,
+    "costPerTask": 0.04646193166666667,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-medium",
+    "score": 0.05277777777777778,
+    "costPerTask": 0.04367807000000001,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-low",
+    "score": 0.24625,
+    "costPerTask": 0.010003799500000006,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-low",
+    "score": 0.17,
+    "costPerTask": 0.011111616999999996,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-low",
+    "score": 0,
+    "costPerTask": 0.017364869166666675,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-low",
+    "score": 0.015277777777777777,
+    "costPerTask": 0.017051445000000005,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-minimal",
+    "score": 0.155,
+    "costPerTask": 0.006791787000000004,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-minimal",
+    "score": 0.075,
+    "costPerTask": 0.008311016999999997,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-5-flash-lite-minimal",
+    "score": 0,
+    "costPerTask": 0.014562660833333331,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-5-flash-lite-minimal",
+    "score": 0.008333333333333333,
+    "costPerTask": 0.014339924166666665,
+    "resultsUrl": "/results/gemini-3-5-flash-lite",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-6-flash-high",
+    "score": 0.96,
+    "costPerTask": 0.2538783975,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-6-flash-high",
+    "score": 0.9116666666666666,
+    "costPerTask": 0.33563630999999994,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-6-flash-high",
+    "score": 0.6527777777777778,
+    "costPerTask": 0.65810195,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-6-flash-high",
+    "score": 0.6041666666666666,
+    "costPerTask": 0.6060796625000002,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-6-flash-medium",
+    "score": 0.9275,
+    "costPerTask": 0.18556269750000007,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-6-flash-medium",
+    "score": 0.8316666666666666,
+    "costPerTask": 0.24685820999999994,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-6-flash-medium",
+    "score": 0.5652777777777778,
+    "costPerTask": 0.4866921375000001,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-6-flash-medium",
+    "score": 0.5041666666666667,
+    "costPerTask": 0.45550909999999994,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-6-flash-low",
+    "score": 0.81375,
+    "costPerTask": 0.09486675374999995,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-6-flash-low",
+    "score": 0.765,
+    "costPerTask": 0.12124633500000005,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-6-flash-low",
+    "score": 0.3111111111111111,
+    "costPerTask": 0.23616876250000005,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-6-flash-low",
+    "score": 0.30416666666666664,
+    "costPerTask": 0.22297816250000002,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "gemini-3-6-flash-minimal",
+    "score": 0.4325,
+    "costPerTask": 0.03383501625,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "gemini-3-6-flash-minimal",
+    "score": 0.345,
+    "costPerTask": 0.04124886,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "gemini-3-6-flash-minimal",
+    "score": 0.03472222222222222,
+    "costPerTask": 0.06829444999999999,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "gemini-3-6-flash-minimal",
+    "score": 0.02638888888888889,
+    "costPerTask": 0.07084053750000002,
+    "resultsUrl": "/results/gemini-3-6-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-6-xhigh",
+    "score": 0.9625,
+    "costPerTask": 0.23996201499999992,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-6-xhigh",
+    "score": 0.87,
+    "costPerTask": 0.348182,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-6-xhigh",
+    "score": 0.6833333333333333,
+    "costPerTask": 0.7545896499999999,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-6-xhigh",
+    "score": 0.6708333333333333,
+    "costPerTask": 0.7574904499999999,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-6-high",
+    "score": 0.9625,
+    "costPerTask": 0.23128210999999996,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-6-high",
+    "score": 0.87,
+    "costPerTask": 0.3268656,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-6-high",
+    "score": 0.6833333333333333,
+    "costPerTask": 0.7498256499999999,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-6-high",
+    "score": 0.6513888888888888,
+    "costPerTask": 0.7338575666666665,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-6-medium",
+    "score": 0.9475,
+    "costPerTask": 0.20594313500000017,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-6-medium",
+    "score": 0.875,
+    "costPerTask": 0.30111846000000003,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-6-medium",
+    "score": 0.673611111111111,
+    "costPerTask": 0.6872864499999999,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-6-medium",
+    "score": 0.6125,
+    "costPerTask": 0.6586968666666668,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "xai-grok-4-6-low",
+    "score": 0.84,
+    "costPerTask": 0.08439713000000007,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "xai-grok-4-6-low",
+    "score": 0.7483333333333334,
+    "costPerTask": 0.10347528000000006,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "xai-grok-4-6-low",
+    "score": 0.3625,
+    "costPerTask": 0.2233922500000001,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "xai-grok-4-6-low",
+    "score": 0.2763888888888889,
+    "costPerTask": 0.2124022166666667,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "xai-grok-4-6-xhigh",
+    "score": 0.0211,
+    "cost": 5612,
+    "resultsUrl": "/results/xai-grok-4-6",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "google-gemini-3-7-flash-high",
+    "score": 0.96625,
+    "costPerTask": 0.09120528,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "google-gemini-3-7-flash-high",
+    "score": 0.955,
+    "costPerTask": 0.12013233,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "google-gemini-3-7-flash-high",
+    "score": 0.8527777777777777,
+    "costPerTask": 0.27265338124999994,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "google-gemini-3-7-flash-high",
+    "score": 0.8458333333333333,
+    "costPerTask": 0.24944951875000002,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "google-gemini-3-7-flash-medium",
+    "score": 0.9525,
+    "costPerTask": 0.04618473000000001,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "google-gemini-3-7-flash-medium",
+    "score": 0.9116666666666666,
+    "costPerTask": 0.060503167499999996,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "google-gemini-3-7-flash-medium",
+    "score": 0.6861111111111111,
+    "costPerTask": 0.12386603749999994,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "google-gemini-3-7-flash-medium",
+    "score": 0.6375,
+    "costPerTask": 0.11582842499999997,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "google-gemini-3-7-flash-low",
+    "score": 0.9125,
+    "costPerTask": 0.03375216749999999,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "google-gemini-3-7-flash-low",
+    "score": 0.8516666666666666,
+    "costPerTask": 0.0422072925,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "google-gemini-3-7-flash-low",
+    "score": 0.5472222222222223,
+    "costPerTask": 0.07957535,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "google-gemini-3-7-flash-low",
+    "score": 0.5291666666666667,
+    "costPerTask": 0.07938655,
+    "resultsUrl": "/results/google-gemini-3-7-flash",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-max",
+    "score": 0.9325,
+    "costPerTask": 0.23599243470000006,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-max",
+    "score": 0.9,
+    "costPerTask": 0.29617841879999995,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-max",
+    "score": 0.5944444444444444,
+    "costPerTask": 0.6375456450000001,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-max",
+    "score": 0.6125,
+    "costPerTask": 0.5976109150000003,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-high",
+    "score": 0.9275,
+    "costPerTask": 0.23387703900000015,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-high",
+    "score": 0.8716666666666666,
+    "costPerTask": 0.3070726955999999,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-high",
+    "score": 0.6361111111111111,
+    "costPerTask": 0.6523745360000001,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-high",
+    "score": 0.5972222222222221,
+    "costPerTask": 0.5969432040000002,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-low",
+    "score": 0.955,
+    "costPerTask": 0.1379545332,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-low",
+    "score": 0.905,
+    "costPerTask": 0.17823142919999996,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-low",
+    "score": 0.5888888888888889,
+    "costPerTask": 0.39584709999999995,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-low",
+    "score": 0.5625,
+    "costPerTask": 0.37025881200000005,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-none",
+    "score": 0.2225,
+    "costPerTask": 0.01926467069999999,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-none",
+    "score": 0.13,
+    "costPerTask": 0.023428376399999996,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "deepseek-v4-pro-0813-none",
+    "score": 0.0125,
+    "costPerTask": 0.040594807000000004,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "deepseek-v4-pro-0813-none",
+    "score": 0.008333333333333333,
+    "costPerTask": 0.040291977000000014,
+    "resultsUrl": "/results/deepseek-v4-pro-0813",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-max",
+    "score": 0.99,
+    "costPerTask": 0.892544475000001,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-max",
+    "score": 0.975,
+    "costPerTask": 1.3997611,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-max",
+    "score": 0.9833333333333333,
+    "costPerTask": 4.331563333333333,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-max",
+    "score": 0.9,
+    "costPerTask": 4.492348833333334,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-xhigh",
+    "score": 0.9875,
+    "costPerTask": 0.6313754750000006,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-xhigh",
+    "score": 0.965,
+    "costPerTask": 0.9578876000000003,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-xhigh",
+    "score": 0.9916666666666667,
+    "costPerTask": 2.957497500000001,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-xhigh",
+    "score": 0.9,
+    "costPerTask": 3.120216916666669,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-high",
+    "score": 0.97625,
+    "costPerTask": 0.3808375999999998,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-high",
+    "score": 0.96,
+    "costPerTask": 0.5169491,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-high",
+    "score": 0.9472222222222223,
+    "costPerTask": 1.4315745833333333,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-high",
+    "score": 0.8875,
+    "costPerTask": 1.6673061666666666,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-medium",
+    "score": 0.96625,
+    "costPerTask": 0.3191132249999999,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-medium",
+    "score": 0.945,
+    "costPerTask": 0.4425576000000001,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-medium",
+    "score": 0.875,
+    "costPerTask": 1.1303474999999996,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-medium",
+    "score": 0.8625,
+    "costPerTask": 1.2239411666666673,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-low",
+    "score": 0.955,
+    "costPerTask": 0.28662135,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-low",
+    "score": 0.9,
+    "costPerTask": 0.36604360000000014,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "anthropic-claude-fable-5-1-low",
+    "score": 0.8597222222222223,
+    "costPerTask": 0.9695166666666669,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "anthropic-claude-fable-5-1-low",
+    "score": 0.7833333333333333,
+    "costPerTask": 0.9523265833333336,
+    "resultsUrl": "/results/anthropic-claude-fable-5-1",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-6-astra-max",
+    "score": 0.9775,
+    "costPerTask": 0.3296810250000001,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-6-astra-max",
+    "score": 0.975,
+    "costPerTask": 0.4328827000000001,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-6-astra-max",
+    "score": 0.975,
+    "costPerTask": 0.96997525,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-6-astra-max",
+    "score": 0.95,
+    "costPerTask": 1.1194680833333335,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-max",
+    "score": 0.6271280210060628,
+    "cost": 26097.501720000007,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-6-astra-xhigh",
+    "score": 0.99,
+    "costPerTask": 0.27634357499999984,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-6-astra-xhigh",
+    "score": 0.985,
+    "costPerTask": 0.3470552,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-6-astra-xhigh",
+    "score": 0.9791666666666666,
+    "costPerTask": 0.7555101666666663,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-6-astra-xhigh",
+    "score": 0.9333333333333333,
+    "costPerTask": 0.8286855833333331,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-xhigh",
+    "score": 0.5934295409146055,
+    "cost": 37317.38768,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-6-astra-high",
+    "score": 0.985,
+    "costPerTask": 0.23390332500000022,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-6-astra-high",
+    "score": 0.985,
+    "costPerTask": 0.2837032,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-6-astra-high",
+    "score": 0.9791666666666666,
+    "costPerTask": 0.6245305833333334,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-6-astra-high",
+    "score": 0.9208333333333333,
+    "costPerTask": 0.6680793333333332,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-high",
+    "score": 0.5481905163612231,
+    "cost": 40704.722830000006,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-6-astra-medium",
+    "score": 0.9875,
+    "costPerTask": 0.1966966999999999,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-6-astra-medium",
+    "score": 0.975,
+    "costPerTask": 0.2398342000000002,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-6-astra-medium",
+    "score": 0.9666666666666667,
+    "costPerTask": 0.46840099999999996,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-6-astra-medium",
+    "score": 0.9208333333333333,
+    "costPerTask": 0.4800926666666667,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-medium",
+    "score": 0.3858757449733784,
+    "cost": 48090.34598999999,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-6-astra-low",
+    "score": 0.9825,
+    "costPerTask": 0.18578744999999997,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-6-astra-low",
+    "score": 0.965,
+    "costPerTask": 0.22650770000000006,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-6-astra-low",
+    "score": 0.9416666666666667,
+    "costPerTask": 0.41901099999999997,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-6-astra-low",
+    "score": 0.8541666666666666,
+    "costPerTask": 0.4162418333333334,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-low",
+    "score": 0.17452190401133805,
+    "cost": 38166.47030000001,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Public_Eval",
+    "modelId": "openai-gpt-6-astra-none",
+    "score": 0.93125,
+    "costPerTask": 0.17569182499999994,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v1_Semi_Private",
+    "modelId": "openai-gpt-6-astra-none",
+    "score": 0.86,
+    "costPerTask": 0.21427369999999996,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Public_Eval",
+    "modelId": "openai-gpt-6-astra-none",
+    "score": 0.648611111111111,
+    "costPerTask": 0.3765514166666667,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v2_Semi_Private",
+    "modelId": "openai-gpt-6-astra-none",
+    "score": 0.5958333333333333,
+    "costPerTask": 0.3696743333333333,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-none",
+    "score": 0.35177880317424,
+    "cost": 49791.11317000001,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-max-provider-adapter",
+    "score": 0.9855074288592295,
+    "cost": 17331.95327,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true,
+    "pointShape": "circle"
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-xhigh-provider-adapter",
+    "score": 0.9844155844155843,
+    "cost": 18147.191119999996,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true,
+    "pointShape": "circle"
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-high-provider-adapter",
+    "score": 0.99945712321257,
+    "cost": 18816.63138,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true,
+    "pointShape": "circle"
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-medium-provider-adapter",
+    "score": 0.9843861309255745,
+    "cost": 19284.776630000004,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true,
+    "pointShape": "circle"
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-low-provider-adapter",
+    "score": 0.9802838165829648,
+    "cost": 21297.922310000005,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true,
+    "pointShape": "circle"
+  },
+  {
+    "datasetId": "v3_Semi_Private",
+    "modelId": "openai-gpt-6-astra-none-provider-adapter",
+    "score": 0.9672021831785531,
+    "cost": 23456.663940000002,
+    "resultsUrl": "/results/openai-gpt-6-astra",
+    "display": true,
+    "pointShape": "circle"
+  }
+]

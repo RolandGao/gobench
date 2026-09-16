@@ -1,0 +1,59 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Python builds and coverage.
+build/
+dist/
+*.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+
+.env
+.env.*
+!.env.example
+.openai_api_key
+config.local.yaml
+config.local.*
+*.local.yaml
+*.local.toml
+
+# Editors and operating systems.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+results/
+arena_logs/
+/runs/
+/downloads/
+/data/cache/
+/analysis_logs/
+/gtp_logs/
+/untracked_log/
+
+# Files staged for review before permanent removal.
+/proposed_removal/
+
+# LaTeX build products. Keep source, bibliography, figures, final PDF, and the
+# optional .bbl used for submission bundles.
+/paper/*.aux
+/paper/*.blg
+/paper/*.log
+/paper/*.out
+/paper/*.listing
+/paper/*.fdb_latexmk
+/paper/*.fls
+/paper/*.synctex.gz
+
+# Runtime coordination files and local scratch work.
+*.lock
+/.tmp_*/
+/temp_dir/

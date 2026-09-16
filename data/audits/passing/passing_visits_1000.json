@@ -1,0 +1,655 @@
+{
+  "complete": true,
+  "method": "Fresh full-history replay before each noncommitting kata-search",
+  "caveat": "Original search trees, RNG states and recent search win/loss estimates are not reconstructed. This measures repeated decisions at selected failure positions, not full-game failure rates.",
+  "engine": ".venv/katago/v1.16.5-eigenavx2/squashfs-root/AppRun",
+  "config": ".venv/katago/v1.16.5-eigenavx2/default_gtp.cfg",
+  "config_sha256": "35859bca7411a51af6c2946b5413e991931fb78455bde2df33c1f91cde588899",
+  "conservative_pass": true,
+  "full_budget": false,
+  "repeats": 20,
+  "results": [
+    {
+      "info": {
+        "run": "arena_20260723_205921_431630_42e71474",
+        "game": 13,
+        "katago_color": "W",
+        "katago_player": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+        "llm": "gpt5.6-sol-low-api",
+        "result": "B+3.0",
+        "strict_black_minus_white": 3.0,
+        "superko_violation_moves": [],
+        "katago_pass_was_second": false,
+        "katago_pass_move": 88,
+        "dead_stones": [
+          "A8"
+        ],
+        "cleaned_black_minus_white": -4.0,
+        "cleaned_katago_margin": 4.0,
+        "flips_to_katago_win": true,
+        "changes_to_draw": false
+      },
+      "bot": {
+        "name": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+        "kind": "katago_network",
+        "network_name": "kata1-b6c96-s8982784-d2082583",
+        "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+        "max_visits": 1,
+        "chosen_move_temperature_early": 0.5,
+        "chosen_move_temperature": 0.3
+      },
+      "model": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "model_sha256": "7b7d561835c2821c9ddfb1c8fd1688ba20e4a252f1dea15268b0361653ef7b59",
+      "size": 9,
+      "komi": 7.0,
+      "moves": [
+        {
+          "number": 1,
+          "color": "B",
+          "move": "E5"
+        },
+        {
+          "number": 2,
+          "color": "W",
+          "move": "B3"
+        },
+        {
+          "number": 3,
+          "color": "B",
+          "move": "G7"
+        },
+        {
+          "number": 4,
+          "color": "W",
+          "move": "E4"
+        },
+        {
+          "number": 5,
+          "color": "B",
+          "move": "F4"
+        },
+        {
+          "number": 6,
+          "color": "W",
+          "move": "E6"
+        },
+        {
+          "number": 7,
+          "color": "B",
+          "move": "F5"
+        },
+        {
+          "number": 8,
+          "color": "W",
+          "move": "D5"
+        },
+        {
+          "number": 9,
+          "color": "B",
+          "move": "E3"
+        },
+        {
+          "number": 10,
+          "color": "W",
+          "move": "D4"
+        },
+        {
+          "number": 11,
+          "color": "B",
+          "move": "D6"
+        },
+        {
+          "number": 12,
+          "color": "W",
+          "move": "C6"
+        },
+        {
+          "number": 13,
+          "color": "B",
+          "move": "F6"
+        },
+        {
+          "number": 14,
+          "color": "W",
+          "move": "D7"
+        },
+        {
+          "number": 15,
+          "color": "B",
+          "move": "E7"
+        },
+        {
+          "number": 16,
+          "color": "W",
+          "move": "D6"
+        },
+        {
+          "number": 17,
+          "color": "B",
+          "move": "F7"
+        },
+        {
+          "number": 18,
+          "color": "W",
+          "move": "C4"
+        },
+        {
+          "number": 19,
+          "color": "B",
+          "move": "J8"
+        },
+        {
+          "number": 20,
+          "color": "W",
+          "move": "F3"
+        },
+        {
+          "number": 21,
+          "color": "B",
+          "move": "G3"
+        },
+        {
+          "number": 22,
+          "color": "W",
+          "move": "F2"
+        },
+        {
+          "number": 23,
+          "color": "B",
+          "move": "E2"
+        },
+        {
+          "number": 24,
+          "color": "W",
+          "move": "D3"
+        },
+        {
+          "number": 25,
+          "color": "B",
+          "move": "G2"
+        },
+        {
+          "number": 26,
+          "color": "W",
+          "move": "D2"
+        },
+        {
+          "number": 27,
+          "color": "B",
+          "move": "F1"
+        },
+        {
+          "number": 28,
+          "color": "W",
+          "move": "F3"
+        },
+        {
+          "number": 29,
+          "color": "B",
+          "move": "F2"
+        },
+        {
+          "number": 30,
+          "color": "W",
+          "move": "E8"
+        },
+        {
+          "number": 31,
+          "color": "B",
+          "move": "D8"
+        },
+        {
+          "number": 32,
+          "color": "W",
+          "move": "C8"
+        },
+        {
+          "number": 33,
+          "color": "B",
+          "move": "D9"
+        },
+        {
+          "number": 34,
+          "color": "W",
+          "move": "C9"
+        },
+        {
+          "number": 35,
+          "color": "B",
+          "move": "F8"
+        },
+        {
+          "number": 36,
+          "color": "W",
+          "move": "E9"
+        },
+        {
+          "number": 37,
+          "color": "B",
+          "move": "F9"
+        },
+        {
+          "number": 38,
+          "color": "W",
+          "move": "D8"
+        },
+        {
+          "number": 39,
+          "color": "B",
+          "move": "D1"
+        },
+        {
+          "number": 40,
+          "color": "W",
+          "move": "C2"
+        },
+        {
+          "number": 41,
+          "color": "B",
+          "move": "B7"
+        },
+        {
+          "number": 42,
+          "color": "W",
+          "move": "C7"
+        },
+        {
+          "number": 43,
+          "color": "B",
+          "move": "B8"
+        },
+        {
+          "number": 44,
+          "color": "W",
+          "move": "B6"
+        },
+        {
+          "number": 45,
+          "color": "B",
+          "move": "A6"
+        },
+        {
+          "number": 46,
+          "color": "W",
+          "move": "A8"
+        },
+        {
+          "number": 47,
+          "color": "B",
+          "move": "A7"
+        },
+        {
+          "number": 48,
+          "color": "W",
+          "move": "B9"
+        },
+        {
+          "number": 49,
+          "color": "B",
+          "move": "A9"
+        },
+        {
+          "number": 50,
+          "color": "W",
+          "move": "G5"
+        },
+        {
+          "number": 51,
+          "color": "B",
+          "move": "A8"
+        },
+        {
+          "number": 52,
+          "color": "W",
+          "move": "A5"
+        },
+        {
+          "number": 53,
+          "color": "B",
+          "move": "G4"
+        },
+        {
+          "number": 54,
+          "color": "W",
+          "move": "G6"
+        },
+        {
+          "number": 55,
+          "color": "B",
+          "move": "H6"
+        },
+        {
+          "number": 56,
+          "color": "W",
+          "move": "C5"
+        },
+        {
+          "number": 57,
+          "color": "B",
+          "move": "H5"
+        },
+        {
+          "number": 58,
+          "color": "W",
+          "move": "H8"
+        },
+        {
+          "number": 59,
+          "color": "B",
+          "move": "H7"
+        },
+        {
+          "number": 60,
+          "color": "W",
+          "move": "H1"
+        },
+        {
+          "number": 61,
+          "color": "B",
+          "move": "G8"
+        },
+        {
+          "number": 62,
+          "color": "W",
+          "move": "H9"
+        },
+        {
+          "number": 63,
+          "color": "B",
+          "move": "J9"
+        },
+        {
+          "number": 64,
+          "color": "W",
+          "move": "J7"
+        },
+        {
+          "number": 65,
+          "color": "B",
+          "move": "J6"
+        },
+        {
+          "number": 66,
+          "color": "W",
+          "move": "G9"
+        },
+        {
+          "number": 67,
+          "color": "B",
+          "move": "J8"
+        },
+        {
+          "number": 68,
+          "color": "W",
+          "move": "B2"
+        },
+        {
+          "number": 69,
+          "color": "B",
+          "move": "J9"
+        },
+        {
+          "number": 70,
+          "color": "W",
+          "move": "C1"
+        },
+        {
+          "number": 71,
+          "color": "B",
+          "move": "E1"
+        },
+        {
+          "number": 72,
+          "color": "W",
+          "move": "C3"
+        },
+        {
+          "number": 73,
+          "color": "B",
+          "move": "H2"
+        },
+        {
+          "number": 74,
+          "color": "W",
+          "move": "pass"
+        },
+        {
+          "number": 75,
+          "color": "B",
+          "move": "J1"
+        },
+        {
+          "number": 76,
+          "color": "W",
+          "move": "J2"
+        },
+        {
+          "number": 77,
+          "color": "B",
+          "move": "J3"
+        },
+        {
+          "number": 78,
+          "color": "W",
+          "move": "pass"
+        },
+        {
+          "number": 79,
+          "color": "B",
+          "move": "J1"
+        },
+        {
+          "number": 80,
+          "color": "W",
+          "move": "H9"
+        },
+        {
+          "number": 81,
+          "color": "B",
+          "move": "G1"
+        },
+        {
+          "number": 82,
+          "color": "W",
+          "move": "pass"
+        },
+        {
+          "number": 83,
+          "color": "B",
+          "move": "G9"
+        },
+        {
+          "number": 84,
+          "color": "W",
+          "move": "pass"
+        },
+        {
+          "number": 85,
+          "color": "B",
+          "move": "H8"
+        },
+        {
+          "number": 86,
+          "color": "W",
+          "move": "pass"
+        },
+        {
+          "number": 87,
+          "color": "B",
+          "move": "A8"
+        }
+      ],
+      "seed": "passing-visits-arena_20260723_205921_431630_42e71474-13",
+      "budgets": [
+        {
+          "max_visits": 1000,
+          "choices": {
+            "H3": 14,
+            "J4": 2,
+            "H4": 2,
+            "B8": 1,
+            "J5": 1
+          },
+          "actual_visits": {
+            "1000": 20
+          },
+          "trials": [
+            {
+              "trial": 0,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 65.8,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 1,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 66.01,
+              "score_lead": -1.6
+            },
+            {
+              "trial": 2,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 65.9,
+              "score_lead": -1.2
+            },
+            {
+              "trial": 3,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 66.41,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 4,
+              "move": "J4",
+              "actual_visits": 1000,
+              "winrate": 66.14,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 5,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 65.74,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 6,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 65.38,
+              "score_lead": -1.3
+            },
+            {
+              "trial": 7,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 67.03,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 8,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 65.45,
+              "score_lead": -1.3
+            },
+            {
+              "trial": 9,
+              "move": "H4",
+              "actual_visits": 1000,
+              "winrate": 64.31,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 10,
+              "move": "B8",
+              "actual_visits": 1000,
+              "winrate": 66.28,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 11,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 66.01,
+              "score_lead": -1.3
+            },
+            {
+              "trial": 12,
+              "move": "J4",
+              "actual_visits": 1000,
+              "winrate": 65.82,
+              "score_lead": -1.5
+            },
+            {
+              "trial": 13,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 65.49,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 14,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 66.44,
+              "score_lead": -1.5
+            },
+            {
+              "trial": 15,
+              "move": "J5",
+              "actual_visits": 1000,
+              "winrate": 66.14,
+              "score_lead": -1.6
+            },
+            {
+              "trial": 16,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 66.17,
+              "score_lead": -1.2
+            },
+            {
+              "trial": 17,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 64.97,
+              "score_lead": -1.4
+            },
+            {
+              "trial": 18,
+              "move": "H4",
+              "actual_visits": 1000,
+              "winrate": 65.98,
+              "score_lead": -1.7
+            },
+            {
+              "trial": 19,
+              "move": "H3",
+              "actual_visits": 1000,
+              "winrate": 66.16,
+              "score_lead": -1.5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "max_visits": 1000,
+      "trials": 20,
+      "passes": 0,
+      "resignations": 0,
+      "positions_passing": 0,
+      "actual_visits": {
+        "1000": 20
+      }
+    }
+  ],
+  "engine_version": "KataGo v1.16.5\nGit revision: ba938676d7f42d70950b3a535af2466fb642008c\nCompile Time: May 25 2026 00:09:06\nUsing Eigen(CPU) backend\nCompiled with AVX2 and FMA instructions\nCompiled to support contributing to online distributed selfplay"
+}

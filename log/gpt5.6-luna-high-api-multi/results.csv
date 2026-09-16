@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt5.6-luna-high-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,W+88.0,kata1-b6c96-s8080640-d1961030-temp-0.7,0,146,openai_responses_api,73,0,0,1101.125083,0.153828640000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,gpt5.6-luna-high-api-multi,W+R,gpt5.6-luna-high-api-multi,0,35,openai_responses_api,17,0,0,449.114694,0.042211080000
+3,2,gpt5.6-luna-high-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+R,gpt5.6-luna-high-api-multi,1,38,openai_responses_api,19,0,0,408.951428,0.041852560000
+4,2,kata1-b6c96-s8080640-d1961030-temp-0.7,gpt5.6-luna-high-api-multi,W+R,gpt5.6-luna-high-api-multi,0,33,openai_responses_api,16,0,0,256.346685,0.024025560000
+5,3,gpt5.6-luna-high-api-multi,kata1-b6c96-s5214720-d1690538,B+12.0,gpt5.6-luna-high-api-multi,1,77,openai_responses_api,39,0,0,619.122931,0.073615960000
+6,3,kata1-b6c96-s5214720-d1690538,gpt5.6-luna-high-api-multi,B+74.0,kata1-b6c96-s5214720-d1690538,1,171,openai_responses_api,85,0,0,1432.371247,0.222826920000
+7,4,gpt5.6-luna-high-api-multi,kata1-b6c96-s5214720-d1690538,W+16.0,kata1-b6c96-s5214720-d1690538,0,120,openai_responses_api,60,0,0,720.659823,0.099706200000
+8,4,kata1-b6c96-s5214720-d1690538,gpt5.6-luna-high-api-multi,B+74.0,kata1-b6c96-s5214720-d1690538,1,179,openai_responses_api,89,0,0,1371.802693,0.227292240000
+9,5,gpt5.6-luna-high-api-multi,kata1-b6c96-s4136960-d1510003,B+28.0,gpt5.6-luna-high-api-multi,1,108,openai_responses_api,54,0,0,1019.955026,0.128084040000
+10,5,kata1-b6c96-s4136960-d1510003,gpt5.6-luna-high-api-multi,B+74.0,kata1-b6c96-s4136960-d1510003,1,157,openai_responses_api,78,1,0,1493.028284,0.211833760000
+11,6,gpt5.6-luna-high-api-multi,kata1-b6c96-s4136960-d1510003,W+88.0,kata1-b6c96-s4136960-d1510003,0,162,openai_responses_api,81,1,0,1314.532788,0.206331000000
+12,6,kata1-b6c96-s4136960-d1510003,gpt5.6-luna-high-api-multi,W+R,gpt5.6-luna-high-api-multi,0,97,openai_responses_api,48,1,0,1196.444209,0.143952080000
+13,7,gpt5.6-luna-high-api-multi,kata1-b6c96-s4136960-d1510003,W+88.0,kata1-b6c96-s4136960-d1510003,0,172,openai_responses_api,86,0,0,865.809321,0.154638800000
+14,7,kata1-b6c96-s4136960-d1510003,gpt5.6-luna-high-api-multi,W+R,gpt5.6-luna-high-api-multi,0,123,openai_responses_api,61,0,0,1460.449618,0.185379480000

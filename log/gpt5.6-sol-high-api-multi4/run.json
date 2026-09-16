@@ -1,0 +1,6689 @@
+{
+  "started_at": "2026-09-08T03:00:08.954338+00:00",
+  "batch_sizes": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "completed_games": 14,
+  "arena_log_schema_version": 4,
+  "tracked_log_privacy_schema_version": 1,
+  "legality_enforcement_version": 1,
+  "anchor": "kata1-random",
+  "active_player_prior_elo_mean": 1000.0,
+  "active_player_prior_elo_sd": 2000.0,
+  "color_advantage_model": "average_elo_piecewise_linear_1500",
+  "color_advantage_node_spacing_elo": 1500.0,
+  "rating_model": "regularized Bradley-Terry with a jointly fitted 1500-Elo piecewise-linear Black advantage over no-color baseline matchup average Elo",
+  "confidence_level": 0.95,
+  "ci_method": "Laplace covariance from regularized color-adjusted Bradley-Terry information, including all piecewise color parameters",
+  "active_players": [
+    "gpt5.6-sol-high-api-multi4"
+  ],
+  "opponent_players": [
+    "kata1-random",
+    "kata1-b28c512nbt-s12313658112-d5687582971",
+    "kata1-b28c512nbt-s8566598912-d4691918754",
+    "kata1-b28c512nbt-s7229617920-d4333415784",
+    "kata1-b18c384nbt-s9761732864-d4253420187",
+    "kata1-b60c320-s6678602752-d3043834427",
+    "kata1-b40c256-s11840935168-d2898845681",
+    "kata1-b40c256-s8049900800-d1952632576",
+    "kata1-b40c256-s5793846528-d1395151722",
+    "kata1-b40c256x2-s4833666560-d1179059206",
+    "kata1-b40c256x2-s4120339456-d1045882697",
+    "kata1-b20c256x2-s5055114240-d1149032340",
+    "kata1-b20c256x2-s3354994176-d716845198",
+    "kata1-b20c256x2-s2430231552-d525879064",
+    "kata1-b20c256x2-s1610809600-d384128195",
+    "kata1-b20c256x2-s1039565568-d285739972",
+    "kata1-b20c256x2-s668214784-d222255714",
+    "kata1-b15c192-s1062526208-d272346422",
+    "kata1-b15c192-s798345984-d202388589",
+    "kata1-b20c256-s241116160-d150094945",
+    "kata1-b15c192-s449394432-d140458288",
+    "kata1-b15c192-s315428352-d115173910",
+    "kata1-b15c192-s230670592-d99188084",
+    "kata1-b15c192-s172540416-d88080224",
+    "kata1-b10c128-s501483520-d110698189",
+    "kata1-b10c128-s356821760-d90717864",
+    "kata1-b10c128-s258941696-d77667876",
+    "kata1-b10c128-s182492416-d63545831",
+    "kata1-b10c128-s146897408-d54258564",
+    "kata1-b10c128-s108710656-d44395882",
+    "kata1-b10c128-s82632704-d37596868",
+    "kata1-b10c128-s56992512-d31122236",
+    "kata1-b10c128-s41138688-d27396855",
+    "kata1-b6c96-s175395328-d26788732",
+    "kata1-b6c96-s165180416-d25130434",
+    "kata1-b6c96-s152505856-d23152636",
+    "kata1-b6c96-s141089536-d21243181",
+    "kata1-b6c96-s130521856-d19523626",
+    "kata1-b6c96-s122554112-d18283013",
+    "kata1-b6c96-s115648256-d17228996",
+    "kata1-b6c96-s108812288-d16129874",
+    "kata1-b6c96-s103950080-d15368530",
+    "kata1-b6c96-s95425792-d14091095",
+    "kata1-b6c96-s89508352-d13124432",
+    "kata1-b6c96-s83588096-d12203675",
+    "kata1-b6c96-s78659584-d11478487",
+    "kata1-b6c96-s73091584-d10630987",
+    "kata1-b6c96-s69427456-d10051148",
+    "kata1-b6c96-s65341184-d9428755",
+    "kata1-b6c96-s63439616-d9138325",
+    "kata1-b6c96-s59560704-d8589539",
+    "kata1-b6c96-s56669696-d8173106",
+    "kata1-b6c96-s55682304-d7995124",
+    "kata1-b6c96-s52864512-d7635581",
+    "kata1-b6c96-s50894592-d7380655",
+    "kata1-b6c96-s48921344-d7092247",
+    "kata1-b6c96-s46949632-d6822967",
+    "kata1-b6c96-s45189632-d6589032",
+    "kata1-b6c96-s43286272-d6326857",
+    "kata1-b6c96-s41312768-d6061202",
+    "kata1-b6c96-s39339776-d5828519",
+    "kata1-b6c96-s37368064-d5536083",
+    "kata1-b6c96-s35356160-d5299514",
+    "kata1-b6c96-s33239552-d5016295",
+    "kata1-b6c96-s32344832-d4917369",
+    "kata1-b6c96-s31390976-d4781382",
+    "kata1-b6c96-s30394624-d4635675",
+    "kata1-b6c96-s29422336-d4533650",
+    "kata1-b6c96-s28460288-d4388379",
+    "kata1-b6c96-s27415296-d4256697",
+    "kata1-b6c96-s26363136-d4119819",
+    "kata1-b6c96-s25461504-d4002500",
+    "kata1-b6c96-s24455424-d3879081",
+    "kata1-b6c96-s23401472-d3742377",
+    "kata1-b6c96-s22371328-d3612586",
+    "kata1-b6c96-s21371392-d3529696",
+    "kata1-b6c96-s20302336-d3388395",
+    "kata1-b6c96-s19408128-d3280178",
+    "kata1-b6c96-s18429184-d3197121",
+    "kata1-b6c96-s17434112-d3038653",
+    "kata1-b6c96-s16525312-d2925067",
+    "kata1-b6c96-s15704832-d2832803",
+    "kata1-b6c96-s14649344-d2727367",
+    "kata1-b6c96-s13733120-d2631546",
+    "kata1-b6c96-s12849664-d2510774",
+    "kata1-b6c96-s11888896-d2416753",
+    "kata1-b6c96-s10825472-d2300510",
+    "kata1-b6c96-s10014464-d2201128",
+    "kata1-b6c96-s8982784-d2082583",
+    "kata1-b6c96-s8080640-d1961030",
+    "kata1-b6c96-s6127360-d1754797",
+    "kata1-b6c96-s5214720-d1690538",
+    "kata1-b6c96-s4136960-d1510003",
+    "kata1-b6c96-s1995008-d1329786",
+    "kata1-b6c96-s938496-d1208807",
+    "kata1-b6c96-s1248000-d550347",
+    "kata1-b6c96-s16525312-d2925067-temp-0.5",
+    "kata1-b6c96-s14649344-d2727367-temp-0.3",
+    "kata1-b6c96-s16525312-d2925067-temp-0.7",
+    "kata1-b6c96-s13733120-d2631546-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.5",
+    "kata1-b6c96-s12849664-d2510774-temp-0.5",
+    "kata1-b6c96-s11888896-d2416753-temp-0.5",
+    "kata1-b6c96-s14649344-d2727367-temp-0.9",
+    "kata1-b6c96-s10014464-d2201128-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.9",
+    "kata1-b6c96-s8982784-d2082583-temp-0.3",
+    "kata1-b6c96-s8080640-d1961030-temp-0.3",
+    "kata1-b6c96-s8982784-d2082583-temp-0.5",
+    "kata1-b6c96-s8080640-d1961030-temp-0.5",
+    "kata1-b6c96-s8982784-d2082583-temp-0.7",
+    "kata1-b6c96-s10014464-d2201128-temp-0.9",
+    "kata1-b6c96-s8080640-d1961030-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.3",
+    "kata1-b6c96-s5214720-d1690538-temp-0.5",
+    "kata1-b6c96-s4136960-d1510003-temp-0.5",
+    "kata1-b6c96-s5214720-d1690538-temp-0.7",
+    "kata1-b6c96-s6127360-d1754797-temp-0.9",
+    "kata1-b6c96-s4136960-d1510003-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.9",
+    "kata1-b6c96-s1995008-d1329786-temp-0.3",
+    "kata1-b6c96-s938496-d1208807-temp-0.3",
+    "kata1-b6c96-s1995008-d1329786-temp-0.9",
+    "kata1-b6c96-s1248000-d550347-temp-0.3",
+    "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+    "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+    "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+    "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+    "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+    "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+    "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+    "kata1-b18c384nbt-s9761732864-d4253420187-playouts600"
+  ],
+  "ignore_players": [
+    "gpt5.6-sol-low-codex-single",
+    "gpt5.6-luna-max-codex-single",
+    "gpt5.6-luna-low-codex-single",
+    "gpt5.6-luna-high-codex-single",
+    "qwen3.8-max-high-api"
+  ],
+  "board_size": 9,
+  "komi": 7.0,
+  "rules": "tromp-taylor",
+  "max_moves": 1000,
+  "move_cap_policy": "Discard capped attempts without ratings and replay only their scheduled game slots at the same cap",
+  "max_visits": 1,
+  "katago_backend": "cpu",
+  "katago_binary": ".venv/katago/v1.16.5-eigenavx2/squashfs-root/AppRun",
+  "arena_players": [
+    "kata1-random",
+    "kata1-b28c512nbt-s12313658112-d5687582971",
+    "kata1-b28c512nbt-s8566598912-d4691918754",
+    "kata1-b28c512nbt-s7229617920-d4333415784",
+    "kata1-b18c384nbt-s9761732864-d4253420187",
+    "kata1-b60c320-s6678602752-d3043834427",
+    "kata1-b40c256-s11840935168-d2898845681",
+    "kata1-b40c256-s8049900800-d1952632576",
+    "kata1-b40c256-s5793846528-d1395151722",
+    "kata1-b40c256x2-s4833666560-d1179059206",
+    "kata1-b40c256x2-s4120339456-d1045882697",
+    "kata1-b20c256x2-s5055114240-d1149032340",
+    "kata1-b20c256x2-s3354994176-d716845198",
+    "kata1-b20c256x2-s2430231552-d525879064",
+    "kata1-b20c256x2-s1610809600-d384128195",
+    "kata1-b20c256x2-s1039565568-d285739972",
+    "kata1-b20c256x2-s668214784-d222255714",
+    "kata1-b15c192-s1062526208-d272346422",
+    "kata1-b15c192-s798345984-d202388589",
+    "kata1-b20c256-s241116160-d150094945",
+    "kata1-b15c192-s449394432-d140458288",
+    "kata1-b15c192-s315428352-d115173910",
+    "kata1-b15c192-s230670592-d99188084",
+    "kata1-b15c192-s172540416-d88080224",
+    "kata1-b10c128-s501483520-d110698189",
+    "kata1-b10c128-s356821760-d90717864",
+    "kata1-b10c128-s258941696-d77667876",
+    "kata1-b10c128-s182492416-d63545831",
+    "kata1-b10c128-s146897408-d54258564",
+    "kata1-b10c128-s108710656-d44395882",
+    "kata1-b10c128-s82632704-d37596868",
+    "kata1-b10c128-s56992512-d31122236",
+    "kata1-b10c128-s41138688-d27396855",
+    "kata1-b6c96-s175395328-d26788732",
+    "kata1-b6c96-s165180416-d25130434",
+    "kata1-b6c96-s152505856-d23152636",
+    "kata1-b6c96-s141089536-d21243181",
+    "kata1-b6c96-s130521856-d19523626",
+    "kata1-b6c96-s122554112-d18283013",
+    "kata1-b6c96-s115648256-d17228996",
+    "kata1-b6c96-s108812288-d16129874",
+    "kata1-b6c96-s103950080-d15368530",
+    "kata1-b6c96-s95425792-d14091095",
+    "kata1-b6c96-s89508352-d13124432",
+    "kata1-b6c96-s83588096-d12203675",
+    "kata1-b6c96-s78659584-d11478487",
+    "kata1-b6c96-s73091584-d10630987",
+    "kata1-b6c96-s69427456-d10051148",
+    "kata1-b6c96-s65341184-d9428755",
+    "kata1-b6c96-s63439616-d9138325",
+    "kata1-b6c96-s59560704-d8589539",
+    "kata1-b6c96-s56669696-d8173106",
+    "kata1-b6c96-s55682304-d7995124",
+    "kata1-b6c96-s52864512-d7635581",
+    "kata1-b6c96-s50894592-d7380655",
+    "kata1-b6c96-s48921344-d7092247",
+    "kata1-b6c96-s46949632-d6822967",
+    "kata1-b6c96-s45189632-d6589032",
+    "kata1-b6c96-s43286272-d6326857",
+    "kata1-b6c96-s41312768-d6061202",
+    "kata1-b6c96-s39339776-d5828519",
+    "kata1-b6c96-s37368064-d5536083",
+    "kata1-b6c96-s35356160-d5299514",
+    "kata1-b6c96-s33239552-d5016295",
+    "kata1-b6c96-s32344832-d4917369",
+    "kata1-b6c96-s31390976-d4781382",
+    "kata1-b6c96-s30394624-d4635675",
+    "kata1-b6c96-s29422336-d4533650",
+    "kata1-b6c96-s28460288-d4388379",
+    "kata1-b6c96-s27415296-d4256697",
+    "kata1-b6c96-s26363136-d4119819",
+    "kata1-b6c96-s25461504-d4002500",
+    "kata1-b6c96-s24455424-d3879081",
+    "kata1-b6c96-s23401472-d3742377",
+    "kata1-b6c96-s22371328-d3612586",
+    "kata1-b6c96-s21371392-d3529696",
+    "kata1-b6c96-s20302336-d3388395",
+    "kata1-b6c96-s19408128-d3280178",
+    "kata1-b6c96-s18429184-d3197121",
+    "kata1-b6c96-s17434112-d3038653",
+    "kata1-b6c96-s16525312-d2925067",
+    "kata1-b6c96-s15704832-d2832803",
+    "kata1-b6c96-s14649344-d2727367",
+    "kata1-b6c96-s13733120-d2631546",
+    "kata1-b6c96-s12849664-d2510774",
+    "kata1-b6c96-s11888896-d2416753",
+    "kata1-b6c96-s10825472-d2300510",
+    "kata1-b6c96-s10014464-d2201128",
+    "kata1-b6c96-s8982784-d2082583",
+    "kata1-b6c96-s8080640-d1961030",
+    "kata1-b6c96-s6127360-d1754797",
+    "kata1-b6c96-s5214720-d1690538",
+    "kata1-b6c96-s4136960-d1510003",
+    "kata1-b6c96-s1995008-d1329786",
+    "kata1-b6c96-s938496-d1208807",
+    "kata1-b6c96-s1248000-d550347",
+    "kata1-b6c96-s16525312-d2925067-temp-0.5",
+    "kata1-b6c96-s14649344-d2727367-temp-0.3",
+    "kata1-b6c96-s16525312-d2925067-temp-0.7",
+    "kata1-b6c96-s13733120-d2631546-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.5",
+    "kata1-b6c96-s12849664-d2510774-temp-0.5",
+    "kata1-b6c96-s11888896-d2416753-temp-0.5",
+    "kata1-b6c96-s14649344-d2727367-temp-0.9",
+    "kata1-b6c96-s10014464-d2201128-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.9",
+    "kata1-b6c96-s8982784-d2082583-temp-0.3",
+    "kata1-b6c96-s8080640-d1961030-temp-0.3",
+    "kata1-b6c96-s8982784-d2082583-temp-0.5",
+    "kata1-b6c96-s8080640-d1961030-temp-0.5",
+    "kata1-b6c96-s8982784-d2082583-temp-0.7",
+    "kata1-b6c96-s10014464-d2201128-temp-0.9",
+    "kata1-b6c96-s8080640-d1961030-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.3",
+    "kata1-b6c96-s5214720-d1690538-temp-0.5",
+    "kata1-b6c96-s4136960-d1510003-temp-0.5",
+    "kata1-b6c96-s5214720-d1690538-temp-0.7",
+    "kata1-b6c96-s6127360-d1754797-temp-0.9",
+    "kata1-b6c96-s4136960-d1510003-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.9",
+    "kata1-b6c96-s1995008-d1329786-temp-0.3",
+    "kata1-b6c96-s938496-d1208807-temp-0.3",
+    "kata1-b6c96-s1995008-d1329786-temp-0.9",
+    "kata1-b6c96-s1248000-d550347-temp-0.3",
+    "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+    "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+    "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+    "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+    "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+    "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+    "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+    "kata1-b18c384nbt-s9761732864-d4253420187-playouts600",
+    "gpt5.6-sol-high-api-multi4"
+  ],
+  "statistical_players": [
+    "kata1-random",
+    "kata1-b28c512nbt-s12313658112-d5687582971",
+    "kata1-b28c512nbt-s8566598912-d4691918754",
+    "kata1-b28c512nbt-s7229617920-d4333415784",
+    "kata1-b18c384nbt-s9761732864-d4253420187",
+    "kata1-b60c320-s6678602752-d3043834427",
+    "kata1-b40c256-s11840935168-d2898845681",
+    "kata1-b40c256-s8049900800-d1952632576",
+    "kata1-b40c256-s5793846528-d1395151722",
+    "kata1-b40c256x2-s4833666560-d1179059206",
+    "kata1-b40c256x2-s4120339456-d1045882697",
+    "kata1-b20c256x2-s5055114240-d1149032340",
+    "kata1-b20c256x2-s3354994176-d716845198",
+    "kata1-b20c256x2-s2430231552-d525879064",
+    "kata1-b20c256x2-s1610809600-d384128195",
+    "kata1-b20c256x2-s1039565568-d285739972",
+    "kata1-b20c256x2-s668214784-d222255714",
+    "kata1-b15c192-s1062526208-d272346422",
+    "kata1-b15c192-s798345984-d202388589",
+    "kata1-b20c256-s241116160-d150094945",
+    "kata1-b15c192-s449394432-d140458288",
+    "kata1-b15c192-s315428352-d115173910",
+    "kata1-b15c192-s230670592-d99188084",
+    "kata1-b15c192-s172540416-d88080224",
+    "kata1-b10c128-s501483520-d110698189",
+    "kata1-b10c128-s356821760-d90717864",
+    "kata1-b10c128-s258941696-d77667876",
+    "kata1-b10c128-s182492416-d63545831",
+    "kata1-b10c128-s146897408-d54258564",
+    "kata1-b10c128-s108710656-d44395882",
+    "kata1-b10c128-s82632704-d37596868",
+    "kata1-b10c128-s56992512-d31122236",
+    "kata1-b10c128-s41138688-d27396855",
+    "kata1-b6c96-s175395328-d26788732",
+    "kata1-b6c96-s165180416-d25130434",
+    "kata1-b6c96-s152505856-d23152636",
+    "kata1-b6c96-s141089536-d21243181",
+    "kata1-b6c96-s130521856-d19523626",
+    "kata1-b6c96-s122554112-d18283013",
+    "kata1-b6c96-s115648256-d17228996",
+    "kata1-b6c96-s108812288-d16129874",
+    "kata1-b6c96-s103950080-d15368530",
+    "kata1-b6c96-s95425792-d14091095",
+    "kata1-b6c96-s89508352-d13124432",
+    "kata1-b6c96-s83588096-d12203675",
+    "kata1-b6c96-s78659584-d11478487",
+    "kata1-b6c96-s73091584-d10630987",
+    "kata1-b6c96-s69427456-d10051148",
+    "kata1-b6c96-s65341184-d9428755",
+    "kata1-b6c96-s63439616-d9138325",
+    "kata1-b6c96-s59560704-d8589539",
+    "kata1-b6c96-s56669696-d8173106",
+    "kata1-b6c96-s55682304-d7995124",
+    "kata1-b6c96-s52864512-d7635581",
+    "kata1-b6c96-s50894592-d7380655",
+    "kata1-b6c96-s48921344-d7092247",
+    "kata1-b6c96-s46949632-d6822967",
+    "kata1-b6c96-s45189632-d6589032",
+    "kata1-b6c96-s43286272-d6326857",
+    "kata1-b6c96-s41312768-d6061202",
+    "kata1-b6c96-s39339776-d5828519",
+    "kata1-b6c96-s37368064-d5536083",
+    "kata1-b6c96-s35356160-d5299514",
+    "kata1-b6c96-s33239552-d5016295",
+    "kata1-b6c96-s32344832-d4917369",
+    "kata1-b6c96-s31390976-d4781382",
+    "kata1-b6c96-s30394624-d4635675",
+    "kata1-b6c96-s29422336-d4533650",
+    "kata1-b6c96-s28460288-d4388379",
+    "kata1-b6c96-s27415296-d4256697",
+    "kata1-b6c96-s26363136-d4119819",
+    "kata1-b6c96-s25461504-d4002500",
+    "kata1-b6c96-s24455424-d3879081",
+    "kata1-b6c96-s23401472-d3742377",
+    "kata1-b6c96-s22371328-d3612586",
+    "kata1-b6c96-s21371392-d3529696",
+    "kata1-b6c96-s20302336-d3388395",
+    "kata1-b6c96-s19408128-d3280178",
+    "kata1-b6c96-s18429184-d3197121",
+    "kata1-b6c96-s17434112-d3038653",
+    "kata1-b6c96-s16525312-d2925067",
+    "kata1-b6c96-s15704832-d2832803",
+    "kata1-b6c96-s14649344-d2727367",
+    "kata1-b6c96-s13733120-d2631546",
+    "kata1-b6c96-s12849664-d2510774",
+    "kata1-b6c96-s11888896-d2416753",
+    "kata1-b6c96-s10825472-d2300510",
+    "kata1-b6c96-s10014464-d2201128",
+    "kata1-b6c96-s8982784-d2082583",
+    "kata1-b6c96-s8080640-d1961030",
+    "kata1-b6c96-s6127360-d1754797",
+    "kata1-b6c96-s5214720-d1690538",
+    "kata1-b6c96-s4136960-d1510003",
+    "kata1-b6c96-s1995008-d1329786",
+    "kata1-b6c96-s938496-d1208807",
+    "kata1-b6c96-s1248000-d550347",
+    "kata1-b6c96-s16525312-d2925067-temp-0.5",
+    "kata1-b6c96-s14649344-d2727367-temp-0.3",
+    "kata1-b6c96-s16525312-d2925067-temp-0.7",
+    "kata1-b6c96-s13733120-d2631546-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.5",
+    "kata1-b6c96-s12849664-d2510774-temp-0.5",
+    "kata1-b6c96-s11888896-d2416753-temp-0.5",
+    "kata1-b6c96-s14649344-d2727367-temp-0.9",
+    "kata1-b6c96-s10014464-d2201128-temp-0.3",
+    "kata1-b6c96-s13733120-d2631546-temp-0.9",
+    "kata1-b6c96-s8982784-d2082583-temp-0.3",
+    "kata1-b6c96-s8080640-d1961030-temp-0.3",
+    "kata1-b6c96-s8982784-d2082583-temp-0.5",
+    "kata1-b6c96-s8080640-d1961030-temp-0.5",
+    "kata1-b6c96-s8982784-d2082583-temp-0.7",
+    "kata1-b6c96-s10014464-d2201128-temp-0.9",
+    "kata1-b6c96-s8080640-d1961030-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.3",
+    "kata1-b6c96-s5214720-d1690538-temp-0.5",
+    "kata1-b6c96-s4136960-d1510003-temp-0.5",
+    "kata1-b6c96-s5214720-d1690538-temp-0.7",
+    "kata1-b6c96-s6127360-d1754797-temp-0.9",
+    "kata1-b6c96-s4136960-d1510003-temp-0.7",
+    "kata1-b6c96-s4136960-d1510003-temp-0.9",
+    "kata1-b6c96-s1995008-d1329786-temp-0.3",
+    "kata1-b6c96-s938496-d1208807-temp-0.3",
+    "kata1-b6c96-s1995008-d1329786-temp-0.9",
+    "kata1-b6c96-s1248000-d550347-temp-0.3",
+    "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+    "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+    "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+    "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+    "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+    "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+    "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+    "kata1-b18c384nbt-s9761732864-d4253420187-playouts600",
+    "gpt5.6-sol-high-api-multi4",
+    "kata1-zhizi-b40c768nbt-fdx6c",
+    "gpt5.6-sol-high-api-multi2",
+    "opus-5-high-api-multi"
+  ],
+  "bots": [
+    {
+      "name": "kata1-random",
+      "kind": "uniform_random"
+    },
+    {
+      "name": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s12313658112-d5687582971.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s8566598912-d4691918754.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s7229617920-d4333415784.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "kind": "katago_network",
+      "network_name": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "network_path": ".venv/katago/networks/kata1/kata1-b18c384nbt-s9761732864-d4253420187.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b60c320-s6678602752-d3043834427",
+      "kind": "katago_network",
+      "network_name": "kata1-b60c320-s6678602752-d3043834427",
+      "network_path": ".venv/katago/networks/kata1/kata1-b60c320-s6678602752-d3043834427.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b40c256-s11840935168-d2898845681",
+      "kind": "katago_network",
+      "network_name": "kata1-b40c256-s11840935168-d2898845681",
+      "network_path": ".venv/katago/networks/kata1/kata1-b40c256-s11840935168-d2898845681.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b40c256-s8049900800-d1952632576",
+      "kind": "katago_network",
+      "network_name": "kata1-b40c256-s8049900800-d1952632576",
+      "network_path": ".venv/katago/networks/kata1/kata1-b40c256-s8049900800-d1952632576.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b40c256-s5793846528-d1395151722",
+      "kind": "katago_network",
+      "network_name": "kata1-b40c256-s5793846528-d1395151722",
+      "network_path": ".venv/katago/networks/kata1/kata1-b40c256-s5793846528-d1395151722.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b40c256x2-s4833666560-d1179059206",
+      "kind": "katago_network",
+      "network_name": "kata1-b40c256x2-s4833666560-d1179059206",
+      "network_path": ".venv/katago/networks/kata1/kata1-b40c256x2-s4833666560-d1179059206.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b40c256x2-s4120339456-d1045882697",
+      "kind": "katago_network",
+      "network_name": "kata1-b40c256x2-s4120339456-d1045882697",
+      "network_path": ".venv/katago/networks/kata1/kata1-b40c256x2-s4120339456-d1045882697.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256x2-s5055114240-d1149032340",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256x2-s5055114240-d1149032340",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256x2-s5055114240-d1149032340.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256x2-s3354994176-d716845198",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256x2-s3354994176-d716845198",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256x2-s3354994176-d716845198.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256x2-s2430231552-d525879064",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256x2-s2430231552-d525879064",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256x2-s2430231552-d525879064.bin.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256x2-s1610809600-d384128195",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256x2-s1610809600-d384128195",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256x2-s1610809600-d384128195.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256x2-s1039565568-d285739972",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256x2-s1039565568-d285739972",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256x2-s1039565568-d285739972.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256x2-s668214784-d222255714",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256x2-s668214784-d222255714",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256x2-s668214784-d222255714.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b15c192-s1062526208-d272346422",
+      "kind": "katago_network",
+      "network_name": "kata1-b15c192-s1062526208-d272346422",
+      "network_path": ".venv/katago/networks/kata1/kata1-b15c192-s1062526208-d272346422.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b15c192-s798345984-d202388589",
+      "kind": "katago_network",
+      "network_name": "kata1-b15c192-s798345984-d202388589",
+      "network_path": ".venv/katago/networks/kata1/kata1-b15c192-s798345984-d202388589.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b20c256-s241116160-d150094945",
+      "kind": "katago_network",
+      "network_name": "kata1-b20c256-s241116160-d150094945",
+      "network_path": ".venv/katago/networks/kata1/kata1-b20c256-s241116160-d150094945.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b15c192-s449394432-d140458288",
+      "kind": "katago_network",
+      "network_name": "kata1-b15c192-s449394432-d140458288",
+      "network_path": ".venv/katago/networks/kata1/kata1-b15c192-s449394432-d140458288.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b15c192-s315428352-d115173910",
+      "kind": "katago_network",
+      "network_name": "kata1-b15c192-s315428352-d115173910",
+      "network_path": ".venv/katago/networks/kata1/kata1-b15c192-s315428352-d115173910.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b15c192-s230670592-d99188084",
+      "kind": "katago_network",
+      "network_name": "kata1-b15c192-s230670592-d99188084",
+      "network_path": ".venv/katago/networks/kata1/kata1-b15c192-s230670592-d99188084.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b15c192-s172540416-d88080224",
+      "kind": "katago_network",
+      "network_name": "kata1-b15c192-s172540416-d88080224",
+      "network_path": ".venv/katago/networks/kata1/kata1-b15c192-s172540416-d88080224.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s501483520-d110698189",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s501483520-d110698189",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s501483520-d110698189.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s356821760-d90717864",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s356821760-d90717864",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s356821760-d90717864.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s258941696-d77667876",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s258941696-d77667876",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s258941696-d77667876.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s182492416-d63545831",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s182492416-d63545831",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s182492416-d63545831.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s146897408-d54258564",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s146897408-d54258564",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s146897408-d54258564.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s108710656-d44395882",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s108710656-d44395882",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s108710656-d44395882.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s82632704-d37596868",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s82632704-d37596868",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s82632704-d37596868.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s56992512-d31122236",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s56992512-d31122236",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s56992512-d31122236.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b10c128-s41138688-d27396855",
+      "kind": "katago_network",
+      "network_name": "kata1-b10c128-s41138688-d27396855",
+      "network_path": ".venv/katago/networks/kata1/kata1-b10c128-s41138688-d27396855.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s175395328-d26788732",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s175395328-d26788732",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s175395328-d26788732.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s165180416-d25130434",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s165180416-d25130434",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s165180416-d25130434.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s152505856-d23152636",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s152505856-d23152636",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s152505856-d23152636.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s141089536-d21243181",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s141089536-d21243181",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s141089536-d21243181.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s130521856-d19523626",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s130521856-d19523626",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s130521856-d19523626.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s122554112-d18283013",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s122554112-d18283013",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s122554112-d18283013.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s115648256-d17228996",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s115648256-d17228996",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s115648256-d17228996.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s108812288-d16129874",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s108812288-d16129874",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s108812288-d16129874.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s103950080-d15368530",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s103950080-d15368530",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s103950080-d15368530.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s95425792-d14091095",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s95425792-d14091095",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s95425792-d14091095.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s89508352-d13124432",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s89508352-d13124432",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s89508352-d13124432.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s83588096-d12203675",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s83588096-d12203675",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s83588096-d12203675.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s78659584-d11478487",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s78659584-d11478487",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s78659584-d11478487.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s73091584-d10630987",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s73091584-d10630987",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s73091584-d10630987.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s69427456-d10051148",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s69427456-d10051148",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s69427456-d10051148.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s65341184-d9428755",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s65341184-d9428755",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s65341184-d9428755.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s63439616-d9138325",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s63439616-d9138325",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s63439616-d9138325.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s59560704-d8589539",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s59560704-d8589539",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s59560704-d8589539.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s56669696-d8173106",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s56669696-d8173106",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s56669696-d8173106.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s55682304-d7995124",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s55682304-d7995124",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s55682304-d7995124.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s52864512-d7635581",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s52864512-d7635581",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s52864512-d7635581.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s50894592-d7380655",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s50894592-d7380655",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s50894592-d7380655.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s48921344-d7092247",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s48921344-d7092247",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s48921344-d7092247.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s46949632-d6822967",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s46949632-d6822967",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s46949632-d6822967.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s45189632-d6589032",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s45189632-d6589032",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s45189632-d6589032.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s43286272-d6326857",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s43286272-d6326857",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s43286272-d6326857.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s41312768-d6061202",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s41312768-d6061202",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s41312768-d6061202.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s39339776-d5828519",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s39339776-d5828519",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s39339776-d5828519.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s37368064-d5536083",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s37368064-d5536083",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s37368064-d5536083.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s35356160-d5299514",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s35356160-d5299514",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s35356160-d5299514.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s33239552-d5016295",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s33239552-d5016295",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s33239552-d5016295.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s32344832-d4917369",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s32344832-d4917369",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s32344832-d4917369.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s31390976-d4781382",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s31390976-d4781382",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s31390976-d4781382.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s30394624-d4635675",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s30394624-d4635675",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s30394624-d4635675.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s29422336-d4533650",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s29422336-d4533650",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s29422336-d4533650.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s28460288-d4388379",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s28460288-d4388379",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s28460288-d4388379.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s27415296-d4256697",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s27415296-d4256697",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s27415296-d4256697.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s26363136-d4119819",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s26363136-d4119819",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s26363136-d4119819.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s25461504-d4002500",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s25461504-d4002500",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s25461504-d4002500.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s24455424-d3879081",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s24455424-d3879081",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s24455424-d3879081.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s23401472-d3742377",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s23401472-d3742377",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s23401472-d3742377.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s22371328-d3612586",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s22371328-d3612586",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s22371328-d3612586.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s21371392-d3529696",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s21371392-d3529696",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s21371392-d3529696.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s20302336-d3388395",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s20302336-d3388395",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s20302336-d3388395.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s19408128-d3280178",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s19408128-d3280178",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s19408128-d3280178.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s18429184-d3197121",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s18429184-d3197121",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s18429184-d3197121.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s17434112-d3038653",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s17434112-d3038653",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s17434112-d3038653.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s16525312-d2925067",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s16525312-d2925067",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s16525312-d2925067.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s15704832-d2832803",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s15704832-d2832803",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s15704832-d2832803.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s14649344-d2727367",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s14649344-d2727367",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s14649344-d2727367.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s12849664-d2510774",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s12849664-d2510774",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s12849664-d2510774.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s11888896-d2416753",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s11888896-d2416753",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s11888896-d2416753.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s10825472-d2300510",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s10825472-d2300510",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s10825472-d2300510.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s10014464-d2201128",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s10014464-d2201128",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s10014464-d2201128.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s6127360-d1754797",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s6127360-d1754797",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s6127360-d1754797.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s5214720-d1690538",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s5214720-d1690538",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s5214720-d1690538.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s1995008-d1329786",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1995008-d1329786",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1995008-d1329786.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s938496-d1208807",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s938496-d1208807",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s938496-d1208807.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s1248000-d550347",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1248000-d550347",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1248000-d550347.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1
+    },
+    {
+      "name": "kata1-b6c96-s16525312-d2925067-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s16525312-d2925067",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s16525312-d2925067.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s14649344-d2727367-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s14649344-d2727367",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s14649344-d2727367.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s16525312-d2925067-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s16525312-d2925067",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s16525312-d2925067.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s12849664-d2510774-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s12849664-d2510774",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s12849664-d2510774.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s11888896-d2416753-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s11888896-d2416753",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s11888896-d2416753.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s14649344-d2727367-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s14649344-d2727367",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s14649344-d2727367.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s10014464-d2201128-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s10014464-d2201128",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s10014464-d2201128.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s13733120-d2631546-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s13733120-d2631546",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s13733120-d2631546.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s8982784-d2082583-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8982784-d2082583",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8982784-d2082583.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s10014464-d2201128-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s10014464-d2201128",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s10014464-d2201128.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s8080640-d1961030-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s8080640-d1961030",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s8080640-d1961030.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s5214720-d1690538-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s5214720-d1690538",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s5214720-d1690538.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.5",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.5
+    },
+    {
+      "name": "kata1-b6c96-s5214720-d1690538-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s5214720-d1690538",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s5214720-d1690538.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s6127360-d1754797-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s6127360-d1754797",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s6127360-d1754797.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.7",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.7,
+      "chosen_move_temperature": 0.7
+    },
+    {
+      "name": "kata1-b6c96-s4136960-d1510003-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s4136960-d1510003",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s4136960-d1510003.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s1995008-d1329786-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1995008-d1329786",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1995008-d1329786.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s938496-d1208807-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s938496-d1208807",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s938496-d1208807.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b6c96-s1995008-d1329786-temp-0.9",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1995008-d1329786",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1995008-d1329786.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.9,
+      "chosen_move_temperature": 0.9
+    },
+    {
+      "name": "kata1-b6c96-s1248000-d550347-temp-0.3",
+      "kind": "katago_network",
+      "network_name": "kata1-b6c96-s1248000-d550347",
+      "network_path": ".venv/katago/networks/kata1/kata1-b6c96-s1248000-d550347.txt.gz",
+      "max_visits": 1,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.3
+    },
+    {
+      "name": "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s12313658112-d5687582971.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 60
+    },
+    {
+      "name": "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s12313658112-d5687582971.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 600
+    },
+    {
+      "name": "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s8566598912-d4691918754.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 60
+    },
+    {
+      "name": "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s8566598912-d4691918754.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 600
+    },
+    {
+      "name": "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s7229617920-d4333415784.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 60
+    },
+    {
+      "name": "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+      "kind": "katago_network",
+      "network_name": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "network_path": ".venv/katago/networks/kata1/kata1-b28c512nbt-s7229617920-d4333415784.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 600
+    },
+    {
+      "name": "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+      "kind": "katago_network",
+      "network_name": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "network_path": ".venv/katago/networks/kata1/kata1-b18c384nbt-s9761732864-d4253420187.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 60
+    },
+    {
+      "name": "kata1-b18c384nbt-s9761732864-d4253420187-playouts600",
+      "kind": "katago_network",
+      "network_name": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "network_path": ".venv/katago/networks/kata1/kata1-b18c384nbt-s9761732864-d4253420187.bin.gz",
+      "max_visits": 100000000,
+      "chosen_move_temperature_early": 0.5,
+      "chosen_move_temperature": 0.1,
+      "max_playouts": 600
+    },
+    {
+      "name": "gpt5.6-sol-high-api-multi4",
+      "kind": "openai_responses_api",
+      "model": "gpt-5.6-sol",
+      "agentic_harness": "api-multi",
+      "reasoning_effort": "high",
+      "timeout_seconds": null,
+      "conversation": "per_game_history_with_fresh_context_reset",
+      "conversation_version": 1,
+      "context_reset_tokens": 250000,
+      "context_estimator": "previous_usage_plus_current_prompt_utf8_bytes_v1",
+      "compaction": false,
+      "tools": false,
+      "base_url": "https://chatgpt.com/backend-api/codex",
+      "auth_mode": "chatgpt_oauth",
+      "cost_basis": "api_equivalent_estimate"
+    }
+  ],
+  "past_run_dirs": [
+    "log/arena_20260717_215813_957127_3b740750",
+    "log/arena_20260722_210708_427338_47435160",
+    "log/arena_20260723_055601_438304_148a54e8",
+    "log/arena_20260805_040447_246130_2072c54f",
+    "log/gpt5.6-sol-high-api-multi2",
+    "log/opus-5-high-api-multi"
+  ],
+  "past_games": 320016,
+  "results_scope": "current_run",
+  "games_scope": "current_run",
+  "report_file": "report.md",
+  "random_bot_note": "Uniform-random games use KataGoGameEngine because katago match does not support arbitrary policy bots. They remain in the same blind batch. Move-capped attempts are discarded and replayed without scoring.",
+  "total_games": 14,
+  "planned_current_games": 14,
+  "batch_policy": {
+    "rule": "maximum-information-gain selection with paired colors",
+    "games_per_player_per_batch": 2,
+    "selected_pairs_per_active_player": 1,
+    "maximum_games_per_batch": 2,
+    "selection": "deterministic maximum",
+    "completion_barrier": "per-player"
+  },
+  "independent_player_batches": true,
+  "games_per_active_player": 14,
+  "past_games_by_active_player": {
+    "gpt5.6-sol-high-api-multi4": 0
+  },
+  "cumulative_results_file": "cumulative_results.csv",
+  "cumulative_results_location": "untracked_log_dir",
+  "matchup_results_scope": "current_run",
+  "matchup_results_file": "report.md",
+  "llm_calls_file": "llm_calls.jsonl",
+  "llm_games_file": "llm_games.jsonl",
+  "llm_pricing_usd_per_1m_tokens": {
+    "gpt-5.6-sol": {
+      "input": 4.0,
+      "cached_input": 0.4,
+      "output": 20.0,
+      "cache_write": 5.0,
+      "long_context_min_tokens": 272001,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        1.5
+      ]
+    },
+    "gpt-5.6-luna": {
+      "input": 0.2,
+      "cached_input": 0.02,
+      "output": 1.2,
+      "cache_write": 0.25,
+      "long_context_min_tokens": 272001,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        1.5
+      ]
+    },
+    "gpt-5.4": {
+      "input": 2.5,
+      "cached_input": 0.25,
+      "output": 15.0,
+      "long_context_min_tokens": 272001,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        1.5
+      ]
+    },
+    "gpt-5.5": {
+      "input": 5.0,
+      "cached_input": 0.5,
+      "output": 30.0,
+      "long_context_min_tokens": 272001,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        1.5
+      ]
+    },
+    "gpt-6-astra": {
+      "input": 10.0,
+      "cached_input": 1.0,
+      "output": 50.0,
+      "cache_write": 12.5,
+      "long_context_min_tokens": 272001,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        1.5
+      ]
+    },
+    "muse-spark-1.2": {
+      "input": 1.25,
+      "cached_input": 0.15,
+      "output": 4.25
+    },
+    "muse-spark-1.3-contributor": {
+      "input": 0.1,
+      "cached_input": 0.002,
+      "output": 0.2
+    },
+    "grok-4.5": {
+      "input": 2.0,
+      "cached_input": 0.3,
+      "output": 6.0,
+      "long_context_min_tokens": 200000,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    "grok-4.6": {
+      "input": 2.0,
+      "cached_input": 0.5,
+      "output": 6.0,
+      "long_context_min_tokens": 200000,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    "deepseek-v4-flash": {
+      "input": 0.22,
+      "cached_input": 0.007,
+      "output": 0.66,
+      "peak_input": 0.44,
+      "peak_cached_input": 0.014,
+      "peak_output": 1.32,
+      "peak_utc_hours": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          10
+        ]
+      ],
+      "peak_utc_weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "qwen/qwen3.8-max": {
+      "input": 2.0,
+      "cached_input": 0.25,
+      "output": 6.0
+    },
+    "moonshotai/kimi-k3": {
+      "input": 3.0,
+      "cached_input": 0.3,
+      "output": 15.0
+    },
+    "meta/muse-spark-1.2": {
+      "input": 1.25,
+      "cached_input": 0.15,
+      "output": 4.25
+    },
+    "deepseek-v4-pro": {
+      "input": 0.66,
+      "cached_input": 0.022,
+      "output": 1.98,
+      "peak_input": 1.32,
+      "peak_cached_input": 0.044,
+      "peak_output": 3.96,
+      "peak_utc_hours": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          10
+        ]
+      ],
+      "peak_utc_weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "gemini-3.6-flash": {
+      "input": 0.75,
+      "cached_input": 0.075,
+      "output": 3.75,
+      "scheduled_prices": [
+        [
+          "2027-01-01",
+          [
+            1.5,
+            0.15,
+            7.5
+          ]
+        ]
+      ]
+    },
+    "gemini-3.8-flash": {
+      "input": 0.75,
+      "cached_input": 0.075,
+      "output": 3.75,
+      "scheduled_prices": [
+        [
+          "2027-01-01",
+          [
+            1.5,
+            0.15,
+            7.5
+          ]
+        ]
+      ]
+    },
+    "gemini-3.1-pro-preview": {
+      "input": 2.0,
+      "cached_input": 0.2,
+      "output": 12.0,
+      "long_context_min_tokens": 200001,
+      "long_context_multipliers": [
+        2.0,
+        2.0,
+        1.5
+      ]
+    },
+    "claude-opus-5": {
+      "input": 5.0,
+      "cached_input": 0.5,
+      "output": 25.0,
+      "cache_write": 6.25
+    }
+  },
+  "rating_games": 320030,
+  "total_games_by_active_player": {
+    "gpt5.6-sol-high-api-multi4": 14
+  },
+  "cumulative_llm_games": 30,
+  "completed_batch_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "untracked_log_dir": "untracked_log/gpt5.6-sol-high-api-multi4",
+  "run_directory_scheme": "llm_name",
+  "completed_moves": 1133,
+  "cumulative_llm_cost_usd": 197.4894404,
+  "llm_illegal_moves": 24,
+  "llm_api_problems": 0,
+  "llm_api_seconds": 15125.684705105843,
+  "llm_cost_usd": 19.330824,
+  "color_advantage_curve": [
+    {
+      "average_elo": 51.37763409212034,
+      "black_advantage_elo": -119.28014808392413,
+      "black_advantage_95_ci": [
+        -126.1854880693956,
+        -112.37480809845266
+      ]
+    },
+    {
+      "average_elo": 62.05010980781777,
+      "black_advantage_elo": -118.82142646932604,
+      "black_advantage_95_ci": [
+        -125.66594375591292,
+        -111.97690918273916
+      ]
+    },
+    {
+      "average_elo": 72.72258552351519,
+      "black_advantage_elo": -118.36270485472797,
+      "black_advantage_95_ci": [
+        -125.14656703561032,
+        -111.57884267384561
+      ]
+    },
+    {
+      "average_elo": 83.39506123921262,
+      "black_advantage_elo": -117.90398324012989,
+      "black_advantage_95_ci": [
+        -124.62736244432543,
+        -111.18060403593435
+      ]
+    },
+    {
+      "average_elo": 94.06753695491005,
+      "black_advantage_elo": -117.44526162553181,
+      "black_advantage_95_ci": [
+        -124.10833466948051,
+        -110.78218858158311
+      ]
+    },
+    {
+      "average_elo": 104.74001267060748,
+      "black_advantage_elo": -116.98654001093374,
+      "black_advantage_95_ci": [
+        -123.58948855578598,
+        -110.3835914660815
+      ]
+    },
+    {
+      "average_elo": 115.41248838630491,
+      "black_advantage_elo": -116.52781839633566,
+      "black_advantage_95_ci": [
+        -123.07082911116112,
+        -109.9848076815102
+      ]
+    },
+    {
+      "average_elo": 126.08496410200235,
+      "black_advantage_elo": -116.06909678173757,
+      "black_advantage_95_ci": [
+        -122.55236151287873,
+        -109.58583205059641
+      ]
+    },
+    {
+      "average_elo": 136.75743981769978,
+      "black_advantage_elo": -115.6103751671395,
+      "black_advantage_95_ci": [
+        -122.03409111394014,
+        -109.18665922033885
+      ]
+    },
+    {
+      "average_elo": 147.4299155333972,
+      "black_advantage_elo": -115.15165355254142,
+      "black_advantage_95_ci": [
+        -121.51602344968651,
+        -108.78728365539632
+      ]
+    },
+    {
+      "average_elo": 158.10239124909464,
+      "black_advantage_elo": -114.69293193794334,
+      "black_advantage_95_ci": [
+        -120.99816424465307,
+        -108.38769963123362
+      ]
+    },
+    {
+      "average_elo": 168.77486696479207,
+      "black_advantage_elo": -114.23421032334525,
+      "black_advantage_95_ci": [
+        -120.48051941967161,
+        -107.9879012270189
+      ]
+    },
+    {
+      "average_elo": 179.4473426804895,
+      "black_advantage_elo": -113.77548870874718,
+      "black_advantage_95_ci": [
+        -119.96309509922698,
+        -107.58788231826738
+      ]
+    },
+    {
+      "average_elo": 190.11981839618693,
+      "black_advantage_elo": -113.31676709414909,
+      "black_advantage_95_ci": [
+        -119.44589761907245,
+        -107.18763656922572
+      ]
+    },
+    {
+      "average_elo": 200.79229411188436,
+      "black_advantage_elo": -112.85804547955102,
+      "black_advantage_95_ci": [
+        -118.92893353410878,
+        -106.78715742499327
+      ]
+    },
+    {
+      "average_elo": 211.4647698275818,
+      "black_advantage_elo": -112.39932386495293,
+      "black_advantage_95_ci": [
+        -118.41220962653036,
+        -106.38643810337551
+      ]
+    },
+    {
+      "average_elo": 222.13724554327922,
+      "black_advantage_elo": -111.94060225035486,
+      "black_advantage_95_ci": [
+        -117.89573291424232,
+        -105.9854715864674
+      ]
+    },
+    {
+      "average_elo": 232.80972125897665,
+      "black_advantage_elo": -111.48188063575678,
+      "black_advantage_95_ci": [
+        -117.37951065955012,
+        -105.58425061196344
+      ]
+    },
+    {
+      "average_elo": 243.48219697467408,
+      "black_advantage_elo": -111.0231590211587,
+      "black_advantage_95_ci": [
+        -116.86355037812345,
+        -105.18276766419396
+      ]
+    },
+    {
+      "average_elo": 254.1546726903715,
+      "black_advantage_elo": -110.56443740656061,
+      "black_advantage_95_ci": [
+        -116.34785984823407,
+        -104.78101496488716
+      ]
+    },
+    {
+      "average_elo": 264.82714840606894,
+      "black_advantage_elo": -110.10571579196254,
+      "black_advantage_95_ci": [
+        -115.83244712026662,
+        -104.37898446365845
+      ]
+    },
+    {
+      "average_elo": 275.4996241217664,
+      "black_advantage_elo": -109.64699417736445,
+      "black_advantage_95_ci": [
+        -115.31732052649909,
+        -103.97666782822981
+      ]
+    },
+    {
+      "average_elo": 286.1720998374638,
+      "black_advantage_elo": -109.18827256276639,
+      "black_advantage_95_ci": [
+        -114.80248869114847,
+        -103.5740564343843
+      ]
+    },
+    {
+      "average_elo": 296.84457555316123,
+      "black_advantage_elo": -108.72955094816831,
+      "black_advantage_95_ci": [
+        -114.28796054067443,
+        -103.17114135566219
+      ]
+    },
+    {
+      "average_elo": 307.51705126885867,
+      "black_advantage_elo": -108.27082933357023,
+      "black_advantage_95_ci": [
+        -113.7737453143323,
+        -102.76791335280816
+      ]
+    },
+    {
+      "average_elo": 318.1895269845561,
+      "black_advantage_elo": -107.81210771897214,
+      "black_advantage_95_ci": [
+        -113.25985257496282,
+        -102.36436286298147
+      ]
+    },
+    {
+      "average_elo": 328.8620027002535,
+      "black_advantage_elo": -107.35338610437407,
+      "black_advantage_95_ci": [
+        -112.74629222000439,
+        -101.96047998874374
+      ]
+    },
+    {
+      "average_elo": 339.53447841595096,
+      "black_advantage_elo": -106.89466448977598,
+      "black_advantage_95_ci": [
+        -112.23307449270914,
+        -101.55625448684282
+      ]
+    },
+    {
+      "average_elo": 350.2069541316484,
+      "black_advantage_elo": -106.43594287517789,
+      "black_advantage_95_ci": [
+        -111.72020999354108,
+        -101.1516757568147
+      ]
+    },
+    {
+      "average_elo": 360.8794298473458,
+      "black_advantage_elo": -105.97722126057982,
+      "black_advantage_95_ci": [
+        -111.20770969173,
+        -100.74673282942965
+      ]
+    },
+    {
+      "average_elo": 371.55190556304325,
+      "black_advantage_elo": -105.51849964598173,
+      "black_advantage_95_ci": [
+        -110.6955849369501,
+        -100.34141435501337
+      ]
+    },
+    {
+      "average_elo": 382.2243812787407,
+      "black_advantage_elo": -105.05977803138366,
+      "black_advantage_95_ci": [
+        -110.1838474710878,
+        -99.93570859167951
+      ]
+    },
+    {
+      "average_elo": 392.8968569944381,
+      "black_advantage_elo": -104.60105641678558,
+      "black_advantage_95_ci": [
+        -109.6725094400564,
+        -99.52960339351476
+      ]
+    },
+    {
+      "average_elo": 403.56933271013554,
+      "black_advantage_elo": -104.1423348021875,
+      "black_advantage_95_ci": [
+        -109.16158340561006,
+        -99.12308619876495
+      ]
+    },
+    {
+      "average_elo": 414.24180842583297,
+      "black_advantage_elo": -103.68361318758943,
+      "black_advantage_95_ci": [
+        -108.65108235710217,
+        -98.71614401807669
+      ]
+    },
+    {
+      "average_elo": 424.9142841415304,
+      "black_advantage_elo": -103.22489157299135,
+      "black_advantage_95_ci": [
+        -108.14101972312572,
+        -98.30876342285698
+      ]
+    },
+    {
+      "average_elo": 435.58675985722783,
+      "black_advantage_elo": -102.76616995839326,
+      "black_advantage_95_ci": [
+        -107.63140938296544,
+        -97.90093053382108
+      ]
+    },
+    {
+      "average_elo": 446.25923557292526,
+      "black_advantage_elo": -102.30744834379519,
+      "black_advantage_95_ci": [
+        -107.12226567778234,
+        -97.49263100980804
+      ]
+    },
+    {
+      "average_elo": 456.9317112886227,
+      "black_advantage_elo": -101.8487267291971,
+      "black_advantage_95_ci": [
+        -106.61360342144198,
+        -97.08385003695221
+      ]
+    },
+    {
+      "average_elo": 467.6041870043201,
+      "black_advantage_elo": -101.39000511459903,
+      "black_advantage_95_ci": [
+        -106.10543791088803,
+        -96.67457231831004
+      ]
+    },
+    {
+      "average_elo": 478.27666272001755,
+      "black_advantage_elo": -100.93128350000093,
+      "black_advantage_95_ci": [
+        -105.59778493595066,
+        -96.2647820640512
+      ]
+    },
+    {
+      "average_elo": 488.949138435715,
+      "black_advantage_elo": -100.47256188540285,
+      "black_advantage_95_ci": [
+        -105.09066078846975,
+        -95.85446298233596
+      ]
+    },
+    {
+      "average_elo": 499.6216141514124,
+      "black_advantage_elo": -100.01384027080478,
+      "black_advantage_95_ci": [
+        -104.58408227059846,
+        -95.4435982710111
+      ]
+    },
+    {
+      "average_elo": 510.29408986710985,
+      "black_advantage_elo": -99.55511865620672,
+      "black_advantage_95_ci": [
+        -104.07806670214231,
+        -95.03217061027112
+      ]
+    },
+    {
+      "average_elo": 520.9665655828073,
+      "black_advantage_elo": -99.09639704160861,
+      "black_advantage_95_ci": [
+        -103.5726319267739,
+        -94.62016215644333
+      ]
+    },
+    {
+      "average_elo": 531.6390412985047,
+      "black_advantage_elo": -98.63767542701055,
+      "black_advantage_95_ci": [
+        -103.06779631695166,
+        -94.20755453706944
+      ]
+    },
+    {
+      "average_elo": 542.3115170142022,
+      "black_advantage_elo": -98.17895381241246,
+      "black_advantage_95_ci": [
+        -102.5635787773551,
+        -93.79432884746981
+      ]
+    },
+    {
+      "average_elo": 552.9839927298996,
+      "black_advantage_elo": -97.7202321978144,
+      "black_advantage_95_ci": [
+        -102.05999874663794,
+        -93.38046564899085
+      ]
+    },
+    {
+      "average_elo": 563.656468445597,
+      "black_advantage_elo": -97.2615105832163,
+      "black_advantage_95_ci": [
+        -101.55707619728405,
+        -92.96594496914857
+      ]
+    },
+    {
+      "average_elo": 574.3289441612944,
+      "black_advantage_elo": -96.80278896861823,
+      "black_advantage_95_ci": [
+        -101.05483163334047,
+        -92.55074630389599
+      ]
+    },
+    {
+      "average_elo": 585.0014198769919,
+      "black_advantage_elo": -96.34406735402015,
+      "black_advantage_95_ci": [
+        -100.55328608578725,
+        -92.13484862225306
+      ]
+    },
+    {
+      "average_elo": 595.6738955926894,
+      "black_advantage_elo": -95.88534573942208,
+      "black_advantage_95_ci": [
+        -100.05246110529373,
+        -91.71823037355043
+      ]
+    },
+    {
+      "average_elo": 606.3463713083868,
+      "black_advantage_elo": -95.42662412482399,
+      "black_advantage_95_ci": [
+        -99.55237875210031,
+        -91.30086949754767
+      ]
+    },
+    {
+      "average_elo": 617.0188470240842,
+      "black_advantage_elo": -94.96790251022591,
+      "black_advantage_95_ci": [
+        -99.05306158275714,
+        -90.88274343769469
+      ]
+    },
+    {
+      "average_elo": 627.6913227397816,
+      "black_advantage_elo": -94.50918089562782,
+      "black_advantage_95_ci": [
+        -98.55453263344496,
+        -90.46382915781068
+      ]
+    },
+    {
+      "average_elo": 638.3637984554791,
+      "black_advantage_elo": -94.05045928102975,
+      "black_advantage_95_ci": [
+        -98.05681539960183,
+        -90.04410316245766
+      ]
+    },
+    {
+      "average_elo": 649.0362741711765,
+      "black_advantage_elo": -93.59173766643167,
+      "black_advantage_95_ci": [
+        -97.55993381157917,
+        -89.62354152128417
+      ]
+    },
+    {
+      "average_elo": 659.7087498868739,
+      "black_advantage_elo": -93.1330160518336,
+      "black_advantage_95_ci": [
+        -97.06391220605731,
+        -89.20211989760988
+      ]
+    },
+    {
+      "average_elo": 670.3812256025714,
+      "black_advantage_elo": -92.67429443723552,
+      "black_advantage_95_ci": [
+        -96.56877529295967,
+        -88.77981358151136
+      ]
+    },
+    {
+      "average_elo": 681.0537013182688,
+      "black_advantage_elo": -92.21557282263743,
+      "black_advantage_95_ci": [
+        -96.07454811762142,
+        -88.35659752765343
+      ]
+    },
+    {
+      "average_elo": 691.7261770339662,
+      "black_advantage_elo": -91.75685120803936,
+      "black_advantage_95_ci": [
+        -95.58125601799026,
+        -87.93244639808847
+      ]
+    },
+    {
+      "average_elo": 702.3986527496636,
+      "black_advantage_elo": -91.29812959344127,
+      "black_advantage_95_ci": [
+        -95.08892457666549,
+        -87.50733461021706
+      ]
+    },
+    {
+      "average_elo": 713.0711284653611,
+      "black_advantage_elo": -90.8394079788432,
+      "black_advantage_95_ci": [
+        -94.59757956761933,
+        -87.08123639006706
+      ]
+    },
+    {
+      "average_elo": 723.7436041810586,
+      "black_advantage_elo": -90.38068636424512,
+      "black_advantage_95_ci": [
+        -94.10724689748676,
+        -86.65412583100348
+      ]
+    },
+    {
+      "average_elo": 734.416079896756,
+      "black_advantage_elo": -89.92196474964703,
+      "black_advantage_95_ci": [
+        -93.61795254136496,
+        -86.2259769579291
+      ]
+    },
+    {
+      "average_elo": 745.0885556124533,
+      "black_advantage_elo": -89.46324313504896,
+      "black_advantage_95_ci": [
+        -93.12972247312324,
+        -85.79676379697467
+      ]
+    },
+    {
+      "average_elo": 755.7610313281508,
+      "black_advantage_elo": -89.00452152045087,
+      "black_advantage_95_ci": [
+        -92.64258259029383,
+        -85.3664604506079
+      ]
+    },
+    {
+      "average_elo": 766.4335070438483,
+      "black_advantage_elo": -88.54579990585279,
+      "black_advantage_95_ci": [
+        -92.1565586336927,
+        -84.93504117801288
+      ]
+    },
+    {
+      "average_elo": 777.1059827595457,
+      "black_advantage_elo": -88.08707829125471,
+      "black_advantage_95_ci": [
+        -91.67167610200295,
+        -84.50248048050648
+      ]
+    },
+    {
+      "average_elo": 787.778458475243,
+      "black_advantage_elo": -87.62835667665664,
+      "black_advantage_95_ci": [
+        -91.18796016164674,
+        -84.06875319166653
+      ]
+    },
+    {
+      "average_elo": 798.4509341909405,
+      "black_advantage_elo": -87.16963506205855,
+      "black_advantage_95_ci": [
+        -90.70543555236767,
+        -83.63383457174942
+      ]
+    },
+    {
+      "average_elo": 809.123409906638,
+      "black_advantage_elo": -86.71091344746047,
+      "black_advantage_95_ci": [
+        -90.22412648904655,
+        -83.19770040587439
+      ]
+    },
+    {
+      "average_elo": 819.7958856223354,
+      "black_advantage_elo": -86.2521918328624,
+      "black_advantage_95_ci": [
+        -89.74405656037614,
+        -82.76032710534865
+      ]
+    },
+    {
+      "average_elo": 830.4683613380328,
+      "black_advantage_elo": -85.79347021826432,
+      "black_advantage_95_ci": [
+        -89.26524862512188,
+        -82.32169181140675
+      ]
+    },
+    {
+      "average_elo": 841.1408370537303,
+      "black_advantage_elo": -85.33474860366624,
+      "black_advantage_95_ci": [
+        -88.78772470679439,
+        -81.88177250053809
+      ]
+    },
+    {
+      "average_elo": 851.8133127694277,
+      "black_advantage_elo": -84.87602698906815,
+      "black_advantage_95_ci": [
+        -88.31150588765121,
+        -81.4405480904851
+      ]
+    },
+    {
+      "average_elo": 862.4857884851251,
+      "black_advantage_elo": -84.41730537447008,
+      "black_advantage_95_ci": [
+        -87.83661220302885,
+        -80.9979985459113
+      ]
+    },
+    {
+      "average_elo": 873.1582642008225,
+      "black_advantage_elo": -83.958583759872,
+      "black_advantage_95_ci": [
+        -87.36306253707589,
+        -80.55410498266811
+      ]
+    },
+    {
+      "average_elo": 883.83073991652,
+      "black_advantage_elo": -83.49986214527391,
+      "black_advantage_95_ci": [
+        -86.8908745210134,
+        -80.10884976953442
+      ]
+    },
+    {
+      "average_elo": 894.5032156322175,
+      "black_advantage_elo": -83.04114053067583,
+      "black_advantage_95_ci": [
+        -86.4200644350852,
+        -79.66221662626647
+      ]
+    },
+    {
+      "average_elo": 905.1756913479148,
+      "black_advantage_elo": -82.58241891607776,
+      "black_advantage_95_ci": [
+        -85.95064711537532,
+        -79.2141907167802
+      ]
+    },
+    {
+      "average_elo": 915.8481670636122,
+      "black_advantage_elo": -82.12369730147968,
+      "black_advantage_95_ci": [
+        -85.48263586666384,
+        -78.76475873629552
+      ]
+    },
+    {
+      "average_elo": 926.5206427793097,
+      "black_advantage_elo": -81.6649756868816,
+      "black_advantage_95_ci": [
+        -85.0160423824583,
+        -78.31390899130491
+      ]
+    },
+    {
+      "average_elo": 937.1931184950072,
+      "black_advantage_elo": -81.20625407228351,
+      "black_advantage_95_ci": [
+        -84.55087667328186,
+        -77.86163147128516
+      ]
+    },
+    {
+      "average_elo": 947.8655942107046,
+      "black_advantage_elo": -80.74753245768544,
+      "black_advantage_95_ci": [
+        -84.08714700421599,
+        -77.40791791115488
+      ]
+    },
+    {
+      "average_elo": 958.5380699264019,
+      "black_advantage_elo": -80.28881084308736,
+      "black_advantage_95_ci": [
+        -83.62485984258838,
+        -76.95276184358634
+      ]
+    },
+    {
+      "average_elo": 969.2105456420994,
+      "black_advantage_elo": -79.83008922848929,
+      "black_advantage_95_ci": [
+        -83.16401981656828,
+        -76.49615864041029
+      ]
+    },
+    {
+      "average_elo": 979.8830213577969,
+      "black_advantage_elo": -79.37136761389121,
+      "black_advantage_95_ci": [
+        -82.70462968528157,
+        -76.03810554250084
+      ]
+    },
+    {
+      "average_elo": 990.5554970734943,
+      "black_advantage_elo": -78.91264599929312,
+      "black_advantage_95_ci": [
+        -82.24669032089326,
+        -75.57860167769297
+      ]
+    },
+    {
+      "average_elo": 1001.2279727891917,
+      "black_advantage_elo": -78.45392438469504,
+      "black_advantage_95_ci": [
+        -81.79020070292808,
+        -75.11764806646201
+      ]
+    },
+    {
+      "average_elo": 1011.9004485048891,
+      "black_advantage_elo": -77.99520277009697,
+      "black_advantage_95_ci": [
+        -81.33515792491487,
+        -74.65524761527907
+      ]
+    },
+    {
+      "average_elo": 1022.5729242205866,
+      "black_advantage_elo": -77.53648115549888,
+      "black_advantage_95_ci": [
+        -80.88155721325461,
+        -74.19140509774314
+      ]
+    },
+    {
+      "average_elo": 1033.245399936284,
+      "black_advantage_elo": -77.0777595409008,
+      "black_advantage_95_ci": [
+        -80.42939195802687,
+        -73.72612712377473
+      ]
+    },
+    {
+      "average_elo": 1043.9178756519814,
+      "black_advantage_elo": -76.61903792630272,
+      "black_advantage_95_ci": [
+        -79.97865375527392,
+        -73.25942209733152
+      ]
+    },
+    {
+      "average_elo": 1054.5903513676787,
+      "black_advantage_elo": -76.16031631170465,
+      "black_advantage_95_ci": [
+        -79.52933246013747,
+        -72.79130016327183
+      ]
+    },
+    {
+      "average_elo": 1065.2628270833764,
+      "black_advantage_elo": -75.70159469710656,
+      "black_advantage_95_ci": [
+        -79.08141625007534,
+        -72.32177314413778
+      ]
+    },
+    {
+      "average_elo": 1075.9353027990737,
+      "black_advantage_elo": -75.24287308250848,
+      "black_advantage_95_ci": [
+        -78.63489169725798,
+        -71.85085446775898
+      ]
+    },
+    {
+      "average_elo": 1086.607778514771,
+      "black_advantage_elo": -74.7841514679104,
+      "black_advantage_95_ci": [
+        -78.18974384913952,
+        -71.37855908668129
+      ]
+    },
+    {
+      "average_elo": 1097.2802542304685,
+      "black_advantage_elo": -74.32542985331233,
+      "black_advantage_95_ci": [
+        -77.74595631611716,
+        -70.9049033905075
+      ]
+    },
+    {
+      "average_elo": 1107.952729946166,
+      "black_advantage_elo": -73.86670823871424,
+      "black_advantage_95_ci": [
+        -77.30351136513774,
+        -70.42990511229074
+      ]
+    },
+    {
+      "average_elo": 1118.6252056618634,
+      "black_advantage_elo": -73.40798662411616,
+      "black_advantage_95_ci": [
+        -76.86239001807934,
+        -69.95358323015299
+      ]
+    },
+    {
+      "average_elo": 1129.2976813775608,
+      "black_advantage_elo": -72.94926500951809,
+      "black_advantage_95_ci": [
+        -76.42257215373067,
+        -69.4759578653055
+      ]
+    },
+    {
+      "average_elo": 1139.9701570932584,
+      "black_advantage_elo": -72.49054339492,
+      "black_advantage_95_ci": [
+        -75.98403661220777,
+        -68.99705017763222
+      ]
+    },
+    {
+      "average_elo": 1150.6426328089558,
+      "black_advantage_elo": -72.03182178032192,
+      "black_advantage_95_ci": [
+        -75.54676130068597,
+        -68.51688225995787
+      ]
+    },
+    {
+      "average_elo": 1161.3151085246532,
+      "black_advantage_elo": -71.57310016572384,
+      "black_advantage_95_ci": [
+        -75.11072329938041,
+        -68.03547703206728
+      ]
+    },
+    {
+      "average_elo": 1171.9875842403505,
+      "black_advantage_elo": -71.11437855112577,
+      "black_advantage_95_ci": [
+        -74.67589896678129,
+        -67.55285813547025
+      ]
+    },
+    {
+      "average_elo": 1182.660059956048,
+      "black_advantage_elo": -70.65565693652769,
+      "black_advantage_95_ci": [
+        -74.24226404323227,
+        -67.06904982982311
+      ]
+    },
+    {
+      "average_elo": 1193.3325356717455,
+      "black_advantage_elo": -70.1969353219296,
+      "black_advantage_95_ci": [
+        -73.80979375203452,
+        -66.58407689182468
+      ]
+    },
+    {
+      "average_elo": 1204.005011387443,
+      "black_advantage_elo": -69.73821370733152,
+      "black_advantage_95_ci": [
+        -73.37846289735691,
+        -66.09796451730614
+      ]
+    },
+    {
+      "average_elo": 1214.6774871031403,
+      "black_advantage_elo": -69.27949209273345,
+      "black_advantage_95_ci": [
+        -72.94824595833475,
+        -65.61073822713215
+      ]
+    },
+    {
+      "average_elo": 1225.3499628188379,
+      "black_advantage_elo": -68.82077047813536,
+      "black_advantage_95_ci": [
+        -72.51911717884262,
+        -65.1224237774281
+      ]
+    },
+    {
+      "average_elo": 1236.0224385345352,
+      "black_advantage_elo": -68.36204886353728,
+      "black_advantage_95_ci": [
+        -72.09105065252639,
+        -64.63304707454817
+      ]
+    },
+    {
+      "average_elo": 1246.6949142502326,
+      "black_advantage_elo": -67.9033272489392,
+      "black_advantage_95_ci": [
+        -71.66402040277659,
+        -64.14263409510183
+      ]
+    },
+    {
+      "average_elo": 1257.36738996593,
+      "black_advantage_elo": -67.44460563434113,
+      "black_advantage_95_ci": [
+        -71.23800045741696,
+        -63.6512108112653
+      ]
+    },
+    {
+      "average_elo": 1268.0398656816274,
+      "black_advantage_elo": -66.98588401974305,
+      "black_advantage_95_ci": [
+        -70.8129649179658,
+        -63.15880312152031
+      ]
+    },
+    {
+      "average_elo": 1278.712341397325,
+      "black_advantage_elo": -66.52716240514496,
+      "black_advantage_95_ci": [
+        -70.3888880234053,
+        -62.66543678688463
+      ]
+    },
+    {
+      "average_elo": 1289.3848171130223,
+      "black_advantage_elo": -66.06844079054689,
+      "black_advantage_95_ci": [
+        -69.96574420846275,
+        -62.17113737263102
+      ]
+    },
+    {
+      "average_elo": 1300.0572928287197,
+      "black_advantage_elo": -65.60971917594881,
+      "black_advantage_95_ci": [
+        -69.54350815646785,
+        -61.67593019542978
+      ]
+    },
+    {
+      "average_elo": 1310.7297685444173,
+      "black_advantage_elo": -65.15099756135072,
+      "black_advantage_95_ci": [
+        -69.12215484690252,
+        -61.17984027579893
+      ]
+    },
+    {
+      "average_elo": 1321.4022442601147,
+      "black_advantage_elo": -64.69227594675264,
+      "black_advantage_95_ci": [
+        -68.70165959780338,
+        -60.682892295701905
+      ]
+    },
+    {
+      "average_elo": 1332.074719975812,
+      "black_advantage_elo": -64.23355433215457,
+      "black_advantage_95_ci": [
+        -68.2819981032126,
+        -60.185110561096536
+      ]
+    },
+    {
+      "average_elo": 1342.7471956915094,
+      "black_advantage_elo": -63.77483271755649,
+      "black_advantage_95_ci": [
+        -67.86314646590165,
+        -59.686518969211335
+      ]
+    },
+    {
+      "average_elo": 1353.4196714072068,
+      "black_advantage_elo": -63.31611110295841,
+      "black_advantage_95_ci": [
+        -67.44508122561385,
+        -59.18714098030297
+      ]
+    },
+    {
+      "average_elo": 1364.0921471229044,
+      "black_advantage_elo": -62.857389488360326,
+      "black_advantage_95_ci": [
+        -67.02777938308698,
+        -58.686999593633665
+      ]
+    },
+    {
+      "average_elo": 1374.7646228386018,
+      "black_advantage_elo": -62.39866787376225,
+      "black_advantage_95_ci": [
+        -66.61121842012713,
+        -58.18611732739737
+      ]
+    },
+    {
+      "average_elo": 1385.4370985542992,
+      "black_advantage_elo": -61.939946259164174,
+      "black_advantage_95_ci": [
+        -66.19537631600961,
+        -57.68451620231873
+      ]
+    },
+    {
+      "average_elo": 1396.1095742699968,
+      "black_advantage_elo": -61.48122464456608,
+      "black_advantage_95_ci": [
+        -65.78023156048422,
+        -57.18221772864795
+      ]
+    },
+    {
+      "average_elo": 1406.7820499856941,
+      "black_advantage_elo": -61.02250302996801,
+      "black_advantage_95_ci": [
+        -65.36576316365837,
+        -56.67924289627764
+      ]
+    },
+    {
+      "average_elo": 1417.4545257013915,
+      "black_advantage_elo": -60.56378141536993,
+      "black_advantage_95_ci": [
+        -64.95195066302664,
+        -56.175612167713226
+      ]
+    },
+    {
+      "average_elo": 1428.1270014170889,
+      "black_advantage_elo": -60.105059800771855,
+      "black_advantage_95_ci": [
+        -64.53877412790658,
+        -55.67134547363713
+      ]
+    },
+    {
+      "average_elo": 1438.7994771327863,
+      "black_advantage_elo": -59.646338186173786,
+      "black_advantage_95_ci": [
+        -64.12621416153104,
+        -55.166462210816526
+      ]
+    },
+    {
+      "average_elo": 1449.4719528484839,
+      "black_advantage_elo": -59.187616571575695,
+      "black_advantage_95_ci": [
+        -63.71425190103514,
+        -54.66098124211625
+      ]
+    },
+    {
+      "average_elo": 1460.1444285641812,
+      "black_advantage_elo": -58.72889495697761,
+      "black_advantage_95_ci": [
+        -63.30286901556403,
+        -54.1549208983912
+      ]
+    },
+    {
+      "average_elo": 1470.8169042798786,
+      "black_advantage_elo": -58.27017334237954,
+      "black_advantage_95_ci": [
+        -62.89204770271392,
+        -53.64829898204517
+      ]
+    },
+    {
+      "average_elo": 1481.4893799955762,
+      "black_advantage_elo": -57.81145172778145,
+      "black_advantage_95_ci": [
+        -62.48177068350545,
+        -53.14113277205745
+      ]
+    },
+    {
+      "average_elo": 1492.1618557112736,
+      "black_advantage_elo": -57.35273011318337,
+      "black_advantage_95_ci": [
+        -62.072021196074665,
+        -52.633439030292074
+      ]
+    },
+    {
+      "average_elo": 1500.0,
+      "black_advantage_elo": -57.01583300520599,
+      "black_advantage_95_ci": [
+        -61.77141702736132,
+        -52.26024898305066
+      ]
+    },
+    {
+      "average_elo": 1502.834331426971,
+      "black_advantage_elo": -56.91062846019303,
+      "black_advantage_95_ci": [
+        -61.65593589683654,
+        -52.165321023549524
+      ]
+    },
+    {
+      "average_elo": 1513.5068071426683,
+      "black_advantage_elo": -56.5144881425338,
+      "black_advantage_95_ci": [
+        -61.22117001771717,
+        -51.80780626735043
+      ]
+    },
+    {
+      "average_elo": 1524.1792828583657,
+      "black_advantage_elo": -56.11834782487458,
+      "black_advantage_95_ci": [
+        -60.78651715296271,
+        -51.45017849678646
+      ]
+    },
+    {
+      "average_elo": 1534.8517585740633,
+      "black_advantage_elo": -55.72220750721534,
+      "black_advantage_95_ci": [
+        -60.3519801228881,
+        -51.092434891542574
+      ]
+    },
+    {
+      "average_elo": 1545.5242342897607,
+      "black_advantage_elo": -55.32606718955612,
+      "black_advantage_95_ci": [
+        -59.91756183352247,
+        -50.73457254558977
+      ]
+    },
+    {
+      "average_elo": 1556.196710005458,
+      "black_advantage_elo": -54.929926871896896,
+      "black_advantage_95_ci": [
+        -59.483265279474075,
+        -50.37658846431972
+      ]
+    },
+    {
+      "average_elo": 1566.8691857211556,
+      "black_advantage_elo": -54.53378655423766,
+      "black_advantage_95_ci": [
+        -59.04909354688731,
+        -50.018479561588
+      ]
+    },
+    {
+      "average_elo": 1577.541661436853,
+      "black_advantage_elo": -54.13764623657843,
+      "black_advantage_95_ci": [
+        -58.615049816493006,
+        -49.66024265666386
+      ]
+    },
+    {
+      "average_elo": 1588.2141371525504,
+      "black_advantage_elo": -53.74150591891921,
+      "black_advantage_95_ci": [
+        -58.18113736675364,
+        -49.30187447108478
+      ]
+    },
+    {
+      "average_elo": 1598.8866128682478,
+      "black_advantage_elo": -53.34536560125998,
+      "black_advantage_95_ci": [
+        -57.74735957710508,
+        -48.943371625414876
+      ]
+    },
+    {
+      "average_elo": 1609.5590885839451,
+      "black_advantage_elo": -52.949225283600754,
+      "black_advantage_95_ci": [
+        -57.31371993129598,
+        -48.58473063590553
+      ]
+    },
+    {
+      "average_elo": 1620.2315642996427,
+      "black_advantage_elo": -52.55308496594152,
+      "black_advantage_95_ci": [
+        -56.880222020825684,
+        -48.22594791105736
+      ]
+    },
+    {
+      "average_elo": 1630.9040400153401,
+      "black_advantage_elo": -52.1569446482823,
+      "black_advantage_95_ci": [
+        -56.44686954848165,
+        -47.867019748082946
+      ]
+    },
+    {
+      "average_elo": 1641.5765157310375,
+      "black_advantage_elo": -51.76080433062307,
+      "black_advantage_95_ci": [
+        -56.013666331976616,
+        -47.50794232926952
+      ]
+    },
+    {
+      "average_elo": 1652.248991446735,
+      "black_advantage_elo": -51.364664012963836,
+      "black_advantage_95_ci": [
+        -55.580616307685744,
+        -47.14871171824193
+      ]
+    },
+    {
+      "average_elo": 1662.9214671624325,
+      "black_advantage_elo": -50.96852369530462,
+      "black_advantage_95_ci": [
+        -55.147723534483475,
+        -46.78932385612576
+      ]
+    },
+    {
+      "average_elo": 1673.5939428781298,
+      "black_advantage_elo": -50.57238337764539,
+      "black_advantage_95_ci": [
+        -54.71499219767918,
+        -46.429774557611594
+      ]
+    },
+    {
+      "average_elo": 1684.2664185938272,
+      "black_advantage_elo": -50.17624305998616,
+      "black_advantage_95_ci": [
+        -54.2824266130508,
+        -46.070059506921524
+      ]
+    },
+    {
+      "average_elo": 1694.9388943095246,
+      "black_advantage_elo": -49.78010274232694,
+      "black_advantage_95_ci": [
+        -53.85003123097424,
+        -45.71017425367964
+      ]
+    },
+    {
+      "average_elo": 1705.6113700252222,
+      "black_advantage_elo": -49.3839624246677,
+      "black_advantage_95_ci": [
+        -53.41781064064644,
+        -45.350114208688964
+      ]
+    },
+    {
+      "average_elo": 1716.2838457409196,
+      "black_advantage_elo": -48.987822107008476,
+      "black_advantage_95_ci": [
+        -52.98576957439901,
+        -44.989874639617945
+      ]
+    },
+    {
+      "average_elo": 1726.956321456617,
+      "black_advantage_elo": -48.59168178934925,
+      "black_advantage_95_ci": [
+        -52.55391291209833,
+        -44.62945066660017
+      ]
+    },
+    {
+      "average_elo": 1737.6287971723145,
+      "black_advantage_elo": -48.19554147169002,
+      "black_advantage_95_ci": [
+        -52.122245685627725,
+        -44.26883725775232
+      ]
+    },
+    {
+      "average_elo": 1748.301272888012,
+      "black_advantage_elo": -47.79940115403079,
+      "black_advantage_95_ci": [
+        -51.690773083445706,
+        -43.90802922461587
+      ]
+    },
+    {
+      "average_elo": 1758.9737486037093,
+      "black_advantage_elo": -47.40326083637156,
+      "black_advantage_95_ci": [
+        -51.259500455213754,
+        -43.54702121752936
+      ]
+    },
+    {
+      "average_elo": 1769.6462243194067,
+      "black_advantage_elo": -47.007120518712334,
+      "black_advantage_95_ci": [
+        -50.82843331648559,
+        -43.18580772093908
+      ]
+    },
+    {
+      "average_elo": 1780.318700035104,
+      "black_advantage_elo": -46.61098020105311,
+      "black_advantage_95_ci": [
+        -50.39757735344873,
+        -42.82438304865749
+      ]
+    },
+    {
+      "average_elo": 1790.9911757508016,
+      "black_advantage_elo": -46.21483988339388,
+      "black_advantage_95_ci": [
+        -49.96693842770787,
+        -42.462741339079884
+      ]
+    },
+    {
+      "average_elo": 1801.663651466499,
+      "black_advantage_elo": -45.818699565734654,
+      "black_advantage_95_ci": [
+        -49.53652258109773,
+        -42.10087655037158
+      ]
+    },
+    {
+      "average_elo": 1812.3361271821964,
+      "black_advantage_elo": -45.42255924807542,
+      "black_advantage_95_ci": [
+        -49.106336040511565,
+        -41.73878245563928
+      ]
+    },
+    {
+      "average_elo": 1823.008602897894,
+      "black_advantage_elo": -45.02641893041619,
+      "black_advantage_95_ci": [
+        -48.67638522272992,
+        -41.376452638102464
+      ]
+    },
+    {
+      "average_elo": 1833.6810786135914,
+      "black_advantage_elo": -44.63027861275697,
+      "black_advantage_95_ci": [
+        -48.24667673923161,
+        -41.013880486282325
+      ]
+    },
+    {
+      "average_elo": 1844.3535543292887,
+      "black_advantage_elo": -44.234138295097736,
+      "black_advantage_95_ci": [
+        -47.81721740096741,
+        -40.651059189228064
+      ]
+    },
+    {
+      "average_elo": 1855.026030044986,
+      "black_advantage_elo": -43.83799797743852,
+      "black_advantage_95_ci": [
+        -47.388014223074286,
+        -40.28798173180275
+      ]
+    },
+    {
+      "average_elo": 1865.6985057606835,
+      "black_advantage_elo": -43.441857659779295,
+      "black_advantage_95_ci": [
+        -46.959074429505534,
+        -39.924640890053055
+      ]
+    },
+    {
+      "average_elo": 1876.370981476381,
+      "black_advantage_elo": -43.04571734212005,
+      "black_advantage_95_ci": [
+        -46.530405457549705,
+        -39.561029226690394
+      ]
+    },
+    {
+      "average_elo": 1887.0434571920784,
+      "black_advantage_elo": -42.649577024460825,
+      "black_advantage_95_ci": [
+        -46.10201496220822,
+        -39.19713908671343
+      ]
+    },
+    {
+      "average_elo": 1897.7159329077758,
+      "black_advantage_elo": -42.25343670680161,
+      "black_advantage_95_ci": [
+        -45.67391082039842,
+        -38.8329625932048
+      ]
+    },
+    {
+      "average_elo": 1908.3884086234734,
+      "black_advantage_elo": -41.85729638914237,
+      "black_advantage_95_ci": [
+        -45.246101134946095,
+        -38.468491643338645
+      ]
+    },
+    {
+      "average_elo": 1919.0608843391708,
+      "black_advantage_elo": -41.461156071483146,
+      "black_advantage_95_ci": [
+        -44.818594238327826,
+        -38.103717904638465
+      ]
+    },
+    {
+      "average_elo": 1929.7333600548682,
+      "black_advantage_elo": -41.06501575382392,
+      "black_advantage_95_ci": [
+        -44.39139869611972,
+        -37.73863281152812
+      ]
+    },
+    {
+      "average_elo": 1940.4058357705655,
+      "black_advantage_elo": -40.66887543616469,
+      "black_advantage_95_ci": [
+        -43.9645233101062,
+        -37.37322756222318
+      ]
+    },
+    {
+      "average_elo": 1951.078311486263,
+      "black_advantage_elo": -40.272735118505466,
+      "black_advantage_95_ci": [
+        -43.537977120998,
+        -37.00749311601293
+      ]
+    },
+    {
+      "average_elo": 1961.7507872019605,
+      "black_advantage_elo": -39.876594800846235,
+      "black_advantage_95_ci": [
+        -43.11176941070508,
+        -36.64142019098739
+      ]
+    },
+    {
+      "average_elo": 1972.423262917658,
+      "black_advantage_elo": -39.48045448318701,
+      "black_advantage_95_ci": [
+        -42.68590970410599,
+        -36.27499926226803
+      ]
+    },
+    {
+      "average_elo": 1983.0957386333553,
+      "black_advantage_elo": -39.084314165527786,
+      "black_advantage_95_ci": [
+        -42.26040777025133,
+        -35.908220560804246
+      ]
+    },
+    {
+      "average_elo": 1993.7682143490529,
+      "black_advantage_elo": -38.68817384786855,
+      "black_advantage_95_ci": [
+        -41.83527362293485,
+        -35.541074072802246
+      ]
+    },
+    {
+      "average_elo": 2004.4406900647502,
+      "black_advantage_elo": -38.29203353020932,
+      "black_advantage_95_ci": [
+        -41.410517520562095,
+        -35.17354953985655
+      ]
+    },
+    {
+      "average_elo": 2015.1131657804476,
+      "black_advantage_elo": -37.89589321255009,
+      "black_advantage_95_ci": [
+        -40.986149965242056,
+        -34.80563645985813
+      ]
+    },
+    {
+      "average_elo": 2025.785641496145,
+      "black_advantage_elo": -37.49975289489087,
+      "black_advantage_95_ci": [
+        -40.56218170102459,
+        -34.437324088757144
+      ]
+    },
+    {
+      "average_elo": 2036.4581172118424,
+      "black_advantage_elo": -37.103612577231644,
+      "black_advantage_95_ci": [
+        -40.13862371120209,
+        -34.0686014432612
+      ]
+    },
+    {
+      "average_elo": 2047.13059292754,
+      "black_advantage_elo": -36.707472259572405,
+      "black_advantage_95_ci": [
+        -39.71548721459158,
+        -33.69945730455323
+      ]
+    },
+    {
+      "average_elo": 2057.803068643237,
+      "black_advantage_elo": -36.311331941913195,
+      "black_advantage_95_ci": [
+        -39.29278366071079,
+        -33.3298802231156
+      ]
+    },
+    {
+      "average_elo": 2068.4755443589347,
+      "black_advantage_elo": -35.91519162425396,
+      "black_advantage_95_ci": [
+        -38.87052472375912,
+        -32.959858524748796
+      ]
+    },
+    {
+      "average_elo": 2079.1480200746323,
+      "black_advantage_elo": -35.51905130659472,
+      "black_advantage_95_ci": [
+        -38.44872229531478,
+        -32.58938031787466
+      ]
+    },
+    {
+      "average_elo": 2089.8204957903295,
+      "black_advantage_elo": -35.1229109889355,
+      "black_advantage_95_ci": [
+        -38.02738847565713,
+        -32.21843350221387
+      ]
+    },
+    {
+      "average_elo": 2100.492971506027,
+      "black_advantage_elo": -34.72677067127628,
+      "black_advantage_95_ci": [
+        -37.606535563625165,
+        -31.847005778927386
+      ]
+    },
+    {
+      "average_elo": 2111.1654472217247,
+      "black_advantage_elo": -34.33063035361704,
+      "black_advantage_95_ci": [
+        -37.1861760449246,
+        -31.475084662309477
+      ]
+    },
+    {
+      "average_elo": 2121.837922937422,
+      "black_advantage_elo": -33.93449003595782,
+      "black_advantage_95_ci": [
+        -36.76632257879872,
+        -31.102657493116922
+      ]
+    },
+    {
+      "average_elo": 2132.5103986531194,
+      "black_advantage_elo": -33.53834971829858,
+      "black_advantage_95_ci": [
+        -36.34698798298271,
+        -30.729711453614453
+      ]
+    },
+    {
+      "average_elo": 2143.1828743688166,
+      "black_advantage_elo": -33.142209400639366,
+      "black_advantage_95_ci": [
+        -35.928185216867966,
+        -30.35623358441077
+      ]
+    },
+    {
+      "average_elo": 2153.855350084514,
+      "black_advantage_elo": -32.746069082980135,
+      "black_advantage_95_ci": [
+        -35.50992736280942,
+        -29.98221080315085
+      ]
+    },
+    {
+      "average_elo": 2164.5278258002118,
+      "black_advantage_elo": -32.349928765320904,
+      "black_advantage_95_ci": [
+        -35.092227605520264,
+        -29.607629925121543
+      ]
+    },
+    {
+      "average_elo": 2175.200301515909,
+      "black_advantage_elo": -31.95378844766169,
+      "black_advantage_95_ci": [
+        -34.67509920950867,
+        -29.232477685814704
+      ]
+    },
+    {
+      "average_elo": 2185.8727772316065,
+      "black_advantage_elo": -31.55764813000245,
+      "black_advantage_95_ci": [
+        -34.25855549452594,
+        -28.856740765478953
+      ]
+    },
+    {
+      "average_elo": 2196.545252947304,
+      "black_advantage_elo": -31.161507812343213,
+      "black_advantage_95_ci": [
+        -33.84260980901135,
+        -28.480405815675077
+      ]
+    },
+    {
+      "average_elo": 2207.2177286630013,
+      "black_advantage_elo": -30.765367494683993,
+      "black_advantage_95_ci": [
+        -33.427275501536606,
+        -28.103459487831376
+      ]
+    },
+    {
+      "average_elo": 2217.890204378699,
+      "black_advantage_elo": -30.369227177024765,
+      "black_advantage_95_ci": [
+        -33.01256589027395,
+        -27.725888463775583
+      ]
+    },
+    {
+      "average_elo": 2228.5626800943965,
+      "black_advantage_elo": -29.973086859365527,
+      "black_advantage_95_ci": [
+        -32.598494230533895,
+        -27.347679488197162
+      ]
+    },
+    {
+      "average_elo": 2239.2351558100936,
+      "black_advantage_elo": -29.576946541706313,
+      "black_advantage_95_ci": [
+        -32.18507368044325,
+        -26.968819402969373
+      ]
+    },
+    {
+      "average_elo": 2249.907631525791,
+      "black_advantage_elo": -29.180806224047075,
+      "black_advantage_95_ci": [
+        -31.772317264859876,
+        -26.589295183234274
+      ]
+    },
+    {
+      "average_elo": 2260.5801072414883,
+      "black_advantage_elo": -28.78466590638786,
+      "black_advantage_95_ci": [
+        -31.3602378376491,
+        -26.209093975126624
+      ]
+    },
+    {
+      "average_elo": 2271.252582957186,
+      "black_advantage_elo": -28.388525588728626,
+      "black_advantage_95_ci": [
+        -30.948848042474328,
+        -25.828203134982925
+      ]
+    },
+    {
+      "average_elo": 2281.9250586728836,
+      "black_advantage_elo": -27.992385271069395,
+      "black_advantage_95_ci": [
+        -30.538160272285264,
+        -25.446610269853526
+      ]
+    },
+    {
+      "average_elo": 2292.5975343885807,
+      "black_advantage_elo": -27.596244953410174,
+      "black_advantage_95_ci": [
+        -30.128186627715586,
+        -25.064303279104763
+      ]
+    },
+    {
+      "average_elo": 2303.2700101042783,
+      "black_advantage_elo": -27.200104635750943,
+      "black_advantage_95_ci": [
+        -29.718938874632276,
+        -24.68127039686961
+      ]
+    },
+    {
+      "average_elo": 2313.9424858199754,
+      "black_advantage_elo": -26.803964318091726,
+      "black_advantage_95_ci": [
+        -29.31042840110686,
+        -24.29750023507659
+      ]
+    },
+    {
+      "average_elo": 2324.614961535673,
+      "black_advantage_elo": -26.40782400043249,
+      "black_advantage_95_ci": [
+        -28.902666174105303,
+        -23.91298182675968
+      ]
+    },
+    {
+      "average_elo": 2335.2874372513706,
+      "black_advantage_elo": -26.011683682773253,
+      "black_advantage_95_ci": [
+        -28.49566269621834,
+        -23.527704669328166
+      ]
+    },
+    {
+      "average_elo": 2345.959912967068,
+      "black_advantage_elo": -25.61554336511404,
+      "black_advantage_95_ci": [
+        -28.089427962774643,
+        -23.141658767453436
+      ]
+    },
+    {
+      "average_elo": 2356.6323886827654,
+      "black_advantage_elo": -25.219403047454804,
+      "black_advantage_95_ci": [
+        -27.683971419697027,
+        -22.75483467521258
+      ]
+    },
+    {
+      "average_elo": 2367.304864398463,
+      "black_advantage_elo": -24.823262729795573,
+      "black_advantage_95_ci": [
+        -27.279301922475234,
+        -22.367223537115912
+      ]
+    },
+    {
+      "average_elo": 2377.97734011416,
+      "black_advantage_elo": -24.427122412136352,
+      "black_advantage_95_ci": [
+        -26.875427696635825,
+        -21.97881712763688
+      ]
+    },
+    {
+      "average_elo": 2388.6498158298577,
+      "black_advantage_elo": -24.03098209447712,
+      "black_advantage_95_ci": [
+        -26.4723563000927,
+        -21.589607888861543
+      ]
+    },
+    {
+      "average_elo": 2399.3222915455553,
+      "black_advantage_elo": -23.634841776817886,
+      "black_advantage_95_ci": [
+        -26.07009458775759,
+        -21.19958896587818
+      ]
+    },
+    {
+      "average_elo": 2409.9947672612525,
+      "black_advantage_elo": -23.238701459158666,
+      "black_advantage_95_ci": [
+        -25.668648678779277,
+        -20.808754239538054
+      ]
+    },
+    {
+      "average_elo": 2420.66724297695,
+      "black_advantage_elo": -22.842561141499434,
+      "black_advantage_95_ci": [
+        -25.268023926763668,
+        -20.4170983562352
+      ]
+    },
+    {
+      "average_elo": 2431.3397186926472,
+      "black_advantage_elo": -22.446420823840217,
+      "black_advantage_95_ci": [
+        -24.86822489330354,
+        -20.024616754376893
+      ]
+    },
+    {
+      "average_elo": 2442.012194408345,
+      "black_advantage_elo": -22.050280506180982,
+      "black_advantage_95_ci": [
+        -24.46925532511649,
+        -19.631305687245476
+      ]
+    },
+    {
+      "average_elo": 2452.6846701240424,
+      "black_advantage_elo": -21.654140188521744,
+      "black_advantage_95_ci": [
+        -24.071118135054686,
+        -19.237162241988802
+      ]
+    },
+    {
+      "average_elo": 2463.3571458397396,
+      "black_advantage_elo": -21.25799987086253,
+      "black_advantage_95_ci": [
+        -23.673815387208244,
+        -18.842184354516817
+      ]
+    },
+    {
+      "average_elo": 2474.029621555437,
+      "black_advantage_elo": -20.861859553203296,
+      "black_advantage_95_ci": [
+        -23.277348286278738,
+        -18.446370820127854
+      ]
+    },
+    {
+      "average_elo": 2484.7020972711343,
+      "black_advantage_elo": -20.46571923554408,
+      "black_advantage_95_ci": [
+        -22.881717171350246,
+        -18.04972129973791
+      ]
+    },
+    {
+      "average_elo": 2495.374572986832,
+      "black_advantage_elo": -20.069578917884844,
+      "black_advantage_95_ci": [
+        -22.486921514132327,
+        -17.65223632163736
+      ]
+    },
+    {
+      "average_elo": 2506.0470487025295,
+      "black_advantage_elo": -19.673438600225612,
+      "black_advantage_95_ci": [
+        -22.09295992169665,
+        -17.253917278754574
+      ]
+    },
+    {
+      "average_elo": 2516.7195244182267,
+      "black_advantage_elo": -19.2772982825664,
+      "black_advantage_95_ci": [
+        -21.6998301436739,
+        -16.854766421458898
+      ]
+    },
+    {
+      "average_elo": 2527.3920001339243,
+      "black_advantage_elo": -18.881157964907157,
+      "black_advantage_95_ci": [
+        -21.307529083824573,
+        -16.45478684598974
+      ]
+    },
+    {
+      "average_elo": 2538.064475849622,
+      "black_advantage_elo": -18.485017647247926,
+      "black_advantage_95_ci": [
+        -20.916052815845806,
+        -16.053982478650045
+      ]
+    },
+    {
+      "average_elo": 2548.736951565319,
+      "black_advantage_elo": -18.088877329588712,
+      "black_advantage_95_ci": [
+        -20.525396603226923,
+        -15.652358055950499
+      ]
+    },
+    {
+      "average_elo": 2559.4094272810166,
+      "black_advantage_elo": -17.692737011929474,
+      "black_advantage_95_ci": [
+        -20.135554922922598,
+        -15.24991910093635
+      ]
+    },
+    {
+      "average_elo": 2570.0819029967142,
+      "black_advantage_elo": -17.296596694270235,
+      "black_advantage_95_ci": [
+        -19.74652149257216,
+        -14.84667189596831
+      ]
+    },
+    {
+      "average_elo": 2580.7543787124114,
+      "black_advantage_elo": -16.90045637661102,
+      "black_advantage_95_ci": [
+        -19.358289300958855,
+        -14.442623452263188
+      ]
+    },
+    {
+      "average_elo": 2591.426854428109,
+      "black_advantage_elo": -16.50431605895179,
+      "black_advantage_95_ci": [
+        -18.97085064137493,
+        -14.03778147652865
+      ]
+    },
+    {
+      "average_elo": 2602.099330143806,
+      "black_advantage_elo": -16.10817574129257,
+      "black_advantage_95_ci": [
+        -18.584197147536454,
+        -13.632154335048686
+      ]
+    },
+    {
+      "average_elo": 2612.7718058595037,
+      "black_advantage_elo": -15.712035423633337,
+      "black_advantage_95_ci": [
+        -18.198319831675622,
+        -13.225751015591053
+      ]
+    },
+    {
+      "average_elo": 2623.4442815752013,
+      "black_advantage_elo": -15.315895105974104,
+      "black_advantage_95_ci": [
+        -17.81320912443033,
+        -12.818581087517877
+      ]
+    },
+    {
+      "average_elo": 2634.1167572908985,
+      "black_advantage_elo": -14.919754788314883,
+      "black_advantage_95_ci": [
+        -17.428854916147444,
+        -12.410654660482322
+      ]
+    },
+    {
+      "average_elo": 2644.789233006596,
+      "black_advantage_elo": -14.52361447065565,
+      "black_advantage_95_ci": [
+        -17.045246599220075,
+        -12.001982342091226
+      ]
+    },
+    {
+      "average_elo": 2655.461708722293,
+      "black_advantage_elo": -14.127474152996434,
+      "black_advantage_95_ci": [
+        -16.662373111088236,
+        -11.592575194904633
+      ]
+    },
+    {
+      "average_elo": 2666.134184437991,
+      "black_advantage_elo": -13.731333835337201,
+      "black_advantage_95_ci": [
+        -16.28022297754583,
+        -11.182444693128573
+      ]
+    },
+    {
+      "average_elo": 2676.8066601536884,
+      "black_advantage_elo": -13.335193517677968,
+      "black_advantage_95_ci": [
+        -15.898784356016009,
+        -10.771602679339928
+      ]
+    },
+    {
+      "average_elo": 2687.4791358693856,
+      "black_advantage_elo": -12.939053200018748,
+      "black_advantage_95_ci": [
+        -15.518045078478242,
+        -10.360061321559254
+      ]
+    },
+    {
+      "average_elo": 2698.151611585083,
+      "black_advantage_elo": -12.542912882359515,
+      "black_advantage_95_ci": [
+        -15.137992693755862,
+        -9.947833070963167
+      ]
+    },
+    {
+      "average_elo": 2708.824087300781,
+      "black_advantage_elo": -12.146772564700282,
+      "black_advantage_95_ci": [
+        -14.758614508900074,
+        -9.53493062050049
+      ]
+    },
+    {
+      "average_elo": 2719.496563016478,
+      "black_advantage_elo": -11.750632247041061,
+      "black_advantage_95_ci": [
+        -14.379897629434666,
+        -9.121366864647456
+      ]
+    },
+    {
+      "average_elo": 2730.1690387321755,
+      "black_advantage_elo": -11.354491929381828,
+      "black_advantage_95_ci": [
+        -14.001828998255565,
+        -8.70715486050809
+      ]
+    },
+    {
+      "average_elo": 2740.841514447873,
+      "black_advantage_elo": -10.958351611722595,
+      "black_advantage_95_ci": [
+        -13.624395433009145,
+        -8.292307790436045
+      ]
+    },
+    {
+      "average_elo": 2751.5139901635703,
+      "black_advantage_elo": -10.562211294063374,
+      "black_advantage_95_ci": [
+        -13.24758366180215,
+        -7.876838926324599
+      ]
+    },
+    {
+      "average_elo": 2762.186465879268,
+      "black_advantage_elo": -10.166070976404141,
+      "black_advantage_95_ci": [
+        -12.87138035712519,
+        -7.460761595683092
+      ]
+    },
+    {
+      "average_elo": 2772.858941594965,
+      "black_advantage_elo": -9.769930658744926,
+      "black_advantage_95_ci": [
+        -12.495772167898977,
+        -7.044089149590874
+      ]
+    },
+    {
+      "average_elo": 2783.5314173106626,
+      "black_advantage_elo": -9.373790341085693,
+      "black_advantage_95_ci": [
+        -12.120745749577928,
+        -6.626834932593457
+      ]
+    },
+    {
+      "average_elo": 2794.20389302636,
+      "black_advantage_elo": -8.977650023426454,
+      "black_advantage_95_ci": [
+        -11.746287792270518,
+        -6.20901225458239
+      ]
+    },
+    {
+      "average_elo": 2804.8763687420574,
+      "black_advantage_elo": -8.581509705767239,
+      "black_advantage_95_ci": [
+        -11.37238504685693,
+        -5.7906343646775476
+      ]
+    },
+    {
+      "average_elo": 2815.548844457755,
+      "black_advantage_elo": -8.185369388108006,
+      "black_advantage_95_ci": [
+        -10.999024349104957,
+        -5.371714427111055
+      ]
+    },
+    {
+      "average_elo": 2826.221320173452,
+      "black_advantage_elo": -7.789229070448786,
+      "black_advantage_95_ci": [
+        -10.626192641802952,
+        -4.95226549909462
+      ]
+    },
+    {
+      "average_elo": 2836.8937958891497,
+      "black_advantage_elo": -7.393088752789553,
+      "black_advantage_95_ci": [
+        -10.253876994943452,
+        -4.532300510635654
+      ]
+    },
+    {
+      "average_elo": 2847.5662716048473,
+      "black_advantage_elo": -6.996948435130319,
+      "black_advantage_95_ci": [
+        -9.882064624005386,
+        -4.111832246255252
+      ]
+    },
+    {
+      "average_elo": 2858.2387473205445,
+      "black_advantage_elo": -6.6008081174711055,
+      "black_advantage_95_ci": [
+        -9.510742906393283,
+        -3.690873328548929
+      ]
+    },
+    {
+      "average_elo": 2868.911223036242,
+      "black_advantage_elo": -6.204667799811866,
+      "black_advantage_95_ci": [
+        -9.139899396101622,
+        -3.2694362035221105
+      ]
+    },
+    {
+      "average_elo": 2879.5836987519397,
+      "black_advantage_elo": -5.808527482152632,
+      "black_advantage_95_ci": [
+        -8.769521836680084,
+        -2.847533127625181
+      ]
+    },
+    {
+      "average_elo": 2890.256174467637,
+      "black_advantage_elo": -5.412387164493419,
+      "black_advantage_95_ci": [
+        -8.399598172580518,
+        -2.4251761564063203
+      ]
+    },
+    {
+      "average_elo": 2900.9286501833344,
+      "black_advantage_elo": -5.016246846834186,
+      "black_advantage_95_ci": [
+        -8.03011655897133,
+        -2.002377134697041
+      ]
+    },
+    {
+      "average_elo": 2911.601125899032,
+      "black_advantage_elo": -4.6201065291749455,
+      "black_advantage_95_ci": [
+        -7.66106537010754,
+        -1.5791476882423514
+      ]
+    },
+    {
+      "average_elo": 2922.273601614729,
+      "black_advantage_elo": -4.223966211515732,
+      "black_advantage_95_ci": [
+        -7.292433206345911,
+        -1.1554992166855529
+      ]
+    },
+    {
+      "average_elo": 2932.9460773304268,
+      "black_advantage_elo": -3.827825893856499,
+      "black_advantage_95_ci": [
+        -6.924208899895284,
+        -0.7314428878177139
+      ]
+    },
+    {
+      "average_elo": 2943.618553046124,
+      "black_advantage_elo": -3.431685576197278,
+      "black_advantage_95_ci": [
+        -6.556381519391909,
+        -0.3069896330026469
+      ]
+    },
+    {
+      "average_elo": 2954.2910287618215,
+      "black_advantage_elo": -3.0355452585380447,
+      "black_advantage_95_ci": [
+        -6.1889403733874,
+        0.1178498563113104
+      ]
+    },
+    {
+      "average_elo": 2964.963504477519,
+      "black_advantage_elo": -2.6394049408788116,
+      "black_advantage_95_ci": [
+        -5.821875012835837,
+        0.5430651310782135
+      ]
+    },
+    {
+      "average_elo": 2975.6359801932163,
+      "black_advantage_elo": -2.243264623219597,
+      "black_advantage_95_ci": [
+        -5.455175232663156,
+        0.9686459862239616
+      ]
+    },
+    {
+      "average_elo": 2986.308455908914,
+      "black_advantage_elo": -1.847124305560358,
+      "black_advantage_95_ci": [
+        -5.088831072499284,
+        1.3945824613785684
+      ]
+    },
+    {
+      "average_elo": 2996.980931624611,
+      "black_advantage_elo": -1.4509839879011432,
+      "black_advantage_95_ci": [
+        -4.722832816650223,
+        1.820864840847937
+      ]
+    },
+    {
+      "average_elo": 3000.0,
+      "black_advantage_elo": -1.3389223878449865,
+      "black_advantage_95_ci": [
+        -4.6193593632535155,
+        1.941514587563542
+      ]
+    },
+    {
+      "average_elo": 3007.6534073403086,
+      "black_advantage_elo": -1.57718528132764,
+      "black_advantage_95_ci": [
+        -4.828253364879069,
+        1.6738828022237895
+      ]
+    },
+    {
+      "average_elo": 3018.325883056006,
+      "black_advantage_elo": -1.9094366344279607,
+      "black_advantage_95_ci": [
+        -5.1199843186025635,
+        1.3011110497466416
+      ]
+    },
+    {
+      "average_elo": 3028.9983587717034,
+      "black_advantage_elo": -2.2416879875282674,
+      "black_advantage_95_ci": [
+        -5.412238007527648,
+        0.9288620324711139
+      ]
+    },
+    {
+      "average_elo": 3039.670834487401,
+      "black_advantage_elo": -2.5739393406285886,
+      "black_advantage_95_ci": [
+        -5.70503446450526,
+        0.5571557832480827
+      ]
+    },
+    {
+      "average_elo": 3050.3433102030986,
+      "black_advantage_elo": -2.9061906937289095,
+      "black_advantage_95_ci": [
+        -5.998394465911055,
+        0.1860130784532359
+      ]
+    },
+    {
+      "average_elo": 3061.0157859187957,
+      "black_advantage_elo": -3.238442046829216,
+      "black_advantage_95_ci": [
+        -6.292339542017577,
+        -0.18454455164085548
+      ]
+    },
+    {
+      "average_elo": 3071.6882616344933,
+      "black_advantage_elo": -3.570693399929537,
+      "black_advantage_95_ci": [
+        -6.58689198457628,
+        -0.5544948152827938
+      ]
+    },
+    {
+      "average_elo": 3082.360737350191,
+      "black_advantage_elo": -3.9029447530298578,
+      "black_advantage_95_ci": [
+        -6.882074851132208,
+        -0.9238146549275079
+      ]
+    },
+    {
+      "average_elo": 3093.033213065888,
+      "black_advantage_elo": -4.235196106130164,
+      "black_advantage_95_ci": [
+        -7.177911965553335,
+        -1.2924802467069934
+      ]
+    },
+    {
+      "average_elo": 3103.7056887815856,
+      "black_advantage_elo": -4.567447459230485,
+      "black_advantage_95_ci": [
+        -7.474427914216209,
+        -1.6604670042447611
+      ]
+    },
+    {
+      "average_elo": 3114.378164497283,
+      "black_advantage_elo": -4.899698812330792,
+      "black_advantage_95_ci": [
+        -7.771648037251803,
+        -2.0277495874097804
+      ]
+    },
+    {
+      "average_elo": 3125.0506402129804,
+      "black_advantage_elo": -5.231950165431114,
+      "black_advantage_95_ci": [
+        -8.069598414222146,
+        -2.3943019166400825
+      ]
+    },
+    {
+      "average_elo": 3135.723115928678,
+      "black_advantage_elo": -5.564201518531434,
+      "black_advantage_95_ci": [
+        -8.368305843569331,
+        -2.7600971934935368
+      ]
+    },
+    {
+      "average_elo": 3146.395591644375,
+      "black_advantage_elo": -5.89645287163174,
+      "black_advantage_95_ci": [
+        -8.667797815158748,
+        -3.1251079281047325
+      ]
+    },
+    {
+      "average_elo": 3157.0680673600727,
+      "black_advantage_elo": -6.228704224732061,
+      "black_advantage_95_ci": [
+        -8.968102475227269,
+        -3.4893059742368537
+      ]
+    },
+    {
+      "average_elo": 3167.74054307577,
+      "black_advantage_elo": -6.5609555778323685,
+      "black_advantage_95_ci": [
+        -9.269248583049258,
+        -3.8526625726154795
+      ]
+    },
+    {
+      "average_elo": 3178.4130187914675,
+      "black_advantage_elo": -6.893206930932688,
+      "black_advantage_95_ci": [
+        -9.571265458650908,
+        -4.215148403214469
+      ]
+    },
+    {
+      "average_elo": 3189.085494507165,
+      "black_advantage_elo": -7.22545828403301,
+      "black_advantage_95_ci": [
+        -9.87418292093826,
+        -4.576733647127761
+      ]
+    },
+    {
+      "average_elo": 3199.7579702228622,
+      "black_advantage_elo": -7.557709637133317,
+      "black_advantage_95_ci": [
+        -10.178031215661505,
+        -4.937388058605129
+      ]
+    },
+    {
+      "average_elo": 3210.43044593856,
+      "black_advantage_elo": -7.8899609902336385,
+      "black_advantage_95_ci": [
+        -10.482840932718265,
+        -5.297081047749013
+      ]
+    },
+    {
+      "average_elo": 3221.1029216542574,
+      "black_advantage_elo": -8.222212343333958,
+      "black_advantage_95_ci": [
+        -10.788642912405471,
+        -5.655781774262444
+      ]
+    },
+    {
+      "average_elo": 3231.7753973699546,
+      "black_advantage_elo": -8.554463696434265,
+      "black_advantage_95_ci": [
+        -11.095468140365329,
+        -6.013459252503202
+      ]
+    },
+    {
+      "average_elo": 3242.447873085652,
+      "black_advantage_elo": -8.886715049534587,
+      "black_advantage_95_ci": [
+        -11.403347631135867,
+        -6.370082467933306
+      ]
+    },
+    {
+      "average_elo": 3253.12034880135,
+      "black_advantage_elo": -9.218966402634907,
+      "black_advantage_95_ci": [
+        -11.712312300412401,
+        -6.725620504857412
+      ]
+    },
+    {
+      "average_elo": 3263.792824517047,
+      "black_advantage_elo": -9.551217755735214,
+      "black_advantage_95_ci": [
+        -12.02239282635195,
+        -7.080042685118479
+      ]
+    },
+    {
+      "average_elo": 3274.4653002327445,
+      "black_advantage_elo": -9.883469108835534,
+      "black_advantage_95_ci": [
+        -12.333619500505078,
+        -7.4333187171659905
+      ]
+    },
+    {
+      "average_elo": 3285.1377759484417,
+      "black_advantage_elo": -10.215720461935842,
+      "black_advantage_95_ci": [
+        -12.646022069236103,
+        -7.78541885463558
+      ]
+    },
+    {
+      "average_elo": 3295.8102516641393,
+      "black_advantage_elo": -10.547971815036162,
+      "black_advantage_95_ci": [
+        -12.959629566787243,
+        -8.13631406328508
+      ]
+    },
+    {
+      "average_elo": 3306.482727379837,
+      "black_advantage_elo": -10.880223168136483,
+      "black_advantage_95_ci": [
+        -13.274470141446244,
+        -8.485976194826723
+      ]
+    },
+    {
+      "average_elo": 3317.155203095534,
+      "black_advantage_elo": -11.212474521236791,
+      "black_advantage_95_ci": [
+        -13.590570876583195,
+        -8.834378165890387
+      ]
+    },
+    {
+      "average_elo": 3327.8276788112316,
+      "black_advantage_elo": -11.54472587433711,
+      "black_advantage_95_ci": [
+        -13.907957608617053,
+        -9.181494140057168
+      ]
+    },
+    {
+      "average_elo": 3338.500154526929,
+      "black_advantage_elo": -11.876977227437418,
+      "black_advantage_95_ci": [
+        -14.226654744244934,
+        -9.527299710629903
+      ]
+    },
+    {
+      "average_elo": 3349.1726302426264,
+      "black_advantage_elo": -12.20922858053774,
+      "black_advantage_95_ci": [
+        -14.546685079504236,
+        -9.871772081571244
+      ]
+    },
+    {
+      "average_elo": 3359.845105958324,
+      "black_advantage_elo": -12.54147993363806,
+      "black_advantage_95_ci": [
+        -14.868069623423889,
+        -10.214890243852231
+      ]
+    },
+    {
+      "average_elo": 3370.517581674021,
+      "black_advantage_elo": -12.873731286738368,
+      "black_advantage_95_ci": [
+        -15.190827429146307,
+        -10.556635144330428
+      ]
+    },
+    {
+      "average_elo": 3381.1900573897187,
+      "black_advantage_elo": -13.205982639838687,
+      "black_advantage_95_ci": [
+        -15.514975435451705,
+        -10.89698984422567
+      ]
+    },
+    {
+      "average_elo": 3391.8625331054163,
+      "black_advantage_elo": -13.538233992939007,
+      "black_advantage_95_ci": [
+        -15.840528321584001,
+        -11.235939664294014
+      ]
+    },
+    {
+      "average_elo": 3402.5350088211135,
+      "black_advantage_elo": -13.870485346039315,
+      "black_advantage_95_ci": [
+        -16.167498378156466,
+        -11.573472313922165
+      ]
+    },
+    {
+      "average_elo": 3413.207484536811,
+      "black_advantage_elo": -14.202736699139637,
+      "black_advantage_95_ci": [
+        -16.49589539670249,
+        -11.909578001576783
+      ]
+    },
+    {
+      "average_elo": 3423.8799602525087,
+      "black_advantage_elo": -14.534988052239958,
+      "black_advantage_95_ci": [
+        -16.825726580136003,
+        -12.244249524343914
+      ]
+    },
+    {
+      "average_elo": 3434.552435968206,
+      "black_advantage_elo": -14.867239405340262,
+      "black_advantage_95_ci": [
+        -17.15699647600377,
+        -12.577482334676754
+      ]
+    },
+    {
+      "average_elo": 3445.2249116839034,
+      "black_advantage_elo": -15.199490758440584,
+      "black_advantage_95_ci": [
+        -17.48970693395912,
+        -12.909274582922047
+      ]
+    },
+    {
+      "average_elo": 3455.8973873996006,
+      "black_advantage_elo": -15.531742111540892,
+      "black_advantage_95_ci": [
+        -17.823857088379317,
+        -13.239627134702467
+      ]
+    },
+    {
+      "average_elo": 3466.569863115298,
+      "black_advantage_elo": -15.86399346464121,
+      "black_advantage_95_ci": [
+        -18.1594433665067,
+        -13.56854356277572
+      ]
+    },
+    {
+      "average_elo": 3477.242338830996,
+      "black_advantage_elo": -16.196244817741533,
+      "black_advantage_95_ci": [
+        -18.496459521935165,
+        -13.896030113547903
+      ]
+    },
+    {
+      "average_elo": 3487.914814546693,
+      "black_advantage_elo": -16.52849617084184,
+      "black_advantage_95_ci": [
+        -18.834896692713514,
+        -14.222095648970168
+      ]
+    },
+    {
+      "average_elo": 3498.5872902623905,
+      "black_advantage_elo": -16.860747523942162,
+      "black_advantage_95_ci": [
+        -19.17474348281467,
+        -14.546751565069657
+      ]
+    },
+    {
+      "average_elo": 3509.2597659780877,
+      "black_advantage_elo": -17.192998877042466,
+      "black_advantage_95_ci": [
+        -19.51598606524512,
+        -14.870011688839814
+      ]
+    },
+    {
+      "average_elo": 3519.9322416937853,
+      "black_advantage_elo": -17.525250230142788,
+      "black_advantage_95_ci": [
+        -19.858608304660304,
+        -15.191892155625274
+      ]
+    },
+    {
+      "average_elo": 3530.604717409483,
+      "black_advantage_elo": -17.85750158324311,
+      "black_advantage_95_ci": [
+        -20.202591897019005,
+        -15.512411269467215
+      ]
+    },
+    {
+      "average_elo": 3541.27719312518,
+      "black_advantage_elo": -18.189752936343414,
+      "black_advantage_95_ci": [
+        -20.547916523565895,
+        -15.831589349120934
+      ]
+    },
+    {
+      "average_elo": 3551.9496688408776,
+      "black_advantage_elo": -18.522004289443736,
+      "black_advantage_95_ci": [
+        -20.89456001627619,
+        -16.14944856261128
+      ]
+    },
+    {
+      "average_elo": 3562.622144556575,
+      "black_advantage_elo": -18.854255642544057,
+      "black_advantage_95_ci": [
+        -21.242498531832332,
+        -16.466012753255782
+      ]
+    },
+    {
+      "average_elo": 3573.2946202722724,
+      "black_advantage_elo": -19.186506995644365,
+      "black_advantage_95_ci": [
+        -21.591706731224253,
+        -16.781307260064477
+      ]
+    },
+    {
+      "average_elo": 3583.96709598797,
+      "black_advantage_elo": -19.518758348744683,
+      "black_advantage_95_ci": [
+        -21.94215796216343,
+        -17.095358735325934
+      ]
+    },
+    {
+      "average_elo": 3594.6395717036676,
+      "black_advantage_elo": -19.851009701845005,
+      "black_advantage_95_ci": [
+        -22.29382444166662,
+        -17.40819496202339
+      ]
+    },
+    {
+      "average_elo": 3605.3120474193647,
+      "black_advantage_elo": -20.183261054945316,
+      "black_advantage_95_ci": [
+        -22.646677436385605,
+        -17.719844673505026
+      ]
+    },
+    {
+      "average_elo": 3615.9845231350623,
+      "black_advantage_elo": -20.515512408045634,
+      "black_advantage_95_ci": [
+        -23.000687438520153,
+        -18.030337377571115
+      ]
+    },
+    {
+      "average_elo": 3626.6569988507595,
+      "black_advantage_elo": -20.84776376114594,
+      "black_advantage_95_ci": [
+        -23.355824335439696,
+        -18.339703186852187
+      ]
+    },
+    {
+      "average_elo": 3637.329474566457,
+      "black_advantage_elo": -21.180015114246263,
+      "black_advantage_95_ci": [
+        -23.71205757144291,
+        -18.647972657049618
+      ]
+    },
+    {
+      "average_elo": 3648.0019502821547,
+      "black_advantage_elo": -21.51226646734658,
+      "black_advantage_95_ci": [
+        -24.069356300389835,
+        -18.955176634303328
+      ]
+    },
+    {
+      "average_elo": 3658.674425997852,
+      "black_advantage_elo": -21.84451782044689,
+      "black_advantage_95_ci": [
+        -24.427689528240805,
+        -19.261346112652973
+      ]
+    },
+    {
+      "average_elo": 3669.3469017135494,
+      "black_advantage_elo": -22.17676917354721,
+      "black_advantage_95_ci": [
+        -24.78702624481964,
+        -19.566512102274782
+      ]
+    },
+    {
+      "average_elo": 3680.0193774292466,
+      "black_advantage_elo": -22.509020526647518,
+      "black_advantage_95_ci": [
+        -25.147335544380528,
+        -19.870705508914508
+      ]
+    },
+    {
+      "average_elo": 3690.691853144944,
+      "black_advantage_elo": -22.84127187974784,
+      "black_advantage_95_ci": [
+        -25.50858673479409,
+        -20.17395702470159
+      ]
+    },
+    {
+      "average_elo": 3701.3643288606418,
+      "black_advantage_elo": -23.173523232848154,
+      "black_advantage_95_ci": [
+        -25.87074943537405,
+        -20.476297030322257
+      ]
+    },
+    {
+      "average_elo": 3712.036804576339,
+      "black_advantage_elo": -23.505774585948465,
+      "black_advantage_95_ci": [
+        -26.23379366354326,
+        -20.77775550835367
+      ]
+    },
+    {
+      "average_elo": 3722.7092802920365,
+      "black_advantage_elo": -23.838025939048784,
+      "black_advantage_95_ci": [
+        -26.597689910683208,
+        -21.07836196741436
+      ]
+    },
+    {
+      "average_elo": 3733.381756007734,
+      "black_advantage_elo": -24.17027729214911,
+      "black_advantage_95_ci": [
+        -26.962409207628756,
+        -21.378145376669462
+      ]
+    },
+    {
+      "average_elo": 3744.0542317234313,
+      "black_advantage_elo": -24.502528645249413,
+      "black_advantage_95_ci": [
+        -27.327923180359516,
+        -21.67713411013931
+      ]
+    },
+    {
+      "average_elo": 3754.726707439129,
+      "black_advantage_elo": -24.834779998349735,
+      "black_advantage_95_ci": [
+        -27.694204096504297,
+        -21.975355900195172
+      ]
+    },
+    {
+      "average_elo": 3765.3991831548265,
+      "black_advantage_elo": -25.167031351450056,
+      "black_advantage_95_ci": [
+        -28.0612249033175,
+        -22.272837799582614
+      ]
+    },
+    {
+      "average_elo": 3776.0716588705236,
+      "black_advantage_elo": -25.49928270455036,
+      "black_advantage_95_ci": [
+        -28.428959257810487,
+        -22.569606151290234
+      ]
+    },
+    {
+      "average_elo": 3786.744134586221,
+      "black_advantage_elo": -25.831534057650682,
+      "black_advantage_95_ci": [
+        -28.797381549727817,
+        -22.865686565573547
+      ]
+    },
+    {
+      "average_elo": 3797.4166103019184,
+      "black_advantage_elo": -26.16378541075099,
+      "black_advantage_95_ci": [
+        -29.166466918051647,
+        -23.161103903450332
+      ]
+    },
+    {
+      "average_elo": 3808.089086017616,
+      "black_advantage_elo": -26.49603676385131,
+      "black_advantage_95_ci": [
+        -29.536191261701298,
+        -23.455882266001325
+      ]
+    },
+    {
+      "average_elo": 3818.7615617333136,
+      "black_advantage_elo": -26.828288116951633,
+      "black_advantage_95_ci": [
+        -29.90653124506817,
+        -23.750044988835096
+      ]
+    },
+    {
+      "average_elo": 3829.4340374490107,
+      "black_advantage_elo": -27.16053947005194,
+      "black_advantage_95_ci": [
+        -30.277464298995184,
+        -24.043614641108697
+      ]
+    },
+    {
+      "average_elo": 3840.1065131647083,
+      "black_advantage_elo": -27.492790823152262,
+      "black_advantage_95_ci": [
+        -30.64896861777285,
+        -24.336613028531673
+      ]
+    },
+    {
+      "average_elo": 3850.7789888804054,
+      "black_advantage_elo": -27.825042176252566,
+      "black_advantage_95_ci": [
+        -31.021023152684737,
+        -24.629061199820395
+      ]
+    },
+    {
+      "average_elo": 3861.451464596103,
+      "black_advantage_elo": -28.157293529352884,
+      "black_advantage_95_ci": [
+        -31.39360760259479,
+        -24.920979456110977
+      ]
+    },
+    {
+      "average_elo": 3872.1239403118007,
+      "black_advantage_elo": -28.48954488245321,
+      "black_advantage_95_ci": [
+        -31.76670240202683,
+        -25.21238736287959
+      ]
+    },
+    {
+      "average_elo": 3882.796416027498,
+      "black_advantage_elo": -28.821796235553514,
+      "black_advantage_95_ci": [
+        -32.14028870714649,
+        -25.503303763960538
+      ]
+    },
+    {
+      "average_elo": 3893.4688917431954,
+      "black_advantage_elo": -29.154047588653835,
+      "black_advantage_95_ci": [
+        -32.51434838001577,
+        -25.793746797291902
+      ]
+    },
+    {
+      "average_elo": 3904.141367458893,
+      "black_advantage_elo": -29.486298941754157,
+      "black_advantage_95_ci": [
+        -32.88886397145205,
+        -26.083733912056264
+      ]
+    },
+    {
+      "average_elo": 3914.81384317459,
+      "black_advantage_elo": -29.818550294854465,
+      "black_advantage_95_ci": [
+        -33.26381870278808,
+        -26.37328188692085
+      ]
+    },
+    {
+      "average_elo": 3925.4863188902877,
+      "black_advantage_elo": -30.15080164795478,
+      "black_advantage_95_ci": [
+        -33.63919644679491,
+        -26.66240684911465
+      ]
+    },
+    {
+      "average_elo": 3936.1587946059853,
+      "black_advantage_elo": -30.483053001055104,
+      "black_advantage_95_ci": [
+        -34.01498170799857,
+        -26.951124294111636
+      ]
+    },
+    {
+      "average_elo": 3946.8312703216825,
+      "black_advantage_elo": -30.81530435415541,
+      "black_advantage_95_ci": [
+        -34.39115960259247,
+        -27.23944910571835
+      ]
+    },
+    {
+      "average_elo": 3957.50374603738,
+      "black_advantage_elo": -31.147555707255734,
+      "black_advantage_95_ci": [
+        -34.76771583812086,
+        -27.527395576390614
+      ]
+    },
+    {
+      "average_elo": 3968.1762217530772,
+      "black_advantage_elo": -31.47980706035604,
+      "black_advantage_95_ci": [
+        -35.144636693084266,
+        -27.814977427627813
+      ]
+    },
+    {
+      "average_elo": 3978.848697468775,
+      "black_advantage_elo": -31.812058413456363,
+      "black_advantage_95_ci": [
+        -35.52190899659681,
+        -28.10220783031592
+      ]
+    },
+    {
+      "average_elo": 3989.5211731844724,
+      "black_advantage_elo": -32.14430976655668,
+      "black_advantage_95_ci": [
+        -35.89952010820455,
+        -28.38909942490881
+      ]
+    },
+    {
+      "average_elo": 4000.1936489001696,
+      "black_advantage_elo": -32.476561119656985,
+      "black_advantage_95_ci": [
+        -36.27745789795783,
+        -28.675664341356143
+      ]
+    },
+    {
+      "average_elo": 4010.866124615867,
+      "black_advantage_elo": -32.8088124727573,
+      "black_advantage_95_ci": [
+        -36.65571072681386,
+        -28.961914218700745
+      ]
+    },
+    {
+      "average_elo": 4021.5386003315643,
+      "black_advantage_elo": -33.14106382585762,
+      "black_advantage_95_ci": [
+        -37.03426742743256,
+        -29.247860224282682
+      ]
+    },
+    {
+      "average_elo": 4032.211076047262,
+      "black_advantage_elo": -33.47331517895794,
+      "black_advantage_95_ci": [
+        -37.41311728541656,
+        -29.533513072499318
+      ]
+    },
+    {
+      "average_elo": 4042.8835517629595,
+      "black_advantage_elo": -33.80556653205826,
+      "black_advantage_95_ci": [
+        -37.79225002103534,
+        -29.81888304308117
+      ]
+    },
+    {
+      "average_elo": 4053.5560274786567,
+      "black_advantage_elo": -34.13781788515856,
+      "black_advantage_95_ci": [
+        -38.171655771464394,
+        -30.10397999885273
+      ]
+    },
+    {
+      "average_elo": 4064.2285031943543,
+      "black_advantage_elo": -34.47006923825889,
+      "black_advantage_95_ci": [
+        -38.55132507356217,
+        -30.388813402955602
+      ]
+    },
+    {
+      "average_elo": 4074.900978910052,
+      "black_advantage_elo": -34.802320591359205,
+      "black_advantage_95_ci": [
+        -38.931248847200536,
+        -30.673392335517875
+      ]
+    },
+    {
+      "average_elo": 4085.573454625749,
+      "black_advantage_elo": -35.13457194445951,
+      "black_advantage_95_ci": [
+        -39.31141837915875,
+        -30.957725509760266
+      ]
+    },
+    {
+      "average_elo": 4096.245930341446,
+      "black_advantage_elo": -35.46682329755981,
+      "black_advantage_95_ci": [
+        -39.69182530758556,
+        -31.241821287534062
+      ]
+    },
+    {
+      "average_elo": 4106.918406057144,
+      "black_advantage_elo": -35.79907465066016,
+      "black_advantage_95_ci": [
+        -40.072461607029844,
+        -31.525687694290475
+      ]
+    },
+    {
+      "average_elo": 4117.590881772841,
+      "black_advantage_elo": -36.13132600376046,
+      "black_advantage_95_ci": [
+        -40.45331957403639,
+        -31.809332433484535
+      ]
+    },
+    {
+      "average_elo": 4128.2633574885385,
+      "black_advantage_elo": -36.46357735686077,
+      "black_advantage_95_ci": [
+        -40.83439181330129,
+        -32.09276290042025
+      ]
+    },
+    {
+      "average_elo": 4138.935833204236,
+      "black_advantage_elo": -36.79582870996108,
+      "black_advantage_95_ci": [
+        -41.215671224377104,
+        -32.37598619554505
+      ]
+    },
+    {
+      "average_elo": 4149.608308919934,
+      "black_advantage_elo": -37.12808006306141,
+      "black_advantage_95_ci": [
+        -41.597150988917974,
+        -32.65900913720485
+      ]
+    },
+    {
+      "average_elo": 4160.280784635631,
+      "black_advantage_elo": -37.460331416161715,
+      "black_advantage_95_ci": [
+        -41.97882455845157,
+        -32.94183827387186
+      ]
+    },
+    {
+      "average_elo": 4170.953260351329,
+      "black_advantage_elo": -37.79258276926205,
+      "black_advantage_95_ci": [
+        -42.36068564266492,
+        -33.224479895859176
+      ]
+    },
+    {
+      "average_elo": 4181.625736067026,
+      "black_advantage_elo": -38.12483412236236,
+      "black_advantage_95_ci": [
+        -42.742728198188445,
+        -33.50694004653627
+      ]
+    },
+    {
+      "average_elo": 4192.298211782723,
+      "black_advantage_elo": -38.45708547546267,
+      "black_advantage_95_ci": [
+        -43.12494641786388,
+        -33.78922453306146
+      ]
+    },
+    {
+      "average_elo": 4202.970687498421,
+      "black_advantage_elo": -38.789336828563,
+      "black_advantage_95_ci": [
+        -43.50733472047933,
+        -34.071338936646676
+      ]
+    },
+    {
+      "average_elo": 4213.643163214118,
+      "black_advantage_elo": -39.1215881816633,
+      "black_advantage_95_ci": [
+        -43.88988774095549,
+        -34.35328862237111
+      ]
+    },
+    {
+      "average_elo": 4224.315638929816,
+      "black_advantage_elo": -39.45383953476362,
+      "black_advantage_95_ci": [
+        -44.272600320967086,
+        -34.63507874856015
+      ]
+    },
+    {
+      "average_elo": 4234.988114645513,
+      "black_advantage_elo": -39.78609088786392,
+      "black_advantage_95_ci": [
+        -44.6554674999823,
+        -34.91671427574554
+      ]
+    },
+    {
+      "average_elo": 4245.660590361211,
+      "black_advantage_elo": -40.11834224096425,
+      "black_advantage_95_ci": [
+        -45.03848450670472,
+        -35.19819997522379
+      ]
+    },
+    {
+      "average_elo": 4256.333066076908,
+      "black_advantage_elo": -40.45059359406456,
+      "black_advantage_95_ci": [
+        -45.42164675090095,
+        -35.47954043722817
+      ]
+    },
+    {
+      "average_elo": 4267.005541792605,
+      "black_advantage_elo": -40.782844947164875,
+      "black_advantage_95_ci": [
+        -45.80494981559876,
+        -35.76074007873099
+      ]
+    },
+    {
+      "average_elo": 4277.678017508303,
+      "black_advantage_elo": -41.11509630026521,
+      "black_advantage_95_ci": [
+        -46.18838944963956,
+        -36.04180315089086
+      ]
+    },
+    {
+      "average_elo": 4288.350493224,
+      "black_advantage_elo": -41.447347653365505,
+      "black_advantage_95_ci": [
+        -46.57196156057032,
+        -36.32273374616069
+      ]
+    },
+    {
+      "average_elo": 4299.022968939697,
+      "black_advantage_elo": -41.77959900646582,
+      "black_advantage_95_ci": [
+        -46.95566220786053,
+        -36.60353580507112
+      ]
+    },
+    {
+      "average_elo": 4309.6954446553955,
+      "black_advantage_elo": -42.111850359566155,
+      "black_advantage_95_ci": [
+        -47.33948759642899,
+        -36.88421312270332
+      ]
+    },
+    {
+      "average_elo": 4320.367920371093,
+      "black_advantage_elo": -42.44410171266646,
+      "black_advantage_95_ci": [
+        -47.72343407046743,
+        -37.16476935486549
+      ]
+    }
+  ],
+  "ratings": [
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+      "elo": 4426.988845536856,
+      "ci_low": 4391.864788442498,
+      "ci_high": 4462.112902631215,
+      "ci_width": 70.24811418871622,
+      "games": 2992,
+      "wins": 1651,
+      "losses": 64,
+      "draws": 1277
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+      "elo": 4385.197281781547,
+      "ci_low": 4350.43789524467,
+      "ci_high": 4419.956668318424,
+      "ci_width": 69.51877307375435,
+      "games": 3114,
+      "wins": 1491,
+      "losses": 30,
+      "draws": 1593
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+      "elo": 4383.911228743185,
+      "ci_low": 4349.216480836679,
+      "ci_high": 4418.605976649692,
+      "ci_width": 69.38949581301314,
+      "games": 3168,
+      "wins": 1585,
+      "losses": 106,
+      "draws": 1477
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187-playouts600",
+      "elo": 4368.461017418063,
+      "ci_low": 4333.844052557024,
+      "ci_high": 4403.077982279103,
+      "ci_width": 69.23392972207817,
+      "games": 3188,
+      "wins": 1519,
+      "losses": 145,
+      "draws": 1524
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+      "elo": 4346.343128883459,
+      "ci_low": 4311.860216429624,
+      "ci_high": 4380.826041337294,
+      "ci_width": 68.96582490766951,
+      "games": 3270,
+      "wins": 1566,
+      "losses": 224,
+      "draws": 1480
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+      "elo": 4332.744414195628,
+      "ci_low": 4298.236210164509,
+      "ci_high": 4367.2526182267475,
+      "ci_width": 69.0164080622372,
+      "games": 3178,
+      "wins": 1535,
+      "losses": 336,
+      "draws": 1307
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+      "elo": 4308.247597136314,
+      "ci_low": 4273.946129052319,
+      "ci_high": 4342.549065220309,
+      "ci_width": 68.60293616799096,
+      "games": 3288,
+      "wins": 1553,
+      "losses": 366,
+      "draws": 1369
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+      "elo": 4278.820753359032,
+      "ci_low": 4244.61209255341,
+      "ci_high": 4313.029414164655,
+      "ci_width": 68.41732161124483,
+      "games": 3276,
+      "wins": 1448,
+      "losses": 481,
+      "draws": 1347
+    },
+    {
+      "player": "kata1-zhizi-b40c768nbt-fdx6c",
+      "elo": 4216.122519432116,
+      "ci_low": 4180.5061086926435,
+      "ci_high": 4251.738930171588,
+      "ci_width": 71.23282147894514,
+      "games": 2742,
+      "wins": 1791,
+      "losses": 88,
+      "draws": 863
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "elo": 4199.746546439016,
+      "ci_low": 4165.787566784761,
+      "ci_high": 4233.705526093271,
+      "ci_width": 67.91795930850975,
+      "games": 3726,
+      "wins": 1758,
+      "losses": 498,
+      "draws": 1470
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "elo": 4191.245156665026,
+      "ci_low": 4157.0916770405265,
+      "ci_high": 4225.398636289526,
+      "ci_width": 68.30695924899867,
+      "games": 3580,
+      "wins": 1823,
+      "losses": 597,
+      "draws": 1160
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "elo": 4160.852193004486,
+      "ci_low": 4126.8111872340305,
+      "ci_high": 4194.893198774942,
+      "ci_width": 68.08201154091068,
+      "games": 3636,
+      "wins": 1702,
+      "losses": 601,
+      "draws": 1333
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "elo": 4130.995021699282,
+      "ci_low": 4097.157028619382,
+      "ci_high": 4164.833014779182,
+      "ci_width": 67.67598615980053,
+      "games": 3876,
+      "wins": 1834,
+      "losses": 732,
+      "draws": 1310
+    },
+    {
+      "player": "kata1-b60c320-s6678602752-d3043834427",
+      "elo": 4102.215605465699,
+      "ci_low": 4068.5035108592874,
+      "ci_high": 4135.92770007211,
+      "ci_width": 67.42418921282305,
+      "games": 3886,
+      "wins": 1806,
+      "losses": 850,
+      "draws": 1230
+    },
+    {
+      "player": "kata1-b40c256-s11840935168-d2898845681",
+      "elo": 4070.8808916576736,
+      "ci_low": 4037.0945557559508,
+      "ci_high": 4104.667227559396,
+      "ci_width": 67.5726718034456,
+      "games": 3840,
+      "wins": 1805,
+      "losses": 933,
+      "draws": 1102
+    },
+    {
+      "player": "kata1-b40c256-s8049900800-d1952632576",
+      "elo": 4063.174984041086,
+      "ci_low": 4029.4013807654314,
+      "ci_high": 4096.948587316741,
+      "ci_width": 67.54720655130967,
+      "games": 3884,
+      "wins": 1869,
+      "losses": 885,
+      "draws": 1130
+    },
+    {
+      "player": "kata1-b40c256x2-s4120339456-d1045882697",
+      "elo": 4027.489313919377,
+      "ci_low": 3993.856525600057,
+      "ci_high": 4061.1221022386967,
+      "ci_width": 67.26557663863939,
+      "games": 4018,
+      "wins": 1933,
+      "losses": 1012,
+      "draws": 1073
+    },
+    {
+      "player": "kata1-b40c256-s5793846528-d1395151722",
+      "elo": 3994.1572897456804,
+      "ci_low": 3960.5333593524056,
+      "ci_high": 4027.781220138955,
+      "ci_width": 67.24786078654945,
+      "games": 3920,
+      "wins": 1951,
+      "losses": 1344,
+      "draws": 625
+    },
+    {
+      "player": "kata1-b40c256x2-s4833666560-d1179059206",
+      "elo": 3987.40729604099,
+      "ci_low": 3953.978540752122,
+      "ci_high": 4020.8360513298576,
+      "ci_width": 66.8575105777355,
+      "games": 4096,
+      "wins": 2121,
+      "losses": 1334,
+      "draws": 641
+    },
+    {
+      "player": "kata1-b20c256x2-s5055114240-d1149032340",
+      "elo": 3931.7322644747132,
+      "ci_low": 3898.174056649429,
+      "ci_high": 3965.2904722999974,
+      "ci_width": 67.11641565056873,
+      "games": 4026,
+      "wins": 2087,
+      "losses": 1381,
+      "draws": 558
+    },
+    {
+      "player": "kata1-b20c256x2-s3354994176-d716845198",
+      "elo": 3898.317675105839,
+      "ci_low": 3864.9005628782947,
+      "ci_high": 3931.7347873333833,
+      "ci_width": 66.83422445508816,
+      "games": 4158,
+      "wins": 2258,
+      "losses": 1521,
+      "draws": 379
+    },
+    {
+      "player": "kata1-b20c256x2-s2430231552-d525879064",
+      "elo": 3861.824706645521,
+      "ci_low": 3828.581286230092,
+      "ci_high": 3895.0681270609502,
+      "ci_width": 66.48684083085872,
+      "games": 4200,
+      "wins": 2256,
+      "losses": 1601,
+      "draws": 343
+    },
+    {
+      "player": "kata1-b20c256x2-s1610809600-d384128195",
+      "elo": 3847.2266841284923,
+      "ci_low": 3813.9501313706064,
+      "ci_high": 3880.503236886378,
+      "ci_width": 66.55310551577168,
+      "games": 4126,
+      "wins": 2207,
+      "losses": 1573,
+      "draws": 346
+    },
+    {
+      "player": "kata1-b20c256x2-s1039565568-d285739972",
+      "elo": 3841.2775226462722,
+      "ci_low": 3807.979060847937,
+      "ci_high": 3874.5759844446075,
+      "ci_width": 66.59692359667046,
+      "games": 4068,
+      "wins": 2109,
+      "losses": 1564,
+      "draws": 395
+    },
+    {
+      "player": "kata1-b20c256x2-s668214784-d222255714",
+      "elo": 3797.5180752028004,
+      "ci_low": 3764.2766543504226,
+      "ci_high": 3830.7594960551783,
+      "ci_width": 66.48284170475571,
+      "games": 4154,
+      "wins": 2308,
+      "losses": 1494,
+      "draws": 352
+    },
+    {
+      "player": "kata1-b15c192-s1062526208-d272346422",
+      "elo": 3752.194469894999,
+      "ci_low": 3719.270058847846,
+      "ci_high": 3785.1188809421524,
+      "ci_width": 65.84882209430604,
+      "games": 4192,
+      "wins": 2207,
+      "losses": 1608,
+      "draws": 377
+    },
+    {
+      "player": "kata1-b15c192-s798345984-d202388589",
+      "elo": 3750.6759045579392,
+      "ci_low": 3717.7123609425616,
+      "ci_high": 3783.639448173317,
+      "ci_width": 65.92708723075515,
+      "games": 4292,
+      "wins": 2225,
+      "losses": 1689,
+      "draws": 378
+    },
+    {
+      "player": "kata1-b20c256-s241116160-d150094945",
+      "elo": 3736.348547946675,
+      "ci_low": 3703.4043244010727,
+      "ci_high": 3769.292771492277,
+      "ci_width": 65.88844709120463,
+      "games": 4320,
+      "wins": 2367,
+      "losses": 1618,
+      "draws": 335
+    },
+    {
+      "player": "kata1-b15c192-s449394432-d140458288",
+      "elo": 3700.726358866245,
+      "ci_low": 3667.8678026841744,
+      "ci_high": 3733.5849150483155,
+      "ci_width": 65.71711236414123,
+      "games": 4244,
+      "wins": 2359,
+      "losses": 1621,
+      "draws": 264
+    },
+    {
+      "player": "kata1-b15c192-s315428352-d115173910",
+      "elo": 3689.5424874034215,
+      "ci_low": 3656.760789425924,
+      "ci_high": 3722.324185380919,
+      "ci_width": 65.56339595499473,
+      "games": 4258,
+      "wins": 2281,
+      "losses": 1640,
+      "draws": 337
+    },
+    {
+      "player": "kata1-b15c192-s230670592-d99188084",
+      "elo": 3638.7853614231585,
+      "ci_low": 3606.24339919346,
+      "ci_high": 3671.327323652857,
+      "ci_width": 65.08392445939735,
+      "games": 4302,
+      "wins": 2310,
+      "losses": 1770,
+      "draws": 222
+    },
+    {
+      "player": "kata1-b15c192-s172540416-d88080224",
+      "elo": 3635.790508388057,
+      "ci_low": 3603.1886578948206,
+      "ci_high": 3668.392358881293,
+      "ci_width": 65.20370098647267,
+      "games": 4112,
+      "wins": 2243,
+      "losses": 1634,
+      "draws": 235
+    },
+    {
+      "player": "kata1-b10c128-s501483520-d110698189",
+      "elo": 3566.229152822597,
+      "ci_low": 3533.835804699544,
+      "ci_high": 3598.62250094565,
+      "ci_width": 64.78669624610572,
+      "games": 4172,
+      "wins": 2262,
+      "losses": 1679,
+      "draws": 231
+    },
+    {
+      "player": "kata1-b10c128-s356821760-d90717864",
+      "elo": 3556.533526122241,
+      "ci_low": 3524.2503813053127,
+      "ci_high": 3588.816670939169,
+      "ci_width": 64.56628963385593,
+      "games": 4180,
+      "wins": 2271,
+      "losses": 1703,
+      "draws": 206
+    },
+    {
+      "player": "kata1-b10c128-s182492416-d63545831",
+      "elo": 3535.746388029253,
+      "ci_low": 3503.5421843147024,
+      "ci_high": 3567.9505917438037,
+      "ci_width": 64.40840742910129,
+      "games": 4228,
+      "wins": 2309,
+      "losses": 1769,
+      "draws": 150
+    },
+    {
+      "player": "kata1-b10c128-s258941696-d77667876",
+      "elo": 3529.272945297955,
+      "ci_low": 3497.155077087889,
+      "ci_high": 3561.3908135080214,
+      "ci_width": 64.23573642013261,
+      "games": 4318,
+      "wins": 2312,
+      "losses": 1818,
+      "draws": 188
+    },
+    {
+      "player": "kata1-b10c128-s146897408-d54258564",
+      "elo": 3508.708360738404,
+      "ci_low": 3476.604801841368,
+      "ci_high": 3540.8119196354396,
+      "ci_width": 64.20711779407169,
+      "games": 4110,
+      "wins": 2204,
+      "losses": 1693,
+      "draws": 213
+    },
+    {
+      "player": "kata1-b10c128-s108710656-d44395882",
+      "elo": 3494.860371307379,
+      "ci_low": 3462.8122453694464,
+      "ci_high": 3526.9084972453115,
+      "ci_width": 64.09625187586533,
+      "games": 4206,
+      "wins": 2249,
+      "losses": 1758,
+      "draws": 199
+    },
+    {
+      "player": "kata1-b10c128-s82632704-d37596868",
+      "elo": 3459.413525230962,
+      "ci_low": 3427.401452399223,
+      "ci_high": 3491.425598062701,
+      "ci_width": 64.02414566347774,
+      "games": 4086,
+      "wins": 2194,
+      "losses": 1715,
+      "draws": 177
+    },
+    {
+      "player": "kata1-b10c128-s56992512-d31122236",
+      "elo": 3438.4290152329754,
+      "ci_low": 3406.5323470267017,
+      "ci_high": 3470.325683439249,
+      "ci_width": 63.79333641254733,
+      "games": 4164,
+      "wins": 2189,
+      "losses": 1768,
+      "draws": 207
+    },
+    {
+      "player": "kata1-b10c128-s41138688-d27396855",
+      "elo": 3388.156294435029,
+      "ci_low": 3356.3677487146115,
+      "ci_high": 3419.9448401554464,
+      "ci_width": 63.57709144083457,
+      "games": 4042,
+      "wins": 2119,
+      "losses": 1711,
+      "draws": 212
+    },
+    {
+      "player": "kata1-b6c96-s175395328-d26788732",
+      "elo": 3332.182867491274,
+      "ci_low": 3300.5668305034633,
+      "ci_high": 3363.7989044790847,
+      "ci_width": 63.232073975621454,
+      "games": 4002,
+      "wins": 2071,
+      "losses": 1739,
+      "draws": 192
+    },
+    {
+      "player": "kata1-b6c96-s152505856-d23152636",
+      "elo": 3314.443536663162,
+      "ci_low": 3282.7422836821725,
+      "ci_high": 3346.1447896441514,
+      "ci_width": 63.402505961979145,
+      "games": 4000,
+      "wins": 2022,
+      "losses": 1784,
+      "draws": 194
+    },
+    {
+      "player": "kata1-b6c96-s165180416-d25130434",
+      "elo": 3312.682103650704,
+      "ci_low": 3281.539845487693,
+      "ci_high": 3343.824361813715,
+      "ci_width": 62.2845163260216,
+      "games": 5018,
+      "wins": 2620,
+      "losses": 2151,
+      "draws": 247
+    },
+    {
+      "player": "kata1-b6c96-s122554112-d18283013",
+      "elo": 3303.988014884542,
+      "ci_low": 3272.3386958786664,
+      "ci_high": 3335.6373338904173,
+      "ci_width": 63.2986380117513,
+      "games": 3926,
+      "wins": 1971,
+      "losses": 1809,
+      "draws": 146
+    },
+    {
+      "player": "kata1-b6c96-s141089536-d21243181",
+      "elo": 3302.375461766538,
+      "ci_low": 3270.6968915089938,
+      "ci_high": 3334.0540320240825,
+      "ci_width": 63.35714051508898,
+      "games": 3918,
+      "wins": 2004,
+      "losses": 1750,
+      "draws": 164
+    },
+    {
+      "player": "kata1-b6c96-s130521856-d19523626",
+      "elo": 3297.439584152225,
+      "ci_low": 3265.9650986841084,
+      "ci_high": 3328.9140696203417,
+      "ci_width": 62.94897093623303,
+      "games": 4088,
+      "wins": 2076,
+      "losses": 1849,
+      "draws": 163
+    },
+    {
+      "player": "kata1-b6c96-s115648256-d17228996",
+      "elo": 3290.603491910194,
+      "ci_low": 3259.1274146159167,
+      "ci_high": 3322.079569204471,
+      "ci_width": 62.95215458855415,
+      "games": 4090,
+      "wins": 2112,
+      "losses": 1823,
+      "draws": 155
+    },
+    {
+      "player": "kata1-b6c96-s103950080-d15368530",
+      "elo": 3275.794967795035,
+      "ci_low": 3244.3265652412497,
+      "ci_high": 3307.2633703488204,
+      "ci_width": 62.93680510757087,
+      "games": 4044,
+      "wins": 2004,
+      "losses": 1880,
+      "draws": 160
+    },
+    {
+      "player": "kata1-b6c96-s108812288-d16129874",
+      "elo": 3270.323916750165,
+      "ci_low": 3238.8298168391493,
+      "ci_high": 3301.818016661181,
+      "ci_width": 62.98819982203157,
+      "games": 3952,
+      "wins": 1959,
+      "losses": 1830,
+      "draws": 163
+    },
+    {
+      "player": "kata1-b6c96-s95425792-d14091095",
+      "elo": 3260.565948070181,
+      "ci_low": 3229.5640836175194,
+      "ci_high": 3291.567812522843,
+      "ci_width": 62.00372890532377,
+      "games": 5038,
+      "wins": 2619,
+      "losses": 2203,
+      "draws": 216
+    },
+    {
+      "player": "kata1-b6c96-s89508352-d13124432",
+      "elo": 3248.975544764364,
+      "ci_low": 3217.4710095091073,
+      "ci_high": 3280.4800800196203,
+      "ci_width": 63.00907051051308,
+      "games": 3974,
+      "wins": 2015,
+      "losses": 1802,
+      "draws": 157
+    },
+    {
+      "player": "kata1-b6c96-s83588096-d12203675",
+      "elo": 3248.651701971605,
+      "ci_low": 3217.2467390546913,
+      "ci_high": 3280.0566648885183,
+      "ci_width": 62.80992583382727,
+      "games": 4006,
+      "wins": 2044,
+      "losses": 1787,
+      "draws": 175
+    },
+    {
+      "player": "kata1-b6c96-s73091584-d10630987",
+      "elo": 3228.845515429846,
+      "ci_low": 3197.449959793953,
+      "ci_high": 3260.2410710657387,
+      "ci_width": 62.79111127178543,
+      "games": 4026,
+      "wins": 1977,
+      "losses": 1879,
+      "draws": 170
+    },
+    {
+      "player": "kata1-b6c96-s78659584-d11478487",
+      "elo": 3227.5589333618836,
+      "ci_low": 3196.149001256695,
+      "ci_high": 3258.968865467072,
+      "ci_width": 62.81986421037737,
+      "games": 4106,
+      "wins": 2064,
+      "losses": 1889,
+      "draws": 153
+    },
+    {
+      "player": "kata1-b6c96-s69427456-d10051148",
+      "elo": 3198.912584652658,
+      "ci_low": 3168.0938253630507,
+      "ci_high": 3229.7313439422655,
+      "ci_width": 61.63751857921504,
+      "games": 5188,
+      "wins": 2638,
+      "losses": 2383,
+      "draws": 167
+    },
+    {
+      "player": "kata1-b6c96-s65341184-d9428755",
+      "elo": 3189.229400292683,
+      "ci_low": 3157.924223199591,
+      "ci_high": 3220.534577385775,
+      "ci_width": 62.61035418618421,
+      "games": 4054,
+      "wins": 1980,
+      "losses": 1918,
+      "draws": 156
+    },
+    {
+      "player": "kata1-b6c96-s59560704-d8589539",
+      "elo": 3180.305333949145,
+      "ci_low": 3148.9572626670265,
+      "ci_high": 3211.653405231263,
+      "ci_width": 62.6961425642371,
+      "games": 3988,
+      "wins": 1961,
+      "losses": 1876,
+      "draws": 151
+    },
+    {
+      "player": "kata1-b6c96-s63439616-d9138325",
+      "elo": 3168.0310964791256,
+      "ci_low": 3136.746352983763,
+      "ci_high": 3199.3158399744884,
+      "ci_width": 62.56948699072592,
+      "games": 4086,
+      "wins": 1960,
+      "losses": 1955,
+      "draws": 171
+    },
+    {
+      "player": "kata1-b6c96-s55682304-d7995124",
+      "elo": 3152.063633455583,
+      "ci_low": 3120.6773845410253,
+      "ci_high": 3183.4498823701406,
+      "ci_width": 62.77249782911501,
+      "games": 3884,
+      "wins": 1933,
+      "losses": 1810,
+      "draws": 141
+    },
+    {
+      "player": "kata1-b6c96-s56669696-d8173106",
+      "elo": 3147.0571374438,
+      "ci_low": 3115.619722827598,
+      "ci_high": 3178.494552060002,
+      "ci_width": 62.87482923240402,
+      "games": 3996,
+      "wins": 1934,
+      "losses": 1928,
+      "draws": 134
+    },
+    {
+      "player": "kata1-b6c96-s52864512-d7635581",
+      "elo": 3119.282544505589,
+      "ci_low": 3088.5695133310915,
+      "ci_high": 3149.995575680087,
+      "ci_width": 61.42606234899521,
+      "games": 5218,
+      "wins": 2628,
+      "losses": 2436,
+      "draws": 154
+    },
+    {
+      "player": "kata1-b6c96-s50894592-d7380655",
+      "elo": 3117.5124534001916,
+      "ci_low": 3086.228930347682,
+      "ci_high": 3148.7959764527013,
+      "ci_width": 62.56704610501993,
+      "games": 3950,
+      "wins": 1906,
+      "losses": 1927,
+      "draws": 117
+    },
+    {
+      "player": "kata1-b6c96-s48921344-d7092247",
+      "elo": 3111.022129701975,
+      "ci_low": 3079.7097751423,
+      "ci_high": 3142.33448426165,
+      "ci_width": 62.62470911935016,
+      "games": 4000,
+      "wins": 1900,
+      "losses": 1969,
+      "draws": 131
+    },
+    {
+      "player": "kata1-b6c96-s46949632-d6822967",
+      "elo": 3082.404307934911,
+      "ci_low": 3051.067252375549,
+      "ci_high": 3113.7413634942727,
+      "ci_width": 62.67411111872406,
+      "games": 3874,
+      "wins": 1787,
+      "losses": 1970,
+      "draws": 117
+    },
+    {
+      "player": "kata1-b6c96-s45189632-d6589032",
+      "elo": 3070.0523288903246,
+      "ci_low": 3039.549538010239,
+      "ci_high": 3100.5551197704103,
+      "ci_width": 61.00558176017176,
+      "games": 5476,
+      "wins": 2780,
+      "losses": 2537,
+      "draws": 159
+    },
+    {
+      "player": "kata1-b6c96-s43286272-d6326857",
+      "elo": 3066.708156973389,
+      "ci_low": 3035.448867234273,
+      "ci_high": 3097.967446712505,
+      "ci_width": 62.518579478231594,
+      "games": 3980,
+      "wins": 1910,
+      "losses": 1959,
+      "draws": 111
+    },
+    {
+      "player": "kata1-b6c96-s41312768-d6061202",
+      "elo": 3038.5198091848374,
+      "ci_low": 3007.194577275735,
+      "ci_high": 3069.84504109394,
+      "ci_width": 62.65046381820522,
+      "games": 3908,
+      "wins": 1802,
+      "losses": 2000,
+      "draws": 106
+    },
+    {
+      "player": "kata1-b6c96-s39339776-d5828519",
+      "elo": 3015.950206936721,
+      "ci_low": 2985.4877984309346,
+      "ci_high": 3046.412615442507,
+      "ci_width": 60.92481701157224,
+      "games": 5508,
+      "wins": 2720,
+      "losses": 2657,
+      "draws": 131
+    },
+    {
+      "player": "kata1-b6c96-s37368064-d5536083",
+      "elo": 2989.1517461007634,
+      "ci_low": 2957.8776457513068,
+      "ci_high": 3020.42584645022,
+      "ci_width": 62.548200698912886,
+      "games": 4004,
+      "wins": 1788,
+      "losses": 2084,
+      "draws": 132
+    },
+    {
+      "player": "kata1-b6c96-s35356160-d5299514",
+      "elo": 2947.4877722223196,
+      "ci_low": 2917.141044322261,
+      "ci_high": 2977.834500122378,
+      "ci_width": 60.6934558001166,
+      "games": 5668,
+      "wins": 2807,
+      "losses": 2693,
+      "draws": 168
+    },
+    {
+      "player": "kata1-b6c96-s33239552-d5016295",
+      "elo": 2921.717447409558,
+      "ci_low": 2890.361734053441,
+      "ci_high": 2953.0731607656753,
+      "ci_width": 62.7114267122341,
+      "games": 4124,
+      "wins": 1831,
+      "losses": 2194,
+      "draws": 99
+    },
+    {
+      "player": "kata1-b6c96-s32344832-d4917369",
+      "elo": 2904.5077904550085,
+      "ci_low": 2874.274263933629,
+      "ci_high": 2934.741316976388,
+      "ci_width": 60.46705304275926,
+      "games": 5712,
+      "wins": 2740,
+      "losses": 2842,
+      "draws": 130
+    },
+    {
+      "player": "kata1-b6c96-s30394624-d4635675",
+      "elo": 2867.835381093196,
+      "ci_low": 2836.528604278677,
+      "ci_high": 2899.1421579077146,
+      "ci_width": 62.61355362903803,
+      "games": 4068,
+      "wins": 1806,
+      "losses": 2138,
+      "draws": 124
+    },
+    {
+      "player": "kata1-b6c96-s31390976-d4781382",
+      "elo": 2864.4499877944036,
+      "ci_low": 2833.150439941692,
+      "ci_high": 2895.749535647115,
+      "ci_width": 62.59909570542295,
+      "games": 4030,
+      "wins": 1759,
+      "losses": 2151,
+      "draws": 120
+    },
+    {
+      "player": "kata1-b6c96-s29422336-d4533650",
+      "elo": 2838.4081268869145,
+      "ci_low": 2808.33050449654,
+      "ci_high": 2868.485749277289,
+      "ci_width": 60.15524478074924,
+      "games": 6082,
+      "wins": 2918,
+      "losses": 3032,
+      "draws": 132
+    },
+    {
+      "player": "kata1-b6c96-s28460288-d4388379",
+      "elo": 2815.0035243102498,
+      "ci_low": 2783.756638916287,
+      "ci_high": 2846.2504097042124,
+      "ci_width": 62.49377078792554,
+      "games": 3976,
+      "wins": 1726,
+      "losses": 2126,
+      "draws": 124
+    },
+    {
+      "player": "kata1-b6c96-s27415296-d4256697",
+      "elo": 2789.5626603173905,
+      "ci_low": 2759.5590819219988,
+      "ci_high": 2819.5662387127823,
+      "ci_width": 60.007156790783526,
+      "games": 6010,
+      "wins": 2859,
+      "losses": 2999,
+      "draws": 152
+    },
+    {
+      "player": "kata1-b6c96-s26363136-d4119819",
+      "elo": 2741.04831076494,
+      "ci_low": 2709.956326354371,
+      "ci_high": 2772.1402951755094,
+      "ci_width": 62.183968821138194,
+      "games": 4218,
+      "wins": 1863,
+      "losses": 2241,
+      "draws": 114
+    },
+    {
+      "player": "kata1-b6c96-s25461504-d4002500",
+      "elo": 2721.797328246496,
+      "ci_low": 2692.0151511060308,
+      "ci_high": 2751.579505386961,
+      "ci_width": 59.56435428093057,
+      "games": 6352,
+      "wins": 3037,
+      "losses": 3173,
+      "draws": 142
+    },
+    {
+      "player": "kata1-b6c96-s24455424-d3879081",
+      "elo": 2695.824256442085,
+      "ci_low": 2664.6991466096188,
+      "ci_high": 2726.949366274551,
+      "ci_width": 62.2502196649325,
+      "games": 4216,
+      "wins": 1841,
+      "losses": 2267,
+      "draws": 108
+    },
+    {
+      "player": "kata1-b6c96-s23401472-d3742377",
+      "elo": 2640.321228211022,
+      "ci_low": 2610.8066887335676,
+      "ci_high": 2669.8357676884766,
+      "ci_width": 59.029078954909274,
+      "games": 6548,
+      "wins": 3113,
+      "losses": 3293,
+      "draws": 142
+    },
+    {
+      "player": "kata1-b6c96-s22371328-d3612586",
+      "elo": 2606.5938771454776,
+      "ci_low": 2575.6959596642796,
+      "ci_high": 2637.4917946266755,
+      "ci_width": 61.79583496239582,
+      "games": 4392,
+      "wins": 1887,
+      "losses": 2397,
+      "draws": 108
+    },
+    {
+      "player": "kata1-b6c96-s21371392-d3529696",
+      "elo": 2582.339840465633,
+      "ci_low": 2553.167808428565,
+      "ci_high": 2611.5118725027014,
+      "ci_width": 58.344064074136526,
+      "games": 6950,
+      "wins": 3279,
+      "losses": 3530,
+      "draws": 141
+    },
+    {
+      "player": "kata1-b6c96-s20302336-d3388395",
+      "elo": 2494.839621803815,
+      "ci_low": 2464.223231079463,
+      "ci_high": 2525.4560125281673,
+      "ci_width": 61.2327814487046,
+      "games": 4380,
+      "wins": 2011,
+      "losses": 2286,
+      "draws": 83
+    },
+    {
+      "player": "kata1-b6c96-s19408128-d3280178",
+      "elo": 2458.2611516308343,
+      "ci_low": 2429.4176256582728,
+      "ci_high": 2487.104677603396,
+      "ci_width": 57.68705194512353,
+      "games": 6898,
+      "wins": 3196,
+      "losses": 3579,
+      "draws": 123
+    },
+    {
+      "player": "kata1-b6c96-s18429184-d3197121",
+      "elo": 2386.4652530033213,
+      "ci_low": 2357.8811903791848,
+      "ci_high": 2415.049315627458,
+      "ci_width": 57.16812524827272,
+      "games": 7044,
+      "wins": 3220,
+      "losses": 3683,
+      "draws": 141
+    },
+    {
+      "player": "kata1-b6c96-s17434112-d3038653",
+      "elo": 2311.626041721096,
+      "ci_low": 2283.289063642221,
+      "ci_high": 2339.963019799971,
+      "ci_width": 56.67395615774948,
+      "games": 6890,
+      "wins": 3151,
+      "losses": 3625,
+      "draws": 114
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067",
+      "elo": 2245.9495962369324,
+      "ci_low": 2218.099690990729,
+      "ci_high": 2273.799501483136,
+      "ci_width": 55.69981049240681,
+      "games": 6806,
+      "wins": 3074,
+      "losses": 3629,
+      "draws": 103
+    },
+    {
+      "player": "kata1-b6c96-s15704832-d2832803",
+      "elo": 2163.9270235808153,
+      "ci_low": 2134.567933498345,
+      "ci_high": 2193.2861136632855,
+      "ci_width": 58.71818016494009,
+      "games": 3898,
+      "wins": 1740,
+      "losses": 2095,
+      "draws": 63
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067-temp-0.5",
+      "elo": 2160.862918845317,
+      "ci_low": 2133.4167036172034,
+      "ci_high": 2188.3091340734304,
+      "ci_width": 54.892430456227196,
+      "games": 6600,
+      "wins": 3007,
+      "losses": 3485,
+      "draws": 108
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367",
+      "elo": 2110.007130610156,
+      "ci_low": 2081.1166458785024,
+      "ci_high": 2138.8976153418093,
+      "ci_width": 57.78096946330724,
+      "games": 4006,
+      "wins": 1790,
+      "losses": 2136,
+      "draws": 80
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367-temp-0.3",
+      "elo": 2084.853603880633,
+      "ci_low": 2057.7745232421053,
+      "ci_high": 2111.9326845191604,
+      "ci_width": 54.158161277055434,
+      "games": 6582,
+      "wins": 3130,
+      "losses": 3364,
+      "draws": 88
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067-temp-0.7",
+      "elo": 2012.0584727933349,
+      "ci_low": 1985.1475965509073,
+      "ci_high": 2038.9693490357624,
+      "ci_width": 53.82175248485519,
+      "games": 6384,
+      "wins": 2963,
+      "losses": 3317,
+      "draws": 104
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.3",
+      "elo": 1985.6656150555564,
+      "ci_low": 1958.8009345694452,
+      "ci_high": 2012.5302955416676,
+      "ci_width": 53.7293609722225,
+      "games": 6388,
+      "wins": 3071,
+      "losses": 3226,
+      "draws": 91
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546",
+      "elo": 1980.6408911763822,
+      "ci_low": 1951.8568697220828,
+      "ci_high": 2009.4249126306815,
+      "ci_width": 57.568042908598564,
+      "games": 3464,
+      "wins": 1597,
+      "losses": 1814,
+      "draws": 53
+    },
+    {
+      "player": "kata1-b6c96-s12849664-d2510774",
+      "elo": 1944.145895645442,
+      "ci_low": 1915.7233105008415,
+      "ci_high": 1972.5684807900423,
+      "ci_width": 56.845170289200865,
+      "games": 3572,
+      "wins": 1613,
+      "losses": 1895,
+      "draws": 64
+    },
+    {
+      "player": "opus-5-high-api-multi",
+      "elo": 1940.3146113863365,
+      "ci_low": 1716.0020772585717,
+      "ci_high": 2164.6271455141014,
+      "ci_width": 448.6250682555295,
+      "games": 14,
+      "wins": 8,
+      "losses": 6,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.5",
+      "elo": 1924.8867451649737,
+      "ci_low": 1898.3629663964887,
+      "ci_high": 1951.4105239334588,
+      "ci_width": 53.047557536970125,
+      "games": 6428,
+      "wins": 2966,
+      "losses": 3354,
+      "draws": 108
+    },
+    {
+      "player": "kata1-b6c96-s12849664-d2510774-temp-0.5",
+      "elo": 1855.79437803138,
+      "ci_low": 1829.6119612912973,
+      "ci_high": 1881.9767947714624,
+      "ci_width": 52.36483348016521,
+      "games": 6426,
+      "wins": 3073,
+      "losses": 3250,
+      "draws": 103
+    },
+    {
+      "player": "gpt5.6-sol-high-api-multi4",
+      "elo": 1846.7197407795124,
+      "ci_low": 1639.302411336771,
+      "ci_high": 2054.137070222254,
+      "ci_width": 414.8346588854829,
+      "games": 14,
+      "wins": 7,
+      "losses": 6,
+      "draws": 1
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753",
+      "elo": 1820.4573080144073,
+      "ci_low": 1794.447133002454,
+      "ci_high": 1846.4674830263607,
+      "ci_width": 52.02035002390668,
+      "games": 6302,
+      "wins": 3087,
+      "losses": 3111,
+      "draws": 104
+    },
+    {
+      "player": "kata1-b6c96-s10825472-d2300510",
+      "elo": 1743.627743828004,
+      "ci_low": 1715.8666152836997,
+      "ci_high": 1771.3888723723082,
+      "ci_width": 55.52225708860872,
+      "games": 3416,
+      "wins": 1529,
+      "losses": 1817,
+      "draws": 70
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753-temp-0.5",
+      "elo": 1742.4032565392192,
+      "ci_low": 1716.7333127047023,
+      "ci_high": 1768.0732003737362,
+      "ci_width": 51.339887669034006,
+      "games": 6388,
+      "wins": 3126,
+      "losses": 3146,
+      "draws": 116
+    },
+    {
+      "player": "gpt5.6-sol-high-api-multi2",
+      "elo": 1726.6584512992,
+      "ci_low": -7.731631677876749,
+      "ci_high": 3461.0485342762768,
+      "ci_width": 3468.7801659541533,
+      "games": 2,
+      "wins": 2,
+      "losses": 0,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367-temp-0.9",
+      "elo": 1676.3260223695925,
+      "ci_low": 1650.806497197311,
+      "ci_high": 1701.8455475418739,
+      "ci_width": 51.03905034456292,
+      "games": 6342,
+      "wins": 3126,
+      "losses": 3132,
+      "draws": 84
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128",
+      "elo": 1654.3726533725098,
+      "ci_low": 1626.97238247026,
+      "ci_high": 1681.7729242747596,
+      "ci_width": 54.8005418044993,
+      "games": 3338,
+      "wins": 1573,
+      "losses": 1688,
+      "draws": 77
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128-temp-0.3",
+      "elo": 1619.5462063089196,
+      "ci_low": 1594.3051066995106,
+      "ci_high": 1644.7873059183287,
+      "ci_width": 50.48219921881792,
+      "games": 6594,
+      "wins": 3362,
+      "losses": 3140,
+      "draws": 92
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.9",
+      "elo": 1583.2431527561223,
+      "ci_low": 1558.1784423336962,
+      "ci_high": 1608.3078631785484,
+      "ci_width": 50.12942084485216,
+      "games": 6670,
+      "wins": 3190,
+      "losses": 3380,
+      "draws": 100
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583",
+      "elo": 1572.7071245771144,
+      "ci_low": 1545.50287924444,
+      "ci_high": 1599.9113699097888,
+      "ci_width": 54.408490665348886,
+      "games": 3368,
+      "wins": 1501,
+      "losses": 1795,
+      "draws": 72
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030",
+      "elo": 1522.4933948974283,
+      "ci_low": 1495.7521789844136,
+      "ci_high": 1549.234610810443,
+      "ci_width": 53.4824318260293,
+      "games": 3454,
+      "wins": 1646,
+      "losses": 1741,
+      "draws": 67
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+      "elo": 1519.2422846791912,
+      "ci_low": 1494.5601577388466,
+      "ci_high": 1543.924411619536,
+      "ci_width": 49.3642538806892,
+      "games": 6818,
+      "wins": 3318,
+      "losses": 3411,
+      "draws": 89
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.3",
+      "elo": 1412.4621486965593,
+      "ci_low": 1388.4959840425463,
+      "ci_high": 1436.4283133505724,
+      "ci_width": 47.93232930802621,
+      "games": 7086,
+      "wins": 3424,
+      "losses": 3566,
+      "draws": 96
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.5",
+      "elo": 1364.1023187314697,
+      "ci_low": 1340.3547945978314,
+      "ci_high": 1387.849842865108,
+      "ci_width": 47.49504826727654,
+      "games": 7104,
+      "wins": 3336,
+      "losses": 3663,
+      "draws": 105
+    },
+    {
+      "player": "kata1-b6c96-s6127360-d1754797",
+      "elo": 1248.0533845573204,
+      "ci_low": 1222.126242331323,
+      "ci_high": 1273.9805267833178,
+      "ci_width": 51.854284451994694,
+      "games": 3458,
+      "wins": 1478,
+      "losses": 1941,
+      "draws": 39
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.5",
+      "elo": 1246.1846057252635,
+      "ci_low": 1223.007795821454,
+      "ci_high": 1269.361415629073,
+      "ci_width": 46.35361980761884,
+      "games": 7186,
+      "wins": 3225,
+      "losses": 3869,
+      "draws": 92
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538",
+      "elo": 1167.3285909634524,
+      "ci_low": 1141.6967974362926,
+      "ci_high": 1192.9603844906121,
+      "ci_width": 51.26358705431938,
+      "games": 3426,
+      "wins": 1580,
+      "losses": 1806,
+      "draws": 40
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.7",
+      "elo": 1137.2539528889124,
+      "ci_low": 1114.4438219733227,
+      "ci_high": 1160.0640838045022,
+      "ci_width": 45.62026183117945,
+      "games": 7018,
+      "wins": 3149,
+      "losses": 3772,
+      "draws": 97
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003",
+      "elo": 1102.8330130201223,
+      "ci_low": 1080.3295804551253,
+      "ci_high": 1125.3364455851192,
+      "ci_width": 45.00686512999409,
+      "games": 7038,
+      "wins": 3259,
+      "losses": 3703,
+      "draws": 76
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128-temp-0.9",
+      "elo": 1062.7106007821335,
+      "ci_low": 1040.1872759813307,
+      "ci_high": 1085.2339255829363,
+      "ci_width": 45.04664960160577,
+      "games": 6832,
+      "wins": 3059,
+      "losses": 3680,
+      "draws": 93
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.7",
+      "elo": 996.9956363043024,
+      "ci_low": 974.7750204785269,
+      "ci_high": 1019.2162521300778,
+      "ci_width": 44.44123165155084,
+      "games": 6754,
+      "wins": 3025,
+      "losses": 3639,
+      "draws": 90
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.3",
+      "elo": 917.1122166457994,
+      "ci_low": 895.5565870674083,
+      "ci_high": 938.6678462241906,
+      "ci_width": 43.11125915678231,
+      "games": 6756,
+      "wins": 3145,
+      "losses": 3554,
+      "draws": 57
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538-temp-0.5",
+      "elo": 859.3593593241192,
+      "ci_low": 838.2669487135977,
+      "ci_high": 880.4517699346407,
+      "ci_width": 42.18482122104291,
+      "games": 6798,
+      "wins": 3100,
+      "losses": 3657,
+      "draws": 41
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.5",
+      "elo": 730.8445445301917,
+      "ci_low": 710.647214071076,
+      "ci_high": 751.0418749893074,
+      "ci_width": 40.39466091823138,
+      "games": 7092,
+      "wins": 3156,
+      "losses": 3882,
+      "draws": 54
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538-temp-0.7",
+      "elo": 693.3240454321949,
+      "ci_low": 673.5333689533787,
+      "ci_high": 713.1147219110111,
+      "ci_width": 39.58135295763227,
+      "games": 6994,
+      "wins": 3230,
+      "losses": 3722,
+      "draws": 42
+    },
+    {
+      "player": "kata1-b6c96-s6127360-d1754797-temp-0.9",
+      "elo": 640.1088929343865,
+      "ci_low": 620.8002790242392,
+      "ci_high": 659.4175068445338,
+      "ci_width": 38.61722782029471,
+      "games": 6966,
+      "wins": 3102,
+      "losses": 3796,
+      "draws": 68
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.7",
+      "elo": 563.4363645104689,
+      "ci_low": 544.8699258841417,
+      "ci_high": 582.0028031367962,
+      "ci_width": 37.132877252654424,
+      "games": 6890,
+      "wins": 2919,
+      "losses": 3909,
+      "draws": 62
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786",
+      "elo": 521.2515309563104,
+      "ci_low": 498.9739273109666,
+      "ci_high": 543.5291346016542,
+      "ci_width": 44.55520729068759,
+      "games": 2990,
+      "wins": 1309,
+      "losses": 1652,
+      "draws": 29
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.9",
+      "elo": 440.0397162550269,
+      "ci_low": 422.8112610872274,
+      "ci_high": 457.2681714228264,
+      "ci_width": 34.456910335598984,
+      "games": 6848,
+      "wins": 2668,
+      "losses": 4128,
+      "draws": 52
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786-temp-0.3",
+      "elo": 327.67618006065703,
+      "ci_low": 311.9262382439448,
+      "ci_high": 343.42612187736927,
+      "ci_width": 31.499883633424474,
+      "games": 7250,
+      "wins": 2496,
+      "losses": 4699,
+      "draws": 55
+    },
+    {
+      "player": "kata1-b6c96-s938496-d1208807",
+      "elo": 327.54852473702675,
+      "ci_low": 306.8637125391183,
+      "ci_high": 348.2333369349352,
+      "ci_width": 41.369624395816906,
+      "games": 2854,
+      "wins": 1064,
+      "losses": 1767,
+      "draws": 23
+    },
+    {
+      "player": "kata1-b6c96-s938496-d1208807-temp-0.3",
+      "elo": 234.93367996270968,
+      "ci_low": 219.41097855560778,
+      "ci_high": 250.45638136981157,
+      "ci_width": 31.04540281420379,
+      "games": 6618,
+      "wins": 1883,
+      "losses": 4670,
+      "draws": 65
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786-temp-0.9",
+      "elo": 167.69220764164595,
+      "ci_low": 152.17871934744312,
+      "ci_high": 183.20569593584878,
+      "ci_width": 31.026976588405688,
+      "games": 6156,
+      "wins": 1528,
+      "losses": 4576,
+      "draws": 52
+    },
+    {
+      "player": "kata1-b6c96-s1248000-d550347",
+      "elo": 119.19901969148145,
+      "ci_low": 98.73085581353737,
+      "ci_high": 139.66718356942553,
+      "ci_width": 40.93632775588816,
+      "games": 2506,
+      "wins": 672,
+      "losses": 1801,
+      "draws": 33
+    },
+    {
+      "player": "kata1-b6c96-s1248000-d550347-temp-0.3",
+      "elo": 113.1846700819879,
+      "ci_low": 97.30919049914736,
+      "ci_high": 129.06014966482843,
+      "ci_width": 31.75095916568107,
+      "games": 5408,
+      "wins": 1228,
+      "losses": 4130,
+      "draws": 50
+    },
+    {
+      "player": "kata1-random",
+      "elo": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "ci_width": 0.0,
+      "games": 9262,
+      "wins": 1355,
+      "losses": 7878,
+      "draws": 29
+    }
+  ],
+  "llm_comparisons": [
+    {
+      "rank": "1-3",
+      "player": "opus-5-high-api-multi",
+      "elo": 1940.3146113863365,
+      "elo_ci_95": 224.31253412776482,
+      "games": 14,
+      "moves": 570,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 14442.53828,
+      "api_seconds_per_move": 25.337786456140353,
+      "cost_usd": 176.22181,
+      "cost_usd_per_move": 0.3091610701754386
+    },
+    {
+      "rank": "1-3",
+      "player": "gpt5.6-sol-high-api-multi4",
+      "elo": 1846.7197407795124,
+      "elo_ci_95": 207.41732944274145,
+      "games": 14,
+      "moves": 566,
+      "illegal_moves": 24,
+      "api_problems": 0,
+      "api_seconds": 15125.684705105843,
+      "api_seconds_per_move": 26.72382456732481,
+      "cost_usd": 19.330824,
+      "cost_usd_per_move": 0.034153399293286216
+    },
+    {
+      "rank": "1-3",
+      "player": "gpt5.6-sol-high-api-multi2",
+      "elo": 1726.6584512992,
+      "elo_ci_95": 1734.3900829770769,
+      "games": 2,
+      "moves": 64,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 1441.819157,
+      "api_seconds_per_move": 22.528424328125,
+      "cost_usd": 1.9368064,
+      "cost_usd_per_move": 0.0302626
+    }
+  ],
+  "finished_at": "2026-09-08T05:36:14.701521+00:00",
+  "elapsed_seconds": 9361.410041959025
+}

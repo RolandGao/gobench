@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gobench"
+version = "0.1.0"
+description = "Reproducible Go arenas for KataGo networks and language models"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+dynamic = ["dependencies"]
+
+[project.scripts]
+gobench = "arena:main"
+
+[tool.setuptools]
+py-modules = ["arena"]
+
+[tool.setuptools.packages.find]
+include = ["gobench*", "analysis*", "examples*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

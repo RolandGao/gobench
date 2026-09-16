@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gemini-3.8-flash-high-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+8.0,gemini-3.8-flash-high-api-multi,1,92,google_interactions_api,46,0,0,491.409638,0.981201375000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,gemini-3.8-flash-high-api-multi,W+2.0,gemini-3.8-flash-high-api-multi,0,57,google_interactions_api,28,0,0,364.466306,0.667671300000
+3,2,gemini-3.8-flash-high-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,B+R,gemini-3.8-flash-high-api-multi,1,60,google_interactions_api,30,0,0,356.026794,0.675888375000
+4,2,kata1-b6c96-s11888896-d2416753-temp-0.5,gemini-3.8-flash-high-api-multi,B+2.0,kata1-b6c96-s11888896-d2416753-temp-0.5,1,65,google_interactions_api,32,0,0,453.828894,0.846366600000
+5,3,gemini-3.8-flash-high-api-multi,kata1-b6c96-s10825472-d2300510,W+2.0,kata1-b6c96-s10825472-d2300510,0,94,google_interactions_api,47,0,0,575.752881,1.201434375000
+6,3,kata1-b6c96-s10825472-d2300510,gemini-3.8-flash-high-api-multi,W+3.0,gemini-3.8-flash-high-api-multi,0,72,google_interactions_api,36,0,0,578.547672,1.101957000000
+7,4,gemini-3.8-flash-high-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,B+R,gemini-3.8-flash-high-api-multi,1,40,google_interactions_api,20,0,0,266.981135,0.453787575000
+8,4,kata1-b6c96-s11888896-d2416753-temp-0.5,gemini-3.8-flash-high-api-multi,B+69.0,kata1-b6c96-s11888896-d2416753-temp-0.5,1,56,google_interactions_api,28,0,0,400.471769,0.707232375000
+9,5,gemini-3.8-flash-high-api-multi,kata1-b6c96-s10825472-d2300510,W+14.0,kata1-b6c96-s10825472-d2300510,0,59,google_interactions_api,30,0,0,368.121039,0.629050125000
+10,5,kata1-b6c96-s10825472-d2300510,gemini-3.8-flash-high-api-multi,B+4.0,kata1-b6c96-s10825472-d2300510,1,93,google_interactions_api,46,0,0,598.136042,1.321942650000
+11,6,gemini-3.8-flash-high-api-multi,kata1-b6c96-s10014464-d2201128,0,,0.5,68,google_interactions_api,34,0,0,564.082071,1.084658100000
+12,6,kata1-b6c96-s10014464-d2201128,gemini-3.8-flash-high-api-multi,B+36.0,kata1-b6c96-s10014464-d2201128,1,141,google_interactions_api,70,0,0,658.509244,1.632332475000
+13,7,gemini-3.8-flash-high-api-multi,kata1-b6c96-s10014464-d2201128-temp-0.3,W+8.0,kata1-b6c96-s10014464-d2201128-temp-0.3,0,63,google_interactions_api,32,0,0,350.887689,0.705307200000
+14,7,kata1-b6c96-s10014464-d2201128-temp-0.3,gemini-3.8-flash-high-api-multi,W+4.0,gemini-3.8-flash-high-api-multi,0,67,google_interactions_api,33,0,0,456.331126,0.824996775000
