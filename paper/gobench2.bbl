@@ -73,22 +73,18 @@ Yichuan Ma, Linyang Li, Yongkang Chen, Peiji Li, Jiasheng Ye, Qipeng Guo, Dahua
 \newblock \emph{arXiv preprint arXiv:2601.16447}, 2026.
 \newblock \doi{10.48550/arXiv.2601.16447}.
 
+\bibitem[Pappas and Pappas(2026)]{pappas2026mazebench}
+Jonathan Pappas and David Pappas.
+\newblock {Maze Bench}: Visual spatial reasoning in a {3D} open world, 2026.
+\newblock URL \url{https://mazebench.com}.
+\newblock Project oversight by Florian Brand and Sebastian M{\"u}ller.
+
 \bibitem[Provost et~al.(2026)Provost, Ilenic, Solinas, and
   Beardsell]{provost2026gtowizard}
 Marc-Antoine Provost, Nejc Ilenic, Christopher Solinas, and Philippe Beardsell.
 \newblock {GTO Wizard Benchmark}.
 \newblock \emph{arXiv preprint arXiv:2603.23660}, 2026.
 \newblock \doi{10.48550/arXiv.2603.23660}.
-
-\bibitem[Salgado(2026)]{rodriguezsalgado2026pixels}
-Alberto Gonzalo~Rodriguez Salgado.
-\newblock From pixels to {BFS}: High maze accuracy does not imply visual
-  planning.
-\newblock In \emph{Proceedings of the 4th Workshop on Advances in Language and
-  Vision Research ({ALVR})}, pages 164--179. Association for Computational
-  Linguistics, 2026.
-\newblock \doi{10.18653/v1/2026.alvr-main.13}.
-\newblock URL \url{https://aclanthology.org/2026.alvr-main.13/}.
 
 \bibitem[Silver et~al.(2016)Silver, Huang, Maddison, Guez, Sifre, van~den
   Driessche, Schrittwieser, Antonoglou, Panneershelvam, Lanctot, Dieleman,
