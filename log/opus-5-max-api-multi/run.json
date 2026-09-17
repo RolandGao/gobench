@@ -1,7 +1,9 @@
 {
   "started_at": "2026-09-17T02:25:05.165228+00:00",
-  "batch_sizes": [],
-  "completed_games": 0,
+  "batch_sizes": [
+    2
+  ],
+  "completed_games": 2,
   "arena_log_schema_version": 4,
   "tracked_log_privacy_schema_version": 1,
   "legality_enforcement_version": 1,
@@ -1974,12 +1976,5565 @@
       "cache_write": 6.25
     }
   },
-  "rating_games": 320520,
+  "rating_games": 320522,
   "total_games_by_active_player": {
-    "opus-5-max-api-multi": 0
+    "opus-5-max-api-multi": 2
   },
-  "cumulative_llm_games": 520,
-  "completed_batch_ids": [],
+  "cumulative_llm_games": 522,
+  "completed_batch_ids": [
+    1
+  ],
   "untracked_log_dir": "untracked_log/opus-5-max-api-multi",
-  "run_directory_scheme": "llm_name"
+  "run_directory_scheme": "llm_name",
+  "extensions": [
+    {
+      "started_at": "2026-09-17T03:16:15.053892+00:00",
+      "previous_total_games": 14,
+      "previous_past_run_dirs": [
+        "log/arena_20260717_215813_957127_3b740750",
+        "log/arena_20260722_210708_427338_47435160",
+        "log/arena_20260723_055601_438304_148a54e8",
+        "log/arena_20260805_040447_246130_2072c54f",
+        "log/DeepSeek-V4-Flash-0731-high-api-multi2",
+        "log/DeepSeek-V4-Flash-0731-max-api-multi",
+        "log/DeepSeek-V4.1-Flash-high-api-multi",
+        "log/DeepSeek-V4.1-Flash-max-api-multi",
+        "log/gemini-3.6-flash-high-api-multi",
+        "log/gemini-3.8-flash-high-api-multi",
+        "log/gemini-3.1-pro-high-api-multi",
+        "log/gpt5.6-luna-high-api-multi",
+        "log/gpt5.6-luna-max-api-multi",
+        "log/gpt5.6-sol-high-api-multi4",
+        "log/gpt5.6-sol-max-api-multi",
+        "log/gpt6-astra-high-api-multi",
+        "log/gpt6-astra-high-api",
+        "log/gpt6-astra-max-api-multi",
+        "log/grok-4.6-high-api-multi2",
+        "log/grok-4.6-xhigh-api-multi",
+        "log/muse-spark-1.3-contributor-high-api-multi",
+        "log/muse-spark-1.3-contributor-xhigh-api-multi",
+        "log/opus-5-high-api-multi2",
+        "log/gpt6-astra-high-codex-1h",
+        "log/gpt6-astra-high-codex-0h",
+        "log/gpt6-astra-high-codex-2h",
+        "log/gpt6-astra-high-codex-4h",
+        "log/gpt6-astra-high-codex-8h",
+        "log/gpt5.6-sol-high-codex-0h",
+        "log/gpt5.6-sol-high-codex-1h",
+        "log/gpt5.6-sol-high-codex-2h",
+        "log/gpt5.6-sol-high-codex-4h",
+        "log/gpt5.6-sol-high-codex-8h"
+      ],
+      "completed_games": 0
+    }
+  ],
+  "completed_moves": 185,
+  "cumulative_llm_cost_usd": 2132.097372912,
+  "llm_illegal_moves": 0,
+  "llm_api_problems": 0,
+  "llm_api_seconds": 7694.121753649786,
+  "llm_cost_usd": 24.082586750000008,
+  "color_advantage_curve": [
+    {
+      "average_elo": 51.34003527063557,
+      "black_advantage_elo": -119.40094909504099,
+      "black_advantage_95_ci": [
+        -126.30150944543423,
+        -112.50038874464774
+      ]
+    },
+    {
+      "average_elo": 62.012932824310525,
+      "black_advantage_elo": -118.9366493734201,
+      "black_advantage_95_ci": [
+        -125.77645549672441,
+        -112.09684325011578
+      ]
+    },
+    {
+      "average_elo": 72.6858303779855,
+      "black_advantage_elo": -118.47234965179918,
+      "black_advantage_95_ci": [
+        -125.25156797186237,
+        -111.69313133173598
+      ]
+    },
+    {
+      "average_elo": 83.35872793166045,
+      "black_advantage_elo": -118.0080499301783,
+      "black_advantage_95_ci": [
+        -124.72685137310597,
+        -111.28924848725063
+      ]
+    },
+    {
+      "average_elo": 94.03162548533541,
+      "black_advantage_elo": -117.54375020855738,
+      "black_advantage_95_ci": [
+        -124.20231035318406,
+        -110.88519006393071
+      ]
+    },
+    {
+      "average_elo": 104.70452303901037,
+      "black_advantage_elo": -117.0794504869365,
+      "black_advantage_95_ci": [
+        -123.67794972096328,
+        -110.4809512529097
+      ]
+    },
+    {
+      "average_elo": 115.37742059268534,
+      "black_advantage_elo": -116.6151507653156,
+      "black_advantage_95_ci": [
+        -123.15377444733086,
+        -110.07652708330035
+      ]
+    },
+    {
+      "average_elo": 126.0503181463603,
+      "black_advantage_elo": -116.1508510436947,
+      "black_advantage_95_ci": [
+        -122.62978967130084,
+        -109.67191241608856
+      ]
+    },
+    {
+      "average_elo": 136.72321570003527,
+      "black_advantage_elo": -115.68655132207381,
+      "black_advantage_95_ci": [
+        -122.10600070634972,
+        -109.2671019377979
+      ]
+    },
+    {
+      "average_elo": 147.3961132537102,
+      "black_advantage_elo": -115.22225160045289,
+      "black_advantage_95_ci": [
+        -121.58241304698797,
+        -108.86209015391782
+      ]
+    },
+    {
+      "average_elo": 158.06901080738515,
+      "black_advantage_elo": -114.757951878832,
+      "black_advantage_95_ci": [
+        -121.05903237557376,
+        -108.45687138209024
+      ]
+    },
+    {
+      "average_elo": 168.74190836106015,
+      "black_advantage_elo": -114.29365215721111,
+      "black_advantage_95_ci": [
+        -120.53586456937437,
+        -108.05143974504786
+      ]
+    },
+    {
+      "average_elo": 179.4148059147351,
+      "black_advantage_elo": -113.82935243559021,
+      "black_advantage_95_ci": [
+        -120.01291570788135,
+        -107.64578916329907
+      ]
+    },
+    {
+      "average_elo": 190.08770346841004,
+      "black_advantage_elo": -113.36505271396932,
+      "black_advantage_95_ci": [
+        -119.49019208038445,
+        -107.2399133475542
+      ]
+    },
+    {
+      "average_elo": 200.76060102208504,
+      "black_advantage_elo": -112.9007529923484,
+      "black_advantage_95_ci": [
+        -118.96770019380862,
+        -106.83380579088818
+      ]
+    },
+    {
+      "average_elo": 211.43349857575998,
+      "black_advantage_elo": -112.43645327072753,
+      "black_advantage_95_ci": [
+        -118.44544678081897,
+        -106.42745976063608
+      ]
+    },
+    {
+      "average_elo": 222.10639612943493,
+      "black_advantage_elo": -111.97215354910661,
+      "black_advantage_95_ci": [
+        -117.92343880819591,
+        -106.0208682900173
+      ]
+    },
+    {
+      "average_elo": 232.77929368310993,
+      "black_advantage_elo": -111.50785382748572,
+      "black_advantage_95_ci": [
+        -117.40168348548428,
+        -105.61402416948715
+      ]
+    },
+    {
+      "average_elo": 243.45219123678487,
+      "black_advantage_elo": -111.04355410586481,
+      "black_advantage_95_ci": [
+        -116.8801882739167,
+        -105.20691993781293
+      ]
+    },
+    {
+      "average_elo": 254.1250887904598,
+      "black_advantage_elo": -110.57925438424391,
+      "black_advantage_95_ci": [
+        -116.35896089561241,
+        -104.79954787287541
+      ]
+    },
+    {
+      "average_elo": 264.79798634413476,
+      "black_advantage_elo": -110.11495466262303,
+      "black_advantage_95_ci": [
+        -115.83800934305005,
+        -104.39189998219602
+      ]
+    },
+    {
+      "average_elo": 275.47088389780976,
+      "black_advantage_elo": -109.65065494100212,
+      "black_advantage_95_ci": [
+        -115.31734188881182,
+        -103.98396799319241
+      ]
+    },
+    {
+      "average_elo": 286.1437814514847,
+      "black_advantage_elo": -109.18635521938123,
+      "black_advantage_95_ci": [
+        -114.79696709559524,
+        -103.57574334316722
+      ]
+    },
+    {
+      "average_elo": 296.81667900515964,
+      "black_advantage_elo": -108.72205549776034,
+      "black_advantage_95_ci": [
+        -114.27689382648494,
+        -103.16721716903574
+      ]
+    },
+    {
+      "average_elo": 307.48957655883464,
+      "black_advantage_elo": -108.25775577613943,
+      "black_advantage_95_ci": [
+        -113.757131255477,
+        -102.75838029680186
+      ]
+    },
+    {
+      "average_elo": 318.1624741125096,
+      "black_advantage_elo": -107.79345605451854,
+      "black_advantage_95_ci": [
+        -113.23768887824389,
+        -102.3492232307932
+      ]
+    },
+    {
+      "average_elo": 328.8353716661845,
+      "black_advantage_elo": -107.32915633289764,
+      "black_advantage_95_ci": [
+        -112.7185765231254,
+        -101.93973614266987
+      ]
+    },
+    {
+      "average_elo": 339.50826921985947,
+      "black_advantage_elo": -106.86485661127674,
+      "black_advantage_95_ci": [
+        -112.19980436232908,
+        -101.5299088602244
+      ]
+    },
+    {
+      "average_elo": 350.18116677353447,
+      "black_advantage_elo": -106.40055688965585,
+      "black_advantage_95_ci": [
+        -111.68138292331757,
+        -101.11973085599412
+      ]
+    },
+    {
+      "average_elo": 360.8540643272094,
+      "black_advantage_elo": -105.93625716803494,
+      "black_advantage_95_ci": [
+        -111.16332310035854,
+        -100.70919123571134
+      ]
+    },
+    {
+      "average_elo": 371.52696188088436,
+      "black_advantage_elo": -105.47195744641405,
+      "black_advantage_95_ci": [
+        -110.64563616620656,
+        -100.29827872662155
+      ]
+    },
+    {
+      "average_elo": 382.19985943455936,
+      "black_advantage_elo": -105.00765772479313,
+      "black_advantage_95_ci": [
+        -110.12833378388211,
+        -99.88698166570416
+      ]
+    },
+    {
+      "average_elo": 392.8727569882343,
+      "black_advantage_elo": -104.54335800317226,
+      "black_advantage_95_ci": [
+        -109.61142801850725,
+        -99.47528798783726
+      ]
+    },
+    {
+      "average_elo": 403.54565454190924,
+      "black_advantage_elo": -104.07905828155135,
+      "black_advantage_95_ci": [
+        -109.09493134915041,
+        -99.0631852139523
+      ]
+    },
+    {
+      "average_elo": 414.21855209558424,
+      "black_advantage_elo": -103.61475855993045,
+      "black_advantage_95_ci": [
+        -108.57885668062781,
+        -98.65066043923309
+      ]
+    },
+    {
+      "average_elo": 424.8914496492592,
+      "black_advantage_elo": -103.15045883830955,
+      "black_advantage_95_ci": [
+        -108.0632173551994,
+        -98.2377003214197
+      ]
+    },
+    {
+      "average_elo": 435.56434720293413,
+      "black_advantage_elo": -102.68615911668866,
+      "black_advantage_95_ci": [
+        -107.54802716409121,
+        -97.8242910692861
+      ]
+    },
+    {
+      "average_elo": 446.23724475660913,
+      "black_advantage_elo": -102.22185939506777,
+      "black_advantage_95_ci": [
+        -107.0333003587658,
+        -97.41041843136973
+      ]
+    },
+    {
+      "average_elo": 456.9101423102841,
+      "black_advantage_elo": -101.75755967344685,
+      "black_advantage_95_ci": [
+        -106.51905166185409,
+        -96.9960676850396
+      ]
+    },
+    {
+      "average_elo": 467.583039863959,
+      "black_advantage_elo": -101.29325995182596,
+      "black_advantage_95_ci": [
+        -106.00529627765141,
+        -96.58122362600051
+      ]
+    },
+    {
+      "average_elo": 478.25593741763396,
+      "black_advantage_elo": -100.82896023020507,
+      "black_advantage_95_ci": [
+        -105.49204990206945,
+        -96.16587055834069
+      ]
+    },
+    {
+      "average_elo": 488.92883497130896,
+      "black_advantage_elo": -100.36466050858417,
+      "black_advantage_95_ci": [
+        -104.97932873192539,
+        -95.74999228524294
+      ]
+    },
+    {
+      "average_elo": 499.6017325249839,
+      "black_advantage_elo": -99.90036078696328,
+      "black_advantage_95_ci": [
+        -104.46714947343649,
+        -95.33357210049006
+      ]
+    },
+    {
+      "average_elo": 510.27463007865884,
+      "black_advantage_elo": -99.43606106534237,
+      "black_advantage_95_ci": [
+        -103.95552934977601,
+        -94.91659278090873
+      ]
+    },
+    {
+      "average_elo": 520.9475276323338,
+      "black_advantage_elo": -98.97176134372147,
+      "black_advantage_95_ci": [
+        -103.44448610753388,
+        -94.49903657990906
+      ]
+    },
+    {
+      "average_elo": 531.6204251860088,
+      "black_advantage_elo": -98.50746162210058,
+      "black_advantage_95_ci": [
+        -102.93403802191085,
+        -94.0808852222903
+      ]
+    },
+    {
+      "average_elo": 542.2933227396837,
+      "black_advantage_elo": -98.04316190047969,
+      "black_advantage_95_ci": [
+        -102.42420390046226,
+        -93.66211990049712
+      ]
+    },
+    {
+      "average_elo": 552.9662202933588,
+      "black_advantage_elo": -97.57886217885878,
+      "black_advantage_95_ci": [
+        -101.91500308519274,
+        -93.24272127252483
+      ]
+    },
+    {
+      "average_elo": 563.6391178470337,
+      "black_advantage_elo": -97.11456245723787,
+      "black_advantage_95_ci": [
+        -101.40645545279021,
+        -92.82266946168552
+      ]
+    },
+    {
+      "average_elo": 574.3120154007087,
+      "black_advantage_elo": -96.65026273561698,
+      "black_advantage_95_ci": [
+        -100.89858141277355,
+        -92.4019440584604
+      ]
+    },
+    {
+      "average_elo": 584.9849129543836,
+      "black_advantage_elo": -96.1859630139961,
+      "black_advantage_95_ci": [
+        -100.39140190331561,
+        -91.98052412467659
+      ]
+    },
+    {
+      "average_elo": 595.6578105080586,
+      "black_advantage_elo": -95.72166329237518,
+      "black_advantage_95_ci": [
+        -99.88493838449217,
+        -91.5583882002582
+      ]
+    },
+    {
+      "average_elo": 606.3307080617335,
+      "black_advantage_elo": -95.2573635707543,
+      "black_advantage_95_ci": [
+        -99.37921282869665,
+        -91.13551431281194
+      ]
+    },
+    {
+      "average_elo": 617.0036056154084,
+      "black_advantage_elo": -94.79306384913339,
+      "black_advantage_95_ci": [
+        -98.87424770795127,
+        -90.71187999031551
+      ]
+    },
+    {
+      "average_elo": 627.6765031690834,
+      "black_advantage_elo": -94.3287641275125,
+      "black_advantage_95_ci": [
+        -98.37006597784101,
+        -90.28746227718399
+      ]
+    },
+    {
+      "average_elo": 638.3494007227584,
+      "black_advantage_elo": -93.8644644058916,
+      "black_advantage_95_ci": [
+        -97.86669105779164,
+        -89.86223775399155
+      ]
+    },
+    {
+      "average_elo": 649.0222982764334,
+      "black_advantage_elo": -93.40016468427069,
+      "black_advantage_95_ci": [
+        -97.3641468074149,
+        -89.43618256112649
+      ]
+    },
+    {
+      "average_elo": 659.6951958301083,
+      "black_advantage_elo": -92.9358649626498,
+      "black_advantage_95_ci": [
+        -96.86245749864739,
+        -89.00927242665222
+      ]
+    },
+    {
+      "average_elo": 670.3680933837833,
+      "black_advantage_elo": -92.4715652410289,
+      "black_advantage_95_ci": [
+        -96.36164778341981,
+        -88.58148269863798
+      ]
+    },
+    {
+      "average_elo": 681.0409909374582,
+      "black_advantage_elo": -92.00726551940801,
+      "black_advantage_95_ci": [
+        -95.8617426566076,
+        -88.15278838220841
+      ]
+    },
+    {
+      "average_elo": 691.7138884911332,
+      "black_advantage_elo": -91.5429657977871,
+      "black_advantage_95_ci": [
+        -95.36276741403522,
+        -87.72316418153899
+      ]
+    },
+    {
+      "average_elo": 702.3867860448082,
+      "black_advantage_elo": -91.0786660761662,
+      "black_advantage_95_ci": [
+        -94.86474760533412,
+        -87.29258454699828
+      ]
+    },
+    {
+      "average_elo": 713.0596835984832,
+      "black_advantage_elo": -90.61436635454531,
+      "black_advantage_95_ci": [
+        -94.36770898148978,
+        -86.86102372760084
+      ]
+    },
+    {
+      "average_elo": 723.7325811521581,
+      "black_advantage_elo": -90.1500666329244,
+      "black_advantage_95_ci": [
+        -93.87167743695643,
+        -86.42845582889238
+      ]
+    },
+    {
+      "average_elo": 734.405478705833,
+      "black_advantage_elo": -89.68576691130352,
+      "black_advantage_95_ci": [
+        -93.37667894626924,
+        -85.9948548763378
+      ]
+    },
+    {
+      "average_elo": 745.078376259508,
+      "black_advantage_elo": -89.22146718968261,
+      "black_advantage_95_ci": [
+        -92.88273949514405,
+        -85.56019488422118
+      ]
+    },
+    {
+      "average_elo": 755.7512738131829,
+      "black_advantage_elo": -88.75716746806171,
+      "black_advantage_95_ci": [
+        -92.38988500612334,
+        -85.12444993000008
+      ]
+    },
+    {
+      "average_elo": 766.4241713668579,
+      "black_advantage_elo": -88.29286774644082,
+      "black_advantage_95_ci": [
+        -91.89814125890274,
+        -84.6875942339789
+      ]
+    },
+    {
+      "average_elo": 777.0970689205329,
+      "black_advantage_elo": -87.82856802481992,
+      "black_advantage_95_ci": [
+        -91.40753380555824,
+        -84.24960224408159
+      ]
+    },
+    {
+      "average_elo": 787.7699664742079,
+      "black_advantage_elo": -87.36426830319903,
+      "black_advantage_95_ci": [
+        -90.91808788098426,
+        -83.81044872541379
+      ]
+    },
+    {
+      "average_elo": 798.4428640278828,
+      "black_advantage_elo": -86.89996858157812,
+      "black_advantage_95_ci": [
+        -90.42982830894984,
+        -83.3701088542064
+      ]
+    },
+    {
+      "average_elo": 809.1157615815578,
+      "black_advantage_elo": -86.43566885995723,
+      "black_advantage_95_ci": [
+        -89.94277940428132,
+        -82.92855831563314
+      ]
+    },
+    {
+      "average_elo": 819.7886591352327,
+      "black_advantage_elo": -85.97136913833633,
+      "black_advantage_95_ci": [
+        -89.45696487178206,
+        -82.4857734048906
+      ]
+    },
+    {
+      "average_elo": 830.4615566889076,
+      "black_advantage_elo": -85.50706941671542,
+      "black_advantage_95_ci": [
+        -88.97240770260302,
+        -82.04173113082783
+      ]
+    },
+    {
+      "average_elo": 841.1344542425827,
+      "black_advantage_elo": -85.04276969509453,
+      "black_advantage_95_ci": [
+        -88.48913006887715,
+        -81.59640932131192
+      ]
+    },
+    {
+      "average_elo": 851.8073517962576,
+      "black_advantage_elo": -84.57846997347363,
+      "black_advantage_95_ci": [
+        -88.00715321752477,
+        -81.14978672942249
+      ]
+    },
+    {
+      "average_elo": 862.4802493499326,
+      "black_advantage_elo": -84.11417025185274,
+      "black_advantage_95_ci": [
+        -87.52649736422231,
+        -80.70184313948317
+      ]
+    },
+    {
+      "average_elo": 873.1531469036075,
+      "black_advantage_elo": -83.64987053023184,
+      "black_advantage_95_ci": [
+        -87.04718158859922,
+        -80.25255947186446
+      ]
+    },
+    {
+      "average_elo": 883.8260444572825,
+      "black_advantage_elo": -83.18557080861093,
+      "black_advantage_95_ci": [
+        -86.56922373178662,
+        -79.80191788543524
+      ]
+    },
+    {
+      "average_elo": 894.4989420109574,
+      "black_advantage_elo": -82.72127108699004,
+      "black_advantage_95_ci": [
+        -86.09264029748049,
+        -79.3499018764996
+      ]
+    },
+    {
+      "average_elo": 905.1718395646324,
+      "black_advantage_elo": -82.25697136536914,
+      "black_advantage_95_ci": [
+        -85.61744635770101,
+        -78.89649637303727
+      ]
+    },
+    {
+      "average_elo": 915.8447371183074,
+      "black_advantage_elo": -81.79267164374825,
+      "black_advantage_95_ci": [
+        -85.14365546442693,
+        -78.44168782306957
+      ]
+    },
+    {
+      "average_elo": 926.5176346719824,
+      "black_advantage_elo": -81.32837192212735,
+      "black_advantage_95_ci": [
+        -84.67127956825368,
+        -77.98546427600101
+      ]
+    },
+    {
+      "average_elo": 937.1905322256573,
+      "black_advantage_elo": -80.86407220050644,
+      "black_advantage_95_ci": [
+        -84.20032894517209,
+        -77.5278154558408
+      ]
+    },
+    {
+      "average_elo": 947.8634297793323,
+      "black_advantage_elo": -80.39977247888555,
+      "black_advantage_95_ci": [
+        -83.73081213248344,
+        -77.06873282528767
+      ]
+    },
+    {
+      "average_elo": 958.5363273330072,
+      "black_advantage_elo": -79.93547275726465,
+      "black_advantage_95_ci": [
+        -83.26273587476427,
+        -76.60820963976502
+      ]
+    },
+    {
+      "average_elo": 969.2092248866821,
+      "black_advantage_elo": -79.47117303564376,
+      "black_advantage_95_ci": [
+        -82.79610508066702,
+        -76.1462409906205
+      ]
+    },
+    {
+      "average_elo": 979.8821224403572,
+      "black_advantage_elo": -79.00687331402285,
+      "black_advantage_95_ci": [
+        -82.3309227911951,
+        -75.6828238368506
+      ]
+    },
+    {
+      "average_elo": 990.5550199940321,
+      "black_advantage_elo": -78.54257359240195,
+      "black_advantage_95_ci": [
+        -81.86719015992867,
+        -75.21795702487523
+      ]
+    },
+    {
+      "average_elo": 1001.2279175477071,
+      "black_advantage_elo": -78.07827387078105,
+      "black_advantage_95_ci": [
+        -81.40490644549898,
+        -74.75164129606311
+      ]
+    },
+    {
+      "average_elo": 1011.900815101382,
+      "black_advantage_elo": -77.61397414916016,
+      "black_advantage_95_ci": [
+        -80.94406901642644,
+        -74.28387928189387
+      ]
+    },
+    {
+      "average_elo": 1022.573712655057,
+      "black_advantage_elo": -77.14967442753927,
+      "black_advantage_95_ci": [
+        -80.48467336824815,
+        -73.81467548683038
+      ]
+    },
+    {
+      "average_elo": 1033.246610208732,
+      "black_advantage_elo": -76.68537470591838,
+      "black_advantage_95_ci": [
+        -80.02671315267634,
+        -73.34403625916042
+      ]
+    },
+    {
+      "average_elo": 1043.919507762407,
+      "black_advantage_elo": -76.22107498429747,
+      "black_advantage_95_ci": [
+        -79.57018021834936,
+        -72.87196975024558
+      ]
+    },
+    {
+      "average_elo": 1054.592405316082,
+      "black_advantage_elo": -75.75677526267657,
+      "black_advantage_95_ci": [
+        -79.11506466257082,
+        -72.39848586278232
+      ]
+    },
+    {
+      "average_elo": 1065.2653028697569,
+      "black_advantage_elo": -75.29247554105567,
+      "black_advantage_95_ci": [
+        -78.66135489328065,
+        -71.92359618883069
+      ]
+    },
+    {
+      "average_elo": 1075.938200423432,
+      "black_advantage_elo": -74.82817581943478,
+      "black_advantage_95_ci": [
+        -78.20903770037147,
+        -71.44731393849808
+      ]
+    },
+    {
+      "average_elo": 1086.6110979771067,
+      "black_advantage_elo": -74.36387609781387,
+      "black_advantage_95_ci": [
+        -77.75809833535389,
+        -70.96965386027385
+      ]
+    },
+    {
+      "average_elo": 1097.2839955307818,
+      "black_advantage_elo": -73.89957637619297,
+      "black_advantage_95_ci": [
+        -77.30852059829004,
+        -70.49063215409589
+      ]
+    },
+    {
+      "average_elo": 1107.9568930844566,
+      "black_advantage_elo": -73.43527665457208,
+      "black_advantage_95_ci": [
+        -76.86028693085508,
+        -70.01026637828907
+      ]
+    },
+    {
+      "average_elo": 1118.6297906381317,
+      "black_advantage_elo": -72.97097693295117,
+      "black_advantage_95_ci": [
+        -76.41337851435286,
+        -69.52857535154949
+      ]
+    },
+    {
+      "average_elo": 1129.3026881918065,
+      "black_advantage_elo": -72.50667721133028,
+      "black_advantage_95_ci": [
+        -75.9677753715024,
+        -69.04557905115817
+      ]
+    },
+    {
+      "average_elo": 1139.9755857454816,
+      "black_advantage_elo": -72.04237748970938,
+      "black_advantage_95_ci": [
+        -75.5234564708263,
+        -68.56129850859246
+      ]
+    },
+    {
+      "average_elo": 1150.6484832991566,
+      "black_advantage_elo": -71.57807776808848,
+      "black_advantage_95_ci": [
+        -75.08039983250785,
+        -68.0757557036691
+      ]
+    },
+    {
+      "average_elo": 1161.3213808528315,
+      "black_advantage_elo": -71.11377804646759,
+      "black_advantage_95_ci": [
+        -74.6385826346371,
+        -67.58897345829807
+      ]
+    },
+    {
+      "average_elo": 1171.9942784065065,
+      "black_advantage_elo": -70.64947832484668,
+      "black_advantage_95_ci": [
+        -74.19798131883731,
+        -67.10097533085606
+      ]
+    },
+    {
+      "average_elo": 1182.6671759601813,
+      "black_advantage_elo": -70.1851786032258,
+      "black_advantage_95_ci": [
+        -73.75857169434482,
+        -66.61178551210676
+      ]
+    },
+    {
+      "average_elo": 1193.3400735138564,
+      "black_advantage_elo": -69.72087888160489,
+      "black_advantage_95_ci": [
+        -73.32032903970841,
+        -66.12142872350137
+      ]
+    },
+    {
+      "average_elo": 1204.0129710675312,
+      "black_advantage_elo": -69.256579159984,
+      "black_advantage_95_ci": [
+        -72.88322820137236,
+        -65.62993011859564
+      ]
+    },
+    {
+      "average_elo": 1214.6858686212063,
+      "black_advantage_elo": -68.7922794383631,
+      "black_advantage_95_ci": [
+        -72.44724368851003,
+        -65.13731518821616
+      ]
+    },
+    {
+      "average_elo": 1225.3587661748813,
+      "black_advantage_elo": -68.32797971674219,
+      "black_advantage_95_ci": [
+        -72.01234976357767,
+        -64.64360966990671
+      ]
+    },
+    {
+      "average_elo": 1236.0316637285562,
+      "black_advantage_elo": -67.8636799951213,
+      "black_advantage_95_ci": [
+        -71.57852052815933,
+        -64.14883946208327
+      ]
+    },
+    {
+      "average_elo": 1246.7045612822312,
+      "black_advantage_elo": -67.3993802735004,
+      "black_advantage_95_ci": [
+        -71.14573000377165,
+        -63.65303054322916
+      ]
+    },
+    {
+      "average_elo": 1257.377458835906,
+      "black_advantage_elo": -66.93508055187951,
+      "black_advantage_95_ci": [
+        -70.71395220739018,
+        -63.15620889636884
+      ]
+    },
+    {
+      "average_elo": 1268.050356389581,
+      "black_advantage_elo": -66.4707808302586,
+      "black_advantage_95_ci": [
+        -70.28316122154406,
+        -62.658400438973146
+      ]
+    },
+    {
+      "average_elo": 1278.723253943256,
+      "black_advantage_elo": -66.00648110863771,
+      "black_advantage_95_ci": [
+        -69.85333125890496,
+        -62.159630958370464
+      ]
+    },
+    {
+      "average_elo": 1289.396151496931,
+      "black_advantage_elo": -65.54218138701681,
+      "black_advantage_95_ci": [
+        -69.42443672136588,
+        -61.659926052667736
+      ]
+    },
+    {
+      "average_elo": 1300.069049050606,
+      "black_advantage_elo": -65.0778816653959,
+      "black_advantage_95_ci": [
+        -68.99645225366785,
+        -61.15931107712397
+      ]
+    },
+    {
+      "average_elo": 1310.7419466042809,
+      "black_advantage_elo": -64.61358194377502,
+      "black_advantage_95_ci": [
+        -68.5693527916851,
+        -60.65781109586492
+      ]
+    },
+    {
+      "average_elo": 1321.414844157956,
+      "black_advantage_elo": -64.14928222215411,
+      "black_advantage_95_ci": [
+        -68.143113605525,
+        -60.15545083878323
+      ]
+    },
+    {
+      "average_elo": 1332.0877417116308,
+      "black_advantage_elo": -63.68498250053322,
+      "black_advantage_95_ci": [
+        -67.71771033763535,
+        -59.6522546634311
+      ]
+    },
+    {
+      "average_elo": 1342.7606392653058,
+      "black_advantage_elo": -63.22068277891232,
+      "black_advantage_95_ci": [
+        -67.29311903614165,
+        -59.148246521683
+      ]
+    },
+    {
+      "average_elo": 1353.4335368189809,
+      "black_advantage_elo": -62.756383057291416,
+      "black_advantage_95_ci": [
+        -66.8693161836589,
+        -58.64344993092394
+      ]
+    },
+    {
+      "average_elo": 1364.1064343726557,
+      "black_advantage_elo": -62.292083335670526,
+      "black_advantage_95_ci": [
+        -66.44627872183898,
+        -58.13788794950207
+      ]
+    },
+    {
+      "average_elo": 1374.7793319263308,
+      "black_advantage_elo": -61.82778361404963,
+      "black_advantage_95_ci": [
+        -66.02398407192494,
+        -57.631583156174315
+      ]
+    },
+    {
+      "average_elo": 1385.4522294800056,
+      "black_advantage_elo": -61.36348389242873,
+      "black_advantage_95_ci": [
+        -65.6024101515892,
+        -57.12455763326827
+      ]
+    },
+    {
+      "average_elo": 1396.1251270336807,
+      "black_advantage_elo": -60.89918417080783,
+      "black_advantage_95_ci": [
+        -65.18153538833361,
+        -56.616832953282035
+      ]
+    },
+    {
+      "average_elo": 1406.7980245873555,
+      "black_advantage_elo": -60.43488444918693,
+      "black_advantage_95_ci": [
+        -64.76133872972736,
+        -56.108430168646514
+      ]
+    },
+    {
+      "average_elo": 1417.4709221410305,
+      "black_advantage_elo": -59.970584727566035,
+      "black_advantage_95_ci": [
+        -64.34179965075224,
+        -55.59936980437983
+      ]
+    },
+    {
+      "average_elo": 1428.1438196947056,
+      "black_advantage_elo": -59.50628500594513,
+      "black_advantage_95_ci": [
+        -63.922898158518315,
+        -55.08967185337195
+      ]
+    },
+    {
+      "average_elo": 1438.8167172483804,
+      "black_advantage_elo": -59.04198528432424,
+      "black_advantage_95_ci": [
+        -63.50461479460139,
+        -54.579355774047094
+      ]
+    },
+    {
+      "average_elo": 1449.4896148020555,
+      "black_advantage_elo": -58.57768556270334,
+      "black_advantage_95_ci": [
+        -63.08693063524351,
+        -54.06844049016316
+      ]
+    },
+    {
+      "average_elo": 1460.1625123557303,
+      "black_advantage_elo": -58.11338584108245,
+      "black_advantage_95_ci": [
+        -62.66982728964476,
+        -53.55694439252014
+      ]
+    },
+    {
+      "average_elo": 1470.8354099094054,
+      "black_advantage_elo": -57.64908611946154,
+      "black_advantage_95_ci": [
+        -62.25328689656095,
+        -53.044885342362136
+      ]
+    },
+    {
+      "average_elo": 1481.5083074630802,
+      "black_advantage_elo": -57.184786397840654,
+      "black_advantage_95_ci": [
+        -61.837292119409014,
+        -52.53228067627229
+      ]
+    },
+    {
+      "average_elo": 1492.1812050167553,
+      "black_advantage_elo": -56.72048667621975,
+      "black_advantage_95_ci": [
+        -61.42182614006697,
+        -52.01914721237253
+      ]
+    },
+    {
+      "average_elo": 1500.0,
+      "black_advantage_elo": -56.38034808537556,
+      "black_advantage_95_ci": [
+        -61.11778851798816,
+        -51.64290765276296
+      ]
+    },
+    {
+      "average_elo": 1502.8541025704303,
+      "black_advantage_elo": -56.27558672455703,
+      "black_advantage_95_ci": [
+        -61.002712840862145,
+        -51.548460608251915
+      ]
+    },
+    {
+      "average_elo": 1513.5270001241051,
+      "black_advantage_elo": -55.883832313491446,
+      "black_advantage_95_ci": [
+        -60.57245859993786,
+        -51.19520602704503
+      ]
+    },
+    {
+      "average_elo": 1524.1998976777802,
+      "black_advantage_elo": -55.49207790242586,
+      "black_advantage_95_ci": [
+        -60.142317675848055,
+        -50.84183812900367
+      ]
+    },
+    {
+      "average_elo": 1534.872795231455,
+      "black_advantage_elo": -55.10032349136028,
+      "black_advantage_95_ci": [
+        -59.71229289808211,
+        -50.488354084638445
+      ]
+    },
+    {
+      "average_elo": 1545.54569278513,
+      "black_advantage_elo": -54.70856908029469,
+      "black_advantage_95_ci": [
+        -59.28238718212357,
+        -50.1347509784658
+      ]
+    },
+    {
+      "average_elo": 1556.2185903388051,
+      "black_advantage_elo": -54.31681466922909,
+      "black_advantage_95_ci": [
+        -58.852603532321815,
+        -49.78102580613636
+      ]
+    },
+    {
+      "average_elo": 1566.89148789248,
+      "black_advantage_elo": -53.92506025816351,
+      "black_advantage_95_ci": [
+        -58.42294504485531,
+        -49.42717547147171
+      ]
+    },
+    {
+      "average_elo": 1577.564385446155,
+      "black_advantage_elo": -53.53330584709792,
+      "black_advantage_95_ci": [
+        -57.993414910787955,
+        -49.07319678340789
+      ]
+    },
+    {
+      "average_elo": 1588.2372829998299,
+      "black_advantage_elo": -53.14155143603234,
+      "black_advantage_95_ci": [
+        -57.56401641922051,
+        -48.71908645284417
+      ]
+    },
+    {
+      "average_elo": 1598.910180553505,
+      "black_advantage_elo": -52.749797024966746,
+      "black_advantage_95_ci": [
+        -57.13475296053783,
+        -48.36484108939566
+      ]
+    },
+    {
+      "average_elo": 1609.5830781071797,
+      "black_advantage_elo": -52.35804261390117,
+      "black_advantage_95_ci": [
+        -56.705628029753704,
+        -48.010457198048634
+      ]
+    },
+    {
+      "average_elo": 1620.2559756608548,
+      "black_advantage_elo": -51.96628820283557,
+      "black_advantage_95_ci": [
+        -56.27664522995365,
+        -47.65593117571749
+      ]
+    },
+    {
+      "average_elo": 1630.9288732145299,
+      "black_advantage_elo": -51.57453379176998,
+      "black_advantage_95_ci": [
+        -55.84780827583695,
+        -47.30125930770301
+      ]
+    },
+    {
+      "average_elo": 1641.6017707682047,
+      "black_advantage_elo": -51.1827793807044,
+      "black_advantage_95_ci": [
+        -55.41912099735767,
+        -46.94643776405113
+      ]
+    },
+    {
+      "average_elo": 1652.2746683218797,
+      "black_advantage_elo": -50.791024969638805,
+      "black_advantage_95_ci": [
+        -54.990587343465165,
+        -46.591462595812445
+      ]
+    },
+    {
+      "average_elo": 1662.9475658755546,
+      "black_advantage_elo": -50.39927055857323,
+      "black_advantage_95_ci": [
+        -54.562211385943556,
+        -46.2363297312029
+      ]
+    },
+    {
+      "average_elo": 1673.6204634292296,
+      "black_advantage_elo": -50.00751614750764,
+      "black_advantage_95_ci": [
+        -54.133997323349156,
+        -45.88103497166612
+      ]
+    },
+    {
+      "average_elo": 1684.2933609829045,
+      "black_advantage_elo": -49.61576173644205,
+      "black_advantage_95_ci": [
+        -53.70594948504493,
+        -45.525573987839174
+      ]
+    },
+    {
+      "average_elo": 1694.9662585365795,
+      "black_advantage_elo": -49.22400732537646,
+      "black_advantage_95_ci": [
+        -53.27807233532966,
+        -45.16994231542326
+      ]
+    },
+    {
+      "average_elo": 1705.6391560902546,
+      "black_advantage_elo": -48.83225291431087,
+      "black_advantage_95_ci": [
+        -52.8503704776596,
+        -44.81413535096214
+      ]
+    },
+    {
+      "average_elo": 1716.3120536439294,
+      "black_advantage_elo": -48.44049850324528,
+      "black_advantage_95_ci": [
+        -52.422848658959275,
+        -44.458148347531285
+      ]
+    },
+    {
+      "average_elo": 1726.9849511976045,
+      "black_advantage_elo": -48.048744092179696,
+      "black_advantage_95_ci": [
+        -51.99551177401734,
+        -44.101976410342054
+      ]
+    },
+    {
+      "average_elo": 1737.6578487512793,
+      "black_advantage_elo": -47.65698968111411,
+      "black_advantage_95_ci": [
+        -51.56836486996264,
+        -43.74561449226558
+      ]
+    },
+    {
+      "average_elo": 1748.3307463049543,
+      "black_advantage_elo": -47.26523527004852,
+      "black_advantage_95_ci": [
+        -51.14141315081466,
+        -43.389057389282385
+      ]
+    },
+    {
+      "average_elo": 1759.0036438586292,
+      "black_advantage_elo": -46.873480858982944,
+      "black_advantage_95_ci": [
+        -50.71466198210126,
+        -43.032299735864626
+      ]
+    },
+    {
+      "average_elo": 1769.6765414123042,
+      "black_advantage_elo": -46.48172644791735,
+      "black_advantage_95_ci": [
+        -50.28811689553559,
+        -42.67533600029912
+      ]
+    },
+    {
+      "average_elo": 1780.3494389659793,
+      "black_advantage_elo": -46.08997203685176,
+      "black_advantage_95_ci": [
+        -49.86178359374286,
+        -42.31816047996067
+      ]
+    },
+    {
+      "average_elo": 1791.0223365196541,
+      "black_advantage_elo": -45.69821762578617,
+      "black_advantage_95_ci": [
+        -49.43566795502589,
+        -41.96076729654645
+      ]
+    },
+    {
+      "average_elo": 1801.6952340733292,
+      "black_advantage_elo": -45.30646321472059,
+      "black_advantage_95_ci": [
+        -49.00977603815719,
+        -41.60315039128398
+      ]
+    },
+    {
+      "average_elo": 1812.368131627004,
+      "black_advantage_elo": -44.914708803654996,
+      "black_advantage_95_ci": [
+        -48.584114087183224,
+        -41.24530352012677
+      ]
+    },
+    {
+      "average_elo": 1823.041029180679,
+      "black_advantage_elo": -44.52295439258941,
+      "black_advantage_95_ci": [
+        -48.15868853622517,
+        -40.88722024895365
+      ]
+    },
+    {
+      "average_elo": 1833.7139267343541,
+      "black_advantage_elo": -44.13119998152382,
+      "black_advantage_95_ci": [
+        -47.73350601425783,
+        -40.528893948789815
+      ]
+    },
+    {
+      "average_elo": 1844.386824288029,
+      "black_advantage_elo": -43.739445570458244,
+      "black_advantage_95_ci": [
+        -47.308573349846895,
+        -40.17031779106959
+      ]
+    },
+    {
+      "average_elo": 1855.059721841704,
+      "black_advantage_elo": -43.347691159392646,
+      "black_advantage_95_ci": [
+        -46.883897575821806,
+        -39.811484742963486
+      ]
+    },
+    {
+      "average_elo": 1865.7326193953788,
+      "black_advantage_elo": -42.95593674832706,
+      "black_advantage_95_ci": [
+        -46.45948593385947,
+        -39.452387562794655
+      ]
+    },
+    {
+      "average_elo": 1876.405516949054,
+      "black_advantage_elo": -42.56418233726148,
+      "black_advantage_95_ci": [
+        -46.03534587895089,
+        -39.093018795572064
+      ]
+    },
+    {
+      "average_elo": 1887.0784145027287,
+      "black_advantage_elo": -42.17242792619589,
+      "black_advantage_95_ci": [
+        -45.61148508372059,
+        -38.733370768671186
+      ]
+    },
+    {
+      "average_elo": 1897.7513120564038,
+      "black_advantage_elo": -41.7806735151303,
+      "black_advantage_95_ci": [
+        -45.18791144256492,
+        -38.37343558769569
+      ]
+    },
+    {
+      "average_elo": 1908.4242096100788,
+      "black_advantage_elo": -41.38891910406471,
+      "black_advantage_95_ci": [
+        -44.76463307557282,
+        -38.01320513255661
+      ]
+    },
+    {
+      "average_elo": 1919.0971071637537,
+      "black_advantage_elo": -40.99716469299913,
+      "black_advantage_95_ci": [
+        -44.34165833218879,
+        -37.65267105380946
+      ]
+    },
+    {
+      "average_elo": 1929.7700047174287,
+      "black_advantage_elo": -40.60541028193354,
+      "black_advantage_95_ci": [
+        -43.91899579457453,
+        -37.291824769292546
+      ]
+    },
+    {
+      "average_elo": 1940.4429022711035,
+      "black_advantage_elo": -40.21365587086795,
+      "black_advantage_95_ci": [
+        -43.49665428062197,
+        -36.93065746111394
+      ]
+    },
+    {
+      "average_elo": 1951.1157998247786,
+      "black_advantage_elo": -39.821901459802355,
+      "black_advantage_95_ci": [
+        -43.07464284656669,
+        -36.56916007303802
+      ]
+    },
+    {
+      "average_elo": 1961.7886973784534,
+      "black_advantage_elo": -39.43014704873678,
+      "black_advantage_95_ci": [
+        -42.65297078914685,
+        -36.20732330832671
+      ]
+    },
+    {
+      "average_elo": 1972.4615949321285,
+      "black_advantage_elo": -39.03839263767119,
+      "black_advantage_95_ci": [
+        -42.23164764724856,
+        -35.845137628093816
+      ]
+    },
+    {
+      "average_elo": 1983.1344924858035,
+      "black_advantage_elo": -38.646638226605596,
+      "black_advantage_95_ci": [
+        -41.81068320297527,
+        -35.48259325023592
+      ]
+    },
+    {
+      "average_elo": 1993.8073900394784,
+      "black_advantage_elo": -38.25488381554002,
+      "black_advantage_95_ci": [
+        -41.39008748207405,
+        -35.11968014900599
+      ]
+    },
+    {
+      "average_elo": 2004.4802875931534,
+      "black_advantage_elo": -37.86312940447442,
+      "black_advantage_95_ci": [
+        -40.96987075364813,
+        -34.75638805530071
+      ]
+    },
+    {
+      "average_elo": 2015.1531851468283,
+      "black_advantage_elo": -37.47137499340884,
+      "black_advantage_95_ci": [
+        -40.55004352908168,
+        -34.392706457736
+      ]
+    },
+    {
+      "average_elo": 2025.8260827005033,
+      "black_advantage_elo": -37.079620582343246,
+      "black_advantage_95_ci": [
+        -40.13061656009826,
+        -34.02862460458823
+      ]
+    },
+    {
+      "average_elo": 2036.4989802541784,
+      "black_advantage_elo": -36.687866171277655,
+      "black_advantage_95_ci": [
+        -39.711600835872346,
+        -33.66413150668296
+      ]
+    },
+    {
+      "average_elo": 2047.1718778078532,
+      "black_advantage_elo": -36.29611176021208,
+      "black_advantage_95_ci": [
+        -39.29300757910951,
+        -33.29921594131464
+      ]
+    },
+    {
+      "average_elo": 2057.8447753615283,
+      "black_advantage_elo": -35.90435734914648,
+      "black_advantage_95_ci": [
+        -38.87484824100884,
+        -32.93386645728412
+      ]
+    },
+    {
+      "average_elo": 2068.517672915203,
+      "black_advantage_elo": -35.5126029380809,
+      "black_advantage_95_ci": [
+        -38.45713449501974,
+        -32.56807138114207
+      ]
+    },
+    {
+      "average_elo": 2079.1905704688784,
+      "black_advantage_elo": -35.120848527015305,
+      "black_advantage_95_ci": [
+        -38.03987822930321,
+        -32.2018188247274
+      ]
+    },
+    {
+      "average_elo": 2089.863468022553,
+      "black_advantage_elo": -34.72909411594972,
+      "black_advantage_95_ci": [
+        -37.623091537809046,
+        -31.835096694090392
+      ]
+    },
+    {
+      "average_elo": 2100.5363655762285,
+      "black_advantage_elo": -34.337339704884116,
+      "black_advantage_95_ci": [
+        -37.20678670987948,
+        -31.46789269988875
+      ]
+    },
+    {
+      "average_elo": 2111.2092631299033,
+      "black_advantage_elo": -33.94558529381853,
+      "black_advantage_95_ci": [
+        -36.790976218293466,
+        -31.100194369343598
+      ]
+    },
+    {
+      "average_elo": 2121.882160683578,
+      "black_advantage_elo": -33.553830882752955,
+      "black_advantage_95_ci": [
+        -36.3756727056677,
+        -30.731989059838217
+      ]
+    },
+    {
+      "average_elo": 2132.555058237253,
+      "black_advantage_elo": -33.16207647168737,
+      "black_advantage_95_ci": [
+        -35.96088896913629,
+        -30.36326397423845
+      ]
+    },
+    {
+      "average_elo": 2143.2279557909283,
+      "black_advantage_elo": -32.77032206062177,
+      "black_advantage_95_ci": [
+        -35.54663794323685,
+        -29.99400617800669
+      ]
+    },
+    {
+      "average_elo": 2153.900853344603,
+      "black_advantage_elo": -32.37856764955619,
+      "black_advantage_95_ci": [
+        -35.13293268093897,
+        -29.624202618173403
+      ]
+    },
+    {
+      "average_elo": 2164.573750898278,
+      "black_advantage_elo": -31.98681323849061,
+      "black_advantage_95_ci": [
+        -34.719786332761174,
+        -29.253840144220042
+      ]
+    },
+    {
+      "average_elo": 2175.246648451953,
+      "black_advantage_elo": -31.59505882742501,
+      "black_advantage_95_ci": [
+        -34.307212123934704,
+        -28.882905530915316
+      ]
+    },
+    {
+      "average_elo": 2185.919546005628,
+      "black_advantage_elo": -31.203304416359423,
+      "black_advantage_95_ci": [
+        -33.89522332958637,
+        -28.51138550313247
+      ]
+    },
+    {
+      "average_elo": 2196.592443559303,
+      "black_advantage_elo": -30.81155000529384,
+      "black_advantage_95_ci": [
+        -33.48383324792898,
+        -28.1392667626587
+      ]
+    },
+    {
+      "average_elo": 2207.2653411129777,
+      "black_advantage_elo": -30.419795594228262,
+      "black_advantage_95_ci": [
+        -33.07305517146664,
+        -27.766536016989882
+      ]
+    },
+    {
+      "average_elo": 2217.938238666653,
+      "black_advantage_elo": -30.02804118316266,
+      "black_advantage_95_ci": [
+        -32.66290235624272,
+        -27.393180010082602
+      ]
+    },
+    {
+      "average_elo": 2228.611136220328,
+      "black_advantage_elo": -29.636286772097076,
+      "black_advantage_95_ci": [
+        -32.25338798918087,
+        -27.01918555501328
+      ]
+    },
+    {
+      "average_elo": 2239.2840337740026,
+      "black_advantage_elo": -29.2445323610315,
+      "black_advantage_95_ci": [
+        -31.84452515359404,
+        -26.644539568468957
+      ]
+    },
+    {
+      "average_elo": 2249.956931327678,
+      "black_advantage_elo": -28.852777949965898,
+      "black_advantage_95_ci": [
+        -31.436326792963037,
+        -26.26922910696876
+      ]
+    },
+    {
+      "average_elo": 2260.6298288813528,
+      "black_advantage_elo": -28.461023538900314,
+      "black_advantage_95_ci": [
+        -31.02880567311372,
+        -25.893241404686908
+      ]
+    },
+    {
+      "average_elo": 2271.3027264350276,
+      "black_advantage_elo": -28.06926912783473,
+      "black_advantage_95_ci": [
+        -30.621974342950313,
+        -25.516563912719146
+      ]
+    },
+    {
+      "average_elo": 2281.9756239887024,
+      "black_advantage_elo": -27.67751471676915,
+      "black_advantage_95_ci": [
+        -30.21584509393246,
+        -25.139184339605837
+      ]
+    },
+    {
+      "average_elo": 2292.6485215423777,
+      "black_advantage_elo": -27.28576030570355,
+      "black_advantage_95_ci": [
+        -29.810429918512483,
+        -24.76109069289462
+      ]
+    },
+    {
+      "average_elo": 2303.3214190960525,
+      "black_advantage_elo": -26.894005894637964,
+      "black_advantage_95_ci": [
+        -29.405740467778724,
+        -24.382271321497203
+      ]
+    },
+    {
+      "average_elo": 2313.9943166497274,
+      "black_advantage_elo": -26.50225148357238,
+      "black_advantage_95_ci": [
+        -29.001788008578448,
+        -24.00271495856631
+      ]
+    },
+    {
+      "average_elo": 2324.6672142034026,
+      "black_advantage_elo": -26.11049707250678,
+      "black_advantage_95_ci": [
+        -28.5985833804204,
+        -23.622410764593162
+      ]
+    },
+    {
+      "average_elo": 2335.3401117570775,
+      "black_advantage_elo": -25.7187426614412,
+      "black_advantage_95_ci": [
+        -28.196136952480494,
+        -23.24134837040191
+      ]
+    },
+    {
+      "average_elo": 2346.0130093107523,
+      "black_advantage_elo": -25.32698825037562,
+      "black_advantage_95_ci": [
+        -27.79445858105438,
+        -22.859517919696863
+      ]
+    },
+    {
+      "average_elo": 2356.685906864427,
+      "black_advantage_elo": -24.935233839310033,
+      "black_advantage_95_ci": [
+        -27.3935575678179,
+        -22.476910110802166
+      ]
+    },
+    {
+      "average_elo": 2367.3588044181024,
+      "black_advantage_elo": -24.543479428244435,
+      "black_advantage_95_ci": [
+        -26.99344261926766,
+        -22.09351623722121
+      ]
+    },
+    {
+      "average_elo": 2378.0317019717772,
+      "black_advantage_elo": -24.151725017178855,
+      "black_advantage_95_ci": [
+        -26.59412180772122,
+        -21.70932822663649
+      ]
+    },
+    {
+      "average_elo": 2388.704599525452,
+      "black_advantage_elo": -23.75997060611327,
+      "black_advantage_95_ci": [
+        -26.19560253425709,
+        -21.32433867796945
+      ]
+    },
+    {
+      "average_elo": 2399.3774970791274,
+      "black_advantage_elo": -23.368216195047673,
+      "black_advantage_95_ci": [
+        -25.797891493970255,
+        -20.93854089612509
+      ]
+    },
+    {
+      "average_elo": 2410.050394632802,
+      "black_advantage_elo": -22.976461783982092,
+      "black_advantage_95_ci": [
+        -25.400994643906763,
+        -20.55192892405742
+      ]
+    },
+    {
+      "average_elo": 2420.723292186477,
+      "black_advantage_elo": -22.584707372916505,
+      "black_advantage_95_ci": [
+        -25.004917174023323,
+        -20.164497571809687
+      ]
+    },
+    {
+      "average_elo": 2431.396189740152,
+      "black_advantage_elo": -22.19295296185092,
+      "black_advantage_95_ci": [
+        -24.609663481493584,
+        -19.776242442208257
+      ]
+    },
+    {
+      "average_elo": 2442.069087293827,
+      "black_advantage_elo": -21.801198550785323,
+      "black_advantage_95_ci": [
+        -24.215237148651674,
+        -19.38715995291897
+      ]
+    },
+    {
+      "average_elo": 2452.741984847502,
+      "black_advantage_elo": -21.409444139719742,
+      "black_advantage_95_ci": [
+        -23.821640924827584,
+        -18.9972473546119
+      ]
+    },
+    {
+      "average_elo": 2463.414882401177,
+      "black_advantage_elo": -21.017689728654158,
+      "black_advantage_95_ci": [
+        -23.42887671228684,
+        -18.606502745021476
+      ]
+    },
+    {
+      "average_elo": 2474.087779954852,
+      "black_advantage_elo": -20.62593531758856,
+      "black_advantage_95_ci": [
+        -23.03694555644151,
+        -18.21492507873561
+      ]
+    },
+    {
+      "average_elo": 2484.760677508527,
+      "black_advantage_elo": -20.234180906522976,
+      "black_advantage_95_ci": [
+        -22.6458476404493,
+        -17.82251417259665
+      ]
+    },
+    {
+      "average_elo": 2495.4335750622017,
+      "black_advantage_elo": -19.842426495457396,
+      "black_advantage_95_ci": [
+        -22.255582284265692,
+        -17.4292707066491
+      ]
+    },
+    {
+      "average_elo": 2506.1064726158766,
+      "black_advantage_elo": -19.45067208439181,
+      "black_advantage_95_ci": [
+        -21.866147948160716,
+        -17.035196220622908
+      ]
+    },
+    {
+      "average_elo": 2516.779370169552,
+      "black_advantage_elo": -19.058917673326214,
+      "black_advantage_95_ci": [
+        -21.477542240657883,
+        -16.640293105994544
+      ]
+    },
+    {
+      "average_elo": 2527.4522677232267,
+      "black_advantage_elo": -18.667163262260633,
+      "black_advantage_95_ci": [
+        -21.089761930800158,
+        -16.24456459372111
+      ]
+    },
+    {
+      "average_elo": 2538.1251652769015,
+      "black_advantage_elo": -18.275408851195046,
+      "black_advantage_95_ci": [
+        -20.70280296459684,
+        -15.84801473779325
+      ]
+    },
+    {
+      "average_elo": 2548.798062830577,
+      "black_advantage_elo": -17.883654440129444,
+      "black_advantage_95_ci": [
+        -20.31666048545792,
+        -15.450648394800968
+      ]
+    },
+    {
+      "average_elo": 2559.4709603842516,
+      "black_advantage_elo": -17.491900029063864,
+      "black_advantage_95_ci": [
+        -19.931328858378453,
+        -15.052471199749274
+      ]
+    },
+    {
+      "average_elo": 2570.1438579379264,
+      "black_advantage_elo": -17.100145617998283,
+      "black_advantage_95_ci": [
+        -19.546801697596806,
+        -14.65348953839976
+      ]
+    },
+    {
+      "average_elo": 2580.8167554916017,
+      "black_advantage_elo": -16.708391206932685,
+      "black_advantage_95_ci": [
+        -19.163071897417844,
+        -14.253710516447528
+      ]
+    },
+    {
+      "average_elo": 2591.4896530452766,
+      "black_advantage_elo": -16.3166367958671,
+      "black_advantage_95_ci": [
+        -18.780131665864598,
+        -13.853141925869604
+      ]
+    },
+    {
+      "average_elo": 2602.1625505989514,
+      "black_advantage_elo": -15.924882384801515,
+      "black_advantage_95_ci": [
+        -18.39797256080123,
+        -13.451792208801802
+      ]
+    },
+    {
+      "average_elo": 2612.835448152626,
+      "black_advantage_elo": -15.533127973735933,
+      "black_advantage_95_ci": [
+        -18.01658552815631,
+        -13.049670419315557
+      ]
+    },
+    {
+      "average_elo": 2623.5083457063015,
+      "black_advantage_elo": -15.141373562670335,
+      "black_advantage_95_ci": [
+        -17.63596094186714,
+        -12.64678618347353
+      ]
+    },
+    {
+      "average_elo": 2634.1812432599763,
+      "black_advantage_elo": -14.749619151604753,
+      "black_advantage_95_ci": [
+        -17.25608864516484,
+        -12.243149658044667
+      ]
+    },
+    {
+      "average_elo": 2644.854140813651,
+      "black_advantage_elo": -14.357864740539172,
+      "black_advantage_95_ci": [
+        -16.876957992823762,
+        -11.838771488254583
+      ]
+    },
+    {
+      "average_elo": 2655.5270383673264,
+      "black_advantage_elo": -13.966110329473572,
+      "black_advantage_95_ci": [
+        -16.498557894009345,
+        -11.433662764937802
+      ]
+    },
+    {
+      "average_elo": 2666.1999359210013,
+      "black_advantage_elo": -13.574355918407987,
+      "black_advantage_95_ci": [
+        -16.12087685537269,
+        -11.027834981443284
+      ]
+    },
+    {
+      "average_elo": 2676.872833474676,
+      "black_advantage_elo": -13.182601507342405,
+      "black_advantage_95_ci": [
+        -15.743903024059058,
+        -10.62129999062575
+      ]
+    },
+    {
+      "average_elo": 2687.545731028351,
+      "black_advantage_elo": -12.790847096276822,
+      "black_advantage_95_ci": [
+        -15.367624230320335,
+        -10.21406996223331
+      ]
+    },
+    {
+      "average_elo": 2698.218628582026,
+      "black_advantage_elo": -12.399092685211224,
+      "black_advantage_95_ci": [
+        -14.992028029446207,
+        -9.806157340976242
+      ]
+    },
+    {
+      "average_elo": 2708.891526135701,
+      "black_advantage_elo": -12.007338274145642,
+      "black_advantage_95_ci": [
+        -14.617101742756445,
+        -9.39757480553484
+      ]
+    },
+    {
+      "average_elo": 2719.564423689376,
+      "black_advantage_elo": -11.615583863080056,
+      "black_advantage_95_ci": [
+        -14.242832497424931,
+        -8.988335228735181
+      ]
+    },
+    {
+      "average_elo": 2730.237321243051,
+      "black_advantage_elo": -11.223829452014462,
+      "black_advantage_95_ci": [
+        -13.869207264936001,
+        -8.578451639092922
+      ]
+    },
+    {
+      "average_elo": 2740.910218796726,
+      "black_advantage_elo": -10.832075040948876,
+      "black_advantage_95_ci": [
+        -13.496212898002657,
+        -8.167937183895095
+      ]
+    },
+    {
+      "average_elo": 2751.583116350401,
+      "black_advantage_elo": -10.440320629883294,
+      "black_advantage_95_ci": [
+        -13.123836165805471,
+        -7.756805093961116
+      ]
+    },
+    {
+      "average_elo": 2762.2560139040756,
+      "black_advantage_elo": -10.048566218817713,
+      "black_advantage_95_ci": [
+        -12.752063787439385,
+        -7.345068650196042
+      ]
+    },
+    {
+      "average_elo": 2772.928911457751,
+      "black_advantage_elo": -9.656811807752113,
+      "black_advantage_95_ci": [
+        -12.38088246348223,
+        -6.932741152021997
+      ]
+    },
+    {
+      "average_elo": 2783.6018090114258,
+      "black_advantage_elo": -9.265057396686533,
+      "black_advantage_95_ci": [
+        -12.010278905624482,
+        -6.519835887748585
+      ]
+    },
+    {
+      "average_elo": 2794.2747065651006,
+      "black_advantage_elo": -8.873302985620946,
+      "black_advantage_95_ci": [
+        -11.64023986432277,
+        -6.106366106919121
+      ]
+    },
+    {
+      "average_elo": 2804.947604118776,
+      "black_advantage_elo": -8.481548574555346,
+      "black_advantage_95_ci": [
+        -11.27075215446196,
+        -5.692344994648732
+      ]
+    },
+    {
+      "average_elo": 2815.6205016724507,
+      "black_advantage_elo": -8.089794163489765,
+      "black_advantage_95_ci": [
+        -10.901802679029247,
+        -5.277785647950283
+      ]
+    },
+    {
+      "average_elo": 2826.2933992261255,
+      "black_advantage_elo": -7.698039752424184,
+      "black_advantage_95_ci": [
+        -10.533378450821303,
+        -4.862701054027064
+      ]
+    },
+    {
+      "average_elo": 2836.9662967798004,
+      "black_advantage_elo": -7.306285341358602,
+      "black_advantage_95_ci": [
+        -10.165466612220769,
+        -4.447104070496434
+      ]
+    },
+    {
+      "average_elo": 2847.6391943334756,
+      "black_advantage_elo": -6.914530930293003,
+      "black_advantage_95_ci": [
+        -9.798054453090892,
+        -4.031007407495113
+      ]
+    },
+    {
+      "average_elo": 2858.3120918871505,
+      "black_advantage_elo": -6.522776519227416,
+      "black_advantage_95_ci": [
+        -9.431129426848415,
+        -3.6144236116064166
+      ]
+    },
+    {
+      "average_elo": 2868.9849894408253,
+      "black_advantage_elo": -6.131022108161834,
+      "black_advantage_95_ci": [
+        -9.064679164783366,
+        -3.1973650515403027
+      ]
+    },
+    {
+      "average_elo": 2879.6578869945006,
+      "black_advantage_elo": -5.739267697096236,
+      "black_advantage_95_ci": [
+        -8.698691488701979,
+        -2.779843905490492
+      ]
+    },
+    {
+      "average_elo": 2890.3307845481754,
+      "black_advantage_elo": -5.347513286030654,
+      "black_advantage_95_ci": [
+        -8.333154421974143,
+        -2.361872150087163
+      ]
+    },
+    {
+      "average_elo": 2901.0036821018502,
+      "black_advantage_elo": -4.955758874965073,
+      "black_advantage_95_ci": [
+        -7.968056199070511,
+        -1.9434615508596353
+      ]
+    },
+    {
+      "average_elo": 2911.676579655525,
+      "black_advantage_elo": -4.564004463899486,
+      "black_advantage_95_ci": [
+        -7.603385273677464,
+        -1.5246236541215072
+      ]
+    },
+    {
+      "average_elo": 2922.3494772092004,
+      "black_advantage_elo": -4.172250052833886,
+      "black_advantage_95_ci": [
+        -7.23913032547896,
+        -1.1053697801888118
+      ]
+    },
+    {
+      "average_elo": 2933.022374762875,
+      "black_advantage_elo": -3.780495641768305,
+      "black_advantage_95_ci": [
+        -6.87528026569473,
+        -0.6857110178418799
+      ]
+    },
+    {
+      "average_elo": 2943.69527231655,
+      "black_advantage_elo": -3.3887412307027236,
+      "black_advantage_95_ci": [
+        -6.511824241463459,
+        -0.26565821994198835
+      ]
+    },
+    {
+      "average_elo": 2954.3681698702253,
+      "black_advantage_elo": -2.9969868196371245,
+      "black_advantage_95_ci": [
+        -6.148751639158448,
+        0.15477799988419916
+      ]
+    },
+    {
+      "average_elo": 2965.0410674239,
+      "black_advantage_elo": -2.6052324085715433,
+      "black_advantage_95_ci": [
+        -5.786052086720751,
+        0.5755872695776652
+      ]
+    },
+    {
+      "average_elo": 2975.713964977575,
+      "black_advantage_elo": -2.213477997505956,
+      "black_advantage_95_ci": [
+        -5.423715455092109,
+        0.996759460080197
+      ]
+    },
+    {
+      "average_elo": 2986.38686253125,
+      "black_advantage_elo": -1.821723586440375,
+      "black_advantage_95_ci": [
+        -5.061731858827376,
+        1.4182846859466265
+      ]
+    },
+    {
+      "average_elo": 2997.059760084925,
+      "black_advantage_elo": -1.4299691753747754,
+      "black_advantage_95_ci": [
+        -4.7000916559620425,
+        1.8401533052124912
+      ]
+    },
+    {
+      "average_elo": 3000.0,
+      "black_advantage_elo": -1.3220460972669852,
+      "black_advantage_95_ci": [
+        -4.600523710012586,
+        1.9564315154786163
+      ]
+    },
+    {
+      "average_elo": 3007.7326576386,
+      "black_advantage_elo": -1.5628471501489756,
+      "black_advantage_95_ci": [
+        -4.811668152265719,
+        1.6859738519677685
+      ]
+    },
+    {
+      "average_elo": 3018.4055551922747,
+      "black_advantage_elo": -1.895209591154686,
+      "black_advantage_95_ci": [
+        -5.103533234805328,
+        1.3131140524959553
+      ]
+    },
+    {
+      "average_elo": 3029.07845274595,
+      "black_advantage_elo": -2.2275720321604107,
+      "black_advantage_95_ci": [
+        -5.3959213003122395,
+        0.9407772359914182
+      ]
+    },
+    {
+      "average_elo": 3039.751350299625,
+      "black_advantage_elo": -2.559934473166121,
+      "black_advantage_95_ci": [
+        -5.688852393400905,
+        0.5689834470686628
+      ]
+    },
+    {
+      "average_elo": 3050.4242478532997,
+      "black_advantage_elo": -2.8922969141718315,
+      "black_advantage_95_ci": [
+        -5.982347302452276,
+        0.19775347410861333
+      ]
+    },
+    {
+      "average_elo": 3061.097145406975,
+      "black_advantage_elo": -3.224659355177556,
+      "black_advantage_95_ci": [
+        -6.276427569940189,
+        -0.1728911404149227
+      ]
+    },
+    {
+      "average_elo": 3071.77004296065,
+      "black_advantage_elo": -3.5570217961832666,
+      "black_advantage_95_ci": [
+        -6.5711154999583385,
+        -0.5429280924081943
+      ]
+    },
+    {
+      "average_elo": 3082.4429405143246,
+      "black_advantage_elo": -3.8893842371889775,
+      "black_advantage_95_ci": [
+        -6.866434162469906,
+        -0.9123343119080491
+      ]
+    },
+    {
+      "average_elo": 3093.1158380679994,
+      "black_advantage_elo": -4.2217466781946875,
+      "black_advantage_95_ci": [
+        -7.162407393760402,
+        -1.281085962628973
+      ]
+    },
+    {
+      "average_elo": 3103.7887356216747,
+      "black_advantage_elo": -4.554109119200413,
+      "black_advantage_95_ci": [
+        -7.459059792534704,
+        -1.6491584458661208
+      ]
+    },
+    {
+      "average_elo": 3114.4616331753496,
+      "black_advantage_elo": -4.8864715602061235,
+      "black_advantage_95_ci": [
+        -7.756416711061256,
+        -2.016526409350991
+      ]
+    },
+    {
+      "average_elo": 3125.1345307290244,
+      "black_advantage_elo": -5.2188340012118335,
+      "black_advantage_95_ci": [
+        -8.054504240733003,
+        -2.3831637616906645
+      ]
+    },
+    {
+      "average_elo": 3135.8074282826997,
+      "black_advantage_elo": -5.551196442217558,
+      "black_advantage_95_ci": [
+        -8.353349191386101,
+        -2.7490436930490145
+      ]
+    },
+    {
+      "average_elo": 3146.4803258363745,
+      "black_advantage_elo": -5.883558883223269,
+      "black_advantage_95_ci": [
+        -8.652979063697376,
+        -3.114138702749161
+      ]
+    },
+    {
+      "average_elo": 3157.1532233900493,
+      "black_advantage_elo": -6.2159213242289795,
+      "black_advantage_95_ci": [
+        -8.953422013971227,
+        -3.4784206344867314
+      ]
+    },
+    {
+      "average_elo": 3167.826120943724,
+      "black_advantage_elo": -6.54828376523469,
+      "black_advantage_95_ci": [
+        -9.254706810628546,
+        -3.8418607198408345
+      ]
+    },
+    {
+      "average_elo": 3178.4990184973994,
+      "black_advantage_elo": -6.880646206240415,
+      "black_advantage_95_ci": [
+        -9.556862781728325,
+        -4.204429630752504
+      ]
+    },
+    {
+      "average_elo": 3189.1719160510743,
+      "black_advantage_elo": -7.213008647246125,
+      "black_advantage_95_ci": [
+        -9.859919752888166,
+        -4.566097541604083
+      ]
+    },
+    {
+      "average_elo": 3199.844813604749,
+      "black_advantage_elo": -7.5453710882518354,
+      "black_advantage_95_ci": [
+        -10.163907975027296,
+        -4.926834201476375
+      ]
+    },
+    {
+      "average_elo": 3210.5177111584244,
+      "black_advantage_elo": -7.87773352925756,
+      "black_advantage_95_ci": [
+        -10.468858041436373,
+        -5.286609017078746
+      ]
+    },
+    {
+      "average_elo": 3221.190608712099,
+      "black_advantage_elo": -8.21009597026327,
+      "black_advantage_95_ci": [
+        -10.774800793786184,
+        -5.645391146740355
+      ]
+    },
+    {
+      "average_elo": 3231.863506265774,
+      "black_advantage_elo": -8.542458411268981,
+      "black_advantage_95_ci": [
+        -11.081767216823584,
+        -6.003149605714379
+      ]
+    },
+    {
+      "average_elo": 3242.536403819449,
+      "black_advantage_elo": -8.874820852274691,
+      "black_advantage_95_ci": [
+        -11.389788321668721,
+        -6.359853382880662
+      ]
+    },
+    {
+      "average_elo": 3253.209301373124,
+      "black_advantage_elo": -9.207183293280416,
+      "black_advantage_95_ci": [
+        -11.698895017824588,
+        -6.715471568736243
+      ]
+    },
+    {
+      "average_elo": 3263.882198926799,
+      "black_advantage_elo": -9.539545734286127,
+      "black_advantage_95_ci": [
+        -12.009117974235632,
+        -7.069973494336622
+      ]
+    },
+    {
+      "average_elo": 3274.555096480474,
+      "black_advantage_elo": -9.871908175291837,
+      "black_advantage_95_ci": [
+        -12.320487469986041,
+        -7.423328880597634
+      ]
+    },
+    {
+      "average_elo": 3285.227994034149,
+      "black_advantage_elo": -10.204270616297562,
+      "black_advantage_95_ci": [
+        -12.633033235504868,
+        -7.775507997090255
+      ]
+    },
+    {
+      "average_elo": 3295.900891587824,
+      "black_advantage_elo": -10.536633057303272,
+      "black_advantage_95_ci": [
+        -12.946784285440199,
+        -8.126481829166345
+      ]
+    },
+    {
+      "average_elo": 3306.5737891414988,
+      "black_advantage_elo": -10.868995498308982,
+      "black_advantage_95_ci": [
+        -13.261768744669524,
+        -8.476222251948439
+      ]
+    },
+    {
+      "average_elo": 3317.2466866951736,
+      "black_advantage_elo": -11.201357939314693,
+      "black_advantage_95_ci": [
+        -13.578013669218633,
+        -8.824702209410754
+      ]
+    },
+    {
+      "average_elo": 3327.919584248849,
+      "black_advantage_elo": -11.533720380320418,
+      "black_advantage_95_ci": [
+        -13.895544864156866,
+        -9.171895896483969
+      ]
+    },
+    {
+      "average_elo": 3338.5924818025237,
+      "black_advantage_elo": -11.866082821326128,
+      "black_advantage_95_ci": [
+        -14.214386700808301,
+        -9.517778941843954
+      ]
+    },
+    {
+      "average_elo": 3349.2653793561985,
+      "black_advantage_elo": -12.19844526233184,
+      "black_advantage_95_ci": [
+        -14.534561935854454,
+        -9.862328588809225
+      ]
+    },
+    {
+      "average_elo": 3359.938276909874,
+      "black_advantage_elo": -12.530807703337564,
+      "black_advantage_95_ci": [
+        -14.856091535089579,
+        -10.205523871585548
+      ]
+    },
+    {
+      "average_elo": 3370.6111744635487,
+      "black_advantage_elo": -12.863170144343275,
+      "black_advantage_95_ci": [
+        -15.178994504713017,
+        -10.547345783973533
+      ]
+    },
+    {
+      "average_elo": 3381.2840720172235,
+      "black_advantage_elo": -13.195532585348985,
+      "black_advantage_95_ci": [
+        -15.50328773309195,
+        -10.88777743760602
+      ]
+    },
+    {
+      "average_elo": 3391.9569695708983,
+      "black_advantage_elo": -13.527895026354695,
+      "black_advantage_95_ci": [
+        -15.828985845893119,
+        -11.226804206816272
+      ]
+    },
+    {
+      "average_elo": 3402.6298671245736,
+      "black_advantage_elo": -13.86025746736042,
+      "black_advantage_95_ci": [
+        -16.156101077359036,
+        -11.564413857361803
+      ]
+    },
+    {
+      "average_elo": 3413.3027646782484,
+      "black_advantage_elo": -14.19261990836613,
+      "black_advantage_95_ci": [
+        -16.484643160289327,
+        -11.900596656442932
+      ]
+    },
+    {
+      "average_elo": 3423.9756622319233,
+      "black_advantage_elo": -14.52498234937184,
+      "black_advantage_95_ci": [
+        -16.8146192369851,
+        -12.23534546175858
+      ]
+    },
+    {
+      "average_elo": 3434.6485597855985,
+      "black_advantage_elo": -14.857344790377566,
+      "black_advantage_95_ci": [
+        -17.146033793029453,
+        -12.568655787725678
+      ]
+    },
+    {
+      "average_elo": 3445.3214573392734,
+      "black_advantage_elo": -15.189707231383275,
+      "black_advantage_95_ci": [
+        -17.478888615323328,
+        -12.900525847443225
+      ]
+    },
+    {
+      "average_elo": 3455.994354892948,
+      "black_advantage_elo": -15.522069672388987,
+      "black_advantage_95_ci": [
+        -17.813182775287512,
+        -13.230956569490463
+      ]
+    },
+    {
+      "average_elo": 3466.667252446623,
+      "black_advantage_elo": -15.854432113394697,
+      "black_advantage_95_ci": [
+        -18.148912637597626,
+        -13.559951589191769
+      ]
+    },
+    {
+      "average_elo": 3477.3401500002983,
+      "black_advantage_elo": -16.18679455440042,
+      "black_advantage_95_ci": [
+        -18.486071894261237,
+        -13.887517214539606
+      ]
+    },
+    {
+      "average_elo": 3488.013047553973,
+      "black_advantage_elo": -16.51915699540613,
+      "black_advantage_95_ci": [
+        -18.824651623295324,
+        -14.213662367516939
+      ]
+    },
+    {
+      "average_elo": 3498.685945107648,
+      "black_advantage_elo": -16.85151943641184,
+      "black_advantage_95_ci": [
+        -19.164640370741054,
+        -14.538398502082627
+      ]
+    },
+    {
+      "average_elo": 3509.3588426613233,
+      "black_advantage_elo": -17.18388187741757,
+      "black_advantage_95_ci": [
+        -19.506024254279033,
+        -14.861739500556105
+      ]
+    },
+    {
+      "average_elo": 3520.031740214998,
+      "black_advantage_elo": -17.51624431842328,
+      "black_advantage_95_ci": [
+        -19.84878708630069,
+        -15.183701550545871
+      ]
+    },
+    {
+      "average_elo": 3530.704637768673,
+      "black_advantage_elo": -17.848606759428986,
+      "black_advantage_95_ci": [
+        -20.192910513961706,
+        -15.504303004896265
+      ]
+    },
+    {
+      "average_elo": 3541.377535322348,
+      "black_advantage_elo": -18.180969200434713,
+      "black_advantage_95_ci": [
+        -20.53837417349998,
+        -15.823564227369445
+      ]
+    },
+    {
+      "average_elo": 3552.050432876023,
+      "black_advantage_elo": -18.513331641440423,
+      "black_advantage_95_ci": [
+        -20.885155855948558,
+        -16.14150742693229
+      ]
+    },
+    {
+      "average_elo": 3562.723330429698,
+      "black_advantage_elo": -18.845694082446133,
+      "black_advantage_95_ci": [
+        -21.233231681312173,
+        -16.458156483580094
+      ]
+    },
+    {
+      "average_elo": 3573.3962279833727,
+      "black_advantage_elo": -19.178056523451843,
+      "black_advantage_95_ci": [
+        -21.58257627829865,
+        -16.773536768605037
+      ]
+    },
+    {
+      "average_elo": 3584.069125537048,
+      "black_advantage_elo": -19.51041896445757,
+      "black_advantage_95_ci": [
+        -21.93316296679783,
+        -17.087674962117312
+      ]
+    },
+    {
+      "average_elo": 3594.742023090723,
+      "black_advantage_elo": -19.84278140546328,
+      "black_advantage_95_ci": [
+        -22.284963940467673,
+        -17.40059887045889
+      ]
+    },
+    {
+      "average_elo": 3605.4149206443976,
+      "black_advantage_elo": -20.17514384646899,
+      "black_advantage_95_ci": [
+        -22.63795044700889,
+        -17.712337245929092
+      ]
+    },
+    {
+      "average_elo": 3616.087818198073,
+      "black_advantage_elo": -20.507506287474715,
+      "black_advantage_95_ci": [
+        -22.992092963971015,
+        -18.022919610978416
+      ]
+    },
+    {
+      "average_elo": 3626.7607157517477,
+      "black_advantage_elo": -20.839868728480425,
+      "black_advantage_95_ci": [
+        -23.347361368222483,
+        -18.332376088738368
+      ]
+    },
+    {
+      "average_elo": 3637.4336133054226,
+      "black_advantage_elo": -21.172231169486135,
+      "black_advantage_95_ci": [
+        -23.703725097520703,
+        -18.640737241451568
+      ]
+    },
+    {
+      "average_elo": 3648.1065108590974,
+      "black_advantage_elo": -21.504593610491845,
+      "black_advantage_95_ci": [
+        -24.061153302924,
+        -18.94803391805969
+      ]
+    },
+    {
+      "average_elo": 3658.7794084127727,
+      "black_advantage_elo": -21.83695605149757,
+      "black_advantage_95_ci": [
+        -24.41961499108664,
+        -19.2542971119085
+      ]
+    },
+    {
+      "average_elo": 3669.4523059664475,
+      "black_advantage_elo": -22.16931849250328,
+      "black_advantage_95_ci": [
+        -24.779079155761025,
+        -19.559557829245534
+      ]
+    },
+    {
+      "average_elo": 3680.1252035201223,
+      "black_advantage_elo": -22.501680933508993,
+      "black_advantage_95_ci": [
+        -25.139514898093065,
+        -19.86384696892492
+      ]
+    },
+    {
+      "average_elo": 3690.7981010737976,
+      "black_advantage_elo": -22.834043374514717,
+      "black_advantage_95_ci": [
+        -25.500891535531153,
+        -20.16719521349828
+      ]
+    },
+    {
+      "average_elo": 3701.4709986274725,
+      "black_advantage_elo": -23.166405815520424,
+      "black_advantage_95_ci": [
+        -25.86317869937583,
+        -20.469632931665018
+      ]
+    },
+    {
+      "average_elo": 3712.1438961811473,
+      "black_advantage_elo": -23.498768256526137,
+      "black_advantage_95_ci": [
+        -26.22634642117266,
+        -20.771190091879614
+      ]
+    },
+    {
+      "average_elo": 3722.816793734822,
+      "black_advantage_elo": -23.83113069753185,
+      "black_advantage_95_ci": [
+        -26.59036520829617,
+        -21.071896186767532
+      ]
+    },
+    {
+      "average_elo": 3733.4896912884974,
+      "black_advantage_elo": -24.163493138537575,
+      "black_advantage_95_ci": [
+        -26.9552061091896,
+        -21.37178016788555
+      ]
+    },
+    {
+      "average_elo": 3744.162588842172,
+      "black_advantage_elo": -24.49585557954328,
+      "black_advantage_95_ci": [
+        -27.320840768813895,
+        -21.67087039027267
+      ]
+    },
+    {
+      "average_elo": 3754.835486395847,
+      "black_advantage_elo": -24.828218020548995,
+      "black_advantage_95_ci": [
+        -27.687241474924196,
+        -21.969194566173794
+      ]
+    },
+    {
+      "average_elo": 3765.5083839495223,
+      "black_advantage_elo": -25.16058046155472,
+      "black_advantage_95_ci": [
+        -28.054381195833834,
+        -22.266779727275605
+      ]
+    },
+    {
+      "average_elo": 3776.181281503197,
+      "black_advantage_elo": -25.49294290256043,
+      "black_advantage_95_ci": [
+        -28.422233610349398,
+        -22.56365219477146
+      ]
+    },
+    {
+      "average_elo": 3786.854179056872,
+      "black_advantage_elo": -25.82530534356614,
+      "black_advantage_95_ci": [
+        -28.790773130567185,
+        -22.859837556565093
+      ]
+    },
+    {
+      "average_elo": 3797.527076610547,
+      "black_advantage_elo": -26.157667784571853,
+      "black_advantage_95_ci": [
+        -29.159974918214342,
+        -23.155360650929364
+      ]
+    },
+    {
+      "average_elo": 3808.199974164222,
+      "black_advantage_elo": -26.490030225577573,
+      "black_advantage_95_ci": [
+        -29.529814895201053,
+        -23.450245555954094
+      ]
+    },
+    {
+      "average_elo": 3818.872871717897,
+      "black_advantage_elo": -26.822392666583283,
+      "black_advantage_95_ci": [
+        -29.900269749023856,
+        -23.74451558414271
+      ]
+    },
+    {
+      "average_elo": 3829.5457692715718,
+      "black_advantage_elo": -27.154755107588997,
+      "black_advantage_95_ci": [
+        -30.271316933628306,
+        -24.038193281549688
+      ]
+    },
+    {
+      "average_elo": 3840.218666825247,
+      "black_advantage_elo": -27.48711754859472,
+      "black_advantage_95_ci": [
+        -30.642934666302224,
+        -24.331300430887218
+      ]
+    },
+    {
+      "average_elo": 3850.891564378922,
+      "black_advantage_elo": -27.81947998960043,
+      "black_advantage_95_ci": [
+        -31.015101921131684,
+        -24.623858058069178
+      ]
+    },
+    {
+      "average_elo": 3861.5644619325967,
+      "black_advantage_elo": -28.15184243060614,
+      "black_advantage_95_ci": [
+        -31.38779841951097,
+        -24.915886441701314
+      ]
+    },
+    {
+      "average_elo": 3872.2373594862715,
+      "black_advantage_elo": -28.484204871611855,
+      "black_advantage_95_ci": [
+        -31.76100461815605,
+        -25.20740512506766
+      ]
+    },
+    {
+      "average_elo": 3882.910257039947,
+      "black_advantage_elo": -28.816567312617575,
+      "black_advantage_95_ci": [
+        -32.13470169503081,
+        -25.49843293020434
+      ]
+    },
+    {
+      "average_elo": 3893.5831545936217,
+      "black_advantage_elo": -29.148929753623285,
+      "black_advantage_95_ci": [
+        -32.50887153355507,
+        -25.788987973691494
+      ]
+    },
+    {
+      "average_elo": 3904.2560521472965,
+      "black_advantage_elo": -29.481292194629,
+      "black_advantage_95_ci": [
+        -32.88349670542596,
+        -26.079087683832036
+      ]
+    },
+    {
+      "average_elo": 3914.9289497009718,
+      "black_advantage_elo": -29.81365463563472,
+      "black_advantage_95_ci": [
+        -33.258560452347396,
+        -26.368748818922047
+      ]
+    },
+    {
+      "average_elo": 3925.6018472546466,
+      "black_advantage_elo": -30.146017076640433,
+      "black_advantage_95_ci": [
+        -33.63404666692949,
+        -26.657987486351374
+      ]
+    },
+    {
+      "average_elo": 3936.2747448083214,
+      "black_advantage_elo": -30.478379517646143,
+      "black_advantage_95_ci": [
+        -34.00993987298781,
+        -26.946819162304482
+      ]
+    },
+    {
+      "average_elo": 3946.9476423619967,
+      "black_advantage_elo": -30.81074195865187,
+      "black_advantage_95_ci": [
+        -34.38622520544347,
+        -27.23525871186027
+      ]
+    },
+    {
+      "average_elo": 3957.6205399156715,
+      "black_advantage_elo": -31.143104399657577,
+      "black_advantage_95_ci": [
+        -34.76288838999893,
+        -27.523320409316227
+      ]
+    },
+    {
+      "average_elo": 3968.2934374693464,
+      "black_advantage_elo": -31.47546684066329,
+      "black_advantage_95_ci": [
+        -35.13991572274001,
+        -27.811017958586575
+      ]
+    },
+    {
+      "average_elo": 3978.966335023021,
+      "black_advantage_elo": -31.807829281669,
+      "black_advantage_95_ci": [
+        -35.51729404979292,
+        -28.09836451354508
+      ]
+    },
+    {
+      "average_elo": 3989.6392325766965,
+      "black_advantage_elo": -32.14019172267472,
+      "black_advantage_95_ci": [
+        -35.89501074714577,
+        -28.385372698203675
+      ]
+    },
+    {
+      "average_elo": 4000.3121301303713,
+      "black_advantage_elo": -32.472554163680435,
+      "black_advantage_95_ci": [
+        -36.2730537007261,
+        -28.67205462663477
+      ]
+    },
+    {
+      "average_elo": 4010.985027684046,
+      "black_advantage_elo": -32.80491660468615,
+      "black_advantage_95_ci": [
+        -36.65141128681124,
+        -28.958421922561058
+      ]
+    },
+    {
+      "average_elo": 4021.6579252377214,
+      "black_advantage_elo": -33.13727904569187,
+      "black_advantage_95_ci": [
+        -37.03007235283348,
+        -29.244485738550264
+      ]
+    },
+    {
+      "average_elo": 4032.3308227913963,
+      "black_advantage_elo": -33.46964148669758,
+      "black_advantage_95_ci": [
+        -37.409026198630905,
+        -29.530256774764258
+      ]
+    },
+    {
+      "average_elo": 4043.003720345071,
+      "black_advantage_elo": -33.80200392770329,
+      "black_advantage_95_ci": [
+        -37.788262558183646,
+        -29.81574529722293
+      ]
+    },
+    {
+      "average_elo": 4053.676617898746,
+      "black_advantage_elo": -34.134366368708996,
+      "black_advantage_95_ci": [
+        -38.16777158186598,
+        -30.100961155552014
+      ]
+    },
+    {
+      "average_elo": 4064.349515452421,
+      "black_advantage_elo": -34.46672880971472,
+      "black_advantage_95_ci": [
+        -38.547543819237006,
+        -30.38591380019244
+      ]
+    },
+    {
+      "average_elo": 4075.022413006096,
+      "black_advantage_elo": -34.79909125072044,
+      "black_advantage_95_ci": [
+        -38.92757020238537,
+        -30.670612299055506
+      ]
+    },
+    {
+      "average_elo": 4085.695310559771,
+      "black_advantage_elo": -35.13145369172615,
+      "black_advantage_95_ci": [
+        -39.30784202983792,
+        -30.955065353614376
+      ]
+    },
+    {
+      "average_elo": 4096.368208113446,
+      "black_advantage_elo": -35.46381613273186,
+      "black_advantage_95_ci": [
+        -39.688350951036625,
+        -31.23928131442709
+      ]
+    },
+    {
+      "average_elo": 4107.041105667121,
+      "black_advantage_elo": -35.796178573737585,
+      "black_advantage_95_ci": [
+        -40.06908895138421,
+        -31.52326819609096
+      ]
+    },
+    {
+      "average_elo": 4117.714003220795,
+      "black_advantage_elo": -36.12854101474328,
+      "black_advantage_95_ci": [
+        -40.45004833785506,
+        -31.807033691631496
+      ]
+    },
+    {
+      "average_elo": 4128.386900774471,
+      "black_advantage_elo": -36.460903455749005,
+      "black_advantage_95_ci": [
+        -40.83122172516542,
+        -32.09058518633259
+      ]
+    },
+    {
+      "average_elo": 4139.059798328146,
+      "black_advantage_elo": -36.793265896754725,
+      "black_advantage_95_ci": [
+        -41.21260202249338,
+        -32.37392977101607
+      ]
+    },
+    {
+      "average_elo": 4149.732695881821,
+      "black_advantage_elo": -37.12562833776045,
+      "black_advantage_95_ci": [
+        -41.59418242073855,
+        -32.65707425478236
+      ]
+    },
+    {
+      "average_elo": 4160.405593435496,
+      "black_advantage_elo": -37.457990778766145,
+      "black_advantage_95_ci": [
+        -41.97595638030842,
+        -32.94002517722387
+      ]
+    },
+    {
+      "average_elo": 4171.078490989171,
+      "black_advantage_elo": -37.79035321977187,
+      "black_advantage_95_ci": [
+        -42.35791761941813,
+        -33.222788820125615
+      ]
+    },
+    {
+      "average_elo": 4181.751388542845,
+      "black_advantage_elo": -38.12271566077757,
+      "black_advantage_95_ci": [
+        -42.74006010288823,
+        -33.505371218666916
+      ]
+    },
+    {
+      "average_elo": 4192.4242860965205,
+      "black_advantage_elo": -38.45507810178329,
+      "black_advantage_95_ci": [
+        -43.122378031425924,
+        -33.78777817214066
+      ]
+    },
+    {
+      "average_elo": 4203.097183650196,
+      "black_advantage_elo": -38.78744054278902,
+      "black_advantage_95_ci": [
+        -43.50486583137301,
+        -34.07001525420503
+      ]
+    },
+    {
+      "average_elo": 4213.77008120387,
+      "black_advantage_elo": -39.11980298379471,
+      "black_advantage_95_ci": [
+        -43.88751814490479,
+        -34.35208782268464
+      ]
+    },
+    {
+      "average_elo": 4224.4429787575455,
+      "black_advantage_elo": -39.45216542480044,
+      "black_advantage_95_ci": [
+        -44.27032982066363,
+        -34.63400102893725
+      ]
+    },
+    {
+      "average_elo": 4235.115876311221,
+      "black_advantage_elo": -39.78452786580616,
+      "black_advantage_95_ci": [
+        -44.65329590481009,
+        -34.91575982680223
+      ]
+    },
+    {
+      "average_elo": 4245.788773864895,
+      "black_advantage_elo": -40.11689030681186,
+      "black_advantage_95_ci": [
+        -45.0364116324762,
+        -35.19736898114752
+      ]
+    },
+    {
+      "average_elo": 4256.46167141857,
+      "black_advantage_elo": -40.44925274781759,
+      "black_advantage_95_ci": [
+        -45.41967241960426,
+        -35.47883307603092
+      ]
+    },
+    {
+      "average_elo": 4267.134568972246,
+      "black_advantage_elo": -40.78161518882331,
+      "black_advantage_95_ci": [
+        -45.80307385515516,
+        -35.76015652249146
+      ]
+    },
+    {
+      "average_elo": 4277.80746652592,
+      "black_advantage_elo": -41.11397762982901,
+      "black_advantage_95_ci": [
+        -46.18661169367121,
+        -36.04134356598681
+      ]
+    },
+    {
+      "average_elo": 4288.480364079595,
+      "black_advantage_elo": -41.44634007083473,
+      "black_advantage_95_ci": [
+        -46.57028184817791,
+        -36.322398293491545
+      ]
+    },
+    {
+      "average_elo": 4299.153261633271,
+      "black_advantage_elo": -41.77870251184046,
+      "black_advantage_95_ci": [
+        -46.95408038340994,
+        -36.603324640270976
+      ]
+    },
+    {
+      "average_elo": 4309.826159186945,
+      "black_advantage_elo": -42.11106495284615,
+      "black_advantage_95_ci": [
+        -47.33800350934716,
+        -36.88412639634514
+      ]
+    },
+    {
+      "average_elo": 4320.49905674062,
+      "black_advantage_elo": -42.44342739385188,
+      "black_advantage_95_ci": [
+        -47.72204757504699,
+        -37.16480721265676
+      ]
+    }
+  ],
+  "ratings": [
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754-playouts600",
+      "elo": 4426.564880957597,
+      "ci_low": 4391.462010373762,
+      "ci_high": 4461.667751541432,
+      "ci_width": 70.2057411676712,
+      "games": 2992,
+      "wins": 1651,
+      "losses": 64,
+      "draws": 1277
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971-playouts600",
+      "elo": 4384.773346510555,
+      "ci_low": 4350.03536669781,
+      "ci_high": 4419.5113263233,
+      "ci_width": 69.47595962548917,
+      "games": 3114,
+      "wins": 1491,
+      "losses": 30,
+      "draws": 1593
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784-playouts600",
+      "elo": 4383.487451864585,
+      "ci_low": 4348.8141571022215,
+      "ci_high": 4418.160746626948,
+      "ci_width": 69.3465895247259,
+      "games": 3168,
+      "wins": 1585,
+      "losses": 106,
+      "draws": 1477
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187-playouts600",
+      "elo": 4368.037070103232,
+      "ci_low": 4333.441600899877,
+      "ci_high": 4402.632539306586,
+      "ci_width": 69.1909384067099,
+      "games": 3188,
+      "wins": 1519,
+      "losses": 145,
+      "draws": 1524
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971-playouts60",
+      "elo": 4345.919423152964,
+      "ci_low": 4311.458095713288,
+      "ci_high": 4380.38075059264,
+      "ci_width": 68.92265487935293,
+      "games": 3270,
+      "wins": 1566,
+      "losses": 224,
+      "draws": 1480
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754-playouts60",
+      "elo": 4332.320455761375,
+      "ci_low": 4297.833813783481,
+      "ci_high": 4366.80709773927,
+      "ci_width": 68.97328395578974,
+      "games": 3178,
+      "wins": 1535,
+      "losses": 336,
+      "draws": 1307
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784-playouts60",
+      "elo": 4307.823438826477,
+      "ci_low": 4273.543657948303,
+      "ci_high": 4342.103219704652,
+      "ci_width": 68.55956175634813,
+      "games": 3288,
+      "wins": 1553,
+      "losses": 366,
+      "draws": 1369
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187-playouts60",
+      "elo": 4278.396714542619,
+      "ci_low": 4244.209799053626,
+      "ci_high": 4312.583630031611,
+      "ci_width": 68.37383097798488,
+      "games": 3276,
+      "wins": 1448,
+      "losses": 481,
+      "draws": 1347
+    },
+    {
+      "player": "kata1-zhizi-b40c768nbt-fdx6c",
+      "elo": 4215.699804394671,
+      "ci_low": 4180.104336780212,
+      "ci_high": 4251.295272009131,
+      "ci_width": 71.19093522891932,
+      "games": 2742,
+      "wins": 1791,
+      "losses": 88,
+      "draws": 863
+    },
+    {
+      "player": "kata1-b28c512nbt-s12313658112-d5687582971",
+      "elo": 4199.322596297592,
+      "ci_low": 4165.385538296069,
+      "ci_high": 4233.259654299115,
+      "ci_width": 67.8741160030461,
+      "games": 3726,
+      "wins": 1758,
+      "losses": 498,
+      "draws": 1470
+    },
+    {
+      "player": "kata1-b28c512nbt-s8566598912-d4691918754",
+      "elo": 4190.820739532242,
+      "ci_low": 4156.6890451701365,
+      "ci_high": 4224.952433894348,
+      "ci_width": 68.26338872421177,
+      "games": 3580,
+      "wins": 1823,
+      "losses": 597,
+      "draws": 1160
+    },
+    {
+      "player": "kata1-b28c512nbt-s7229617920-d4333415784",
+      "elo": 4160.42832568447,
+      "ci_low": 4126.409187896703,
+      "ci_high": 4194.447463472237,
+      "ci_width": 68.03827557553439,
+      "games": 3636,
+      "wins": 1702,
+      "losses": 601,
+      "draws": 1333
+    },
+    {
+      "player": "kata1-b18c384nbt-s9761732864-d4253420187",
+      "elo": 4130.570659142122,
+      "ci_low": 4096.754658859997,
+      "ci_high": 4164.386659424247,
+      "ci_width": 67.63200056424968,
+      "games": 3876,
+      "wins": 1834,
+      "losses": 732,
+      "draws": 1310
+    },
+    {
+      "player": "kata1-b60c320-s6678602752-d3043834427",
+      "elo": 4101.791936345662,
+      "ci_low": 4068.101927182807,
+      "ci_high": 4135.481945508518,
+      "ci_width": 67.380018325711,
+      "games": 3886,
+      "wins": 1806,
+      "losses": 850,
+      "draws": 1230
+    },
+    {
+      "player": "kata1-b40c256-s11840935168-d2898845681",
+      "elo": 4070.4570486788452,
+      "ci_low": 4036.6927424794126,
+      "ci_high": 4104.221354878277,
+      "ci_width": 67.52861239886494,
+      "games": 3840,
+      "wins": 1805,
+      "losses": 933,
+      "draws": 1102
+    },
+    {
+      "player": "kata1-b40c256-s8049900800-d1952632576",
+      "elo": 4062.7495847407863,
+      "ci_low": 4028.997992802294,
+      "ci_high": 4096.501176679279,
+      "ci_width": 67.50318387698475,
+      "games": 3884,
+      "wins": 1869,
+      "losses": 885,
+      "draws": 1130
+    },
+    {
+      "player": "kata1-b40c256x2-s4120339456-d1045882697",
+      "elo": 4027.0659492204827,
+      "ci_low": 3993.455277880389,
+      "ci_high": 4060.6766205605763,
+      "ci_width": 67.22134268018716,
+      "games": 4018,
+      "wins": 1933,
+      "losses": 1012,
+      "draws": 1073
+    },
+    {
+      "player": "kata1-b40c256-s5793846528-d1395151722",
+      "elo": 3993.731677552731,
+      "ci_low": 3960.1298409579704,
+      "ci_high": 4027.3335141474918,
+      "ci_width": 67.20367318952107,
+      "games": 3920,
+      "wins": 1951,
+      "losses": 1344,
+      "draws": 625
+    },
+    {
+      "player": "kata1-b40c256x2-s4833666560-d1179059206",
+      "elo": 3986.9836104347196,
+      "ci_low": 3953.577104826754,
+      "ci_high": 4020.3901160426853,
+      "ci_width": 66.8130112159316,
+      "games": 4096,
+      "wins": 2121,
+      "losses": 1334,
+      "draws": 641
+    },
+    {
+      "player": "kata1-b20c256x2-s5055114240-d1149032340",
+      "elo": 3931.3019019774415,
+      "ci_low": 3897.7657376543775,
+      "ci_high": 3964.8380663005055,
+      "ci_width": 67.07232864612807,
+      "games": 4026,
+      "wins": 2087,
+      "losses": 1381,
+      "draws": 558
+    },
+    {
+      "player": "kata1-b20c256x2-s3354994176-d716845198",
+      "elo": 3897.8878834812353,
+      "ci_low": 3864.4928813938573,
+      "ci_high": 3931.2828855686134,
+      "ci_width": 66.79000417475585,
+      "games": 4158,
+      "wins": 2258,
+      "losses": 1521,
+      "draws": 379
+    },
+    {
+      "player": "kata1-b20c256x2-s2430231552-d525879064",
+      "elo": 3861.3990936495334,
+      "ci_low": 3828.177914103604,
+      "ci_high": 3894.6202731954627,
+      "ci_width": 66.44235909185821,
+      "games": 4200,
+      "wins": 2256,
+      "losses": 1601,
+      "draws": 343
+    },
+    {
+      "player": "kata1-b20c256x2-s1610809600-d384128195",
+      "elo": 3846.7946367546233,
+      "ci_low": 3813.540237170901,
+      "ci_high": 3880.0490363383456,
+      "ci_width": 66.50879916744493,
+      "games": 4126,
+      "wins": 2207,
+      "losses": 1573,
+      "draws": 346
+    },
+    {
+      "player": "kata1-b20c256x2-s1039565568-d285739972",
+      "elo": 3840.850824493373,
+      "ci_low": 3807.5745610115587,
+      "ci_high": 3874.127087975187,
+      "ci_width": 66.55252696362835,
+      "games": 4068,
+      "wins": 2109,
+      "losses": 1564,
+      "draws": 395
+    },
+    {
+      "player": "kata1-b20c256x2-s668214784-d222255714",
+      "elo": 3797.081430936165,
+      "ci_low": 3763.8620705593635,
+      "ci_high": 3830.3007913129663,
+      "ci_width": 66.43872075360282,
+      "games": 4154,
+      "wins": 2308,
+      "losses": 1494,
+      "draws": 352
+    },
+    {
+      "player": "kata1-b15c192-s1062526208-d272346422",
+      "elo": 3751.916788966617,
+      "ci_low": 3719.016787104863,
+      "ci_high": 3784.816790828371,
+      "ci_width": 65.80000372350752,
+      "games": 4194,
+      "wins": 2209,
+      "losses": 1608,
+      "draws": 377
+    },
+    {
+      "player": "kata1-b15c192-s798345984-d202388589",
+      "elo": 3750.2408509113156,
+      "ci_low": 3717.2995398999315,
+      "ci_high": 3783.1821619227,
+      "ci_width": 65.88262202276825,
+      "games": 4292,
+      "wins": 2225,
+      "losses": 1689,
+      "draws": 378
+    },
+    {
+      "player": "kata1-b20c256-s241116160-d150094945",
+      "elo": 3736.047942679158,
+      "ci_low": 3703.1339286581688,
+      "ci_high": 3768.9619567001473,
+      "ci_width": 65.82802804197821,
+      "games": 4328,
+      "wins": 2374,
+      "losses": 1619,
+      "draws": 335
+    },
+    {
+      "player": "kata1-b15c192-s449394432-d140458288",
+      "elo": 3699.991873465471,
+      "ci_low": 3667.159213824859,
+      "ci_high": 3732.8245331060834,
+      "ci_width": 65.6653192812248,
+      "games": 4246,
+      "wins": 2359,
+      "losses": 1622,
+      "draws": 265
+    },
+    {
+      "player": "kata1-b15c192-s315428352-d115173910",
+      "elo": 3689.307754144255,
+      "ci_low": 3656.5504315272397,
+      "ci_high": 3722.06507676127,
+      "ci_width": 65.5146452340304,
+      "games": 4260,
+      "wins": 2283,
+      "losses": 1640,
+      "draws": 337
+    },
+    {
+      "player": "kata1-b15c192-s230670592-d99188084",
+      "elo": 3638.332090874242,
+      "ci_low": 3605.812493959862,
+      "ci_high": 3670.8516877886223,
+      "ci_width": 65.03919382876056,
+      "games": 4302,
+      "wins": 2310,
+      "losses": 1770,
+      "draws": 222
+    },
+    {
+      "player": "kata1-b15c192-s172540416-d88080224",
+      "elo": 3635.58727272648,
+      "ci_low": 3603.0097439458377,
+      "ci_high": 3668.1648015071223,
+      "ci_width": 65.1550575612849,
+      "games": 4114,
+      "wins": 2245,
+      "losses": 1634,
+      "draws": 235
+    },
+    {
+      "player": "kata1-b10c128-s501483520-d110698189",
+      "elo": 3565.370941346921,
+      "ci_low": 3533.008244749456,
+      "ci_high": 3597.733637944386,
+      "ci_width": 64.72539319492974,
+      "games": 4178,
+      "wins": 2264,
+      "losses": 1682,
+      "draws": 232
+    },
+    {
+      "player": "gpt6-astra-high-codex-2h",
+      "elo": 3562.622422518535,
+      "ci_low": 3381.8087982869674,
+      "ci_high": 3743.436046750103,
+      "ci_width": 361.62724846313495,
+      "games": 20,
+      "wins": 10,
+      "losses": 9,
+      "draws": 1
+    },
+    {
+      "player": "kata1-b10c128-s356821760-d90717864",
+      "elo": 3555.9681380384054,
+      "ci_low": 3523.7127970832476,
+      "ci_high": 3588.2234789935633,
+      "ci_width": 64.51068191031591,
+      "games": 4184,
+      "wins": 2273,
+      "losses": 1705,
+      "draws": 206
+    },
+    {
+      "player": "kata1-b10c128-s182492416-d63545831",
+      "elo": 3535.2743989556816,
+      "ci_low": 3503.0927490498552,
+      "ci_high": 3567.456048861508,
+      "ci_width": 64.36329981165295,
+      "games": 4228,
+      "wins": 2309,
+      "losses": 1769,
+      "draws": 150
+    },
+    {
+      "player": "kata1-b10c128-s258941696-d77667876",
+      "elo": 3529.0242523445568,
+      "ci_low": 3496.9306482139787,
+      "ci_high": 3561.117856475135,
+      "ci_width": 64.18720826115585,
+      "games": 4320,
+      "wins": 2314,
+      "losses": 1818,
+      "draws": 188
+    },
+    {
+      "player": "kata1-b10c128-s146897408-d54258564",
+      "elo": 3508.2347705469656,
+      "ci_low": 3476.1538277967534,
+      "ci_high": 3540.315713297178,
+      "ci_width": 64.16188550042412,
+      "games": 4110,
+      "wins": 2204,
+      "losses": 1693,
+      "draws": 213
+    },
+    {
+      "player": "kata1-b10c128-s108710656-d44395882",
+      "elo": 3494.374133990951,
+      "ci_low": 3462.3487875074597,
+      "ci_high": 3526.3994804744425,
+      "ci_width": 64.05069296698314,
+      "games": 4206,
+      "wins": 2249,
+      "losses": 1758,
+      "draws": 199
+    },
+    {
+      "player": "kata1-b10c128-s82632704-d37596868",
+      "elo": 3459.0546515137653,
+      "ci_low": 3427.067366396282,
+      "ci_high": 3491.0419366312485,
+      "ci_width": 63.97457023496685,
+      "games": 4088,
+      "wins": 2195,
+      "losses": 1715,
+      "draws": 178
+    },
+    {
+      "player": "kata1-b10c128-s56992512-d31122236",
+      "elo": 3437.9363843122587,
+      "ci_low": 3406.0648015736097,
+      "ci_high": 3469.807967050908,
+      "ci_width": 63.743165477298334,
+      "games": 4166,
+      "wins": 2190,
+      "losses": 1769,
+      "draws": 207
+    },
+    {
+      "player": "gpt6-astra-high-codex-8h",
+      "elo": 3435.8009121588775,
+      "ci_low": 3252.3310468916534,
+      "ci_high": 3619.2707774261016,
+      "ci_width": 366.93973053444813,
+      "games": 20,
+      "wins": 8,
+      "losses": 10,
+      "draws": 2
+    },
+    {
+      "player": "gpt6-astra-high-codex-4h",
+      "elo": 3420.83417092919,
+      "ci_low": 3245.561880023024,
+      "ci_high": 3596.1064618353557,
+      "ci_width": 350.5445818123318,
+      "games": 20,
+      "wins": 12,
+      "losses": 8,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b10c128-s41138688-d27396855",
+      "elo": 3387.6626276711595,
+      "ci_low": 3355.9030700790795,
+      "ci_high": 3419.4221852632395,
+      "ci_width": 63.51911518416028,
+      "games": 4056,
+      "wins": 2125,
+      "losses": 1719,
+      "draws": 212
+    },
+    {
+      "player": "kata1-b6c96-s175395328-d26788732",
+      "elo": 3331.6725235529175,
+      "ci_low": 3300.07960217416,
+      "ci_high": 3363.265444931675,
+      "ci_width": 63.18584275751557,
+      "games": 4002,
+      "wins": 2071,
+      "losses": 1739,
+      "draws": 192
+    },
+    {
+      "player": "kata1-b6c96-s152505856-d23152636",
+      "elo": 3313.928683034032,
+      "ci_low": 3282.250465001775,
+      "ci_high": 3345.606901066289,
+      "ci_width": 63.35643606451404,
+      "games": 4000,
+      "wins": 2022,
+      "losses": 1784,
+      "draws": 194
+    },
+    {
+      "player": "kata1-b6c96-s165180416-d25130434",
+      "elo": 3312.1745822845087,
+      "ci_low": 3281.05578848291,
+      "ci_high": 3343.2933760861074,
+      "ci_width": 62.23758760319778,
+      "games": 5018,
+      "wins": 2620,
+      "losses": 2151,
+      "draws": 247
+    },
+    {
+      "player": "kata1-b6c96-s122554112-d18283013",
+      "elo": 3303.4738417145927,
+      "ci_low": 3271.847611532626,
+      "ci_high": 3335.1000718965593,
+      "ci_width": 63.25246036393288,
+      "games": 3926,
+      "wins": 1971,
+      "losses": 1809,
+      "draws": 146
+    },
+    {
+      "player": "kata1-b6c96-s141089536-d21243181",
+      "elo": 3301.8586989489295,
+      "ci_low": 3270.2032370267793,
+      "ci_high": 3333.5141608710796,
+      "ci_width": 63.310923844300326,
+      "games": 3918,
+      "wins": 2004,
+      "losses": 1750,
+      "draws": 164
+    },
+    {
+      "player": "kata1-b6c96-s130521856-d19523626",
+      "elo": 3296.924365629927,
+      "ci_low": 3265.473097594056,
+      "ci_high": 3328.3756336657975,
+      "ci_width": 62.90253607174186,
+      "games": 4088,
+      "wins": 2076,
+      "losses": 1849,
+      "draws": 163
+    },
+    {
+      "player": "kata1-b6c96-s115648256-d17228996",
+      "elo": 3290.0871797916575,
+      "ci_low": 3258.6343568314373,
+      "ci_high": 3321.5400027518776,
+      "ci_width": 62.90564592043986,
+      "games": 4090,
+      "wins": 2112,
+      "losses": 1823,
+      "draws": 155
+    },
+    {
+      "player": "kata1-b6c96-s103950080-d15368530",
+      "elo": 3275.106463604833,
+      "ci_low": 3243.66338973221,
+      "ci_high": 3306.5495374774564,
+      "ci_width": 62.886147745246056,
+      "games": 4046,
+      "wins": 2004,
+      "losses": 1882,
+      "draws": 160
+    },
+    {
+      "player": "kata1-b6c96-s108812288-d16129874",
+      "elo": 3269.8033358256384,
+      "ci_low": 3238.3324697324474,
+      "ci_high": 3301.2742019188295,
+      "ci_width": 62.941732186381635,
+      "games": 3952,
+      "wins": 1959,
+      "losses": 1830,
+      "draws": 163
+    },
+    {
+      "player": "kata1-b6c96-s95425792-d14091095",
+      "elo": 3260.052822374303,
+      "ci_low": 3229.074592865028,
+      "ci_high": 3291.031051883578,
+      "ci_width": 61.956459018550085,
+      "games": 5038,
+      "wins": 2619,
+      "losses": 2203,
+      "draws": 216
+    },
+    {
+      "player": "kata1-b6c96-s89508352-d13124432",
+      "elo": 3248.455196239721,
+      "ci_low": 3216.973860661654,
+      "ci_high": 3279.936531817788,
+      "ci_width": 62.962671156134014,
+      "games": 3974,
+      "wins": 2015,
+      "losses": 1802,
+      "draws": 157
+    },
+    {
+      "player": "kata1-b6c96-s83588096-d12203675",
+      "elo": 3248.128980371995,
+      "ci_low": 3216.747324770559,
+      "ci_high": 3279.5106359734314,
+      "ci_width": 62.7633112028728,
+      "games": 4006,
+      "wins": 2044,
+      "losses": 1787,
+      "draws": 175
+    },
+    {
+      "player": "kata1-b6c96-s73091584-d10630987",
+      "elo": 3228.321299515764,
+      "ci_low": 3196.9491352516848,
+      "ci_high": 3259.6934637798436,
+      "ci_width": 62.74432852815852,
+      "games": 4026,
+      "wins": 1977,
+      "losses": 1879,
+      "draws": 170
+    },
+    {
+      "player": "kata1-b6c96-s78659584-d11478487",
+      "elo": 3227.0370508864294,
+      "ci_low": 3195.6504485936903,
+      "ci_high": 3258.4236531791685,
+      "ci_width": 62.773204585478446,
+      "games": 4106,
+      "wins": 2064,
+      "losses": 1889,
+      "draws": 153
+    },
+    {
+      "player": "kata1-b6c96-s69427456-d10051148",
+      "elo": 3198.398833025519,
+      "ci_low": 3167.603838497031,
+      "ci_high": 3229.1938275540065,
+      "ci_width": 61.589989056975696,
+      "games": 5188,
+      "wins": 2638,
+      "losses": 2383,
+      "draws": 167
+    },
+    {
+      "player": "kata1-b6c96-s65341184-d9428755",
+      "elo": 3188.696243976668,
+      "ci_low": 3157.414497707214,
+      "ci_high": 3219.977990246122,
+      "ci_width": 62.56349253890774,
+      "games": 4054,
+      "wins": 1980,
+      "losses": 1918,
+      "draws": 156
+    },
+    {
+      "player": "kata1-b6c96-s59560704-d8589539",
+      "elo": 3179.780244734259,
+      "ci_low": 3148.455590280195,
+      "ci_high": 3211.1048991883235,
+      "ci_width": 62.6493089081289,
+      "games": 3988,
+      "wins": 1961,
+      "losses": 1876,
+      "draws": 151
+    },
+    {
+      "player": "kata1-b6c96-s63439616-d9138325",
+      "elo": 3167.4852198805843,
+      "ci_low": 3136.226214194521,
+      "ci_high": 3198.7442255666474,
+      "ci_width": 62.51801137212613,
+      "games": 4088,
+      "wins": 1961,
+      "losses": 1956,
+      "draws": 171
+    },
+    {
+      "player": "kata1-b6c96-s55682304-d7995124",
+      "elo": 3151.820824359172,
+      "ci_low": 3120.460343721777,
+      "ci_high": 3183.181304996567,
+      "ci_width": 62.72096127479024,
+      "games": 3886,
+      "wins": 1935,
+      "losses": 1810,
+      "draws": 141
+    },
+    {
+      "player": "gpt6-astra-high-codex-1h",
+      "elo": 3148.8085076536304,
+      "ci_low": 2952.566634140999,
+      "ci_high": 3345.0503811662616,
+      "ci_width": 392.4837470252624,
+      "games": 20,
+      "wins": 15,
+      "losses": 5,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s56669696-d8173106",
+      "elo": 3146.5315228952295,
+      "ci_low": 3115.1174639047376,
+      "ci_high": 3177.9455818857214,
+      "ci_width": 62.828117980983315,
+      "games": 3996,
+      "wins": 1934,
+      "losses": 1928,
+      "draws": 134
+    },
+    {
+      "player": "kata1-b6c96-s52864512-d7635581",
+      "elo": 3118.76378156092,
+      "ci_low": 3088.0746107325795,
+      "ci_high": 3149.4529523892606,
+      "ci_width": 61.37834165668109,
+      "games": 5218,
+      "wins": 2628,
+      "losses": 2436,
+      "draws": 154
+    },
+    {
+      "player": "kata1-b6c96-s50894592-d7380655",
+      "elo": 3116.9782299768253,
+      "ci_low": 3085.718176975905,
+      "ci_high": 3148.2382829777457,
+      "ci_width": 62.52010600184032,
+      "games": 3950,
+      "wins": 1906,
+      "losses": 1927,
+      "draws": 117
+    },
+    {
+      "player": "kata1-b6c96-s48921344-d7092247",
+      "elo": 3110.2883650722215,
+      "ci_low": 3079.0022833327034,
+      "ci_high": 3141.5744468117396,
+      "ci_width": 62.57216347903632,
+      "games": 4006,
+      "wins": 1900,
+      "losses": 1975,
+      "draws": 131
+    },
+    {
+      "player": "kata1-b6c96-s46949632-d6822967",
+      "elo": 3081.63272268832,
+      "ci_low": 3050.321346290008,
+      "ci_high": 3112.944099086632,
+      "ci_width": 62.62275279662404,
+      "games": 3876,
+      "wins": 1787,
+      "losses": 1972,
+      "draws": 117
+    },
+    {
+      "player": "kata1-b6c96-s45189632-d6589032",
+      "elo": 3069.5273710698693,
+      "ci_low": 3039.048580931046,
+      "ci_high": 3100.0061612086924,
+      "ci_width": 60.95758027764644,
+      "games": 5476,
+      "wins": 2780,
+      "losses": 2537,
+      "draws": 159
+    },
+    {
+      "player": "kata1-b6c96-s43286272-d6326857",
+      "elo": 3065.9484230916223,
+      "ci_low": 3034.7148653543954,
+      "ci_high": 3097.181980828849,
+      "ci_width": 62.46711547445418,
+      "games": 3982,
+      "wins": 1910,
+      "losses": 1961,
+      "draws": 111
+    },
+    {
+      "player": "kata1-b6c96-s41312768-d6061202",
+      "elo": 3037.9871677607384,
+      "ci_low": 3006.6854292336548,
+      "ci_high": 3069.288906287822,
+      "ci_width": 62.60347705416741,
+      "games": 3908,
+      "wins": 1802,
+      "losses": 2000,
+      "draws": 106
+    },
+    {
+      "player": "kata1-b6c96-s39339776-d5828519",
+      "elo": 3015.4239162128215,
+      "ci_low": 2984.98556040443,
+      "ci_high": 3045.862272021213,
+      "ci_width": 60.876711616782764,
+      "games": 5508,
+      "wins": 2720,
+      "losses": 2657,
+      "draws": 131
+    },
+    {
+      "player": "kata1-b6c96-s37368064-d5536083",
+      "elo": 2988.623469411157,
+      "ci_low": 2957.372873330515,
+      "ci_high": 3019.8740654917992,
+      "ci_width": 62.501192161283775,
+      "games": 4004,
+      "wins": 1788,
+      "losses": 2084,
+      "draws": 132
+    },
+    {
+      "player": "kata1-b6c96-s35356160-d5299514",
+      "elo": 2947.09503444607,
+      "ci_low": 2916.7747303156507,
+      "ci_high": 2977.415338576489,
+      "ci_width": 60.640608260838455,
+      "games": 5674,
+      "wins": 2809,
+      "losses": 2697,
+      "draws": 168
+    },
+    {
+      "player": "kata1-b6c96-s33239552-d5016295",
+      "elo": 2921.184776008799,
+      "ci_low": 2889.852426622369,
+      "ci_high": 2952.517125395229,
+      "ci_width": 62.664698772860184,
+      "games": 4124,
+      "wins": 1831,
+      "losses": 2194,
+      "draws": 99
+    },
+    {
+      "player": "kata1-b6c96-s32344832-d4917369",
+      "elo": 2903.9852631309127,
+      "ci_low": 2873.775802197313,
+      "ci_high": 2934.1947240645122,
+      "ci_width": 60.41892186719905,
+      "games": 5712,
+      "wins": 2740,
+      "losses": 2842,
+      "draws": 130
+    },
+    {
+      "player": "kata1-b6c96-s30394624-d4635675",
+      "elo": 2867.307765891408,
+      "ci_low": 2836.0242709634076,
+      "ci_high": 2898.5912608194085,
+      "ci_width": 62.5669898560008,
+      "games": 4068,
+      "wins": 1806,
+      "losses": 2138,
+      "draws": 124
+    },
+    {
+      "player": "kata1-b6c96-s31390976-d4781382",
+      "elo": 2863.9137926004782,
+      "ci_low": 2832.637470242147,
+      "ci_high": 2895.1901149588093,
+      "ci_width": 62.552644716662094,
+      "games": 4030,
+      "wins": 1759,
+      "losses": 2151,
+      "draws": 120
+    },
+    {
+      "player": "kata1-b6c96-s29422336-d4533650",
+      "elo": 2837.880683599025,
+      "ci_low": 2807.8270777947364,
+      "ci_high": 2867.9342894033134,
+      "ci_width": 60.1072116085769,
+      "games": 6082,
+      "wins": 2918,
+      "losses": 3032,
+      "draws": 132
+    },
+    {
+      "player": "kata1-b6c96-s28460288-d4388379",
+      "elo": 2814.4741716876983,
+      "ci_low": 2783.2504413860725,
+      "ci_high": 2845.6979019893242,
+      "ci_width": 62.4474606032514,
+      "games": 3976,
+      "wins": 1726,
+      "losses": 2126,
+      "draws": 124
+    },
+    {
+      "player": "kata1-b6c96-s27415296-d4256697",
+      "elo": 2789.030128598528,
+      "ci_low": 2759.0504112923086,
+      "ci_high": 2819.009845904747,
+      "ci_width": 59.95943461243821,
+      "games": 6010,
+      "wins": 2859,
+      "losses": 2999,
+      "draws": 152
+    },
+    {
+      "player": "kata1-b6c96-s26363136-d4119819",
+      "elo": 2740.7909976717815,
+      "ci_low": 2709.725884751508,
+      "ci_high": 2771.856110592055,
+      "ci_width": 62.13022584054642,
+      "games": 4220,
+      "wins": 1865,
+      "losses": 2241,
+      "draws": 114
+    },
+    {
+      "player": "kata1-b6c96-s25461504-d4002500",
+      "elo": 2721.2675212164104,
+      "ci_low": 2691.5091695658994,
+      "ci_high": 2751.0258728669214,
+      "ci_width": 59.51670330102185,
+      "games": 6352,
+      "wins": 3037,
+      "losses": 3173,
+      "draws": 142
+    },
+    {
+      "player": "kata1-b6c96-s24455424-d3879081",
+      "elo": 2695.635386461271,
+      "ci_low": 2664.5402162841237,
+      "ci_high": 2726.7305566384184,
+      "ci_width": 62.19034035429486,
+      "games": 4220,
+      "wins": 1844,
+      "losses": 2268,
+      "draws": 108
+    },
+    {
+      "player": "gpt6-astra-high-codex-0h",
+      "elo": 2691.330345124164,
+      "ci_low": 2505.165093470163,
+      "ci_high": 2877.4955967781652,
+      "ci_width": 372.330503308002,
+      "games": 20,
+      "wins": 14,
+      "losses": 6,
+      "draws": 0
+    },
+    {
+      "player": "gpt5.6-sol-high-codex-1h",
+      "elo": 2656.139641865307,
+      "ci_low": 2490.3485311540912,
+      "ci_high": 2821.930752576523,
+      "ci_width": 331.58222142243164,
+      "games": 20,
+      "wins": 13,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s23401472-d3742377",
+      "elo": 2639.779129163913,
+      "ci_low": 2610.2948861930417,
+      "ci_high": 2669.263372134784,
+      "ci_width": 58.96848594174238,
+      "games": 6554,
+      "wins": 3116,
+      "losses": 3296,
+      "draws": 142
+    },
+    {
+      "player": "kata1-b6c96-s22371328-d3612586",
+      "elo": 2605.4841347711504,
+      "ci_low": 2574.6206488914527,
+      "ci_high": 2636.347620650848,
+      "ci_width": 61.726971759395056,
+      "games": 4398,
+      "wins": 1888,
+      "losses": 2402,
+      "draws": 108
+    },
+    {
+      "player": "kata1-b6c96-s21371392-d3529696",
+      "elo": 2582.020015885804,
+      "ci_low": 2552.8851745740158,
+      "ci_high": 2611.154857197592,
+      "ci_width": 58.26968262357572,
+      "games": 6972,
+      "wins": 3289,
+      "losses": 3540,
+      "draws": 143
+    },
+    {
+      "player": "gpt6-astra-max-api-multi",
+      "elo": 2568.0501826809077,
+      "ci_low": 2427.998033540161,
+      "ci_high": 2708.1023318216544,
+      "ci_width": 280.1042982814932,
+      "games": 30,
+      "wins": 17,
+      "losses": 10,
+      "draws": 3
+    },
+    {
+      "player": "kata1-b6c96-s20302336-d3388395",
+      "elo": 2493.919699887988,
+      "ci_low": 2463.33796754119,
+      "ci_high": 2524.5014322347856,
+      "ci_width": 61.163464693594975,
+      "games": 4386,
+      "wins": 2012,
+      "losses": 2290,
+      "draws": 84
+    },
+    {
+      "player": "kata1-b6c96-s19408128-d3280178",
+      "elo": 2457.3758059478387,
+      "ci_low": 2428.5600271210506,
+      "ci_high": 2486.191584774627,
+      "ci_width": 57.631557653576024,
+      "games": 6902,
+      "wins": 3196,
+      "losses": 3583,
+      "draws": 123
+    },
+    {
+      "player": "kata1-b6c96-s18429184-d3197121",
+      "elo": 2386.1374856252337,
+      "ci_low": 2357.589470092483,
+      "ci_high": 2414.685501157984,
+      "ci_width": 57.09603106550085,
+      "games": 7076,
+      "wins": 3234,
+      "losses": 3701,
+      "draws": 141
+    },
+    {
+      "player": "kata1-b6c96-s17434112-d3038653",
+      "elo": 2311.036602803274,
+      "ci_low": 2282.722228541411,
+      "ci_high": 2339.350977065137,
+      "ci_width": 56.628748523726514,
+      "games": 6890,
+      "wins": 3151,
+      "losses": 3625,
+      "draws": 114
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067",
+      "elo": 2245.6932913146916,
+      "ci_low": 2217.873658647621,
+      "ci_high": 2273.512923981762,
+      "ci_width": 55.6392653341408,
+      "games": 6818,
+      "wins": 3081,
+      "losses": 3633,
+      "draws": 104
+    },
+    {
+      "player": "gpt6-astra-high-api-multi",
+      "elo": 2227.1393322402305,
+      "ci_low": 2089.2412062068784,
+      "ci_high": 2365.0374582735826,
+      "ci_width": 275.7962520667042,
+      "games": 30,
+      "wins": 17,
+      "losses": 12,
+      "draws": 1
+    },
+    {
+      "player": "kata1-b6c96-s15704832-d2832803",
+      "elo": 2163.746645817343,
+      "ci_low": 2134.4200727571338,
+      "ci_high": 2193.0732188775523,
+      "ci_width": 58.653146120418384,
+      "games": 3904,
+      "wins": 1744,
+      "losses": 2097,
+      "draws": 63
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067-temp-0.5",
+      "elo": 2160.1129547258174,
+      "ci_low": 2132.697895251842,
+      "ci_high": 2187.528014199793,
+      "ci_width": 54.83011894795109,
+      "games": 6608,
+      "wins": 3010,
+      "losses": 3490,
+      "draws": 108
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367",
+      "elo": 2109.5679977457066,
+      "ci_low": 2080.713834440974,
+      "ci_high": 2138.422161050439,
+      "ci_width": 57.708326609464905,
+      "games": 4016,
+      "wins": 1796,
+      "losses": 2140,
+      "draws": 80
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367-temp-0.3",
+      "elo": 2084.5324576821145,
+      "ci_low": 2057.4881599397463,
+      "ci_high": 2111.5767554244826,
+      "ci_width": 54.08859548473635,
+      "games": 6600,
+      "wins": 3140,
+      "losses": 3372,
+      "draws": 88
+    },
+    {
+      "player": "opus-5-high-api-multi2",
+      "elo": 2075.9034691120096,
+      "ci_low": 1937.2764785458544,
+      "ci_high": 2214.530459678165,
+      "ci_width": 277.2539811323105,
+      "games": 30,
+      "wins": 18,
+      "losses": 12,
+      "draws": 0
+    },
+    {
+      "player": "gpt5.6-sol-high-codex-2h",
+      "elo": 2072.9826782269515,
+      "ci_low": 1908.3688204031541,
+      "ci_high": 2237.596536050749,
+      "ci_width": 329.22771564759466,
+      "games": 20,
+      "wins": 8,
+      "losses": 12,
+      "draws": 0
+    },
+    {
+      "player": "gpt6-astra-high-api",
+      "elo": 2011.16466027592,
+      "ci_low": 1794.1289209766094,
+      "ci_high": 2228.20039957523,
+      "ci_width": 434.07147859862096,
+      "games": 14,
+      "wins": 10,
+      "losses": 4,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s16525312-d2925067-temp-0.7",
+      "elo": 2010.6361232812992,
+      "ci_low": 1983.7613119541456,
+      "ci_high": 2037.5109346084528,
+      "ci_width": 53.749622654307096,
+      "games": 6396,
+      "wins": 2965,
+      "losses": 3327,
+      "draws": 104
+    },
+    {
+      "player": "opus-5-max-api-multi",
+      "elo": 2010.4759002317044,
+      "ci_low": 1528.6332524896065,
+      "ci_high": 2492.318547973802,
+      "ci_width": 963.6852954841954,
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.3",
+      "elo": 1985.1152179030362,
+      "ci_low": 1958.2723419578904,
+      "ci_high": 2011.958093848182,
+      "ci_width": 53.685751890291705,
+      "games": 6388,
+      "wins": 3071,
+      "losses": 3226,
+      "draws": 91
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546",
+      "elo": 1980.0141568063732,
+      "ci_low": 1951.2502118399443,
+      "ci_high": 2008.778101772802,
+      "ci_width": 57.527889932857924,
+      "games": 3464,
+      "wins": 1597,
+      "losses": 1814,
+      "draws": 53
+    },
+    {
+      "player": "kata1-b6c96-s12849664-d2510774",
+      "elo": 1943.1745718158902,
+      "ci_low": 1914.7825380420015,
+      "ci_high": 1971.5666055897789,
+      "ci_width": 56.78406754777731,
+      "games": 3576,
+      "wins": 1614,
+      "losses": 1898,
+      "draws": 64
+    },
+    {
+      "player": "gpt5.6-sol-max-api-multi",
+      "elo": 1928.976282762745,
+      "ci_low": 1721.8469107831093,
+      "ci_high": 2136.105654742381,
+      "ci_width": 414.2587439592715,
+      "games": 14,
+      "wins": 9,
+      "losses": 5,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.5",
+      "elo": 1924.4532584076167,
+      "ci_low": 1897.961907522883,
+      "ci_high": 1950.9446092923504,
+      "ci_width": 52.9827017694673,
+      "games": 6442,
+      "wins": 2973,
+      "losses": 3361,
+      "draws": 108
+    },
+    {
+      "player": "gpt5.6-sol-high-codex-4h",
+      "elo": 1910.1473489208831,
+      "ci_low": 1729.3900780007255,
+      "ci_high": 2090.9046198410406,
+      "ci_width": 361.5145418403152,
+      "games": 20,
+      "wins": 13,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s12849664-d2510774-temp-0.5",
+      "elo": 1855.4612064151434,
+      "ci_low": 1829.303820820231,
+      "ci_high": 1881.6185920100556,
+      "ci_width": 52.314771189824484,
+      "games": 6430,
+      "wins": 3077,
+      "losses": 3250,
+      "draws": 103
+    },
+    {
+      "player": "gpt5.6-sol-high-api-multi4",
+      "elo": 1845.8397316207843,
+      "ci_low": 1638.4199980279227,
+      "ci_high": 2053.259465213646,
+      "ci_width": 414.83946718572315,
+      "games": 14,
+      "wins": 7,
+      "losses": 6,
+      "draws": 1
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753",
+      "elo": 1819.9529688906075,
+      "ci_low": 1793.9715925425232,
+      "ci_high": 1845.9343452386918,
+      "ci_width": 51.96275269616854,
+      "games": 6310,
+      "wins": 3091,
+      "losses": 3115,
+      "draws": 104
+    },
+    {
+      "player": "gemini-3.1-pro-high-api-multi",
+      "elo": 1797.1559161323128,
+      "ci_low": 1619.084887010049,
+      "ci_high": 1975.2269452545765,
+      "ci_width": 356.1420582445274,
+      "games": 20,
+      "wins": 9,
+      "losses": 11,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s11888896-d2416753-temp-0.5",
+      "elo": 1742.0063625782725,
+      "ci_low": 1716.3787226610036,
+      "ci_high": 1767.6340024955414,
+      "ci_width": 51.255279834537795,
+      "games": 6426,
+      "wins": 3145,
+      "losses": 3164,
+      "draws": 117
+    },
+    {
+      "player": "kata1-b6c96-s10825472-d2300510",
+      "elo": 1741.293546937599,
+      "ci_low": 1713.5973086465349,
+      "ci_high": 1768.9897852286633,
+      "ci_width": 55.39247658212847,
+      "games": 3438,
+      "wins": 1536,
+      "losses": 1832,
+      "draws": 70
+    },
+    {
+      "player": "DeepSeek-V4.1-Flash-max-api-multi",
+      "elo": 1707.2726205689735,
+      "ci_low": 1501.2197565402496,
+      "ci_high": 1913.3254845976974,
+      "ci_width": 412.10572805744795,
+      "games": 14,
+      "wins": 7,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s14649344-d2727367-temp-0.9",
+      "elo": 1676.726056417217,
+      "ci_low": 1651.231269276432,
+      "ci_high": 1702.2208435580021,
+      "ci_width": 50.989574281570206,
+      "games": 6354,
+      "wins": 3135,
+      "losses": 3135,
+      "draws": 84
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128",
+      "elo": 1653.4540539415434,
+      "ci_low": 1626.08752189699,
+      "ci_high": 1680.8205859860968,
+      "ci_width": 54.733064089106726,
+      "games": 3344,
+      "wins": 1574,
+      "losses": 1692,
+      "draws": 78
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128-temp-0.3",
+      "elo": 1619.411529633211,
+      "ci_low": 1594.1932579884594,
+      "ci_high": 1644.6298012779628,
+      "ci_width": 50.436543289503526,
+      "games": 6600,
+      "wins": 3367,
+      "losses": 3141,
+      "draws": 92
+    },
+    {
+      "player": "gemini-3.8-flash-high-api-multi",
+      "elo": 1616.349215664353,
+      "ci_low": 1410.4896591915176,
+      "ci_high": 1822.2087721371886,
+      "ci_width": 411.7191129456712,
+      "games": 14,
+      "wins": 6,
+      "losses": 7,
+      "draws": 1
+    },
+    {
+      "player": "kata1-b6c96-s13733120-d2631546-temp-0.9",
+      "elo": 1583.0321099207679,
+      "ci_low": 1557.9904240767687,
+      "ci_high": 1608.073795764767,
+      "ci_width": 50.08337168799828,
+      "games": 6676,
+      "wins": 3194,
+      "losses": 3381,
+      "draws": 101
+    },
+    {
+      "player": "gpt5.6-sol-high-codex-0h",
+      "elo": 1580.174360570653,
+      "ci_low": 1402.0431334308132,
+      "ci_high": 1758.305587710493,
+      "ci_width": 356.26245427967984,
+      "games": 20,
+      "wins": 10,
+      "losses": 9,
+      "draws": 1
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583",
+      "elo": 1571.8610395008614,
+      "ci_low": 1544.6915266683911,
+      "ci_high": 1599.0305523333316,
+      "ci_width": 54.33902566494026,
+      "games": 3374,
+      "wins": 1504,
+      "losses": 1798,
+      "draws": 72
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030",
+      "elo": 1522.358354894833,
+      "ci_low": 1495.649426655105,
+      "ci_high": 1549.067283134561,
+      "ci_width": 53.41785647945627,
+      "games": 3460,
+      "wins": 1650,
+      "losses": 1743,
+      "draws": 67
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.3",
+      "elo": 1518.8856205994475,
+      "ci_low": 1494.2254502030369,
+      "ci_high": 1543.5457909958582,
+      "ci_width": 49.32034079282138,
+      "games": 6824,
+      "wins": 3322,
+      "losses": 3413,
+      "draws": 89
+    },
+    {
+      "player": "DeepSeek-V4-Flash-0731-max-api-multi",
+      "elo": 1449.0779970553012,
+      "ci_low": 1221.9649680336556,
+      "ci_high": 1676.1910260769469,
+      "ci_width": 454.22605804329123,
+      "games": 14,
+      "wins": 5,
+      "losses": 9,
+      "draws": 0
+    },
+    {
+      "player": "muse-spark-1.3-contributor-high-api-multi",
+      "elo": 1449.0779970553012,
+      "ci_low": 1221.9649680336556,
+      "ci_high": 1676.1910260769469,
+      "ci_width": 454.2260580432913,
+      "games": 14,
+      "wins": 5,
+      "losses": 9,
+      "draws": 0
+    },
+    {
+      "player": "muse-spark-1.3-contributor-xhigh-api-multi",
+      "elo": 1415.1290072131305,
+      "ci_low": 1198.195547334426,
+      "ci_high": 1632.062467091835,
+      "ci_width": 433.86691975740916,
+      "games": 14,
+      "wins": 6,
+      "losses": 8,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.3",
+      "elo": 1412.4079152050017,
+      "ci_low": 1388.464110984934,
+      "ci_high": 1436.3517194250694,
+      "ci_width": 47.88760844013544,
+      "games": 7100,
+      "wins": 3432,
+      "losses": 3572,
+      "draws": 96
+    },
+    {
+      "player": "DeepSeek-V4.1-Flash-high-api-multi",
+      "elo": 1380.3935347488898,
+      "ci_low": 1175.7683915233242,
+      "ci_high": 1585.0186779744554,
+      "ci_width": 409.25028645113116,
+      "games": 14,
+      "wins": 7,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.5",
+      "elo": 1363.4651829565548,
+      "ci_low": 1339.7417645885214,
+      "ci_high": 1387.1886013245883,
+      "ci_width": 47.446836736066665,
+      "games": 7118,
+      "wins": 3342,
+      "losses": 3670,
+      "draws": 106
+    },
+    {
+      "player": "gemini-3.6-flash-high-api-multi",
+      "elo": 1335.9291998515823,
+      "ci_low": 1113.2302866487169,
+      "ci_high": 1558.6281130544478,
+      "ci_width": 445.39782640573105,
+      "games": 14,
+      "wins": 4,
+      "losses": 8,
+      "draws": 2
+    },
+    {
+      "player": "kata1-b6c96-s6127360-d1754797",
+      "elo": 1248.0218847182452,
+      "ci_low": 1222.1115326179406,
+      "ci_high": 1273.9322368185499,
+      "ci_width": 51.82070420060912,
+      "games": 3460,
+      "wins": 1480,
+      "losses": 1941,
+      "draws": 39
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.5",
+      "elo": 1245.7791624395145,
+      "ci_low": 1222.616161207699,
+      "ci_high": 1268.94216367133,
+      "ci_width": 46.32600246363105,
+      "games": 7188,
+      "wins": 3226,
+      "losses": 3870,
+      "draws": 92
+    },
+    {
+      "player": "DeepSeek-V4-Flash-0731-high-api-multi2",
+      "elo": 1189.3280237318247,
+      "ci_low": 992.0739758138241,
+      "ci_high": 1386.5820716498254,
+      "ci_width": 394.50809583600125,
+      "games": 14,
+      "wins": 9,
+      "losses": 5,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538",
+      "elo": 1168.3617748494753,
+      "ci_low": 1142.7658259124726,
+      "ci_high": 1193.957723786478,
+      "ci_width": 51.191897874005335,
+      "games": 3436,
+      "wins": 1589,
+      "losses": 1807,
+      "draws": 40
+    },
+    {
+      "player": "kata1-b6c96-s8982784-d2082583-temp-0.7",
+      "elo": 1137.2453413218966,
+      "ci_low": 1114.45125756152,
+      "ci_high": 1160.0394250822733,
+      "ci_width": 45.588167520753196,
+      "games": 7024,
+      "wins": 3153,
+      "losses": 3774,
+      "draws": 97
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003",
+      "elo": 1102.7590535243498,
+      "ci_low": 1080.2712781219373,
+      "ci_high": 1125.2468289267624,
+      "ci_width": 44.97555080482519,
+      "games": 7046,
+      "wins": 3264,
+      "losses": 3706,
+      "draws": 76
+    },
+    {
+      "player": "gpt5.6-luna-high-api-multi",
+      "elo": 1091.2012903521859,
+      "ci_low": 901.0614765458218,
+      "ci_high": 1281.34110415855,
+      "ci_width": 380.2796276127281,
+      "games": 14,
+      "wins": 7,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s10014464-d2201128-temp-0.9",
+      "elo": 1061.679576326955,
+      "ci_low": 1039.18869990634,
+      "ci_high": 1084.17045274757,
+      "ci_width": 44.981752841229785,
+      "games": 6856,
+      "wins": 3067,
+      "losses": 3696,
+      "draws": 93
+    },
+    {
+      "player": "gpt5.6-luna-max-api-multi",
+      "elo": 1057.8495293729668,
+      "ci_low": 868.5389077714963,
+      "ci_high": 1247.1601509744373,
+      "ci_width": 378.6212432029411,
+      "games": 14,
+      "wins": 7,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "gpt5.6-sol-high-codex-8h",
+      "elo": 1045.567601648389,
+      "ci_low": 851.5908926230672,
+      "ci_high": 1239.5443106737107,
+      "ci_width": 387.9534180506435,
+      "games": 20,
+      "wins": 5,
+      "losses": 15,
+      "draws": 0
+    },
+    {
+      "player": "grok-4.6-xhigh-api-multi",
+      "elo": 1044.1885597599073,
+      "ci_low": 855.1476074796079,
+      "ci_high": 1233.2295120402066,
+      "ci_width": 378.08190456059873,
+      "games": 14,
+      "wins": 7,
+      "losses": 7,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s8080640-d1961030-temp-0.7",
+      "elo": 996.1437801065825,
+      "ci_low": 973.9600839683234,
+      "ci_high": 1018.3274762448417,
+      "ci_width": 44.367392276518416,
+      "games": 6800,
+      "wins": 3032,
+      "losses": 3678,
+      "draws": 90
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.3",
+      "elo": 916.8321121368841,
+      "ci_low": 895.2856221683087,
+      "ci_high": 938.3786021054595,
+      "ci_width": 43.09297993715077,
+      "games": 6756,
+      "wins": 3145,
+      "losses": 3554,
+      "draws": 57
+    },
+    {
+      "player": "grok-4.6-high-api-multi2",
+      "elo": 916.2551656164082,
+      "ci_low": 653.4884954710266,
+      "ci_high": 1179.02183576179,
+      "ci_width": 525.5333402907634,
+      "games": 14,
+      "wins": 11,
+      "losses": 3,
+      "draws": 0
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538-temp-0.5",
+      "elo": 858.8431522199264,
+      "ci_low": 837.7642656391423,
+      "ci_high": 879.9220388007105,
+      "ci_width": 42.157773161568265,
+      "games": 6800,
+      "wins": 3100,
+      "losses": 3659,
+      "draws": 41
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.5",
+      "elo": 730.5667223044497,
+      "ci_low": 710.3785198201452,
+      "ci_high": 750.7549247887542,
+      "ci_width": 40.37640496860902,
+      "games": 7092,
+      "wins": 3156,
+      "losses": 3882,
+      "draws": 54
+    },
+    {
+      "player": "kata1-b6c96-s5214720-d1690538-temp-0.7",
+      "elo": 692.9346930212201,
+      "ci_low": 673.1556350689656,
+      "ci_high": 712.7137509734747,
+      "ci_width": 39.55811590450907,
+      "games": 6996,
+      "wins": 3230,
+      "losses": 3724,
+      "draws": 42
+    },
+    {
+      "player": "kata1-b6c96-s6127360-d1754797-temp-0.9",
+      "elo": 639.8579456213382,
+      "ci_low": 620.5578581714083,
+      "ci_high": 659.1580330712682,
+      "ci_width": 38.60017489985988,
+      "games": 6966,
+      "wins": 3102,
+      "losses": 3796,
+      "draws": 68
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.7",
+      "elo": 563.1570638380468,
+      "ci_low": 544.5996969935401,
+      "ci_high": 581.7144306825536,
+      "ci_width": 37.11473368901359,
+      "games": 6892,
+      "wins": 2919,
+      "losses": 3911,
+      "draws": 62
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786",
+      "elo": 521.0658815179027,
+      "ci_low": 498.7946129594452,
+      "ci_high": 543.3371500763601,
+      "ci_width": 44.542537116914936,
+      "games": 2990,
+      "wins": 1309,
+      "losses": 1652,
+      "draws": 29
+    },
+    {
+      "player": "kata1-b6c96-s4136960-d1510003-temp-0.9",
+      "elo": 439.8540083465404,
+      "ci_low": 422.63200500850434,
+      "ci_high": 457.0760116845765,
+      "ci_width": 34.44400667607217,
+      "games": 6850,
+      "wins": 2668,
+      "losses": 4130,
+      "draws": 52
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786-temp-0.3",
+      "elo": 327.5618696754523,
+      "ci_low": 311.81609018834723,
+      "ci_high": 343.3076491625573,
+      "ci_width": 31.49155897421005,
+      "games": 7250,
+      "wins": 2496,
+      "losses": 4699,
+      "draws": 55
+    },
+    {
+      "player": "kata1-b6c96-s938496-d1208807",
+      "elo": 327.43555939333885,
+      "ci_low": 306.7547955038645,
+      "ci_high": 348.1163232828132,
+      "ci_width": 41.36152777894875,
+      "games": 2854,
+      "wins": 1064,
+      "losses": 1767,
+      "draws": 23
+    },
+    {
+      "player": "kata1-b6c96-s938496-d1208807-temp-0.3",
+      "elo": 235.02981308334054,
+      "ci_low": 219.50975139288687,
+      "ci_high": 250.54987477379422,
+      "ci_width": 31.040123380907364,
+      "games": 6622,
+      "wins": 1884,
+      "losses": 4673,
+      "draws": 65
+    },
+    {
+      "player": "kata1-b6c96-s1995008-d1329786-temp-0.9",
+      "elo": 167.61140418632183,
+      "ci_low": 152.10010338721494,
+      "ci_high": 183.12270498542873,
+      "ci_width": 31.02260159821378,
+      "games": 6156,
+      "wins": 1528,
+      "losses": 4576,
+      "draws": 52
+    },
+    {
+      "player": "kata1-b6c96-s1248000-d550347",
+      "elo": 119.12933007584611,
+      "ci_low": 98.6622590818937,
+      "ci_high": 139.59640106979853,
+      "ci_width": 40.93414198790482,
+      "games": 2506,
+      "wins": 672,
+      "losses": 1801,
+      "draws": 33
+    },
+    {
+      "player": "kata1-b6c96-s1248000-d550347-temp-0.3",
+      "elo": 113.1121075376108,
+      "ci_low": 97.23800810744957,
+      "ci_high": 128.986206967772,
+      "ci_width": 31.748198860322436,
+      "games": 5408,
+      "wins": 1228,
+      "losses": 4130,
+      "draws": 50
+    },
+    {
+      "player": "kata1-random",
+      "elo": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "ci_width": 0.0,
+      "games": 9262,
+      "wins": 1355,
+      "losses": 7878,
+      "draws": 29
+    }
+  ],
+  "llm_comparisons": [
+    {
+      "rank": "1-3",
+      "player": "gpt6-astra-high-codex-2h",
+      "elo": 3562.622422518535,
+      "elo_ci_95": 180.8136242315677,
+      "games": 20,
+      "moves": 854,
+      "cached_input_rate": 0.9371526264691644,
+      "output_tokens_per_move": 199.2423887587822,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 26805.428033,
+      "api_seconds_per_move": 31.388089031615927,
+      "cost_usd": 263.179066,
+      "cost_usd_per_move": 0.3081722084309133
+    },
+    {
+      "rank": "1-4",
+      "player": "gpt6-astra-high-codex-8h",
+      "elo": 3435.8009121588775,
+      "elo_ci_95": 183.46986526722412,
+      "games": 20,
+      "moves": 856,
+      "cached_input_rate": 0.9523274170081555,
+      "output_tokens_per_move": 187.41705607476635,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 26471.480847,
+      "api_seconds_per_move": 30.92462715771028,
+      "cost_usd": 210.287956,
+      "cost_usd_per_move": 0.2456635
+    },
+    {
+      "rank": "1-4",
+      "player": "gpt6-astra-high-codex-4h",
+      "elo": 3420.83417092919,
+      "elo_ci_95": 175.27229090616584,
+      "games": 20,
+      "moves": 688,
+      "cached_input_rate": 0.9810392317756848,
+      "output_tokens_per_move": 156.1002906976744,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 23001.039266,
+      "api_seconds_per_move": 33.431743119186045,
+      "cost_usd": 167.440892,
+      "cost_usd_per_move": 0.24337338953488372
+    },
+    {
+      "rank": "2-4",
+      "player": "gpt6-astra-high-codex-1h",
+      "elo": 3148.8085076536304,
+      "elo_ci_95": 196.24187351263117,
+      "games": 20,
+      "moves": 757,
+      "cached_input_rate": 0.9856642449066562,
+      "output_tokens_per_move": 187.38441215323647,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 24628.915265,
+      "api_seconds_per_move": 32.53489466974901,
+      "cost_usd": 350.809432,
+      "cost_usd_per_move": 0.4634206499339498
+    },
+    {
+      "rank": "5-7",
+      "player": "gpt6-astra-high-codex-0h",
+      "elo": 2691.330345124164,
+      "elo_ci_95": 186.16525165400117,
+      "games": 20,
+      "moves": 575,
+      "cached_input_rate": 0.9559642089339341,
+      "output_tokens_per_move": 630.8469565217391,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 19075.062001,
+      "api_seconds_per_move": 33.17402087130434,
+      "cost_usd": 69.497814,
+      "cost_usd_per_move": 0.12086576347826088
+    },
+    {
+      "rank": "5-8",
+      "player": "gpt5.6-sol-high-codex-1h",
+      "elo": 2656.139641865307,
+      "elo_ci_95": 165.79111071121588,
+      "games": 20,
+      "moves": 730,
+      "cached_input_rate": 0.9870115303165664,
+      "output_tokens_per_move": 347.85068493150686,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 28967.397789,
+      "api_seconds_per_move": 39.681366834246575,
+      "cost_usd": 117.04942,
+      "cost_usd_per_move": 0.1603416712328767
+    },
+    {
+      "rank": "5-8",
+      "player": "gpt6-astra-max-api-multi",
+      "elo": 2568.0501826809077,
+      "elo_ci_95": 140.05214914074668,
+      "games": 30,
+      "moves": 1052,
+      "cached_input_rate": 0.9310446790834668,
+      "output_tokens_per_move": 1723.8079847908746,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 69423.073971,
+      "api_seconds_per_move": 65.99151518155894,
+      "cost_usd": 162.277246,
+      "cost_usd_per_move": 0.1542559372623574
+    },
+    {
+      "rank": "8-14",
+      "player": "gpt6-astra-high-api-multi",
+      "elo": 2227.1393322402305,
+      "elo_ci_95": 137.89812603335213,
+      "games": 30,
+      "moves": 1015,
+      "cached_input_rate": 0.8950145422362287,
+      "output_tokens_per_move": 196.6088669950739,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 10472.160448999999,
+      "api_seconds_per_move": 10.317399457142857,
+      "cost_usd": 33.715296,
+      "cost_usd_per_move": 0.033217040394088675
+    },
+    {
+      "rank": "8-16",
+      "player": "opus-5-high-api-multi2",
+      "elo": 2075.9034691120096,
+      "elo_ci_95": 138.6269905661552,
+      "games": 30,
+      "moves": 1239,
+      "cached_input_rate": 0.9539465794203312,
+      "output_tokens_per_move": 1696.4471347861179,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 31841.614235,
+      "api_seconds_per_move": 25.699446517352705,
+      "cost_usd": 111.40603374999999,
+      "cost_usd_per_move": 0.08991608857949959
+    },
+    {
+      "rank": "8-17",
+      "player": "gpt5.6-sol-high-codex-2h",
+      "elo": 2072.9826782269515,
+      "elo_ci_95": 164.6138578237974,
+      "games": 20,
+      "moves": 478,
+      "cached_input_rate": 0.9937672540315106,
+      "output_tokens_per_move": 506.3493723849372,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 32555.007776,
+      "api_seconds_per_move": 68.10671082845188,
+      "cost_usd": 114.5584512,
+      "cost_usd_per_move": 0.23966203179916318
+    },
+    {
+      "rank": "8-18",
+      "player": "gpt6-astra-high-api",
+      "elo": 2011.16466027592,
+      "elo_ci_95": 217.03573929931042,
+      "games": 14,
+      "moves": 520,
+      "cached_input_rate": 0.0,
+      "output_tokens_per_move": 1070.4923076923078,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 23241.403457,
+      "api_seconds_per_move": 44.69500664807693,
+      "cost_usd": 30.23309,
+      "cost_usd_per_move": 0.05814055769230769
+    },
+    {
+      "rank": "6-24",
+      "player": "opus-5-max-api-multi",
+      "elo": 2010.4759002317044,
+      "elo_ci_95": 481.8426477420978,
+      "games": 2,
+      "moves": 92,
+      "cached_input_rate": 0.9336545268407435,
+      "output_tokens_per_move": 6548.989130434783,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 7694.121753649786,
+      "api_seconds_per_move": 83.6317581918455,
+      "cost_usd": 24.082586750000008,
+      "cost_usd_per_move": 0.2617672472826088
+    },
+    {
+      "rank": "8-19",
+      "player": "gpt5.6-sol-max-api-multi",
+      "elo": 1928.976282762745,
+      "elo_ci_95": 207.12937197963583,
+      "games": 14,
+      "moves": 516,
+      "cached_input_rate": 0.9385591176531093,
+      "output_tokens_per_move": 2206.1589147286822,
+      "illegal_moves": 4,
+      "api_problems": 0,
+      "api_seconds": 40811.543205,
+      "api_seconds_per_move": 79.09213799418605,
+      "cost_usd": 41.8215256,
+      "cost_usd_per_move": 0.08104946821705426
+    },
+    {
+      "rank": "8-19",
+      "player": "gpt5.6-sol-high-codex-4h",
+      "elo": 1910.1473489208831,
+      "elo_ci_95": 180.75727092015757,
+      "games": 20,
+      "moves": 434,
+      "cached_input_rate": 0.8690817713907486,
+      "output_tokens_per_move": 436.2304147465438,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 30304.039429,
+      "api_seconds_per_move": 69.82497564285714,
+      "cost_usd": 64.9662464,
+      "cost_usd_per_move": 0.14969181198156684
+    },
+    {
+      "rank": "9-21",
+      "player": "gpt5.6-sol-high-api-multi4",
+      "elo": 1845.8397316207843,
+      "elo_ci_95": 207.41973359286158,
+      "games": 14,
+      "moves": 566,
+      "cached_input_rate": 0.9218191645989144,
+      "output_tokens_per_move": 731.8445229681979,
+      "illegal_moves": 24,
+      "api_problems": 0,
+      "api_seconds": 15125.684705,
+      "api_seconds_per_move": 26.723824567137807,
+      "cost_usd": 19.330824,
+      "cost_usd_per_move": 0.034153399293286216
+    },
+    {
+      "rank": "9-22",
+      "player": "gemini-3.1-pro-high-api-multi",
+      "elo": 1797.1559161323128,
+      "elo_ci_95": 178.07102912226378,
+      "games": 20,
+      "moves": 763,
+      "cached_input_rate": 0.5258061334897276,
+      "output_tokens_per_move": 4370.787680209699,
+      "illegal_moves": 1,
+      "api_problems": 0,
+      "api_seconds": 31010.305005000002,
+      "api_seconds_per_move": 40.64260157929227,
+      "cost_usd": 48.2769764,
+      "cost_usd_per_move": 0.06327257719528179
+    },
+    {
+      "rank": "10-24",
+      "player": "DeepSeek-V4.1-Flash-max-api-multi",
+      "elo": 1707.2726205689735,
+      "elo_ci_95": 206.0528640287239,
+      "games": 14,
+      "moves": 565,
+      "cached_input_rate": 0.9517650641080564,
+      "output_tokens_per_move": 28292.113274336283,
+      "illegal_moves": 1,
+      "api_problems": 1,
+      "api_seconds": 76501.051015,
+      "api_seconds_per_move": 135.4000902920354,
+      "cost_usd": 12.66055947,
+      "cost_usd_per_move": 0.02240806985840708
+    },
+    {
+      "rank": "11-24",
+      "player": "gemini-3.8-flash-high-api-multi",
+      "elo": 1616.349215664353,
+      "elo_ci_95": 205.8595564728355,
+      "games": 14,
+      "moves": 512,
+      "cached_input_rate": 0.9218958347981162,
+      "output_tokens_per_move": 3595.216796875,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 6483.5523,
+      "api_seconds_per_move": 12.6631880859375,
+      "cost_usd": 12.8338263,
+      "cost_usd_per_move": 0.0250660669921875
+    },
+    {
+      "rank": "12-24",
+      "player": "gpt5.6-sol-high-codex-0h",
+      "elo": 1580.174360570653,
+      "elo_ci_95": 178.1312271398399,
+      "games": 20,
+      "moves": 773,
+      "cached_input_rate": 0.9504492474876475,
+      "output_tokens_per_move": 702.6351875808538,
+      "illegal_moves": 58,
+      "api_problems": 0,
+      "api_seconds": 21923.672632,
+      "api_seconds_per_move": 28.361801593790428,
+      "cost_usd": 34.7922112,
+      "cost_usd_per_move": 0.04500932884864165
+    },
+    {
+      "rank": "14-29",
+      "player": "DeepSeek-V4-Flash-0731-max-api-multi",
+      "elo": 1449.0779970553012,
+      "elo_ci_95": 227.11302902164562,
+      "games": 14,
+      "moves": 603,
+      "cached_input_rate": 0.9793546506507383,
+      "output_tokens_per_move": 19279.5223880597,
+      "illegal_moves": 160,
+      "api_problems": 1,
+      "api_seconds": 95287.592798,
+      "api_seconds_per_move": 158.0225419535655,
+      "cost_usd": 9.451938532000002,
+      "cost_usd_per_move": 0.015674856603648427
+    },
+    {
+      "rank": "14-29",
+      "player": "muse-spark-1.3-contributor-high-api-multi",
+      "elo": 1449.0779970553012,
+      "elo_ci_95": 227.11302902164562,
+      "games": 14,
+      "moves": 504,
+      "cached_input_rate": 0.8952592402849736,
+      "output_tokens_per_move": 5141.632936507936,
+      "illegal_moves": 21,
+      "api_problems": 0,
+      "api_seconds": 23368.976186,
+      "api_seconds_per_move": 46.36701624206349,
+      "cost_usd": 0.998225552,
+      "cost_usd_per_move": 0.0019806062539682538
+    },
+    {
+      "rank": "15-29",
+      "player": "muse-spark-1.3-contributor-xhigh-api-multi",
+      "elo": 1415.1290072131305,
+      "elo_ci_95": 216.93345987870453,
+      "games": 14,
+      "moves": 596,
+      "cached_input_rate": 0.9237985521143889,
+      "output_tokens_per_move": 8196.885906040268,
+      "illegal_moves": 19,
+      "api_problems": 4,
+      "api_seconds": 22449.98551,
+      "api_seconds_per_move": 37.667760922818786,
+      "cost_usd": 1.474236448,
+      "cost_usd_per_move": 0.0024735510872483223
+    },
+    {
+      "rank": "16-30",
+      "player": "DeepSeek-V4.1-Flash-high-api-multi",
+      "elo": 1380.3935347488898,
+      "elo_ci_95": 204.62514322556558,
+      "games": 14,
+      "moves": 692,
+      "cached_input_rate": 0.961254933238533,
+      "output_tokens_per_move": 16115.173410404625,
+      "illegal_moves": 4,
+      "api_problems": 0,
+      "api_seconds": 48099.114186,
+      "api_seconds_per_move": 69.50739044219652,
+      "cost_usd": 8.615607918,
+      "cost_usd_per_move": 0.012450300459537572
+    },
+    {
+      "rank": "16-30",
+      "player": "gemini-3.6-flash-high-api-multi",
+      "elo": 1335.9291998515823,
+      "elo_ci_95": 222.69891320286547,
+      "games": 14,
+      "moves": 662,
+      "cached_input_rate": 0.8296964537472258,
+      "output_tokens_per_move": 890.1586102719033,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 3535.567842,
+      "api_seconds_per_move": 5.3407369214501506,
+      "cost_usd": 12.930285,
+      "cost_usd_per_move": 0.01953215256797583
+    },
+    {
+      "rank": "20-30",
+      "player": "DeepSeek-V4-Flash-0731-high-api-multi2",
+      "elo": 1189.3280237318247,
+      "elo_ci_95": 197.25404791800065,
+      "games": 14,
+      "moves": 544,
+      "cached_input_rate": 0.9548305794213602,
+      "output_tokens_per_move": 18209.117647058825,
+      "illegal_moves": 3,
+      "api_problems": 2,
+      "api_seconds": 81528.251822,
+      "api_seconds_per_move": 149.8681099669118,
+      "cost_usd": 7.786705272,
+      "cost_usd_per_move": 0.014313796455882353
+    },
+    {
+      "rank": "20-30",
+      "player": "gpt5.6-luna-high-api-multi",
+      "elo": 1091.2012903521859,
+      "elo_ci_95": 190.1398138063641,
+      "games": 14,
+      "moves": 806,
+      "cached_input_rate": 0.9573265086052358,
+      "output_tokens_per_move": 819.0669975186104,
+      "illegal_moves": 3,
+      "api_problems": 0,
+      "api_seconds": 13709.71383,
+      "api_seconds_per_move": 17.009570508684863,
+      "cost_usd": 1.91557832,
+      "cost_usd_per_move": 0.002376648039702233
+    },
+    {
+      "rank": "20-30",
+      "player": "gpt5.6-luna-max-api-multi",
+      "elo": 1057.8495293729668,
+      "elo_ci_95": 189.31062160147053,
+      "games": 14,
+      "moves": 800,
+      "cached_input_rate": 0.9651013761587764,
+      "output_tokens_per_move": 1644.2725,
+      "illegal_moves": 0,
+      "api_problems": 0,
+      "api_seconds": 25745.433946,
+      "api_seconds_per_move": 32.1817924325,
+      "cost_usd": 3.4088832,
+      "cost_usd_per_move": 0.004261104
+    },
+    {
+      "rank": "20-30",
+      "player": "gpt5.6-sol-high-codex-8h",
+      "elo": 1045.567601648389,
+      "elo_ci_95": 193.97670902532172,
+      "games": 20,
+      "moves": 470,
+      "cached_input_rate": 0.9846073512191194,
+      "output_tokens_per_move": 799.1787234042553,
+      "illegal_moves": 1,
+      "api_problems": 0,
+      "api_seconds": 31744.712717,
+      "api_seconds_per_move": 67.54194195106383,
+      "cost_usd": 147.1128056,
+      "cost_usd_per_move": 0.3130059693617021
+    },
+    {
+      "rank": "20-30",
+      "player": "grok-4.6-xhigh-api-multi",
+      "elo": 1044.1885597599073,
+      "elo_ci_95": 189.04095228029934,
+      "games": 14,
+      "moves": 500,
+      "cached_input_rate": 0.8095665108704149,
+      "output_tokens_per_move": 1648.856,
+      "illegal_moves": 9,
+      "api_problems": 0,
+      "api_seconds": 17392.434375,
+      "api_seconds_per_move": 34.78486875,
+      "cost_usd": 24.868004,
+      "cost_usd_per_move": 0.049736008
+    },
+    {
+      "rank": "23-30",
+      "player": "grok-4.6-high-api-multi2",
+      "elo": 916.2551656164082,
+      "elo_ci_95": 262.76667014538174,
+      "games": 14,
+      "moves": 551,
+      "cached_input_rate": 0.8477007636618501,
+      "output_tokens_per_move": 1454.4246823956444,
+      "illegal_moves": 19,
+      "api_problems": 0,
+      "api_seconds": 16540.852533,
+      "api_seconds_per_move": 30.019696067150637,
+      "cost_usd": 24.31565,
+      "cost_usd_per_move": 0.04413003629764066
+    }
+  ]
 }

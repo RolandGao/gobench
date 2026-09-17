@@ -52,12 +52,19 @@ game row in each run's `results.csv`.
 
 Resume interrupted runs by passing names under `log/` or tracked directory
 paths, separated by commas. Each run uses its own saved `run.json` configuration;
-source-code defaults do not alter a resumed run:
+source-code defaults do not alter a resumed run. Use `-n NUM_GAMES` (or
+`--num-games NUM_GAMES`) to override its cumulative game target:
 
 ```bash
 python3 arena.py --resume log/arena_YYYYMMDD_HHMMSS_microseconds_id
 python3 arena.py --resume gpt5.6-sol-high-api-multi3,gpt5.6-sol-max-api-multi,gpt5.6-luna-high-api-multi,gpt5.6-luna-max-api-multi
+python3 arena.py --resume gpt6-astra-low-api-multi -n 30
 ```
+
+The last command extends the run to 30 total games, preserving completed games
+and all other saved settings. With multiple resume names, `-n` applies to each
+run. Omitting it keeps each saved target. It also overrides the target for new
+runs, including `--run-type` profiles; it cannot be used with `--summary`.
 
 Multiple runs resume in separate processes. A failed run is reported immediately
 while the others continue; the command exits with a nonzero status if any fail.

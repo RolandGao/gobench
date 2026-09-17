@@ -139,6 +139,10 @@ _FINAL_RUNS = (
     "gpt5.6-sol-high-codex-2h",
     "gpt5.6-sol-high-codex-4h",
     "gpt5.6-sol-high-codex-8h",
+    "gpt6-astra-low-api-multi",
+    "fable-5.1-high-api-multi",
+    "fable-5.1-max-api-multi",
+    "opus-5-max-api-multi",
 )
 
 
@@ -6928,7 +6932,7 @@ def _resume_player_arena(config, run_dir):
     return run_arena(run_dir)
 
 
-def _resume_runs(value):
+def _resume_runs(value, total_games=None):
     runs = []
     configs = []
     # Validate every selection before launching any evaluation work.
@@ -6943,6 +6947,8 @@ def _resume_runs(value):
         if run in runs:
             raise ArenaError(f"duplicate resume directory: {run}")
         _metadata, config = _read_run_config(run)
+        if total_games is not None:
+            config = replace(config, total_games=total_games)
         runs.append(run)
         configs.append(config)
 
@@ -6983,10 +6989,19 @@ def main(argv=None):
         "--summary", action="store_true",
         help="write past-run reports to log/summary without playing new games",
     )
+    parser.add_argument(
+        "-n", "--num-games", type=int, metavar="NUM_GAMES",
+        help="override the cumulative game target (applies to each run with --resume)",
+    )
     args = parser.parse_args(argv)
+    if args.num_games is not None:
+        if args.num_games < 0:
+            parser.error("-n/--num-games must be nonnegative")
+        if args.summary:
+            parser.error("-n/--num-games cannot be used with --summary")
     try:
         if args.resume is not None:
-            return _resume_runs(args.resume)
+            return _resume_runs(args.resume, args.num_games)
         elif args.summary:
             run = run_summary(CONFIG)
             print(f"Summary complete: {run}")
@@ -6995,6 +7010,8 @@ def main(argv=None):
             config = RUN_TYPES[args.run_type]
         else:
             config = CONFIG
+        if args.num_games is not None:
+            config = replace(config, total_games=args.num_games)
         _configure(config)
         run = run_arena(args.resume)
     except (ArenaError, GoEngineError, WorkspaceError, ClaudeOAuthError) as exc:

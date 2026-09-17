@@ -270,6 +270,28 @@ class RunDirectoryTests(unittest.TestCase):
                 resume.assert_not_called()
                 pool.assert_not_called()
 
+    def test_resume_cli_overrides_target_for_each_saved_config(self):
+        names = (self.name, "gpt5.6-luna-max-api-multi")
+        configs = [arena.replace(arena.CONFIG, active_players=(name,), total_games=target)
+                   for name, target in zip(names, (14, 28))]
+        with (mock.patch.object(arena, "_read_run_config",
+                                side_effect=[({}, config) for config in configs]),
+              mock.patch.object(arena.concurrent.futures, "ProcessPoolExecutor") as pool,
+              mock.patch("builtins.print")):
+            executor = pool.return_value.__enter__.return_value
+            futures = []
+            for name in names:
+                future = concurrent.futures.Future()
+                future.set_result(arena._Arena.LOG_ROOT / name)
+                futures.append(future)
+            executor.submit.side_effect = futures
+            self.assertEqual(arena.main(["--resume", ",".join(names), "-n", "30"]), 0)
+        self.assertEqual(executor.submit.call_args_list, [
+            mock.call(arena._resume_player_arena, arena.replace(config, total_games=30),
+                      arena._Arena.LOG_ROOT / name)
+            for config, name in zip(configs, names)
+        ])
+
     def test_full_run_extends_to_cumulative_target_then_noops(self):
         config = arena.replace(arena.CONFIG, active_players=(self.name,),
                                opponent_players=(arena._Arena.ANCHOR,),
@@ -308,6 +330,14 @@ class RunDirectoryTests(unittest.TestCase):
             self.assertEqual(meta["rating_games"], 4)
             self.assertEqual(meta["past_games"], 0)
             self.assertEqual(meta["completed_batch_ids"], [1, 2])
+            with mock.patch("builtins.print"):
+                self.assertEqual(arena.main(["--resume", self.name, "-n", "6"]), 0)
+                self.assertEqual(arena.main(["--resume", self.name]), 0)
+            self.assertEqual(played, [1, 2, 3, 4, 5, 6])
+            meta = json.loads((run / "run.json").read_text())
+            self.assertEqual(meta["total_games"], 6)
+            self.assertEqual(meta["completed_games"], 6)
+            self.assertEqual(meta["extensions"][-2]["previous_total_games"], 4)
 
 
 if __name__ == "__main__":

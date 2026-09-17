@@ -30,7 +30,7 @@ class ConfigurationSurfaceTests(unittest.TestCase):
             capture_output=True, text=True, timeout=30,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
-        for option in ("--resume", "--run-type", "--summary"):
+        for option in ("--resume", "--run-type", "--summary", "--num-games"):
             with self.subTest(option=option):
                 self.assertIn(option, result.stdout)
 
@@ -47,6 +47,31 @@ class ConfigurationSurfaceTests(unittest.TestCase):
         self.assertEqual(result, 0)
         read_config.assert_not_called()
         configure.assert_called_once_with(arena.RUN_TYPES[name])
+
+    def test_game_target_override_for_new_runs(self):
+        name = next(iter(arena.RUN_TYPES))
+        for args, config in (([], arena.CONFIG),
+                             (["--run-type", name], arena.RUN_TYPES[name])):
+            with (self.subTest(args=args),
+                  mock.patch.object(arena, "_configure") as configure,
+                  mock.patch.object(arena, "run_arena", return_value=Path("new-run")),
+                  mock.patch("builtins.print")):
+                self.assertEqual(arena.main([*args, "--num-games", "30"]), 0)
+                configure.assert_called_once_with(replace(config, total_games=30))
+
+    def test_invalid_game_target_arguments_fail_before_launch(self):
+        for args in (["--resume", "example", "-n", "-1"],
+                     ["--resume", "example", "-n", "1.5"],
+                     ["--summary", "-n", "30"]):
+            with (self.subTest(args=args),
+                  mock.patch.object(arena, "_resume_runs") as resume,
+                  mock.patch.object(arena, "run_arena") as run,
+                  mock.patch("sys.stderr"),
+                  self.assertRaises(SystemExit) as error):
+                arena.main(args)
+            self.assertEqual(error.exception.code, 2)
+            resume.assert_not_called()
+            run.assert_not_called()
 
     def test_saved_katago_gain_top_p_is_loaded_from_batch_policy(self):
         active = (arena._MULTI_PLAYOUT_PLAYER_POOL[0],)

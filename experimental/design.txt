@@ -1,0 +1,386 @@
+Experimental LLM Interface — High-Level Design
+=============================================
+
+Status: design only. This document does not authorize implementation yet.
+
+1. Purpose and scope
+--------------------
+
+Provide one resumable, task-independent interface for interacting with models
+and coding agents:
+
+    response = player.input(prompt)
+
+The caller should not need to know how to construct provider requests, retain
+conversation history, refresh authentication, or run an agent in a sandbox.
+
+Primary use cases:
+
+* GoBench evaluates models through single-turn calls, multi-turn conversations,
+  and coding agents with persistent workspaces.
+* A sandboxed author agent creates a benchmark and uses this same interface to
+  evaluate candidate models or coding agents on that benchmark.
+
+Go rules, prompts, move parsing, opponents, scores, matchmaking, and game recovery
+remain outside this interface. GoBench records the relevant session directories
+in its own durable state and reopens those LLM sessions when resuming.
+
+All new work lives under experimental/. Keep arena.py and its existing workflow
+unchanged. The implementation belongs in experimental/llm.py and its tests in
+experimental/test_llm.py. Multiple internal classes and a host-service entry
+point may live in that one implementation file. Session files and generated
+runtime assets are data, not additional implementation modules. Avoid importing
+arena.py as the runtime foundation of this interface.
+
+2. Public interface
+-------------------
+
+Illustrative API; exact names are not yet frozen:
+
+    with LLM(
+        name=model_name,
+        mode="multi_turn",
+        reasoning_effort="high",
+        auth="oauth",
+        session_dir="./sessions/player-1",
+    ) as player:
+        response = player.input(prompt)
+        print(response.text)
+
+Do not expose a required provider parameter. Infer the provider from a maintained
+model-name registry and explicit aliases. Reject unknown or ambiguous names;
+do not guess a provider or silently substitute another model.
+
+Modes:
+
+* single_turn: every input uses fresh model context. No model tools are enabled.
+  Prior calls remain in the durable journal but are not sent as conversation.
+* multi_turn: inputs retain the session's conversation, including native reasoning
+  items and signatures where returned and supported for replay. No model tools
+  are enabled.
+* codex: run the actual Codex agent with a persistent conversation and workspace
+  inside a sandbox. Calling a model API with a Codex model name is not this mode.
+* claude_code: planned agent mode using the same sandbox infrastructure. Reserve
+  the design for it; reject it clearly until the backend is implemented.
+
+Initialization validates the complete combination of model, mode, reasoning
+effort, authentication, and sandbox configuration. In this interface, codex mode
+is restricted to supported OpenAI model names. The future claude_code adapter
+will define its own supported model set. Provider membership alone does not
+establish that a particular agent supports a model.
+
+Authentication is explicit: api_key or oauth. Do not silently fall back from one
+to the other. Reasoning settings must map to supported native controls; do not
+silently drop unsupported settings. Record the resolved request configuration.
+
+SandboxConfig is accepted for coding-agent modes. Supplying sandbox settings for
+single_turn or multi_turn should fail rather than imply those calls run locally
+under a CPU or RAM allocation.
+
+Return a structured response with text, response/turn identity, usage, timing,
+and completion status. Preserve native request/response records for audits and
+recovery. Missing usage remains unknown rather than being reported as zero.
+Record model inference separately from local tool execution and runtime time.
+
+Ordinary interaction stays as simple as input(prompt). Lifecycle operations
+include close, cancellation, and reopening a session. Agent-specific checkpoint
+or file operations can be additional methods without complicating input().
+
+3. Durable sessions and recovery
+-------------------------------
+
+Require session_dir for every mode. A new directory creates a session; an
+existing valid directory resumes it. Permit reopening from session_dir alone,
+using saved configuration. Any explicitly supplied conflicting configuration
+fails initialization. Do not overwrite an unrecognized or incomplete directory.
+
+Persist at least:
+
+* Schema version, stable session ID, and resolved model/mode/auth/effort settings.
+* Conversation policy, including explicit context-overflow/reset behavior.
+* A journal of inputs, completed responses, failures, and usage.
+* Provider-native conversation data and native agent session identifiers.
+* Sandbox settings, pinned image/runtime identity, and persistent workspace.
+* Child-session references and initial-file provenance where applicable.
+
+Write durable state atomically where appropriate and serialize access to each
+session. Concurrent processes must not independently advance the same session.
+Persist completed responses before returning them. Never infer retry identity
+from prompt text: identical prompts can represent different turns.
+
+Provide an optional caller-supplied turn/request ID, or an equivalent operation
+lookup mechanism, so outer GoBench recovery can retrieve an already completed
+response after a crash between receiving it and saving the game state.
+
+An interrupted remote request can have an unknown outcome. The interface cannot
+promise exactly-once billing or execution when the provider does not support
+recoverable request identity. Journal that uncertainty instead of silently
+claiming the request never happened. Agent tool side effects also require care
+when deciding whether an interrupted turn may be continued or retried.
+
+Resumption means restoring conversation and persisted files, not restoring
+arbitrary process memory. A container can be recreated from its pinned image
+and session storage. Running subprocesses and open network connections do not
+automatically survive a host restart. Credentials are resolved separately from
+session data so current host authentication can be used after renewal.
+
+4. Sandbox implementation
+-------------------------
+
+Use Docker as the proposed execution environment for the experimental coding
+agent backends. Use a pinned base image containing the agent runtime and tools,
+a read-only root filesystem, and session-specific writable storage. Both Codex
+and Claude Code should use the same sandbox manager, with different agent
+adapters. The agent container does not receive the host Docker socket or need
+privileged mode.
+
+The current arena uses bubblewrap for isolation, systemd/cgroup v2 for limits
+and freezing, and fixed-size ext4 images for persistence. It leases one physical
+core including all SMT siblings, limits RAM and processes, disables swap, and
+provides model access through a host proxy. Reuse the relevant design and tested
+behavior without changing the existing implementation.
+
+SandboxConfig should describe CPU allocation, RAM, persistent disk capacity,
+internet access, and process limits. The final CPU semantics remain to be
+decided: a CPU-time quota and an exclusive physical core are different promises.
+For compatibility with existing GoBench experiments, exclusive physical cores
+including their SMT siblings are preferable. Docker CPU pinning alone does not
+exclude unrelated host processes, so this option needs a host-side allocator.
+If quotas are supported, name and record the allocation policy explicitly.
+
+Enforce hard RAM and process limits and disable swap. Check that requested
+limits were actually applied. Reject unsupported settings instead of quietly
+running with weaker limits. Classify resource failures for the caller; GoBench
+decides whether they mean a forfeit or some other result.
+
+5. Disk budget
+--------------
+
+Use one fixed-size ext4 image, disk.img, per sandbox session. Store it in that
+session's host-managed storage, mount it on the host, and bind its directories
+into Docker. The container itself remains unprivileged. A host helper performs
+the required mount and unmount operations.
+
+Place the workspace, writable agent home, caches, and temporary files within
+this allocation. Make the base image read-only and account explicitly for any
+remaining writable mounts. Memory-backed areas such as shared memory have
+separate size limits and consume the RAM budget; they must not provide an
+undocumented unlimited storage path.
+
+disk_mib means persistent writable filesystem capacity, including filesystem
+metadata. Base-image bytes and trusted host-side evaluation journals are outside
+this budget. Host logging still needs bounded retention. Sparse image allocation
+can use less physical host storage than its logical capacity. When the image
+fills, ordinary filesystem writes fail with no space left on device.
+
+This avoids reliance on Docker writable-layer quotas, which vary by storage
+backend and do not automatically limit separately mounted volumes. Our current
+host uses ext4; overlay2's documented size option requires XFS project quotas.
+
+6. Internet and inference access
+-------------------------------
+
+internet=False means no general internet access from the agent, while authorized
+model inference continues to work. Provide a restricted connection to the host
+inference/session service, for example through a Unix socket and local relay.
+Keep provider credentials and OAuth refresh operations on the host.
+
+Enforce internet policy through networking and agent/provider tool configuration.
+Blocking container egress does not block browsing tools executed at a provider.
+Do not expose a generic unrestricted forwarding proxy as the inference service.
+
+internet=True permits general internet access but does not grant host filesystem
+access, Docker control, or additional child-session permissions. Image preparation
+and host authentication are separate from the agent's runtime internet policy.
+
+7. Pausing, clocks, and background work
+-------------------------------------
+
+Support pausing and resuming the complete sandbox process group. This prevents
+background programs from continuing to calculate after an agent returns a move.
+The current GoBench arena freezes agents while their opponents play.
+
+Do not impose Go-specific timing policy on all users of the interface. Whether
+to pause between input() calls should be explicit or configurable. Preserve
+the capability to enforce deadlines and track active runtime, while the outer
+evaluation defines its budget and scoring policy.
+
+Nested LLM calls need explicit accounting: distinguish author model usage,
+candidate model usage, author active runtime, candidate runtime, and time spent
+waiting for candidate completion. Do not automatically treat every second spent
+waiting on a candidate as author computation. The exact timing policy is an
+open design decision.
+
+8. Calling the interface from a sandbox
+--------------------------------------
+
+Support the benchmark-author use case without true Docker-in-Docker nesting.
+All agent sandboxes are created by the trusted host service. They are sibling
+containers with an explicit logical parent/child relationship.
+
+The same experimental/llm.py interface works in both locations:
+
+* Host caller: opens sessions through the local host implementation.
+* Sandboxed caller: sends operations to the host service over an authorized
+  connection using the same public interface.
+
+The service authenticates which sandbox made a request and applies its policy.
+Policy cannot be expanded by editing local Python code or configuration files.
+The transport grants specific LLM operations, not arbitrary Docker commands.
+
+For single_turn and multi_turn candidates, the service makes model requests
+without creating another sandbox. For coding-agent candidates, it creates a
+separate sandbox and agent session. Child workspaces and credentials are not
+automatically exposed to the author, or vice versa.
+
+The parent chooses a session_dir in its own filesystem. In brokered operation,
+that directory holds durable session metadata/references; the service maps the
+identity to host-owned state and child storage outside the parent's disk image.
+Reopening that directory reconnects to the same child session. Recovery requires
+both the caller's references and the host-managed session data; copying a small
+reference directory alone is not a complete backup.
+
+9. Child sandbox permissions and quotas
+--------------------------------------
+
+Creating child sandboxes requires an explicit grant from trusted configuration.
+For example, a parent may be allowed at most three live child sandboxes.
+
+Separate the parent's own SandboxConfig from its ChildSandboxPolicy. The latter
+specifies defaults and permitted limits for child CPU, RAM, disk, internet,
+models/modes, and concurrency. Illustrative configuration:
+
+    SandboxConfig(
+        cpu_cores=1,
+        ram_mib=4096,
+        disk_mib=4096,
+        internet=False,
+        children=ChildSandboxPolicy(
+            max_live=3,
+            defaults=SandboxConfig(
+                cpu_cores=1,
+                ram_mib=2048,
+                disk_mib=2048,
+                internet=False,
+            ),
+            max_cpu_cores=2,
+            max_ram_mib=4096,
+            max_disk_mib=4096,
+            allow_internet=False,
+        ),
+    )
+
+Exact field names remain provisional. Child defaults apply to omitted request
+settings; ceilings and permissions constrain explicit requests. Requests beyond
+the grant fail clearly. Parent internet access and child internet permission
+are independent: an offline parent can be granted online children, or an online
+parent can be restricted to offline children.
+
+Child allocations are additional host allocations charged against the grant,
+not secretly carved out of the parent's declared CPU/RAM/disk budget. The host
+must have capacity to honor them. Quota reservations must be atomic across
+concurrent requests and persist through recovery.
+
+Recommended semantics: paused children count toward max_live because they retain
+resources. Closing a child releases its live allocation but preserves its
+session. Resuming reacquires the allocation and can fail or wait for capacity.
+Specify a separate retained-storage budget so creating and closing many children
+cannot accumulate unlimited disk images. Include aggregate resource ceilings
+where per-child maxima and max_live are insufficient.
+
+Direct API candidates need their own request concurrency and inference-budget
+policy; a sandbox-count limit does not constrain API usage. Keep author and
+candidate inference accounting separate and provide experiment totals.
+
+Children receive no permission to create further sandboxes by default. Any
+delegated child-creation grant must stay within the ancestor's authorized quota
+and host policy. Define teardown and crash recovery so abandoned containers
+cannot leak allocations. Avoid scheduler deadlocks in which a parent holds all
+available compute while waiting for a child that cannot start.
+
+10. Initial files and exported artifacts
+---------------------------------------
+
+The author can pass explicitly selected files when creating a child:
+
+    candidate = LLM(
+        name=candidate_model,
+        mode="codex",
+        session_dir="/workspace/sessions/candidate-1",
+        initial_files={
+            "/workspace/generated/task.py": "task.py",
+            "/workspace/generated/data": "data",
+        },
+    )
+
+The mapping is parent source path to a relative path in the child's workspace.
+The host validates paths and copies the selected inputs into the child's private
+disk allocation before starting its agent. Reject path traversal, escaping
+symlinks, and special files that do not belong in an input bundle. Bound copying
+by the destination quota.
+
+Use a stable staged snapshot for initialization and record a content manifest.
+Define the staging boundary so background writers cannot silently change inputs
+during transfer. Parent and child edits are independent afterward. No shared
+writable directories are part of the initial design.
+
+Apply initial_files only on creation. Resuming never recopies them over an
+existing workspace; reject attempts to reinitialize a resumed session. The
+author can keep private grading code and answers outside the selected bundle.
+
+Provide an explicit export_files operation for copying selected child outputs
+back to the caller. Exports use the same path validation and bounded-copy rules,
+consume the destination's disk budget, and need explicit overwrite semantics.
+The ordinary response.text channel remains sufficient for text-only evaluations.
+
+11. Verification and remaining decisions
+---------------------------------------
+
+Keep tests in experimental/test_llm.py. Cover behavior rather than only the
+shape of the implementation:
+
+* Initialization rejects unsupported model/mode/auth/effort combinations.
+* Single-turn context is fresh; multi-turn native state survives reopening.
+* Completed responses are recoverable and repeated prompts remain distinct.
+* Conflicting resumes and simultaneous session writers fail safely.
+* Coding-agent files and conversation survive container recreation.
+* Actual disk, RAM, CPU, process, and internet policies are enforced.
+* Child grants cannot be expanded by a sandboxed caller; quotas survive races
+  and recovery; sibling workspaces remain isolated.
+* Initial files are copied once, escaping paths are rejected, exports are bounded,
+  and closing/resuming children releases/reacquires the appropriate allocations.
+
+Most tests should use fake provider responses. Separate opt-in integration tests
+exercise real Docker, resource controls, and agent runtimes without requiring
+paid model calls for the standard suite.
+
+Before implementation, settle the exact CPU allocation semantics, pause/deadline
+policy, child capacity waiting behavior, aggregate quota fields, and initial-file
+snapshot mechanics. Validate the agent authentication/session adapters separately,
+especially the future Claude Code backend. Do not treat unverified runtime or
+OAuth compatibility as already implemented.
+
+Reference material consulted during design
+-----------------------------------------
+
+Current implementation: arena.py (_CodexGameClient, _WorkspaceBubblewrap),
+gobench/workspace_runtime.py, and gobench/llm_conversation.py.
+
+Docker resource controls:
+https://docs.docker.com/engine/containers/resource_constraints/
+
+Docker storage options and read-only filesystems:
+https://docs.docker.com/reference/cli/docker/container/run/
+
+Docker network isolation:
+https://docs.docker.com/engine/network/drivers/none/
+
+Docker process pausing:
+https://docs.docker.com/reference/cli/docker/container/pause/
+
+Codex SDK:
+https://learn.chatgpt.com/docs/codex-sdk
+
+Related approaches considered: LiteLLM and Pi for provider interfaces, ACP for
+agent sessions, Inspect for evaluation integration, and Harbor for task execution.
+None was established as an exact drop-in replacement for this interface.
