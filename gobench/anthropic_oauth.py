@@ -7,9 +7,12 @@ packages/ai/src/{utils/oauth/anthropic,providers/anthropic}.ts.
 from __future__ import annotations
 
 import contextlib
+import errno
+import hashlib
 import json
 import math
 import os
+import socket
 import tempfile
 import threading
 import time
@@ -28,6 +31,7 @@ HEADERS = {
     "user-agent": "claude-cli/2.1.261",
     "x-app": "cli",
 }
+AUTH_POLL_SECONDS = 60
 
 
 class ClaudeOAuthError(RuntimeError):
@@ -36,20 +40,57 @@ class ClaudeOAuthError(RuntimeError):
         self.body = {"retryable": retryable}
 
 
+def _auth_wait(error):
+    # Retrying authentication means rereading the login, not necessarily
+    # resubmitting a refresh token. The shared refresh journal controls that.
+    error.body["retryable"] = True
+    error.arena_auth_wait = True
+    error.arena_auth_retry_after = AUTH_POLL_SECONDS
+    error.arena_auth_mode = "oauth"
+    return error
+
+
 @contextlib.contextmanager
 def _auth_lock(path):
-    # Serialize arena workers independently of the Claude Code credential writer.
-    # Recheck the file after refreshing to avoid replacing a renewed CLI login.
-    lock = Path(f"{path}.arena-oauth.lock")
-    deadline = time.monotonic() + 30
+    # Match Claude Code's current and legacy refresh locks, in that order.
+    # Both are mkdir locks with an mtime heartbeat and a 60-second stale limit.
+    config_dir = path.parent
+    with contextlib.ExitStack() as stack:
+        checks = [stack.enter_context(_directory_lock(lock)) for lock in (
+            config_dir / ".oauth_refresh.lock", Path(f"{config_dir}.lock"),
+        )]
+
+        def check():
+            for check_lock in checks:
+                check_lock()
+
+        check()
+        yield check
+
+
+@contextlib.contextmanager
+def _directory_lock(lock):
+    deadline = time.monotonic() + 70
     while True:
         try:
             lock.mkdir(mode=0o700)
             break
         except FileExistsError:
+            try:
+                previous = lock.stat()
+                if time.time() - previous.st_mtime > 60:
+                    current = lock.stat()
+                    if (current.st_ino, current.st_mtime_ns) == (
+                        previous.st_ino, previous.st_mtime_ns
+                    ):
+                        lock.rmdir()
+                        continue
+            except FileNotFoundError:
+                continue
             if time.monotonic() >= deadline:
                 raise ClaudeOAuthError(
-                    f"Timed out waiting for Claude credential lock: {lock}",
+                    f"Timed out waiting for Claude credential lock: {lock}; "
+                    "another Claude Code process may still be refreshing; retry shortly",
                     retryable=True,
                 ) from None
             time.sleep(0.1)
@@ -63,7 +104,7 @@ def _auth_lock(path):
         except OSError:
             owned = False
         if not owned or compromised.is_set():
-            raise ClaudeOAuthError("Claude credential lock was lost")
+            raise ClaudeOAuthError("Claude credential lock was lost", retryable=True)
 
     def heartbeat():
         while not stopped.wait(2):
@@ -126,13 +167,29 @@ def _refresh(refresh_token):
     except urllib.error.HTTPError as exc:
         # Never surface the response body: token endpoints may echo credentials.
         status = exc.code
+        retry_after = _number(exc.headers.get("retry-after")) if exc.headers else None
         exc.close()
-        raise ClaudeOAuthError(
-            f"Claude OAuth refresh failed (HTTP {status}); sign in again if expired",
+        error = ClaudeOAuthError(
+            f"Claude OAuth refresh failed (HTTP {status}); "
+            "sign in with Claude Code /login again if it persists",
             retryable=status == 429 or status >= 500,
-        ) from None
-    except (OSError, ValueError):
-        raise ClaudeOAuthError("Claude OAuth refresh failed", retryable=True) from None
+        )
+        error.status_code = status
+        error.refresh_retry_after = max(AUTH_POLL_SECONDS, retry_after or 0)
+        raise error from None
+    except (OSError, ValueError) as exc:
+        reason = getattr(exc, "reason", exc)
+        if (isinstance(reason, (socket.gaierror, ConnectionRefusedError))
+                or isinstance(reason, OSError) and reason.errno in {
+                    errno.ENETUNREACH, errno.EHOSTUNREACH, errno.EADDRNOTAVAIL,
+                }):
+            # These failures happen before a token request reaches the server.
+            raise ClaudeOAuthError("Cannot connect to Claude OAuth endpoint", retryable=True) from None
+        error = ClaudeOAuthError(
+            "Claude OAuth refresh outcome is unknown; waiting for a renewed Claude Code login"
+        )
+        error.refresh_uncertain = True
+        raise error from None
     try:
         lifetime = result["expires_in"]
         if (not _valid_token(result["access_token"])
@@ -148,18 +205,97 @@ def _refresh(refresh_token):
             "expiresAt": time.time() * 1000 + lifetime * 1000,
         }
     except (KeyError, TypeError, ValueError):
-        raise ClaudeOAuthError("Claude OAuth refresh returned invalid credentials") from None
+        error = ClaudeOAuthError("Claude OAuth refresh returned invalid credentials")
+        error.refresh_uncertain = True
+        raise error from None
 
 
 def _fresh(cred):
     return time.time() * 1000 + 300_000 < cred["expiresAt"]
 
 
-def access_token():
+def _atomic_json(path, data, check_lock):
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", delete=False,
+        ) as out:
+            temporary = Path(out.name)
+            os.fchmod(out.fileno(), 0o600)
+            json.dump(data, out)
+            out.flush()
+            os.fsync(out.fileno())
+        check_lock()
+        os.replace(temporary, path)
+        # Persist the rename before a refresh can consume a token, and before
+        # removing the journal after saving rotated credentials.
+        if os.name == "posix":
+            directory = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory)
+            finally:
+                os.close(directory)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+def _refresh_once(path, refresh, check_lock):
+    """Coordinate failures as well as successful refreshes across processes.
+
+    A killed process or lost response may have consumed the refresh token.
+    Leave a durable marker rather than replaying a token of unknown validity.
+    Only hashes and fixed diagnostics are saved, never tokens or server bodies.
+    """
+    journal = path.with_name(f"{path.name}.arena-refresh.json")
+    fingerprint = hashlib.sha256(refresh.encode()).hexdigest()
+    try:
+        state = json.loads(journal.read_text(encoding="utf-8"))
+        if not isinstance(state, dict):
+            raise ValueError
+    except FileNotFoundError:
+        state = {}
+    except (ValueError, OSError):
+        raise ClaudeOAuthError(f"Cannot read Claude refresh recovery record: {journal}") from None
+    if state.get("refresh_sha256") == fingerprint:
+        retry_at = _number(state.get("retry_at"))
+        if state.get("outcome") != "retry" or retry_at is None or time.time() < retry_at:
+            error = ClaudeOAuthError(
+                "Claude OAuth refresh is waiting for the endpoint retry cooldown"
+                if state.get("outcome") == "retry" and retry_at is not None else
+                "Claude OAuth refresh is paused after a failed or interrupted attempt; "
+                "waiting for renewed credentials; sign in with Claude Code /login if needed"
+            )
+            if isinstance(state.get("http_status"), int):
+                error.status_code = state["http_status"]
+            raise error
+    state = {"refresh_sha256": fingerprint, "outcome": "pending"}
+    _atomic_json(journal, state, check_lock)
+    try:
+        return _refresh(refresh)
+    except ClaudeOAuthError as exc:
+        retryable = exc.body.get("retryable") and not getattr(exc, "refresh_uncertain", False)
+        state["outcome"] = "retry" if retryable else "rejected"
+        if retryable:
+            state["retry_at"] = time.time() + getattr(exc, "refresh_retry_after", AUTH_POLL_SECONDS)
+        status = getattr(exc, "status_code", None)
+        if isinstance(status, int):
+            state["http_status"] = status
+        _atomic_json(journal, state, check_lock)
+        raise
+
+
+def access_token(*, rejected_token=None):
     token = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")
     if token is not None:
         if not _valid_token(token):
             raise ClaudeOAuthError("CLAUDE_CODE_OAUTH_TOKEN is not a Claude OAuth token")
+        if token == rejected_token:
+            raise ClaudeOAuthError(
+                "CLAUDE_CODE_OAUTH_TOKEN was rejected; replace it and restart with --resume, "
+                "or unset it to use the renewable Claude Code login"
+            )
         return token
     config_dir = Path(os.environ.get(
         "CLAUDE_CONFIG_DIR", str(Path.home() / ".claude")
@@ -168,47 +304,38 @@ def access_token():
         "ARENA_ANTHROPIC_AUTH_PATH", str(config_dir / ".credentials.json")
     )).expanduser().resolve()
     _, cred = _read_auth(path)
-    if _fresh(cred):
+    if _fresh(cred) and cred["accessToken"] != rejected_token:
         return cred["accessToken"]
     with _auth_lock(path) as check_lock:
         # Another game or Claude Code may have refreshed while we waited.
         data, cred = _read_auth(path)
-        if _fresh(cred):
+        if _fresh(cred) and cred["accessToken"] != rejected_token:
             return cred["accessToken"]
         refresh = cred.get("refreshToken")
         if not isinstance(refresh, str) or not refresh:
             raise ClaudeOAuthError("Claude OAuth login has expired; sign in with Claude Code again")
+        check_lock()
         try:
-            updated = _refresh(refresh)
+            updated = _refresh_once(path, refresh, check_lock)
         except ClaudeOAuthError:
             # A concurrent CLI refresh may have consumed the old refresh token.
             _, latest = _read_auth(path)
-            if _fresh(latest):
+            # A failed proactive refresh needn't stop a still-valid access
+            # token. Never reuse the token that triggered a 401, however.
+            if (latest["accessToken"] != rejected_token
+                    and time.time() * 1000 + 30_000 < latest["expiresAt"]):
                 return latest["accessToken"]
             raise
         data, latest = _read_auth(path)
         if (latest["accessToken"] != cred["accessToken"]
                 or latest.get("refreshToken") != refresh):
-            if _fresh(latest):
+            if _fresh(latest) and latest["accessToken"] != rejected_token:
                 return latest["accessToken"]
             raise ClaudeOAuthError("Claude credentials changed during refresh", retryable=True)
         data["claudeAiOauth"] = latest | updated
-        temporary = None
-        try:
-            with tempfile.NamedTemporaryFile(
-                mode="w", encoding="utf-8", dir=path.parent,
-                prefix=f".{path.name}.", delete=False,
-            ) as out:
-                temporary = Path(out.name)
-                os.fchmod(out.fileno(), 0o600)
-                json.dump(data, out)
-                out.flush()
-                os.fsync(out.fileno())
-            check_lock()
-            os.replace(temporary, path)
-        finally:
-            if temporary is not None:
-                temporary.unlink(missing_ok=True)
+        _atomic_json(path, data, check_lock)
+        check_lock()
+        path.with_name(f"{path.name}.arena-refresh.json").unlink(missing_ok=True)
         return updated["accessToken"]
 
 
@@ -308,25 +435,66 @@ class AnthropicClient:
     def __init__(self, client_cls, api):
         # Explicitly suppress environment API keys, including SDK fallback.
         self._client = client_cls(
-            api_key="", auth_token=access_token(), base_url=api.base_url,
+            api_key="", auth_token="", base_url=api.base_url,
             default_headers=HEADERS, **dict(api.client_options),
         )
         self._client.api_key = None
         self.messages = self
+        self._rejected_token = None
+        self._rejected_status = None
+        self._force_refresh = None
+        self._refreshed_after_rejection = False
+        self._probe_after = 0
 
     def close(self):
         self._client.close()
 
     def create(self, **request):
-        self._client.auth_token = access_token()
+        # Authentication runs inside arena's logged retry loop, even at startup.
+        try:
+            token = access_token(rejected_token=self._force_refresh)
+            self._force_refresh = None
+        except ClaudeOAuthError as exc:
+            raise _auth_wait(exc) from None
+        except OSError:
+            raise _auth_wait(ClaudeOAuthError(
+                "Cannot read or save Claude OAuth credentials; check directory permissions and disk space"
+            )) from None
+        if token == self._rejected_token and time.monotonic() < self._probe_after:
+            error = _auth_wait(ClaudeOAuthError(
+                "Claude credentials were rejected; waiting for recovery; sign in with Claude Code /login if needed"
+            ))
+            error.status_code = self._rejected_status
+            raise error
+        self._client.auth_token = token
         request["system"] = [{"type": "text", "text": IDENTITY}]
         try:
-            return self._create_response(**request)
+            result = self._create_response(**request)
         except Exception as exc:
             exc.arena_auth_mode = "oauth"
-            if getattr(exc, "status_code", None) == 429:
+            status = getattr(exc, "status_code", None)
+            if status in {401, 403}:
+                self._rejected_token = token
+                self._rejected_status = status
+                self._probe_after = time.monotonic() + 300
+                # One forced refresh per consecutive rejection episode. A 403
+                # can be a permissions failure; don't churn tokens for it.
+                if status == 401 and not self._refreshed_after_rejection:
+                    self._force_refresh = token
+                    self._refreshed_after_rejection = True
+                error = _auth_wait(ClaudeOAuthError(
+                    f"Claude credentials were rejected (HTTP {status}); "
+                    "waiting for recovery; sign in with Claude Code /login if needed"
+                ))
+                error.status_code = status
+                error.arena_usage = getattr(exc, "arena_usage", {})
+                raise error from None
+            if status == 429:
                 _quota_wait(exc)
             raise
+        self._rejected_token = None
+        self._refreshed_after_rejection = False
+        return result
 
     def _create_response(self, **request):
         # Use the Anthropic SDK's streaming accumulator to retain thinking

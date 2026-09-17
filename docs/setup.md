@@ -21,40 +21,53 @@ are API-equivalent token estimates, not subscription charges; manifests record
 this cost basis and the OAuth endpoint.
 
 Claude players use `opus-5-high-api` and `opus-5-high-api-multi` (including
-numbered runs such as `opus-5-high-api-multi2`). Authentication is selected
-automatically: prefer a Claude Code subscription, then fall back to
-`ANTHROPIC_API_KEY` when login/refresh is unavailable or the subscription returns
-401, 403, or 429. Configure the key in the shell that starts the run to enable
-paid fallback. Without a key, quota failures keep the existing retry behavior.
+numbered runs such as `opus-5-high-api-multi2`). These players use the Claude Code
+subscription login and never fall back to `ANTHROPIC_API_KEY`.
 The subscription login is read from `~/.claude/.credentials.json`
 (`claudeAiOauth`). `CLAUDE_CONFIG_DIR`
 changes the configuration directory; `ARENA_ANTHROPIC_AUTH_PATH` overrides the
 credential file directly. Arena rereads credentials before each request and
-refreshes tokens shortly before expiry, serializing its workers and saving
+refreshes tokens shortly before expiry, sharing Claude Code's refresh locks and saving
 rotated credentials atomically with mode 0600. Subscription metadata and other
 stored fields are preserved. Alternatively, set
 `CLAUDE_CODE_OAUTH_TOKEN` to an existing subscription access token; this takes
 precedence and must be renewed externally.
+
+Missing or rejected credentials pause the current move, including at startup.
+Arena rereads the login every 60 seconds and continues automatically once it
+recovers. Run `/login` in Claude Code if a new login is needed; leave arena
+running. An explicit `CLAUDE_CODE_OAUTH_TOKEN` cannot be changed in an already
+running process from another shell: replace or unset it and restart with
+`--resume`. A positive `ARENA_LLM_API_MAX_ATTEMPTS` still limits retries.
+
+Arena records refresh attempts in a private `*.arena-refresh.json` file beside
+the credentials, containing a refresh-token hash and fixed status fields, not
+tokens. Workers share cooldowns for temporary endpoint errors. Rejected or
+interrupted refreshes wait for renewed credentials rather than resubmitting a
+possibly consumed token. This includes a lost network response or a process
+killed before saving rotated credentials. Do not delete the record to force a
+retry; renew the login instead. A failed early refresh can continue using the
+old access token until shortly before it expires. A Messages API 401 triggers
+one coordinated refresh per consecutive rejection episode; a 403 waits for
+credentials to change or periodically rechecks access without forcing refresh.
 
 The Claude OAuth adapter calls the Messages API directly through the Anthropic
 SDK's HTTP/streaming transport, without launching an agent runtime. It
 uses Claude Code compatibility headers and an identity system preamble;
 the preamble is recorded in requests and manifests. Single-turn players start
 fresh per move; multi-turn players retain message/thinking history per game.
-On a quota rejection the current move is retried immediately with the API key;
-the provider's `Retry-After` controls when OAuth is tried again. Authentication
-failures without a reset interval are rechecked after 60 seconds. The same
-multi-turn conversation is retained across the switch, including thinking
-signatures. Each call records `auth_mode` (`oauth` or `api_key`), and failed-call
-usage remains in the cost ledger. OAuth costs are API-equivalent estimates;
-API-key requests incur API charges. Old `-oauth` names remain readable as legacy
+Quota failures wait for the subscription reset or the provider's `Retry-After`;
+unknown reset times are rechecked every five minutes. The same multi-turn
+conversation is retained while waiting, including thinking signatures. Each call
+records `auth_mode: oauth`, and failed-call usage remains in the cost ledger.
+OAuth costs are API-equivalent estimates. Old `-oauth` names remain readable as legacy
 aliases, but are no longer advertised as separate players.
 See the [Anthropic error reference](https://platform.claude.com/docs/en/api/errors)
 and [rate-limit reference](https://platform.claude.com/docs/en/api/rate-limits).
 
 Set the relevant provider key for other LLMs: `MODEL_API_KEY`, `XAI_API_KEY`,
 `DEEPSEEK_API_KEY`, `OPENROUTER_API_KEY`,
-`GEMINI_API_KEY`, or `ANTHROPIC_API_KEY`. KataGo binaries and pinned networks
+`GEMINI_API_KEY`. KataGo binaries and pinned networks
 are downloaded automatically when required.
 
 The Codex profiles use an existing Codex subscription login rather than an API

@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt6-astra-low-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,gpt6-astra-low-api-multi,1,62,openai_responses_api,31,0,0,126.014608,0.813992000000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,gpt6-astra-low-api-multi,W+R,gpt6-astra-low-api-multi,0,33,openai_responses_api,16,0,0,68.761986,0.304412000000
+3,2,gpt6-astra-low-api-multi,kata1-b6c96-s25461504-d4002500,W+46.0,kata1-b6c96-s25461504-d4002500,0,68,openai_responses_api,34,0,0,209.100201,1.043002000000
+4,2,kata1-b6c96-s25461504-d4002500,gpt6-astra-low-api-multi,W+2.0,gpt6-astra-low-api-multi,0,70,openai_responses_api,35,0,0,140.570159,0.657426000000
+5,3,gpt6-astra-low-api-multi,kata1-b6c96-s25461504-d4002500,W+R,kata1-b6c96-s25461504-d4002500,0,75,openai_responses_api,38,0,0,275.344277,1.184134000000
+6,3,kata1-b6c96-s25461504-d4002500,gpt6-astra-low-api-multi,B+R,kata1-b6c96-s25461504-d4002500,1,66,openai_responses_api,33,0,0,334.901781,1.176452000000
+7,4,gpt6-astra-low-api-multi,kata1-b6c96-s21371392-d3529696,W+24.0,kata1-b6c96-s21371392-d3529696,0,84,openai_responses_api,42,0,0,213.692009,1.173760000000
+8,4,kata1-b6c96-s21371392-d3529696,gpt6-astra-low-api-multi,B+R,kata1-b6c96-s21371392-d3529696,1,70,openai_responses_api,35,0,0,233.195067,0.934522000000
+9,5,gpt6-astra-low-api-multi,kata1-b6c96-s18429184-d3197121,W+6.0,kata1-b6c96-s18429184-d3197121,0,80,openai_responses_api,40,0,0,256.761751,1.137064000000
+10,5,kata1-b6c96-s18429184-d3197121,gpt6-astra-low-api-multi,B+R,kata1-b6c96-s18429184-d3197121,1,78,openai_responses_api,39,0,0,246.272840,1.085146000000
+11,6,gpt6-astra-low-api-multi,kata1-b6c96-s17434112-d3038653,W+6.0,kata1-b6c96-s17434112-d3038653,0,90,openai_responses_api,45,0,0,218.722700,1.373604000000
+12,6,kata1-b6c96-s17434112-d3038653,gpt6-astra-low-api-multi,W+8.0,gpt6-astra-low-api-multi,0,66,openai_responses_api,33,0,0,111.488104,0.727612000000
+13,7,gpt6-astra-low-api-multi,kata1-b6c96-s17434112-d3038653,B+4.0,gpt6-astra-low-api-multi,1,65,openai_responses_api,33,0,0,157.476179,0.807670000000
+14,7,kata1-b6c96-s17434112-d3038653,gpt6-astra-low-api-multi,B+8.0,kata1-b6c96-s17434112-d3038653,1,73,openai_responses_api,36,0,0,160.973611,0.897226000000

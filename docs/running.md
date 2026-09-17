@@ -79,9 +79,15 @@ remain terminal.
 
 The workspace proxy rereads the host OAuth login on every request, so credentials
 renewed by the host CLI take effect during a game. An expired or rejected login
-that the provider will not refresh still needs human action: sign in with
-`codex login` or Claude Code, then use `--resume`. Failure records include the HTTP
-status when available and a `recovery_action` explaining why retries stopped.
+that the provider will not refresh still needs human action. For Claude, arena
+pauses the current move and rereads credentials every minute; sign in with
+Claude Code `/login` and leave arena running to continue automatically. Records
+use `recovery_action: wait_for_authentication` during the wait. Positive retry
+limits still apply. If the run stopped, renew the login and use `--resume`.
+For OpenAI, sign in with `codex login`, then use `--resume`. Failure records
+include the HTTP status when available and a `recovery_action` explaining the
+next step. See [Claude authentication recovery](setup.md) for refresh guards
+and the limits of explicit access-token environment variables.
 Killed processes, host restarts, invalid settings, and incompatible or damaged
 saved state also require explicit recovery; the process cannot restart itself
 after it has exited.

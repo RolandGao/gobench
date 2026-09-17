@@ -149,7 +149,7 @@ CONFIG = ArenaConfig(
     active_players=(
         # "DeepSeek-V4.1-Flash-high-api-multi",
         # "DeepSeek-V4.1-Flash-max-api-multi",
-        # "gpt6-astra-high-api",
+        "gpt6-astra-low-api-multi",
         # "gpt6-astra-high-codex-1h",
         # "gpt6-astra-high-codex-0h",
         # "opus-5-high-api-multi2",
@@ -161,8 +161,8 @@ CONFIG = ArenaConfig(
         # "gpt5.6-sol-high-codex-2h",
         # "gpt5.6-sol-high-codex-4h",
         # "gpt5.6-sol-high-codex-8h",
-        "fable-5.1-max-api-multi",
-        "opus-5-max-api-multi",
+        # "fable-5.1-max-api-multi",
+        # "opus-5-max-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # "gpt6-astra-high-api-multi",
@@ -3650,6 +3650,9 @@ def _positive_seconds(value, *, scale=1.0):
 
 
 def _llm_api_retry_delay(exc, failed_attempt):
+    auth_delay = getattr(exc, "arena_auth_retry_after", None)
+    if auth_delay is not None:
+        return auth_delay
     quota_delay = getattr(exc, "arena_quota_retry_after", None)
     if quota_delay is not None:
         # The transport already includes a small reset buffer. Ordinary
@@ -3848,6 +3851,7 @@ def _call_llm_move(
                 log_entry["request"] = (req | {"system": [{"type": "text", "text": CLAUDE_OAUTH_IDENTITY}]}
                                         if auth_mode == "oauth" and api.name == "anthropic" else req)
             quota_wait = getattr(exc, "arena_quota", None)
+            auth_wait = getattr(exc, "arena_auth_wait", False)
             reset_context = (
                 conversation is not None
                 and bool(conversation.history)
@@ -3866,6 +3870,8 @@ def _call_llm_move(
             recovery_hint = _llm_auth_recovery_hint(exc, api)
             if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded)):
                 recovery_action = "record_game_forfeit"
+            elif retrying and auth_wait:
+                recovery_action = "wait_for_authentication"
             elif retrying and quota_wait:
                 recovery_action = "wait_for_quota_reset"
             elif retrying:
@@ -3908,6 +3914,8 @@ def _call_llm_move(
                 req = conversation.prepare(_llm_request(api, player, prompt), prompt)
                 log_entry["conversation"] = conversation.pending
             error = f"{type(exc).__name__}{f', HTTP {status}' if status else ''}"
+            if auth_wait:
+                error += f"; {exc}; credentials will be rechecked automatically"
             if quota_wait:
                 error += f"; waiting for Claude quota ({quota_wait['quota_window']})"
                 if "quota_reset_at" in quota_wait:
@@ -6989,7 +6997,7 @@ def main(argv=None):
             config = CONFIG
         _configure(config)
         run = run_arena(args.resume)
-    except (ArenaError, GoEngineError, WorkspaceError) as exc:
+    except (ArenaError, GoEngineError, WorkspaceError, ClaudeOAuthError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
     for path in run if isinstance(run, tuple) else (run,):

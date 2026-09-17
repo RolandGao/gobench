@@ -4,7 +4,9 @@ import concurrent.futures
 import contextlib
 import io
 import json
+import multiprocessing
 import os
+import socket
 import tempfile
 import time
 import unittest
@@ -61,6 +63,29 @@ def sse(events):
                           content="".join(
                               f"event: {event['type']}\ndata: {json.dumps(event)}\n\n"
                               for event in events))
+
+
+def refresh_in_process(auth_path, outcome):
+    """Real process coordination with a fake token endpoint."""
+    path = Path(auth_path)
+
+    def refresh(_token):
+        with (path.parent / "refresh-attempts").open("a") as out:
+            out.write("attempt\n")
+        if outcome == "crash":
+            os._exit(17)
+        if outcome == "rejected":
+            raise oauth.ClaudeOAuthError("refresh rejected")
+        time.sleep(.05)
+        return {"accessToken": "sk-ant-oat-worker", "refreshToken": "worker-refresh",
+                "expiresAt": time.time() * 1000 + 3600000}
+
+    with (mock.patch.dict(os.environ, {"ARENA_ANTHROPIC_AUTH_PATH": auth_path}),
+          mock.patch.object(oauth, "_refresh", side_effect=refresh)):
+        try:
+            return oauth.access_token()
+        except oauth.ClaudeOAuthError:
+            return "waiting"
 
 
 class ClaudeOAuthTests(unittest.TestCase):
@@ -259,9 +284,9 @@ class ClaudeOAuthTests(unittest.TestCase):
         self.assertTrue(all("x-api-key" not in request.headers for request in self.requests))
 
     def test_rejected_auth_never_uses_api_key(self):
-        client = self.client()
         for status in (401, 403):
             with self.subTest(status=status):
+                client = self.client()
                 self.reply = lambda: httpx.Response(status, json={"error": {"message": "rejected"}})
                 with mock.patch.object(arena.time, "sleep") as sleep:
                     with self.assertRaisesRegex(arena.ArenaError, "sign in with Claude Code"):
@@ -374,7 +399,7 @@ class ClaudeOAuthTests(unittest.TestCase):
                 else:
                     self.auth.write_text(value)
                 with self.assertRaisesRegex(oauth.ClaudeOAuthError, "subscription OAuth login"):
-                    self.client()
+                    self.client().create()
         self.assertEqual(self.requests, [])
 
     def test_explicit_token_takes_precedence_and_reloads(self):
@@ -426,7 +451,8 @@ class ClaudeOAuthTests(unittest.TestCase):
 
         def refresh(token):
             self.assertEqual(token, "private-refresh")
-            self.assertTrue(Path(f"{self.auth}.arena-oauth.lock").is_dir())
+            self.assertTrue((self.root / ".oauth_refresh.lock").is_dir())
+            self.assertTrue(Path(f"{self.root}.lock").is_dir())
             time.sleep(.05)
             return {"accessToken": "sk-ant-oat-new", "refreshToken": "rotated-refresh",
                     "expiresAt": time.time() * 1000 + 3600000}
@@ -442,8 +468,65 @@ class ClaudeOAuthTests(unittest.TestCase):
         self.assertEqual(saved["claudeAiOauth"]["scopes"], ["user:inference"])
         self.assertEqual(saved["organizationUuid"], "organization-id")
         self.assertEqual(self.auth.stat().st_mode & 0o777, 0o600)
-        self.assertFalse(Path(f"{self.auth}.arena-oauth.lock").exists())
+        self.assertFalse((self.root / ".oauth_refresh.lock").exists())
+        self.assertFalse(Path(f"{self.root}.lock").exists())
         self.assertEqual(list(self.root.glob("..credentials.json.*")), [])
+
+    def test_waits_for_cli_refresh_and_rereads_credentials(self):
+        for lock in (self.root / ".oauth_refresh.lock", Path(f"{self.root}.lock")):
+            with self.subTest(lock=lock):
+                self.write_auth(expires=0)
+                lock.mkdir()
+
+                def finish_refresh(_delay):
+                    self.write_auth("sk-ant-oat-cli-renewed")
+                    lock.rmdir()
+
+                with (mock.patch.object(oauth.time, "sleep", side_effect=finish_refresh),
+                      mock.patch.object(oauth, "_refresh") as refresh):
+                    self.assertEqual(oauth.access_token(), "sk-ant-oat-cli-renewed")
+                refresh.assert_not_called()
+
+    def test_abandoned_cli_locks_are_recovered(self):
+        locks = (self.root / ".oauth_refresh.lock", Path(f"{self.root}.lock"))
+        for lock in locks:
+            lock.mkdir()
+            os.utime(lock, (time.time() - 120, time.time() - 120))
+        with oauth._auth_lock(self.auth) as check:
+            check()
+            for lock in locks:
+                self.assertLess(time.time() - lock.stat().st_mtime, 5)
+        self.assertTrue(all(not lock.exists() for lock in locks))
+
+    def test_active_cli_lock_times_out_without_refreshing_or_removing_it(self):
+        self.write_auth(expires=0)
+        lock = self.root / ".oauth_refresh.lock"
+        lock.mkdir()
+        with (mock.patch.object(oauth.time, "monotonic", side_effect=[0, 71]),
+              mock.patch.object(oauth, "_refresh") as refresh):
+            with self.assertRaises(oauth.ClaudeOAuthError) as raised:
+                oauth.access_token()
+        self.assertTrue(raised.exception.body["retryable"])
+        self.assertTrue(lock.is_dir())
+        refresh.assert_not_called()
+
+    def test_replaced_lock_is_detected_and_not_removed(self):
+        lock = self.root / ".oauth_refresh.lock"
+        with oauth._auth_lock(self.auth) as check:
+            lock.rename(self.root / "old-lock")
+            lock.mkdir()
+            with self.assertRaisesRegex(oauth.ClaudeOAuthError, "lock was lost"):
+                check()
+        self.assertTrue(lock.is_dir())
+        self.assertFalse(Path(f"{self.root}.lock").exists())
+
+    def test_startup_refresh_failure_is_reported_without_traceback(self):
+        with (mock.patch.object(arena, "_configure"),
+              mock.patch.object(arena, "run_arena", side_effect=oauth.ClaudeOAuthError(
+                  "Claude OAuth refresh failed (HTTP 403)")),
+              contextlib.redirect_stderr(io.StringIO()) as stderr):
+            self.assertEqual(arena.main([]), 1)
+        self.assertEqual(stderr.getvalue(), "error: Claude OAuth refresh failed (HTTP 403)\n")
 
     def test_refresh_http_request_and_error_redaction(self):
         result = {"access_token": "sk-ant-oat-new", "refresh_token": "new-refresh", "expires_in": 3600}
@@ -457,7 +540,7 @@ class ClaudeOAuthTests(unittest.TestCase):
                                 "refresh_token": "private-refresh"})
         self.assertGreaterEqual(credentials["expiresAt"], before + 3600000)
         self.assertLess(credentials["expiresAt"], before + 3601000)
-        for status, retryable in ((400, False), (429, True), (503, True)):
+        for status, retryable in ((400, False), (403, False), (429, True), (503, True)):
             error = urllib.error.HTTPError(oauth.TOKEN_URL, status, "private-refresh", {},
                                            io.BytesIO(b'private-refresh'))
             with mock.patch.object(oauth.urllib.request, "urlopen", side_effect=error):
@@ -473,7 +556,221 @@ class ClaudeOAuthTests(unittest.TestCase):
             with self.assertRaises(oauth.ClaudeOAuthError):
                 oauth.access_token()
         self.assertEqual(self.auth.read_bytes(), original)
-        self.assertFalse(Path(f"{self.auth}.arena-oauth.lock").exists())
+        self.assertFalse((self.root / ".oauth_refresh.lock").exists())
+        self.assertFalse(Path(f"{self.root}.lock").exists())
+
+    def test_startup_auth_waits_for_login_and_resumes_same_move(self):
+        self.auth.unlink()
+        client = self.client()
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep", side_effect=lambda _: self.write_auth()) as sleep):
+            self.assertEqual(self.call(client)[0], "D4")
+        sleep.assert_called_once_with(60)
+        entries = [json.loads(line) for line in (self.root / "compact.jsonl").read_text().splitlines()]
+        self.assertEqual(entries[0]["recovery_action"], "wait_for_authentication")
+        self.assertEqual(entries[0]["move"], entries[1]["move"])
+        self.assertEqual(len(self.requests), 1)
+
+    def test_rejected_refresh_polls_without_resubmitting_and_keeps_conversation(self):
+        name = "opus-5-high-api-multi"
+        client = self.client(name)
+        self.call(client, name)
+        self.write_auth(expires=0)
+        polls = 0
+
+        def login(_delay):
+            nonlocal polls
+            polls += 1
+            if polls == 3:
+                self.write_auth("sk-ant-oat-new-login")
+
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep", side_effect=login),
+              mock.patch.object(oauth, "_refresh", side_effect=oauth.ClaudeOAuthError(
+                  "Claude OAuth refresh failed (HTTP 403)")) as refresh):
+            self.assertEqual(self.call(client, name, move=3)[0], "D4")
+        refresh.assert_called_once()
+        self.assertEqual(polls, 3)
+        body = json.loads(self.requests[-1].content)
+        self.assertEqual(len(body["messages"]), 3)
+        self.assertEqual(body["messages"][1]["content"][0]["signature"], "opaque-signature")
+        self.assertEqual(self.requests[-1].headers["authorization"], "Bearer sk-ant-oat-new-login")
+        journal = self.auth.with_name(f"{self.auth.name}.arena-refresh.json")
+        self.assertEqual(journal.stat().st_mode & 0o777, 0o600)
+        for secret in ("private-refresh", "sk-ant-oat-test", "sk-ant-oat-new-login"):
+            self.assertNotIn(secret, journal.read_text())
+
+    def test_401_refreshes_even_if_expiry_is_in_future(self):
+        replies = iter([httpx.Response(401, json={"error": {"message": "expired"}}),
+                        sse(message_events())])
+        self.reply = lambda: next(replies)
+        updated = {"accessToken": "sk-ant-oat-renewed", "refreshToken": "rotated",
+                   "expiresAt": time.time() * 1000 + 3600000}
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep") as sleep,
+              mock.patch.object(oauth, "_refresh", return_value=updated) as refresh):
+            self.assertEqual(self.call(self.client())[0], "D4")
+        refresh.assert_called_once()
+        sleep.assert_called_once_with(60)
+        self.assertEqual(self.requests[-1].headers["authorization"], "Bearer sk-ant-oat-renewed")
+
+    def test_persistent_401_does_not_rotate_tokens_endlessly(self):
+        self.reply = lambda: httpx.Response(401, json={"error": {"message": "rejected"}})
+        updated = {"accessToken": "sk-ant-oat-renewed", "refreshToken": "rotated",
+                   "expiresAt": time.time() * 1000 + 3600000}
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 5),
+              mock.patch.object(arena.time, "sleep"),
+              mock.patch.object(oauth, "_refresh", return_value=updated) as refresh):
+            with self.assertRaises(arena.ArenaError):
+                self.call(self.client())
+        refresh.assert_called_once()
+        self.assertEqual(len(self.requests), 2)
+
+    def test_403_recovers_when_credentials_change_without_forced_refresh(self):
+        replies = iter([httpx.Response(403, json={"error": {"message": "rejected"}}),
+                        sse(message_events())])
+        self.reply = lambda: next(replies)
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep", side_effect=lambda _: self.write_auth("sk-ant-oat-login")),
+              mock.patch.object(oauth, "_refresh") as refresh):
+            self.assertEqual(self.call(self.client())[0], "D4")
+        refresh.assert_not_called()
+        self.assertEqual(len(self.requests), 2)
+
+    def test_proactive_refresh_failure_keeps_still_valid_access_token(self):
+        self.write_auth(expires=time.time() * 1000 + 120000)
+        with mock.patch.object(oauth, "_refresh", side_effect=oauth.ClaudeOAuthError("rejected")) as refresh:
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-test")
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-test")
+            self.write_auth(expires=0)
+            with self.assertRaises(oauth.ClaudeOAuthError):
+                oauth.access_token()
+        refresh.assert_called_once()
+
+    def test_transient_refresh_failure_has_shared_cooldown_then_recovers(self):
+        self.write_auth(expires=0)
+        updated = {"accessToken": "sk-ant-oat-renewed", "refreshToken": "rotated",
+                   "expiresAt": time.time() * 1000 + 3600000}
+        with (mock.patch.object(oauth.time, "time", return_value=1000) as now,
+              mock.patch.object(oauth, "_refresh", side_effect=[
+                  oauth.ClaudeOAuthError("service unavailable", retryable=True), updated,
+              ]) as refresh):
+            for _ in range(3):
+                with self.assertRaises(oauth.ClaudeOAuthError):
+                    oauth.access_token()
+            self.assertEqual(refresh.call_count, 1)
+            now.return_value = 1061
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-renewed")
+        self.assertEqual(refresh.call_count, 2)
+
+    def test_uncertain_refresh_is_not_replayed_after_network_failure(self):
+        self.write_auth(expires=0)
+        with mock.patch.object(oauth.urllib.request, "urlopen", side_effect=TimeoutError("private-refresh")) as send:
+            for _ in range(2):
+                with self.assertRaises(oauth.ClaudeOAuthError) as raised:
+                    oauth.access_token()
+                self.assertNotIn("private-refresh", str(raised.exception))
+        send.assert_called_once()
+
+    def test_connection_failure_can_retry_without_risking_a_consumed_token(self):
+        self.write_auth(expires=0)
+        result = {"access_token": "sk-ant-oat-new", "refresh_token": "new-refresh", "expires_in": 3600}
+        with (mock.patch.object(oauth.time, "time", return_value=1000) as now,
+              mock.patch.object(oauth.urllib.request, "urlopen", side_effect=[
+                  urllib.error.URLError(socket.gaierror("DNS unavailable")),
+                  io.BytesIO(json.dumps(result).encode()),
+              ]) as send):
+            with self.assertRaises(oauth.ClaudeOAuthError) as raised:
+                oauth.access_token()
+            self.assertTrue(raised.exception.body["retryable"])
+            now.return_value = 1061
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-new")
+        self.assertEqual(send.call_count, 2)
+
+    def test_rejected_explicit_token_requires_replacement_without_touching_file_login(self):
+        self.reply = lambda: httpx.Response(401, json={"error": {"message": "expired"}})
+        with (mock.patch.dict(os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat-explicit"}),
+              mock.patch.object(oauth, "_refresh") as refresh):
+            client = self.client()
+            with self.assertRaises(oauth.ClaudeOAuthError):
+                client.create(model="claude-opus-5", max_tokens=10, messages=[])
+            with self.assertRaisesRegex(oauth.ClaudeOAuthError, "replace it and restart"):
+                client.create()
+            os.environ["CLAUDE_CODE_OAUTH_TOKEN"] = "sk-ant-oat-replaced"
+            self.reply = lambda: sse(message_events())
+            self.assertEqual(self.call(client)[0], "D4")
+        refresh.assert_not_called()
+        self.assertEqual(self.requests[-1].headers["authorization"], "Bearer sk-ant-oat-replaced")
+
+    def test_403_probes_again_after_backoff_without_churning_credentials(self):
+        self.reply = lambda: httpx.Response(403, json={"error": {"message": "unavailable"}})
+        client = self.client()
+        with (mock.patch.object(oauth.time, "monotonic", return_value=1000) as now,
+              mock.patch.object(oauth, "_refresh") as refresh):
+            with self.assertRaises(arena.ArenaError):
+                self.call(client)
+            self.reply = lambda: sse(message_events())
+            with self.assertRaises(oauth.ClaudeOAuthError) as raised:
+                client.create()
+            self.assertEqual(raised.exception.status_code, 403)
+            now.return_value = 1301
+            self.assertEqual(self.call(client)[0], "D4")
+        refresh.assert_not_called()
+        self.assertEqual(len(self.requests), 2)
+
+    def test_save_failure_does_not_replay_consumed_refresh_token(self):
+        self.write_auth(expires=0)
+        updated = {"accessToken": "sk-ant-oat-renewed", "refreshToken": "rotated",
+                   "expiresAt": time.time() * 1000 + 3600000}
+        original = oauth._atomic_json
+
+        def save(path, *args):
+            if path == self.auth:
+                raise OSError("disk full")
+            return original(path, *args)
+
+        with (mock.patch.object(oauth, "_refresh", return_value=updated) as refresh,
+              mock.patch.object(oauth, "_atomic_json", side_effect=save)):
+            with self.assertRaises(OSError):
+                oauth.access_token()
+            with self.assertRaises(oauth.ClaudeOAuthError):
+                oauth.access_token()
+        refresh.assert_called_once()
+
+    def test_process_workers_share_refresh_results_and_failures(self):
+        for outcome in ("success", "rejected"):
+            with self.subTest(outcome=outcome):
+                self.write_auth(expires=0)
+                attempts = self.root / "refresh-attempts"
+                attempts.unlink(missing_ok=True)
+                with concurrent.futures.ProcessPoolExecutor(
+                    max_workers=3, mp_context=multiprocessing.get_context("spawn")
+                ) as pool:
+                    results = list(pool.map(refresh_in_process, [str(self.auth)] * 3, [outcome] * 3))
+                expected = "sk-ant-oat-worker" if outcome == "success" else "waiting"
+                self.assertEqual(results, [expected] * 3)
+                self.assertEqual(attempts.read_text().splitlines(), ["attempt"])
+
+    def test_killed_refresher_leaves_a_durable_guard_against_replay(self):
+        self.write_auth(expires=0)
+        worker = multiprocessing.get_context("spawn").Process(
+            target=refresh_in_process, args=(str(self.auth), "crash"),
+        )
+        worker.start()
+        worker.join(15)
+        if worker.is_alive():
+            worker.kill()
+            worker.join()
+            self.fail("refresh worker did not exit")
+        self.assertEqual(worker.exitcode, 17)
+        for lock in (self.root / ".oauth_refresh.lock", Path(f"{self.root}.lock")):
+            os.utime(lock, (time.time() - 120, time.time() - 120))
+        with mock.patch.object(oauth, "_refresh") as refresh:
+            with self.assertRaisesRegex(oauth.ClaudeOAuthError, "interrupted attempt"):
+                oauth.access_token()
+        refresh.assert_not_called()
+        self.write_auth("sk-ant-oat-new-login")
+        self.assertEqual(oauth.access_token(), "sk-ant-oat-new-login")
 
     def test_incomplete_stream_and_truncated_output_are_not_saved_as_moves(self):
         client = self.client()
@@ -490,7 +787,7 @@ class ClaudeOAuthTests(unittest.TestCase):
     def test_http_failures_preserve_retry_information(self):
         client = self.client()
         api, player = arena._llm_player_config("opus-5-high-api")
-        for status, retryable in ((400, False), (401, False), (429, True), (503, True)):
+        for status, retryable in ((400, False), (429, True), (503, True)):
             self.reply = lambda: httpx.Response(status, headers={"retry-after": "120"},
                                                 json={"type": "error", "error": {
                                                     "type": "api_error", "message": "failure"}})
