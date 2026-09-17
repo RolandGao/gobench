@@ -1,5 +1,5 @@
 # GoBench
-Paper is submitted to arxiv, with scheduled release in two days. In the meantime, the same paper can be found here: https://github.com/RolandGao/gobench/blob/main/paper/gobench2.pdf
+paper: https://rolandgao.com/gobench.pdf
 
 Active leaderboard: https://rolandgao.com/blog/gobench/
 <img width="1187" height="595" alt="Screenshot 2026-09-15 at 8 09 28 PM" src="https://github.com/user-attachments/assets/be43530a-3b15-47c8-8c26-0044f4c8c200" />
