@@ -53,6 +53,47 @@ class ConversationTests(unittest.TestCase):
         self.assertEqual(session.pending["reset_reason"], "context_limit")
         self.assertEqual(session.session, 2)
 
+    def test_qwen_caching_preserves_every_prior_reasoning_turn(self):
+        name = "qwen3.8-max-high-api-multi"
+        api, player = arena._llm_player_config(name)
+        session = APIConversation(api.name, player.model, name, 1, "chat")
+        reasoning = []
+        for turn in range(6):
+            prompt = f"turn {turn}"
+            request = session.prepare(arena._llm_request(api, player, prompt), prompt)
+            self.assertEqual(request["extra_body"]["reasoning"], {"effort": "high", "exclude": False})
+            markers = [block for message in request["messages"] if message["role"] == "user"
+                       for block in message["content"] if "cache_control" in block]
+            self.assertEqual(len(markers), min(turn + 1, 4))
+            assistants = [message for message in request["messages"] if message["role"] == "assistant"]
+            self.assertEqual([message["reasoning_details"] for message in assistants], reasoning)
+            details = [{"type": "reasoning.encrypted", "data": f"opaque {turn}", "signature": f"sig {turn}"}]
+            reasoning.append(details)
+            result = SimpleNamespace(choices=[SimpleNamespace(message={
+                "role": "assistant", "content": "D4", "reasoning_details": details,
+            })])
+            session.accept(session.completed_event(result, 1000), "D4", turn, 1)
+        self.assertTrue(all(isinstance(m["content"], str) for m in session.history if m["role"] == "user"))
+
+    def test_shared_window_reserves_room_without_dropping_reasoning(self):
+        name = "kimi-k3-high-api-multi"
+        api, player = arena._llm_player_config(name)
+        session = APIConversation(api.name, player.model, name, 1, "chat",
+                                  context_window=player.context_window,
+                                  max_tokens_field=api.max_tokens_field)
+        prompt = "first"
+        request = session.prepare(arena._llm_request(api, player, prompt), prompt)
+        self.assertEqual(request["max_completion_tokens"], 943_718)
+        result = SimpleNamespace(choices=[SimpleNamespace(message={
+            "role": "assistant", "content": "D4", "reasoning_content": "all previous reasoning",
+        })])
+        session.accept(session.completed_event(result, 200_000), "D4", 1, 1)
+        request = session.prepare(arena._llm_request(api, player, "next"), "next")
+        self.assertEqual(request["max_completion_tokens"],
+                         1_048_576 - session.pending["estimated_input_tokens"])
+        self.assertEqual(request["messages"][1]["reasoning_content"], "all previous reasoning")
+        self.assertEqual(session.session, 1)
+
     def test_current_prompt_alone_too_large_and_missing_usage(self):
         session = self.session(limit=1000)
         with self.assertRaisesRegex(ValueError, "alone"):
@@ -220,6 +261,10 @@ class ArenaConversationTests(unittest.TestCase):
             self.assertEqual(request["include"], ["reasoning.encrypted_content"])
             self.assertEqual(request["reasoning"], expected_reasoning)
             self.assertFalse(request["store"])
+            if api.name in {"openai", "xai"}:
+                self.assertTrue(request["prompt_cache_key"])
+                if requests:
+                    self.assertEqual(request["prompt_cache_key"], requests[0]["prompt_cache_key"])
             requests.append(request)
             result = response()
             result.output[0].update(

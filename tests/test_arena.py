@@ -570,6 +570,48 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
                     self.assertEqual(arena._llm_player_manifest(name)["cache_control"],
                                      request["cache_control"])
 
+    def test_output_limits_use_provider_fields_and_oauth_server_control(self):
+        expected = {
+            "openai": 128_000,
+            "openai_codex_workspace": 128_000,
+            "meta": 943_718,
+            "xai": None,
+            "deepseek_responses": 393_216,
+            "deepseek": 393_216,
+            "google": 65_536,
+            "anthropic": 128_000,
+        }
+        for api in arena._Arena.LLM_APIS:
+            for name, player in api.players.items():
+                with self.subTest(player=name):
+                    limit = (131_072 if player.route == "alibaba" else 943_718) if api.name == "openrouter" else expected[api.name]
+                    self.assertEqual(player.max_output_tokens, limit)
+                    request = arena._llm_request(api, player, "prompt")
+                    manifest = arena._llm_player_manifest(name)
+                    if api.max_tokens_field:
+                        value, declared = request, manifest
+                        for key in api.max_tokens_field.split("."):
+                            value, declared = value[key], declared[key]
+                        self.assertEqual(value, limit)
+                        self.assertEqual(declared, limit)
+                    else:
+                        self.assertNotIn("max_output_tokens", request)
+                        self.assertNotIn("max_tokens", request)
+                        self.assertIn("output_limit_control", manifest)
+                    if api.name == "google":
+                        from pydantic import TypeAdapter
+                        from google.genai._gaos.types.interactions.generationconfig import GenerationConfig
+                        TypeAdapter(GenerationConfig).validate_python(request["generation_config"])
+
+    def test_cached_prompt_blocks_keep_the_same_audit_digest(self):
+        api, player = arena._llm_player_config("qwen3.8-max-high-api")
+        request = arena._llm_request(api, player, "Legal moves: D4, pass")
+        plain = request | {"messages": [{"role": "user", "content": "Legal moves: D4, pass"}]}
+        self.assertEqual(arena._request_prompt_text(request), "Legal moves: D4, pass")
+        entries = [arena._compact_llm_call({"provider": "openrouter", "request": req, "usage": {}})
+                   for req in (request, plain)]
+        self.assertEqual(entries[0]["prompt_sha256"], entries[1]["prompt_sha256"])
+
     def test_new_api_efforts_reach_requests_and_manifests(self):
         cases = (
             ("gpt-5.4-xhigh-api", "xhigh"),
@@ -595,6 +637,9 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
             ("gemini-3.1-pro-low-api", "low"),
             ("opus-5-max-api", "max"),
             ("opus-5-xhigh-api", "xhigh"),
+            ("fable-5.1-high-api", "high"),
+            ("fable-5.1-xhigh-api", "xhigh"),
+            ("fable-5.1-max-api", "max"),
         )
         for base_name, effort in cases:
             for suffix in ("", "-multi"):
@@ -1000,13 +1045,15 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
 
         self.assertEqual(output, "E5")
         self.assertEqual(captured["model"], "qwen/qwen3.8-max")
-        self.assertEqual(captured["messages"], [{"role": "user", "content": "prompt"}])
+        self.assertEqual(captured["messages"], [{"role": "user", "content": [{
+            "type": "text", "text": "prompt", "cache_control": {"type": "ephemeral"},
+        }]}])
         self.assertFalse(captured["stream"])
         self.assertEqual(captured["max_completion_tokens"], 131_072)
         self.assertEqual(
-            captured["extra_body"],
+            {key: value for key, value in captured["extra_body"].items() if key != "session_id"},
             {
-                "reasoning": {"effort": "high"},
+                "reasoning": {"effort": "high", "exclude": False},
                 "provider": {
                     "order": ["alibaba"],
                     "allow_fallbacks": False,
@@ -1098,7 +1145,7 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
         self.assertTrue(entries[1]["ok"])
         self.assertNotIn("response_id", entries[1])
 
-    def test_openrouter_completion_limit_is_qwen_only(self):
+    def test_openrouter_kimi_uses_route_maximum_output(self):
         captured = {}
 
         class FakeCompletions:
@@ -1129,7 +1176,7 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
                 attempt=1,
             )
 
-        self.assertNotIn("max_completion_tokens", captured)
+        self.assertEqual(captured["max_completion_tokens"], 943_718)
 
     def test_openrouter_models_are_pinned_to_first_party_providers(self):
         api = next(api for api in arena._Arena.LLM_APIS if api.name == "openrouter")
@@ -1263,7 +1310,7 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
         self.assertEqual(captured["reasoning"], {"effort": "high"})
         self.assertEqual(captured["input"], "prompt")
         self.assertFalse(captured["store"])
-        self.assertEqual(captured["max_output_tokens"], 384_000)
+        self.assertEqual(captured["max_output_tokens"], 393_216)
 
     def test_deepseek_uses_updated_peak_and_off_peak_prices(self):
         usage = {

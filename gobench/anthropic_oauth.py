@@ -15,6 +15,8 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 
@@ -210,7 +212,99 @@ def access_token():
         return updated["accessToken"]
 
 
-class AnthropicOAuthClient:
+def _number(value):
+    if isinstance(value, bool):
+        return None
+    try:
+        value = float(value)
+        return value if math.isfinite(value) and value >= 0 else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _timestamp(value):
+    number = _number(value)
+    if number is not None:
+        try:
+            datetime.fromtimestamp(number, timezone.utc)
+            return number
+        except (ValueError, OverflowError, OSError):
+            return None
+    if not isinstance(value, str):
+        return None
+    try:
+        date = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return date.timestamp() if date.tzinfo is not None else None
+    except (ValueError, OverflowError):
+        return None
+
+
+def _quota_wait(exc):
+    """Attach retry timing without sleeping or discarding SDK error diagnostics.
+
+    Subscription reset headers are best effort: use only exhausted windows,
+    since successful requests also carry the next five-hour and weekly resets.
+    Unknown timing is polled every five minutes, never sent to a paid API key.
+    """
+    headers = getattr(getattr(exc, "response", None), "headers", {})
+    body = getattr(exc, "body", {})
+    body = body if isinstance(body, dict) else {}
+    detail = body.get("error", body)
+    detail = detail if isinstance(detail, dict) else {}
+    now = time.time()
+    deadlines = []
+    retry_after = headers.get("retry-after")
+    seconds = _number(retry_after)
+    if seconds is None and isinstance(retry_after, str):
+        try:
+            seconds = max(0, parsedate_to_datetime(retry_after).timestamp() - now)
+        except (TypeError, ValueError, OverflowError):
+            pass
+    for delay in (seconds, _number(body.get("retry_after")), _number(detail.get("retry_after"))):
+        if delay is not None and _timestamp(now + delay) is not None:
+            deadlines.append((now + delay, "rate_limit"))
+    milliseconds = _number(headers.get("retry-after-ms"))
+    if milliseconds is not None and _timestamp(now + milliseconds / 1000) is not None:
+        deadlines.append((now + milliseconds / 1000, "rate_limit"))
+
+    prefix = "anthropic-ratelimit-unified"
+    claim = headers.get(f"{prefix}-representative-claim")
+    windows = {"five_hour": "5h", "seven_day": "7d",
+               "seven_day_sonnet": "7d-sonnet", "seven_day_opus": "7d-opus"}
+    status = headers.get(f"{prefix}-status")
+    if status not in {"allowed", "allowed_warning"}:
+        reset = _timestamp(headers.get(f"{prefix}-reset"))
+        if reset is not None and reset >= now:
+            deadlines.append((reset, claim if claim in windows else "subscription"))
+    for window, short in windows.items():
+        utilization = _number(headers.get(f"{prefix}-{short}-utilization"))
+        exhausted = (
+            headers.get(f"{prefix}-{short}-status") in {"rejected", "rate_limited"}
+            or utilization is not None and utilization >= 1
+            or claim == window and status not in {"allowed", "allowed_warning"}
+        )
+        reset = _timestamp(headers.get(f"{prefix}-{short}-reset"))
+        if exhausted and reset is not None and reset >= now:
+            deadlines.append((reset, window))
+    for field in ("reset_at", "resets_at"):
+        reset = _timestamp(detail.get(field))
+        if reset is not None and reset >= now:
+            deadlines.append((reset, "subscription"))
+
+    if deadlines:
+        reset, window = max(deadlines, key=lambda item: item[0])
+        exc.arena_quota_retry_after = max(0, reset - now) + 5
+        exc.arena_quota = {"quota_window": window, "quota_reset_at": reset}
+    else:
+        exc.arena_quota_retry_after = 300
+        exc.arena_quota = {"quota_window": "unknown"}
+
+
+class AnthropicClient:
+    """Subscription-only Messages transport; the arena owns waiting and retries."""
+
+    auth_mode = "oauth"
+
     def __init__(self, client_cls, api):
         # Explicitly suppress environment API keys, including SDK fallback.
         self._client = client_cls(
@@ -225,7 +319,14 @@ class AnthropicOAuthClient:
 
     def create(self, **request):
         self._client.auth_token = access_token()
-        return self._create_response(**request)
+        request["system"] = [{"type": "text", "text": IDENTITY}]
+        try:
+            return self._create_response(**request)
+        except Exception as exc:
+            exc.arena_auth_mode = "oauth"
+            if getattr(exc, "status_code", None) == 429:
+                _quota_wait(exc)
+            raise
 
     def _create_response(self, **request):
         # Use the Anthropic SDK's streaming accumulator to retain thinking
@@ -266,6 +367,8 @@ class AnthropicOAuthClient:
                     error = ClaudeOAuthError("Claude OAuth stream service error", retryable=True)
                     if detail.get("type") == "rate_limit_error":
                         error.status_code = 429
+                    error.body.update(exc.body)
+                    error.response = exc.response
                     error.arena_usage = usage
                     raise error from None
             raise
@@ -273,88 +376,4 @@ class AnthropicOAuthClient:
             error = ClaudeOAuthError(f"Claude OAuth response stopped: {response.stop_reason}")
             error.arena_usage = response.usage.model_dump(mode="json")
             raise error
-        return response
-
-
-class AnthropicClient(AnthropicOAuthClient):
-    """One Messages player identity with subscription-first authentication.
-
-    Switching credentials raises a marked failure for the arena to log and
-    immediately retry. This preserves usage from any partial OAuth response.
-    """
-
-    def __init__(self, client_cls, api, api_key):
-        self._client_cls, self._api, self._api_key = client_cls, api, api_key
-        self._clients = {}
-        self._oauth_retry_at = 0.0
-        self.auth_mode = None
-        self.messages = self
-
-    def close(self):
-        for client in self._clients.values():
-            client.close()
-
-    def _paid_key(self):
-        try:
-            return self._api_key()
-        except RuntimeError:
-            return None
-
-    def _cooldown(self, exc):
-        headers = getattr(getattr(exc, "response", None), "headers", {})
-        try:
-            delay = float(headers.get("retry-after", 60))
-            if not math.isfinite(delay) or delay < 0:
-                delay = 60
-        except (TypeError, ValueError):
-            delay = 60
-        self._oauth_retry_at = time.monotonic() + max(delay, 1)
-
-    def create(self, **request):
-        token, key = None, None
-        if time.monotonic() >= self._oauth_retry_at:
-            try:
-                token = access_token()
-            except ClaudeOAuthError as exc:
-                key = self._paid_key()
-                if not key:
-                    raise ClaudeOAuthError(
-                        "Claude login is unavailable and no ANTHROPIC_API_KEY is configured; "
-                        "sign in with Claude Code or set ANTHROPIC_API_KEY",
-                        retryable=exc.body.get("retryable", False),
-                    ) from exc
-                self._cooldown(exc)
-        else:
-            key = self._paid_key()
-            if not key:
-                # An API key removed during fallback must not strand a renewed login.
-                token = access_token()
-        mode = "oauth" if token else "api_key"
-        if mode == "api_key" and key is None:
-            key = self._api_key()
-        self.auth_mode = mode
-        if mode not in self._clients:
-            client = self._client_cls(
-                api_key=key if mode == "api_key" else "",
-                auth_token=token if mode == "oauth" else "",
-                base_url=self._api.base_url,
-                default_headers=HEADERS if mode == "oauth" else {},
-                **dict(self._api.client_options),
-            )
-            self._clients[mode] = client
-        self._client = self._clients[mode]
-        # Explicitly suppress the SDK's environment credential fallback.
-        self._client.api_key = key if mode == "api_key" else None
-        self._client.auth_token = token if mode == "oauth" else None
-        if mode == "oauth":
-            request["system"] = [{"type": "text", "text": IDENTITY}]
-        try:
-            response = self._create_response(**request)
-        except Exception as exc:
-            exc.arena_auth_mode = mode
-            if mode == "oauth" and getattr(exc, "status_code", None) in {401, 403, 429}:
-                if self._paid_key():
-                    self._cooldown(exc)
-                    exc.arena_auth_fallback = True
-            raise
         return response

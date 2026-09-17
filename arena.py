@@ -78,6 +78,8 @@ from gobench.llm_conversation import (
     CONVERSATION_VERSION,
     APIConversation,
     ConversationClient,
+    qwen_cache_messages,
+    cap_output_to_context,
 )
 from gobench.llm_conversation import (
     context_length_error as _context_length_error,
@@ -154,22 +156,24 @@ CONFIG = ArenaConfig(
         # "gemini-3.1-pro-high-api-multi",
         # "DeepSeek-V4.1-Flash-high-api-multi",
         # "DeepSeek-V4.1-Flash-max-api-multi",
-        "gpt5.6-sol-high-codex-0h",
-        "gpt5.6-sol-high-codex-1h",
-        "gpt5.6-sol-high-codex-2h",
-        "gpt5.6-sol-high-codex-4h",
-        "gpt5.6-sol-high-codex-8h",
+        # "gpt5.6-sol-high-codex-0h",
+        # "gpt5.6-sol-high-codex-1h",
+        # "gpt5.6-sol-high-codex-2h",
+        # "gpt5.6-sol-high-codex-4h",
+        # "gpt5.6-sol-high-codex-8h",
+        "fable-5.1-max-api-multi",
+        "opus-5-max-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # "gpt6-astra-high-api-multi",
         # "gpt6-astra-max-api-multi",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
-    total_games=20,
+    total_games=14,
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
-    active_player_prior_elo_mean=2400.0,
+    active_player_prior_elo_mean=2000.0,
     active_player_prior_elo_sd=2000.0,
 )
 
@@ -185,6 +189,7 @@ class _LLMPlayerConfig:
     agentic_harness: str = "api"
     cache_write_price: float | None = None
     max_output_tokens: int | None = None
+    context_window: int | None = None
     route: str | None = None
     peak_prices: tuple[float, float, float] | None = None
     peak_utc_hours: tuple[tuple[int, int], ...] = ()
@@ -359,18 +364,19 @@ class _ChatProtocol(_LLMProtocol):
 class _OpenRouterChatProtocol(_ChatProtocol):
     @staticmethod
     def manifest_options(player):
-        return {"reasoning": {"effort": player.level}}
+        return {"reasoning": {"effort": player.level, "exclude": False}}
 
     @staticmethod
     def request_options(player, prompt):
-        extra_body = {"reasoning": {"effort": player.level}}
+        extra_body = {"reasoning": {"effort": player.level, "exclude": False}}
         if player.route is not None:
             extra_body["provider"] = {
                 "order": [player.route],
                 "allow_fallbacks": False,
             }
         return {
-            "messages": [{"role": "user", "content": prompt}],
+            "messages": (qwen_cache_messages([{"role": "user", "content": prompt}])
+                         if player.route == "alibaba" else [{"role": "user", "content": prompt}]),
             "stream": False,
             "extra_body": extra_body,
         }
@@ -378,6 +384,7 @@ class _OpenRouterChatProtocol(_ChatProtocol):
     usage_fields = {
         "input_tokens": "prompt_tokens",
         "cached_input_tokens": "prompt_tokens_details.cached_tokens",
+        "cache_write_tokens": "prompt_tokens_details.cache_write_tokens",
         "output_tokens": "completion_tokens",
         "reasoning_tokens": "completion_tokens_details.reasoning_tokens",
     }
@@ -447,8 +454,8 @@ class _AnthropicMessagesProtocol(_LLMProtocol):
         return {
             "thinking": {"type": "adaptive"},
             "cache_control": {"type": "ephemeral"},
-            "auth_mode": "oauth_preferred_api_key_fallback",
-            "cost_basis": "api_equivalent_tokens; actual API charges only for api_key calls",
+            "auth_mode": "oauth",
+            "cost_basis": "api_equivalent_tokens; subscription OAuth",
             "oauth_system_prompt": CLAUDE_OAUTH_IDENTITY,
         }
 
@@ -518,6 +525,7 @@ def _agent_players(harnesses):
             (4.0, 0.4, 20.0) if family == "sol" else (0.2, 0.02, 1.2),
             agentic_harness=agentic_harness,
             cache_write_price=5.0 if family == "sol" else 0.25,
+            max_output_tokens=128_000,
             long_context_min_tokens=272_001,
             long_context_multipliers=(2.0, 2.0, 1.5),
         )
@@ -555,6 +563,10 @@ class _Arena:
     # /api/v1/models reasoning.supported_efforts. Accepted aliases are included:
     # Grok 4.5 xhigh -> high; DeepSeek medium/xhigh -> high, minimal -> low
     # (Responses only). OpenRouter Qwen levels follow its gateway catalog.
+    # Output maxima checked 2026-09-16: provider model docs and OpenRouter's
+    # /api/v1/models/{model}/endpoints for the configured Meta/Moonshot/Alibaba routes.
+    # Codex OAuth rejects max_output_tokens: its server controls the GPT limit.
+    # Grok has no separate text-output limit; omit an artificial cap.
     # LLM API registry. Add one _LLMAPIConfig here for an API that uses an
     # existing protocol. For a new wire format, first add one adjacent
     # _LLMProtocol subclass above. Manifests, clients, calls, logs, and pricing
@@ -574,6 +586,7 @@ class _Arena:
                         suffix=harness,
                         agentic_harness=harness,
                         cache_write_price=12.5,
+                        max_output_tokens=128_000,
                         long_context_min_tokens=272_001,
                         long_context_multipliers=(2.0, 2.0, 1.5),
                     ).items()
@@ -581,9 +594,7 @@ class _Arena:
             },
             sdk_module="openai_codex",
             sdk_client_path=("Codex",),
-            api_key_env="OPENAI_API_KEY",
-            key_file_env="OPENAI_API_KEY_PATH",
-            key_file_default="~/.openai_api_key",
+            api_key_env="",
             manifest_kind="openai_codex_workspace_agent",
             manifest_level_name="reasoning_effort",
             protocol=_CodexProtocol,
@@ -598,6 +609,7 @@ class _Arena:
                     "gpt-5.4",
                     ("none", "low", "medium", "high", "xhigh"),
                     (2.5, 0.25, 15.0),
+                    max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
@@ -606,6 +618,7 @@ class _Arena:
                     "gpt-5.5",
                     ("none", "low", "medium", "high", "xhigh"),
                     (5.0, 0.5, 30.0),
+                    max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
@@ -615,6 +628,7 @@ class _Arena:
                     ("none", "low", "medium", "high", "xhigh", "max"),
                     (4.0, 0.4, 20.0),
                     cache_write_price=5.0,
+                    max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
@@ -624,6 +638,7 @@ class _Arena:
                     ("none", "low", "medium", "high", "xhigh", "max"),
                     (0.2, 0.02, 1.2),
                     cache_write_price=0.25,
+                    max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
@@ -633,6 +648,7 @@ class _Arena:
                     ("low", "medium", "high", "xhigh", "max"),
                     (10.0, 1.0, 50.0),
                     cache_write_price=12.5,
+                    max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
@@ -654,12 +670,16 @@ class _Arena:
                     "muse-spark-1.2",
                     ("minimal", "low", "medium", "high", "xhigh"),
                     (1.25, 0.15, 4.25),
+                    max_output_tokens=943_718,
+                    context_window=1_048_576,
                 ),
                 **_llm_effort_players(
                     "muse-spark-1.3-contributor",
                     "muse-spark-1.3-contributor",
                     ("minimal", "low", "medium", "high", "xhigh", "max"),
                     (0.1, 0.002, 0.2),
+                    max_output_tokens=943_718,
+                    context_window=1_048_576,
                 ),
             },
             sdk_module="openai",
@@ -670,6 +690,7 @@ class _Arena:
             protocol=_ResponsesProtocol,
             endpoint_path=("responses",),
             base_url="https://api.meta.ai/v1",
+            max_tokens_field="max_output_tokens",
             cost_tracking=True,
         ),
         _LLMAPIConfig(
@@ -712,7 +733,7 @@ class _Arena:
                     "deepseek-v4-flash",
                     ("none", "minimal", "low", "medium", "high", "xhigh", "max"),
                     (0.22, 0.007, 0.66),
-                    max_output_tokens=384_000,
+                    max_output_tokens=393_216,
                     peak_prices=(0.44, 0.014, 1.32),
                     peak_utc_hours=((1, 4), (6, 10)),
                     peak_utc_weekdays=(0, 1, 2, 3, 4),
@@ -725,7 +746,7 @@ class _Arena:
                     "deepseek-flash",
                     ("none", "minimal", "low", "medium", "high", "xhigh", "max"),
                     (0.15, 0.003, 0.6),
-                    max_output_tokens=384_000,
+                    max_output_tokens=393_216,
                     peak_prices=(0.3, 0.006, 1.2),
                     peak_utc_hours=((1, 4), (6, 10)),
                     peak_utc_weekdays=(0, 1, 2, 3, 4),
@@ -752,6 +773,7 @@ class _Arena:
                     (2.0, 0.25, 6.0),
                     max_output_tokens=131_072,
                     route="alibaba",
+                    cache_write_price=2.5,
                 ),
                 **_llm_effort_players(
                     "kimi-k3",
@@ -759,6 +781,8 @@ class _Arena:
                     ("low", "high", "max"),
                     (3.0, 0.3, 15.0),
                     route="moonshotai/mxfp4",
+                    max_output_tokens=943_718,
+                    context_window=1_048_576,
                 ),
                 **_llm_effort_players(
                     "muse-spark-1.2-openrouter",
@@ -766,6 +790,8 @@ class _Arena:
                     ("minimal", "low", "medium", "high", "xhigh"),
                     (1.25, 0.15, 4.25),
                     route="meta",
+                    max_output_tokens=943_718,
+                    context_window=1_048_576,
                 ),
             },
             sdk_module="openai",
@@ -788,6 +814,7 @@ class _Arena:
                     "deepseek-v4-pro",
                     ("none", "low", "medium", "high", "xhigh", "max"),
                     (0.66, 0.022, 1.98),
+                    max_output_tokens=393_216,
                     peak_prices=(1.32, 0.044, 3.96),
                     peak_utc_hours=((1, 4), (6, 10)),
                     peak_utc_weekdays=(0, 1, 2, 3, 4),
@@ -795,6 +822,7 @@ class _Arena:
                 # Preserve the original high-effort player name for saved runs.
                 _llm_player_name("deepseek-v4-pro"): _LLMPlayerConfig(
                     "deepseek-v4-pro", "high", (0.66, 0.022, 1.98),
+                    max_output_tokens=393_216,
                     peak_prices=(1.32, 0.044, 3.96),
                     peak_utc_hours=((1, 4), (6, 10)),
                     peak_utc_weekdays=(0, 1, 2, 3, 4),
@@ -808,6 +836,7 @@ class _Arena:
             protocol=_DeepSeekChatProtocol,
             endpoint_path=("chat", "completions"),
             base_url="https://api.deepseek.com",
+            max_tokens_field="max_tokens",
             cost_tracking=True,
         ),
         _LLMAPIConfig(
@@ -818,6 +847,7 @@ class _Arena:
                     "gemini-3.6-flash",
                     ("minimal", "low", "medium", "high"),
                     (0.75, 0.075, 3.75),
+                    max_output_tokens=65_536,
                     scheduled_prices=(("2027-01-01", (1.5, 0.15, 7.5)),),
                 ),
                 **_llm_effort_players(
@@ -825,6 +855,7 @@ class _Arena:
                     "gemini-3.8-flash",
                     ("low", "medium", "high"),
                     (0.75, 0.075, 3.75),
+                    max_output_tokens=65_536,
                     scheduled_prices=(("2027-01-01", (1.5, 0.15, 7.5)),),
                 ),
                 **_llm_effort_players(
@@ -832,6 +863,7 @@ class _Arena:
                     "gemini-3.1-pro-preview",
                     ("low", "medium", "high"),
                     (2.0, 0.2, 12.0),
+                    max_output_tokens=65_536,
                     long_context_min_tokens=200_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
@@ -843,12 +875,21 @@ class _Arena:
             manifest_level_name="thinking_level",
             protocol=_GoogleInteractionsProtocol,
             endpoint_path=("interactions",),
+            max_tokens_field="generation_config.max_output_tokens",
             client_options=(),
             cost_tracking=True,
         ),
         _LLMAPIConfig(
             name="anthropic",
             players={
+                **_llm_effort_players(
+                    "fable-5.1",
+                    "claude-fable-5-1",
+                    ("low", "medium", "high", "xhigh", "max"),
+                    (10.0, 0.25, 50.0),
+                    cache_write_price=12.5,
+                    max_output_tokens=128_000,
+                ),
                 **_llm_effort_players(
                     "opus-5",
                     "claude-opus-5",
@@ -860,7 +901,7 @@ class _Arena:
             },
             sdk_module="anthropic",
             sdk_client_path=("Anthropic",),
-            api_key_env="ANTHROPIC_API_KEY",
+            api_key_env="",
             manifest_kind="anthropic_messages_api",
             manifest_level_name="effort",
             protocol=_AnthropicMessagesProtocol,
@@ -2960,8 +3001,11 @@ def _llm_player_manifest(name):
         manifest["base_url"] = api.base_url
     manifest.update(api.protocol.manifest_options(player))
     if player.max_output_tokens is not None:
-        _check(api.max_tokens_field is None)
-        manifest[api.max_tokens_field] = player.max_output_tokens
+        _set_output_limit(manifest, api.max_tokens_field or "max_output_tokens", player.max_output_tokens)
+        if api.max_tokens_field is None:
+            manifest["output_limit_control"] = "subscription_server"
+    elif api.name == "xai":
+        manifest["output_limit_control"] = "no_separate_text_output_limit"
     if api.cost_tracking:
         manifest["cost_tracking"] = (
             "api_equivalent_token_usage"
@@ -2992,40 +3036,8 @@ def _llm_api_key(api):
     return api_key
 
 
-def _codex_workspace_proxy_credential(api):
-    try:
-        auth_path = _codex_auth_source()
-        auth = json.loads(auth_path.read_text(encoding="utf-8"))
-        tokens = auth["tokens"]
-        access_token = tokens["access_token"]
-        account_id = tokens["account_id"]
-        if not isinstance(access_token, str) or not access_token:
-            raise ArenaError(f"Codex login has no access token: {auth_path}")
-        if not isinstance(account_id, str) or not account_id:
-            raise ArenaError(f"Codex login has no account ID: {auth_path}")
-        return _OpenAIProxyCredential(
-            bearer_token=access_token,
-            host="chatgpt.com",
-            path_prefix="/backend-api/codex",
-            headers=(
-                ("ChatGPT-Account-Id", account_id),
-                ("originator", "codex_cli_rs"),
-            ),
-            auth_mode="oauth",
-        )
-    except (OSError, KeyError, TypeError, json.JSONDecodeError, ArenaError) as exc:
-        oauth_error = exc
-
-    try:
-        return _OpenAIProxyCredential(
-            bearer_token=_llm_api_key(api),
-            host=_Arena.OPENAI_API_HOST,
-        )
-    except ArenaError as exc:
-        raise ArenaError(
-            "a valid host Codex OAuth login or an OpenAI API key is required "
-            f"for Codex players (OAuth: {oauth_error}; API key: {exc})"
-        ) from exc
+def _codex_workspace_proxy_credential(_api):
+    return _openai_oauth_proxy_credential()
 
 
 def _openai_oauth_proxy_credential():
@@ -3162,7 +3174,7 @@ def _llm_client(player_name, *, work_dir=None, game_number=None):
     if api.protocol is _OAuthResponsesProtocol:
         client = _OpenAIOAuthClient(client_cls, api)
     elif api.name == "anthropic":
-        client = AnthropicClient(client_cls, api, partial(_llm_api_key, api))
+        client = AnthropicClient(client_cls, api)
     else:
         kwargs = dict(api.client_options)
         kwargs["api_key"] = _llm_api_key(api)
@@ -3192,6 +3204,8 @@ def _llm_client(player_name, *, work_dir=None, game_number=None):
                 player_name,
                 game_number,
                 wire_format,
+                context_window=player.context_window,
+                max_tokens_field=api.max_tokens_field,
             ),
         )
     return client
@@ -3400,22 +3414,29 @@ def _sum_response_usages(requests):
     }
 
 
+def _request_prompt_text(request):
+    prompt = request.get("input")
+    if isinstance(prompt, str):
+        return prompt
+    messages = request.get("messages")
+    if not isinstance(messages, list) or not messages or not isinstance(messages[0], dict):
+        return ""
+    content = messages[0].get("content")
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "".join(block["text"] for block in content
+                       if isinstance(block, dict) and isinstance(block.get("text"), str))
+    return ""
+
+
 def _compact_llm_call(entry):
     """Strip repeated prompts and normalize provider usage for the tracked ledger."""
     request = entry.get("request")
     request = request if isinstance(request, dict) else {}
     usage = entry.get("usage")
     usage = usage if isinstance(usage, dict) else {}
-    prompt = request.get("input")
-    if not isinstance(prompt, str):
-        messages = request.get("messages")
-        prompt = (
-            messages[0].get("content")
-            if isinstance(messages, list) and messages and isinstance(messages[0], dict)
-            else ""
-        )
-    if not isinstance(prompt, str):
-        prompt = ""
+    prompt = _request_prompt_text(request)
     provider = entry.get("provider")
     if not isinstance(provider, str):
         provider = "openai" if request.get("model") else "unknown"
@@ -3493,7 +3514,7 @@ def _compact_llm_call(entry):
             retry_in_seconds=entry.get("retry_in_seconds"),
             response_status=entry.get("response_status"),
         )
-        for field in ("http_status", "recovery_action", "auth_mode"):
+        for field in ("http_status", "recovery_action", "auth_mode", "quota_window", "quota_reset_at"):
             if field in entry:
                 compact[field] = entry[field]
     elif "auth_mode" in entry:
@@ -3629,6 +3650,11 @@ def _positive_seconds(value, *, scale=1.0):
 
 
 def _llm_api_retry_delay(exc, failed_attempt):
+    quota_delay = getattr(exc, "arena_quota_retry_after", None)
+    if quota_delay is not None:
+        # The transport already includes a small reset buffer. Ordinary
+        # proportional jitter would add many minutes to a weekly quota wait.
+        return quota_delay
     body, _status = _llm_api_error(exc)
     hdrs = getattr(getattr(exc, "response", None), "headers", None)
     try:
@@ -3668,7 +3694,7 @@ def _llm_auth_recovery_hint(exc, api):
     if api.name in {"openai", "openai_codex_workspace"} and status == 401:
         return (
             "OpenAI credentials were rejected; renew the host login with `codex login` "
-            "(or replace the API key if using one), then use --resume."
+            "then use --resume."
         )
     if api.name in {"anthropic", "anthropic_oauth"} and (
         status in {401, 403}
@@ -3678,18 +3704,25 @@ def _llm_auth_recovery_hint(exc, api):
     ):
         return (
             "Claude credentials were rejected; sign in with Claude Code again "
-            "or set a valid ANTHROPIC_API_KEY, then use --resume."
+            "then use --resume."
         )
     return None
+
+
+def _set_output_limit(options, field, limit):
+    path = field.split(".")
+    for key in path[:-1]:
+        options = options.setdefault(key, {})
+    options[path[-1]] = limit
 
 
 def _llm_request(api, player, prompt):
     request = {"model": player.model}
     request.update(api.protocol.request_options(player, prompt))
     request.update(api.request_options)
-    if player.max_output_tokens is not None:
-        _check(api.max_tokens_field is None)
-        request[api.max_tokens_field] = player.max_output_tokens
+    if player.max_output_tokens is not None and api.max_tokens_field is not None:
+        _set_output_limit(request, api.max_tokens_field, player.max_output_tokens)
+        cap_output_to_context(request, player.context_window, api.max_tokens_field)
     return request
 
 
@@ -3728,6 +3761,11 @@ def _call_llm_move(
         if not isinstance(prompt, str):
             raise ArenaError(f"{api.name} produced a non-text turn prompt")
     req = _llm_request(api, player, prompt)
+    cache_key = hashlib.sha256(f"{Path(log).resolve()}:{name}:{game_number}".encode()).hexdigest()
+    if api.name in {"openai", "xai"}:
+        req["prompt_cache_key"] = cache_key
+    elif api.name == "openrouter":
+        req.setdefault("extra_body", {})["session_id"] = cache_key
     log_entry = {
         "game": game_number,
         "move": move_number,
@@ -3809,27 +3847,27 @@ def _call_llm_move(
                 log_entry["auth_mode"] = auth_mode
                 log_entry["request"] = (req | {"system": [{"type": "text", "text": CLAUDE_OAUTH_IDENTITY}]}
                                         if auth_mode == "oauth" and api.name == "anthropic" else req)
-            auth_fallback = getattr(exc, "arena_auth_fallback", False) is True
+            quota_wait = getattr(exc, "arena_quota", None)
             reset_context = (
                 conversation is not None
                 and bool(conversation.history)
                 and _context_length_error(exc)
                 and context_resets == 0
             )
-            retryable = auth_fallback or reset_context or _retryable_llm_api_error(exc)
+            retryable = reset_context or _retryable_llm_api_error(exc)
             if (isinstance(exc, _WorkspaceCodexTransportError)
                     and _workspace_codex_not_found(exc)):
                 codex_not_found_failures += 1
-            retrying = auth_fallback or retryable and _llm_api_attempts_remaining(
+            retrying = retryable and _llm_api_attempts_remaining(
                 api_try, codex_not_found_failures=codex_not_found_failures
             )
-            retry_delay = 0 if auth_fallback else _llm_api_retry_delay(exc, api_try) if retrying else None
+            retry_delay = _llm_api_retry_delay(exc, api_try) if retrying else None
             status = _llm_api_error(exc)[1]
             recovery_hint = _llm_auth_recovery_hint(exc, api)
             if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded)):
                 recovery_action = "record_game_forfeit"
-            elif auth_fallback:
-                recovery_action = "switch_to_api_key"
+            elif retrying and quota_wait:
+                recovery_action = "wait_for_quota_reset"
             elif retrying:
                 recovery_action = "retry"
             elif recovery_hint:
@@ -3851,6 +3889,7 @@ def _call_llm_move(
                 error=type(exc).__name__,
                 http_status=status,
                 recovery_action=recovery_action,
+                **(quota_wait or {}),
                 **getattr(exc, "arena_http_diagnostics", {}),
             )
             if retry_delay is None:
@@ -3869,8 +3908,10 @@ def _call_llm_move(
                 req = conversation.prepare(_llm_request(api, player, prompt), prompt)
                 log_entry["conversation"] = conversation.pending
             error = f"{type(exc).__name__}{f', HTTP {status}' if status else ''}"
-            if auth_fallback:
-                error += "; switching to API-key authentication"
+            if quota_wait:
+                error += f"; waiting for Claude quota ({quota_wait['quota_window']})"
+                if "quota_reset_at" in quota_wait:
+                    error += f"; reset at {dt.datetime.fromtimestamp(quota_wait['quota_reset_at'], dt.timezone.utc).isoformat()}"
             _call(retry, api_try, retry_delay, error)
             time.sleep(retry_delay)
             api_try += 1
@@ -4196,10 +4237,7 @@ def _recovered_llm_stats(scheduled, actions, call_entries):
             continue
         req, out = entry.get("request"), entry.get("output")
         _check(not isinstance(req, dict) or not isinstance(out, str))
-        prompt = req.get("input")
-        if not isinstance(prompt, str):
-            messages = req.get("messages") or ()
-            prompt = messages[0].get("content") if messages else None
+        prompt = _request_prompt_text(req)
         match = re.search("^Legal moves(?: now)?: (.+)$", prompt or "", re.MULTILINE)
         _check(match is None)
         legal_moves = {act.strip() for act in match.group(1).split(",")}

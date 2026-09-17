@@ -29,6 +29,7 @@ class PricingTests(unittest.TestCase):
             "gemini-3.8-flash": (.75, .075, 3.75),
             "gemini-3.1-pro-preview": (2, .2, 12),
             "claude-opus-5": (5, .5, 25),
+            "claude-fable-5-1": (10, .25, 50),
         }
         for api in arena._Arena.LLM_APIS:
             for name, player in api.players.items():
@@ -149,6 +150,12 @@ class PricingTests(unittest.TestCase):
                  "cache_creation_input_tokens": 300, "output_tokens": 50}
         self.assertAlmostEqual(arena._llm_call_cost(usage, "anthropic", "claude-opus-5"),
                                (100 * 5 + 200 * .5 + 300 * 6.25 + 50 * 25) / 1e6)
+
+    def test_qwen_explicit_cache_writes_are_charged_once(self):
+        usage = {"prompt_tokens": 1000, "completion_tokens": 20,
+                 "prompt_tokens_details": {"cached_tokens": 300, "cache_write_tokens": 500}}
+        cost = arena._llm_call_cost(usage, "openrouter", "qwen/qwen3.8-max")
+        self.assertAlmostEqual(cost, (200 * 2 + 300 * .25 + 500 * 2.5 + 20 * 6) / 1e6)
 
     def test_harness_cache_write_usage_survives_normalization_and_aggregation(self):
         codex = arena._CodexGameClient._response_usage({

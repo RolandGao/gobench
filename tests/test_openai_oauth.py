@@ -308,6 +308,37 @@ class OAuthTests(unittest.TestCase):
         self.assertTrue(success["ok"])
         self.assertEqual(success["api_attempt"], 2)
 
+    def test_quota_retry_stays_on_oauth_with_api_key_configured(self):
+        name = "gpt5.6-sol-high-api-multi"
+        client = self.client(name)
+        replies = iter([
+            httpx.Response(429, headers={"retry-after": "120"},
+                           json={"error": {"message": "usage limit reached"}}),
+            sse(completed_events()),
+        ])
+        self.reply = lambda: next(replies)
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 2),
+              mock.patch.object(arena.time, "sleep") as sleep):
+            self.call(client, name)
+        self.assertEqual(sleep.call_count, 1)
+        self.assertGreaterEqual(sleep.call_args.args[0], 120)
+        self.assertEqual(len(self.requests), 2)
+        for request in self.requests:
+            self.assertEqual(request.url.host, "chatgpt.com")
+            self.assertEqual(request.headers["authorization"], "Bearer oauth-token")
+        self.assertEqual(self.requests[0].content, self.requests[1].content)
+
+    def test_workspace_requires_oauth_even_with_api_key_configured(self):
+        api = arena._llm_api_config("openai_codex_workspace")
+        credential = arena._codex_workspace_proxy_credential(api)
+        self.assertEqual(credential.auth_mode, "oauth")
+        self.auth.unlink()
+        with self.assertRaisesRegex(arena.ArenaError, "OAuth login"):
+            arena._codex_workspace_proxy_credential(api)
+        self.write_auth(mode="apikey")
+        with self.assertRaisesRegex(arena.ArenaError, "OAuth login"):
+            arena._codex_workspace_proxy_credential(api)
+
     def test_http_errors_keep_status_and_retry_after(self):
         client = self.client()
         api, player = arena._llm_player_config("gpt5.6-sol-high-api")

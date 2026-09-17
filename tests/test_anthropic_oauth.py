@@ -69,6 +69,9 @@ class ClaudeOAuthTests(unittest.TestCase):
         self.addCleanup(self.stack.close)
         self.root = Path(self.stack.enter_context(tempfile.TemporaryDirectory()))
         self.auth = self.root / ".credentials.json"
+        self.stack.enter_context(mock.patch.object(
+            oauth.urllib.request, "urlopen", side_effect=AssertionError("Live token request")
+        ))
         self.write_auth()
         self.stack.enter_context(mock.patch.dict(os.environ, {
             "ARENA_ANTHROPIC_AUTH_PATH": str(self.auth),
@@ -138,7 +141,7 @@ class ClaudeOAuthTests(unittest.TestCase):
         self.assertTrue(body["stream"])
         self.assertNotIn("tools", body)
         manifest = arena._llm_player_manifest("opus-5-high-api")
-        self.assertEqual(manifest["auth_mode"], "oauth_preferred_api_key_fallback")
+        self.assertEqual(manifest["auth_mode"], "oauth")
         self.assertIn("api_equivalent", manifest["cost_basis"])
         self.assertEqual(manifest["oauth_system_prompt"], oauth.IDENTITY)
         self.assertEqual(manifest["cache_control"], body["cache_control"])
@@ -173,93 +176,135 @@ class ClaudeOAuthTests(unittest.TestCase):
             (self.root / old).mkdir()
             self.assertEqual(arena._historical_run_name(old), old)
 
-    def test_auth_and_quota_failures_switch_without_waiting_or_losing_history(self):
-        for status in (401, 403, 429):
-            with self.subTest(status=status):
-                for path in self.root.glob("*.jsonl"):
-                    path.unlink()
-                self.requests.clear()
-                self.reply = lambda: sse(message_events())
-                with mock.patch.object(arena, "_llm_api_key", return_value="test-api-key"):
-                    client = self.client("opus-5-high-api-multi2")
-                self.call(client, "opus-5-high-api-multi2")
-
-                def reply():
-                    if "authorization" in self.requests[-1].headers:
-                        return httpx.Response(status, headers={"retry-after": "14400"},
-                                              json={"type": "error", "error": {
-                                                  "type": "rate_limit_error", "message": "Unavailable"}})
-                    return sse(message_events())
-
-                self.reply = reply
-                with mock.patch.object(arena.time, "sleep") as sleep:
-                    self.assertEqual(self.call(client, "opus-5-high-api-multi2", move=3)[0], "D4")
-                    self.call(client, "opus-5-high-api-multi2", move=5)
-                self.assertEqual([call.args[0] for call in sleep.call_args_list], [0])
-                self.assertEqual(len(self.requests), 4)
-                oauth_request, api_request = self.requests[1:3]
-                self.assertEqual(json.loads(oauth_request.content)["messages"],
-                                 json.loads(api_request.content)["messages"])
-                self.assertEqual(api_request.headers["x-api-key"], "test-api-key")
-                self.assertNotIn("authorization", api_request.headers)
-                self.assertNotIn("anthropic-beta", api_request.headers)
-                entries = [json.loads(line) for line in (self.root / "raw.jsonl").read_text().splitlines()]
-                self.assertEqual([e["auth_mode"] for e in entries], ["oauth", "oauth", "api_key", "api_key"])
-                self.assertEqual(entries[1]["recovery_action"], "switch_to_api_key")
-                self.assertEqual(len(json.loads(self.requests[-1].content)["messages"]), 5)
-                # The provider and conversation identity are stable across authentication.
-                recovered = self.client("opus-5-high-api-multi2")
-                self.assertEqual(self.call(recovered, "opus-5-high-api-multi2", move=5), ("D4", 0, 0))
-                self.assertEqual(len(self.requests), 4)
-
-    def test_subscription_is_preferred_again_after_cooldown(self):
-        with mock.patch.object(arena, "_llm_api_key", return_value="test-api-key"):
-            client = self.client()
-        self.reply = lambda: httpx.Response(429, headers={"retry-after": "30"},
-                                            json={"type": "error", "error": {"type": "rate_limit_error", "message": "wait"}})
-        api, player = arena._llm_player_config("opus-5-high-api")
-        with self.assertRaises(anthropic.RateLimitError):
-            client.create(**arena._llm_request(api, player, "prompt"))
-        self.reply = lambda: sse(message_events())
-        client.create(**arena._llm_request(api, player, "prompt"))
-        self.assertEqual(client.auth_mode, "api_key")
-        client._oauth_retry_at = 0
-        client.create(**arena._llm_request(api, player, "prompt"))
-        self.assertEqual(client.auth_mode, "oauth")
-
-    def test_failed_refresh_falls_back_without_modifying_credentials(self):
-        self.write_auth(expires=0)
-        before = self.auth.read_bytes()
-        with (mock.patch.object(arena, "_llm_api_key", return_value="test-api-key"),
-              mock.patch.object(oauth, "_refresh", side_effect=oauth.ClaudeOAuthError("refresh rejected"))):
-            client = self.client()
-            self.call(client)
-        self.assertEqual(self.auth.read_bytes(), before)
-        self.assertEqual(self.requests[-1].headers["x-api-key"], "test-api-key")
-
-    def test_fallback_keeps_partial_stream_usage_in_failure_ledger(self):
+    def test_quota_wait_preserves_history_and_never_uses_api_key(self):
+        name = "opus-5-high-api-multi2"
+        client = self.client(name)
+        self.call(client, name)
         replies = iter([
-            sse(message_events()[:1] + [{"type": "error", "error": {"type": "rate_limit_error", "message": "limit"}}]),
+            httpx.Response(429, headers={"retry-after": "14400"},
+                           json={"error": {"type": "rate_limit_error", "message": "limit"}}),
             sse(message_events()),
         ])
         self.reply = lambda: next(replies)
-        with mock.patch.object(arena, "_llm_api_key", return_value="test-api-key"), mock.patch.object(arena.time, "sleep"):
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep") as sleep):
+            self.assertEqual(self.call(client, name, move=3)[0], "D4")
+        sleep.assert_called_once_with(14405)
+        for request in self.requests:
+            self.assertEqual(request.headers["authorization"], "Bearer sk-ant-oat-test")
+            self.assertNotIn("x-api-key", request.headers)
+        self.assertEqual(json.loads(self.requests[1].content)["messages"],
+                         json.loads(self.requests[2].content)["messages"])
+        for filename in ("raw.jsonl", "compact.jsonl"):
+            entries = [json.loads(line) for line in (self.root / filename).read_text().splitlines()]
+            self.assertEqual([e["auth_mode"] for e in entries], ["oauth"] * 3)
+            self.assertEqual(entries[1]["recovery_action"], "wait_for_quota_reset")
+            self.assertEqual(entries[1]["retry_in_seconds"], 14405)
+            self.assertIn("quota_reset_at", entries[1])
+            self.assertNotIn("quota_reset_at", entries[2])
+        recovered = self.client(name)
+        self.assertEqual(self.call(recovered, name, move=3), ("D4", 0, 0))
+        self.assertEqual(len(self.requests), 3)
+
+    def test_quota_reset_timing(self):
+        prefix = "anthropic-ratelimit-unified"
+        now = 1800000000
+        self.write_auth(expires=(now + 3600) * 1000)
+        cases = [
+            ({f"{prefix}-status": "rejected", f"{prefix}-representative-claim": "five_hour",
+              f"{prefix}-5h-reset": str(now + 7200), f"{prefix}-7d-reset": str(now + 86400),
+              f"{prefix}-7d-utilization": "0.2"}, {}, 7205, "five_hour"),
+            ({f"{prefix}-5h-utilization": "1", f"{prefix}-5h-reset": str(now + 7200),
+              f"{prefix}-7d-utilization": "1", f"{prefix}-7d-reset": str(now + 86400),
+              "retry-after": "60"}, {}, 86405, "seven_day"),
+            ({f"{prefix}-status": "rejected", f"{prefix}-representative-claim": "seven_day",
+              f"{prefix}-reset": str(now + 86400)}, {}, 86405, "seven_day"),
+            ({f"{prefix}-status": "allowed", f"{prefix}-representative-claim": "five_hour",
+              f"{prefix}-reset": str(now + 7200), f"{prefix}-5h-reset": str(now + 7200),
+              f"{prefix}-7d-reset": str(now + 86400), "retry-after": "30"}, {}, 35, "rate_limit"),
+            ({}, {}, 300, "unknown"),
+            ({"retry-after": "nan", f"{prefix}-reset": "inf"}, {}, 300, "unknown"),
+            ({"retry-after": "1e300", f"{prefix}-reset": "1e300"}, {}, 300, "unknown"),
+            ({"retry-after": "-10", f"{prefix}-reset": str(now - 100)}, {}, 300, "unknown"),
+            ({"retry-after": "Fri, 15 Jan 2027 08:02:00 GMT"}, {}, 125, "rate_limit"),
+            ({"retry-after-ms": "12000"}, {}, 17, "rate_limit"),
+            ({}, {"reset_at": now + 600}, 605, "subscription"),
+            ({}, {"resets_at": "2027-01-15T08:10:00Z"}, 605, "subscription"),
+        ]
+        client = self.client()
+        api, player = arena._llm_player_config("opus-5-high-api")
+        for headers, detail, expected, window in cases:
+            with self.subTest(headers=headers, detail=detail):
+                self.reply = lambda: httpx.Response(429, headers=headers, json={
+                    "error": {"type": "rate_limit_error", "message": "quota", **detail},
+                })
+                with mock.patch.object(oauth.time, "time", return_value=now):
+                    with self.assertRaises(anthropic.APIStatusError) as raised:
+                        client.create(**arena._llm_request(api, player, "prompt"))
+                self.assertEqual(arena._llm_api_retry_delay(raised.exception, 100), expected)
+                self.assertEqual(raised.exception.arena_quota["quota_window"], window)
+                self.assertNotIn("x-api-key", self.requests[-1].headers)
+
+    def test_unknown_quota_timing_polls_until_access_returns(self):
+        replies = iter([
+            httpx.Response(429, json={"error": {"type": "rate_limit_error"}}),
+            httpx.Response(429, json={"error": {"type": "rate_limit_error"}}),
+            sse(message_events()),
+        ])
+        self.reply = lambda: next(replies)
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep") as sleep):
+            self.assertEqual(self.call(self.client())[0], "D4")
+        self.assertEqual(sleep.call_args_list, [mock.call(300), mock.call(300)])
+        self.assertTrue(all("x-api-key" not in request.headers for request in self.requests))
+
+    def test_rejected_auth_never_uses_api_key(self):
+        client = self.client()
+        for status in (401, 403):
+            with self.subTest(status=status):
+                self.reply = lambda: httpx.Response(status, json={"error": {"message": "rejected"}})
+                with mock.patch.object(arena.time, "sleep") as sleep:
+                    with self.assertRaisesRegex(arena.ArenaError, "sign in with Claude Code"):
+                        self.call(client)
+                sleep.assert_not_called()
+                self.assertNotIn("x-api-key", self.requests[-1].headers)
+
+    def test_failed_refresh_never_uses_api_key_or_modifies_credentials(self):
+        client = self.client()
+        self.write_auth(expires=0)
+        before = self.auth.read_bytes()
+        with mock.patch.object(oauth, "_refresh", side_effect=oauth.ClaudeOAuthError("refresh rejected")):
+            with self.assertRaisesRegex(arena.ArenaError, "refresh rejected"):
+                self.call(client)
+        self.assertEqual(self.auth.read_bytes(), before)
+        self.assertEqual(self.requests, [])
+
+    def test_quota_wait_keeps_partial_stream_usage_and_reset_headers(self):
+        failure = sse(message_events()[:1] + [{"type": "error", "error": {
+            "type": "rate_limit_error", "message": "limit",
+        }}])
+        failure.headers["retry-after"] = "120"
+        replies = iter([failure, sse(message_events())])
+        self.reply = lambda: next(replies)
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 2),
+              mock.patch.object(arena.time, "sleep") as sleep):
             _, _, cost = self.call(self.client())
+        sleep.assert_called_once_with(125)
         entries = [json.loads(line) for line in (self.root / "raw.jsonl").read_text().splitlines()]
         self.assertEqual(entries[0]["usage"]["input_tokens"], 100)
         self.assertGreater(entries[0]["cost_usd"], 0)
         self.assertAlmostEqual(cost, sum(e["cost_usd"] for e in entries))
+        self.assertEqual(entries[0]["http_status"], 429)
+        self.assertEqual(entries[0]["recovery_action"], "wait_for_quota_reset")
 
-    def test_api_key_multiturn_caching_reaches_sdk_and_preserves_usage(self):
+    def test_oauth_multiturn_caching_reaches_sdk_and_preserves_usage(self):
         name = "opus-5-high-api-multi"
         events = message_events(input_tokens=0)
         events[0]["message"]["usage"].update(cache_read_input_tokens=5000, cache_creation_input_tokens=200)
         self.reply = lambda: sse(events)
-        self.auth.unlink()
-        with mock.patch.object(arena, "_llm_api_key", return_value="test-api-key"):
-            client = self.client(name)
-            self.call(client, name)
-            _, _, cost = self.call(client, name, move=3)
+        client = self.client(name)
+        self.call(client, name)
+        _, _, cost = self.call(client, name, move=3)
         contents = [{"type": "thinking", "thinking": "Consider D4.", "signature": "opaque-signature"},
                     {"type": "redacted_thinking", "data": "opaque-thinking"},
                     {"type": "text", "text": "D4"}]
@@ -268,8 +313,8 @@ class ClaudeOAuthTests(unittest.TestCase):
             {"role": "assistant", "content": contents},
         ])
         for request, body in zip(self.requests, (first, second)):
-            self.assertEqual(request.headers["x-api-key"], "test-api-key")
-            self.assertNotIn("authorization", request.headers)
+            self.assertNotIn("x-api-key", request.headers)
+            self.assertEqual(request.headers["authorization"], "Bearer sk-ant-oat-test")
             self.assertEqual(body["cache_control"], {"type": "ephemeral"})
         self.assertAlmostEqual(cost, (5000 * .5 + 200 * 6.25 + 30 * 25) / 1e6)
         compact = json.loads((self.root / "compact.jsonl").read_text().splitlines()[-1])
@@ -328,9 +373,8 @@ class ClaudeOAuthTests(unittest.TestCase):
                     self.auth.unlink(missing_ok=True)
                 else:
                     self.auth.write_text(value)
-                with mock.patch.object(arena, "_llm_api_key", side_effect=arena.ArenaError("missing key")):
-                    with self.assertRaisesRegex(arena.ArenaError, "ANTHROPIC_API_KEY"):
-                        self.call(self.client())
+                with self.assertRaisesRegex(oauth.ClaudeOAuthError, "subscription OAuth login"):
+                    self.client()
         self.assertEqual(self.requests, [])
 
     def test_explicit_token_takes_precedence_and_reloads(self):
@@ -340,9 +384,8 @@ class ClaudeOAuthTests(unittest.TestCase):
             self.call(client)
             self.assertEqual(self.requests[-1].headers["authorization"], "Bearer sk-ant-oat-explicit")
             os.environ["CLAUDE_CODE_OAUTH_TOKEN"] = "sk-ant-api-not-oauth"
-            with mock.patch.object(client, "_api_key", side_effect=arena.ArenaError("missing key")):
-                with self.assertRaisesRegex(oauth.ClaudeOAuthError, "ANTHROPIC_API_KEY"):
-                    client.create()
+            with self.assertRaisesRegex(oauth.ClaudeOAuthError, "not a Claude OAuth token"):
+                client.create()
 
     def test_claude_code_default_and_config_directory(self):
         os.environ.pop("ARENA_ANTHROPIC_AUTH_PATH")
@@ -451,7 +494,7 @@ class ClaudeOAuthTests(unittest.TestCase):
             self.reply = lambda: httpx.Response(status, headers={"retry-after": "120"},
                                                 json={"type": "error", "error": {
                                                     "type": "api_error", "message": "failure"}})
-            with mock.patch.object(client, "_api_key", return_value=None), self.assertRaises(anthropic.APIStatusError) as raised:
+            with self.assertRaises(anthropic.APIStatusError) as raised:
                 client.create(**arena._llm_request(api, player, "prompt"))
             self.assertEqual(arena._retryable_llm_api_error(raised.exception), retryable)
             self.assertGreaterEqual(arena._llm_api_retry_delay(raised.exception, 1), 120)

@@ -32,6 +32,41 @@ def byte_estimate(value):
     return len(json.dumps(value, ensure_ascii=False).encode("utf-8")) + 256
 
 
+def qwen_cache_messages(messages):
+    """Mark recent user prefixes without changing stored reasoning or signatures."""
+    messages = copy.deepcopy(messages)
+    blocks = []
+    for message in messages:
+        if message.get("role") != "user":
+            continue
+        if isinstance(message.get("content"), str):
+            message["content"] = [{"type": "text", "text": message["content"]}]
+        for block in message.get("content", []):
+            if isinstance(block, dict):
+                block.pop("cache_control", None)
+                if block.get("type") == "text":
+                    blocks.append(block)
+    # Bound explicit markers as the conversation grows. Each prefix includes
+    # preceding assistant reasoning; none of that content is stripped.
+    for block in blocks[-4:]:
+        block["cache_control"] = {"type": "ephemeral"}
+    return messages
+
+
+def cap_output_to_context(request, context_window, max_tokens_field, input_estimate=None):
+    if context_window is None or max_tokens_field is None:
+        return
+    # These providers share one window between input and output. Reserve input
+    # headroom instead of requesting a maximum that cannot fit a later turn.
+    if input_estimate is None:
+        input_estimate = byte_estimate(request.get("messages", request.get("input", "")))
+    options = request
+    path = max_tokens_field.split(".")
+    for key in path[:-1]:
+        options = options[key]
+    options[path[-1]] = min(options[path[-1]], max(1, context_window - input_estimate))
+
+
 def context_length_error(exc):
     body = getattr(exc, "body", {})
     message = (str(exc) + " " + json.dumps(body, default=str)).lower()
@@ -43,10 +78,13 @@ def context_length_error(exc):
 
 
 class APIConversation:
-    def __init__(self, provider, model, player, game, wire_format, *, limit=CONTEXT_RESET_TOKENS):
+    def __init__(self, provider, model, player, game, wire_format, *, limit=CONTEXT_RESET_TOKENS,
+                 context_window=None, max_tokens_field=None):
         self.identity = dict(version=CONVERSATION_VERSION, provider=provider,
                              model=model, player=player, game=game, limit=limit)
         self.wire_format = wire_format
+        self.context_window = context_window
+        self.max_tokens_field = max_tokens_field
         self.limit = limit
         self.game_attempt = 1
         self.loaded = False
@@ -121,6 +159,9 @@ class APIConversation:
         request = copy.deepcopy(request)
         field = "input" if self.wire_format in {"responses", "google"} else "messages"
         request[field] = copy.deepcopy(self.history + current)
+        if self.identity["provider"] == "openrouter" and self.identity["model"].startswith("qwen/"):
+            request[field] = qwen_cache_messages(request[field])
+        cap_output_to_context(request, self.context_window, self.max_tokens_field, estimate)
         if (self.wire_format == "responses"
                 and self.identity["provider"] in {"openai", "meta", "xai"}):
             request["include"] = ["reasoning.encrypted_content"]
