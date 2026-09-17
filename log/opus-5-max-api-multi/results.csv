@@ -1,3 +1,7 @@
 game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
 1,1,opus-5-max-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,opus-5-max-api-multi,1,64,anthropic_messages_api,32,0,0,1825.120452,5.617204000000
 2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,opus-5-max-api-multi,B+20.0,kata1-b6c96-s16525312-d2925067-temp-0.7,1,121,anthropic_messages_api,60,0,0,5869.001301,18.465382750000
+3,2,opus-5-max-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+74.0,opus-5-max-api-multi,1,3,anthropic_messages_api,2,0,0,6.187211,0.020129500000
+4,2,kata1-b6c96-s16525312-d2925067-temp-0.7,opus-5-max-api-multi,W+R,opus-5-max-api-multi,0,39,anthropic_messages_api,19,0,0,1086.576655,3.079856750000
+5,3,opus-5-max-api-multi,kata1-b6c96-s15704832-d2832803,B+1.0,opus-5-max-api-multi,1,67,anthropic_messages_api,34,0,0,3274.457410,10.302962750000
+6,3,kata1-b6c96-s15704832-d2832803,opus-5-max-api-multi,B+74.0,kata1-b6c96-s15704832-d2832803,1,149,anthropic_messages_api,74,0,0,4781.690401,16.829152500000

@@ -158,7 +158,10 @@ def _refresh(refresh_token):
             "client_id": CLIENT_ID,
             "refresh_token": refresh_token,
         }).encode(),
-        headers={"Content-Type": "application/json", "Accept": "application/json"},
+        # The token endpoint's browser-integrity filter rejects urllib's
+        # default Python-urllib user-agent with HTTP 403 / Cloudflare 1010.
+        headers={"Content-Type": "application/json", "Accept": "application/json",
+                 "User-Agent": "gobench/0.1.0"},
         method="POST",
     )
     try:

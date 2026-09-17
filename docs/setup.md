@@ -51,6 +51,12 @@ old access token until shortly before it expires. A Messages API 401 triggers
 one coordinated refresh per consecutive rejection episode; a 403 waits for
 credentials to change or periodically rechecks access without forcing refresh.
 
+Token refresh requests identify the client as `gobench/0.1.0`. The token
+endpoint rejects Python urllib's default user-agent with Cloudflare error 1010
+(HTTP 403), before validating the refresh token. This differs from an OAuth
+`invalid_grant` response. Workers started before this fix need a restart with
+`--resume` to load it; renewing the login alone does not update their code.
+
 The Claude OAuth adapter calls the Messages API directly through the Anthropic
 SDK's HTTP/streaming transport, without launching an agent runtime. It
 uses Claude Code compatibility headers and an identity system preamble;

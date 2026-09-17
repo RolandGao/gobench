@@ -3,3 +3,7 @@ game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_ille
 2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,fable-5.1-max-api-multi,W+6.0,fable-5.1-max-api-multi,0,68,anthropic_messages_api,34,0,0,1967.505355,10.660961250000
 3,2,fable-5.1-max-api-multi,kata1-b6c96-s25461504-d4002500,W+26.0,kata1-b6c96-s25461504-d4002500,0,90,anthropic_messages_api,45,0,0,2622.684717,14.326865000000
 4,2,kata1-b6c96-s25461504-d4002500,fable-5.1-max-api-multi,B+12.0,kata1-b6c96-s25461504-d4002500,1,79,anthropic_messages_api,39,0,0,2065.935207,10.992985250000
+5,3,fable-5.1-max-api-multi,kata1-b6c96-s18429184-d3197121,B+R,fable-5.1-max-api-multi,1,38,anthropic_messages_api,19,0,0,1209.047079,6.040708500000
+6,3,kata1-b6c96-s18429184-d3197121,fable-5.1-max-api-multi,W+R,fable-5.1-max-api-multi,0,71,anthropic_messages_api,35,0,0,2512.359465,14.656675500000
+7,4,fable-5.1-max-api-multi,kata1-b6c96-s21371392-d3529696,W+24.0,kata1-b6c96-s21371392-d3529696,0,90,anthropic_messages_api,45,0,0,2672.782492,17.785432000000
+8,4,kata1-b6c96-s21371392-d3529696,fable-5.1-max-api-multi,B+12.0,kata1-b6c96-s21371392-d3529696,1,91,anthropic_messages_api,45,0,0,2916.349884,16.955714000000

@@ -672,6 +672,28 @@ class ClaudeOAuthTests(unittest.TestCase):
                 self.assertNotIn("private-refresh", str(raised.exception))
         send.assert_called_once()
 
+    def test_refresh_identifies_client_to_avoid_browser_integrity_rejection(self):
+        self.write_auth(expires=0)
+        result = {"access_token": "sk-ant-oat-renewed", "refresh_token": "rotated",
+                  "expires_in": 28800}
+
+        def endpoint(request, **kwargs):
+            agent = request.get_header("User-agent", "Python-urllib/3.12")
+            if agent.startswith("Python-urllib/"):
+                raise urllib.error.HTTPError(
+                    request.full_url, 403, "Forbidden", {},
+                    io.BytesIO(b'{"error_code":1010,"error_name":"browser_signature_banned"}'),
+                )
+            return io.BytesIO(json.dumps(result).encode())
+
+        with mock.patch.object(oauth.urllib.request, "urlopen", side_effect=endpoint) as send:
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-renewed")
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-renewed")
+        send.assert_called_once()
+        saved = json.loads(self.auth.read_text())["claudeAiOauth"]
+        self.assertEqual(saved["refreshToken"], "rotated")
+        self.assertFalse(self.auth.with_name(self.auth.name + ".arena-refresh.json").exists())
+
     def test_connection_failure_can_retry_without_risking_a_consumed_token(self):
         self.write_auth(expires=0)
         result = {"access_token": "sk-ant-oat-new", "refresh_token": "new-refresh", "expires_in": 3600}
