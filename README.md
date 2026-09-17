@@ -31,6 +31,16 @@ Generate a summary of the configured historical runs:
 python arena.py --summary
 ```
 
+## Citation
+```
+@misc{gao2026gobench,
+  title = {{GoBench}: Evaluating {LLMs} on the Game of {Go}},
+  author = {Gao, Roland},
+  year = {2026},
+  url = {https://rolandgao.com/gobench.pdf}
+}
+```
+
 ## License
 
 [MIT License](LICENSE)
