@@ -9,3 +9,5 @@ game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_ille
 8,4,kata1-b6c96-s21371392-d3529696,fable-5.1-max-api-multi,B+12.0,kata1-b6c96-s21371392-d3529696,1,91,anthropic_messages_api,45,0,0,2916.349884,16.955714000000
 9,5,fable-5.1-max-api-multi,kata1-b6c96-s19408128-d3280178,W+24.0,kata1-b6c96-s19408128-d3280178,0,88,anthropic_messages_api,44,0,0,4591.512776,26.943733250000
 10,5,kata1-b6c96-s19408128-d3280178,fable-5.1-max-api-multi,B+46.0,kata1-b6c96-s19408128-d3280178,1,77,anthropic_messages_api,38,0,0,1936.997867,11.735079500000
+11,6,fable-5.1-max-api-multi,kata1-b6c96-s18429184-d3197121,W+30.0,kata1-b6c96-s18429184-d3197121,0,96,anthropic_messages_api,48,0,0,1752.039258,9.469155250000
+12,6,kata1-b6c96-s18429184-d3197121,fable-5.1-max-api-multi,B+36.0,kata1-b6c96-s18429184-d3197121,1,101,anthropic_messages_api,50,0,0,4008.881792,28.379339000000
