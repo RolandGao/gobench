@@ -30,6 +30,8 @@ Generate a summary of the configured historical runs:
 ```bash
 python arena.py --summary
 ```
+The summary is here:
+https://github.com/RolandGao/gobench/blob/main/log/summary/report.txt
 
 ## Citation
 ```
