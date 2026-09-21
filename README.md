@@ -2,7 +2,8 @@
 paper: https://rolandgao.com/gobench.pdf
 
 Active leaderboard: https://rolandgao.com/blog/gobench/
-<img width="1187" height="595" alt="Screenshot 2026-09-15 at 8 09 28 PM" src="https://github.com/user-attachments/assets/be43530a-3b15-47c8-8c26-0044f4c8c200" />
+<img width="1211" height="616" alt="Screenshot 2026-09-20 at 5 14 20 PM" src="https://github.com/user-attachments/assets/91745e05-56b6-4a1b-a3b0-a44cb6724cd9" />
+
 
 
 ## Setup
