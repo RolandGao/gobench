@@ -28,7 +28,7 @@ CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
 TOKEN_URL = "https://platform.claude.com/v1/oauth/token"
 HEADERS = {
     "anthropic-beta": "claude-code-20250219,oauth-2025-04-20",
-    "user-agent": "claude-cli/2.1.261",
+    "user-agent": "claude-cli/2.1.280",
     "x-app": "cli",
 }
 AUTH_POLL_SECONDS = 60

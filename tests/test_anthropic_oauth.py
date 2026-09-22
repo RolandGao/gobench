@@ -348,6 +348,27 @@ class ClaudeOAuthTests(unittest.TestCase):
         self.assertEqual(compact["cache_write_tokens"], 200)
         self.assertEqual(client.conversation.observed_tokens, 5230)
 
+    def test_opus_55_multiturn_transport_and_pricing(self):
+        name = "claude-opus-5-5-high-api-multi"
+        events = message_events()
+        events[0]["message"]["model"] = "claude-opus-5-5"
+        self.reply = lambda: sse(events)
+        client = self.client(name)
+        self.call(client, name)
+        output, _, cost = self.call(client, name, move=3)
+        self.assertEqual(output, "D4")
+        self.assertAlmostEqual(cost, (100 * 4 + 40 * .2 + 20 * 5 + 30 * 20) / 1e6)
+        first, second = [json.loads(request.content) for request in self.requests]
+        for request, body in zip(self.requests, (first, second)):
+            version = request.headers["user-agent"].removeprefix("claude-cli/")
+            self.assertGreaterEqual(tuple(map(int, version.split("."))), (2, 1, 280))
+            self.assertEqual(body["model"], "claude-opus-5-5")
+            self.assertEqual(body["output_config"], {"effort": "high"})
+        self.assertEqual(second["system"], first["system"])
+        self.assertEqual(second["messages"][:1], first["messages"])
+        self.assertEqual(second["messages"][1]["content"][0]["signature"], "opaque-signature")
+        self.assertEqual(len(second["messages"]), 3)
+
     def test_oauth_fully_cached_input_retains_measured_context_size(self):
         name = "opus-5-high-api-multi"
         self.reply = lambda: sse(message_events(input_tokens=0))

@@ -662,6 +662,7 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
             ("gemini-3.1-pro-low-api", "low"),
             ("opus-5-max-api", "max"),
             ("opus-5-xhigh-api", "xhigh"),
+            ("claude-opus-5-5-high-api", "high"),
             ("fable-5.1-high-api", "high"),
             ("fable-5.1-xhigh-api", "xhigh"),
             ("fable-5.1-max-api", "max"),

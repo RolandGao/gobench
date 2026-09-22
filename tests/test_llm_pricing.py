@@ -29,6 +29,7 @@ class PricingTests(unittest.TestCase):
             "gemini-3.8-flash": (.75, .075, 3.75),
             "gemini-3.1-pro-preview": (2, .2, 12),
             "claude-opus-5": (5, .5, 25),
+            "claude-opus-5-5": (4, .2, 20),
             "claude-fable-5-1": (10, .25, 50),
         }
         for api in arena._Arena.LLM_APIS:

@@ -153,7 +153,7 @@ CONFIG = ArenaConfig(
     active_players=(
         # "DeepSeek-V4.1-Flash-high-api-multi",
         # "DeepSeek-V4.1-Flash-max-api-multi",
-        "gpt6-astra-low-api-multi",
+        # "gpt6-astra-low-api-multi",
         # "gpt6-astra-high-codex-1h",
         # "gpt6-astra-high-codex-0h",
         # "opus-5-high-api-multi2",
@@ -166,7 +166,7 @@ CONFIG = ArenaConfig(
         # "gpt5.6-sol-high-codex-4h",
         # "gpt5.6-sol-high-codex-8h",
         # "fable-5.1-max-api-multi",
-        # "opus-5-max-api-multi",
+        "claude-opus-5-5-high-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # "gpt6-astra-high-api-multi",
@@ -892,6 +892,14 @@ class _Arena:
                     ("low", "medium", "high", "xhigh", "max"),
                     (10.0, 0.25, 50.0),
                     cache_write_price=12.5,
+                    max_output_tokens=128_000,
+                ),
+                **_llm_effort_players(
+                    "claude-opus-5-5",
+                    "claude-opus-5-5",
+                    ("low", "medium", "high", "xhigh", "max"),
+                    (4.0, 0.2, 20.0),
+                    cache_write_price=5.0,
                     max_output_tokens=128_000,
                 ),
                 **_llm_effort_players(
