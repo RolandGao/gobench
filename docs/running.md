@@ -17,7 +17,9 @@ Each LLM writes to `log/<full-player-name>/`, for example
 `log/gpt5.6-sol-high-api-multi/`, with raw journals under the matching
 `untracked_log/<full-player-name>/`. The effort, mode, and numbered experiment
 suffix are part of the name. Multi-player profiles launch independent processes
-and give each LLM its own directory and report. KataGo-only runs use
+and give each LLM its own directory and report. Failures are reported immediately
+while other players continue; the command exits with a nonzero status if any fail.
+KataGo-only runs use
 `arena_katago_YYYYMMDD_HHMMSS_microseconds_id` directory names.
 
 When launching from source configuration, an existing LLM directory must be an

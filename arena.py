@@ -143,6 +143,9 @@ _FINAL_RUNS = (
     "fable-5.1-high-api-multi",
     "fable-5.1-max-api-multi",
     "opus-5-max-api-multi",
+    "gpt6-sol-high-api-multi2",
+    "gpt6-luna-high-api-multi2",
+    "claude-opus-5-5-high-api-multi",
 )
 
 
@@ -6127,10 +6130,28 @@ def run_arena(resume_run_dir=None):
         configs = [
             replace(config, active_players=(name,)) for name in config.active_players
         ]
+        results = [None] * len(configs)
+        failed = []
         with concurrent.futures.ProcessPoolExecutor(
             max_workers=len(configs), mp_context=multiprocessing.get_context("spawn")
         ) as executor:
-            return tuple(executor.map(_run_player_arena, configs))
+            futures = {
+                executor.submit(_run_player_arena, player_config): index
+                for index, player_config in enumerate(configs)
+            }
+            # Report failures as they happen while other players keep running.
+            # Ordered map would hide a later player's error behind an earlier run.
+            for future in concurrent.futures.as_completed(futures):
+                index = futures[future]
+                try:
+                    results[index] = future.result()
+                except Exception as exc:
+                    name = configs[index].active_players[0]
+                    failed.append(name)
+                    print(f"error: {name}: {exc}", file=sys.stderr, flush=True)
+        if failed:
+            raise ArenaError(f"player runs failed: {', '.join(failed)}")
+        return tuple(results)
     named = _named_llm_directory(config.active_players)
     if named is None or (
         resume_run_dir is not None and resume_run_dir.resolve() != named.resolve()

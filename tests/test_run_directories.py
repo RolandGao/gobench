@@ -165,17 +165,48 @@ class RunDirectoryTests(unittest.TestCase):
         names = (self.name, "grok-4.5-high-api-multi")
         config = arena.replace(arena.CONFIG, active_players=names, past_run_names=())
         captured = []
-        def dispatch(fn, configs):
+        def dispatch(fn, config):
             self.assertIs(fn, arena._run_player_arena)
-            captured.extend(configs)
-            return iter(arena._Arena.LOG_ROOT / c.active_players[0] for c in configs)
+            captured.append(config)
+            future = concurrent.futures.Future()
+            future.set_result(arena._Arena.LOG_ROOT / config.active_players[0])
+            return future
         with (mock.patch.object(arena._State, "config", config),
               mock.patch.object(arena._State, "katago_mode", False),
               mock.patch.object(arena.concurrent.futures, "ProcessPoolExecutor") as pool):
-            pool.return_value.__enter__.return_value.map.side_effect = dispatch
+            pool.return_value.__enter__.return_value.submit.side_effect = dispatch
             result = arena.run_arena()
         self.assertEqual([c.active_players for c in captured], [(names[0],), (names[1],)])
         self.assertEqual([p.name for p in result], list(names))
+
+    def test_later_player_failure_is_reported_before_first_player_finishes(self):
+        names = (self.name, "grok-4.5-high-api-multi")
+        config = arena.replace(arena.CONFIG, active_players=names, past_run_names=())
+        pending, failed = concurrent.futures.Future(), concurrent.futures.Future()
+        failed.set_exception(FileNotFoundError("network download failed"))
+
+        def report(message, **kwargs):
+            if message == f"error: {names[1]}: network download failed":
+                self.assertFalse(pending.done())
+                self.assertTrue(kwargs.get("flush"))
+                self.assertIs(kwargs.get("file"), arena.sys.stderr)
+                pending.set_result(arena._Arena.LOG_ROOT / names[0])
+
+        # A timeout turns delayed reporting into a bounded test failure.
+        as_completed = concurrent.futures.as_completed
+        with (mock.patch.object(arena._State, "config", config),
+              mock.patch.object(arena._State, "katago_mode", False),
+              mock.patch.object(arena.concurrent.futures, "ProcessPoolExecutor") as pool,
+              mock.patch.object(arena.concurrent.futures, "as_completed",
+                                side_effect=lambda fs: as_completed(fs, timeout=2)),
+              mock.patch("builtins.print", side_effect=report) as output):
+            pool.return_value.__enter__.return_value.submit.side_effect = [pending, failed]
+            with self.assertRaisesRegex(arena.ArenaError, names[1]):
+                arena.run_arena()
+        self.assertTrue(pending.done())
+        self.assertFalse(pending.cancelled())
+        self.assertIn(f"error: {names[1]}: network download failed",
+                      [call.args[0] for call in output.call_args_list])
 
     def test_multi_run_preflight_blocks_collisions_before_starting_jobs(self):
         names = (self.name, "grok-4.5-high-api-multi")

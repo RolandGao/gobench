@@ -145,34 +145,35 @@ def _download(
             return
 
     destination.parent.mkdir(parents=True, exist_ok=True)
-    temporary = destination.with_suffix(destination.suffix + ".part")
-    temporary.unlink(missing_ok=True)
+    # Separate workers may download the same network at the same time. Each
+    # owns its staging file and only publishes fully verified bytes.
+    temporary = destination.with_name(f".{destination.name}.{uuid.uuid4().hex}.part")
     print(f"Downloading {destination.name}...", flush=True)
     request = urllib.request.Request(
         url, headers={"User-Agent": "GoBench/1.0"}
     )
     try:
-        with urllib.request.urlopen(request) as response, temporary.open("wb") as out:
-            shutil.copyfileobj(response, out)
-    except (OSError, urllib.error.URLError) as exc:
-        temporary.unlink(missing_ok=True)
-        raise GoEngineError(f"could not download {url}: {exc}") from exc
+        try:
+            with urllib.request.urlopen(request) as response, temporary.open("xb") as out:
+                shutil.copyfileobj(response, out)
+        except (OSError, urllib.error.URLError) as exc:
+            raise GoEngineError(f"could not download {url}: {exc}") from exc
 
-    actual_size = temporary.stat().st_size
-    if expected_size is not None and actual_size != expected_size:
-        temporary.unlink(missing_ok=True)
-        raise GoEngineError(
-            f"size mismatch for {destination.name}: "
-            f"expected {expected_size}, got {actual_size}"
-        )
-    if expected_sha256 is not None:
-        actual_sha256 = _sha256(temporary)
-        if actual_sha256 != expected_sha256:
-            temporary.unlink(missing_ok=True)
+        actual_size = temporary.stat().st_size
+        if expected_size is not None and actual_size != expected_size:
             raise GoEngineError(
-                f"checksum mismatch for {destination.name}: {actual_sha256}"
+                f"size mismatch for {destination.name}: "
+                f"expected {expected_size}, got {actual_size}"
             )
-    temporary.replace(destination)
+        if expected_sha256 is not None:
+            actual_sha256 = _sha256(temporary)
+            if actual_sha256 != expected_sha256:
+                raise GoEngineError(
+                    f"checksum mismatch for {destination.name}: {actual_sha256}"
+                )
+        temporary.replace(destination)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def ensure_katago_installed() -> None:
