@@ -544,7 +544,16 @@ class AnthropicClient:
                     raise error from None
             raise
         if response.stop_reason not in {"end_turn", "stop_sequence"}:
-            error = ClaudeOAuthError(f"Claude OAuth response stopped: {response.stop_reason}")
+            error = ClaudeOAuthError(
+                f"Claude OAuth response stopped: {response.stop_reason}",
+                retryable=response.stop_reason == "refusal",
+            )
             error.arena_usage = response.usage.model_dump(mode="json")
+            error.arena_response_diagnostics = {
+                "stop_reason": response.stop_reason,
+                "stop_details": response.model_dump(
+                    mode="json", exclude_none=True,
+                ).get("stop_details"),
+            }
             raise error
         return response

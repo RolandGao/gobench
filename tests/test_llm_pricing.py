@@ -152,6 +152,15 @@ class PricingTests(unittest.TestCase):
         self.assertAlmostEqual(arena._llm_call_cost(usage, "anthropic", "claude-opus-5"),
                                (100 * 5 + 200 * .5 + 300 * 6.25 + 50 * 25) / 1e6)
 
+    def test_anthropic_thinking_is_reported_without_double_billing(self):
+        usage = {"input_tokens": 4, "cache_read_input_tokens": 67458,
+                 "cache_creation_input_tokens": 5905, "output_tokens": 119639,
+                 "output_tokens_details": {"thinking_tokens": 119639}}
+        counts = arena._llm_token_usage(arena._llm_api_config("anthropic"), usage)
+        self.assertEqual(counts.reasoning_tokens, 119639)
+        self.assertAlmostEqual(arena._llm_call_cost(usage, "anthropic", "claude-opus-5-5"),
+                               2.4358126)
+
     def test_qwen_explicit_cache_writes_are_charged_once(self):
         usage = {"prompt_tokens": 1000, "completion_tokens": 20,
                  "prompt_tokens_details": {"cached_tokens": 300, "cache_write_tokens": 500}}

@@ -487,6 +487,7 @@ class _AnthropicMessagesProtocol(_LLMProtocol):
         "cached_input_tokens": "cache_read_input_tokens",
         "cache_write_tokens": "cache_creation_input_tokens",
         "output_tokens": "output_tokens",
+        "reasoning_tokens": "output_tokens_details.thinking_tokens",
     }
 
 
@@ -1034,6 +1035,9 @@ class _Arena:
     LLM_API_RETRY_JITTER_FRACTION = _env("LLM_API_RETRY_JITTER_FRACTION", 0.1, float)
     # Upstream Codex 404s have recovered on resume, but can also be permanent.
     CODEX_NOT_FOUND_MAX_ATTEMPTS = 5
+    # A Go prompt can receive a spurious refusal. Bound these expensive retries
+    # even when transient transport failures may retry indefinitely.
+    CLAUDE_REFUSAL_MAX_ATTEMPTS = 3
     # Codex workspace players may use every local tool that can operate inside
     # the network-isolated bubblewrap sandbox. Keep this list explicit because
     # some local capabilities (notably memories) default to disabled upstream.
@@ -3526,7 +3530,10 @@ def _compact_llm_call(entry):
             retry_in_seconds=entry.get("retry_in_seconds"),
             response_status=entry.get("response_status"),
         )
-        for field in ("http_status", "recovery_action", "auth_mode", "quota_window", "quota_reset_at"):
+        for field in (
+            "http_status", "recovery_action", "auth_mode", "quota_window",
+            "quota_reset_at", "stop_reason",
+        ):
             if field in entry:
                 compact[field] = entry[field]
     elif "auth_mode" in entry:
@@ -3820,6 +3827,7 @@ def _call_llm_move(
     total_time, failed_cost, api_try = 0.0, 0.0, 1
     context_resets = 0
     codex_not_found_failures = 0
+    claude_refusals = 0
     while True:
         started_at = dt.datetime.now(dt.timezone.utc).isoformat()
         start = time.perf_counter()
@@ -3864,6 +3872,10 @@ def _call_llm_move(
                                         if auth_mode == "oauth" and api.name == "anthropic" else req)
             quota_wait = getattr(exc, "arena_quota", None)
             auth_wait = getattr(exc, "arena_auth_wait", False)
+            response_diagnostics = getattr(exc, "arena_response_diagnostics", {})
+            stop_reason = response_diagnostics.get("stop_reason")
+            if api.name == "anthropic" and stop_reason == "refusal":
+                claude_refusals += 1
             reset_context = (
                 conversation is not None
                 and bool(conversation.history)
@@ -3876,7 +3888,7 @@ def _call_llm_move(
                 codex_not_found_failures += 1
             retrying = retryable and _llm_api_attempts_remaining(
                 api_try, codex_not_found_failures=codex_not_found_failures
-            )
+            ) and claude_refusals < _Arena.CLAUDE_REFUSAL_MAX_ATTEMPTS
             retry_delay = _llm_api_retry_delay(exc, api_try) if retrying else None
             status = _llm_api_error(exc)[1]
             recovery_hint = _llm_auth_recovery_hint(exc, api)
@@ -3909,6 +3921,7 @@ def _call_llm_move(
                 recovery_action=recovery_action,
                 **(quota_wait or {}),
                 **getattr(exc, "arena_http_diagnostics", {}),
+                **response_diagnostics,
             )
             if retry_delay is None:
                 if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded)):
@@ -3926,6 +3939,8 @@ def _call_llm_move(
                 req = conversation.prepare(_llm_request(api, player, prompt), prompt)
                 log_entry["conversation"] = conversation.pending
             error = f"{type(exc).__name__}{f', HTTP {status}' if status else ''}"
+            if stop_reason:
+                error += f"; stop_reason={stop_reason}"
             if auth_wait:
                 error += f"; {exc}; credentials will be rechecked automatically"
             if quota_wait:

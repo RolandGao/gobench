@@ -826,6 +826,59 @@ class ClaudeOAuthTests(unittest.TestCase):
             self.assertFalse(entry["ok"])
             self.assertEqual(entry["retryable"], retryable)
         self.assertEqual(entry["usage"]["output_tokens"], 30)
+        self.assertEqual(entry["stop_reason"], "max_tokens")
+
+    def test_refusal_retries_same_move_without_saving_failed_history(self):
+        name = "claude-opus-5-5-max-api-multi"
+        client = self.client(name)
+        self.call(client, name)
+        refusal = message_events(stop_reason="refusal")
+        refusal[-2]["delta"]["stop_details"] = {"type": "test_refusal"}
+        refusal[-2]["usage"]["output_tokens"] = 119639
+        refusal[-2]["usage"]["output_tokens_details"] = {"thinking_tokens": 119639}
+        replies = iter([sse(refusal), sse(message_events())])
+        self.reply = lambda: next(replies)
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep") as sleep):
+            output, _, cost = self.call(client, name, move=3)
+        self.assertEqual(output, "D4")
+        self.assertEqual(sleep.call_count, 1)
+        bodies = [json.loads(request.content) for request in self.requests]
+        self.assertEqual(bodies[1], bodies[2])
+        self.assertEqual(bodies[2]["output_config"], {"effort": "max"})
+        self.assertEqual(len(client.conversation.history), 4)
+        for filename in ("raw.jsonl", "compact.jsonl"):
+            entries = [json.loads(line) for line in (self.root / filename).read_text().splitlines()]
+            self.assertEqual([entry["ok"] for entry in entries], [True, False, True])
+            self.assertEqual(entries[1]["stop_reason"], "refusal")
+            self.assertEqual(entries[1]["recovery_action"], "retry")
+            self.assertAlmostEqual(cost, sum(entry["cost_usd"] for entry in entries[1:]))
+            self.assertNotIn("stop_reason", entries[2])
+            if filename == "raw.jsonl":
+                self.assertEqual(entries[1]["stop_details"], {"type": "test_refusal"})
+                self.assertEqual(entries[1]["usage"]["output_tokens"], 119639)
+            else:
+                self.assertEqual(entries[1]["reasoning_tokens"], 119639)
+                self.assertEqual(entries[1]["output_tokens"], 119639)
+        recovered = self.client(name)
+        self.assertEqual(self.call(recovered, name, move=3), ("D4", 0, 0))
+        self.assertEqual(len(self.requests), 3)
+
+    def test_repeated_refusals_are_bounded_even_with_unlimited_transport_retries(self):
+        self.reply = lambda: sse(message_events(stop_reason="refusal"))
+        client = self.client()
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep") as sleep):
+            with self.assertRaisesRegex(arena.ArenaError, "stopped: refusal"):
+                self.call(client)
+        self.assertEqual(len(self.requests), 3)
+        self.assertEqual(sleep.call_count, 2)
+        for filename in ("raw.jsonl", "compact.jsonl"):
+            entries = [json.loads(line) for line in (self.root / filename).read_text().splitlines()]
+            self.assertTrue(all(not entry["ok"] for entry in entries))
+            self.assertEqual(entries[-1]["recovery_action"], "retry_limit_reached")
+            self.assertIsNone(entries[-1]["retry_in_seconds"])
+            self.assertEqual(entries[-1]["stop_reason"], "refusal")
 
     def test_http_failures_preserve_retry_information(self):
         client = self.client()

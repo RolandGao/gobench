@@ -13,3 +13,9 @@ game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_ille
 12,6,kata1-b6c96-s16525312-d2925067,claude-opus-5-5-high-api-multi,B+38.0,kata1-b6c96-s16525312-d2925067,1,77,anthropic_messages_api,38,0,0,344.253289,0.911709600000
 13,7,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067,B+R,claude-opus-5-5-high-api-multi,1,68,anthropic_messages_api,34,0,0,199.346766,0.618238800000
 14,7,kata1-b6c96-s16525312-d2925067,claude-opus-5-5-high-api-multi,W+2.0,claude-opus-5-5-high-api-multi,0,84,anthropic_messages_api,42,1,0,283.290972,0.777902600000
+15,8,claude-opus-5-5-high-api-multi,kata1-b6c96-s17434112-d3038653,W+28.0,kata1-b6c96-s17434112-d3038653,0,86,anthropic_messages_api,43,0,0,318.407670,1.005004600000
+16,8,kata1-b6c96-s17434112-d3038653,claude-opus-5-5-high-api-multi,W+4.0,claude-opus-5-5-high-api-multi,0,67,anthropic_messages_api,33,1,0,238.345454,0.618411800000
+17,9,claude-opus-5-5-high-api-multi,kata1-b6c96-s17434112-d3038653,B+R,claude-opus-5-5-high-api-multi,1,68,anthropic_messages_api,34,0,0,350.606177,0.992199800000
+18,9,kata1-b6c96-s17434112-d3038653,claude-opus-5-5-high-api-multi,B+2.0,kata1-b6c96-s17434112-d3038653,1,44,anthropic_messages_api,22,0,0,131.553625,0.289544200000
+19,10,claude-opus-5-5-high-api-multi,kata1-b6c96-s17434112-d3038653,W+22.0,kata1-b6c96-s17434112-d3038653,0,76,anthropic_messages_api,38,0,0,276.902929,0.857944600000
+20,10,kata1-b6c96-s17434112-d3038653,claude-opus-5-5-high-api-multi,W+8.0,claude-opus-5-5-high-api-multi,0,84,anthropic_messages_api,42,0,0,368.673915,0.940443000000

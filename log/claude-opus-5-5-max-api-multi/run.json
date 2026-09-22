@@ -1995,5 +1995,51 @@
   "cumulative_llm_games": 624,
   "completed_batch_ids": [],
   "untracked_log_dir": "untracked_log/claude-opus-5-5-max-api-multi",
-  "run_directory_scheme": "llm_name"
+  "run_directory_scheme": "llm_name",
+  "extensions": [
+    {
+      "started_at": "2026-09-22T18:03:40.248769+00:00",
+      "previous_total_games": 14,
+      "previous_past_run_dirs": [
+        "log/arena_20260717_215813_957127_3b740750",
+        "log/arena_20260722_210708_427338_47435160",
+        "log/arena_20260723_055601_438304_148a54e8",
+        "log/arena_20260805_040447_246130_2072c54f",
+        "log/DeepSeek-V4-Flash-0731-high-api-multi2",
+        "log/DeepSeek-V4-Flash-0731-max-api-multi",
+        "log/DeepSeek-V4.1-Flash-high-api-multi",
+        "log/DeepSeek-V4.1-Flash-max-api-multi",
+        "log/gemini-3.6-flash-high-api-multi",
+        "log/gemini-3.8-flash-high-api-multi",
+        "log/gemini-3.1-pro-high-api-multi",
+        "log/gpt5.6-luna-high-api-multi",
+        "log/gpt5.6-luna-max-api-multi",
+        "log/gpt5.6-sol-high-api-multi4",
+        "log/gpt5.6-sol-max-api-multi",
+        "log/gpt6-astra-high-api-multi",
+        "log/gpt6-astra-high-api",
+        "log/gpt6-astra-max-api-multi",
+        "log/grok-4.6-high-api-multi2",
+        "log/grok-4.6-xhigh-api-multi",
+        "log/muse-spark-1.3-contributor-high-api-multi",
+        "log/muse-spark-1.3-contributor-xhigh-api-multi",
+        "log/opus-5-high-api-multi2",
+        "log/gpt6-astra-high-codex-1h",
+        "log/gpt6-astra-high-codex-0h",
+        "log/gpt6-astra-high-codex-2h",
+        "log/gpt6-astra-high-codex-4h",
+        "log/gpt6-astra-high-codex-8h",
+        "log/gpt5.6-sol-high-codex-0h",
+        "log/gpt5.6-sol-high-codex-1h",
+        "log/gpt5.6-sol-high-codex-2h",
+        "log/gpt5.6-sol-high-codex-4h",
+        "log/gpt5.6-sol-high-codex-8h",
+        "log/gpt6-astra-low-api-multi",
+        "log/fable-5.1-high-api-multi",
+        "log/fable-5.1-max-api-multi",
+        "log/opus-5-max-api-multi"
+      ],
+      "completed_games": 0
+    }
+  ]
 }
