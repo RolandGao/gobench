@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,claude-opus-5-5-high-api-multi,1,74,anthropic_messages_api,37,2,0,263.840781,0.841931000000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,claude-opus-5-5-high-api-multi,B+10.0,kata1-b6c96-s16525312-d2925067-temp-0.7,1,92,anthropic_messages_api,46,0,0,341.173611,0.970248600000
+3,2,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,W+42.0,kata1-b6c96-s16525312-d2925067-temp-0.7,0,112,anthropic_messages_api,56,0,0,406.382866,1.431647600000
+4,2,kata1-b6c96-s16525312-d2925067-temp-0.7,claude-opus-5-5-high-api-multi,W+R,claude-opus-5-5-high-api-multi,0,43,anthropic_messages_api,21,1,0,119.807565,0.296778200000
+5,3,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+7.0,claude-opus-5-5-high-api-multi,1,89,anthropic_messages_api,45,0,0,283.576432,0.963784600000
+6,3,kata1-b6c96-s16525312-d2925067-temp-0.7,claude-opus-5-5-high-api-multi,W+R,claude-opus-5-5-high-api-multi,0,55,anthropic_messages_api,27,0,0,173.112894,0.433204600000
+7,4,claude-opus-5-5-high-api-multi,kata1-b6c96-s14649344-d2727367,B+12.0,claude-opus-5-5-high-api-multi,1,67,anthropic_messages_api,34,0,0,331.557016,0.955278800000
+8,4,kata1-b6c96-s14649344-d2727367,claude-opus-5-5-high-api-multi,W+4.0,claude-opus-5-5-high-api-multi,0,58,anthropic_messages_api,29,1,0,210.375665,0.543862400000
+9,5,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067,W+62.0,kata1-b6c96-s16525312-d2925067,0,96,anthropic_messages_api,48,0,0,267.467208,0.919963800000
+10,5,kata1-b6c96-s16525312-d2925067,claude-opus-5-5-high-api-multi,W+R,claude-opus-5-5-high-api-multi,0,67,anthropic_messages_api,33,1,0,234.886151,0.602800000000
+11,6,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067,B+R,claude-opus-5-5-high-api-multi,1,58,anthropic_messages_api,29,0,0,196.746914,0.566020000000
+12,6,kata1-b6c96-s16525312-d2925067,claude-opus-5-5-high-api-multi,B+38.0,kata1-b6c96-s16525312-d2925067,1,77,anthropic_messages_api,38,0,0,344.253289,0.911709600000
+13,7,claude-opus-5-5-high-api-multi,kata1-b6c96-s16525312-d2925067,B+R,claude-opus-5-5-high-api-multi,1,68,anthropic_messages_api,34,0,0,199.346766,0.618238800000
+14,7,kata1-b6c96-s16525312-d2925067,claude-opus-5-5-high-api-multi,W+2.0,claude-opus-5-5-high-api-multi,0,84,anthropic_messages_api,42,1,0,283.290972,0.777902600000

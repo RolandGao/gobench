@@ -166,7 +166,7 @@ CONFIG = ArenaConfig(
         # "gpt5.6-sol-high-codex-4h",
         # "gpt5.6-sol-high-codex-8h",
         # "fable-5.1-max-api-multi",
-        "claude-opus-5-5-high-api-multi",
+        "claude-opus-5-5-max-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # "gpt6-astra-high-api-multi",
