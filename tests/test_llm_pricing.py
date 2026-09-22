@@ -15,6 +15,8 @@ class PricingTests(unittest.TestCase):
             "gpt-5.6-sol": (4, .4, 20),
             "gpt-5.6-luna": (.2, .02, 1.2),
             "gpt-6-astra": (10, 1, 50),
+            "gpt-6-sol": (2, .2, 10),
+            "gpt-6-luna": (.1, .01, .5),
             "muse-spark-1.2": (1.25, .15, 4.25),
             "muse-spark-1.3-contributor": (.1, .002, .2),
             "grok-4.5": (2, .3, 6),
@@ -81,6 +83,8 @@ class PricingTests(unittest.TestCase):
             ("openai", "gpt-5.5", 272001, (5, .5, 30), (10, 1, 45)),
             ("openai", "gpt-5.6-sol", 272001, (4, .4, 20), (8, .8, 30)),
             ("openai", "gpt-6-astra", 272001, (10, 1, 50), (20, 2, 75)),
+            ("openai", "gpt-6-sol", 272001, (2, .2, 10), (4, .4, 15)),
+            ("openai", "gpt-6-luna", 272001, (.1, .01, .5), (.2, .02, .75)),
             ("openai_codex_workspace", "gpt-5.6-luna", 272001, (.2, .02, 1.2), (.4, .04, 1.8)),
             ("xai", "grok-4.5", 200000, (2, .3, 6), (4, .6, 12)),
             ("xai", "grok-4.6", 200000, (2, .5, 6), (4, 1, 12)),
@@ -132,8 +136,11 @@ class PricingTests(unittest.TestCase):
             for model, inp, cached, write, out in (
                 ("gpt-5.6-sol", 4, .4, 5, 20),
                 ("gpt-5.6-luna", .2, .02, .25, 1.2),
+                ("gpt-6-sol", 2, .2, 2.5, 10),
+                ("gpt-6-luna", .1, .01, .125, .5),
             ):
-                if provider == "openai" and model.endswith("luna"):
+                if not any(player.model == model for player in
+                           arena._llm_api_config(provider).players.values()):
                     continue
                 for inputs in (1000, 272001):
                     with self.subTest(provider=provider, model=model, inputs=inputs):

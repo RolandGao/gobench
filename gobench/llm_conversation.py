@@ -166,7 +166,7 @@ class APIConversation:
                 and self.identity["provider"] in {"openai", "meta", "xai"}):
             request["include"] = ["reasoning.encrypted_content"]
             if (self.identity["provider"] == "openai"
-                    and self.identity["model"].startswith(("gpt-5.6", "gpt-6-astra"))):
+                    and self.identity["model"].startswith(("gpt-5.6", "gpt-6-"))):
                 request["reasoning"]["context"] = "all_turns"
         self.pending = dict(identity=self.identity, game_attempt=self.game_attempt,
                             session=self.session, reset_reason=self.reset_reason,

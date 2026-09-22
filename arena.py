@@ -166,7 +166,9 @@ CONFIG = ArenaConfig(
         # "gpt5.6-sol-high-codex-4h",
         # "gpt5.6-sol-high-codex-8h",
         # "fable-5.1-max-api-multi",
-        "claude-opus-5-5-max-api-multi",
+        # "claude-opus-5-5-max-api-multi",
+        "gpt6-sol-high-api-multi2",
+        "gpt6-luna-high-api-multi2",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # "gpt6-astra-high-api-multi",
@@ -177,7 +179,7 @@ CONFIG = ArenaConfig(
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
-    active_player_prior_elo_mean=2000.0,
+    active_player_prior_elo_mean=1000.0,
     active_player_prior_elo_sd=2000.0,
 )
 
@@ -653,6 +655,27 @@ class _Arena:
                     ("low", "medium", "high", "xhigh", "max"),
                     (10.0, 1.0, 50.0),
                     cache_write_price=12.5,
+                    max_output_tokens=128_000,
+                    long_context_min_tokens=272_001,
+                    long_context_multipliers=(2.0, 2.0, 1.5),
+                ),
+                # GPT-6 Sol/Luna rates, efforts, and limits checked 2026-09-22:
+                # https://developers.openai.com/api/docs/models/gpt-6-sol
+                # https://developers.openai.com/api/docs/models/gpt-6-luna
+                **_llm_effort_players(
+                    "gpt6-sol", "gpt-6-sol",
+                    ("none", "low", "medium", "high", "xhigh", "max"),
+                    (2.0, 0.2, 10.0),
+                    cache_write_price=2.5,
+                    max_output_tokens=128_000,
+                    long_context_min_tokens=272_001,
+                    long_context_multipliers=(2.0, 2.0, 1.5),
+                ),
+                **_llm_effort_players(
+                    "gpt6-luna", "gpt-6-luna",
+                    ("none", "low", "medium", "high", "xhigh", "max"),
+                    (0.1, 0.01, 0.5),
+                    cache_write_price=0.125,
                     max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),

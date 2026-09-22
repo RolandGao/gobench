@@ -124,6 +124,33 @@ class OAuthTests(unittest.TestCase):
             attempt=1,
         )
 
+    def test_gpt6_sol_luna_preserve_history_and_use_published_rates(self):
+        for family in ("sol", "luna"):
+            name = f"gpt6-{family}-high-api-multi"
+            with self.subTest(name=name):
+                for path in self.root.glob("*.jsonl"):
+                    path.unlink()
+                client = self.client(name)
+                self.call(client, name)
+                _, _, cost = self.call(client, name, move=3)
+                expected = ((60 * 2 + 40 * .2 + 20 * 10) if family == "sol"
+                            else (60 * .1 + 40 * .01 + 20 * .5)) / 1e6
+                self.assertAlmostEqual(cost, expected)
+                request = json.loads(self.requests[-1].content)
+                self.assertEqual(request["model"], f"gpt-6-{family}")
+                self.assertEqual(request["reasoning"], {
+                    "effort": "high", "context": "all_turns",
+                })
+                self.assertNotIn("max_output_tokens", request)
+                self.assertTrue(any(
+                    item.get("encrypted_content") == "opaque-reasoning"
+                    for item in request["input"]
+                ))
+                manifest = arena._llm_player_manifest(name)
+                self.assertEqual(manifest["cost_basis"],
+                                 "api_equivalent_estimate")
+                self.assertEqual(manifest["max_output_tokens"], 128000)
+
     def test_all_gpt_modes_use_oauth_and_keep_model_and_effort(self):
         api = arena._llm_api_config("openai")
         for name, player in api.players.items():

@@ -1,0 +1,3 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,claude-opus-5-5-max-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,claude-opus-5-5-max-api-multi,1,62,anthropic_messages_api,31,0,0,1968.509853,6.599089200000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,claude-opus-5-5-max-api-multi,W+R,claude-opus-5-5-max-api-multi,0,51,anthropic_messages_api,25,1,0,3546.505559,10.121461600000
