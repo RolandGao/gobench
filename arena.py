@@ -146,6 +146,8 @@ _FINAL_RUNS = (
     "gpt6-sol-high-api-multi2",
     "gpt6-luna-high-api-multi2",
     "claude-opus-5-5-high-api-multi",
+    "gpt6-sol-max-api-multi",
+    "gpt6-luna-max-api-multi",
 )
 
 
