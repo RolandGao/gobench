@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt6-luna-max-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,W+6.0,kata1-b6c96-s8080640-d1961030-temp-0.7,0,89,openai_responses_api,45,0,0,1143.185365,0.054005740000
+2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,gpt6-luna-max-api-multi,W+16.0,gpt6-luna-max-api-multi,0,89,openai_responses_api,44,0,0,1660.232407,0.078880080000
+3,2,gpt6-luna-max-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+R,gpt6-luna-max-api-multi,1,54,openai_responses_api,27,0,0,912.074360,0.037601940000
+4,2,kata1-b6c96-s8080640-d1961030-temp-0.7,gpt6-luna-max-api-multi,W+R,gpt6-luna-max-api-multi,0,59,openai_responses_api,29,0,0,931.681080,0.037353080000
+5,3,gpt6-luna-max-api-multi,kata1-b6c96-s5214720-d1690538,W+10.0,kata1-b6c96-s5214720-d1690538,0,92,openai_responses_api,46,0,0,1777.962521,0.085887380000
+6,3,kata1-b6c96-s5214720-d1690538,gpt6-luna-max-api-multi,W+R,gpt6-luna-max-api-multi,0,119,openai_responses_api,59,0,0,2363.275069,0.118507940000
+7,4,gpt6-luna-max-api-multi,kata1-b6c96-s5214720-d1690538,B+2.0,gpt6-luna-max-api-multi,1,88,openai_responses_api,44,0,0,1342.537034,0.063143180000
+8,4,kata1-b6c96-s5214720-d1690538,gpt6-luna-max-api-multi,B+38.0,kata1-b6c96-s5214720-d1690538,1,111,openai_responses_api,55,0,0,1992.030556,0.100543440000
+9,5,gpt6-luna-max-api-multi,kata1-b6c96-s5214720-d1690538,W+48.0,kata1-b6c96-s5214720-d1690538,0,134,openai_responses_api,67,0,0,3089.022429,0.167064060000
+10,5,kata1-b6c96-s5214720-d1690538,gpt6-luna-max-api-multi,W+6.0,gpt6-luna-max-api-multi,0,85,openai_responses_api,42,0,0,1562.524848,0.071796340000
+11,6,gpt6-luna-max-api-multi,kata1-b6c96-s5214720-d1690538,W+24.0,kata1-b6c96-s5214720-d1690538,0,112,openai_responses_api,56,1,0,1737.707298,0.090240000000
+12,6,kata1-b6c96-s5214720-d1690538,gpt6-luna-max-api-multi,W+12.0,gpt6-luna-max-api-multi,0,97,openai_responses_api,48,1,0,1745.363170,0.082063140000
+13,7,gpt6-luna-max-api-multi,kata1-b6c96-s5214720-d1690538,W+24.0,kata1-b6c96-s5214720-d1690538,0,114,openai_responses_api,57,1,0,2458.222232,0.122935680000
+14,7,kata1-b6c96-s5214720-d1690538,gpt6-luna-max-api-multi,B+24.0,kata1-b6c96-s5214720-d1690538,1,127,openai_responses_api,63,0,0,2139.225094,0.108879460000
