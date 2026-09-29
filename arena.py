@@ -174,8 +174,10 @@ CONFIG = ArenaConfig(
         # "claude-opus-5-5-max-api-multi",
         # "gpt6-sol-max-api-multi",
         # "gpt6-luna-max-api-multi",
-        "gpt6.1-sol-high-api-multi",
-        "gpt6.1-sol-max-api-multi",
+        # "gpt6.1-sol-high-api-multi",
+        # "gpt6.1-sol-max-api-multi",
+        "claude-sonnet-5-5-high-api-multi",
+        "claude-sonnet-5-5-max-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # "gpt6-astra-high-api-multi",
@@ -942,6 +944,17 @@ class _Arena:
                     ("low", "medium", "high", "xhigh", "max"),
                     (4.0, 0.2, 20.0),
                     cache_write_price=5.0,
+                    max_output_tokens=128_000,
+                ),
+                # Sonnet 5.5 rates, efforts, and limits checked 2026-09-29:
+                # https://platform.claude.com/docs/en/about-claude/pricing
+                # https://platform.claude.com/docs/en/build-with-claude/effort
+                **_llm_effort_players(
+                    "claude-sonnet-5-5",
+                    "claude-sonnet-5-5",
+                    ("high", "max"),
+                    (2.0, 0.2, 10.0),
+                    cache_write_price=2.5,
                     max_output_tokens=128_000,
                 ),
                 **_llm_effort_players(
