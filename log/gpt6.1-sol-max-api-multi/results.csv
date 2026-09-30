@@ -1,3 +1,17 @@
 game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
 1,1,gpt6.1-sol-max-api-multi,kata1-b6c96-s8080640-d1961030-temp-0.7,B+R,gpt6.1-sol-max-api-multi,1,52,openai_responses_api,26,0,0,1075.217729,0.450838800000
 2,1,kata1-b6c96-s8080640-d1961030-temp-0.7,gpt6.1-sol-max-api-multi,W+16.0,gpt6.1-sol-max-api-multi,0,75,openai_responses_api,37,0,0,2311.547200,1.066748000000
+3,2,gpt6.1-sol-max-api-multi,kata1-b6c96-s11888896-d2416753-temp-0.5,W+22.0,kata1-b6c96-s11888896-d2416753-temp-0.5,0,124,openai_responses_api,62,0,0,4205.929949,2.027819200000
+4,2,kata1-b6c96-s11888896-d2416753-temp-0.5,gpt6.1-sol-max-api-multi,W+10.0,gpt6.1-sol-max-api-multi,0,64,openai_responses_api,32,0,0,1550.634043,0.667800400000
+5,3,gpt6.1-sol-max-api-multi,kata1-b6c96-s10825472-d2300510,B+R,gpt6.1-sol-max-api-multi,1,54,openai_responses_api,27,0,0,972.454612,0.422874400000
+6,3,kata1-b6c96-s10825472-d2300510,gpt6.1-sol-max-api-multi,W+6.0,gpt6.1-sol-max-api-multi,0,56,openai_responses_api,28,0,0,1189.448163,0.501164000000
+7,4,gpt6.1-sol-max-api-multi,kata1-b6c96-s13733120-d2631546-temp-0.5,B+R,gpt6.1-sol-max-api-multi,1,50,openai_responses_api,25,0,0,2522.294533,0.816902800000
+8,4,kata1-b6c96-s13733120-d2631546-temp-0.5,gpt6.1-sol-max-api-multi,W+R,gpt6.1-sol-max-api-multi,0,59,openai_responses_api,29,0,0,1551.180313,0.616604400000
+9,5,gpt6.1-sol-max-api-multi,kata1-b6c96-s14649344-d2727367-temp-0.3,B+2.0,gpt6.1-sol-max-api-multi,1,58,openai_responses_api,29,0,0,1217.851617,0.562046800000
+10,5,kata1-b6c96-s14649344-d2727367-temp-0.3,gpt6.1-sol-max-api-multi,W+2.0,gpt6.1-sol-max-api-multi,0,67,openai_responses_api,33,0,0,1094.585119,0.462282400000
+11,6,gpt6.1-sol-max-api-multi,kata1-b6c96-s16525312-d2925067,B+4.0,gpt6.1-sol-max-api-multi,1,57,openai_responses_api,29,0,0,1119.993031,0.463457200000
+12,6,kata1-b6c96-s16525312-d2925067,gpt6.1-sol-max-api-multi,W+R,gpt6.1-sol-max-api-multi,0,59,openai_responses_api,29,0,0,1682.739445,0.665518800000
+13,7,gpt6.1-sol-max-api-multi,kata1-b6c96-s18429184-d3197121,B+R,gpt6.1-sol-max-api-multi,1,64,openai_responses_api,32,0,0,2045.286090,0.785220800000
+14,7,kata1-b6c96-s18429184-d3197121,gpt6.1-sol-max-api-multi,B+R,kata1-b6c96-s18429184-d3197121,1,74,openai_responses_api,37,0,0,5132.822157,1.671315200000
+15,8,gpt6.1-sol-max-api-multi,kata1-b6c96-s18429184-d3197121,B+2.0,gpt6.1-sol-max-api-multi,1,61,openai_responses_api,31,0,0,2631.642731,0.884895600000
+16,8,kata1-b6c96-s18429184-d3197121,gpt6.1-sol-max-api-multi,B+14.0,kata1-b6c96-s18429184-d3197121,1,95,openai_responses_api,47,0,0,7832.017813,2.185740400000

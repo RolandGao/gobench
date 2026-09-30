@@ -17,3 +17,5 @@ game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_ille
 16,8,kata1-b6c96-s14649344-d2727367,gpt6.1-sol-high-api-multi,W+10.0,gpt6.1-sol-high-api-multi,0,72,openai_responses_api,36,0,0,300.046391,0.173638800000
 17,9,gpt6.1-sol-high-api-multi,kata1-b6c96-s14649344-d2727367,B+8.0,gpt6.1-sol-high-api-multi,1,59,openai_responses_api,30,0,0,179.741588,0.141418000000
 18,9,kata1-b6c96-s14649344-d2727367,gpt6.1-sol-high-api-multi,W+R,gpt6.1-sol-high-api-multi,0,53,openai_responses_api,26,0,0,134.402032,0.087757200000
+19,10,gpt6.1-sol-high-api-multi,kata1-b6c96-s15704832-d2832803,W+15.0,kata1-b6c96-s15704832-d2832803,0,70,openai_responses_api,35,0,0,402.686888,0.207790400000
+20,10,kata1-b6c96-s15704832-d2832803,gpt6.1-sol-high-api-multi,W+R,gpt6.1-sol-high-api-multi,0,67,openai_responses_api,33,0,0,332.644764,0.215022000000
