@@ -34,6 +34,27 @@ python arena.py --summary
 The summary is here:
 https://github.com/RolandGao/gobench/blob/main/log/summary/report.txt
 
+### Automatic website updates
+
+The [Update website](https://github.com/RolandGao/gobench/actions/workflows/update-website.yml) workflow triggers
+a Cloudflare rebuild when `log/summary/results.json` or
+`log/summary/report.txt` changes on `main`. Commit both summary files together
+so the ratings and replay data describe the same results.
+
+The website embeds charts and leaderboard summaries in its initial HTML at
+build time, then refreshes data and loads game replays in the browser.
+
+Setup: create a deploy hook for the `main` branch of the Cloudflare Worker
+`rolandgao-github-io` and save its URL as this repository's Actions secret
+`WEBSITE_DEPLOY_HOOK`. Keep the hook URL out of source control. Use the workflow's
+**Run workflow** button to trigger a rebuild manually. A successful workflow
+means Cloudflare accepted the request; check Cloudflare Builds for the final
+deployment result.
+
+If another GitHub Actions workflow pushes these files using `GITHUB_TOKEN`,
+call the deploy hook from that workflow after the push as well: GitHub does
+not start another push workflow for commits made with `GITHUB_TOKEN`.
+
 ## Citation
 ```
 @misc{gao2026gobench,

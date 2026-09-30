@@ -1,0 +1,33 @@
+name: Update website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - log/summary/results.json
+      - log/summary/report.txt
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: update-website
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Trigger website rebuild
+        env:
+          DEPLOY_HOOK: ${{ secrets.WEBSITE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::Set the WEBSITE_DEPLOY_HOOK repository secret to the Cloudflare deploy hook URL."
+            exit 1
+          fi
+          curl --fail --silent --show-error \
+            --max-time 30 \
+            --request POST "$DEPLOY_HOOK" \
+            | jq --exit-status '.success == true' > /dev/null
