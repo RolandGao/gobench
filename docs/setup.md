@@ -210,3 +210,64 @@ isolation, and the real SDK against fake model responses:
 ```sh
 GOBENCH_RESOURCE_TESTS=1 .venv/bin/python -m unittest tests.test_workspace_runtime
 ```
+
+## Track 2 with Claude Code
+
+Claude Code players run the same Track 2 protocol as the Codex harnesses:
+the same preparation durations, immutable checkpoint, independent evaluation
+copies, 30-minute cumulative clock, exclusive physical core, RAM/disk/task
+limits, frozen cgroup during the opponent's turn, and bubblewrap sandbox. Only
+the agent runtime differs.
+
+| Harness suffix | Autonomous training time |
+| --- | --- |
+| `claude-code-0h` | None |
+| `claude-code-1h` | 1 hour |
+| `claude-code-2h` | 2 hours |
+| `claude-code-4h` | 4 hours |
+| `claude-code-8h` | 8 hours |
+
+Players are named like `claude-opus-5-5-high-claude-code-4h` (efforts `low`
+through `max`; numbered replicas such as `...-claude-code-4h2` keep the
+budget). Select them in `CONFIG` or with `python3 arena.py --run-type
+claude-code-4h`, which evaluates `claude-opus-5-5-high-claude-code-4h`.
+
+Requirements, in addition to the Codex workspace host requirements above:
+
+- The **native** Claude Code executable for Linux (the self-contained ELF
+  build, not the npm package), pinned to **2.1.296**
+  (`CLAUDE_CODE_VERSION` in `gobench/workspace_runtime.py`):
+
+  ```sh
+  curl -fsSL https://claude.ai/install.sh | bash -s 2.1.296
+  ```
+
+  Arena uses `ARENA_CLAUDE_CODE_BIN` when set, otherwise
+  `~/.local/share/claude/versions/2.1.296`, otherwise `claude` on `PATH`; any
+  other version is rejected. Because the versioned file is used directly, a
+  later auto-update of `claude` on `PATH` does not affect runs. The binary's
+  SHA-256 is also recorded in the checkpoint specification.
+- A host Claude subscription login (`~/.claude/.credentials.json`, see
+  above). The sandbox never sees it.
+
+Inside the sandbox, one persistent `claude -p --input-format stream-json
+--output-format stream-json` process holds the session; its configuration
+and transcripts live in `/harness-home` on the workspace disk image, so they
+are part of the checkpoint. The CLI runs with `--dangerously-skip-permissions`,
+`--strict-mcp-config` (no MCP servers), `--model` and `--effort` from the
+player name, and with `WebSearch` and `WebFetch` disallowed. Every model alias,
+subagent, and background request is pinned to the player's model, and Claude
+Code's own retries are disabled so the arena retries with the evaluation clock
+paused. Claude Code believes it uses a subscription OAuth login (a placeholder
+token); the host-side proxy accepts only `POST /v1/messages` (and
+`count_tokens`) for the configured model while the agent clock runs, removes
+Anthropic-defined server tools (web search, web fetch, code execution), and
+re-signs each request with the host login. Missing or rejected host
+credentials pause the move, as for the Claude API players.
+
+Every exchange is logged to `anthropic-proxy.jsonl` beside the phase's clock,
+with streamed tool calls checked for internet use. Per-request usage goes to
+`anthropic-proxy.usage.jsonl` and is priced at API-equivalent rates, including
+one-hour cache writes at twice the base input rate. Checkpoints live under
+`untracked_log/<run>/claude-code-checkpoints/<player>/`; turn results and
+CLI stderr are in `claude-code-events.jsonl` and `claude-code-stderr.log`.

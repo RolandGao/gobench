@@ -599,6 +599,7 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
         expected = {
             "openai": 128_000,
             "openai_codex_workspace": 128_000,
+            "anthropic_claude_code_workspace": 128_000,
             "meta": 943_718,
             "xai": None,
             "deepseek_responses": 393_216,

@@ -20,6 +20,7 @@ import json
 import math
 import multiprocessing
 import os
+import queue
 import random
 import re
 import shutil
@@ -42,17 +43,23 @@ import numpy as np
 
 from gobench.anthropic_oauth import IDENTITY as CLAUDE_OAUTH_IDENTITY
 from gobench.anthropic_oauth import AnthropicClient, ClaudeOAuthError
+from gobench.anthropic_oauth import AUTH_POLL_SECONDS as CLAUDE_AUTH_POLL_SECONDS
+from gobench.anthropic_oauth import access_token as _claude_oauth_access_token
 from gobench.arena_config import (
     ArenaConfig,
     _CHEAP_B6C96_PLAYER_POOL,
+    _CLAUDE_CODE_TRAINING_SECONDS,
+    _CLAUDE_CODE_WORKSPACE_HARNESSES,
     _CODEX_TRAINING_SECONDS,
     _CODEX_WORKSPACE_HARNESSES,
+    _WORKSPACE_HARNESSES,
     _CURRENT_PLAYER_POOL,
     _IGNORED_REPORT_PLAYERS,
     _MULTI_PLAYOUT_PLAYER_POOL,
     _NO_MULTI_PLAYOUT_PLAYER_POOL,
     _TEMPERATURE_PLAYER_POOL,
     _llm_player_name,
+    _workspace_training_seconds,
     build_run_types,
 )
 from gobench.game_engine import COLS, GameResult, GoEngineError, KataGoGameEngine
@@ -67,6 +74,8 @@ from gobench.workspace_runtime import (
     WorkspaceTimeExpired,
     WorkspaceVolume,
     atomic_json as _workspace_atomic_json,
+    CLAUDE_CODE_VERSION,
+    claude_code_runtime_identity as _claude_code_runtime_identity,
     copy_image as _copy_workspace_image,
     file_sha256 as _workspace_file_sha256,
     read_json as _workspace_read_json,
@@ -184,6 +193,12 @@ CONFIG = ArenaConfig(
         "claude-sonnet-5-5-max-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
+        # Track 2 with Claude Code (see docs/setup.md):
+        # "claude-opus-5-5-high-claude-code-0h",
+        # "claude-opus-5-5-high-claude-code-1h",
+        # "claude-opus-5-5-high-claude-code-2h",
+        # "claude-opus-5-5-high-claude-code-4h",
+        # "claude-opus-5-5-high-claude-code-8h",
         # "gpt6-astra-high-api-multi",
         # "gpt6-astra-max-api-multi",
     ),
@@ -352,6 +367,21 @@ class _DeepSeekResponsesProtocol(_ResponsesProtocol):
 
 class _CodexProtocol(_ResponsesProtocol):
     """Log/pricing adapter for the Codex SDK's Responses-derived usage."""
+
+
+class _ClaudeCodeProtocol(_ResponsesProtocol):
+    """Log/pricing adapter for Claude Code workspace players.
+
+    The Anthropic proxy records each Messages call in the Responses usage
+    shape: input_tokens includes cache reads and writes, as Responses does.
+    """
+
+    @staticmethod
+    def manifest_options(_player):
+        return {
+            "auth_mode": "oauth",
+            "cost_basis": "api_equivalent_tokens; subscription OAuth",
+        }
 
 
 class _OAuthResponsesProtocol(_ResponsesProtocol):
@@ -618,6 +648,30 @@ class _Arena:
             manifest_kind="openai_codex_workspace_agent",
             manifest_level_name="reasoning_effort",
             protocol=_CodexProtocol,
+            endpoint_path=(),
+            cost_tracking=True,
+        ),
+        _LLMAPIConfig(
+            name="anthropic_claude_code_workspace",
+            players={
+                name: player
+                for harness in _CLAUDE_CODE_TRAINING_SECONDS
+                for name, player in _llm_effort_players(
+                    "claude-opus-5-5", "claude-opus-5-5",
+                    ("low", "medium", "high", "xhigh", "max"),
+                    (4.0, 0.2, 20.0),
+                    suffix=harness,
+                    agentic_harness=harness,
+                    cache_write_price=5.0,
+                    max_output_tokens=128_000,
+                ).items()
+            },
+            sdk_module="",
+            sdk_client_path=(),
+            api_key_env="",
+            manifest_kind="anthropic_claude_code_workspace_agent",
+            manifest_level_name="effort",
+            protocol=_ClaudeCodeProtocol,
             endpoint_path=(),
             cost_tracking=True,
         ),
@@ -1149,6 +1203,10 @@ class _Arena:
     CODEX_WORKSPACE_PROVIDER = "arena_openai_proxy"
     CODEX_WORKSPACE_PROXY_PORT = 8765
     OPENAI_API_HOST = "api.openai.com"
+    ANTHROPIC_API_HOST = "api.anthropic.com"
+    # Claude Code tools that only fetch from the internet. Provider-hosted
+    # tools are also removed by the proxy, and the sandbox has no network.
+    CLAUDE_CODE_DISALLOWED_TOOLS = ("WebSearch", "WebFetch")
     PROXY_HOP_BY_HOP_HEADERS = frozenset(
         {
             "connection",
@@ -1577,7 +1635,7 @@ def _configure(config):
 def _rating_prior(player_name):
     config = _State.config
     if (player_name in config.active_players and _is_active_llm_player(player_name)
-            and _llm_player_config(player_name)[1].agentic_harness in _CODEX_WORKSPACE_HARNESSES):
+            and _llm_player_config(player_name)[1].agentic_harness in _WORKSPACE_HARNESSES):
         return config.active_player_prior_elo_mean, config.active_player_prior_elo_sd
     if player_name in _State.past_player_priors:
         return _State.past_player_priors[player_name]
@@ -3033,7 +3091,7 @@ def _llm_config(name):
 def _codex_workspace_settings(harness):
     """The player name fixes preparation time, including for numbered replicas."""
     return replace(_State.config.workspace,
-                   training_seconds=_CODEX_TRAINING_SECONDS[harness])
+                   training_seconds=_workspace_training_seconds(harness))
 
 
 def _llm_player_manifest(name):
@@ -3055,12 +3113,13 @@ def _llm_player_manifest(name):
             compaction=False,
             tools=False,
         )
-    if player.agentic_harness in _CODEX_WORKSPACE_HARNESSES:
+    if player.agentic_harness in _WORKSPACE_HARNESSES:
         settings = _codex_workspace_settings(player.agentic_harness)
+        claude_code = player.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
         manifest.update(
             conversation="independent_checkpoint_copy_per_game",
             sandbox="bubblewrap_workspace_write",
-            network_access="openai_proxy_only",
+            network_access="anthropic_proxy_only" if claude_code else "openai_proxy_only",
             workspace_retained=True,
             persistence="immutable_preparation_checkpoint_with_private_evaluation_copies",
             preparation_seconds=settings.training_seconds,
@@ -3071,6 +3130,12 @@ def _llm_player_manifest(name):
             training_katago_access=False,
             apply_patch_preflight=False,
         )
+        if claude_code:
+            manifest.update(
+                harness="claude_code_cli",
+                claude_code_disallowed_tools=list(_Arena.CLAUDE_CODE_DISALLOWED_TOOLS),
+                permission_mode="bypassPermissions",
+            )
     if api.base_url is not None:
         manifest["base_url"] = api.base_url
     manifest.update(api.protocol.manifest_options(player))
@@ -3083,7 +3148,7 @@ def _llm_player_manifest(name):
     if api.cost_tracking:
         manifest["cost_tracking"] = (
             "api_equivalent_token_usage"
-            if api.protocol is _CodexProtocol
+            if api.protocol in {_CodexProtocol, _ClaudeCodeProtocol}
             else "token_usage"
         )
     return manifest
@@ -3239,6 +3304,10 @@ def _llm_client(player_name, *, work_dir=None, game_number=None):
             game_number,
             proxy_credential=_codex_workspace_proxy_credential(api),
         )
+    if player.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES:
+        if work_dir is None or game_number is None:
+            raise ArenaError("Claude Code players require a game work directory and number")
+        return _ClaudeCodeGameClient(player_name, player, work_dir, game_number)
     try:
         client_cls = __import__(api.sdk_module, fromlist=[api.sdk_client_path[0]])
         for attribute in api.sdk_client_path:
@@ -3427,6 +3496,12 @@ def _llm_call_cost(usage, provider, model, *, started_at=None):
         counts.reasoning_tokens if api.protocol.reasoning_is_billed else 0
     )
     cache_write_cost = cache_writes * cache_write_price
+    # Claude Code ledgers mark one-hour cache writes, billed at twice the base
+    # input rate rather than the five-minute cache_write_price.
+    long_cache_writes = min(
+        _first_token_count(usage, "input_tokens_details.cache_write_1h_tokens"), cache_writes
+    )
+    cache_write_cost += long_cache_writes * (2 * input_price - cache_write_price)
     return (
         uncached * input_price
         + cached * cached_price
@@ -3776,7 +3851,7 @@ def _llm_auth_recovery_hint(exc, api):
             "OpenAI credentials were rejected; renew the host login with `codex login` "
             "then use --resume."
         )
-    if api.name in {"anthropic", "anthropic_oauth"} and (
+    if api.name in {"anthropic", "anthropic_oauth", "anthropic_claude_code_workspace"} and (
         status in {401, 403}
         or type(exc).__name__ == "ClaudeOAuthError" and any(
             text in str(exc).lower() for text in ("sign in", "login has expired")
@@ -4522,8 +4597,9 @@ def run_llm_games(
     if not todo:
         return sorted(saved_games, key=lambda game: game.number)
     _ensure_game_dependencies(todo, player_values)
-    if _llm_player_config(llm_name)[1].agentic_harness in _CODEX_WORKSPACE_HARNESSES:
-        _CodexGameClient.prune_evaluation_images(
+    harness = _llm_player_config(llm_name)[1].agentic_harness
+    if harness in _WORKSPACE_HARNESSES:
+        _workspace_client_class(harness).prune_evaluation_images(
             _agent_run_dir(Path(work).resolve()),
             llm_name,
             {
@@ -6256,7 +6332,7 @@ class _ArenaRun:
         checkpoint_players = {
             name for name in _State.config.active_players
             if _is_active_llm_player(name)
-            and _llm_player_config(name)[1].agentic_harness in _CODEX_WORKSPACE_HARNESSES
+            and _llm_player_config(name)[1].agentic_harness in _WORKSPACE_HARNESSES
         }
         # A new preparation is a new experimental subject. Old results for the
         # same model/harness name must not be counted as this checkpoint's games.
@@ -6399,17 +6475,19 @@ class _ArenaRun:
                 llm_games_file="llm_games.jsonl",
                 llm_pricing_usd_per_1m_tokens=_Arena.LLM_MODEL_PRICING_USD_PER_MILLION,
             )
-        codex_training = {
-            name: _CODEX_TRAINING_SECONDS[_llm_player_config(name)[1].agentic_harness]
-            for name in self.info_names if _is_active_llm_player(name)
-            and _llm_player_config(name)[1].agentic_harness in _CODEX_WORKSPACE_HARNESSES
-        }
-        if codex_training:
-            run_config["codex_workspace"] = _State.config.workspace.manifest()
-            run_config["codex_workspace"]["training_seconds_by_player"] = codex_training
-            if len(set(codex_training.values())) == 1:
-                run_config["codex_workspace"]["training_seconds"] = next(iter(codex_training.values()))
-            run_config["move_cap_policy"] = "workspace evaluation: forfeit at move limit"
+        for client_class in _WORKSPACE_CLIENT_CLASSES:
+            training = {
+                name: _workspace_training_seconds(_llm_player_config(name)[1].agentic_harness)
+                for name in self.info_names if _is_active_llm_player(name)
+                and _llm_player_config(name)[1].agentic_harness in client_class.harnesses
+            }
+            if training:
+                key = client_class.run_config_key
+                run_config[key] = _State.config.workspace.manifest()
+                run_config[key]["training_seconds_by_player"] = training
+                if len(set(training.values())) == 1:
+                    run_config[key]["training_seconds"] = next(iter(training.values()))
+                run_config["move_cap_policy"] = "workspace evaluation: forfeit at move limit"
         return run_config
 
     def _open(self, resume_run_dir):
@@ -6681,16 +6759,22 @@ class _ArenaRun:
 
     def _save_reports(self):
         # A metadata commit must never get ahead of its game records.
-        preparation_root = self.temp_dir / "codex-checkpoints"
-        if preparation_root.is_dir():
-            self.meta["codex_checkpoints"] = {
+        for client_class in _WORKSPACE_CLIENT_CLASSES:
+            preparation_root = self.temp_dir / client_class.checkpoint_dirname
+            if not preparation_root.is_dir():
+                continue
+            prefix = client_class.run_config_key.removesuffix("_workspace")
+            self.meta[f"{prefix}_checkpoints"] = {
                 path.parents[1].name: _workspace_read_json(path)
                 for path in preparation_root.glob("*/checkpoint/manifest.json")
             }
-            self.meta["codex_evaluations"] = [
-                _workspace_read_json(path) for path in sorted(self.temp_dir.glob(
-                    "batch-*/agent-workspaces/game-*/evaluation-summary.json"
-                ))
+            self.meta[f"{prefix}_evaluations"] = [
+                summary for summary in (
+                    _workspace_read_json(path) for path in sorted(self.temp_dir.glob(
+                        "batch-*/agent-workspaces/game-*/evaluation-summary.json"
+                    ))
+                )
+                if _workspace_client_class_for_player(summary.get("player")) is client_class
             ]
         self.write_reports()
         _write_json(self.run / "run.json", self.meta)
@@ -6985,10 +7069,14 @@ def _config_from_metadata(metadata):
         else 1.0
     )
     workspace = WorkspaceSettings()
-    if any(_is_active_llm_player(name)
-           and _llm_player_config(name)[1].agentic_harness in _CODEX_WORKSPACE_HARNESSES
-           for name in active_players):
-        saved_workspace = metadata.get("codex_workspace")
+    workspace_classes = {
+        _workspace_client_class(_llm_player_config(name)[1].agentic_harness)
+        for name in active_players
+        if _is_active_llm_player(name)
+        and _llm_player_config(name)[1].agentic_harness in _WORKSPACE_HARNESSES
+    }
+    for client_class in sorted(workspace_classes, key=lambda item: item.run_config_key):
+        saved_workspace = metadata.get(client_class.run_config_key)
         if not isinstance(saved_workspace, dict) or saved_workspace.get("protocol") != WORKSPACE_PROTOCOL_VERSION:
             raise ArenaError("legacy Codex workspace runs use a different experiment protocol; start a new run")
         try:
@@ -7562,13 +7650,13 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
         raw_request = self._request_body()
         request_type = self.headers.get("Content-Type", "")
         request_body = _decoded_proxy_body(raw_request, request_type)
-        filtered_body, removed_tools = _remove_forbidden_hosted_tools(request_body)
+        filtered_body, removed_tools = self.server.filter_request(request_body)
         forwarded_request = (
             json.dumps(filtered_body, separators=(",", ":")).encode("utf-8")
             if filtered_body is not request_body
             else raw_request
         )
-        request_flags = _potential_internet_tool_flags(request_body, source="request")
+        request_flags = self.server.request_flags(request_body)
         for tool in removed_tools:
             request_flags.append(
                 {
@@ -7588,15 +7676,13 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
             "request_body": request_body,
             "potential_internet_tool_calls": request_flags,
         }
-        canonical_path = _canonical_openai_proxy_path(self.path)
+        canonical_path = self.server.canonical_path(self.path)
         if canonical_path is None:
             entry.update(ok=False, response_status=403, error="forbidden proxy path")
             self.server.append_log(entry)
-            self._error_response(
-                403, "the arena proxy permits only OpenAI Responses and model catalog"
-            )
+            self._error_response(403, self.server.FORBIDDEN_PATH_MESSAGE)
             return
-        if getattr(self.server, "allowed_model", None) is not None and canonical_path.startswith("/v1/responses"):
+        if getattr(self.server, "allowed_model", None) is not None and self.server.is_model_path(canonical_path):
             if not self.server.enabled:
                 self._error_response(403, "agent clock is not running")
                 return
@@ -7613,14 +7699,14 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
         pending_event = b""
         usage_recorded = False
 
+        usage_state = {}
+
         def record_usage(value):
             nonlocal usage_recorded
             if not isinstance(value, dict) or usage_recorded:
                 return
-            response = value.get("response", value)
-            if not isinstance(response, dict) or not isinstance(
-                response.get("usage"), dict
-            ):
+            response = self.server.completed_usage(value, usage_state)
+            if response is None:
                 return
             # Commit usage before forwarding the terminal event to the client. The
             # RPC completion can otherwise race the proxy's exchange log write.
@@ -7643,21 +7729,19 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
         try:
             # A proxy can live for hours. Pick up credentials renewed by the
             # host CLI instead of retaining its startup token for the whole game.
-            credential = self.server.credential
-            if credential.auth_mode == "oauth":
-                try:
-                    credential = _openai_oauth_proxy_credential()
-                except ArenaError:
-                    status = 401
-                    entry.update(ok=False, response_status=status,
-                                 error="host OAuth login unavailable")
-                    self._error_response(status, "Host OpenAI OAuth login unavailable; run codex login")
-                    return
+            try:
+                credential = self.server.current_credential()
+            except ArenaError:
+                status = 401
+                entry.update(ok=False, response_status=status,
+                             error="host OAuth login unavailable")
+                self._error_response(status, self.server.LOGIN_UNAVAILABLE_MESSAGE)
+                return
             connection = http.client.HTTPSConnection(
                 credential.host,
                 timeout=30 if getattr(self.server, "allowed_model", None) is not None else None,
             )
-            if getattr(self.server, "allowed_model", None) is not None and canonical_path.startswith("/v1/responses"):
+            if getattr(self.server, "allowed_model", None) is not None and self.server.is_model_path(canonical_path):
                 connection.connect()
                 tracked_socket = connection.sock
                 tracked_socket.settimeout(None)  # the agent clock bounds model thinking
@@ -7669,13 +7753,7 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                 name: value
                 for name, value in self.headers.items()
                 if name.lower() not in _Arena.PROXY_HOP_BY_HOP_HEADERS
-                and name.lower()
-                not in {
-                    "authorization",
-                    "accept-encoding",
-                    "chatgpt-account-id",
-                    "originator",
-                }
+                and name.lower() not in self.server.REPLACED_HEADERS
             }
             headers.update(
                 {
@@ -7685,12 +7763,13 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                     "Accept-Encoding": "identity",
                 }
             )
-            headers.update(dict(credential.headers))
+            headers.update(self.server.credential_headers(credential, self.headers))
             upstream_path = credential.upstream_path(canonical_path)
             entry["upstream_path"] = upstream_path
             connection.request(self.command, upstream_path, forwarded_request, headers)
             upstream = connection.getresponse()
             status = upstream.status
+            self.server.upstream_status(status, credential)
             upstream_headers = upstream.getheaders()
             response_headers = dict(upstream_headers)
             is_stream = any(
@@ -7738,9 +7817,7 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
             )
             decoded_response = _decoded_proxy_body(response_body, content_type)
             stream_events = _proxy_stream_events(decoded_response)
-            response_flags = _potential_internet_tool_flags(
-                stream_events or decoded_response, source="response"
-            )
+            response_flags = self.server.response_flags(stream_events or decoded_response)
             entry["potential_internet_tool_calls"] += response_flags
             entry.update(
                 ok=200 <= upstream.status < 400,
@@ -7807,16 +7884,67 @@ class _OpenAIUnixProxyServer(
         if self.readable_log_path is not None:
             _append_readable_proxy_log(self.readable_log_path, sanitized)
 
+    # Provider hooks. The Anthropic proxy for Claude Code overrides these.
+    FORBIDDEN_PATH_MESSAGE = "the arena proxy permits only OpenAI Responses and model catalog"
+    LOGIN_UNAVAILABLE_MESSAGE = "Host OpenAI OAuth login unavailable; run codex login"
+    REPLACED_HEADERS = frozenset(
+        {"authorization", "accept-encoding", "chatgpt-account-id", "originator"}
+    )
+
+    @staticmethod
+    def canonical_path(path):
+        return _canonical_openai_proxy_path(path)
+
+    @staticmethod
+    def is_model_path(path):
+        return path.startswith("/v1/responses")
+
+    @staticmethod
+    def filter_request(body):
+        return _remove_forbidden_hosted_tools(body)
+
+    @staticmethod
+    def request_flags(body):
+        return _potential_internet_tool_flags(body, source="request")
+
+    @staticmethod
+    def response_flags(value):
+        return _potential_internet_tool_flags(value, source="response")
+
+    def current_credential(self):
+        # A proxy can live for hours. Pick up credentials renewed by the
+        # host CLI instead of retaining its startup token for the whole game.
+        if self.credential.auth_mode == "oauth":
+            return _openai_oauth_proxy_credential()
+        return self.credential
+
+    @staticmethod
+    def credential_headers(credential, _client_headers):
+        return dict(credential.headers)
+
+    def upstream_status(self, _status, _credential):
+        return
+
+    @staticmethod
+    def completed_usage(value, _state):
+        """Return the response object whose usage completes this exchange."""
+        response = value.get("response", value)
+        if not isinstance(response, dict) or not isinstance(response.get("usage"), dict):
+            return None
+        return response
+
 
 class _OpenAIReverseProxy:
     """Host-side, OpenAI-only proxy exposed to a sandbox through one Unix socket."""
+
+    _server_class = _OpenAIUnixProxyServer
 
     def __init__(self, credential, log_path, *, write_readable=True, allowed_model=None):
         self.log_path = Path(log_path)
         self.log_path.parent.mkdir(parents=True, exist_ok=True)
         self._temp = tempfile.TemporaryDirectory(prefix="gobench-openai-proxy-")
         self.socket_path = Path(self._temp.name) / "openai.sock"
-        self._server = _OpenAIUnixProxyServer(
+        self._server = self._server_class(
             self.socket_path,
             credential,
             self.log_path,
@@ -7867,6 +7995,213 @@ class _OpenAIReverseProxy:
         self._server = None
         self._temp.cleanup()
 
+
+
+def _anthropic_usage_as_responses(usage):
+    """Express one Messages call's usage in the arena's Responses ledger shape."""
+
+    def count(value):
+        return value if isinstance(value, int) and not isinstance(value, bool) and value >= 0 else 0
+
+    cache_read = count(usage.get("cache_read_input_tokens"))
+    cache_write = count(usage.get("cache_creation_input_tokens"))
+    breakdown = usage.get("cache_creation")
+    long_cache_write = (
+        count(breakdown.get("ephemeral_1h_input_tokens")) if isinstance(breakdown, dict) else 0
+    )
+    return {
+        "input_tokens": count(usage.get("input_tokens")) + cache_read + cache_write,
+        "input_tokens_details": {
+            "cached_tokens": cache_read,
+            "cache_write_tokens": cache_write,
+            "cache_write_1h_tokens": min(long_cache_write, cache_write),
+        },
+        "output_tokens": count(usage.get("output_tokens")),
+        "output_tokens_details": {"reasoning_tokens": 0},
+        "anthropic_usage": usage,
+    }
+
+
+def _anthropic_tool_uses(value):
+    """Yield (path, block type, name, input) for tool calls in a Messages response."""
+    events = value if isinstance(value, list) else _proxy_stream_events(value)
+    if events:
+        blocks = {}
+        for position, event in enumerate(events):
+            if not isinstance(event, dict):
+                continue
+            index = event.get("index")
+            if event.get("type") == "content_block_start" and isinstance(
+                event.get("content_block"), dict
+            ):
+                block = event["content_block"]
+                if str(block.get("type", "")).endswith("tool_use"):
+                    blocks[index] = [f"$.events[{position}]", block, []]
+            elif event.get("type") == "content_block_delta" and index in blocks:
+                delta = event.get("delta")
+                if isinstance(delta, dict) and isinstance(delta.get("partial_json"), str):
+                    blocks[index][2].append(delta["partial_json"])
+        for path, block, parts in blocks.values():
+            tool_input = block.get("input")
+            if parts:
+                try:
+                    tool_input = json.loads("".join(parts))
+                except json.JSONDecodeError:
+                    tool_input = "".join(parts)
+            yield path, block.get("type"), block.get("name"), tool_input
+        return
+    if isinstance(value, dict) and isinstance(value.get("content"), list):
+        for position, block in enumerate(value["content"]):
+            if isinstance(block, dict) and str(block.get("type", "")).endswith("tool_use"):
+                yield f"$.content[{position}]", block.get("type"), block.get("name"), block.get("input")
+
+
+def _claude_internet_tool_flags(value):
+    flags = []
+    for path, block_type, name, tool_input in _anthropic_tool_uses(value):
+        if block_type != "tool_use":
+            flags.append({"source": "response", "path": path,
+                          "reason": f"server tool:{name or block_type}"})
+        elif name in _Arena.CLAUDE_CODE_DISALLOWED_TOOLS:
+            flags.append({"source": "response", "path": path, "reason": f"tool:{name}"})
+        elif name == "Bash":
+            command = tool_input.get("command") if isinstance(tool_input, dict) else tool_input
+            if isinstance(command, str) and _Arena.NETWORK_COMMAND_RE.search(command):
+                flags.append({"source": "response", "path": path,
+                              "reason": "network-oriented shell command",
+                              "excerpt": command[:500]})
+    return flags
+
+
+class _AnthropicUnixProxyServer(_OpenAIUnixProxyServer):
+    """Messages-only variant used by Claude Code workspace players.
+
+    The sandboxed CLI authenticates to the proxy with a placeholder token.
+    Each request is re-signed with the host's Claude subscription OAuth login.
+    """
+
+    FORBIDDEN_PATH_MESSAGE = "the arena proxy permits only Anthropic Messages requests"
+    LOGIN_UNAVAILABLE_MESSAGE = (
+        "Host Claude OAuth login unavailable; sign in with Claude Code /login"
+    )
+    REPLACED_HEADERS = frozenset(
+        {"authorization", "x-api-key", "accept-encoding", "anthropic-beta"}
+    )
+    OAUTH_BETA = "oauth-2025-04-20"
+
+    _rejected_token = None
+
+    @staticmethod
+    def canonical_path(path):
+        match = re.fullmatch(r"/v1/messages(?:/count_tokens)?(?:\?[^#]*)?", path)
+        return path if match else None
+
+    @staticmethod
+    def is_model_path(path):
+        return path.startswith("/v1/messages")
+
+    @staticmethod
+    def filter_request(body):
+        """Remove Anthropic-defined tools; Claude Code's own (custom) tools run in the sandbox.
+
+        Typed tools such as web search, web fetch and code execution would run
+        on provider infrastructure, outside the network and CPU limits.
+        """
+        if not isinstance(body, dict):
+            return body, []
+        removed = []
+        filtered = body
+        if "mcp_servers" in body:
+            filtered = {name: item for name, item in body.items() if name != "mcp_servers"}
+            removed.append("mcp_servers")
+        tools = body.get("tools")
+        if isinstance(tools, list):
+            kept = []
+            for tool in tools:
+                tool_type = tool.get("type") if isinstance(tool, dict) else None
+                if tool_type not in {None, "custom"}:
+                    removed.append(_tool_identity(tool) or str(tool_type))
+                else:
+                    kept.append(tool)
+            if len(kept) != len(tools):
+                filtered = dict(filtered)
+                filtered["tools"] = kept
+        return filtered, removed
+
+    @staticmethod
+    def request_flags(_body):
+        # Requests repeat the whole conversation; each tool call is flagged
+        # once, in the response that created it.
+        return []
+
+    @staticmethod
+    def response_flags(value):
+        return _claude_internet_tool_flags(value)
+
+    def current_credential(self):
+        try:
+            token = _claude_oauth_access_token(rejected_token=self._rejected_token)
+        except (ClaudeOAuthError, OSError) as exc:
+            raise ArenaError("host Claude OAuth login unavailable") from exc
+        return _OpenAIProxyCredential(
+            bearer_token=token, host=_Arena.ANTHROPIC_API_HOST, auth_mode="oauth"
+        )
+
+    def credential_headers(self, _credential, client_headers):
+        betas = [
+            beta.strip()
+            for beta in client_headers.get("anthropic-beta", "").split(",")
+            if beta.strip()
+        ]
+        if self.OAUTH_BETA not in betas:
+            betas.append(self.OAUTH_BETA)
+        return {"anthropic-beta": ",".join(betas)}
+
+    def upstream_status(self, status, credential):
+        # One rejected access token forces a coordinated refresh next request.
+        if status == 401:
+            self._rejected_token = credential.bearer_token
+        elif status < 400 and credential.bearer_token != self._rejected_token:
+            self._rejected_token = None
+
+    @staticmethod
+    def completed_usage(value, state):
+        event_type = value.get("type")
+        if event_type == "message":
+            usage = value.get("usage")
+            return (
+                {"model": value.get("model"), "usage": _anthropic_usage_as_responses(usage)}
+                if isinstance(usage, dict) else None
+            )
+        if event_type == "message_start" and isinstance(value.get("message"), dict):
+            message = value["message"]
+            state["model"] = message.get("model")
+            if isinstance(message.get("usage"), dict):
+                state["usage"] = dict(message["usage"])
+        elif event_type == "message_delta" and isinstance(value.get("usage"), dict):
+            state.setdefault("usage", {}).update(
+                {name: item for name, item in value["usage"].items() if item is not None}
+            )
+        elif event_type == "message_stop" and isinstance(state.get("usage"), dict):
+            return {"model": state.get("model"),
+                    "usage": _anthropic_usage_as_responses(state["usage"])}
+        return None
+
+
+class _AnthropicReverseProxy(_OpenAIReverseProxy):
+    """Host-side, Anthropic-only proxy exposed to a sandbox through one Unix socket."""
+
+    _server_class = _AnthropicUnixProxyServer
+
+    def __init__(self, log_path, *, allowed_model):
+        super().__init__(
+            _OpenAIProxyCredential(
+                bearer_token="", host=_Arena.ANTHROPIC_API_HOST, auth_mode="oauth"
+            ),
+            log_path,
+            write_readable=False,
+            allowed_model=allowed_model,
+        )
 
 def _workspace_proxy_launcher():
     return r"""#!/usr/bin/python3
@@ -8424,6 +8759,12 @@ class _CodexGameClient:
 
     _workspace_label = "Codex workspace"
     _location_label = "codex-workspace"
+    _harness_label = "Codex"
+    harnesses = _CODEX_WORKSPACE_HARNESSES
+    checkpoint_dirname = "codex-checkpoints"
+    run_config_key = "codex_workspace"
+    api_name = "openai_codex_workspace"
+    proxy_log_name = "openai-proxy"
 
     def __init__(
         self,
@@ -8434,8 +8775,10 @@ class _CodexGameClient:
         *,
         proxy_credential=None,
     ):
-        if player.agentic_harness not in _CODEX_WORKSPACE_HARNESSES:
-            raise ArenaError(f"invalid Codex agentic harness: {player.agentic_harness}")
+        if player.agentic_harness not in self.harnesses:
+            raise ArenaError(
+                f"invalid {self._harness_label} agentic harness: {player.agentic_harness}"
+            )
         self.player_name = player_name
         self.player = player
         self.agentic_harness = player.agentic_harness
@@ -8456,7 +8799,7 @@ class _CodexGameClient:
         work = Path(work_dir).resolve()
         self._initialize_workspace(work, game_number)
         self.settings = _codex_workspace_settings(self.agentic_harness)
-        self.checkpoint_root = self.run_dir / "codex-checkpoints" / self.player_name
+        self.checkpoint_root = self.run_dir / self.checkpoint_dirname / self.player_name
         self._set_phase(self.private_dir, training=False)
         try:
             self._prepare()
@@ -8466,7 +8809,7 @@ class _CodexGameClient:
 
     @property
     def _continual(self):
-        return _CODEX_TRAINING_SECONDS[self.agentic_harness] > 0
+        return _workspace_training_seconds(self.agentic_harness) > 0
 
     def _initialize_workspace(self, work, game_number):
         try:
@@ -8487,17 +8830,13 @@ class _CodexGameClient:
 
     def _prepare(self):
         if self.private_dir.is_symlink():
-            raise ArenaError(f"unsafe Codex private path: {self.private_dir}")
+            raise ArenaError(f"unsafe {self._harness_label} private path: {self.private_dir}")
         self.private_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         os.chmod(self.private_dir, 0o700)
-        if self._proxy_credential is None:
-            raise ArenaError("OpenAI proxy credentials are required for Codex")
-        identity = _workspace_runtime_identity()
         specification = {
             **self.settings.manifest(), "player": self.player_name,
             "model": self.player.model, "effort": self.player.level,
-            "runtime": identity,
-            "codex_config_sha256": hashlib.sha256(_codex_config_text().encode()).hexdigest(),
+            **self._runtime_specification(),
         }
         # Color-swapped games share one immutable checkpoint. Wait for training
         # before acquiring another core, so checkpoint waiters do not hoard CPUs.
@@ -8534,6 +8873,14 @@ class _CodexGameClient:
                                            target_is_directory=True)
         # Runtime startup is deferred until the first move. A finished clock
         # can therefore be recovered as a timeout without starting Codex.
+
+    def _runtime_specification(self):
+        if self._proxy_credential is None:
+            raise ArenaError("OpenAI proxy credentials are required for Codex")
+        return {
+            "runtime": _workspace_runtime_identity(),
+            "codex_config_sha256": hashlib.sha256(_codex_config_text().encode()).hexdigest(),
+        }
 
     def _set_phase(self, directory, *, training):
         self._phase_dir = Path(directory)
@@ -8592,13 +8939,15 @@ class _CodexGameClient:
             image_digest = _workspace_file_sha256(staging / "disk.img")
             if self.state_path.exists():
                 _workspace_atomic_json(staging / "thread.json", _workspace_read_json(self.state_path))
-            usages = _read_jsonl_objects(preparation / "openai-proxy.usage.jsonl", "training usage")
-            exchanges = _read_jsonl_objects(preparation / "openai-proxy.jsonl", "training exchanges")
+            usages = _read_jsonl_objects(preparation / f"{self.proxy_log_name}.usage.jsonl",
+                                         "training usage")
+            exchanges = _read_jsonl_objects(preparation / f"{self.proxy_log_name}.jsonl",
+                                            "training exchanges")
             accounted = {entry["exchange_id"] for entry in usages}
             unaccounted = sum(entry.get("method") == "POST"
                               and entry.get("exchange_id") not in accounted
                               for entry in exchanges)
-            cost = sum(_llm_call_cost(entry["usage"], "openai_codex_workspace",
+            cost = sum(_llm_call_cost(entry["usage"], self.api_name,
                                       self.player.model,
                                       started_at=entry.get("started_at")) for entry in usages)
             self.checkpoint = {
@@ -9159,13 +9508,17 @@ class _CodexGameClient:
                 workspace=self.cwd,
                 state=None,
                 state_changed=False,
-                tool_calls=_codex_tool_calls(result),
+                tool_calls=self._tool_calls(result),
                 workspace_files=files,
                 workspace_files_changed=files_changed,
             )
             self._agents_log_files_key = files_key
         except (OSError, TypeError, ValueError):
             return
+
+    @staticmethod
+    def _tool_calls(result):
+        return _codex_tool_calls(result)
 
     def prepare_prompt(self, prompt):
         if _Arena.CODEX_WORKSPACE_INSTRUCTIONS in prompt:
@@ -9264,7 +9617,7 @@ class _CodexGameClient:
         return _CodexMoveResponse(saved["output"], saved["usage"], reused=logged)
 
     def _proxy_usage_since(self, offset):
-        path = self._phase_dir / "openai-proxy.usage.jsonl"
+        path = self._phase_dir / f"{self.proxy_log_name}.usage.jsonl"
         if not path.exists():
             return []
         # Validate/repair a torn final append before consuming the byte range.
@@ -9311,7 +9664,7 @@ class _CodexGameClient:
         usage_offset = 0
         if timed:
             saved = self._saved_turn()
-            path = self._phase_dir / "openai-proxy.usage.jsonl"
+            path = self._phase_dir / f"{self.proxy_log_name}.usage.jsonl"
             usage_offset = path.stat().st_size if path.exists() else 0
             if saved is not None:
                 recovered = self._recover_codex_turn(thread, saved)
@@ -9381,7 +9734,8 @@ class _CodexGameClient:
         self._dispose_runtime()
         self._clock.pause()
         self._volume.close()
-        requests = _read_jsonl_objects(self._phase_dir / "openai-proxy.usage.jsonl", "evaluation usage")
+        requests = _read_jsonl_objects(self._phase_dir / f"{self.proxy_log_name}.usage.jsonl",
+                                       "evaluation usage")
         summary = {
             "protocol": WORKSPACE_PROTOCOL_VERSION,
             "game": self.game_number, "player": self.player_name,
@@ -9396,10 +9750,10 @@ class _CodexGameClient:
             summary["completed_at_ns"] = time.time_ns()
             _workspace_atomic_json(self._phase_dir / "evaluation-summary.json", summary)
 
-    @staticmethod
-    def prune_evaluation_images(run_dir, player_name, keep_directories):
+    @classmethod
+    def prune_evaluation_images(cls, run_dir, player_name, keep_directories):
         """Remove previous pairs before either new evaluation image is created."""
-        checkpoint_root = run_dir / "codex-checkpoints" / player_name
+        checkpoint_root = run_dir / cls.checkpoint_dirname / player_name
         checkpoint_root.mkdir(parents=True, exist_ok=True)
         with (checkpoint_root / "retention.lock").open("a+b") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
@@ -9431,6 +9785,522 @@ class _CodexGameClient:
                 lock.close()
                 self._resource_lock = None
 
+
+
+def _claude_code_binary():
+    """The pinned, self-contained native Claude Code executable mounted into the sandbox.
+
+    The native installer keeps every version under ~/.local/share/claude/versions,
+    so the pinned build is used even after `claude` on PATH auto-updates.
+    """
+    pinned = Path.home() / ".local/share/claude/versions" / CLAUDE_CODE_VERSION
+    configured = (os.environ.get("ARENA_CLAUDE_CODE_BIN")
+                  or (str(pinned) if pinned.is_file() else None)
+                  or shutil.which("claude"))
+    if not configured:
+        raise ArenaError(
+            f"Claude Code {CLAUDE_CODE_VERSION} is required for claude-code players; install it "
+            f"with `curl -fsSL https://claude.ai/install.sh | bash -s {CLAUDE_CODE_VERSION}`"
+        )
+    path = Path(configured).expanduser().resolve()
+    if not path.is_file() or not os.access(path, os.X_OK):
+        raise ArenaError(f"Claude Code is not executable: {path}")
+    with path.open("rb") as stream:
+        if stream.read(4) != b"\x7fELF":
+            raise ArenaError(
+                f"{path} is not the native Claude Code executable; the npm "
+                "package's Node script cannot be mounted alone into the sandbox"
+            )
+    return path
+
+
+class _ClaudeCodeTurnError(RuntimeError):
+    """A failed Claude Code turn, classified like a provider API error."""
+
+    def __init__(self, message, *, status_code=None, retryable=False):
+        super().__init__(message)
+        self.status_code = status_code
+        self.body = {"retryable": retryable}
+        if status_code in {401, 403}:
+            # The proxy re-signs every request with the host login; renewing
+            # that login (Claude Code /login) lets the same move continue.
+            self.body["retryable"] = True
+            self.arena_auth_wait = True
+            self.arena_auth_retry_after = CLAUDE_AUTH_POLL_SECONDS
+            self.arena_auth_mode = "oauth"
+
+
+def _claude_code_result_error(event):
+    text = event.get("result")
+    if not isinstance(text, str) or not text:
+        text = json.dumps(event.get("errors") or event.get("subtype"), ensure_ascii=False)
+    status = event.get("api_error_status")
+    if not isinstance(status, int) or isinstance(status, bool):
+        match = re.search(r"API Error: ([1-5][0-9]{2})\b", text)
+        status = int(match[1]) if match else None
+    message = f"Claude Code turn failed ({event.get('terminal_reason') or event.get('subtype')}): {text[:1000]}"
+    if status == 403 and any(
+        policy in text for policy in ("arena proxy", "configured model", "agent clock")
+    ):
+        # The arena proxy's own policy refusals are not authentication failures.
+        return _ClaudeCodeTurnError(message)
+    retryable = status is not None and (status in {408, 409, 429} or status >= 500)
+    return _ClaudeCodeTurnError(message, status_code=status, retryable=retryable)
+
+
+@dataclass(frozen=True)
+class _ClaudeCodeTurnResult:
+    final_response: str
+    tool_calls: tuple
+    result_event: dict
+    usage = None  # The proxy's per-request ledger is authoritative.
+
+
+class _ClaudeCodeProcess:
+    """One persistent `claude -p` stream-json session, launched inside its scope."""
+
+    def __init__(self, command, *, cwd, stderr_path):
+        self.process = subprocess.Popen(
+            command, cwd=cwd, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        self.stderr_tail = deque(maxlen=200)
+        self._events = queue.Queue()
+        self._threads = (
+            threading.Thread(target=self._read_stdout, name="claude-code-stdout", daemon=True),
+            threading.Thread(target=self._read_stderr, args=(Path(stderr_path),),
+                             name="claude-code-stderr", daemon=True),
+        )
+        for thread in self._threads:
+            thread.start()
+
+    def _read_stdout(self):
+        try:
+            for line in self.process.stdout:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    event = json.loads(line)
+                except ValueError:
+                    event = None
+                if not isinstance(event, dict):
+                    event = {"type": "arena_unparsed_stdout",
+                             "line": line[:2000].decode("utf-8", errors="replace")}
+                self._events.put(event)
+        except (OSError, ValueError):
+            pass
+        finally:
+            self._events.put(None)
+
+    def _read_stderr(self, path):
+        try:
+            with path.open("ab") as out:
+                for line in self.process.stderr:
+                    out.write(line)
+                    out.flush()
+                    self.stderr_tail.append(line.decode("utf-8", errors="replace").rstrip())
+        except (OSError, ValueError):
+            pass
+
+    def alive(self):
+        return self.process.poll() is None
+
+    def exit_summary(self):
+        """The final stderr lines, after the exited process's output is drained."""
+        with contextlib.suppress(subprocess.TimeoutExpired):
+            self.process.wait(timeout=2)
+        self._threads[1].join(timeout=2)
+        return " | ".join(list(self.stderr_tail)[-5:])
+
+    def pending_events(self):
+        """Events emitted after the previous result, before the runtime froze."""
+        events = []
+        while True:
+            try:
+                event = self._events.get_nowait()
+            except queue.Empty:
+                return events
+            if event is None:
+                self._events.put(None)
+                return events
+            events.append(event)
+
+    def send(self, message):
+        try:
+            self.process.stdin.write(json.dumps(message).encode("utf-8") + b"\n")
+            self.process.stdin.flush()
+        except (BrokenPipeError, OSError, ValueError) as exc:
+            raise _ClaudeCodeTurnError(
+                "Claude Code exited before receiving the turn", retryable=True
+            ) from exc
+
+    def next_event(self):
+        event = self._events.get()
+        if event is None:
+            self._events.put(None)
+        return event
+
+    def close(self):
+        with contextlib.suppress(OSError, ValueError):
+            self.process.stdin.close()
+        try:
+            self.process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            self.process.kill()
+            with contextlib.suppress(subprocess.TimeoutExpired):
+                self.process.wait(timeout=5)
+        for thread in self._threads:
+            thread.join(timeout=2)
+        for pipe in (self.process.stdout, self.process.stderr):
+            with contextlib.suppress(OSError, ValueError):
+                pipe.close()
+
+
+def _claude_code_tool_calls(message):
+    calls = []
+    content = message.get("content") if isinstance(message, dict) else None
+    for block in content if isinstance(content, list) else ():
+        if not isinstance(block, dict) or block.get("type") != "tool_use":
+            continue
+        name = block.get("name") or "tool"
+        tool_input = block.get("input") if isinstance(block.get("input"), dict) else {}
+        if name == "Bash" and isinstance(tool_input.get("command"), str):
+            item = {"command": tool_input["command"], "status": "requested"}
+        else:
+            item = {"name": name, "status": "requested",
+                    **({"changes": [{"kind": name.lower(), "path": tool_input["file_path"]}]}
+                       if name in {"Edit", "Write", "MultiEdit", "NotebookEdit"}
+                       and isinstance(tool_input.get("file_path"), str) else {})}
+        calls.append({"type": name, "item": item})
+    return calls
+
+
+class _ClaudeCodeGameClient(_CodexGameClient):
+    """Track 2 with Claude Code: the Codex checkpoint protocol, run by the Claude CLI.
+
+    Preparation, evaluation copies, the cumulative agent clock, the exclusive
+    core, memory/disk/task limits and the bubblewrap sandbox are inherited from
+    the Codex harness. Only the agent runtime differs: one persistent
+    `claude -p --input-format stream-json` process whose session lives on the
+    workspace volume, and an Anthropic-only proxy that signs requests with the
+    host's Claude subscription login.
+    """
+
+    _workspace_label = "Claude Code workspace"
+    _location_label = "claude-code-workspace"
+    _harness_label = "Claude Code"
+    harnesses = _CLAUDE_CODE_WORKSPACE_HARNESSES
+    checkpoint_dirname = "claude-code-checkpoints"
+    run_config_key = "claude_code_workspace"
+    api_name = "anthropic_claude_code_workspace"
+    proxy_log_name = "anthropic-proxy"
+    _claude = None
+
+    def _environment(self):
+        model = self.player.model
+        return {
+            "HOME": "/harness-home",
+            "CLAUDE_CONFIG_DIR": "/harness-home",
+            "PATH": "/usr/bin:/bin",
+            "LANG": "C.UTF-8",
+            "TMPDIR": "/tmp",
+            "SHELL": "/bin/bash",
+            "USER": "agent",
+            "ARENA_PROXY_PORT": str(_Arena.CODEX_WORKSPACE_PROXY_PORT),
+            "ANTHROPIC_BASE_URL": f"http://127.0.0.1:{_Arena.CODEX_WORKSPACE_PROXY_PORT}",
+            # Subscription mode, as on a normal Claude Code login (OAuth betas,
+            # one-hour prompt caching). The host proxy swaps in the real token.
+            "CLAUDE_CODE_OAUTH_TOKEN": "sk-ant-oat01-arena-proxy-placeholder",
+            # Every main, subagent and background request uses the player's model.
+            "ANTHROPIC_MODEL": model,
+            "ANTHROPIC_DEFAULT_OPUS_MODEL": model,
+            "ANTHROPIC_DEFAULT_SONNET_MODEL": model,
+            "ANTHROPIC_DEFAULT_HAIKU_MODEL": model,
+            "ANTHROPIC_SMALL_FAST_MODEL": model,
+            "CLAUDE_CODE_SUBAGENT_MODEL": model,
+            # The arena owns API retries, so backoff happens with the clock paused.
+            "CLAUDE_CODE_MAX_RETRIES": "0",
+            "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+            "DISABLE_AUTOUPDATER": "1",
+            "DISABLE_TELEMETRY": "1",
+            "DISABLE_ERROR_REPORTING": "1",
+            "DISABLE_BUG_COMMAND": "1",
+            "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+        }
+
+    def _cli_options(self):
+        return (
+            "-p", "--input-format", "stream-json", "--output-format", "stream-json",
+            "--verbose", "--model", self.player.model, "--effort", self.player.level,
+            "--dangerously-skip-permissions", "--strict-mcp-config",
+            "--disallowedTools", ",".join(_Arena.CLAUDE_CODE_DISALLOWED_TOOLS),
+        )
+
+    def _runtime_specification(self):
+        options = {"environment": self._environment(), "cli": list(self._cli_options())}
+        return {
+            "runtime": _claude_code_runtime_identity(_claude_code_binary()),
+            "claude_code_options_sha256": hashlib.sha256(
+                json.dumps(options, sort_keys=True).encode()
+            ).hexdigest(),
+        }
+
+    def _turn_options(self):
+        return {}
+
+    @staticmethod
+    def _tool_calls(result):
+        return list(result.tool_calls)
+
+    def _persistent_thread(self):
+        """The Claude Code session id, saved beside the workspace volume."""
+        if self._thread is not None:
+            return self._thread
+        if self.state_path.exists():
+            try:
+                state = json.loads(self.state_path.read_text(encoding="utf-8"))
+                session = str(uuid.UUID(state["session_id"]))
+            except (OSError, KeyError, TypeError, ValueError) as exc:
+                raise ArenaError(
+                    f"invalid saved Claude Code session state: {self.state_path}"
+                ) from exc
+            self._thread_has_turns = state.get("has_turns", True)
+            self._thread = session
+        else:
+            self._thread = str(uuid.uuid4())
+            self._thread_has_turns = False
+            self._save_thread_state()
+        return self._thread
+
+    def _save_thread_state(self):
+        _workspace_atomic_json(self.state_path, {
+            "session_id": self._thread,
+            "has_turns": getattr(self, "_thread_has_turns", False),
+        })
+
+    def _session_exists(self, session):
+        projects = self.home / "claude-home" / "projects"
+        return projects.is_dir() and any(projects.glob(f"*/{session}.jsonl"))
+
+    def _workspace_runtime(self, workspace, runtime_dir, proxy_log):
+        binary = _claude_code_binary()
+        runtime_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+        claude_home = runtime_dir / "claude-home"
+        claude_home.mkdir(mode=0o700, exist_ok=True)
+        os.chmod(claude_home, 0o700)
+        launcher_path = runtime_dir / "proxy-launcher.py"
+        launcher_path.write_text(_workspace_proxy_launcher(), encoding="utf-8")
+        passwd_path, group_path = runtime_dir / "passwd", runtime_dir / "group"
+        passwd_path.write_text(
+            f"agent:x:{os.getuid()}:{os.getgid()}:agent:/harness-home:/bin/bash\n",
+            encoding="utf-8",
+        )
+        group_path.write_text(f"agent:x:{os.getgid()}:\n", encoding="utf-8")
+        for path in (launcher_path, passwd_path, group_path):
+            os.chmod(path, 0o600)
+        session = self._persistent_thread()
+        # Claude Code writes a session file with its first message. Resume it
+        # when present; a session that never started is created afresh.
+        session_args = (("--resume", session) if self._session_exists(session)
+                        else ("--session-id", session))
+        proxy = _AnthropicReverseProxy(proxy_log, allowed_model=self.player.model)
+        scope = ProcessScope(self._phase_dir, self.settings, core=self._resource_lock)
+        self._scope = scope
+        process = None
+        try:
+            sandbox = _WorkspaceBubblewrap(
+                workspace, runtime_dir, proxy.socket_path,
+                binary=self._workspace_bwrap_binary(),
+            )
+            inner = ("/usr/bin/python3", "/runtime/launcher.py", "/runtime/claude",
+                     *self._cli_options(), *session_args)
+            launch_args = sandbox.command(
+                inner,
+                self._environment(),
+                readonly_mounts=(
+                    (launcher_path, "/runtime/launcher.py"),
+                    (binary, "/runtime/claude"),
+                    (passwd_path, "/etc/passwd"),
+                    (group_path, "/etc/group"),
+                    (self._phase_dir / "public", "/arena"),
+                ),
+                writable_mounts=((claude_home, "/harness-home"),
+                                 (self._volume.mountpoint / "tmp", "/tmp")),
+                hidden_paths=_workspace_hidden_katago_paths(),
+            )
+            if self._clock.remaining <= 0:
+                raise WorkspaceTimeExpired("agent clock expired during startup")
+            ready = self._volume.mountpoint / "tmp" / "arena-proxy-ready"
+            ready.unlink(missing_ok=True)
+            process = _ClaudeCodeProcess(
+                scope.command(launch_args), cwd=str(workspace),
+                stderr_path=self._phase_dir / "claude-code-stderr.log",
+            )
+            # The bridge reports readiness from inside the service, so its
+            # cgroup exists before we verify and freeze it.
+            while not ready.exists():
+                if not process.alive():
+                    raise _ClaudeCodeTurnError(
+                        "Claude Code sandbox exited during startup: " + process.exit_summary(),
+                        retryable=True,
+                    )
+                if self._clock.remaining <= 0:
+                    raise WorkspaceTimeExpired("agent clock expired during startup")
+                time.sleep(0.05)
+            scope.attach()
+            scope.freeze()
+        except Exception:
+            scope.close()
+            if process is not None:
+                process.close()
+            proxy.close()
+            raise
+        return process, proxy
+
+    def _start_runtime(self):
+        if self._claude is not None:
+            if self._claude.alive():
+                return
+            self._restart_workspace_runtime(
+                _ClaudeCodeTurnError("Claude Code exited between turns", retryable=True)
+            )
+        self._claude, self._proxy = self._workspace_runtime(
+            self.cwd, self.home, self._phase_dir / f"{self.proxy_log_name}.jsonl"
+        )
+        self._runtime_generation += 1
+
+    def _dispose_runtime(self):
+        process, proxy, scope = self._claude, self._proxy, self._scope
+        self._claude = self._proxy = self._scope = self._thread = None
+        try:
+            if scope is not None:
+                scope.close()
+        finally:
+            try:
+                if process is not None:
+                    process.close()
+            finally:
+                if proxy is not None:
+                    proxy.close()
+
+    def _restart_workspace_runtime(self, exc):
+        stderr_tail = list(self._claude.stderr_tail)[-20:] if self._claude else []
+        cleanup_errors = []
+        try:
+            self._dispose_runtime()
+        except Exception as cleanup_exc:
+            cleanup_errors.append(f"{type(cleanup_exc).__name__}: {cleanup_exc}")
+        _append_jsonl(
+            self.private_dir / "runtime-events.jsonl",
+            _sanitize_private_log_value({
+                "schema_version": 1,
+                "event": "workspace_runtime_restart",
+                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                "runtime_generation": self._runtime_generation,
+                "error_type": type(exc).__name__,
+                "error": str(exc),
+                "stderr_tail": stderr_tail,
+                "cleanup_errors": cleanup_errors,
+            }),
+        )
+
+    def _run_turn(self, session, prompt, **_options):
+        process = self._claude
+        stale = process.pending_events()
+        if stale:
+            _append_jsonl(self._phase_dir / "claude-code-events.jsonl",
+                          {"event": "unsolicited_output", "events": stale})
+        self._thread_has_turns = True
+        self._save_thread_state()
+        process.send({"type": "user", "session_id": session, "parent_tool_use_id": None,
+                      "message": {"role": "user", "content": prompt}})
+        tool_calls = []
+        while True:
+            event = process.next_event()
+            if event is None:
+                raise _ClaudeCodeTurnError(
+                    "Claude Code exited before completing the turn: " + process.exit_summary(),
+                    retryable=True,
+                )
+            if event.get("type") == "assistant":
+                tool_calls += _claude_code_tool_calls(event.get("message"))
+            elif event.get("type") == "result":
+                break
+        _append_jsonl(self._phase_dir / "claude-code-events.jsonl",
+                      {"event": "turn_result", "result": event})
+        if event.get("is_error") or event.get("subtype") != "success":
+            raise _claude_code_result_error(event)
+        result = event.get("result")
+        return _ClaudeCodeTurnResult(
+            result if isinstance(result, str) else "", tuple(tool_calls), event
+        ), []
+
+    def _create_response(self, **request):
+        if request.get("model") != self.player.model:
+            raise ArenaError("Claude Code request model does not match player specification")
+        if request.get("reasoning", {}).get("effort") != self.player.level:
+            raise ArenaError("Claude Code request effort does not match player specification")
+        prompt = request.get("input")
+        if not isinstance(prompt, str):
+            raise ArenaError("Claude Code move prompt is not text")
+        prompt = self.prepare_prompt(prompt)
+        self._start_runtime()
+        session = self._persistent_thread()
+        path = self._phase_dir / f"{self.proxy_log_name}.usage.jsonl"
+        usage_offset = path.stat().st_size if path.exists() else 0
+        if self._clock is not None:
+            if self._saved_turn() is not None:
+                prompt = ("The previous execution of this request was interrupted. "
+                          "Continue from your retained files and conversation, checking "
+                          "existing work before repeating tool effects.\n" + prompt)
+            self._pending_turn = {
+                "state": "inflight", "prompt_sha256": self._turn_context["prompt_sha256"],
+                "usage_offset": usage_offset,
+            }
+            _workspace_atomic_json(self._journal_path(), self._pending_turn)
+            prompt = _insert_before_move_output_instructions(
+                prompt,
+                f"Request: {self._turn_context['marker']}. "
+                f"Evaluation game {self.game_number}, move {self._turn_context['move']}. "
+                f"Remaining game time: {self._clock.remaining:.1f} seconds. "
+                + self._resource_instructions(),
+            )
+        try:
+            result, _requests = self._run_turn(session, prompt)
+        except Exception as exc:
+            proxy_requests = self._proxy_usage_since(usage_offset)
+            if proxy_requests:
+                exc.arena_usage = _sum_response_usages(proxy_requests)
+            if self._clock is not None and self._clock.expired:
+                raise
+            if self._scope is not None and self._scope.failure_reason() == "oom-kill":
+                failure = WorkspaceResourceExceeded("agent exceeded its memory allocation")
+                failure.arena_usage = getattr(exc, "arena_usage", {})
+                raise failure from exc
+            if self._claude is not None and not self._claude.alive():
+                self._restart_workspace_runtime(exc)
+            raise
+        usage = _sum_response_usages(self._proxy_usage_since(usage_offset))
+        self._log_agent_turn(result)
+        return _CodexMoveResponse(result.final_response, usage)
+
+
+_WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _ClaudeCodeGameClient)
+
+
+def _workspace_client_class(harness):
+    for client_class in _WORKSPACE_CLIENT_CLASSES:
+        if harness in client_class.harnesses:
+            return client_class
+    raise ArenaError(f"unknown workspace agentic harness: {harness}")
+
+
+def _workspace_client_class_for_player(player_name):
+    if not _is_active_llm_player(player_name):
+        return None
+    harness = _llm_player_config(player_name)[1].agentic_harness
+    return _workspace_client_class(harness) if harness in _WORKSPACE_HARNESSES else None
 
 if __name__ == "__main__":
     raise SystemExit(main())

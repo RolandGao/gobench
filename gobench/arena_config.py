@@ -124,6 +124,25 @@ _CODEX_WORKSPACE_PLAYERS = {
     for harness in _CODEX_TRAINING_SECONDS
 }
 
+# Track 2 with Claude Code: the same preparation durations, checkpoint
+# protocol, sandbox, and resource limits as the Codex harnesses.
+_CLAUDE_CODE_TRAINING_SECONDS = {
+    f"claude-code-{hours}h": hours * 3600 for hours in (0, 1, 2, 4, 8)
+}
+_CLAUDE_CODE_WORKSPACE_HARNESSES = frozenset(_CLAUDE_CODE_TRAINING_SECONDS)
+_CLAUDE_CODE_WORKSPACE_PLAYERS = {
+    harness: (_llm_player_name("claude-opus-5-5-high", harness),)
+    for harness in _CLAUDE_CODE_TRAINING_SECONDS
+}
+_WORKSPACE_HARNESSES = _CODEX_WORKSPACE_HARNESSES | _CLAUDE_CODE_WORKSPACE_HARNESSES
+
+
+def _workspace_training_seconds(harness):
+    """Preparation time fixed by a workspace harness name (Codex or Claude Code)."""
+    if harness in _CODEX_TRAINING_SECONDS:
+        return _CODEX_TRAINING_SECONDS[harness]
+    return _CLAUDE_CODE_TRAINING_SECONDS[harness]
+
 
 _IGNORED_REPORT_PLAYERS = (
     "gpt5.6-sol-low-codex-single",
@@ -204,6 +223,15 @@ def build_run_types(past_run_names):
                 ),
             )
             for harness, players in _CODEX_WORKSPACE_PLAYERS.items()
+        },
+        **{
+            harness: replace(
+                _llm_run_config(players),
+                workspace=WorkspaceSettings(
+                    training_seconds=_CLAUDE_CODE_TRAINING_SECONDS[harness]
+                ),
+            )
+            for harness, players in _CLAUDE_CODE_WORKSPACE_PLAYERS.items()
         },
         "result_aggregation": _llm_run_config(_OPENROUTER_PLAYERS, total_games=0),
     }

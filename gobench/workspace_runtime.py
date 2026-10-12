@@ -28,6 +28,7 @@ from pathlib import Path
 
 PROTOCOL_VERSION = "codex-preparation-v2"
 SDK_VERSION = "0.147.0"
+CLAUDE_CODE_VERSION = "2.1.296"
 
 
 class WorkspaceError(RuntimeError):
@@ -535,6 +536,24 @@ def runtime_identity():
     for package in ("openai-codex", "openai-codex-cli-bin"):
         if version(package) != SDK_VERSION:
             raise WorkspaceError(f"{package} must be pinned to {SDK_VERSION}")
+    return {"sdk": SDK_VERSION, **_host_identity()}
+
+
+def claude_code_runtime_identity(binary):
+    """Claude Code checkpoints record the exact CLI build instead of the Codex SDK."""
+    binary = Path(binary)
+    output = checked([binary, "--version"], env=os.environ | {"DISABLE_AUTOUPDATER": "1"})
+    version = output.split()[0] if output else "unknown"
+    if version != CLAUDE_CODE_VERSION:
+        raise WorkspaceError(
+            f"Claude Code must be pinned to {CLAUDE_CODE_VERSION} (found {version} at {binary}); "
+            f"install it with `curl -fsSL https://claude.ai/install.sh | bash -s {CLAUDE_CODE_VERSION}`"
+        )
+    return {"claude_code": {"version": version, "sha256": file_sha256(binary)},
+            **_host_identity()}
+
+
+def _host_identity():
     versions = {}
     for binary in ("python3", "g++", "make"):
         path = shutil.which(binary, path="/usr/bin:/bin")
@@ -546,7 +565,7 @@ def runtime_identity():
     cpu = next((line.split(":", 1)[1].strip()
                 for line in Path("/proc/cpuinfo").read_text().splitlines()
                 if line.startswith("model name")), "unknown")
-    return {"sdk": SDK_VERSION, "toolchain": versions, "cpu_model": cpu,
+    return {"toolchain": versions, "cpu_model": cpu,
             "architecture": os.uname().machine, "kernel": os.uname().release}
 
 
