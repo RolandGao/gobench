@@ -154,8 +154,8 @@ content, including after files are deleted. `ls -l` shows logical image length;
 `du` shows allocated disk space.
 
 Install the Python dependencies from [requirements.txt](../requirements.txt); both
-`openai-codex` and `openai-codex-cli-bin` are pinned to **0.147.0** (the latest
-stable Python SDK release verified on 2026-09-08). On Ubuntu 24.04 the C++/make
+`openai-codex` and `openai-codex-cli-bin` are pinned to **0.162.1** (the latest
+stable Python SDK release verified on 2026-10-13). On Ubuntu 24.04 the C++/make
 toolchain can be installed with:
 
 ```sh
@@ -271,3 +271,71 @@ with streamed tool calls checked for internet use. Per-request usage goes to
 one-hour cache writes at twice the base input rate. Checkpoints live under
 `untracked_log/<run>/claude-code-checkpoints/<player>/`; turn results and
 CLI stderr are in `claude-code-events.jsonl` and `claude-code-stderr.log`.
+
+## Track 3: tutorial distillation
+
+Track 3 measures whether a model can compress what it learns into a portable
+text artifact. A learning agent runs in the Track 2 sandbox, with the same
+runtimes (Codex or Claude Code), core, RAM/disk/task limits and wall clock,
+but with **subagents disabled** (Claude Code's `Agent`/`Task` tools; Codex's
+`multi_agent` feature). Its only output is `/workspace/tutorial.md`. At the
+deadline the file is cut to its first **5,000 tokens** of tiktoken
+`o200k_base` (the same tokenizer for every model) and frozen. No other
+workspace state reaches evaluation.
+
+Evaluation uses a Track 1 **multi-turn** API player, the *target*, with the
+tutorial at the start of the first user message of every conversation
+session: at game start and again after a 250,000-token history reset. Later
+turns are unchanged Track 1 prompts. The target can be a different model
+from the learner.
+
+Players are named `<target>-tutorial<subtrack>-<learner>-<hours>h`, for example
+`claude-sonnet-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-4h`.
+The target must be an `-api-multi` player. The learner is a Track 2 workspace
+model, effort and runtime without its duration, and hours are 1, 2, 4 or 8
+(the "0h" baseline is the target itself, with no tutorial). Numbered replicas
+(`...-4h2`) are independent learning runs. Profiles such as
+`python3 arena.py --run-type gpt6-astra-tutorial3.3-2h` evaluate
+`gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h` (14 games).
+
+| Subtrack | KataGo in the sandbox | Student tool |
+| --- | --- | --- |
+| `tutorial3.1` | No | No |
+| `tutorial3.2` | Yes | No |
+| `tutorial3.3` | Yes | Yes |
+
+With KataGo, the pinned CPU build is mounted read-only at `/opt/katago`
+(`/arena/bin/katago`), and every network of the configured opponent ladder at
+`/opt/katago-networks`. `/arena/ladder.tsv` gives each ladder player's network,
+Elo and speed (from `data/katago_network_speed_elo.txt`, measured on the
+benchmark host, not in the sandbox) and how its temperature and playouts are
+configured. All subtracks have `/arena/bin/tutorial-tokens` to count the
+tutorial with the fixed tokenizer. `/arena/instructions.md` repeats the
+learning instructions.
+
+In 3.3, `/arena/bin/student TUTORIAL POSITIONS.json` runs the target in the
+exact Track 1 harness (same prompt, effort and no tools), with the tutorial
+cut to 5,000 tokens. Each call is one multi-turn conversation: every position
+(a move list from the empty board, Black first; positions need not share a
+game) becomes one turn, so the tutorial is sent once. It returns each visible
+reply, the parsed move, legality, and cost. Illegal replies are asked again
+with the same prompt, up to 5 attempts, and a call has at most 200 positions.
+At most 4 calls run at once; more wait for a slot. The host runs these calls
+through a Unix socket while the learning clock runs, and wall time continues
+during them. When the clock stops, running calls end after their current
+request. There is no spending cap.
+
+Learning runs once per arena run and player, before that player's first
+game, and is reused by every later game. The checkpoint lives under
+`untracked_log/<run>/tutorial-checkpoints/<player>/`: `checkpoint/tutorial.md`
+(read-only) and `manifest.json` with the tutorial hash, token counts, whether
+the source was truncated or missing (a missing file yields an empty tutorial),
+and costs. `learning_cost_usd` is the agent's API-equivalent cost plus every
+student request (`student/call-*.jsonl` and `calls.jsonl` under
+`preparation/`). The learning disk image and the untruncated source are kept
+for audit. `run.json` copies the manifests under `tutorial_checkpoints`.
+Evaluation game costs are reported separately, as for the target player.
+
+The host needs the Track 2 workspace requirements (and the Claude Code binary
+or Codex SDK for the learner), the target's API login, and `tiktoken`, which
+downloads the `o200k_base` file once from OpenAI's public blob storage.

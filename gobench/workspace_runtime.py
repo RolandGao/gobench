@@ -27,7 +27,7 @@ from pathlib import Path
 
 
 PROTOCOL_VERSION = "codex-preparation-v2"
-SDK_VERSION = "0.147.0"
+SDK_VERSION = "0.162.1"
 CLAUDE_CODE_VERSION = "2.1.296"
 
 
@@ -297,6 +297,9 @@ class WorkspaceVolume:
     def close(self):
         if self.mounted or os.path.ismount(self.mountpoint):
             try:
+                # Commit pending frees first; fstrim cannot discard blocks whose
+                # release is still in the journal, and they would stay allocated.
+                checked(["sync", "-f", self.mountpoint], timeout=300)
                 checked(["sudo", "-n", "fstrim", self.mountpoint], timeout=300)
             finally:
                 checked(["sudo", "-n", "umount", self.mountpoint])

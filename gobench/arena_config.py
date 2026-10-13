@@ -144,6 +144,19 @@ def _workspace_training_seconds(harness):
     return _CLAUDE_CODE_TRAINING_SECONDS[harness]
 
 
+# Track 3 tutorial distillation: <target>-tutorial<subtrack>-<learner>-<hours>h.
+# The target is a Track 1 multi-turn player that reads the tutorial and answers
+# student calls; the learner is a Track 2 workspace model without its duration.
+_TUTORIAL_PLAYERS = {
+    f"gpt6-astra-tutorial{subtrack}-{hours}h": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        f"tutorial{subtrack}-gpt6-astra-high-codex-{hours}h",
+    )
+    for subtrack in ("3.1", "3.2", "3.3")
+    for hours in (1, 2, 4, 8)
+}
+
+
 _IGNORED_REPORT_PLAYERS = (
     "gpt5.6-sol-low-codex-single",
     "gpt5.6-luna-max-codex-single",
@@ -232,6 +245,10 @@ def build_run_types(past_run_names):
                 ),
             )
             for harness, players in _CLAUDE_CODE_WORKSPACE_PLAYERS.items()
+        },
+        **{
+            profile: _llm_run_config((player,))
+            for profile, player in _TUTORIAL_PLAYERS.items()
         },
         "result_aggregation": _llm_run_config(_OPENROUTER_PLAYERS, total_games=0),
     }

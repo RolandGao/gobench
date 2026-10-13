@@ -6,6 +6,8 @@ import copy
 import hashlib
 import json
 
+from gobench.tutorial import with_tutorial
+
 
 CONTEXT_RESET_TOKENS = 250_000
 CONVERSATION_VERSION = 1
@@ -79,9 +81,13 @@ def context_length_error(exc):
 
 class APIConversation:
     def __init__(self, provider, model, player, game, wire_format, *, limit=CONTEXT_RESET_TOKENS,
-                 context_window=None, max_tokens_field=None):
+                 context_window=None, max_tokens_field=None, tutorial=None):
         self.identity = dict(version=CONVERSATION_VERSION, provider=provider,
                              model=model, player=player, game=game, limit=limit)
+        # Track 3: the tutorial opens every session, including after a reset.
+        self.tutorial = tutorial
+        if tutorial is not None:
+            self.identity["tutorial_sha256"] = hashlib.sha256(tutorial.encode()).hexdigest()
         self.wire_format = wire_format
         self.context_window = context_window
         self.max_tokens_field = max_tokens_field
@@ -143,6 +149,8 @@ class APIConversation:
         self.reset_reason = reason
 
     def user_items(self, prompt):
+        if self.tutorial is not None and not self.history:
+            prompt = with_tutorial(self.tutorial, prompt)
         if self.wire_format == "google":
             return [{"type": "user_input", "content": [{"type": "text", "text": prompt}]}]
         return [{"role": "user", "content": prompt}]
@@ -153,6 +161,7 @@ class APIConversation:
         estimate += byte_estimate(current)
         if self.history and estimate >= self.limit:
             self.reset("context_limit")
+            current = self.user_items(prompt)
             estimate = byte_estimate(current)
         if estimate >= self.limit:
             raise ValueError("current move prompt alone exceeds the context reset budget")

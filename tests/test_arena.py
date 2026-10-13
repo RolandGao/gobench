@@ -1917,9 +1917,9 @@ class OAuthAndProxyTests(unittest.TestCase):
         )
         self.assertEqual(
             arena._canonical_openai_proxy_path(
-                "/v1/codex/models?client_version=0.147.0"
+                "/v1/codex/models?client_version=0.162.1"
             ),
-            "/v1/models?client_version=0.147.0",
+            "/v1/models?client_version=0.162.1",
         )
         self.assertIsNone(
             arena._canonical_openai_proxy_path("/v1/chat/completions")

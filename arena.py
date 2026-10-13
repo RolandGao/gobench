@@ -16,6 +16,7 @@ import fcntl
 import hashlib
 import http.client
 import http.server
+import importlib.metadata
 import json
 import math
 import multiprocessing
@@ -82,6 +83,7 @@ from gobench.workspace_runtime import (
     runtime_identity as _workspace_runtime_identity,
 )
 from gobench.go_rules import LEGALITY_ENFORCEMENT_VERSION
+from gobench import tutorial as _tutorial
 from gobench.llm_conversation import (
     CONTEXT_RESET_TOKENS,
     CONVERSATION_VERSION,
@@ -99,8 +101,10 @@ from gobench.strategies import (
 from gobench.strategies import (
     KATAGO_CONFIG,
     KATAGO_CUDA_BINARY,
+    KATAGO_HOME,
     KATAGO_MODEL,
     KATAGO_NETWORKS,
+    KATAGO_VERSION,
     KataGoNetworkStrategy,
     NetworkSpec,
     ensure_arena_networks,
@@ -199,6 +203,9 @@ CONFIG = ArenaConfig(
         # "claude-opus-5-5-high-claude-code-2h",
         # "claude-opus-5-5-high-claude-code-4h",
         # "claude-opus-5-5-high-claude-code-8h",
+        # Track 3 tutorial distillation (see docs/setup.md):
+        # <target>-tutorial<3.1|3.2|3.3>-<learner>-<1|2|4|8>h
+        # "claude-sonnet-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-4h",
         # "gpt6-astra-high-api-multi",
         # "gpt6-astra-max-api-multi",
     ),
@@ -1187,6 +1194,12 @@ class _Arena:
         "tool_search_always_defer_mcp_tools",
         "tool_suggest",
         "enable_request_compression",
+        # Defaults added by Codex 0.162: the arena owns retries, serving tier
+        # and process lifetime inside the sandbox.
+        "daemon_auto_start",
+        "fast_mode",
+        "ultrafast_mode",
+        "unbounded_connection_retries",
     )
     CODEX_BASE_INSTRUCTIONS = ""
     CODEX_WORKSPACE_INSTRUCTIONS = (
@@ -1329,9 +1342,32 @@ def _numbered_llm_player_base(player_name, candidates):
     return base if base in candidates else None
 
 
+def _registered_llm_player(name):
+    """The exact registry entry for name, without replica or tutorial parsing."""
+    for api in _Arena.LLM_APIS:
+        if name in api.players:
+            return api, api.players[name]
+    return None
+
+
+def _tutorial_player(player_name):
+    """A Track 3 player whose target and learner are executable, or None."""
+    spec = _tutorial.parse_player(player_name)
+    if spec is None:
+        return None
+    target = _registered_llm_player(spec.target)
+    learner = _registered_llm_player(spec.learner_player)
+    if (target is None or target[1].agentic_harness != "api-multi"
+            or learner is None or learner[1].agentic_harness not in _WORKSPACE_HARNESSES):
+        return None
+    return spec
+
+
 def _canonical_active_llm_player_name(player_name):
     if not isinstance(player_name, str):
         return None
+    if (tutorial_player := _tutorial_player(player_name)) is not None:
+        return tutorial_player.canonical
     # Read old histories without exposing authentication as a player variant.
     player_name = re.sub(r"-oauth(?=-multi(?:\d+)?$|\d*$)", "-api", player_name)
     if any(player_name in api.players for api in _Arena.LLM_APIS):
@@ -1363,6 +1399,8 @@ def _result_llm_players(player_names):
 
 def _is_result_api_llm_player(player_name):
     canonical = _canonical_active_llm_player_name(player_name)
+    if _tutorial_player(player_name) is not None:
+        return False
     if canonical is not None:
         for api in _Arena.LLM_APIS:
             if canonical in api.players:
@@ -1632,10 +1670,17 @@ def _configure(config):
     _State.arena_player_names = tuple(player_names)
 
 
+def _is_checkpoint_player(player_name):
+    """Players rated as one run's fresh preparation (Track 2) or tutorial (Track 3)."""
+    return _is_active_llm_player(player_name) and (
+        _tutorial_player(player_name) is not None
+        or _llm_player_config(player_name)[1].agentic_harness in _WORKSPACE_HARNESSES
+    )
+
+
 def _rating_prior(player_name):
     config = _State.config
-    if (player_name in config.active_players and _is_active_llm_player(player_name)
-            and _llm_player_config(player_name)[1].agentic_harness in _WORKSPACE_HARNESSES):
+    if player_name in config.active_players and _is_checkpoint_player(player_name):
         return config.active_player_prior_elo_mean, config.active_player_prior_elo_sd
     if player_name in _State.past_player_priors:
         return _State.past_player_priors[player_name]
@@ -3065,9 +3110,12 @@ class LLMGameRecovery:
 
 
 def _llm_player_config(name):
+    """The API player that makes each move. A tutorial player plays as its target."""
     canonical = _canonical_active_llm_player_name(name)
     if canonical is None:
         raise ArenaError(f"unknown LLM player {name}")
+    if (tutorial_player := _tutorial_player(canonical)) is not None:
+        return _registered_llm_player(tutorial_player.target)
     for api in _Arena.LLM_APIS:
         if canonical in api.players:
             return api, api.players[canonical]
@@ -3136,6 +3184,28 @@ def _llm_player_manifest(name):
                 claude_code_disallowed_tools=list(_Arena.CLAUDE_CODE_DISALLOWED_TOOLS),
                 permission_mode="bypassPermissions",
             )
+    if (tutorial_player := _tutorial_player(name)) is not None:
+        learner_api, learner = _registered_llm_player(tutorial_player.learner_player)
+        manifest.update(
+            track=3,
+            tutorial_protocol=_tutorial.PROTOCOL_VERSION,
+            subtrack=tutorial_player.subtrack,
+            target_player=tutorial_player.target,
+            learner_player=tutorial_player.learner_player,
+            learner_kind=learner_api.manifest_kind,
+            learner_model=learner.model,
+            learner_effort=learner.level,
+            learning_seconds=tutorial_player.training_seconds,
+            learning_resources=replace(_State.config.workspace, training_seconds=
+                                       tutorial_player.training_seconds).manifest(),
+            learning_katago_access=tutorial_player.katago,
+            learning_subagents=False,
+            student_calls=tutorial_player.student,
+            student_max_concurrency=_tutorial.STUDENT_MAX_CONCURRENCY,
+            tutorial_token_limit=_tutorial.TOKEN_LIMIT,
+            tutorial_tokenizer=f"tiktoken {_tutorial.TOKENIZER}",
+            tutorial_placement="first user message of every conversation session",
+        )
     if api.base_url is not None:
         manifest["base_url"] = api.base_url
     manifest.update(api.protocol.manifest_options(player))
@@ -3292,8 +3362,12 @@ class _OpenAIOAuthClient:
         )
 
 
-def _llm_client(player_name, *, work_dir=None, game_number=None):
+def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None):
     api, player = _llm_player_config(player_name)
+    if (tutorial_player := _tutorial_player(player_name)) is not None:
+        if work_dir is None:
+            raise ArenaError("tutorial players require a game work directory")
+        tutorial = _ensure_tutorial(tutorial_player, work_dir)
     if player.agentic_harness in _CODEX_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
             raise ArenaError("Codex players require a game work directory and number")
@@ -3349,8 +3423,12 @@ def _llm_client(player_name, *, work_dir=None, game_number=None):
                 wire_format,
                 context_window=player.context_window,
                 max_tokens_field=api.max_tokens_field,
+                tutorial=tutorial,
             ),
         )
+    if tutorial is not None:
+        client.close()
+        raise ArenaError("only multi-turn API players can read a tutorial")
     return client
 
 
@@ -6096,6 +6174,7 @@ def _restore_archived_api_games(run, meta, temp_dir, valid_size):
         )
     if not active or any(
         not _is_active_llm_player(name)
+        or _tutorial_player(name) is not None
         or _llm_player_config(name)[1].agentic_harness not in {"api", "api-multi"}
         for name in active
     ):
@@ -6330,9 +6409,7 @@ class _ArenaRun:
         )
         self.past = _load_past_games(self.past_dirs, eligible)
         checkpoint_players = {
-            name for name in _State.config.active_players
-            if _is_active_llm_player(name)
-            and _llm_player_config(name)[1].agentic_harness in _WORKSPACE_HARNESSES
+            name for name in _State.config.active_players if _is_checkpoint_player(name)
         }
         # A new preparation is a new experimental subject. Old results for the
         # same model/harness name must not be counted as this checkpoint's games.
@@ -6488,6 +6565,23 @@ class _ArenaRun:
                 if len(set(training.values())) == 1:
                     run_config[key]["training_seconds"] = next(iter(training.values()))
                 run_config["move_cap_policy"] = "workspace evaluation: forfeit at move limit"
+        learning = {
+            name: spec.training_seconds for name in self.info_names
+            if (spec := _tutorial_player(name)) is not None
+        }
+        if learning:
+            run_config["tutorial_workspace"] = _State.config.workspace.manifest()
+            run_config["tutorial_workspace"]["learning_seconds_by_player"] = learning
+            run_config["tutorial_distillation"] = {
+                "protocol": _tutorial.PROTOCOL_VERSION,
+                "token_limit": _tutorial.TOKEN_LIMIT,
+                "tokenizer": f"tiktoken {_tutorial.TOKENIZER}",
+                "student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
+                "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
+                "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS,
+                "evaluation": "target multi-turn API player with the tutorial "
+                              "opening every conversation session",
+            }
         return run_config
 
     def _open(self, resume_run_dir):
@@ -6776,6 +6870,12 @@ class _ArenaRun:
                 )
                 if _workspace_client_class_for_player(summary.get("player")) is client_class
             ]
+        tutorial_root = self.temp_dir / _TutorialLearnerMixin.checkpoint_dirname
+        if tutorial_root.is_dir():
+            self.meta["tutorial_checkpoints"] = {
+                path.parents[1].name: _workspace_read_json(path)
+                for path in tutorial_root.glob("*/checkpoint/manifest.json")
+            }
         self.write_reports()
         _write_json(self.run / "run.json", self.meta)
 
@@ -7075,8 +7175,11 @@ def _config_from_metadata(metadata):
         if _is_active_llm_player(name)
         and _llm_player_config(name)[1].agentic_harness in _WORKSPACE_HARNESSES
     }
-    for client_class in sorted(workspace_classes, key=lambda item: item.run_config_key):
-        saved_workspace = metadata.get(client_class.run_config_key)
+    workspace_keys = sorted(client_class.run_config_key for client_class in workspace_classes)
+    if any(_tutorial_player(name) is not None for name in active_players):
+        workspace_keys.append("tutorial_workspace")
+    for key in workspace_keys:
+        saved_workspace = metadata.get(key)
         if not isinstance(saved_workspace, dict) or saved_workspace.get("protocol") != WORKSPACE_PROTOCOL_VERSION:
             raise ArenaError("legacy Codex workspace runs use a different experiment protocol; start a new run")
         try:
@@ -8879,8 +8982,23 @@ class _CodexGameClient:
             raise ArenaError("OpenAI proxy credentials are required for Codex")
         return {
             "runtime": _workspace_runtime_identity(),
-            "codex_config_sha256": hashlib.sha256(_codex_config_text().encode()).hexdigest(),
+            "codex_config_sha256": hashlib.sha256(self._codex_config_text().encode()).hexdigest(),
         }
+
+    @staticmethod
+    def _codex_config_text():
+        return _codex_config_text()
+
+    def _extra_readonly_mounts(self):
+        """Additional (host path, sandbox path) read-only mounts for this harness."""
+        return ()
+
+    def _capture_preparation_outputs(self, preparation):
+        """Read finished preparation results while the training volume is mounted."""
+
+    def _checkpoint_fields(self, preparation, staging):
+        """Extra immutable checkpoint files (written to staging) and manifest fields."""
+        return {}
 
     def _set_phase(self, directory, *, training):
         self._phase_dir = Path(directory)
@@ -8929,7 +9047,11 @@ class _CodexGameClient:
         finally:
             self._dispose_runtime()
             self._clock.pause()
-            self._volume.close()
+            try:
+                if self._clock.remaining <= 0:
+                    self._capture_preparation_outputs(preparation)
+            finally:
+                self._volume.close()
         if self._clock.remaining > 0:
             raise WorkspaceError("preparation stopped before its allocated time was consumed")
         staging = self.checkpoint_root / f".checkpoint-{uuid.uuid4().hex}"
@@ -8960,6 +9082,7 @@ class _CodexGameClient:
                 "training_requests_without_reported_usage": unaccounted,
                 "training_usage": _sum_response_usages([entry["usage"] for entry in usages]),
                 "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                **self._checkpoint_fields(preparation, staging),
             }
             _workspace_atomic_json(staging / "manifest.json", self.checkpoint)
             os.chmod(staging / "disk.img", 0o400)
@@ -8983,25 +9106,7 @@ class _CodexGameClient:
             self._scope.thaw()
             self._proxy.set_enabled(True)
             while self._clock.remaining > 0:
-                prompt = (
-                    "You are preparing to play 9x9 Go. Use this autonomous preparation "
-                    "period to improve your future play by writing and testing code, "
-                    "self-play, search, experiments, and notes. You have no access to "
-                    "KataGo, an arena opponent, external Go engines, or the internet. "
-                    "Python3, g++, and make are available. Build your own tools in /workspace. "
-                    "Rules: 9x9, White komi 7.0, Tromp-Taylor area scoring without dead-stone "
-                    "removal, positional superko, legal self-capture subject to superko, "
-                    "two passes end the game. Columns A-H,J, rows 1-9. "
-                    "After preparation, each evaluation game will receive an independent "
-                    "copy of your workspace and harness state. You will have "
-                    f"{self.settings.evaluation_seconds:g} seconds per evaluation game "
-                    "across all your moves, model thinking and tools. "
-                    f"Preparation time remaining: {self._clock.remaining:.1f} seconds. "
-                    "Read /arena/clock.json for a live deadline. Save useful code and notes "
-                    "incrementally; the runtime is stopped at the deadline with no extra "
-                    "cleanup time. If a prior preparation turn finished, continue improving "
-                    "or testing your work until time expires. " + self._resource_instructions()
-                )
+                prompt = self._preparation_prompt()
                 try:
                     result, requests = self._run_turn(
                         self._persistent_thread(), prompt, **self._turn_options()
@@ -9045,6 +9150,27 @@ class _CodexGameClient:
             self._expire_runtime()
             self._clock.pause()
 
+    def _preparation_prompt(self):
+        return (
+            "You are preparing to play 9x9 Go. Use this autonomous preparation "
+            "period to improve your future play by writing and testing code, "
+            "self-play, search, experiments, and notes. You have no access to "
+            "KataGo, an arena opponent, external Go engines, or the internet. "
+            "Python3, g++, and make are available. Build your own tools in /workspace. "
+            "Rules: 9x9, White komi 7.0, Tromp-Taylor area scoring without dead-stone "
+            "removal, positional superko, legal self-capture subject to superko, "
+            "two passes end the game. Columns A-H,J, rows 1-9. "
+            "After preparation, each evaluation game will receive an independent "
+            "copy of your workspace and harness state. You will have "
+            f"{self.settings.evaluation_seconds:g} seconds per evaluation game "
+            "across all your moves, model thinking and tools. "
+            f"Preparation time remaining: {self._clock.remaining:.1f} seconds. "
+            "Read /arena/clock.json for a live deadline. Save useful code and notes "
+            "incrementally; the runtime is stopped at the deadline with no extra "
+            "cleanup time. If a prior preparation turn finished, continue improving "
+            "or testing your work until time expires. " + self._resource_instructions()
+        )
+
     def _resource_instructions(self):
         return ("Your entire agent has exclusive use of 1 physical CPU core "
                 f"with {len(self._resource_lock.cpus)} logical CPUs, "
@@ -9079,7 +9205,7 @@ class _CodexGameClient:
 
     @staticmethod
     def _close_sdk(codex):
-        # SDK 0.147 closes stdin/processes but leaves the reader pipe objects
+        # SDK 0.147+ closes stdin/processes but leaves the reader pipe objects
         # open. Close them after its reader threads have been joined.
         process = getattr(getattr(codex, "_client", None), "_proc", None)
         codex.close()
@@ -9131,7 +9257,7 @@ class _CodexGameClient:
         launcher_path = runtime_dir / "proxy-launcher.py"
         config_path = runtime_dir / "config.toml"
         launcher_path.write_text(_workspace_proxy_launcher(), encoding="utf-8")
-        config_path.write_text(_codex_config_text(), encoding="utf-8")
+        config_path.write_text(self._codex_config_text(), encoding="utf-8")
         os.chmod(launcher_path, 0o600)
         os.chmod(config_path, 0o600)
         proxy = _OpenAIReverseProxy(
@@ -9174,6 +9300,7 @@ class _CodexGameClient:
                     (codex_bin, "/runtime/codex"),
                     (code_mode_host, "/runtime/codex-code-mode-host"),
                     (self._phase_dir / "public", "/arena"),
+                    *self._extra_readonly_mounts(),
                 ),
                 writable_mounts=((codex_home, "/harness-home"),
                                  (self._volume.mountpoint / "tmp", "/tmp")),
@@ -10124,6 +10251,7 @@ class _ClaudeCodeGameClient(_CodexGameClient):
                     (passwd_path, "/etc/passwd"),
                     (group_path, "/etc/group"),
                     (self._phase_dir / "public", "/arena"),
+                    *self._extra_readonly_mounts(),
                 ),
                 writable_mounts=((claude_home, "/harness-home"),
                                  (self._volume.mountpoint / "tmp", "/tmp")),
@@ -10284,6 +10412,531 @@ class _ClaudeCodeGameClient(_CodexGameClient):
         usage = _sum_response_usages(self._proxy_usage_since(usage_offset))
         self._log_agent_turn(result)
         return _CodexMoveResponse(result.final_response, usage)
+
+
+class _StudentAborted(ArenaError):
+    """The learning clock stopped while a student conversation was running."""
+
+
+class _TutorialToolHandler(socketserver.StreamRequestHandler):
+    def handle(self):
+        line = self.rfile.readline(self.server.MAX_REQUEST_BYTES + 1)
+        try:
+            if len(line) > self.server.MAX_REQUEST_BYTES:
+                raise ValueError("request is too large")
+            request = json.loads(line)
+            if not isinstance(request, dict):
+                raise ValueError("request must be a JSON object")
+            response = self.server.dispatch(request)
+        except (ValueError, ArenaError) as exc:
+            response = {"error": str(exc)}
+        except Exception as exc:
+            # Unexpected host errors can mention host paths; keep them in host logs.
+            _append_jsonl(self.server.directory / "tool-errors.jsonl", {
+                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                "error": f"{type(exc).__name__}: {exc}",
+            })
+            response = {"error": f"internal arena error ({type(exc).__name__})"}
+        with contextlib.suppress(OSError):
+            self.wfile.write(json.dumps(response, ensure_ascii=False).encode() + b"\n")
+
+
+class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
+    """Host side of /runtime/arena-tools.sock for one tutorial learning run.
+
+    `tokens` counts text with the fixed tutorial tokenizer. In Track 3.3,
+    `student` runs one multi-turn conversation of the target player in the
+    Track 1 harness, tutorial first. Student calls run only while the
+    learning clock does; their ledgers are part of the learning cost.
+    """
+
+    daemon_threads = True
+    MAX_REQUEST_BYTES = 8 * 1024 * 1024
+
+    def __init__(self, directory, tutorial_player):
+        self.directory = Path(directory)
+        self.directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+        self.tutorial_player = tutorial_player
+        self.enabled = False
+        self.condition = threading.Condition()
+        self.active_calls = 0
+        self.slots = threading.BoundedSemaphore(_tutorial.STUDENT_MAX_CONCURRENCY)
+        numbers = [int(path.stem.removeprefix("call-"))
+                   for path in self.directory.glob("call-*.jsonl")]
+        self._numbers = iter(range(max(numbers, default=0) + 1, sys.maxsize))
+        self._number_lock = threading.Lock()
+        self._temp = tempfile.TemporaryDirectory(prefix="gobench-tools-")
+        self.socket_path = Path(self._temp.name) / "arena-tools.sock"
+        super().__init__(str(self.socket_path), _TutorialToolHandler)
+        os.chmod(self.socket_path, 0o600)
+        self._thread = threading.Thread(target=self.serve_forever,
+                                        name="arena-tutorial-tools", daemon=True)
+        self._thread.start()
+
+    def set_enabled(self, enabled):
+        with self.condition:
+            self.enabled = bool(enabled)
+            if not enabled:
+                # Running calls stop after their current request. Wait so the
+                # published learning cost includes every student request.
+                self.condition.wait_for(lambda: self.active_calls == 0)
+
+    def close(self):
+        self.set_enabled(False)
+        self.shutdown()
+        self.server_close()
+        self._thread.join(timeout=2)
+        self._temp.cleanup()
+
+    def dispatch(self, request):
+        operation = request.get("op")
+        if operation == "tokens":
+            text = request.get("text")
+            if not isinstance(text, str):
+                raise ValueError("tokens requires text")
+            return {"tokens": _tutorial.count_tokens(text), "limit": _tutorial.TOKEN_LIMIT}
+        if operation == "student":
+            return self.student(request.get("tutorial"), request.get("positions"))
+        raise ValueError(f"unknown operation: {operation!r}")
+
+    def _check_enabled(self):
+        if not self.enabled:
+            raise _StudentAborted("the learning clock is not running")
+
+    def student(self, tutorial, positions):
+        if not self.tutorial_player.student:
+            raise ValueError(
+                f"student calls are not available in Track {self.tutorial_player.subtrack}"
+            )
+        if not isinstance(tutorial, str):
+            raise ValueError("student requires tutorial text")
+        if not isinstance(positions, list) or not positions:
+            raise ValueError("positions must be a nonempty list")
+        if len(positions) > _tutorial.STUDENT_MAX_POSITIONS:
+            raise ValueError(
+                f"at most {_tutorial.STUDENT_MAX_POSITIONS} positions per student call"
+            )
+        replayed = []
+        for index, moves in enumerate(positions, 1):
+            try:
+                replayed.append(_tutorial.replay_position(moves, _Arena.BOARD_SIZE))
+            except ValueError as exc:
+                raise ValueError(f"position {index}: {exc}") from exc
+        tutorial, source_tokens = _tutorial.truncate(tutorial)
+        with self.condition:
+            self._check_enabled()
+            self.active_calls += 1
+        try:
+            while not self.slots.acquire(timeout=1):
+                self._check_enabled()
+            try:
+                self._check_enabled()
+                with self._number_lock:
+                    number = next(self._numbers)
+                return _run_student_conversation(
+                    self, number, tutorial, source_tokens, replayed
+                )
+            finally:
+                self.slots.release()
+        finally:
+            with self.condition:
+                self.active_calls -= 1
+                self.condition.notify_all()
+
+
+def _run_student_conversation(server, number, tutorial, source_tokens, positions):
+    """Answer each position as one Track 1 multi-turn turn, tutorial first."""
+    target = server.tutorial_player.target
+    log = server.directory / f"call-{number:06d}.jsonl"
+    started_at = dt.datetime.now(dt.timezone.utc).isoformat()
+    summary = {
+        "call": number, "target": target, "started_at": started_at,
+        "tutorial_sha256": hashlib.sha256(tutorial.encode()).hexdigest(),
+        "tutorial_tokens": min(source_tokens, _tutorial.TOKEN_LIMIT),
+        "tutorial_truncated": source_tokens > _tutorial.TOKEN_LIMIT,
+        "positions": [],
+    }
+    (server.directory / f"call-{number:06d}.tutorial.md").write_text(
+        tutorial, encoding="utf-8"
+    )
+
+    def abort_retry(*_args):
+        server._check_enabled()
+
+    total_cost = 0.0
+    client = _llm_client(target, work_dir=server.directory, game_number=number,
+                         tutorial=tutorial)
+    try:
+        for index, position in enumerate(positions, 1):
+            prompt = _llm_move_prompt(position, list(position.legal_moves),
+                                      list(position.ko_illegal_moves), position.recent_moves)
+            answer = {"position": index, "to_move": position.to_move,
+                      "move_number": position.move_number + 1,
+                      "attempts": [], "move": None, "legal": False}
+            summary["positions"].append(answer)
+            try:
+                for attempt in range(1, _tutorial.STUDENT_MAX_ATTEMPTS + 1):
+                    server._check_enabled()
+                    raw, seconds, cost = _call_llm_move(
+                        client, prompt, player_name=target, log_path=log,
+                        first_prompt_path=server.directory / "first_prompt.txt",
+                        game_number=number, move_number=index, attempt=attempt,
+                        retry=abort_retry,
+                    )
+                    total_cost += cost
+                    move = raw.strip()
+                    legal = move in position.legal_moves
+                    answer["attempts"].append({"output": raw, "legal": legal,
+                                               "seconds": round(seconds, 3),
+                                               "cost_usd": cost})
+                    if legal:
+                        answer.update(move=move, legal=True)
+                        break
+            except ArenaError as exc:
+                # Includes _StudentAborted. The remaining positions are not asked.
+                answer["error"] = str(exc)[:1000]
+                summary["stopped_early"] = True
+                break
+    finally:
+        client.close()
+        summary.update(cost_usd=total_cost,
+                       finished_at=dt.datetime.now(dt.timezone.utc).isoformat())
+        _append_jsonl(server.directory / "calls.jsonl", summary)
+    return summary
+
+
+def _tutorial_ladder_rows():
+    """(player, network file, Elo, speed) for every configured ladder opponent."""
+    measured = {}
+    path = _Arena.ROOT / "data" / "katago_network_speed_elo.txt"
+    with path.open(encoding="utf-8") as source:
+        for row in csv.DictReader(source, delimiter="\t"):
+            measured[row["network"]] = row
+    rows = []
+    for bot in players():
+        if bot.name not in _State.config.opponent_players:
+            continue
+        data = measured.get(bot.name, {})
+        speed = data.get("speed_seconds_per_player_game")
+        rows.append((
+            bot.name,
+            bot.network.name if bot.network is not None else "-",
+            data.get("elo", "-"),
+            f"{float(speed):.3f}" if speed else "-",
+        ))
+    return rows
+
+
+def _tutorial_ladder_networks():
+    names = {_network_name_for_player(name) for name in _State.config.opponent_players}
+    return tuple(network for network in _Arena.ALL_KATAGO_NETWORKS if network.name in names)
+
+
+class _TutorialLearnerMixin:
+    """Track 3 learning: a Track 2 preparation whose only kept output is a tutorial.
+
+    The learner reuses its Track 2 runtime, sandbox, resource limits, wall
+    clock and checkpoint publication. It differs in its instructions, in
+    having no subagents, in optional read-only KataGo access, and in the
+    arena tools socket. The published checkpoint adds the truncated tutorial.
+    """
+
+    checkpoint_dirname = "tutorial-checkpoints"
+
+    def __init__(self, tutorial_player, work_dir):
+        api, player = _registered_llm_player(tutorial_player.learner_player)
+        self.tutorial_player = tutorial_player
+        self.target_api, self.target = _registered_llm_player(tutorial_player.target)
+        self.tutorial = None
+        self._tool_server = None
+        super().__init__(tutorial_player.name, player, work_dir, 0,
+                         **self._learner_options(api))
+
+    @staticmethod
+    def _learner_options(_api):
+        return {}
+
+    def _tutorial_specification(self):
+        spec = self.tutorial_player
+        return {
+            "protocol": _tutorial.PROTOCOL_VERSION,
+            "subtrack": spec.subtrack, "target": spec.target,
+            "target_model": self.target.model, "target_effort": self.target.level,
+            "katago": spec.katago, "student": spec.student, "subagents": False,
+            "token_limit": _tutorial.TOKEN_LIMIT,
+            "tokenizer": f"tiktoken {_tutorial.TOKENIZER}",
+            "tiktoken_version": importlib.metadata.version("tiktoken"),
+            "student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
+            "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
+            "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS,
+            "instructions_sha256": hashlib.sha256(
+                self._instructions(self.settings.training_seconds).encode()
+            ).hexdigest(),
+            "katago_version": KATAGO_VERSION if spec.katago else None,
+            "networks": [[network.name, network.sha256]
+                         for network in _tutorial_ladder_networks()] if spec.katago else [],
+        }
+
+    def _prepare(self):
+        specification = {
+            **self.settings.manifest(), "player": self.player_name,
+            "learner": self.tutorial_player.learner_player,
+            "model": self.player.model, "effort": self.player.level,
+            **self._runtime_specification(),
+            "tutorial": self._tutorial_specification(),
+        }
+        self.checkpoint_root.mkdir(parents=True, exist_ok=True)
+        with (self.checkpoint_root / "preparation.lock").open("a+b") as lock:
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            if self._load_tutorial(specification):
+                return
+            if self.tutorial_player.katago:
+                ensure_katago_installed()
+                ensure_arena_networks(_tutorial_ladder_networks())
+            self._tool_server = _TutorialToolServer(
+                self.checkpoint_root / "preparation" / "student", self.tutorial_player
+            )
+            try:
+                self._resource_lock = CoreLease()
+                self._ensure_checkpoint(specification)
+            finally:
+                try:
+                    self._tool_server.close()
+                finally:
+                    self._tool_server = None
+                    if self._resource_lock is not None:
+                        self._resource_lock.close()
+                        self._resource_lock = None
+            if not self._load_tutorial(specification):
+                raise WorkspaceError("tutorial checkpoint was not published")
+
+    def _load_tutorial(self, specification):
+        checkpoint = self.checkpoint_root / "checkpoint"
+        if not (checkpoint / "manifest.json").exists():
+            return False
+        manifest = _workspace_read_json(checkpoint / "manifest.json")
+        if manifest.get("specification") != specification:
+            raise WorkspaceError(
+                "tutorial checkpoint configuration/runtime changed; start a new run"
+            )
+        data = (checkpoint / "tutorial.md").read_bytes()
+        if hashlib.sha256(data).hexdigest() != manifest.get("tutorial_sha256"):
+            raise WorkspaceError("immutable tutorial was modified")
+        self.checkpoint = manifest
+        self.tutorial = data.decode("utf-8")
+        return True
+
+    def _codex_config_text(self):
+        return _codex_config_text().replace("multi_agent = true", "multi_agent = false")
+
+    def _resource_instructions(self):
+        lock = self._resource_lock
+        cpus = len(lock.cpus) if lock is not None else "all its"
+        return ("Your agent has exclusive use of 1 physical CPU core "
+                f"with {cpus} logical CPUs, {self.settings.memory_mib} MiB RAM, "
+                f"{self.settings.storage_mib} MiB writable storage and "
+                f"{self.settings.max_tasks} processes/threads; there is no GPU or swap. "
+                "Subagents are disabled.")
+
+    def _extra_readonly_mounts(self):
+        mounts = [(self._tool_server.socket_path, _tutorial.SANDBOX_TOOL_SOCKET)]
+        if self.tutorial_player.katago:
+            mounts.append((KATAGO_HOME, _tutorial.SANDBOX_KATAGO_DIR))
+            mounts += [(network.path, f"{_tutorial.SANDBOX_NETWORK_DIR}/{network.path.name}")
+                       for network in _tutorial_ladder_networks()]
+        return tuple(mounts)
+
+    def _write_public_files(self):
+        public = self._phase_dir / "public"
+        tools = public / "bin"
+        tools.mkdir(parents=True, exist_ok=True)
+        programs = {"tutorial-tokens": _tutorial.TOKENS_PROGRAM}
+        if self.tutorial_player.student:
+            programs["student"] = _tutorial.STUDENT_PROGRAM
+        if self.tutorial_player.katago:
+            programs["katago"] = _tutorial.KATAGO_PROGRAM
+            notes = [
+                "Network players make one neural-network evaluation per move "
+                "(maxVisits = 1)",
+                "and sample from the policy. Temperature starts at "
+                f"{_Arena.ORIGINAL_TEMPERATURE_EARLY:g} and decays to the late",
+                f"temperature, {_Arena.ORIGINAL_TEMPERATURE:g} by default. A -temp-X "
+                "player uses X late, and X early",
+                f"too unless X is {_Arena.LOW_LATE_TEMPERATURE:g}. A -playoutsN player "
+                "searches N playouts instead.",
+                f"{_Arena.ANCHOR} plays uniformly random legal moves.",
+                f"Engine: {_tutorial.SANDBOX_KATAGO_DIR}/squashfs-root/AppRun "
+                "(or /arena/bin/katago),",
+                f"KataGo v{KATAGO_VERSION}, CPU build; example config "
+                f"{_tutorial.SANDBOX_KATAGO_DIR}/default_gtp.cfg.",
+                "Arena rules in KataGo: kata-set-rules tromp-taylor, komi 7.",
+            ]
+            (public / "ladder.tsv").write_text(
+                _tutorial.ladder_text(_tutorial_ladder_rows(), notes), encoding="utf-8"
+            )
+        for name, text in programs.items():
+            (tools / name).write_text(text, encoding="utf-8")
+            os.chmod(tools / name, 0o755)
+        (public / "instructions.md").write_text(
+            self._instructions(self.settings.training_seconds), encoding="utf-8"
+        )
+
+    def _run_preparation(self):
+        self._write_public_files()
+        self._tool_server.set_enabled(True)
+        try:
+            super()._run_preparation()
+        finally:
+            self._tool_server.set_enabled(False)
+
+    def _instructions(self, remaining):
+        spec, target = self.tutorial_player, self.target
+        position = _tutorial.replay_position(["E5", "C3"])
+        example = _llm_move_prompt(position, list(position.legal_moves),
+                                   list(position.ko_illegal_moves), position.recent_moves)
+        tools = [
+            f"- `/arena/bin/tutorial-tokens [FILE]` counts FILE (default "
+            f"{_tutorial.SANDBOX_TUTORIAL_PATH}) with the fixed tokenizer.",
+        ]
+        if spec.katago:
+            tools.append(
+                "- KataGo and every network of the evaluation ladder are available read-only. "
+                "/arena/ladder.tsv lists each ladder player with its network file, Elo and "
+                "speed, and explains how each opponent is configured."
+            )
+        if spec.student:
+            tools.append(
+                "- `/arena/bin/student TUTORIAL POSITIONS.json [-o OUT.json]` runs the "
+                f"evaluation model ({target.model}, {target.level} effort) in the exact "
+                "evaluation harness with TUTORIAL prepended. POSITIONS.json is a list of "
+                "positions, each a list of moves from the empty board, Black first; they need "
+                "not come from one game. All positions of one call form one multi-turn "
+                "conversation, so the tutorial is sent once. The result has each position's "
+                "visible reply, its parsed move, whether that move was legal, and cost. An "
+                "illegal reply is asked again with the same prompt, up to "
+                f"{_tutorial.STUDENT_MAX_ATTEMPTS} attempts. At most "
+                f"{_tutorial.STUDENT_MAX_CONCURRENCY} student calls run at once (more wait "
+                f"for a slot), with up to {_tutorial.STUDENT_MAX_POSITIONS} positions each. "
+                "Student calls use your wall time, and their cost counts as learning cost."
+            )
+        if not spec.katago:
+            tools.append("- You have no access to KataGo or any other existing Go engine.")
+        if not spec.student:
+            tools.append("- There is no student tool; nobody reads the tutorial before evaluation.")
+        return "\n".join([
+            f"# Track {spec.subtrack}: tutorial distillation",
+            "",
+            "Write a tutorial that makes another language model play 9x9 Go as strongly as "
+            f"possible. Your only output is {_tutorial.SANDBOX_TUTORIAL_PATH}. When this "
+            "learning period ends, its contents are cut to the first "
+            f"{_tutorial.TOKEN_LIMIT} tokens of the tiktoken {_tutorial.TOKENIZER} tokenizer "
+            "and frozen. Nothing else in your workspace is kept or seen by the reader.",
+            "",
+            "## Evaluation",
+            f"The reader is {target.model} at {target.level} effort, without tools. It plays "
+            "complete games against a ladder of KataGo opponents, one move per turn, with no "
+            "game clock. Each game is one multi-turn conversation. Your tutorial is placed "
+            "at the start of the conversation's first user message:",
+            "",
+            "```",
+            _tutorial.with_tutorial("<your tutorial>", "<move prompt>"),
+            "```",
+            "",
+            "Later turns contain only the move prompt. If the conversation grows past "
+            f"{CONTEXT_RESET_TOKENS:,} tokens, it is cleared and the next turn again starts "
+            "with the tutorial. An example move prompt:",
+            "",
+            "```",
+            example,
+            "```",
+            "",
+            "## Your environment",
+            f"You have {remaining:.0f} seconds of wall time. Read /arena/clock.json for a live "
+            "deadline. The runtime stops at the deadline with no extra time, so save the "
+            "tutorial early and keep it updated. Python3, g++, and make are available; build "
+            "tools in /workspace. There is no internet access. " + self._resource_instructions(),
+            "",
+            *tools,
+            "",
+            "These instructions are also in /arena/instructions.md.",
+        ]) + "\n"
+
+    def _preparation_prompt(self):
+        return (
+            self._instructions(self._clock.remaining)
+            + "\nIf a previous turn ended, continue improving and testing the tutorial "
+            "until time expires.\n"
+        )
+
+    def _capture_preparation_outputs(self, preparation):
+        source = _tutorial.read_source(self.cwd / "tutorial.md")
+        tutorial, source_tokens = _tutorial.truncate(source or "")
+        _workspace_atomic_json(preparation / "tutorial-capture.json", {
+            "source_present": source is not None,
+            "source_tokens": source_tokens,
+        })
+        (preparation / "tutorial.md").write_text(tutorial, encoding="utf-8")
+        if source is not None:
+            (preparation / "tutorial-source.md").write_text(source, encoding="utf-8")
+
+    def _checkpoint_fields(self, preparation, staging):
+        capture = _workspace_read_json(preparation / "tutorial-capture.json")
+        shutil.copyfile(preparation / "tutorial.md", staging / "tutorial.md")
+        os.chmod(staging / "tutorial.md", 0o400)
+        data = (staging / "tutorial.md").read_bytes()
+        calls = []
+        for path in sorted((preparation / "student").glob("call-*.jsonl")):
+            calls += _read_jsonl_objects(path, "student calls")
+        student_cost = sum(float(entry.get("cost_usd") or 0) for entry in calls)
+        counts = [_llm_token_usage(self.target_api, entry.get("usage") or {})
+                  for entry in calls]
+        agent_cost = sum(
+            _llm_call_cost(entry["usage"], self.api_name, self.player.model,
+                           started_at=entry.get("started_at"))
+            for entry in _read_jsonl_objects(
+                preparation / f"{self.proxy_log_name}.usage.jsonl", "training usage")
+        )
+        return {
+            "tutorial_sha256": hashlib.sha256(data).hexdigest(),
+            "tutorial_tokens": _tutorial.count_tokens(data.decode("utf-8")),
+            "tutorial_source_present": capture["source_present"],
+            "tutorial_source_tokens": capture["source_tokens"],
+            "tutorial_truncated": capture["source_tokens"] > _tutorial.TOKEN_LIMIT,
+            "student_requests": len(calls),
+            "student_failed_requests": sum(not entry.get("ok") for entry in calls),
+            "student_tokens": {field.name: sum(getattr(count, field.name) for count in counts)
+                               for field in fields(_LLMTokenUsage)},
+            "student_cost_usd": student_cost,
+            "learning_cost_usd": agent_cost + student_cost,
+        }
+
+
+class _CodexTutorialLearner(_TutorialLearnerMixin, _CodexGameClient):
+    @staticmethod
+    def _learner_options(api):
+        return {"proxy_credential": _codex_workspace_proxy_credential(api)}
+
+
+class _ClaudeCodeTutorialLearner(_TutorialLearnerMixin, _ClaudeCodeGameClient):
+    def _cli_options(self):
+        options = list(super()._cli_options())
+        index = options.index("--disallowedTools") + 1
+        # Claude Code 2.x names its subagent tool Agent; older builds call it Task.
+        options[index] = ",".join((*_Arena.CLAUDE_CODE_DISALLOWED_TOOLS, "Agent", "Task"))
+        return tuple(options)
+
+
+def _ensure_tutorial(tutorial_player, work_dir):
+    """Run or reuse this arena run's learning phase; return the frozen tutorial."""
+    _, learner = _registered_llm_player(tutorial_player.learner_player)
+    learner_class = (_ClaudeCodeTutorialLearner
+                     if learner.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
+                     else _CodexTutorialLearner)
+    client = learner_class(tutorial_player, work_dir)
+    try:
+        return client.tutorial
+    finally:
+        client.close()
 
 
 _WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _ClaudeCodeGameClient)
