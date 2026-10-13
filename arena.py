@@ -7875,10 +7875,19 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
             self.server.upstream_status(status, credential)
             upstream_headers = upstream.getheaders()
             response_headers = dict(upstream_headers)
-            is_stream = any(
-                name.lower() == "content-type" and "text/event-stream" in value
-                for name, value in upstream_headers
+            content_type = next(
+                (
+                    value
+                    for name, value in upstream_headers
+                    if name.lower() == "content-type"
+                ),
+                None,
             )
+            if content_type is None and isinstance(request_body, dict) and request_body.get("stream") is True:
+                # The ChatGPT Codex backend streams SSE without a Content-Type.
+                content_type = "text/event-stream"
+            content_type = content_type or ""
+            is_stream = "text/event-stream" in content_type
             self.send_response(upstream.status, upstream.reason)
             for name, value in upstream_headers:
                 if name.lower() not in _Arena.PROXY_HOP_BY_HOP_HEADERS:
@@ -7910,14 +7919,6 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                     except (BrokenPipeError, ConnectionResetError):
                         client_connected = False
             self.close_connection = True
-            content_type = next(
-                (
-                    value
-                    for name, value in upstream_headers
-                    if name.lower() == "content-type"
-                ),
-                "",
-            )
             decoded_response = _decoded_proxy_body(response_body, content_type)
             stream_events = _proxy_stream_events(decoded_response)
             response_flags = self.server.response_flags(stream_events or decoded_response)

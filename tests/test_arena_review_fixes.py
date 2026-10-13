@@ -607,6 +607,68 @@ class ProxyIntegrationTests(unittest.TestCase):
             self.assertNotIn("first-token", log)
             self.assertNotIn("renewed-token", log)
 
+    def test_streamed_response_without_content_type_records_usage(self):
+        # The ChatGPT Codex backend streams SSE without a Content-Type header.
+        usage = {"input_tokens": 120, "output_tokens": 7}
+
+        class Upstream(http.server.BaseHTTPRequestHandler):
+            def log_message(self, *args):
+                pass
+
+            def do_POST(self):
+                self.rfile.read(int(self.headers.get("Content-Length", "0")))
+                body = (
+                    b'event: response.created\ndata: {"type":"response.created"}\n\n'
+                    + b"event: response.completed\ndata: "
+                    + json.dumps({"type": "response.completed",
+                                  "response": {"model": "gpt-6-astra", "usage": usage}}).encode()
+                    + b"\n\n"
+                )
+                self.send_response(200)
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+        class UnixConnection(http.client.HTTPConnection):
+            def __init__(self, path):
+                super().__init__("local", timeout=2)
+                self.path = path
+
+            def connect(self):
+                self.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+                self.sock.settimeout(self.timeout)
+                self.sock.connect(str(self.path))
+
+        server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Upstream)
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                original = http.client.HTTPConnection
+                with mock.patch.object(
+                    arena.http.client, "HTTPSConnection",
+                    lambda *a, **kw: original("127.0.0.1", server.server_port, timeout=4),
+                ):
+                    proxy = arena._OpenAIReverseProxy(
+                        arena._OpenAIProxyCredential("dummy", "unused.invalid"),
+                        root / "proxy.jsonl", write_readable=False,
+                    )
+                    try:
+                        client = UnixConnection(proxy.socket_path)
+                        client.request("POST", "/v1/responses", '{"stream": true}',
+                                       {"Content-Type": "application/json"})
+                        self.assertIn(b"response.completed", client.getresponse().read())
+                        client.close()
+                    finally:
+                        proxy.close()
+                entries = arena._read_jsonl_objects(root / "proxy.usage.jsonl", "usage")
+                self.assertEqual([entry["usage"] for entry in entries], [usage])
+                exchange = arena._read_jsonl_objects(root / "proxy.jsonl", "proxy")[-1]
+                self.assertEqual(len(exchange["response_body"]["events"]), 2)
+        finally:
+            server.shutdown()
+            server.server_close()
+
     def test_small_sse_events_stream_and_usage_commits_before_delivery(self):
         release = threading.Event()
         finish = threading.Event()
