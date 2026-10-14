@@ -199,6 +199,9 @@ CONFIG = ArenaConfig(
         # "gpt6.1-sol-max-api-multi",
         "claude-sonnet-5-5-high-api-multi",
         "claude-sonnet-5-5-max-api-multi",
+        # "muse-wonder-1.0-high-api-multi",
+        # "muse-wonder-1.0-max-api-multi",
+        # "gemini-4-argon-high-api-multi",
         # "gpt6-astra-high-codex-4h",
         # "gpt6-astra-high-codex-8h",
         # Track 2 with Claude Code (see docs/setup.md):
@@ -219,7 +222,7 @@ CONFIG = ArenaConfig(
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
     active_player_prior_elo_mean=2000.0,
-    active_player_prior_elo_sd=2000.0,
+    active_player_prior_elo_sd=1000.0,
 )
 
 
@@ -798,6 +801,18 @@ class _Arena:
                     max_output_tokens=943_718,
                     context_window=1_048_576,
                 ),
+                # Muse Wonder 1.0 (preview) Standard-mode rates, efforts and context
+                # checked 2026-10-14:
+                # https://dev.meta.ai/docs/models.md
+                # https://dev.meta.ai/docs/pricing-rate-limits.md
+                **_llm_effort_players(
+                    "muse-wonder-1.0",
+                    "muse-wonder-1.0",
+                    ("minimal", "low", "medium", "high", "xhigh", "max"),
+                    (4.0, 0.2, 20.0),
+                    max_output_tokens=943_718,
+                    context_window=1_048_576,
+                ),
             },
             sdk_module="openai",
             sdk_client_path=("OpenAI",),
@@ -974,6 +989,18 @@ class _Arena:
                     (0.75, 0.075, 3.75),
                     max_output_tokens=65_536,
                     scheduled_prices=(("2027-01-01", (1.5, 0.15, 7.5)),),
+                ),
+                # Gemini 4 Argon rates (doubling on 2026-12-01), levels and limits
+                # checked 2026-10-14:
+                # https://ai.google.dev/gemini-api/docs/pricing
+                # https://ai.google.dev/gemini-api/docs/models/gemini-4-argon
+                **_llm_effort_players(
+                    "gemini-4-argon",
+                    "gemini-4-argon",
+                    ("low", "medium", "high"),
+                    (2.0, 0.1, 10.0),
+                    max_output_tokens=65_536,
+                    scheduled_prices=(("2026-12-01", (4.0, 0.2, 20.0)),),
                 ),
                 **_llm_effort_players(
                     "gemini-3.1-pro",

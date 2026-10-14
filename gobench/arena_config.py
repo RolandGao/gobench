@@ -186,7 +186,7 @@ def build_run_types(past_run_names):
             past_run_names=past_run_names,
             ignore_players=_IGNORED_REPORT_PLAYERS,
             active_player_prior_elo_mean=2000.0,
-            active_player_prior_elo_sd=2000.0,
+            active_player_prior_elo_sd=1000.0,
         )
 
     # Every selectable profile is an ArenaConfig defined here. Filtered selections

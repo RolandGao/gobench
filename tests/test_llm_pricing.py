@@ -17,8 +17,10 @@ class PricingTests(unittest.TestCase):
             "gpt-6-astra": (10, 1, 50),
             "gpt-6-sol": (2, .2, 10),
             "gpt-6-luna": (.1, .01, .5),
+            "gpt-6.1-sol": (2, .1, 10),
             "muse-spark-1.2": (1.25, .15, 4.25),
             "muse-spark-1.3-contributor": (.1, .002, .2),
+            "muse-wonder-1.0": (4, .2, 20),
             "grok-4.5": (2, .3, 6),
             "grok-4.6": (2, .5, 6),
             "deepseek-v4-flash": (.22, .007, .66),
@@ -30,8 +32,10 @@ class PricingTests(unittest.TestCase):
             "gemini-3.6-flash": (.75, .075, 3.75),
             "gemini-3.8-flash": (.75, .075, 3.75),
             "gemini-3.1-pro-preview": (2, .2, 12),
+            "gemini-4-argon": (2, .1, 10),
             "claude-opus-5": (5, .5, 25),
             "claude-opus-5-5": (4, .2, 20),
+            "claude-sonnet-5-5": (2, .2, 10),
             "claude-fable-5-1": (10, .25, 50),
         }
         for api in arena._Arena.LLM_APIS:
