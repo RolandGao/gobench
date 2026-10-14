@@ -111,27 +111,30 @@ class ConfigurationSurfaceTests(unittest.TestCase):
     def test_reports_omit_matchmaking_details(self):
         paths = {
             "ratings_path": Path("ratings.txt"),
-            "api_comparisons_path": Path("api-comparisons.txt"),
-            "all_comparisons_path": Path("all-comparisons.txt"),
             "matchup_path": Path("matchups.txt"),
             "all_llm_matchup_path": Path("all-llm-matchups.txt"),
         }
 
         with mock.patch.object(arena._State, "katago_mode", False):
             llm_sections = arena._arena_report_sections(
-                has_llm_comparisons=True, **paths
+                comparison_sections=[
+                    (title, Path(filename))
+                    for _track, title, filename in arena.LLM_TRACK_COMPARISONS
+                ],
+                **paths
             )
         with mock.patch.object(arena._State, "katago_mode", True):
             katago_sections = arena._arena_report_sections(
-                has_llm_comparisons=False, **paths
+                comparison_sections=[], **paths
             )
 
         self.assertEqual(
             [title for title, _path in llm_sections],
             [
                 "Elo ratings",
-                "API-only LLM comparisons",
-                "All LLM comparisons",
+                "Track 1 (API) LLM comparisons",
+                "Track 2 (agentic workspace) LLM comparisons",
+                "Track 3 (tutorial distillation) LLM comparisons",
                 "Active-player matchup results",
                 "All LLM matchup results",
             ],
@@ -184,6 +187,35 @@ class ConfigurationSurfaceTests(unittest.TestCase):
         self.assertIn(api_player, all_text)
         self.assertIn(codex_player, all_text)
         self.assertIn(trained_player, all_text)
+
+    def test_comparisons_are_split_by_track(self):
+        players = {
+            "gpt6-astra-high-api-multi": 1,
+            "gpt5.6-sol-high-api": 1,
+            "gpt6-astra-high-codex-4h": 2,
+            "claude-opus-5-5-high-claude-code-2h": 2,
+            "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h": 3,
+        }
+        self.assertEqual({name: arena._result_llm_track(name) for name in players}, players)
+        self.assertIsNone(arena._result_llm_track(arena._Arena.ANCHOR))
+        records = [
+            arena.RatingRecord(name, 100.0, 90.0, 110.0, 20.0, 2, 1, 1, 0)
+            for name in [*players, arena._Arena.ANCHOR]
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            sections = arena._write_llm_track_comparisons(
+                Path(tmp), [], records, ignore_players=("gpt5.6-sol-high-api",),
+            )
+            texts = {title: path.read_text(encoding="utf-8") for title, path in sections}
+        self.assertEqual(
+            list(texts), [title for _track, title, _file in arena.LLM_TRACK_COMPARISONS]
+        )
+        for name, track in players.items():
+            for (number, title, _file) in arena.LLM_TRACK_COMPARISONS:
+                shown = name != "gpt5.6-sol-high-api" and number == track
+                # Tutorial names contain their learner's name, so match whole rows.
+                rows = {line.split()[1] for line in texts[title].splitlines()[3:] if line.strip()}
+                self.assertEqual(name in rows, shown, (name, title))
 
     def test_comparison_token_rates_include_retries_and_normalize_provider_input(self):
         player = "gpt5.6-sol-high-api"

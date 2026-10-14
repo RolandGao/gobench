@@ -1410,6 +1410,42 @@ def _is_result_api_llm_player(player_name):
     ).endswith("-api")
 
 
+# Reports give each benchmark track its own comparison table.
+LLM_TRACK_COMPARISONS = (
+    (1, "Track 1 (API) LLM comparisons", "track1_llm_comparisons.txt"),
+    (2, "Track 2 (agentic workspace) LLM comparisons", "track2_llm_comparisons.txt"),
+    (3, "Track 3 (tutorial distillation) LLM comparisons", "track3_llm_comparisons.txt"),
+)
+
+
+def _result_llm_track(player_name):
+    if _tutorial_player(player_name) is not None:
+        return 3
+    if _is_result_api_llm_player(player_name):
+        return 1
+    return 2 if _is_result_llm_player(player_name) else None
+
+
+def _write_llm_track_comparisons(directory, games, records, *, ignore_players=()):
+    """Write one comparison table per track with visible players; return its sections."""
+    sections = []
+    for track, title, filename in LLM_TRACK_COMPARISONS:
+        players = {
+            record.player for record in records
+            if _result_llm_track(record.player) == track
+            and record.player not in ignore_players
+        }
+        if not players:
+            continue
+        path = directory / filename
+        _write_llm_comparisons(
+            path, games, records, title=title,
+            include_players=players, ignore_players=ignore_players,
+        )
+        sections.append((title, path))
+    return sections
+
+
 def _network_name_for_player(player_name):
     if player_name == _Arena.ANCHOR or _is_result_llm_player(player_name):
         return None
@@ -5777,19 +5813,12 @@ def _write_llm_comparisons(
 
 def _arena_report_sections(
     *,
-    has_llm_comparisons,
     ratings_path,
-    api_comparisons_path,
-    all_comparisons_path,
+    comparison_sections,
     matchup_path,
     all_llm_matchup_path,
 ):
-    sections = [("Elo ratings", ratings_path)]
-    if has_llm_comparisons:
-        sections += [
-            ("API-only LLM comparisons", api_comparisons_path),
-            ("All LLM comparisons", all_comparisons_path),
-        ]
+    sections = [("Elo ratings", ratings_path), *comparison_sections]
     if not _State.katago_mode:
         sections += [
             ("Active-player matchup results", matchup_path),
@@ -6656,8 +6685,6 @@ class _ArenaRun:
         if llm_games:
             _write_game_records(self.run / "llm_games.jsonl", llm_games)
         ratings_path = self.temp_dir / "ratings.txt"
-        api_comparisons_path = self.temp_dir / "api_llm_comparisons.txt"
-        all_comparisons_path = self.temp_dir / "all_llm_comparisons.txt"
         matchup_path = self.temp_dir / "matchup_results.txt"
         all_llm_matchup_path = self.temp_dir / "all_llm_matchup_results.txt"
         _write_ratings(
@@ -6668,23 +6695,10 @@ class _ArenaRun:
             color_sds=snap.color_sds,
             ignore_players=_State.config.ignore_players,
         )
-        _write_llm_comparisons(
-            api_comparisons_path,
-            fit,
-            snap.records,
-            title="API-only LLM comparisons",
-            include_players={
-                record.player
-                for record in snap.records
-                if _is_result_api_llm_player(record.player)
-            },
-            ignore_players=_State.config.ignore_players,
-        )
-        _write_llm_comparisons(
-            all_comparisons_path,
-            fit,
-            snap.records,
-            title="All LLM comparisons",
+        for obsolete in ("api_llm_comparisons.txt", "all_llm_comparisons.txt"):
+            (self.temp_dir / obsolete).unlink(missing_ok=True)
+        comparison_sections = _write_llm_track_comparisons(
+            self.temp_dir, fit, snap.records,
             ignore_players=_State.config.ignore_players,
         )
         if not _State.katago_mode:
@@ -6707,16 +6721,9 @@ class _ArenaRun:
                 snap.records,
                 ignore_players=_State.config.ignore_players,
             )
-        visible_llm_comparisons = any(
-            _is_result_llm_player(record.player)
-            and record.player not in _State.config.ignore_players
-            for record in snap.records
-        )
         sections = _arena_report_sections(
-            has_llm_comparisons=visible_llm_comparisons,
             ratings_path=ratings_path,
-            api_comparisons_path=api_comparisons_path,
-            all_comparisons_path=all_comparisons_path,
+            comparison_sections=comparison_sections,
             matchup_path=matchup_path,
             all_llm_matchup_path=all_llm_matchup_path,
         )
@@ -7050,18 +7057,11 @@ def run_summary(config):
                 color=snap.color, color_sds=snap.color_sds,
                 ignore_players=config.ignore_players,
             )
-            sections = [staging / "ratings.txt"]
-            for filename, title, include in (
-                ("api_llm_comparisons.txt", "API-only LLM comparisons",
-                 {r.player for r in snap.records if _is_result_api_llm_player(r.player)}),
-                ("all_llm_comparisons.txt", "All LLM comparisons", None),
-            ):
-                path = staging / filename
-                _write_llm_comparisons(
-                    path, games, snap.records, title=title,
-                    include_players=include, ignore_players=config.ignore_players,
+            sections = [staging / "ratings.txt", *(
+                path for _title, path in _write_llm_track_comparisons(
+                    staging, games, snap.records, ignore_players=config.ignore_players,
                 )
-                sections.append(path)
+            )]
             matchup = staging / "all_llm_matchup_results.txt"
             _write_all_llm_matchup_results(
                 matchup, games, snap.records, ignore_players=config.ignore_players,
