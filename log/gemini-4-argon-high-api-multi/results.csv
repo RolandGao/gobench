@@ -1,0 +1,9 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gemini-4-argon-high-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,W+8.0,kata1-b6c96-s16525312-d2925067-temp-0.7,0,76,google_interactions_api,38,0,0,1349.114933,1.759258900000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,gemini-4-argon-high-api-multi,W+R,gemini-4-argon-high-api-multi,0,59,google_interactions_api,29,0,1,1143.198819,1.076349000000
+3,2,gemini-4-argon-high-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,gemini-4-argon-high-api-multi,1,62,google_interactions_api,31,0,0,1101.882353,1.298733600000
+4,2,kata1-b6c96-s16525312-d2925067-temp-0.7,gemini-4-argon-high-api-multi,W+R,gemini-4-argon-high-api-multi,0,59,google_interactions_api,29,0,0,1864.888509,2.141946200000
+5,3,gemini-4-argon-high-api-multi,kata1-b6c96-s15704832-d2832803,B+R,gemini-4-argon-high-api-multi,1,58,google_interactions_api,29,0,0,1404.926938,1.704161300000
+6,3,kata1-b6c96-s15704832-d2832803,gemini-4-argon-high-api-multi,W+R,gemini-4-argon-high-api-multi,0,57,google_interactions_api,28,0,0,893.783983,0.973376700000
+7,4,gemini-4-argon-high-api-multi,kata1-b6c96-s17434112-d3038653,W+2.0,kata1-b6c96-s17434112-d3038653,0,73,google_interactions_api,37,0,0,1413.727808,1.669562600000
+8,4,kata1-b6c96-s17434112-d3038653,gemini-4-argon-high-api-multi,B+10.0,kata1-b6c96-s17434112-d3038653,1,74,google_interactions_api,37,0,0,2389.937464,2.637933000000

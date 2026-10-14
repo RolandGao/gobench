@@ -1,0 +1,7 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,kata1-b6c96-s16525312-d2925067-temp-0.7,B+74.0,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,1,3,anthropic_messages_api,2,0,0,2.433599,0.028530400000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,W+R,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,0,65,anthropic_messages_api,32,0,0,303.872721,0.909378600000
+3,2,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,kata1-b6c96-s25461504-d4002500,W+20.0,kata1-b6c96-s25461504-d4002500,0,90,anthropic_messages_api,45,0,0,359.098703,1.169929000000
+4,2,kata1-b6c96-s25461504-d4002500,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,B+22.0,kata1-b6c96-s25461504-d4002500,1,73,anthropic_messages_api,36,0,0,284.201129,0.867475400000
+5,3,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,kata1-b6c96-s18429184-d3197121,W+88.0,kata1-b6c96-s18429184-d3197121,0,98,anthropic_messages_api,49,0,0,455.627109,1.466686800000
+6,3,kata1-b6c96-s18429184-d3197121,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,W+R,claude-opus-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-2h,0,67,anthropic_messages_api,33,0,0,242.128318,0.742046600000

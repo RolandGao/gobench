@@ -197,8 +197,8 @@ CONFIG = ArenaConfig(
         # "gpt6-luna-max-api-multi",
         # "gpt6.1-sol-high-api-multi",
         # "gpt6.1-sol-max-api-multi",
-        "claude-sonnet-5-5-high-api-multi",
-        "claude-sonnet-5-5-max-api-multi",
+        # "claude-sonnet-5-5-high-api-multi",
+        # "claude-sonnet-5-5-max-api-multi",
         # "muse-wonder-1.0-high-api-multi",
         # "muse-wonder-1.0-max-api-multi",
         # "gemini-4-argon-high-api-multi",
@@ -215,6 +215,8 @@ CONFIG = ArenaConfig(
         # "claude-sonnet-5-5-high-api-multi-tutorial3.3-claude-opus-5-5-high-claude-code-4h",
         # "gpt6-astra-high-api-multi",
         # "gpt6-astra-max-api-multi",
+        # "gemini-4-argon-high-api-multi",
+        "muse-wonder-1.0-high-api-multi",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
     total_games=20,
@@ -6226,7 +6228,8 @@ def _recover_committed_batches(meta, temp_dir, valid_size, *, saved_games=None):
 def _restore_archived_api_games(run, meta, temp_dir, valid_size):
     """Rebuild completed API-game journals after disposable logs were removed."""
     active = meta.get("active_players", [])
-    if not meta.get("finished_at"):
+    # ARENA_DROP_UNFINISHED=1 accepts losing an interrupted run's in-flight games.
+    if not meta.get("finished_at") and not _env("DROP_UNFINISHED", 0):
         raise ArenaError(
             f"missing recovery journal in {temp_dir}; this run was interrupted. "
             "Restore its original untracked_log directory to retain unfinished "
