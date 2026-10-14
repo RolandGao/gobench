@@ -294,6 +294,34 @@ class ReviewFixTests(unittest.TestCase):
             with self.assertRaises(arena.ArenaError):
                 arena._load_past_games([run.run], (self.name, self.anchor))
 
+    def test_save_reports_publishes_final_tutorials(self):
+        with mock.patch.multiple(
+            arena._Arena,
+            ROOT=self.root,
+            LOG_ROOT=self.root / "log",
+            UNTRACKED_LOG_ROOT=self.root / "untracked_log",
+        ):
+            run = arena._ArenaRun(None)
+            run.done = [self.record(1)]
+            run.meta.update(completed_games=1, batch_sizes=[1], completed_batch_ids=[1])
+            checkpoint = (run.temp_dir / arena._TutorialLearnerMixin.checkpoint_dirname
+                          / "learner-1h" / "checkpoint")
+            checkpoint.mkdir(parents=True)
+            (checkpoint / "manifest.json").write_text("{}")
+            (checkpoint / "tutorial.md").write_text("# Play the corners\n")
+            public = checkpoint.parent / "preparation" / "public"
+            public.mkdir(parents=True)
+            (public / "instructions.md").write_text("# Write a tutorial\n")
+            run._save_reports()
+            self.assertEqual(
+                (run.run / "tutorials" / "learner-1h.md").read_text(),
+                "# Play the corners\n",
+            )
+            self.assertEqual(
+                (run.run / "tutorials" / "learner-1h.learner-prompt.md").read_text(),
+                "# Write a tutorial\n",
+            )
+
     def test_results_replacement_keeps_previous_csv_on_failure(self):
         path = self.root / "results.csv"
         arena._write_results(path, [self.record(1)])

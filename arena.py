@@ -6670,7 +6670,24 @@ class _ArenaRun:
             if counts[name] < _State.config.total_games
         ]
 
+    def _publish_tutorials(self):
+        """Copy each final tutorial and its learner prompt next to the tracked results."""
+        tutorial_root = self.temp_dir / _TutorialLearnerMixin.checkpoint_dirname
+        for path in tutorial_root.glob("*/checkpoint/tutorial.md"):
+            root = path.parents[1]
+            published = {
+                f"{root.name}.md": path,
+                f"{root.name}.learner-prompt.md":
+                    root / "preparation" / "public" / "instructions.md",
+            }
+            (self.run / "tutorials").mkdir(exist_ok=True)
+            for name, source in published.items():
+                if source.exists():
+                    _replace_text(self.run / "tutorials" / name,
+                                  source.read_text(encoding="utf-8"))
+
     def write_reports(self):
+        self._publish_tutorials()
         self.done = _with_llm_token_counts(self.done, self.run)
         self.meta["report_file"] = "report.txt"
         if not _State.katago_mode:
