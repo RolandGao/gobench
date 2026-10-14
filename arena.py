@@ -165,6 +165,10 @@ _FINAL_RUNS = (
     # "claude-sonnet-5-5-max-api-multi",
     "gpt6.1-sol-high-api-multi",
     "gpt6.1-sol-max-api-multi",
+    "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-1h",
+    "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h",
+    "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-4h",
+    "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-8h",
 )
 
 
