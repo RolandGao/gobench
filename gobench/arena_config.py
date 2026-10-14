@@ -154,6 +154,13 @@ _TUTORIAL_PLAYERS = {
     )
     for subtrack in ("3.1", "3.2", "3.3")
     for hours in (1, 2, 4, 8)
+} | {
+    f"claude-opus-5-5-tutorial{subtrack}-{hours}h": _llm_player_name(
+        "claude-opus-5-5-high-api-multi",
+        f"tutorial{subtrack}-claude-opus-5-5-high-claude-code-{hours}h",
+    )
+    for subtrack in ("3.1", "3.2", "3.3")
+    for hours in (1, 2, 4, 8)
 }
 
 
