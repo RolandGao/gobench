@@ -169,7 +169,7 @@ _IGNORED_REPORT_PLAYERS = (
 def build_run_types(past_run_names):
     """Build named profiles using the historical runs selected in arena.py."""
 
-    def _llm_run_config(active_players, *, total_games=14):
+    def _llm_run_config(active_players, *, total_games=20):
         """Shared defaults for the paired-color LLM experiment profiles."""
         return ArenaConfig(
             active_players=active_players,
@@ -178,7 +178,7 @@ def build_run_types(past_run_names):
             batch_games=2,
             past_run_names=past_run_names,
             ignore_players=_IGNORED_REPORT_PLAYERS,
-            active_player_prior_elo_mean=1000.0,
+            active_player_prior_elo_mean=2000.0,
             active_player_prior_elo_sd=2000.0,
         )
 

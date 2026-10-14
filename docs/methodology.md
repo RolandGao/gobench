@@ -27,7 +27,7 @@ engine judgments, not proofs of optimal play.
 Existing `-api` players use a fresh prompt for each move. Their single-turn
 behavior and names are unchanged. Each also has a separate `-api-multi` player,
 for example `gpt5.6-sol-high-api-multi`. The `api_multi` profile selects all these
-multi-turn API variants, with 14 games per player and batches of 2. Edit that
+multi-turn API variants, with 20 games per player and batches of 2. Edit that
 profile or select individual player names in `CONFIG` to define an experiment.
 Separate names keep the modes' Elo ratings and historical results separate.
 

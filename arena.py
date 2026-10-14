@@ -214,7 +214,7 @@ CONFIG = ArenaConfig(
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
-    active_player_prior_elo_mean=1000.0,
+    active_player_prior_elo_mean=2000.0,
     active_player_prior_elo_sd=2000.0,
 )
 

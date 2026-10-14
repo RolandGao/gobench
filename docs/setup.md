@@ -296,7 +296,7 @@ model, effort and runtime without its duration, and hours are 1, 2, 4 or 8
 (the "0h" baseline is the target itself, with no tutorial). Numbered replicas
 (`...-4h2`) are independent learning runs. Profiles such as
 `python3 arena.py --run-type gpt6-astra-tutorial3.3-2h` evaluate
-`gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h` (14 games).
+`gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h` (20 games).
 
 | Subtrack | KataGo in the sandbox | Student tool |
 | --- | --- | --- |
