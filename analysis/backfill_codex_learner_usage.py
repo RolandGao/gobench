@@ -7,6 +7,10 @@ holds every response body, so this rebuilds the usage log from it and
 recomputes the manifest's training cost fields (and ``learning_cost_usd`` for
 tutorial checkpoints), then refreshes the copy in ``log/<run>/run.json``.
 
+It also strips the per-item ``attribution`` maps that Codex responses add to
+usage (dropped by the proxy since a later commit), which otherwise bloat each
+manifest's ``training_usage.request_usages`` to megabytes.
+
 Usage: python analysis/backfill_codex_learner_usage.py [--write] RUN [RUN...]
 Without --write it only prints what would change.
 """
@@ -42,6 +46,33 @@ def completed_usage(entry):
     return None
 
 
+def without_attribution(usage):
+    return {name: value for name, value in usage.items() if name != "attribution"}
+
+
+def strip_attribution(checkpoint_root, manifest, write):
+    """Drop attribution maps from an already-recorded checkpoint, if any."""
+    requests = manifest.get("training_usage", {}).get("request_usages", [])
+    if not any("attribution" in request for request in requests):
+        print(f"{checkpoint_root.name}: usage already recorded; skipped")
+        return None
+    updated = dict(manifest)
+    updated["training_usage"] = arena._sum_response_usages(
+        [without_attribution(request) for request in requests]
+    )
+    print(f"{checkpoint_root.name}: stripped attribution from {len(requests)} request usages")
+    if write:
+        usage_path = checkpoint_root / "preparation" / f"{PROXY_LOG}.usage.jsonl"
+        if usage_path.exists():
+            entries = arena._read_jsonl_objects(usage_path, "training usage")
+            usage_path.write_text("".join(
+                json.dumps(entry | {"usage": without_attribution(entry["usage"])},
+                           separators=(",", ":")) + "\n"
+                for entry in entries
+            ))
+    return updated
+
+
 def rebuilt_usages(preparation, model):
     usages = []
     for entry in arena._read_jsonl_objects(preparation / f"{PROXY_LOG}.jsonl", "exchanges"):
@@ -53,7 +84,7 @@ def rebuilt_usages(preparation, model):
                 "exchange_id": entry["exchange_id"],
                 "started_at": entry["started_at"],
                 "model": response.get("model") or model,
-                "usage": response["usage"],
+                "usage": without_attribution(response["usage"]),
             })
     return usages
 
@@ -64,8 +95,10 @@ def backfill(checkpoint_root, write):
     usage_path = preparation / f"{PROXY_LOG}.usage.jsonl"
     manifest = json.loads(manifest_path.read_text())
     if usage_path.exists() or manifest.get("training_model_requests"):
-        print(f"{checkpoint_root.name}: usage already recorded; skipped")
-        return None
+        updated = strip_attribution(checkpoint_root, manifest, write)
+        if updated is not None and write:
+            write_manifest(manifest_path, updated)
+        return updated
     model = manifest["specification"]["model"]
     usages = rebuilt_usages(preparation, model)
     accounted = {entry["exchange_id"] for entry in usages}
@@ -92,10 +125,14 @@ def backfill(checkpoint_root, write):
     if write:
         for entry in usages:
             arena._append_jsonl(usage_path, entry)
-        mode = manifest_path.stat().st_mode & 0o777
-        arena._workspace_atomic_json(manifest_path, updated)
-        manifest_path.chmod(mode)
+        write_manifest(manifest_path, updated)
     return updated
+
+
+def write_manifest(path, value):
+    mode = path.stat().st_mode & 0o777
+    arena._workspace_atomic_json(path, value)
+    path.chmod(mode)
 
 
 def main(argv=None):

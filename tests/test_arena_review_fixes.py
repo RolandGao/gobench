@@ -610,6 +610,7 @@ class ProxyIntegrationTests(unittest.TestCase):
     def test_streamed_response_without_content_type_records_usage(self):
         # The ChatGPT Codex backend streams SSE without a Content-Type header.
         usage = {"input_tokens": 120, "output_tokens": 7}
+        attribution = {"items": {"msg_1": {"input_tokens": 120, "output_tokens": 0}}}
 
         class Upstream(http.server.BaseHTTPRequestHandler):
             def log_message(self, *args):
@@ -621,7 +622,8 @@ class ProxyIntegrationTests(unittest.TestCase):
                     b'event: response.created\ndata: {"type":"response.created"}\n\n'
                     + b"event: response.completed\ndata: "
                     + json.dumps({"type": "response.completed",
-                                  "response": {"model": "gpt-6-astra", "usage": usage}}).encode()
+                                  "response": {"model": "gpt-6-astra",
+                                               "usage": usage | {"attribution": attribution}}}).encode()
                     + b"\n\n"
                 )
                 self.send_response(200)

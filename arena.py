@@ -7824,7 +7824,12 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                         if isinstance(request_body, dict)
                         else None
                     ),
-                    "usage": response["usage"],
+                    # Codex responses also carry a per-item token attribution
+                    # map that grows with the conversation; costs need only totals.
+                    "usage": {
+                        name: value for name, value in response["usage"].items()
+                        if name != "attribution"
+                    },
                 },
             )
             usage_recorded = True
