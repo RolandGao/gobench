@@ -84,6 +84,23 @@ KO_HISTORY = [("B", "C5"), ("W", "E6"), ("B", "D6"), ("W", "F5"), ("B", "D4"),
 
 
 class RegistryTests(unittest.TestCase):
+    def test_clock_tag_fixes_the_evaluation_clock(self):
+        configured = replace(arena.CONFIG, workspace=WorkspaceSettings(evaluation_seconds=300))
+        with mock.patch.object(arena._State, "config", configured):
+            for name, training, clock in (
+                ("gpt6-astra-high-codex-engine-60s-4h", 14400, 60),
+                ("gpt5.6-sol-high-codex-engine-60s-8h", 28800, 60),
+                ("claude-opus-5-5-high-claude-code-engine-60s-2h", 7200, 60),
+                ("gpt6-astra-high-codex-engine-4h", 14400, 300),
+            ):
+                harness = arena._llm_player_config(name)[1].agentic_harness
+                settings = arena._codex_workspace_settings(harness)
+                self.assertEqual((settings.training_seconds, settings.evaluation_seconds),
+                                 (training, clock), name)
+                self.assertEqual(arena._result_llm_track(name), 2)
+        self.assertIs(arena._workspace_client_class_for_player(
+            "claude-opus-5-5-high-claude-code-engine-60s-1h"), arena._ClaudeCodeEngineGameClient)
+
     def test_engine_players_are_codex_workspace_players_with_their_own_client(self):
         api, player = arena._llm_player_config(PLAYER)
         self.assertEqual((api.name, player.model, player.level),
@@ -94,6 +111,22 @@ class RegistryTests(unittest.TestCase):
                           arena._CodexEngineGameClient)
         self.assertIs(arena._workspace_client_class_for_player("gpt6-astra-high-codex-1h"),
                       arena._CodexGameClient)
+
+    def test_claude_code_and_sol_code_only_players(self):
+        cases = (("claude-opus-5-5-high-claude-code-engine-2h", arena._ClaudeCodeEngineGameClient,
+                  "anthropic_claude_code_workspace", 7200),
+                 ("gpt5.6-sol-high-codex-engine-1h", arena._CodexEngineGameClient,
+                  "openai_codex_workspace", 3600))
+        for name, client_class, api_name, seconds in cases:
+            with self.subTest(name=name):
+                api, player = arena._llm_player_config(name)
+                self.assertEqual(api.name, api_name)
+                self.assertIs(arena._workspace_client_class_for_player(name), client_class)
+                self.assertEqual(arena._workspace_training_seconds(player.agentic_harness), seconds)
+                manifest = arena._llm_player_manifest(name)
+                self.assertEqual(manifest["evaluation"], "code_only")
+        self.assertEqual(arena._llm_player_manifest("claude-opus-5-5-high-claude-code-engine-1h")
+                         ["network_access"], "anthropic_proxy_during_preparation_only")
 
     def test_manifest_declares_code_only_gtp_evaluation(self):
         manifest = arena._llm_player_manifest(PLAYER)
@@ -148,7 +181,7 @@ class SandboxedEngineTests(unittest.TestCase):
         self.work = self.root / "untracked_log" / "run" / "batch-001"
         self.work.mkdir(parents=True)
 
-    def client(self, mode, *, evaluation_seconds=20, game=1, install=True):
+    def client(self, mode, *, evaluation_seconds=20, game=1, install=True, player=PLAYER):
         settings = WorkspaceSettings(training_seconds=0.15, evaluation_seconds=evaluation_seconds,
                                      storage_mib=64, memory_mib=256)
 
@@ -166,21 +199,27 @@ class SandboxedEngineTests(unittest.TestCase):
             time.sleep(0.3)
             return NS(usage=None, final_response="saved"), []
 
+        harness = arena._llm_player_config(player)[1].agentic_harness
+        client_class = arena._workspace_client_class(harness)
+        # Mock the paid agent session on the harness's own runtime class.
+        runtime_class = client_class.__mro__[2]
+        durations = (arena._CLAUDE_CODE_ENGINE_TRAINING_SECONDS
+                     if runtime_class is arena._ClaudeCodeGameClient
+                     else arena._CODEX_ENGINE_TRAINING_SECONDS)
         patches = (
-            mock.patch.dict(arena._CODEX_ENGINE_TRAINING_SECONDS,
-                            {"codex-engine-1h": settings.training_seconds}),
+            mock.patch.dict(durations, {harness: settings.training_seconds}),
             mock.patch.object(arena._Arena, "ROOT", self.root),
             mock.patch.object(arena._Arena, "UNTRACKED_LOG_ROOT", self.root / "untracked_log"),
             mock.patch.object(arena._State, "config", replace(arena.CONFIG, workspace=settings)),
-            mock.patch.object(arena._CodexGameClient, "_start_runtime", start),
-            mock.patch.object(arena._CodexGameClient, "_persistent_thread", lambda _: None),
-            mock.patch.object(arena._CodexGameClient, "_turn_options", lambda _: {}),
-            mock.patch.object(arena._CodexGameClient, "_run_turn", train),
+            mock.patch.object(runtime_class, "_start_runtime", start),
+            mock.patch.object(runtime_class, "_persistent_thread", lambda _: None),
+            mock.patch.object(runtime_class, "_turn_options", lambda _: {}),
+            mock.patch.object(runtime_class, "_run_turn", train),
         )
         for patch in patches:
             self.enterContext(patch)
-        client = arena._CodexEngineGameClient(
-            PLAYER, arena._llm_player_config(PLAYER)[1], self.work, game,
+        client = client_class(
+            player, arena._llm_player_config(player)[1], self.work, game,
             proxy_credential=NS(auth_mode="fake"))
         self.addCleanup(client.close)
         return client
@@ -211,6 +250,7 @@ class SandboxedEngineTests(unittest.TestCase):
         self.assertGreater(first._clock.spent, 0)
         self.assertLess(first._clock.spent, 20)
         first.mark_complete()
+        first.close()
         second = self.client("normal", game=2)
         self.assertFalse((second.cwd / "commands.log").exists())
 
@@ -230,14 +270,28 @@ class SandboxedEngineTests(unittest.TestCase):
             with self.subTest(mode=mode):
                 self.work = self.root / "untracked_log" / mode / "batch-001"
                 self.work.mkdir(parents=True)
+                client = self.client(mode)
                 with self.assertRaises(WorkspaceEngineForfeit) as raised:
-                    self.move(self.client(mode), [("B", "E5")], "W")
+                    self.move(client, [("B", "E5")], "W")
                 self.assertEqual(raised.exception.reason, reason)
+                # Release the exclusive core now; busy hosts may have few free.
+                client.close()
         self.work = self.root / "untracked_log" / "missing" / "batch-001"
         self.work.mkdir(parents=True)
         with self.assertRaises(WorkspaceEngineForfeit) as raised:
             self.move(self.client("normal", install=False), [], "B")
         self.assertEqual(raised.exception.reason, "missing_program")
+
+    def test_claude_code_preparation_also_evaluates_only_the_program(self):
+        client = self.client("normal", player="claude-opus-5-5-high-claude-code-engine-1h")
+        self.assertIsInstance(client, arena._ClaudeCodeEngineGameClient)
+        self.assertIn("CODE-ONLY", self.prompt)
+        specification = client.checkpoint["specification"]
+        self.assertEqual((specification["evaluation"], specification["engine_interface"]),
+                         ("code_only", "gtp-v1"))
+        self.assertIn("claude_code", specification["runtime"])
+        self.assertEqual(self.move(client, [("B", "E5")], "W").output_text, "pass")
+        self.assertIn("genmove W", (client.cwd / "commands.log").read_text())
 
     def test_superko_illegal_ko_retake_forfeits_after_full_history_is_sent(self):
         game = refereed_game(KO_HISTORY)

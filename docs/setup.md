@@ -275,9 +275,11 @@ CLI stderr are in `claude-code-events.jsonl` and `claude-code-stderr.log`.
 ## Track 2 with code-only evaluation
 
 The `codex-engine-<N>h` harnesses (for example
-`gpt6-astra-high-codex-engine-2h`) prepare exactly like `codex-<N>h`: the same
-Codex session, durations, sandbox, resources and immutable checkpoint. Only
-evaluation differs. **No model calls happen during evaluation**; each game runs
+`gpt6-astra-high-codex-engine-2h` or `gpt5.6-sol-high-codex-engine-1h`) prepare
+exactly like `codex-<N>h`: the same Codex session, durations, sandbox, resources
+and immutable checkpoint. `claude-code-engine-<N>h` (for example
+`claude-opus-5-5-high-claude-code-engine-1h`) does the same after a Claude Code
+preparation session. Only evaluation differs. **No model calls happen during evaluation**; each game runs
 the checkpoint's `/workspace/engine` and nothing else. The preparation prompt
 states this protocol, the exact positional-superko rule, and the interface
 below.
@@ -300,6 +302,12 @@ move history therefore reaches the program in full, which it needs for
 positional superko. After a process restart (an interrupted arena) the whole
 history is replayed through `play`.
 
+A clock tag in the harness name fixes the clock per evaluation game:
+`codex-engine-60s-<N>h` and `claude-code-engine-60s-<N>h` (for example
+`gpt6-astra-high-codex-engine-60s-2h`) always get 60 seconds, whatever the
+configuration says. Untagged names use `WorkspaceSettings.evaluation_seconds`,
+300 seconds in the shipped `CONFIG`.
+
 The per-game clock (`WorkspaceSettings.evaluation_seconds`) runs whenever the
 arena waits for the program, including startup and every command, and the
 cgroup is frozen during the opponent's turn. `/arena/clock.json` shows the
@@ -308,7 +316,8 @@ remaining time while the program runs. Any failure forfeits the game
 an error or malformed reply to a required command, an illegal move (including
 a positional-superko violation), or exceeding memory. Clock expiry is a time
 loss (`X+T`). Forfeits are logged to the game's `engine-events.jsonl`.
-Checkpoints live under `untracked_log/<run>/codex-engine-checkpoints/`, and the
+Checkpoints live under `untracked_log/<run>/codex-engine-checkpoints/` (or
+`claude-code-engine-checkpoints/`), and the
 checkpoint specification records `evaluation: code_only` and
 `engine_interface: gtp-v1`.
 

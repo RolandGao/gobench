@@ -138,14 +138,31 @@ _CLAUDE_CODE_WORKSPACE_PLAYERS = {
 # Track 2 code-only evaluation: the same Codex preparation, sandbox, and
 # resource limits, but each evaluation game runs only the agent's
 # /workspace/engine GTP program, with no model calls.
+# A clock tag such as "-60s" fixes the evaluation clock per game; untagged
+# harnesses use WorkspaceSettings.evaluation_seconds from the configuration.
+_ENGINE_EVALUATION_CLOCKS = {"": None, "-60s": 60}
 _CODEX_ENGINE_TRAINING_SECONDS = {
-    f"codex-engine-{hours}h": hours * 3600 for hours in (0, 1, 2, 4, 8)
+    f"codex-engine{clock}-{hours}h": hours * 3600
+    for clock in _ENGINE_EVALUATION_CLOCKS for hours in (0, 1, 2, 4, 8)
 }
 _CODEX_ENGINE_WORKSPACE_HARNESSES = frozenset(_CODEX_ENGINE_TRAINING_SECONDS)
+# The same code-only evaluation after a Claude Code preparation session.
+_CLAUDE_CODE_ENGINE_TRAINING_SECONDS = {
+    f"claude-code-engine{clock}-{hours}h": hours * 3600
+    for clock in _ENGINE_EVALUATION_CLOCKS for hours in (0, 1, 2, 4, 8)
+}
+_CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES = frozenset(_CLAUDE_CODE_ENGINE_TRAINING_SECONDS)
+_WORKSPACE_EVALUATION_SECONDS = {
+    f"{prefix}{clock}-{hours}h": seconds
+    for prefix in ("codex-engine", "claude-code-engine")
+    for clock, seconds in _ENGINE_EVALUATION_CLOCKS.items() if seconds is not None
+    for hours in (0, 1, 2, 4, 8)
+}
 _WORKSPACE_HARNESSES = (
     _CODEX_WORKSPACE_HARNESSES
     | _CODEX_ENGINE_WORKSPACE_HARNESSES
     | _CLAUDE_CODE_WORKSPACE_HARNESSES
+    | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES
 )
 
 
@@ -155,10 +172,16 @@ def _workspace_training_seconds(harness):
         _CODEX_TRAINING_SECONDS,
         _CODEX_ENGINE_TRAINING_SECONDS,
         _CLAUDE_CODE_TRAINING_SECONDS,
+        _CLAUDE_CODE_ENGINE_TRAINING_SECONDS,
     ):
         if harness in durations:
             return durations[harness]
     raise KeyError(harness)
+
+
+def _workspace_evaluation_seconds(harness, default):
+    """Evaluation clock per game fixed by a harness name, else the configured default."""
+    return _WORKSPACE_EVALUATION_SECONDS.get(harness, default)
 
 
 # Track 3 tutorial distillation: <target>-tutorial<subtrack>-<learner>-<hours>h.

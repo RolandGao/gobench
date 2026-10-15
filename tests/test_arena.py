@@ -188,6 +188,41 @@ class ConfigurationSurfaceTests(unittest.TestCase):
         self.assertIn(codex_player, all_text)
         self.assertIn(trained_player, all_text)
 
+    def test_learning_cost_column_uses_checkpoint_manifests(self):
+        engine = "gpt6-astra-high-codex-engine-1h"
+        tutorial = "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-1h"
+        unreported = "gpt6-astra-high-codex-1h"
+        costs = arena._learning_costs([
+            {"codex_engine_checkpoints": {engine: {
+                "training_cost_usd": 8.5, "training_model_requests": 71}}},
+            {"tutorial_checkpoints": {tutorial: {
+                "training_cost_usd": 15.0, "learning_cost_usd": 44.5,
+                "training_model_requests": 103}}},
+            {"codex_checkpoints": {unreported: {
+                "training_cost_usd": 0, "training_model_requests": 0,
+                "training_requests_without_reported_usage": 78}}},
+        ])
+        self.assertEqual(costs, {engine: 8.5, tutorial: 44.5, unreported: None})
+
+        records = [
+            arena.RatingRecord(engine, 300.0, 290.0, 310.0, 20.0, 2, 2, 0, 0),
+            arena.RatingRecord(unreported, 200.0, 190.0, 210.0, 20.0, 2, 1, 1, 0),
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "track2.txt"
+            arena._write_llm_comparisons(path, [], records, learning_costs=costs)
+            table = path.read_text(encoding="utf-8").splitlines()
+            plain = Path(tmp) / "track1.txt"
+            arena._write_llm_comparisons(plain, [], records)
+            self.assertNotIn("Learning cost", plain.read_text(encoding="utf-8"))
+
+        header = next(line for line in table if line.startswith("Rank"))
+        self.assertTrue(header.rstrip().endswith("Learning cost"))
+        self.assertIn("Total cost", header)
+        rows = {line.split()[1]: line for line in table if engine in line or unreported in line}
+        self.assertTrue(rows[engine].rstrip().endswith("$8.500000000000"))
+        self.assertTrue(rows[unreported].rstrip().endswith("N/A"))
+
     def test_comparisons_are_split_by_track(self):
         players = {
             "gpt6-astra-high-api-multi": 1,
@@ -214,7 +249,9 @@ class ConfigurationSurfaceTests(unittest.TestCase):
             for (number, title, _file) in arena.LLM_TRACK_COMPARISONS:
                 shown = name != "gpt5.6-sol-high-api" and number == track
                 # Tutorial names contain their learner's name, so match whole rows.
-                rows = {line.split()[1] for line in texts[title].splitlines()[3:] if line.strip()}
+                lines = texts[title].splitlines()
+                body = lines[next(i for i, line in enumerate(lines) if line.startswith("---")) + 1:]
+                rows = {line.split()[1] for line in body if line.strip()}
                 self.assertEqual(name in rows, shown, (name, title))
 
     def test_comparison_token_rates_include_retries_and_normalize_provider_input(self):
@@ -2201,20 +2238,21 @@ class CodexPlayerTests(unittest.TestCase):
             for player in api.players.values()
         }
         expected = {
-            (model, effort, harness)
+            (model, effort, f"{harness}-{hours}h")
             for model in ("gpt-5.6-sol", "gpt-5.6-luna")
             for effort in ("low", "high", "max")
-            for harness in ("codex-0h", "codex-1h", "codex-2h", "codex-4h", "codex-8h")
+            for harness in ("codex", "codex-engine", "codex-engine-60s")
+            for hours in (0, 1, 2, 4, 8)
         }
 
         expected.update(
             ("gpt-6-astra", effort, f"{harness}-{hours}h")
             for effort in ("low", "medium", "high", "xhigh", "max")
-            for harness in ("codex", "codex-engine")
+            for harness in ("codex", "codex-engine", "codex-engine-60s")
             for hours in (0, 1, 2, 4, 8)
         )
         self.assertEqual(actual, expected)
-        self.assertEqual(len(api.players), 80)
+        self.assertEqual(len(api.players), 165)
         for harness in ("codex-0h", "codex-1h", "codex-2h", "codex-4h", "codex-8h"):
             name = f"gpt6-astra-high-{harness}"
             self.assertFalse(arena._active_players_are_katago((name,)))

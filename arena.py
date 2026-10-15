@@ -49,6 +49,8 @@ from gobench.anthropic_oauth import access_token as _claude_oauth_access_token
 from gobench.arena_config import (
     ArenaConfig,
     _CHEAP_B6C96_PLAYER_POOL,
+    _CLAUDE_CODE_ENGINE_TRAINING_SECONDS,
+    _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES,
     _CLAUDE_CODE_TRAINING_SECONDS,
     _CLAUDE_CODE_WORKSPACE_HARNESSES,
     _CODEX_ENGINE_TRAINING_SECONDS,
@@ -63,6 +65,7 @@ from gobench.arena_config import (
     _TEMPERATURE_PLAYER_POOL,
     _llm_player_name,
     _workspace_training_seconds,
+    _workspace_evaluation_seconds,
     build_run_types,
 )
 from gobench.game_engine import COLS, GameResult, GoEngineError, KataGoGameEngine
@@ -145,16 +148,16 @@ _FINAL_RUNS = (
     "muse-spark-1.3-contributor-xhigh-api-multi",
     # "opus-5-high-api-multi",
     "opus-5-high-api-multi2",
-    "gpt6-astra-high-codex-1h",
-    "gpt6-astra-high-codex-0h",
-    "gpt6-astra-high-codex-2h",
-    "gpt6-astra-high-codex-4h",
-    "gpt6-astra-high-codex-8h",
-    "gpt5.6-sol-high-codex-0h",
-    "gpt5.6-sol-high-codex-1h",
-    "gpt5.6-sol-high-codex-2h",
-    "gpt5.6-sol-high-codex-4h",
-    "gpt5.6-sol-high-codex-8h",
+    # "gpt6-astra-high-codex-1h",  # Track 2 with the LLM in the loop
+    # "gpt6-astra-high-codex-0h",  # Track 2 with the LLM in the loop
+    # "gpt6-astra-high-codex-2h",  # Track 2 with the LLM in the loop
+    # "gpt6-astra-high-codex-4h",  # Track 2 with the LLM in the loop
+    # "gpt6-astra-high-codex-8h",  # Track 2 with the LLM in the loop
+    # "gpt5.6-sol-high-codex-0h",  # Track 2 with the LLM in the loop
+    # "gpt5.6-sol-high-codex-1h",  # Track 2 with the LLM in the loop
+    # "gpt5.6-sol-high-codex-2h",  # Track 2 with the LLM in the loop
+    # "gpt5.6-sol-high-codex-4h",  # Track 2 with the LLM in the loop
+    # "gpt5.6-sol-high-codex-8h",  # Track 2 with the LLM in the loop
     "gpt6-astra-low-api-multi",
     "fable-5.1-high-api-multi",
     "fable-5.1-max-api-multi",
@@ -168,10 +171,20 @@ _FINAL_RUNS = (
     # "claude-sonnet-5-5-max-api-multi",
     "gpt6.1-sol-high-api-multi",
     "gpt6.1-sol-max-api-multi",
+    "gemini-4-argon-high-api-multi",
     "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-1h",
     "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h",
     "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-4h",
     "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-8h",
+    # Track 2 with code-only evaluation (5-minute clock).
+    "gpt6-astra-high-codex-engine-1h",
+    "gpt6-astra-high-codex-engine-2h",
+    "gpt6-astra-high-codex-engine-4h",
+    "gpt6-astra-high-codex-engine-8h",
+    "gpt5.6-sol-high-codex-engine-1h",
+    "gpt5.6-sol-high-codex-engine-2h",
+    "claude-opus-5-5-high-claude-code-engine-1h",
+    "claude-opus-5-5-high-claude-code-engine-2h",
 )
 
 
@@ -223,12 +236,29 @@ CONFIG = ArenaConfig(
         # Track 2 replicas with a 5-minute evaluation clock (originals used 30).
         # "gpt6-astra-high-codex-1h2",
         # "gpt6-astra-high-codex-2h2",
-        # Track 2 with code-only evaluation (see docs/setup.md):
-        "gpt6-astra-high-codex-engine-1h",
-        "gpt6-astra-high-codex-engine-2h",
+        # Track 2 with code-only evaluation (see docs/setup.md), 5-minute clock:
+        # "gpt6-astra-high-codex-engine-1h",
+        # "gpt6-astra-high-codex-engine-2h",
+        # "gpt6-astra-high-codex-engine-4h",
+        # "gpt6-astra-high-codex-engine-8h",
+        # "claude-opus-5-5-high-claude-code-engine-1h",
+        # "claude-opus-5-5-high-claude-code-engine-2h",
+        # "gpt5.6-sol-high-codex-engine-1h",
+        # "gpt5.6-sol-high-codex-engine-2h",
+        # Track 2 code-only, 60-second clock per game (fixed by -60s), 200 games:
+        "gpt6-astra-high-codex-engine-60s-1h",
+        "gpt6-astra-high-codex-engine-60s-2h",
+        "gpt6-astra-high-codex-engine-60s-4h",
+        "gpt6-astra-high-codex-engine-60s-8h",
+        "gpt5.6-sol-high-codex-engine-60s-1h",
+        "gpt5.6-sol-high-codex-engine-60s-2h",
+        "gpt5.6-sol-high-codex-engine-60s-4h",
+        "gpt5.6-sol-high-codex-engine-60s-8h",
+        "claude-opus-5-5-high-claude-code-engine-60s-1h",
+        "claude-opus-5-5-high-claude-code-engine-60s-2h",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
-    total_games=20,
+    total_games=200,
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
@@ -677,6 +707,7 @@ class _Arena:
             name="openai_codex_workspace",
             players={
                 **_agent_players(_CODEX_TRAINING_SECONDS),
+                **_agent_players(_CODEX_ENGINE_TRAINING_SECONDS),
                 **{
                     name: player
                     for harness in (*_CODEX_TRAINING_SECONDS, *_CODEX_ENGINE_TRAINING_SECONDS)
@@ -706,7 +737,8 @@ class _Arena:
             name="anthropic_claude_code_workspace",
             players={
                 name: player
-                for harness in _CLAUDE_CODE_TRAINING_SECONDS
+                for harness in (*_CLAUDE_CODE_TRAINING_SECONDS,
+                                *_CLAUDE_CODE_ENGINE_TRAINING_SECONDS)
                 for name, player in _llm_effort_players(
                     "claude-opus-5-5", "claude-opus-5-5",
                     ("low", "medium", "high", "xhigh", "max"),
@@ -1494,7 +1526,48 @@ def _result_llm_track(player_name):
     return 2 if _is_result_llm_player(player_name) else None
 
 
-def _write_llm_track_comparisons(directory, games, records, *, ignore_players=()):
+def _learning_costs(metadata):
+    """One-time learning cost per Track 2/3 player, from checkpoint manifests in run.json.
+
+    Track 3 manifests carry learning_cost_usd (learner plus student requests);
+    Track 2 manifests carry training_cost_usd. A cost is unknown when training
+    made requests but none reported usage.
+    """
+    costs = {}
+    for meta in metadata:
+        for key, checkpoints in meta.items():
+            if not key.endswith("_checkpoints") or not isinstance(checkpoints, dict):
+                continue
+            for player, manifest in checkpoints.items():
+                cost = manifest.get("learning_cost_usd", manifest.get("training_cost_usd"))
+                if (not manifest.get("training_model_requests")
+                        and manifest.get("training_requests_without_reported_usage")):
+                    cost = None
+                costs[player] = cost
+    return costs
+
+
+def _run_dir_learning_costs(run_dirs, overrides=None):
+    """Learning costs from each run directory's run.json; overrides map dir -> metadata."""
+    overrides = overrides or {}
+    metadata = []
+    for run in run_dirs:
+        if run in overrides:
+            metadata.append(overrides[run])
+            continue
+        try:
+            metadata.append(json.loads((run / "run.json").read_text(encoding="utf-8")))
+        except (OSError, ValueError):
+            continue
+    return _learning_costs(meta for meta in metadata if isinstance(meta, dict))
+
+
+# Tracks whose players have a one-time learning phase before evaluation.
+LEARNING_COST_TRACKS = frozenset({2, 3})
+
+
+def _write_llm_track_comparisons(directory, games, records, *, ignore_players=(),
+                                 learning_costs=None):
     """Write one comparison table per track with visible players; return its sections."""
     sections = []
     for track, title, filename in LLM_TRACK_COMPARISONS:
@@ -1509,6 +1582,7 @@ def _write_llm_track_comparisons(directory, games, records, *, ignore_players=()
         _write_llm_comparisons(
             path, games, records, title=title,
             include_players=players, ignore_players=ignore_players,
+            learning_costs=(learning_costs or {}) if track in LEARNING_COST_TRACKS else None,
         )
         sections.append((title, path))
     return sections
@@ -3241,9 +3315,13 @@ def _llm_config(name):
 
 
 def _codex_workspace_settings(harness):
-    """The player name fixes preparation time, including for numbered replicas."""
-    return replace(_State.config.workspace,
-                   training_seconds=_workspace_training_seconds(harness))
+    """The player name fixes preparation time, including for numbered replicas,
+    and the evaluation clock when the harness carries a clock tag."""
+    configured = _State.config.workspace
+    return replace(configured,
+                   training_seconds=_workspace_training_seconds(harness),
+                   evaluation_seconds=_workspace_evaluation_seconds(
+                       harness, configured.evaluation_seconds))
 
 
 def _llm_player_manifest(name):
@@ -3267,7 +3345,8 @@ def _llm_player_manifest(name):
         )
     if player.agentic_harness in _WORKSPACE_HARNESSES:
         settings = _codex_workspace_settings(player.agentic_harness)
-        claude_code = player.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
+        claude_code = player.agentic_harness in (_CLAUDE_CODE_WORKSPACE_HARNESSES
+                                                 | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES)
         manifest.update(
             conversation="independent_checkpoint_copy_per_game",
             sandbox="bubblewrap_workspace_write",
@@ -3282,13 +3361,15 @@ def _llm_player_manifest(name):
             training_katago_access=False,
             apply_patch_preflight=False,
         )
-        if player.agentic_harness in _CODEX_ENGINE_WORKSPACE_HARNESSES:
+        if player.agentic_harness in (_CODEX_ENGINE_WORKSPACE_HARNESSES
+                                      | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES):
             manifest.update(
                 conversation="none_during_evaluation",
-                network_access="openai_proxy_during_preparation_only",
+                network_access=("anthropic_proxy_during_preparation_only" if claude_code
+                                else "openai_proxy_during_preparation_only"),
                 evaluation="code_only",
-                engine_interface=_CodexEngineGameClient.INTERFACE,
-                engine_path=_CodexEngineGameClient.ENGINE_PATH,
+                engine_interface=_CodeOnlyEvaluationMixin.INTERFACE,
+                engine_path=_CodeOnlyEvaluationMixin.ENGINE_PATH,
                 engine_failure_policy="forfeit",
             )
         if claude_code:
@@ -3501,6 +3582,10 @@ def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None):
             game_number,
             proxy_credential=_codex_workspace_proxy_credential(api),
         )
+    if player.agentic_harness in _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES:
+        if work_dir is None or game_number is None:
+            raise ArenaError("Claude Code engine players require a game work directory and number")
+        return _ClaudeCodeEngineGameClient(player_name, player, work_dir, game_number)
     if player.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
             raise ArenaError("Claude Code players require a game work directory and number")
@@ -5855,7 +5940,10 @@ def _write_llm_comparisons(
     title="LLM comparisons",
     include_players=None,
     ignore_players=(),
+    learning_costs=None,
 ):
+    """learning_costs (player -> USD or None) adds a one-time learning cost column;
+    every other column describes the evaluation games only."""
     ignored = frozenset(ignore_players)
     included = None if include_players is None else frozenset(include_players)
     comparisons = _llm_comparison_records(
@@ -5884,10 +5972,16 @@ def _write_llm_comparisons(
             f"{item['api_seconds_per_move']:.2f}s",
             f"${item['cost_usd']:.12f}",
             f"${item['cost_usd_per_move']:.18f}",
-        )
+        ) + (() if learning_costs is None else (
+            "N/A" if learning_costs.get(item["player"]) is None
+            else f"${learning_costs[item['player']]:.12f}",
+        ))
         for item in comparisons
     ]
     lines = [title]
+    if learning_costs is not None:
+        lines.append("Learning cost is the one-time continual-learning phase; "
+                     "all other columns cover evaluation games only.")
     lines += _aligned_table(
         (
             "Rank",
@@ -5903,7 +5997,7 @@ def _write_llm_comparisons(
             "API time per move",
             "Total cost",
             "Cost per move",
-        ),
+        ) + (() if learning_costs is None else ("Learning cost",)),
         rows,
         left_aligned=(1,),
     )
@@ -6693,6 +6787,15 @@ class _ArenaRun:
                 run_config[key]["training_seconds_by_player"] = training
                 if len(set(training.values())) == 1:
                     run_config[key]["training_seconds"] = next(iter(training.values()))
+                evaluation = {
+                    name: seconds for name in training
+                    if (seconds := _workspace_evaluation_seconds(
+                        _llm_player_config(name)[1].agentic_harness, None)) is not None
+                }
+                if evaluation:
+                    run_config[key]["evaluation_seconds_by_player"] = evaluation
+                    if len(set(evaluation.values())) == 1 and len(evaluation) == len(training):
+                        run_config[key]["evaluation_seconds"] = next(iter(evaluation.values()))
                 run_config["move_cap_policy"] = "workspace evaluation: forfeit at move limit"
         learning = {
             name: spec.training_seconds for name in self.info_names
@@ -6817,6 +6920,8 @@ class _ArenaRun:
         comparison_sections = _write_llm_track_comparisons(
             self.temp_dir, fit, snap.records,
             ignore_players=_State.config.ignore_players,
+            learning_costs=_run_dir_learning_costs(
+                [*self.past_dirs, self.run.resolve()], {self.run.resolve(): self.meta}),
         )
         if not _State.katago_mode:
             llms = [
@@ -7149,6 +7254,7 @@ def run_summary(config):
             names = list(dict.fromkeys(name for game in games for name in (game.black, game.white)))
             snap = _rating_snapshot(games, names, {name: _rating_prior(name)[0] for name in names}, None)
             comparisons = _llm_comparison_records(games, snap.records)
+            learning_costs = _run_dir_learning_costs(snapshot_dirs)
             results = build_results(
                 root=snapshot_root, log_root=snapshot_log, past_dirs=snapshot_dirs,
                 ratings=[asdict(record) for record in snap.records],
@@ -7177,6 +7283,7 @@ def run_summary(config):
             sections = [staging / "ratings.txt", *(
                 path for _title, path in _write_llm_track_comparisons(
                     staging, games, snap.records, ignore_players=config.ignore_players,
+                    learning_costs=learning_costs,
                 )
             )]
             matchup = staging / "all_llm_matchup_results.txt"
@@ -10125,21 +10232,15 @@ class _GTPEngineProcess:
             reader.join(timeout=5)
 
 
-class _CodexEngineGameClient(_CodexGameClient):
-    """Track 2 with code-only evaluation.
+class _CodeOnlyEvaluationMixin:
+    """Track 2 with code-only evaluation, for any workspace agent harness.
 
-    Preparation is the ordinary Codex workspace session. Each evaluation game
+    Preparation is the harness's ordinary agent session. Each evaluation game
     starts the checkpoint's /workspace/engine inside the same sandbox and
     resource scope, with no model, proxy or network, and plays it over GTP.
     The game clock runs only while the arena waits for the program.
     """
 
-    _workspace_label = "Codex engine workspace"
-    _location_label = "codex-engine-workspace"
-    _harness_label = "Codex engine"
-    harnesses = _CODEX_ENGINE_WORKSPACE_HARNESSES
-    checkpoint_dirname = "codex-engine-checkpoints"
-    run_config_key = "codex_engine_workspace"
     ENGINE_PATH = "/workspace/engine"
     INTERFACE = "gtp-v1"
     SETUP_COMMANDS = ("boardsize 9", "clear_board", "komi 7")
@@ -10337,6 +10438,17 @@ class _CodexEngineGameClient(_CodexGameClient):
                 engine.close()
         finally:
             super()._dispose_runtime()
+
+
+class _CodexEngineGameClient(_CodeOnlyEvaluationMixin, _CodexGameClient):
+    """Codex preparation, then code-only evaluation."""
+
+    _workspace_label = "Codex engine workspace"
+    _location_label = "codex-engine-workspace"
+    _harness_label = "Codex engine"
+    harnesses = _CODEX_ENGINE_WORKSPACE_HARNESSES
+    checkpoint_dirname = "codex-engine-checkpoints"
+    run_config_key = "codex_engine_workspace"
 
 
 def _claude_code_binary():
@@ -10837,6 +10949,17 @@ class _ClaudeCodeGameClient(_CodexGameClient):
         usage = _sum_response_usages(self._proxy_usage_since(usage_offset))
         self._log_agent_turn(result)
         return _CodexMoveResponse(result.final_response, usage)
+
+
+class _ClaudeCodeEngineGameClient(_CodeOnlyEvaluationMixin, _ClaudeCodeGameClient):
+    """Claude Code preparation, then code-only evaluation."""
+
+    _workspace_label = "Claude Code engine workspace"
+    _location_label = "claude-code-engine-workspace"
+    _harness_label = "Claude Code engine"
+    harnesses = _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES
+    checkpoint_dirname = "claude-code-engine-checkpoints"
+    run_config_key = "claude_code_engine_workspace"
 
 
 class _StudentAborted(ArenaError):
@@ -11364,7 +11487,8 @@ def _ensure_tutorial(tutorial_player, work_dir):
         client.close()
 
 
-_WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _CodexEngineGameClient, _ClaudeCodeGameClient)
+_WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _CodexEngineGameClient, _ClaudeCodeGameClient,
+                             _ClaudeCodeEngineGameClient)
 
 
 def _workspace_client_class(harness):

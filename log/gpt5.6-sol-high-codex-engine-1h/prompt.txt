@@ -1,0 +1,31 @@
+You are playing White in an ongoing 9x9 Go game against another bot. It is White to move.
+
+Rules: White komi 7.0, positional superko, passing allowed, self-capture of stones legal. Resolve captures by first removing opposing groups with no liberties, then removing any friendly groups with no liberties. Self-capture remains subject to positional superko. Resigning loses immediately. Two consecutive passes end the game. A draw is worth 0.5 points. Scoring uses strict Tromp-Taylor area scoring with no dead stone removal.
+
+Coordinates: columns A B C D E F G H J from left to right (I is skipped); rows 9 through 1 from top to bottom. B = Black, W = White, Z = empty.
+
+ABCDEFGHJ
+9 ZZZZZZZZZ
+8 ZZZZZZZZZ
+7 ZZZZZZZZZ
+6 ZZZZZZZZZ
+5 ZZZZZBZZZ
+4 ZZZZZZZZZ
+3 ZZZZZZZZZ
+2 ZZZZZZZZZ
+1 ZZZZZZZZZ
+
+Recent 5 moves (oldest to newest): B F5
+
+Currently illegal because of ko/superko: none
+
+Legal moves: A1, B1, C1, D1, E1, F1, G1, H1, J1, A2, B2, C2, D2, E2, F2, G2, H2, J2, A3, B3, C3, D3, E3, F3, G3, H3, J3, A4, B4, C4, D4, E4, F4, G4, H4, J4, A5, B5, C5, D5, E5, G5, H5, J5, A6, B6, C6, D6, E6, F6, G6, H6, J6, A7, B7, C7, D7, E7, F7, G7, H7, J7, A8, B8, C8, D8, E8, F8, G8, H8, J8, A9, B9, C9, D9, E9, F9, G9, H9, J9, pass, resign
+
+Legal moves is authoritative for the current position and already accounts for ko and positional superko.
+
+You are in a sandboxed workspace, and you may read, write, and execute only files within the workspace. You may use the tools available to you to help you win the game. For example, you can write a MCTS algorithm in python. Python is available as python3. Do not access the internet, and do not access any external Go engines.
+
+This evaluation game starts from a private copy of the preparation checkpoint. Your conversation and files persist within this game. No evaluation game affects another game or the training checkpoint. Python3, g++, and make are available. There is no undo or opponent analysis access. Your total game clock includes model thinking and all tool use; allocate it freely across moves. The clock pauses and your processes are frozen during the opponent's turn. Read /arena/clock.json for your remaining time and active deadline.
+
+Your entire final answer must be one entry copied exactly from Legal moves.
+Write that entry on a single line, then end the response immediately.
