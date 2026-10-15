@@ -46,7 +46,10 @@ class ClaudeCodeRegistryTests(unittest.TestCase):
         self.assertIsNone(arena._workspace_client_class_for_player("opus-5-high-api-multi"))
 
     def test_manifest_records_the_claude_code_protocol(self):
-        manifest = arena._llm_player_manifest(PLAYER)
+        # The default clock, independent of the experiment selected in CONFIG.
+        default = replace(arena.CONFIG, workspace=WorkspaceSettings())
+        with mock.patch.object(arena._State, "config", default):
+            manifest = arena._llm_player_manifest(PLAYER)
         self.assertEqual(manifest["kind"], "anthropic_claude_code_workspace_agent")
         self.assertEqual(manifest["network_access"], "anthropic_proxy_only")
         self.assertEqual(manifest["preparation_seconds"], 7200)

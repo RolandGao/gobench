@@ -272,6 +272,52 @@ one-hour cache writes at twice the base input rate. Checkpoints live under
 `untracked_log/<run>/claude-code-checkpoints/<player>/`; turn results and
 CLI stderr are in `claude-code-events.jsonl` and `claude-code-stderr.log`.
 
+## Track 2 with code-only evaluation
+
+The `codex-engine-<N>h` harnesses (for example
+`gpt6-astra-high-codex-engine-2h`) prepare exactly like `codex-<N>h`: the same
+Codex session, durations, sandbox, resources and immutable checkpoint. Only
+evaluation differs. **No model calls happen during evaluation**; each game runs
+the checkpoint's `/workspace/engine` and nothing else. The preparation prompt
+states this protocol, the exact positional-superko rule, and the interface
+below.
+
+`/workspace/engine` must be executable (a binary or a `#!` script). The arena
+starts it once per game inside a private copy of the workspace, in the same
+bubblewrap sandbox and exclusive-core resource scope, with no network. It
+speaks the Go Text Protocol on stdin/stdout:
+
+| Command | Required reply |
+| --- | --- |
+| `boardsize 9`, `clear_board`, `komi 7` | `=` |
+| `play <B\|W> <vertex\|pass>` (each opponent move, in order) | `=` |
+| `time_left <color> <seconds> 0` (before each `genmove`) | `=` or `?` |
+| `genmove <B\|W>` | `= <vertex\|pass\|resign>` |
+
+Every reply is `= <result>` or `? <error>` followed by an empty line;
+diagnostics go to stderr (the first MiB is kept as `engine-stderr.log`). The
+move history therefore reaches the program in full, which it needs for
+positional superko. After a process restart (an interrupted arena) the whole
+history is replayed through `play`.
+
+The per-game clock (`WorkspaceSettings.evaluation_seconds`) runs whenever the
+arena waits for the program, including startup and every command, and the
+cgroup is frozen during the opponent's turn. `/arena/clock.json` shows the
+remaining time while the program runs. Any failure forfeits the game
+(`X+F`, reason `engine_<cause>`): a missing program, crash or exit, no reply,
+an error or malformed reply to a required command, an illegal move (including
+a positional-superko violation), or exceeding memory. Clock expiry is a time
+loss (`X+T`). Forfeits are logged to the game's `engine-events.jsonl`.
+Checkpoints live under `untracked_log/<run>/codex-engine-checkpoints/`, and the
+checkpoint specification records `evaluation: code_only` and
+`engine_interface: gtp-v1`.
+
+Real-sandbox tests (fake preparation, no model requests):
+
+```sh
+GOBENCH_RESOURCE_TESTS=1 .venv/bin/python -m unittest tests.test_codex_engine_workspace
+```
+
 ## Track 3: tutorial distillation
 
 Track 3 measures whether a model can compress what it learns into a portable

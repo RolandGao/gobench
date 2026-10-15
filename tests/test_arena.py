@@ -2208,12 +2208,13 @@ class CodexPlayerTests(unittest.TestCase):
         }
 
         expected.update(
-            ("gpt-6-astra", effort, harness)
+            ("gpt-6-astra", effort, f"{harness}-{hours}h")
             for effort in ("low", "medium", "high", "xhigh", "max")
-            for harness in ("codex-0h", "codex-1h", "codex-2h", "codex-4h", "codex-8h")
+            for harness in ("codex", "codex-engine")
+            for hours in (0, 1, 2, 4, 8)
         )
         self.assertEqual(actual, expected)
-        self.assertEqual(len(api.players), 55)
+        self.assertEqual(len(api.players), 80)
         for harness in ("codex-0h", "codex-1h", "codex-2h", "codex-4h", "codex-8h"):
             name = f"gpt6-astra-high-{harness}"
             self.assertFalse(arena._active_players_are_katago((name,)))

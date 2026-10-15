@@ -384,7 +384,8 @@ class ArenaConversationTests(unittest.TestCase):
                              usage=Dumpable(input_tokens=10, cache_read_input_tokens=100,
                                             cache_creation_input_tokens=20, output_tokens=30)), 160),
             ("gemini-3.6-flash-high-api-multi", "google", "interactions",
-             SimpleNamespace(output_text="D4", steps=[{"type": "model_output", "content": []}],
+             SimpleNamespace(output_text="D4", status="completed",
+                             steps=[{"type": "model_output", "content": []}],
                              usage=Dumpable(total_input_tokens=100, total_cached_tokens=50,
                                             total_output_tokens=10, total_thought_tokens=30)), 140),
         ]
@@ -399,6 +400,39 @@ class ArenaConversationTests(unittest.TestCase):
                                      log_path=Path(directory) / "calls.jsonl", game_number=1,
                                      move_number=1, attempt=1)
                 self.assertEqual(session.observed_tokens, expected)
+
+
+    def test_unfinished_gemini_interaction_is_logged_and_retried_not_fatal(self):
+        # 2026-10-14: a non-completed interaction without steps crashed a run.
+        name = "gemini-4-argon-high-api-multi"
+        api, player = arena._llm_player_config(name)
+        usage = dict(total_input_tokens=1000, total_cached_tokens=0,
+                     total_output_tokens=0, total_thought_tokens=30000)
+        responses = iter([
+            SimpleNamespace(output_text="", status="incomplete", steps=None,
+                            usage=Dumpable(**usage)),
+            SimpleNamespace(output_text="D4", status="completed",
+                            steps=[{"type": "model_output", "content": []}],
+                            usage=Dumpable(**usage)),
+        ])
+        session = APIConversation(api.name, player.model, name, 1, "google")
+        client = ConversationClient(SimpleNamespace(
+            interactions=SimpleNamespace(create=lambda **kw: next(responses))), session)
+        with TemporaryDirectory() as directory, patch.object(arena.time, "sleep"):
+            log = Path(directory) / "calls.jsonl"
+            text, _seconds, cost = arena._call_llm_move(
+                client, "Legal moves now: D4", player_name=name, log_path=log,
+                game_number=1, move_number=1, attempt=1)
+            calls = arena._read_jsonl_objects(log, "test calls")
+        self.assertEqual(text, "D4")
+        self.assertEqual([call["ok"] for call in calls], [False, True])
+        self.assertEqual(calls[0]["error"], "_UnusableLLMResponse")
+        self.assertEqual(calls[0]["recovery_action"], "retry")
+        self.assertEqual(calls[0]["stop_reason"], "incomplete")
+        # The unusable attempt's billed thinking is charged to the move.
+        self.assertGreater(calls[0]["cost_usd"], 0)
+        self.assertAlmostEqual(cost, calls[0]["cost_usd"] + calls[1]["cost_usd"])
+        self.assertEqual(len(session.history), 2)
 
 
 if __name__ == "__main__":

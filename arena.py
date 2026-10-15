@@ -51,6 +51,8 @@ from gobench.arena_config import (
     _CHEAP_B6C96_PLAYER_POOL,
     _CLAUDE_CODE_TRAINING_SECONDS,
     _CLAUDE_CODE_WORKSPACE_HARNESSES,
+    _CODEX_ENGINE_TRAINING_SECONDS,
+    _CODEX_ENGINE_WORKSPACE_HARNESSES,
     _CODEX_TRAINING_SECONDS,
     _CODEX_WORKSPACE_HARNESSES,
     _WORKSPACE_HARNESSES,
@@ -69,6 +71,7 @@ from gobench.workspace_runtime import (
     AgentClock,
     CoreLease,
     ProcessScope,
+    WorkspaceEngineForfeit,
     WorkspaceError,
     WorkspaceSettings,
     WorkspaceResourceExceeded,
@@ -216,15 +219,22 @@ CONFIG = ArenaConfig(
         # "gpt6-astra-high-api-multi",
         # "gpt6-astra-max-api-multi",
         # "gemini-4-argon-high-api-multi",
-        "muse-wonder-1.0-high-api-multi",
+        # "muse-wonder-1.0-high-api-multi",
+        # Track 2 replicas with a 5-minute evaluation clock (originals used 30).
+        # "gpt6-astra-high-codex-1h2",
+        # "gpt6-astra-high-codex-2h2",
+        # Track 2 with code-only evaluation (see docs/setup.md):
+        "gpt6-astra-high-codex-engine-1h",
+        "gpt6-astra-high-codex-engine-2h",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
     total_games=20,
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
-    active_player_prior_elo_mean=2000.0,
+    active_player_prior_elo_mean=3000.0,
     active_player_prior_elo_sd=1000.0,
+    workspace=WorkspaceSettings(evaluation_seconds=300),
 )
 
 
@@ -297,6 +307,10 @@ class _OpenAIProxyCredential:
         return f"{self.path_prefix}{path.removeprefix('/v1')}"
 
 
+class _UnusableLLMResponse(RuntimeError):
+    """A provider returned a response that the arena cannot use or replay."""
+
+
 class _LLMProtocol:
     """Wire-format adapter used by entries in the LLM API registry."""
 
@@ -314,6 +328,10 @@ class _LLMProtocol:
     @staticmethod
     def response_text(_response):
         raise NotImplementedError
+
+    @staticmethod
+    def check_response(_response):
+        """Raise a retryable error for a returned response that cannot be used."""
 
     usage_fields: ClassVar[dict[str, str]] = {}
 
@@ -503,6 +521,23 @@ class _GoogleInteractionsProtocol(_LLMProtocol):
     def response_text(response):
         return getattr(response, "output_text", "")
 
+    @staticmethod
+    def check_response(response):
+        # Interactions reports failed/incomplete work as an ordinary response,
+        # which may omit the steps a multi-turn game must replay. Retry the move.
+        status = getattr(response, "status", None)
+        steps = getattr(response, "steps", None)
+        if status == "completed" and isinstance(steps, list):
+            return
+        error = _UnusableLLMResponse(
+            f"Gemini interaction status {status!r}"
+            + ("" if isinstance(steps, list) else " without steps")
+        )
+        error.body = {"retryable": True, "interaction_status": status}
+        error.arena_usage = _usage_dict(response)
+        error.arena_response_diagnostics = {"stop_reason": str(status)}
+        raise error
+
     usage_fields = {
         "input_tokens": "total_input_tokens",
         "cached_input_tokens": "total_cached_tokens",
@@ -644,7 +679,7 @@ class _Arena:
                 **_agent_players(_CODEX_TRAINING_SECONDS),
                 **{
                     name: player
-                    for harness in _CODEX_TRAINING_SECONDS
+                    for harness in (*_CODEX_TRAINING_SECONDS, *_CODEX_ENGINE_TRAINING_SECONDS)
                     for name, player in _llm_effort_players(
                         "gpt6-astra", "gpt-6-astra",
                         ("low", "medium", "high", "xhigh", "max"),
@@ -3247,6 +3282,15 @@ def _llm_player_manifest(name):
             training_katago_access=False,
             apply_patch_preflight=False,
         )
+        if player.agentic_harness in _CODEX_ENGINE_WORKSPACE_HARNESSES:
+            manifest.update(
+                conversation="none_during_evaluation",
+                network_access="openai_proxy_during_preparation_only",
+                evaluation="code_only",
+                engine_interface=_CodexEngineGameClient.INTERFACE,
+                engine_path=_CodexEngineGameClient.ENGINE_PATH,
+                engine_failure_policy="forfeit",
+            )
         if claude_code:
             manifest.update(
                 harness="claude_code_cli",
@@ -3437,6 +3481,16 @@ def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None):
         if work_dir is None:
             raise ArenaError("tutorial players require a game work directory")
         tutorial = _ensure_tutorial(tutorial_player, work_dir)
+    if player.agentic_harness in _CODEX_ENGINE_WORKSPACE_HARNESSES:
+        if work_dir is None or game_number is None:
+            raise ArenaError("Codex engine players require a game work directory and number")
+        return _CodexEngineGameClient(
+            player_name,
+            player,
+            work_dir,
+            game_number,
+            proxy_credential=_codex_workspace_proxy_credential(api),
+        )
     if player.agentic_harness in _CODEX_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
             raise ArenaError("Codex players require a game work directory and number")
@@ -4137,6 +4191,7 @@ def _call_llm_move(
                 if api.raw_response
                 else endpoint.create(**req)
             )
+            api.protocol.check_response(response)
         except Exception as exc:
             call_time = time.perf_counter() - start
             total_time += call_time
@@ -4172,7 +4227,8 @@ def _call_llm_move(
             retry_delay = _llm_api_retry_delay(exc, api_try) if retrying else None
             status = _llm_api_error(exc)[1]
             recovery_hint = _llm_auth_recovery_hint(exc, api)
-            if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded)):
+            if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded,
+                                WorkspaceEngineForfeit)):
                 recovery_action = "record_game_forfeit"
             elif retrying and auth_wait:
                 recovery_action = "wait_for_authentication"
@@ -4204,7 +4260,8 @@ def _call_llm_move(
                 **response_diagnostics,
             )
             if retry_delay is None:
-                if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded)):
+                if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded,
+                                WorkspaceEngineForfeit)):
                     exc.arena_api_seconds = total_time
                     exc.arena_cost_usd = failed_cost
                     raise
@@ -4288,6 +4345,10 @@ def _choose_llm_move(
     retry=None,
     illegal_move=None,
 ):
+    observe = getattr(client, "observe_game", None)
+    if callable(observe):
+        # Code-only players receive the authoritative game, not just the prompt.
+        observe(game)
     board_moves, ko_illegal_moves = game.get_possible_moves()
     legal_moves, state = [*board_moves, "resign"], game.get_board_state()
     recent_moves = game.get_move_history()[-5:]
@@ -4857,11 +4918,16 @@ def run_llm_games(
                         illegal_move=on_illegal_move,
                         initial_moves=opening,
                     )
-                except (WorkspaceTimeExpired, WorkspaceResourceExceeded) as exc:
+                except (WorkspaceTimeExpired, WorkspaceResourceExceeded,
+                        WorkspaceEngineForfeit) as exc:
                     stats.api_seconds += getattr(exc, "arena_api_seconds", 0)
                     stats.cost_usd += getattr(exc, "arena_cost_usd", 0)
                     winner = "W" if slot.black == llm_name else "B"
-                    reason = "agent_time_limit" if isinstance(exc, WorkspaceTimeExpired) else "agent_memory_limit"
+                    if isinstance(exc, WorkspaceEngineForfeit):
+                        reason = f"engine_{exc.reason}"
+                    else:
+                        reason = ("agent_time_limit" if isinstance(exc, WorkspaceTimeExpired)
+                                  else "agent_memory_limit")
                     suffix = "T" if isinstance(exc, WorkspaceTimeExpired) else "F"
                     res = GameResult(True, winner, f"{winner}+{suffix}", reason)
                     moves = tuple(game.get_move_history())
@@ -8493,7 +8559,8 @@ class _WorkspaceBubblewrap:
     def __init__(self, workspace, runtime_dir, proxy_socket, *, binary=None):
         self.workspace = Path(workspace).resolve()
         self.runtime_dir = Path(runtime_dir).resolve()
-        self.proxy_socket = Path(proxy_socket).resolve()
+        # Code-only evaluation has no model proxy and therefore no socket.
+        self.proxy_socket = None if proxy_socket is None else Path(proxy_socket).resolve()
         self._configured_binary = binary
 
     def _binary(self):
@@ -8637,10 +8704,9 @@ class _WorkspaceBubblewrap:
             "--ro-bind",
             str(self.runtime_dir),
             "/runtime-files",
-            "--ro-bind",
-            str(self.proxy_socket),
-            "/runtime/openai.sock",
         ]
+        if self.proxy_socket is not None:
+            args += ["--ro-bind", str(self.proxy_socket), "/runtime/openai.sock"]
         for source, destination in writable_mounts:
             args += ["--bind", str(Path(source).resolve()), str(destination)]
         for source, destination in readonly_mounts:
@@ -9970,6 +10036,308 @@ class _CodexGameClient:
                 self._resource_lock = None
 
 
+class _GTPEngineProcess:
+    """One persistent GTP program, read through a queue so replies have deadlines."""
+
+    STDERR_LIMIT_BYTES = 1 << 20
+
+    def __init__(self, command, *, stderr_path):
+        self.process = subprocess.Popen(
+            list(map(str, command)), stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        self._lines = queue.Queue()
+        self._readers = [
+            threading.Thread(target=self._read_stdout, daemon=True),
+            threading.Thread(target=self._read_stderr, args=(Path(stderr_path),), daemon=True),
+        ]
+        for reader in self._readers:
+            reader.start()
+
+    def _read_stdout(self):
+        try:
+            for line in self.process.stdout:
+                self._lines.put(line.decode("utf-8", errors="replace").rstrip("\r\n"))
+        except (OSError, ValueError):
+            pass
+        finally:
+            self._lines.put(None)
+
+    def _read_stderr(self, path):
+        # Keep a bounded diagnostic tail; a chatty program must not fill the host disk.
+        written = 0
+        try:
+            with path.open("ab") as log:
+                for chunk in iter(lambda: self.process.stderr.read1(65536), b""):
+                    if written < self.STDERR_LIMIT_BYTES:
+                        log.write(chunk[: self.STDERR_LIMIT_BYTES - written])
+                        log.flush()
+                        written += len(chunk)
+        except (OSError, ValueError):
+            pass
+
+    def _next_line(self, deadline):
+        while True:
+            try:
+                return self._lines.get(timeout=max(0.05, deadline - time.monotonic()))
+            except queue.Empty:
+                if time.monotonic() >= deadline:
+                    raise WorkspaceEngineForfeit("no_reply", "the program stopped responding")
+
+    def command(self, text, *, deadline):
+        """Send one command; return (success, reply text) from its GTP response."""
+        try:
+            self.process.stdin.write(text.encode() + b"\n")
+            self.process.stdin.flush()
+        except (BrokenPipeError, OSError, ValueError) as exc:
+            raise WorkspaceEngineForfeit("crash", f"stdin closed before {text!r}") from exc
+        line = ""
+        while not line.strip():
+            line = self._next_line(deadline)
+            if line is None:
+                raise WorkspaceEngineForfeit("crash", f"program exited during {text!r}")
+        line = line.strip()
+        if line[0] not in "=?":
+            raise WorkspaceEngineForfeit("protocol_error", f"{text!r} got {line[:200]!r}")
+        success = line[0] == "="
+        # Optional numeric command ids are allowed by GTP; the arena sends none.
+        reply = [line[1:].lstrip("0123456789").strip()]
+        # A response ends with an empty line. EOF after the first line still
+        # returns it; the next command then reports the crash.
+        while (line := self._next_line(deadline)) is not None and line.strip():
+            reply.append(line.strip())
+        return success, "\n".join(reply).strip()
+
+    def close(self):
+        process = self.process
+        if process.poll() is None:
+            process.kill()
+        try:
+            process.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            pass
+        for pipe in (process.stdin, process.stdout, process.stderr):
+            try:
+                pipe.close()
+            except OSError:
+                pass
+        for reader in self._readers:
+            reader.join(timeout=5)
+
+
+class _CodexEngineGameClient(_CodexGameClient):
+    """Track 2 with code-only evaluation.
+
+    Preparation is the ordinary Codex workspace session. Each evaluation game
+    starts the checkpoint's /workspace/engine inside the same sandbox and
+    resource scope, with no model, proxy or network, and plays it over GTP.
+    The game clock runs only while the arena waits for the program.
+    """
+
+    _workspace_label = "Codex engine workspace"
+    _location_label = "codex-engine-workspace"
+    _harness_label = "Codex engine"
+    harnesses = _CODEX_ENGINE_WORKSPACE_HARNESSES
+    checkpoint_dirname = "codex-engine-checkpoints"
+    run_config_key = "codex_engine_workspace"
+    ENGINE_PATH = "/workspace/engine"
+    INTERFACE = "gtp-v1"
+    SETUP_COMMANDS = ("boardsize 9", "clear_board", "komi 7")
+
+    def __init__(self, *args, **kwargs):
+        self._engine = None
+        self._engine_moves = []
+        self._game = None
+        super().__init__(*args, **kwargs)
+
+    def _runtime_specification(self):
+        return {**super()._runtime_specification(),
+                "evaluation": "code_only", "engine_interface": self.INTERFACE}
+
+    def _preparation_prompt(self):
+        seconds = f"{self.settings.evaluation_seconds:g}"
+        return (
+            "You are preparing a program that will play 9x9 Go on your behalf. Use "
+            "this autonomous preparation period to write, test and improve code, "
+            "self-play, search, experiments, and notes. You have no access to "
+            "KataGo, an arena opponent, external Go engines, or the internet. "
+            "Python3, g++, and make are available. Build your own tools in /workspace.\n\n"
+            "Rules, enforced exactly by the referee: 9x9, White komi 7.0, Tromp-Taylor "
+            "area scoring without dead-stone removal (every stone on the board when "
+            "the game ends counts), and two consecutive passes end the game. Columns "
+            "A-H,J, rows 1-9. POSITIONAL SUPERKO: a move is illegal if the resulting "
+            "arrangement of stones, ignoring whose turn it is, equals any arrangement "
+            "that occurred earlier in the game, including the empty starting board. "
+            "A move first removes opposing groups left without liberties; if its own "
+            "group then has no liberties, that group is removed too (self-capture), "
+            "which is legal only if the resulting arrangement is new, so a single-stone "
+            "self-capture is always illegal. Passing is always legal. Every play command "
+            "the arena sends is legal under these rules and your program must accept "
+            "it; your program must track the full history to avoid superko-illegal "
+            "moves.\n\n"
+            "EVALUATION IS CODE-ONLY. No model calls happen during evaluation and "
+            "your conversation is not used: only your program plays. Each evaluation "
+            "game gets an independent private copy of /workspace (writable, as is /tmp) "
+            f"and runs {self.ENGINE_PATH}, which must be an executable file (a compiled "
+            "binary, or a script with a #! line). The arena starts it once per game "
+            "with working directory /workspace and speaks the Go Text Protocol (GTP) "
+            "on its stdin/stdout. It sends only these commands: `boardsize 9`, "
+            "`clear_board`, `komi 7`, `play <color> <vertex>` (each opponent move, "
+            "in order), `time_left <color> <seconds> 0` (before each genmove; you may "
+            "reply `?` if unsupported), `genmove <color>`, and `quit`. Colors are B or "
+            "W; vertices are a column A-H,J and a row 1-9 (e.g. E5), or pass. Reply to "
+            "every command with `= <result>` or `? <error>` followed by one empty "
+            "line, and write diagnostics only to stderr. genmove must reply with a "
+            "legal vertex, pass, or resign, and the move you return is played on your "
+            "board. The full move history arrives through play/genmove, which you need "
+            "for positional superko.\n\n"
+            f"Each game has a cumulative {seconds}-second clock covering all time the "
+            "arena waits for your program, including startup and every command. Your "
+            "processes are frozen during the opponent's turn and cannot think then. "
+            "While your program runs, /arena/clock.json contains remaining_seconds. "
+            "The game is lost if the clock runs out, the program crashes or exits, "
+            "a play/genmove/setup command gets an error or unparseable reply, a move "
+            "is illegal, or the resource limits below are exceeded. There is no "
+            "network access during evaluation. Test the program through this exact "
+            "interface, with realistic time usage, before preparation ends. The "
+            "runtime is stopped at the deadline with no extra cleanup time, so keep "
+            f"a working {self.ENGINE_PATH} at all times.\n\n"
+            f"Preparation time remaining: {self._clock.remaining:.1f} seconds. "
+            "During preparation /arena/clock.json shows the preparation deadline. "
+            "Save useful code and notes incrementally. If a prior preparation turn "
+            "finished, continue improving or testing your program until time "
+            "expires. " + self._resource_instructions()
+        )
+
+    def _resource_instructions(self):
+        return ("Your entire agent, and during evaluation your program, has exclusive "
+                f"use of 1 physical CPU core with {len(self._resource_lock.cpus)} logical "
+                f"CPUs, {self.settings.memory_mib} MiB RAM, {self.settings.storage_mib} MiB "
+                f"writable storage and {self.settings.max_tasks} processes/threads; "
+                "there is no GPU or swap. Subagents share these limits.")
+
+    def observe_game(self, game):
+        self._game = game
+
+    def _engine_deadline(self):
+        # The clock watchdog kills the scope at expiry; this only bounds a wait.
+        return time.monotonic() + self._clock.remaining + 5
+
+    def _engine_command(self, text, *, required=True):
+        success, reply = self._engine.command(text, deadline=self._engine_deadline())
+        if required and not success:
+            raise WorkspaceEngineForfeit("protocol_error", f"{text!r} failed: {reply[:200]!r}")
+        return success, reply
+
+    def _start_engine(self):
+        program = self.cwd / "engine"
+        if not os.path.lexists(program):
+            raise WorkspaceEngineForfeit("missing_program", f"{self.ENGINE_PATH} does not exist")
+        runtime = self._phase_dir / "engine-runtime"
+        runtime.mkdir(mode=0o700, exist_ok=True)
+        scope = ProcessScope(self._phase_dir, self.settings, core=self._resource_lock)
+        self._scope = scope
+        sandbox = _WorkspaceBubblewrap(self.cwd, runtime, None,
+                                       binary=self._workspace_bwrap_binary())
+        launch = sandbox.command(
+            (self.ENGINE_PATH,),
+            {"HOME": "/harness-home", "PATH": "/usr/bin:/bin", "LANG": "C.UTF-8",
+             "TMPDIR": "/tmp"},
+            readonly_mounts=((self._phase_dir / "public", "/arena"),),
+            writable_mounts=((self._volume.mountpoint / "tmp", "/tmp"),),
+            hidden_paths=_workspace_hidden_katago_paths(),
+        )
+        self._engine = _GTPEngineProcess(scope.command(launch),
+                                         stderr_path=self._phase_dir / "engine-stderr.log")
+        self._engine_moves = []
+        _append_jsonl(self._phase_dir / "engine-events.jsonl", {
+            "event": "engine_started", "remaining_seconds": self._clock.remaining,
+            "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        })
+        # A reply proves the service exists, so its cgroup can be verified.
+        self._engine_command(self.SETUP_COMMANDS[0])
+        scope.attach()
+        for command in self.SETUP_COMMANDS[1:]:
+            self._engine_command(command)
+
+    def _engine_genmove(self, history, color):
+        if self._engine is None:
+            self._start_engine()
+        else:
+            self._scope.thaw()
+        if tuple(self._engine_moves) != history[:len(self._engine_moves)]:
+            raise WorkspaceError("engine board diverged from the referee history")
+        for played_color, move in history[len(self._engine_moves):]:
+            self._engine_command(f"play {played_color} {move}")
+            self._engine_moves.append((played_color, move))
+        self._engine_command(f"time_left {color} {int(self._clock.remaining)} 0", required=False)
+        _success, reply = self._engine_command(f"genmove {color}")
+        words = reply.split()
+        if len(words) != 1:
+            raise WorkspaceEngineForfeit("protocol_error", f"genmove replied {reply[:200]!r}")
+        move = words[0].lower() if words[0].lower() in ("pass", "resign") else words[0].upper()
+        if move != "resign":
+            self._engine_moves.append((color, move))
+        return move
+
+    def create(self, **request):
+        game, clock = self._game, self._clock
+        if game is None:
+            raise ArenaError("code-only evaluation was not given the game position")
+        if clock.remaining <= 0:
+            raise WorkspaceTimeExpired("program's cumulative game clock is exhausted")
+        history = tuple(game.get_move_history())
+        color = game.to_move
+        clock.start(self._expire_runtime)
+        move = failure = None
+        try:
+            move = self._engine_genmove(history, color)
+        except Exception as exc:
+            failure = exc
+        finally:
+            try:
+                if self._scope is not None and not self._scope.dead and self._scope.cgroup is not None:
+                    try:
+                        self._scope.freeze()
+                    except FileNotFoundError:
+                        self._scope.dead = True
+                        failure = failure or WorkspaceEngineForfeit("crash", "program exited")
+                    except (OSError, WorkspaceError) as exc:
+                        failure = failure or exc
+            finally:
+                clock.pause()
+        if clock.expired or clock.remaining <= 0:
+            raise WorkspaceTimeExpired("program's cumulative game clock is exhausted") from failure
+        if failure is not None:
+            if (self._scope is not None and self._scope.cgroup is not None
+                    and self._scope.failure_reason() == "oom-kill"):
+                raise WorkspaceResourceExceeded("program exceeded its memory allocation") from failure
+            if isinstance(failure, WorkspaceEngineForfeit):
+                _append_jsonl(self._phase_dir / "engine-events.jsonl", {
+                    "event": "engine_forfeit", "reason": failure.reason, "detail": str(failure),
+                    "move": len(history) + 1,
+                    "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                })
+            raise failure
+        legal, _superko = game.get_possible_moves()
+        if move not in (*legal, "resign"):
+            _append_jsonl(self._phase_dir / "engine-events.jsonl", {
+                "event": "engine_forfeit", "reason": "illegal_move", "detail": move,
+                "move": len(history) + 1, "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            })
+            raise WorkspaceEngineForfeit("illegal_move", move)
+        return _CodexMoveResponse(move, {})
+
+    def _dispose_runtime(self):
+        engine, self._engine = self._engine, None
+        try:
+            if engine is not None:
+                if self._scope is not None and not self._scope.dead:
+                    self._scope.kill()
+                engine.close()
+        finally:
+            super()._dispose_runtime()
+
 
 def _claude_code_binary():
     """The pinned, self-contained native Claude Code executable mounted into the sandbox.
@@ -10996,7 +11364,7 @@ def _ensure_tutorial(tutorial_player, work_dir):
         client.close()
 
 
-_WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _ClaudeCodeGameClient)
+_WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _CodexEngineGameClient, _ClaudeCodeGameClient)
 
 
 def _workspace_client_class(harness):

@@ -43,6 +43,14 @@ class WorkspaceResourceExceeded(WorkspaceError):
     """The kernel terminated the agent for exceeding its hardware allocation."""
 
 
+class WorkspaceEngineForfeit(WorkspaceError):
+    """A code-only evaluation program broke the game interface (crash, bad reply)."""
+
+    def __init__(self, reason, detail=""):
+        super().__init__(f"{reason}: {detail}" if detail else reason)
+        self.reason = reason
+
+
 @dataclass(frozen=True)
 class WorkspaceSettings:
     training_seconds: float = 3600

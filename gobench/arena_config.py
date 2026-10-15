@@ -134,14 +134,31 @@ _CLAUDE_CODE_WORKSPACE_PLAYERS = {
     harness: (_llm_player_name("claude-opus-5-5-high", harness),)
     for harness in _CLAUDE_CODE_TRAINING_SECONDS
 }
-_WORKSPACE_HARNESSES = _CODEX_WORKSPACE_HARNESSES | _CLAUDE_CODE_WORKSPACE_HARNESSES
+
+# Track 2 code-only evaluation: the same Codex preparation, sandbox, and
+# resource limits, but each evaluation game runs only the agent's
+# /workspace/engine GTP program, with no model calls.
+_CODEX_ENGINE_TRAINING_SECONDS = {
+    f"codex-engine-{hours}h": hours * 3600 for hours in (0, 1, 2, 4, 8)
+}
+_CODEX_ENGINE_WORKSPACE_HARNESSES = frozenset(_CODEX_ENGINE_TRAINING_SECONDS)
+_WORKSPACE_HARNESSES = (
+    _CODEX_WORKSPACE_HARNESSES
+    | _CODEX_ENGINE_WORKSPACE_HARNESSES
+    | _CLAUDE_CODE_WORKSPACE_HARNESSES
+)
 
 
 def _workspace_training_seconds(harness):
-    """Preparation time fixed by a workspace harness name (Codex or Claude Code)."""
-    if harness in _CODEX_TRAINING_SECONDS:
-        return _CODEX_TRAINING_SECONDS[harness]
-    return _CLAUDE_CODE_TRAINING_SECONDS[harness]
+    """Preparation time fixed by a workspace harness name."""
+    for durations in (
+        _CODEX_TRAINING_SECONDS,
+        _CODEX_ENGINE_TRAINING_SECONDS,
+        _CLAUDE_CODE_TRAINING_SECONDS,
+    ):
+        if harness in durations:
+            return durations[harness]
+    raise KeyError(harness)
 
 
 # Track 3 tutorial distillation: <target>-tutorial<subtrack>-<learner>-<hours>h.
