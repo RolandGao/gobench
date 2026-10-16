@@ -1,0 +1,17 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s37368064-d5536083,B+2.0,gpt6-astra-high-codex-engine-60s-1h,1,89,openai_codex_workspace_agent,45,0,0,59.743253,0.000000000000
+2,1,kata1-b6c96-s37368064-d5536083,gpt6-astra-high-codex-engine-60s-1h,B+T,kata1-b6c96-s37368064-d5536083,1,97,openai_codex_workspace_agent,48,0,0,61.475436,0.000000000000
+3,2,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s37368064-d5536083,W+T,kata1-b6c96-s37368064-d5536083,0,98,openai_codex_workspace_agent,49,0,0,61.349959,0.000000000000
+4,2,kata1-b6c96-s37368064-d5536083,gpt6-astra-high-codex-engine-60s-1h,0,,0.5,89,openai_codex_workspace_agent,44,0,0,60.917979,0.000000000000
+5,3,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s32344832-d4917369,B+2.0,gpt6-astra-high-codex-engine-60s-1h,1,75,openai_codex_workspace_agent,38,0,0,56.315058,0.000000000000
+6,3,kata1-b6c96-s32344832-d4917369,gpt6-astra-high-codex-engine-60s-1h,B+T,kata1-b6c96-s32344832-d4917369,1,99,openai_codex_workspace_agent,49,0,0,61.482001,0.000000000000
+7,4,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s32344832-d4917369,B+6.0,gpt6-astra-high-codex-engine-60s-1h,1,89,openai_codex_workspace_agent,45,0,0,59.722448,0.000000000000
+8,4,kata1-b6c96-s32344832-d4917369,gpt6-astra-high-codex-engine-60s-1h,W+R,gpt6-astra-high-codex-engine-60s-1h,0,79,openai_codex_workspace_agent,39,0,0,58.869364,0.000000000000
+9,5,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s37368064-d5536083,B+2.0,gpt6-astra-high-codex-engine-60s-1h,1,49,openai_codex_workspace_agent,25,0,0,42.295001,0.000000000000
+10,5,kata1-b6c96-s37368064-d5536083,gpt6-astra-high-codex-engine-60s-1h,W+R,gpt6-astra-high-codex-engine-60s-1h,0,53,openai_codex_workspace_agent,26,0,0,42.030189,0.000000000000
+11,6,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s45189632-d6589032,B+R,gpt6-astra-high-codex-engine-60s-1h,1,68,openai_codex_workspace_agent,34,0,0,51.151897,0.000000000000
+12,6,kata1-b6c96-s45189632-d6589032,gpt6-astra-high-codex-engine-60s-1h,B+T,kata1-b6c96-s45189632-d6589032,1,83,openai_codex_workspace_agent,41,0,0,61.669440,0.000000000000
+13,7,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s43286272-d6326857,W+T,kata1-b6c96-s43286272-d6326857,0,84,openai_codex_workspace_agent,42,0,0,62.005789,0.000000000000
+14,7,kata1-b6c96-s43286272-d6326857,gpt6-astra-high-codex-engine-60s-1h,B+18.0,kata1-b6c96-s43286272-d6326857,1,93,openai_codex_workspace_agent,46,0,0,60.629136,0.000000000000
+15,8,gpt6-astra-high-codex-engine-60s-1h,kata1-b6c96-s39339776-d5828519,W+T,kata1-b6c96-s39339776-d5828519,0,78,openai_codex_workspace_agent,39,0,0,62.186765,0.000000000000
+16,8,kata1-b6c96-s39339776-d5828519,gpt6-astra-high-codex-engine-60s-1h,W+R,gpt6-astra-high-codex-engine-60s-1h,0,43,openai_codex_workspace_agent,21,0,0,36.441463,0.000000000000

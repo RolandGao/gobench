@@ -1,0 +1,17 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s37368064-d5536083,W+88.0,kata1-b6c96-s37368064-d5536083,0,132,openai_codex_workspace_agent,66,0,0,59.384635,0.000000000000
+2,1,kata1-b6c96-s37368064-d5536083,gpt5.6-sol-high-codex-engine-60s-4h,B+T,kata1-b6c96-s37368064-d5536083,1,117,openai_codex_workspace_agent,58,0,0,61.458481,0.000000000000
+3,2,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s19408128-d3280178,B+R,gpt5.6-sol-high-codex-engine-60s-4h,1,60,openai_codex_workspace_agent,30,0,0,39.553280,0.000000000000
+4,2,kata1-b6c96-s19408128-d3280178,gpt5.6-sol-high-codex-engine-60s-4h,W+4.0,gpt5.6-sol-high-codex-engine-60s-4h,0,82,openai_codex_workspace_agent,41,0,0,52.881165,0.000000000000
+5,3,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s26363136-d4119819,B+7.0,gpt5.6-sol-high-codex-engine-60s-4h,1,81,openai_codex_workspace_agent,41,0,0,55.461872,0.000000000000
+6,3,kata1-b6c96-s26363136-d4119819,gpt5.6-sol-high-codex-engine-60s-4h,B+T,kata1-b6c96-s26363136-d4119819,1,97,openai_codex_workspace_agent,48,0,0,61.740573,0.000000000000
+7,4,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s25461504-d4002500,W+T,kata1-b6c96-s25461504-d4002500,0,98,openai_codex_workspace_agent,49,0,0,61.532568,0.000000000000
+8,4,kata1-b6c96-s25461504-d4002500,gpt5.6-sol-high-codex-engine-60s-4h,B+T,kata1-b6c96-s25461504-d4002500,1,99,openai_codex_workspace_agent,49,0,0,61.518763,0.000000000000
+9,5,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s23401472-d3742377,W+T,kata1-b6c96-s23401472-d3742377,0,106,openai_codex_workspace_agent,53,0,0,61.895155,0.000000000000
+10,5,kata1-b6c96-s23401472-d3742377,gpt5.6-sol-high-codex-engine-60s-4h,B+T,kata1-b6c96-s23401472-d3742377,1,101,openai_codex_workspace_agent,50,0,0,61.733186,0.000000000000
+11,6,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s21371392-d3529696,W+T,kata1-b6c96-s21371392-d3529696,0,100,openai_codex_workspace_agent,50,0,0,61.938467,0.000000000000
+12,6,kata1-b6c96-s21371392-d3529696,gpt5.6-sol-high-codex-engine-60s-4h,B+T,kata1-b6c96-s21371392-d3529696,1,97,openai_codex_workspace_agent,48,0,0,62.594173,0.000000000000
+13,7,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s19408128-d3280178,W+T,kata1-b6c96-s19408128-d3280178,0,104,openai_codex_workspace_agent,52,0,0,61.632662,0.000000000000
+14,7,kata1-b6c96-s19408128-d3280178,gpt5.6-sol-high-codex-engine-60s-4h,B+T,kata1-b6c96-s19408128-d3280178,1,99,openai_codex_workspace_agent,49,0,0,61.441250,0.000000000000
+15,8,gpt5.6-sol-high-codex-engine-60s-4h,kata1-b6c96-s18429184-d3197121,B+R,gpt5.6-sol-high-codex-engine-60s-4h,1,54,openai_codex_workspace_agent,27,0,0,37.370373,0.000000000000
+16,8,kata1-b6c96-s18429184-d3197121,gpt5.6-sol-high-codex-engine-60s-4h,W+R,gpt5.6-sol-high-codex-engine-60s-4h,0,63,openai_codex_workspace_agent,31,0,0,43.548806,0.000000000000

@@ -177,14 +177,25 @@ _FINAL_RUNS = (
     "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-4h",
     "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-8h",
     # Track 2 with code-only evaluation (5-minute clock).
-    "gpt6-astra-high-codex-engine-1h",
-    "gpt6-astra-high-codex-engine-2h",
-    "gpt6-astra-high-codex-engine-4h",
-    "gpt6-astra-high-codex-engine-8h",
-    "gpt5.6-sol-high-codex-engine-1h",
-    "gpt5.6-sol-high-codex-engine-2h",
-    "claude-opus-5-5-high-claude-code-engine-1h",
-    "claude-opus-5-5-high-claude-code-engine-2h",
+    # "gpt6-astra-high-codex-engine-1h",
+    # "gpt6-astra-high-codex-engine-2h",
+    # "gpt6-astra-high-codex-engine-4h",
+    # "gpt6-astra-high-codex-engine-8h",
+    # "gpt5.6-sol-high-codex-engine-1h",
+    # "gpt5.6-sol-high-codex-engine-2h",
+    # "claude-opus-5-5-high-claude-code-engine-1h",
+    # "claude-opus-5-5-high-claude-code-engine-2h",
+    # Track 2 with code-only evaluation (60-second clock, 200 games).
+    "gpt6-astra-high-codex-engine-60s-1h",
+    "gpt6-astra-high-codex-engine-60s-2h",
+    "gpt6-astra-high-codex-engine-60s-4h",
+    "gpt6-astra-high-codex-engine-60s-8h",
+    "gpt5.6-sol-high-codex-engine-60s-1h",
+    "gpt5.6-sol-high-codex-engine-60s-2h",
+    "gpt5.6-sol-high-codex-engine-60s-4h",
+    "gpt5.6-sol-high-codex-engine-60s-8h",
+    "claude-opus-5-5-high-claude-code-engine-60s-1h",
+    "claude-opus-5-5-high-claude-code-engine-60s-2h",
 )
 
 

@@ -1,0 +1,17 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b6c96-s37368064-d5536083,B+2.0,claude-opus-5-5-high-claude-code-engine-60s-2h,1,89,anthropic_claude_code_workspace_agent,45,0,0,50.321118,0.000000000000
+2,1,kata1-b6c96-s37368064-d5536083,claude-opus-5-5-high-claude-code-engine-60s-2h,W+4.0,claude-opus-5-5-high-claude-code-engine-60s-2h,0,70,anthropic_claude_code_workspace_agent,35,0,0,45.254801,0.000000000000
+3,2,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b10c128-s258941696-d77667876,W+T,kata1-b10c128-s258941696-d77667876,0,106,anthropic_claude_code_workspace_agent,53,0,0,61.791930,0.000000000000
+4,2,kata1-b10c128-s258941696-d77667876,claude-opus-5-5-high-claude-code-engine-60s-2h,W+R,claude-opus-5-5-high-claude-code-engine-60s-2h,0,47,anthropic_claude_code_workspace_agent,23,0,0,29.437075,0.000000000000
+5,3,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b10c128-s182492416-d63545831,B+R,claude-opus-5-5-high-claude-code-engine-60s-2h,1,54,anthropic_claude_code_workspace_agent,27,0,0,39.741359,0.000000000000
+6,3,kata1-b10c128-s182492416-d63545831,claude-opus-5-5-high-claude-code-engine-60s-2h,0,,0.5,72,anthropic_claude_code_workspace_agent,36,0,0,51.541211,0.000000000000
+7,4,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b15c192-s172540416-d88080224,W+T,kata1-b15c192-s172540416-d88080224,0,92,anthropic_claude_code_workspace_agent,46,0,0,61.566229,0.000000000000
+8,4,kata1-b15c192-s172540416-d88080224,claude-opus-5-5-high-claude-code-engine-60s-2h,W+R,claude-opus-5-5-high-claude-code-engine-60s-2h,0,43,anthropic_claude_code_workspace_agent,21,0,0,31.364202,0.000000000000
+9,5,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b15c192-s230670592-d99188084,W+T,kata1-b15c192-s230670592-d99188084,0,102,anthropic_claude_code_workspace_agent,51,0,0,61.295977,0.000000000000
+10,5,kata1-b15c192-s230670592-d99188084,claude-opus-5-5-high-claude-code-engine-60s-2h,B+T,kata1-b15c192-s230670592-d99188084,1,105,anthropic_claude_code_workspace_agent,52,0,0,61.510969,0.000000000000
+11,6,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b10c128-s182492416-d63545831,W+T,kata1-b10c128-s182492416-d63545831,0,98,anthropic_claude_code_workspace_agent,49,0,0,61.756844,0.000000000000
+12,6,kata1-b10c128-s182492416-d63545831,claude-opus-5-5-high-claude-code-engine-60s-2h,B+T,kata1-b10c128-s182492416-d63545831,1,103,anthropic_claude_code_workspace_agent,51,0,0,61.504929,0.000000000000
+13,7,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b10c128-s82632704-d37596868,B+R,claude-opus-5-5-high-claude-code-engine-60s-2h,1,84,anthropic_claude_code_workspace_agent,42,0,0,54.122238,0.000000000000
+14,7,kata1-b10c128-s82632704-d37596868,claude-opus-5-5-high-claude-code-engine-60s-2h,W+R,claude-opus-5-5-high-claude-code-engine-60s-2h,0,47,anthropic_claude_code_workspace_agent,23,0,0,37.998252,0.000000000000
+15,8,claude-opus-5-5-high-claude-code-engine-60s-2h,kata1-b10c128-s258941696-d77667876,W+T,kata1-b10c128-s258941696-d77667876,0,128,anthropic_claude_code_workspace_agent,64,0,0,61.642961,0.000000000000
+16,8,kata1-b10c128-s258941696-d77667876,claude-opus-5-5-high-claude-code-engine-60s-2h,W+R,claude-opus-5-5-high-claude-code-engine-60s-2h,0,67,anthropic_claude_code_workspace_agent,33,0,0,47.627619,0.000000000000
