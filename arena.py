@@ -40,6 +40,10 @@ from itertools import islice, pairwise
 from pathlib import Path
 from typing import ClassVar
 
+# Rating matrices are small, and parallel player runs fit at the same time:
+# multithreaded BLAS only oversubscribes the CPUs that games are not using.
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+
 import numpy as np
 
 from gobench.anthropic_oauth import IDENTITY as CLAUDE_OAUTH_IDENTITY
@@ -2299,17 +2303,18 @@ def _grouped_rating_data(games, positions, model=None):
     return design, scores, totals, matchups
 
 
-def _logit_objective(design, scores, totals, values, means, precision):
-    logits = _Arena.ELO_SCALE * design @ values
+def _logit_objective(design, scores, totals, values, means, precision, offsets=0.0):
+    logits = _Arena.ELO_SCALE * design @ values + _Arena.ELO_SCALE * offsets
     penalty = np.sum(precision * (values - means) ** 2) / 2
     likelihood = scores * logits - totals * np.logaddexp(0, logits)
     return float(np.sum(likelihood) - penalty)
 
 
-def _fit_logit(design, scores, totals, values, means, precision):
+def _fit_logit(design, scores, totals, values, means, precision, offsets=0.0):
+    """Maximize the regularized logit likelihood; offsets are fixed Elo terms."""
     prec, vals = precision, values
     for _iteration in range(500):
-        logits = _Arena.ELO_SCALE * design @ vals
+        logits = _Arena.ELO_SCALE * design @ vals + _Arena.ELO_SCALE * offsets
         prob = np.exp(-np.logaddexp(0, -logits))
         gradient = _Arena.ELO_SCALE * design.T @ (scores - totals * prob)
         gradient -= prec * (vals - means)
@@ -2318,12 +2323,12 @@ def _fit_logit(design, scores, totals, values, means, precision):
         change = np.array(_solve_spd(info.tolist(), gradient.tolist()))
         if max(abs(change), default=0.0) < 1e-7:
             return vals
-        objective = _logit_objective(design, scores, totals, vals, means, prec)
+        objective = _logit_objective(design, scores, totals, vals, means, prec, offsets)
         step = 1.0
         while step >= 2**-60:
             option = vals + step * change
             if (
-                _logit_objective(design, scores, totals, option, means, prec)
+                _logit_objective(design, scores, totals, option, means, prec, offsets)
                 >= objective
             ):
                 vals = option
@@ -2394,6 +2399,46 @@ def fit_ratings_and_color_advantage(
     elos = {_Arena.ANCHOR: 0.0, **dict(zip(names, map(float, vals)))}
     model = replace(model, coefficients=tuple(vals[len(names) :]))
     return elos, model
+
+
+def fit_free_ratings(games, free_names, ratings, color_advantage):
+    """Fit only free_names with every other rating and the color model held fixed.
+
+    This is the joint model's two-stage fit restricted to the free players: their
+    no-color baselines first, then their color-adjusted ratings. Fixed players
+    enter as known offsets, so only games involving a free player matter. Returns
+    the updated ratings and color model, plus the free players' covariance and
+    positions; fixed players contribute no uncertainty.
+    """
+    names = [name for name in free_names if name != _Arena.ANCHOR]
+    pos = {name: index for (index, name) in enumerate(names)}
+    means, prec = _prior_vectors(names)
+    design, scores, totals, matchups = _grouped_rating_data(
+        [game for game in games if not _game_players(game).isdisjoint(pos)], pos
+    )
+
+    def offsets(fixed, model=None):
+        return np.array([
+            (0.0 if black in pos else fixed[black])
+            - (0.0 if white in pos else fixed[white])
+            + (model.advantage(black, white) if model else 0.0)
+            for black, white in matchups
+        ])
+
+    base = color_advantage.baseline_ratings
+    vals = _fit_logit(design, scores, totals, np.array([base[name] for name in names]),
+                      means, prec, offsets(base))
+    color = replace(color_advantage, baseline_ratings={
+        **base, **dict(zip(names, map(float, vals)))
+    })
+    fixed = offsets(ratings, color)
+    vals = _fit_logit(design, scores, totals,
+                      np.array([ratings[name] for name in names]), means, prec, fixed)
+    prob = 1 / (1 + np.exp(-_Arena.ELO_SCALE * (design @ vals + fixed)))
+    weights = _Arena.ELO_SCALE**2 * totals * prob * (1 - prob)
+    info = design.T * weights @ design + np.diag(prec)
+    elos = {**ratings, **dict(zip(names, map(float, vals)))}
+    return elos, color, _inverse_spd(info.tolist()), pos
 
 
 def rating_covariance(
@@ -2524,6 +2569,38 @@ def information_gain_matrix(
                 match_color,
                 color_terms,
                 obj_ids,
+            )
+            _check(not math.isfinite(gain))
+            mat[left][right] = gain
+            mat[right][left] = gain
+    return mat
+
+
+def free_information_gain_matrix(player_names, ratings, covariance, positions, color):
+    """information_gain_matrix for fit_free_ratings output.
+
+    Only pairs with exactly one free player can be scheduled against fixed
+    ratings, so every other pair gets zero gain. The color model is fixed and
+    therefore has no covariance terms.
+    """
+    names = list(player_names)
+    _check(len(names) != len(set(names)) or any(name not in ratings for name in names))
+    _check(any(len(row) != len(positions) for row in covariance))
+    objective = sorted(positions.values())
+    mat = [[0.0] * len(names) for _ in names]
+    for left, left_name in enumerate(names):
+        for right in range(left + 1, len(names)):
+            right_name = names[right]
+            if (left_name in positions) == (right_name in positions):
+                continue
+            gain = _paired_information_gain(
+                covariance,
+                positions.get(left_name),
+                positions.get(right_name),
+                ratings[left_name] - ratings[right_name],
+                color.advantage(left_name, right_name),
+                (),
+                objective,
             )
             _check(not math.isfinite(gain))
             mat[left][right] = gain
@@ -6848,6 +6925,8 @@ class _ArenaRun:
         self.initial_done_count = len(self.done)
         self.elos = {name: _rating_prior(name)[0] for name in self.fit_names}
         self.color = None
+        self._history_fit = None
+        self._active_fit = None
         self.track = None
         if not _State.katago_mode:
             self.track = ArenaProgressTracker(
@@ -6896,14 +6975,83 @@ class _ArenaRun:
                     _replace_text(self.run / "tutorials" / name,
                                   source.read_text(encoding="utf-8"))
 
-    def write_reports(self):
+    def _history_reference(self):
+        """Joint fit of the historical games, computed once per process.
+
+        Independent LLM runs never add historical games, so between batches only
+        the active players are refit against these fixed ratings.
+        """
+        if self._history_fit is None:
+            snap = _rating_snapshot(self.past, self.fit_names, self.elos, None)
+            active = set(self.info_names)
+            active_past = [
+                game for game in self.past if not _game_players(game).isdisjoint(active)
+            ]
+            self._history_fit = snap, active_past
+        return self._history_fit
+
+    def _fit_active(self):
+        """Refit the active players (cached per game count); return their covariance."""
+        if self._active_fit is None or self._active_fit[0] != len(self.done):
+            reference, active_past = self._history_reference()
+            start = {name: self.elos[name] for name in self.info_names}
+            self.elos, self.color, cov, pos = fit_free_ratings(
+                [*active_past, *self.done],
+                self.info_names,
+                {**reference.ratings, **start},
+                reference.color,
+            )
+            self._active_fit = len(self.done), cov, pos
+        return self._active_fit[1:]
+
+    def _active_rating_snapshot(self):
+        """Rating snapshot with every non-active player at its historical fit."""
+        reference, _active_past = self._history_reference()
+        cov, pos = self._fit_active()
+        historical = {record.player: record for record in reference.records}
+        played = _games_by_player(self.done, self.fit_names)
+        records = []
+        for name in self.fit_names:
+            past = historical[name]
+            scores = [
+                game.score_black if game.black == name else 1 - game.score_black
+                for game in played[name]
+            ]
+            count = past.games + len(scores)
+            wins = past.wins + scores.count(1.0)
+            losses = past.losses + scores.count(0.0)
+            half_width = (
+                _Arena.CONFIDENCE_Z * math.sqrt(max(cov[pos[name]][pos[name]], 0.0))
+                if name in pos
+                else past.elo - past.ci_low
+            )
+            elo = self.elos[name]
+            records.append(RatingRecord(
+                name, elo, elo - half_width, elo + half_width, 2 * half_width,
+                count, wins, losses, count - wins - losses,
+            ))
+        records.sort(key=lambda record: (-record.elo, record.player))
+        return _RatingSnapshot(
+            self.elos, self.color, reference.color_sds, records, reference.curve
+        )
+
+    def write_reports(self, exact=False):
         self._publish_tutorials()
         self.done = _with_llm_token_counts(self.done, self.run)
         self.meta["report_file"] = "report.txt"
         if not _State.katago_mode:
             self.meta["matchup_results_file"] = "report.txt"
         fit = [*self.past, *self.done]
-        snap = _rating_snapshot(fit, self.fit_names, self.elos, self.color)
+        if exact or _State.katago_mode:
+            snap = _rating_snapshot(fit, self.fit_names, self.elos, self.color)
+        else:
+            snap = self._active_rating_snapshot()
+        if not _State.katago_mode:
+            self.meta["rating_fit"] = (
+                "joint" if exact else
+                "active players only; historical ratings and Black advantage held "
+                "at their joint fit (the finished run's report uses the joint fit)"
+            )
         self.elos, self.color = snap.ratings, snap.color
         self.meta["color_advantage_curve"] = snap.curve
         self.meta["ratings"] = [asdict(record) for record in snap.records]
@@ -6965,6 +7113,11 @@ class _ArenaRun:
         return snap
 
     def latest_gains(self):
+        if not _State.katago_mode:
+            cov, pos = self._fit_active()
+            return free_information_gain_matrix(
+                self.pool, self.elos, cov, pos, self.color
+            )
         fit = [*self.past, *self.done]
         self.elos, self.color = fit_ratings_and_color_advantage(
             fit, self.fit_names, self.elos, self.color
@@ -7196,7 +7349,7 @@ class _ArenaRun:
         if not self.done or (
             not _State.katago_mode and len(self.done) == self.initial_done_count
         ):
-            self.write_reports()
+            self.write_reports(exact=True)
             if not _State.katago_mode:
                 self.meta.update(
                     rating_games=len(self.past) + len(self.done),
@@ -7209,6 +7362,9 @@ class _ArenaRun:
                 self.log(
                     f"Aggregate reports written from {len(self.past)} historical games"
                 )
+        elif not _State.katago_mode:
+            # Batches reported history-fixed ratings; finish with the joint fit.
+            self.write_reports(exact=True)
         self.meta.update(
             finished_at=dt.datetime.now(dt.timezone.utc).isoformat(),
             elapsed_seconds=time.perf_counter() - self.started,
