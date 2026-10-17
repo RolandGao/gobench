@@ -261,23 +261,25 @@ CONFIG = ArenaConfig(
         # "gpt5.6-sol-high-codex-engine-1h",
         # "gpt5.6-sol-high-codex-engine-2h",
         # Track 2 code-only, 60-second clock per game (fixed by -60s), 200 games:
-        "gpt6-astra-high-codex-engine-60s-1h",
-        "gpt6-astra-high-codex-engine-60s-2h",
-        "gpt6-astra-high-codex-engine-60s-4h",
-        "gpt6-astra-high-codex-engine-60s-8h",
-        "gpt5.6-sol-high-codex-engine-60s-1h",
-        "gpt5.6-sol-high-codex-engine-60s-2h",
-        "gpt5.6-sol-high-codex-engine-60s-4h",
-        "gpt5.6-sol-high-codex-engine-60s-8h",
-        "claude-opus-5-5-high-claude-code-engine-60s-1h",
-        "claude-opus-5-5-high-claude-code-engine-60s-2h",
+        # "gpt6-astra-high-codex-engine-60s-1h",
+        # "gpt6-astra-high-codex-engine-60s-2h",
+        # "gpt6-astra-high-codex-engine-60s-4h",
+        # "gpt6-astra-high-codex-engine-60s-8h",
+        # "gpt5.6-sol-high-codex-engine-60s-1h",
+        # "gpt5.6-sol-high-codex-engine-60s-2h",
+        # "gpt5.6-sol-high-codex-engine-60s-4h",
+        # "gpt5.6-sol-high-codex-engine-60s-8h",
+        # "claude-opus-5-5-high-claude-code-engine-60s-1h",
+        # "claude-opus-5-5-high-claude-code-engine-60s-2h",
+        "DeepSeek-V4.1-Flash-1017-high-api-multi",
+        "DeepSeek-V4.1-Flash-1017-max-api-multi",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
-    total_games=200,
+    total_games=20,
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
-    active_player_prior_elo_mean=3000.0,
+    active_player_prior_elo_mean=2000.0,
     active_player_prior_elo_sd=1000.0,
     workspace=WorkspaceSettings(evaluation_seconds=300),
 )
@@ -957,8 +959,22 @@ class _Arena:
                 ),
                 # V4.1 release and pricing checked 2026-09-10:
                 # https://api-docs.deepseek.com/quick_start/pricing/
+                # Historical V4.1 label; its endpoint now serves V4.1-Flash-1017.
+                # Use the V4.1-Flash-1017 player names below for new evaluations.
                 **_llm_effort_players(
                     "DeepSeek-V4.1-Flash",
+                    "deepseek-flash",
+                    ("none", "minimal", "low", "medium", "high", "xhigh", "max"),
+                    (0.15, 0.003, 0.6),
+                    max_output_tokens=393_216,
+                    peak_prices=(0.3, 0.006, 1.2),
+                    peak_utc_hours=((1, 4), (6, 10)),
+                    peak_utc_weekdays=(0, 1, 2, 3, 4),
+                ),
+                # V4.1-Flash-1017 release checked 2026-10-17; API name and
+                # pricing unchanged: https://api-docs.deepseek.com/updates/
+                **_llm_effort_players(
+                    "DeepSeek-V4.1-Flash-1017",
                     "deepseek-flash",
                     ("none", "minimal", "low", "medium", "high", "xhigh", "max"),
                     (0.15, 0.003, 0.6),
