@@ -10,9 +10,9 @@ advantage. Information-gain matchmaking chooses opponents and schedules
 color-swapped pairs. In LLM runs, historical games do not change while a run
 is in progress, so they are fitted once per process; after each batch only the
 active players are refit, with all other ratings and the Black advantage held
-at that fit. Interim reports and matchmaking use this fit (its intervals omit
-opponent uncertainty), and a finished run's report and `--summary` use the
-full joint fit. Experiment parameters live in `ArenaConfig` and are saved
+at that fit. Interim reports and matchmaking use these ratings with the joint
+model's covariance, so opponents' rating uncertainty still counts; a finished
+run's report and `--summary` use the full joint fit. Experiment parameters live in `ArenaConfig` and are saved
 in each run's `run.json`; see [running arenas](running.md) for recovery semantics.
 
 Hosted model behavior can change even with the same configuration. Recorded

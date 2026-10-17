@@ -29,6 +29,12 @@ class ArenaConfig:
     active_player_prior_elo_mean: float = 0.0
     active_player_prior_elo_sd: float = 10_000.0
     katago_gain_top_p: float = 1.0
+    # LLM runs pick the maximum-gain opponent two games at a time until the
+    # player's 95% CI half-width is at most this many Elo, then sample all
+    # remaining games at once in proportion to gain (top-p nucleus). None keeps
+    # maximum-gain pairs to the end.
+    llm_sampling_ci_half_width: float | None = 100.0
+    llm_sampling_top_p: float = 0.95
     workspace: WorkspaceSettings = WorkspaceSettings()
 
 

@@ -455,7 +455,8 @@ class AllocationAndRetentionTests(unittest.TestCase):
         last._volume.close.side_effect = lambda: self.assertFalse(
             (last._phase_dir / "evaluation-summary.json").exists())
         last.mark_complete()
-        self.assertTrue((first._phase_dir / "disk.img").exists())
+        # Completing a game keeps only the newest completed image per player.
+        self.assertFalse((first._phase_dir / "disk.img").exists())
         arena._CodexGameClient.prune_evaluation_images(
             first.run_dir, first.player_name, {last._phase_dir, incomplete._phase_dir},
         )
@@ -473,7 +474,7 @@ class AllocationAndRetentionTests(unittest.TestCase):
         training.write_bytes(b"training")
         with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
             list(executor.map(lambda client: client.mark_complete(), clients))
-        self.assertEqual(len(list(clients[0].run_dir.rglob("disk.img"))), 3)
+        self.assertEqual(len(list(clients[0].run_dir.rglob("disk.img"))), 2)
         arena._CodexGameClient.prune_evaluation_images(
             clients[0].run_dir, clients[0].player_name, set(),
         )

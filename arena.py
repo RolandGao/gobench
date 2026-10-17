@@ -2407,8 +2407,7 @@ def fit_free_ratings(games, free_names, ratings, color_advantage):
     This is the joint model's two-stage fit restricted to the free players: their
     no-color baselines first, then their color-adjusted ratings. Fixed players
     enter as known offsets, so only games involving a free player matter. Returns
-    the updated ratings and color model, plus the free players' covariance and
-    positions; fixed players contribute no uncertainty.
+    the updated ratings and color model.
     """
     names = [name for name in free_names if name != _Arena.ANCHOR]
     pos = {name: index for (index, name) in enumerate(names)}
@@ -2434,11 +2433,37 @@ def fit_free_ratings(games, free_names, ratings, color_advantage):
     fixed = offsets(ratings, color)
     vals = _fit_logit(design, scores, totals,
                       np.array([ratings[name] for name in names]), means, prec, fixed)
-    prob = 1 / (1 + np.exp(-_Arena.ELO_SCALE * (design @ vals + fixed)))
+    return {**ratings, **dict(zip(names, map(float, vals)))}, color
+
+
+def _rating_information(games, positions, ratings, color=None, include_color=True):
+    """Fisher information of games at fixed ratings, without the prior.
+
+    Columns follow positions, then the color model's parameters when included.
+    Information is additive over games, so disjoint game sets can be summed.
+    """
+    xmat, _scores, totals, matchups = _grouped_rating_data(
+        games, positions, color if include_color else None
+    )
+    diffs = np.array(
+        [
+            ratings[black] - ratings[white] + (color.advantage(black, white) if color else 0)
+            for black, white in matchups
+        ]
+    )
+    prob = 1 / (1 + np.exp(-_Arena.ELO_SCALE * diffs))
     weights = _Arena.ELO_SCALE**2 * totals * prob * (1 - prob)
-    info = design.T * weights @ design + np.diag(prec)
-    elos = {**ratings, **dict(zip(names, map(float, vals)))}
-    return elos, color, _inverse_spd(info.tolist()), pos
+    return xmat.T * weights @ xmat
+
+
+def _rating_precision(names, color=None):
+    _means, prec = _prior_vectors(names)
+    if color is not None:
+        prec = np.append(
+            prec,
+            np.full(color.parameter_count, _Arena.COLOR_ADVANTAGE_PRIOR_ELO_SD**-2),
+        )
+    return prec
 
 
 def rating_covariance(
@@ -2448,24 +2473,9 @@ def rating_covariance(
     names = [name for name in player_names if name != _Arena.ANCHOR]
     pos = {name: index for (index, name) in enumerate(names)}
     _check(with_color and color is None)
-    xmat, _scores, totals, matchups = _grouped_rating_data(
-        games, pos, color if with_color else None
+    info = _rating_information(games, pos, elos, color, with_color) + np.diag(
+        _rating_precision(names, color if with_color else None)
     )
-    diffs = np.array(
-        [
-            elos[black] - elos[white] + (color.advantage(black, white) if color else 0)
-            for black, white in matchups
-        ]
-    )
-    prob = 1 / (1 + np.exp(-_Arena.ELO_SCALE * diffs))
-    weights = _Arena.ELO_SCALE**2 * totals * prob * (1 - prob)
-    _means, prec = _prior_vectors(names)
-    if with_color:
-        prec = np.append(
-            prec,
-            np.full(color.parameter_count, _Arena.COLOR_ADVANTAGE_PRIOR_ELO_SD**-2),
-        )
-    info = xmat.T * weights @ xmat + np.diag(prec)
     return _inverse_spd(info.tolist()), pos
 
 
@@ -2530,7 +2540,9 @@ def information_gain_matrix(
     *,
     color_advantage=None,
     active_players=None,
+    active_pairs_only=False,
 ):
+    """Paired gains; active_pairs_only leaves pairs without an active player at 0."""
     elos, color, cov = ratings, color_advantage, covariance
     pos, active = positions, active_players
     if active is None and not _State.katago_mode:
@@ -2548,9 +2560,12 @@ def information_gain_matrix(
     _check(len(cov) != count + (color.parameter_count if color else 0))
     mat = [[0.0] * len(names) for _ in names]
     obj_ids = sorted(pos.values()) if active is None else [pos[name] for name in active]
+    _check(active_pairs_only and active is None)
     for left, left_name in enumerate(names):
         for right in range(left + 1, len(names)):
             right_name = names[right]
+            if active_pairs_only and not {left_name, right_name} & set(active):
+                continue
             color_terms: list[tuple[int, float]] = []
             match_color = 0.0
             if color is not None:
@@ -2569,38 +2584,6 @@ def information_gain_matrix(
                 match_color,
                 color_terms,
                 obj_ids,
-            )
-            _check(not math.isfinite(gain))
-            mat[left][right] = gain
-            mat[right][left] = gain
-    return mat
-
-
-def free_information_gain_matrix(player_names, ratings, covariance, positions, color):
-    """information_gain_matrix for fit_free_ratings output.
-
-    Only pairs with exactly one free player can be scheduled against fixed
-    ratings, so every other pair gets zero gain. The color model is fixed and
-    therefore has no covariance terms.
-    """
-    names = list(player_names)
-    _check(len(names) != len(set(names)) or any(name not in ratings for name in names))
-    _check(any(len(row) != len(positions) for row in covariance))
-    objective = sorted(positions.values())
-    mat = [[0.0] * len(names) for _ in names]
-    for left, left_name in enumerate(names):
-        for right in range(left + 1, len(names)):
-            right_name = names[right]
-            if (left_name in positions) == (right_name in positions):
-                continue
-            gain = _paired_information_gain(
-                covariance,
-                positions.get(left_name),
-                positions.get(right_name),
-                ratings[left_name] - ratings[right_name],
-                color.advantage(left_name, right_name),
-                (),
-                objective,
             )
             _check(not math.isfinite(gain))
             mat[left][right] = gain
@@ -4956,11 +4939,12 @@ def run_llm_games(
     llm_names = set().union(*llm_by_game)
     _check(len(llm_names) != 1)
     llm_name = next(iter(llm_names))
-    opponents = {game.white if game.black == llm_name else game.black for game in slate}
-    _check(len(opponents) != 1)
-    opponent_name = next(iter(opponents))
     bots = {bot.name: bot for bot in player_values}
-    _check((opp := bots.get(opponent_name)) is None)
+    opponent_of = {
+        game.number: bots.get(game.white if game.black == llm_name else game.black)
+        for game in slate
+    }
+    _check(any(opp is None for opp in opponent_of.values()))
     records_path = _llm_log_path(work, "games")
     calls_path = _llm_log_path(work, "calls")
     _repair_compact_llm_calls(calls_path, compact_calls_path)
@@ -4988,7 +4972,9 @@ def run_llm_games(
                 for game in slate
             },
         )
-    cfgs = _write_random_bot_configs([opp] if opp.network is not None else [], work)
+    cfgs = _write_random_bot_configs(
+        {opp.name: opp for opp in opponent_of.values()}.values(), work
+    )
     total_moves = starting_move_count + sum(len(rec.moves) for rec in saved_games)
     move_lock = threading.Lock()
 
@@ -5053,6 +5039,7 @@ def run_llm_games(
                         )
             game_id = resume.resume_game_id if resume else f"game-{slot.number:06d}"
             game = resources.enter_context(_game_engine(work, game_id))
+            opp = opponent_of[slot.number]
             uses_network = opp.network is not None
             strategy = (
                 _network_strategy(opp, cfgs[opp.name], work)
@@ -5329,13 +5316,27 @@ def _active_matchup(game):
     )
 
 
+def _llm_sampling_batch_size(size):
+    """Whether size fits a final gain-sampled LLM batch (any even size)."""
+    return (
+        not _State.katago_mode
+        and _State.config.llm_sampling_ci_half_width is not None
+        and size > 0
+        and size % 2 == 0
+    )
+
+
 def _validate_llm_schedule(schedule):
     active_players = set()
     for game in schedule:
         bot, _opponent, _active_black = _active_matchup(game)
         active_players.add(bot)
-    _check(len(active_players) != 1 or len(schedule) != _State.config.batch_games)
-    _validate_color_swapped_schedule(schedule, _State.config.batch_games // 2)
+    _check(
+        len(active_players) != 1
+        or len(schedule) != _State.config.batch_games
+        and not _llm_sampling_batch_size(len(schedule))
+    )
+    _validate_color_swapped_schedule(schedule, len(schedule) // 2)
     return next(iter(active_players))
 
 
@@ -6370,6 +6371,16 @@ def _check_named_run_reuse(run):
         )
 
 
+_LLM_SAMPLING_POLICY_KEYS = frozenset({
+    "rule",
+    "maximum_games_per_batch",
+    "sampling_after_ci_half_width_elo",
+    "sampling_selection",
+    "sampling_top_p",
+    "random_seed",
+})
+
+
 def _validate_named_extension(meta, run_config):
     mutable = {
         "total_games",
@@ -6385,6 +6396,13 @@ def _validate_named_extension(meta, run_config):
         "matchup_results_file",
     }
     def comparable(key, value):
+        if key == "batch_policy" and isinstance(value, dict):
+            # Switching an extension to sampled remaining games keeps the
+            # experiment; the extension record keeps the previous policy.
+            return {
+                name: setting for name, setting in value.items()
+                if name not in _LLM_SAMPLING_POLICY_KEYS
+            }
         if key == "bots" and isinstance(value, list):
             # Authentication is a transport choice, not a new model/player.
             return [
@@ -6598,6 +6616,11 @@ def _open_run(resume_dir, run_config, past_dirs, valid_size, extra):
                     "previous_total_games": meta.get("total_games"),
                     "previous_past_run_dirs": meta.get("past_run_dirs", []),
                     "completed_games": len(done),
+                    **(
+                        {"previous_batch_policy": meta.get("batch_policy")}
+                        if meta.get("batch_policy") != run_config.get("batch_policy")
+                        else {}
+                    ),
                 }
             )
             meta.update(run_config)
@@ -6702,7 +6725,13 @@ class _ArenaRun:
                 or not 0.0 < _State.config.katago_gain_top_p <= 1.0
             )
         else:
-            _check(_State.config.batch_games != 2)
+            threshold = _State.config.llm_sampling_ci_half_width
+            _check(
+                _State.config.batch_games != 2
+                or threshold is not None
+                and (not math.isfinite(threshold) or threshold <= 0.0)
+                or not 0.0 < _State.config.llm_sampling_top_p <= 1.0
+            )
 
     def _load_history(self):
         self.bots = players()
@@ -6791,9 +6820,26 @@ class _ArenaRun:
                 "selection": "deterministic maximum",
                 "completion_barrier": "per-player",
             }
+            if _State.config.llm_sampling_ci_half_width is not None:
+                del self.policy["maximum_games_per_batch"]
+                self.policy.update(
+                    rule="maximum-information-gain selection with paired colors "
+                    "until the 95% CI is narrow enough, then one batch of all "
+                    "remaining games sampled in proportion to gain",
+                    sampling_after_ci_half_width_elo=(
+                        _State.config.llm_sampling_ci_half_width
+                    ),
+                    sampling_selection="with replacement proportional to gain "
+                    "within nucleus",
+                    sampling_top_p=_State.config.llm_sampling_top_p,
+                    random_seed=_Arena.RANDOM_SEED,
+                )
 
     def valid_size(self, size):
-        return isinstance(size, int) and size == _State.config.batch_games
+        return isinstance(size, int) and (
+            size == _State.config.batch_games
+            or _llm_sampling_batch_size(size)
+        )
 
     def _run_metadata(self):
         run_config = {
@@ -6979,34 +7025,45 @@ class _ArenaRun:
         """Joint fit of the historical games, computed once per process.
 
         Independent LLM runs never add historical games, so between batches only
-        the active players are refit against these fixed ratings.
+        the active players are refit against these fixed ratings. Also caches the
+        information (plus prior) of the historical games without active players,
+        which stays constant while their ratings and the color model are fixed.
         """
         if self._history_fit is None:
             snap = _rating_snapshot(self.past, self.fit_names, self.elos, None)
             active = set(self.info_names)
-            active_past = [
-                game for game in self.past if not _game_players(game).isdisjoint(active)
-            ]
-            self._history_fit = snap, active_past
+            active_past, fixed = [], []
+            for game in self.past:
+                (fixed if _game_players(game).isdisjoint(active) else active_past).append(game)
+            names = [name for name in self.fit_names if name != _Arena.ANCHOR]
+            pos = {name: index for (index, name) in enumerate(names)}
+            info = _rating_information(fixed, pos, snap.ratings, snap.color) + np.diag(
+                _rating_precision(names, snap.color)
+            )
+            self._history_fit = snap, active_past, pos, info
         return self._history_fit
 
     def _fit_active(self):
-        """Refit the active players (cached per game count); return their covariance."""
+        """Refit the active players (cached per game count); return the covariance.
+
+        The covariance is the joint fit's, evaluated at these ratings: every
+        player's and the color model's uncertainty, so a repeated opponent's
+        rating error still limits what more games against it can teach.
+        """
         if self._active_fit is None or self._active_fit[0] != len(self.done):
-            reference, active_past = self._history_reference()
+            reference, active_past, pos, fixed_info = self._history_reference()
             start = {name: self.elos[name] for name in self.info_names}
-            self.elos, self.color, cov, pos = fit_free_ratings(
-                [*active_past, *self.done],
-                self.info_names,
-                {**reference.ratings, **start},
-                reference.color,
+            games = [*active_past, *self.done]
+            self.elos, self.color = fit_free_ratings(
+                games, self.info_names, {**reference.ratings, **start}, reference.color
             )
-            self._active_fit = len(self.done), cov, pos
+            info = fixed_info + _rating_information(games, pos, self.elos, self.color)
+            self._active_fit = len(self.done), _inverse_spd(info.tolist()), pos
         return self._active_fit[1:]
 
     def _active_rating_snapshot(self):
         """Rating snapshot with every non-active player at its historical fit."""
-        reference, _active_past = self._history_reference()
+        reference = self._history_reference()[0]
         cov, pos = self._fit_active()
         historical = {record.player: record for record in reference.records}
         played = _games_by_player(self.done, self.fit_names)
@@ -7023,7 +7080,7 @@ class _ArenaRun:
             half_width = (
                 _Arena.CONFIDENCE_Z * math.sqrt(max(cov[pos[name]][pos[name]], 0.0))
                 if name in pos
-                else past.elo - past.ci_low
+                else 0.0
             )
             elo = self.elos[name]
             records.append(RatingRecord(
@@ -7115,8 +7172,14 @@ class _ArenaRun:
     def latest_gains(self):
         if not _State.katago_mode:
             cov, pos = self._fit_active()
-            return free_information_gain_matrix(
-                self.pool, self.elos, cov, pos, self.color
+            return information_gain_matrix(
+                self.pool,
+                self.elos,
+                cov,
+                pos,
+                color_advantage=self.color,
+                active_players=self.info_names,
+                active_pairs_only=True,
             )
         fit = [*self.past, *self.done]
         self.elos, self.color = fit_ratings_and_color_advantage(
@@ -7177,10 +7240,38 @@ class _ArenaRun:
             "starting_move_count": sum(len(game.moves) for game in self.done)
         }
 
+    def _sampling_pair_count(self, bot):
+        """Pairs left for bot once its CI is narrow enough to sample them, else 0."""
+        threshold = _State.config.llm_sampling_ci_half_width
+        if threshold is None:
+            return 0
+        cov, pos = self._fit_active()
+        half_width = _Arena.CONFIDENCE_Z * math.sqrt(max(cov[pos[bot]][pos[bot]], 0.0))
+        if half_width > threshold:
+            return 0
+        remaining = _State.config.total_games - self.totals(self.done)[bot]
+        pairs = max(math.ceil(remaining / 2), 1)
+        self.log(
+            f"{bot}: 95% CI ±{half_width:.1f} is within ±{threshold:g} Elo; "
+            f"sampling the remaining {2 * pairs} games in proportion to gain"
+        )
+        return pairs
+
     def submit_new(self, executor, bot):
         gains = self.latest_gains()
+        sampled_pairs = self._sampling_pair_count(bot)
         self.batch += 1
         work = self.temp_dir / f"batch-{self.batch:03d}"
+        schedule = (
+            {
+                "pair_count": sampled_pairs,
+                "required_player": bot,
+                "selection": "gain_proportional",
+                "top_p": _State.config.llm_sampling_top_p,
+            }
+            if sampled_pairs
+            else {"scheduled_active_players": [bot]}
+        )
         slate = schedule_batch(
             self.done,
             self.pool,
@@ -7189,7 +7280,7 @@ class _ArenaRun:
             batch_number=self.batch,
             progress=self.log,
             active_players=_State.config.active_players,
-            scheduled_active_players=[bot],
+            **schedule,
         )
         self.next_game_number += len(slate)
         self.log(
@@ -7559,6 +7650,14 @@ def _config_from_metadata(metadata):
         if mode
         else 1.0
     )
+    sampling_ci = policy.get("sampling_after_ci_half_width_elo")
+    sampling_top_p = 0.95
+    if not mode and sampling_ci is not None:
+        sampling_ci = number(sampling_ci, "batch_policy.sampling_after_ci_half_width_elo")
+        sampling_top_p = number(policy.get("sampling_top_p"), "batch_policy.sampling_top_p")
+    else:
+        # Runs saved before sampling existed keep maximum-gain pairs to the end.
+        sampling_ci = None
     workspace = WorkspaceSettings()
     workspace_classes = {
         _workspace_client_class(_llm_player_config(name)[1].agentic_harness)
@@ -7590,6 +7689,8 @@ def _config_from_metadata(metadata):
         active_player_prior_elo_mean=prior_mean,
         active_player_prior_elo_sd=prior_sd,
         katago_gain_top_p=gain_top_p,
+        llm_sampling_ci_half_width=sampling_ci,
+        llm_sampling_top_p=sampling_top_p,
         workspace=workspace,
     )
 
@@ -7613,7 +7714,7 @@ def _resume_player_arena(config, run_dir):
     return run_arena(run_dir)
 
 
-def _resume_runs(value, total_games=None):
+def _resume_runs(value, total_games=None, sample_remaining=False):
     runs = []
     configs = []
     # Validate every selection before launching any evaluation work.
@@ -7630,6 +7731,12 @@ def _resume_runs(value, total_games=None):
         _metadata, config = _read_run_config(run)
         if total_games is not None:
             config = replace(config, total_games=total_games)
+        if sample_remaining and config.llm_sampling_ci_half_width is None:
+            config = replace(
+                config,
+                llm_sampling_ci_half_width=ArenaConfig.llm_sampling_ci_half_width,
+                llm_sampling_top_p=ArenaConfig.llm_sampling_top_p,
+            )
         runs.append(run)
         configs.append(config)
 
@@ -7674,7 +7781,14 @@ def main(argv=None):
         "-n", "--num-games", type=int, metavar="NUM_GAMES",
         help="override the cumulative game target (applies to each run with --resume)",
     )
+    parser.add_argument(
+        "--sample-remaining", action="store_true",
+        help="with --resume: enable gain-sampled remaining games for LLM runs saved "
+        "before sampling existed",
+    )
     args = parser.parse_args(argv)
+    if args.sample_remaining and args.resume is None:
+        parser.error("--sample-remaining requires --resume")
     if args.num_games is not None:
         if args.num_games < 0:
             parser.error("-n/--num-games must be nonnegative")
@@ -7682,7 +7796,7 @@ def main(argv=None):
             parser.error("-n/--num-games cannot be used with --summary")
     try:
         if args.resume is not None:
-            return _resume_runs(args.resume, args.num_games)
+            return _resume_runs(args.resume, args.num_games, args.sample_remaining)
         elif args.summary:
             run = run_summary(CONFIG)
             print(f"Summary complete: {run}")
@@ -10273,6 +10387,8 @@ class _CodexGameClient:
             fcntl.flock(lock, fcntl.LOCK_EX)
             summary["completed_at_ns"] = time.time_ns()
             _workspace_atomic_json(self._phase_dir / "evaluation-summary.json", summary)
+            # Keep only this newest completed image even inside a large batch.
+            self._prune_completed_images(self.run_dir, self.player_name, {self._phase_dir})
 
     @classmethod
     def prune_evaluation_images(cls, run_dir, player_name, keep_directories):
@@ -10281,16 +10397,29 @@ class _CodexGameClient:
         checkpoint_root.mkdir(parents=True, exist_ok=True)
         with (checkpoint_root / "retention.lock").open("a+b") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
-            for marker in run_dir.glob("**/agent-workspaces/game-*/evaluation-summary.json"):
-                if marker.parent in keep_directories:
-                    continue
-                summary = _workspace_read_json(marker)
-                if (summary.get("protocol") != WORKSPACE_PROTOCOL_VERSION
-                        or summary.get("player") != player_name):
-                    continue
-                if os.path.ismount(marker.parent / "fs"):
-                    raise WorkspaceError("completed evaluation image is still mounted")
-                (marker.parent / "disk.img").unlink(missing_ok=True)
+            cls._prune_completed_images(run_dir, player_name, keep_directories)
+
+    @staticmethod
+    def _prune_completed_images(run_dir, player_name, keep_directories):
+        """Delete completed evaluation images outside keep; caller holds the lock.
+
+        Explicit patterns avoid descending into a concurrent game's mounted image.
+        """
+        markers = [
+            marker
+            for pattern in ("agent-workspaces", "batch-*/agent-workspaces")
+            for marker in run_dir.glob(f"{pattern}/game-*/evaluation-summary.json")
+        ]
+        for marker in markers:
+            if marker.parent in keep_directories:
+                continue
+            summary = _workspace_read_json(marker)
+            if (summary.get("protocol") != WORKSPACE_PROTOCOL_VERSION
+                    or summary.get("player") != player_name):
+                continue
+            if os.path.ismount(marker.parent / "fs"):
+                raise WorkspaceError("completed evaluation image is still mounted")
+            (marker.parent / "disk.img").unlink(missing_ok=True)
 
     def close(self):
         try:
