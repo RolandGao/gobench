@@ -200,6 +200,7 @@ _FINAL_RUNS = (
     "gpt5.6-sol-high-codex-engine-60s-8h",
     "claude-opus-5-5-high-claude-code-engine-60s-1h",
     "claude-opus-5-5-high-claude-code-engine-60s-2h",
+    "DeepSeek-V4.1-Flash-1017-max-api-multi",
 )
 
 
