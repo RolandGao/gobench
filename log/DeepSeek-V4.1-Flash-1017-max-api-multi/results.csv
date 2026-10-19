@@ -1,0 +1,15 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,W+R,kata1-b6c96-s16525312-d2925067-temp-0.7,0,67,deepseek_responses_api,34,0,0,6226.289709,0.739356072000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,DeepSeek-V4.1-Flash-1017-max-api-multi,B+30.0,kata1-b6c96-s16525312-d2925067-temp-0.7,1,127,deepseek_responses_api,63,0,0,11892.801023,1.411506096000
+3,2,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s8982784-d2082583-temp-0.3,0,,0.5,77,deepseek_responses_api,39,0,0,5786.487713,0.697235760000
+4,2,kata1-b6c96-s8982784-d2082583-temp-0.3,DeepSeek-V4.1-Flash-1017-max-api-multi,W+R,DeepSeek-V4.1-Flash-1017-max-api-multi,0,35,deepseek_responses_api,17,0,0,2164.653170,0.255834378000
+5,3,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s10014464-d2201128,B+16.0,DeepSeek-V4.1-Flash-1017-max-api-multi,1,95,deepseek_responses_api,48,0,0,6330.593493,0.753671850000
+6,3,kata1-b6c96-s10014464-d2201128,DeepSeek-V4.1-Flash-1017-max-api-multi,B+R,kata1-b6c96-s10014464-d2201128,1,76,deepseek_responses_api,38,0,0,5641.096433,0.644090304000
+7,4,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s10014464-d2201128,0,,0.5,73,deepseek_responses_api,37,0,0,6157.413417,0.733679250000
+8,4,kata1-b6c96-s10014464-d2201128,DeepSeek-V4.1-Flash-1017-max-api-multi,W+14.0,DeepSeek-V4.1-Flash-1017-max-api-multi,0,91,deepseek_responses_api,45,0,0,6798.225619,0.815729124000
+9,5,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s14649344-d2727367-temp-0.9,W+5.0,kata1-b6c96-s14649344-d2727367-temp-0.9,0,95,deepseek_responses_api,48,0,0,9728.810829,1.188614724000
+10,5,kata1-b6c96-s14649344-d2727367-temp-0.9,DeepSeek-V4.1-Flash-1017-max-api-multi,W+8.0,DeepSeek-V4.1-Flash-1017-max-api-multi,0,64,deepseek_responses_api,32,0,0,5796.095513,0.691021824000
+11,6,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s14649344-d2727367-temp-0.9,W+10.0,kata1-b6c96-s14649344-d2727367-temp-0.9,0,100,deepseek_responses_api,50,0,1,8797.455232,1.058545776000
+12,6,kata1-b6c96-s14649344-d2727367-temp-0.9,DeepSeek-V4.1-Flash-1017-max-api-multi,W+R,DeepSeek-V4.1-Flash-1017-max-api-multi,0,79,deepseek_responses_api,39,0,0,6685.947393,0.748657824000
+13,7,DeepSeek-V4.1-Flash-1017-max-api-multi,kata1-b6c96-s14649344-d2727367-temp-0.9,W+22.0,kata1-b6c96-s14649344-d2727367-temp-0.9,0,108,deepseek_responses_api,54,1,1,9579.462878,1.130169186000
+14,7,kata1-b6c96-s14649344-d2727367-temp-0.9,DeepSeek-V4.1-Flash-1017-max-api-multi,B+R,kata1-b6c96-s14649344-d2727367-temp-0.9,1,80,deepseek_responses_api,40,0,0,10233.210091,1.198941000000
