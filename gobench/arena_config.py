@@ -198,14 +198,14 @@ _TUTORIAL_PLAYERS = {
         "gpt6-astra-high-api-multi",
         f"tutorial{subtrack}-gpt6-astra-high-codex-{hours}h",
     )
-    for subtrack in ("3.1", "3.2", "3.3")
+    for subtrack in ("3.1", "3.2", "3.3", "3.4")
     for hours in (1, 2, 4, 8)
 } | {
     f"claude-opus-5-5-tutorial{subtrack}-{hours}h": _llm_player_name(
         "claude-opus-5-5-high-api-multi",
         f"tutorial{subtrack}-claude-opus-5-5-high-claude-code-{hours}h",
     )
-    for subtrack in ("3.1", "3.2", "3.3")
+    for subtrack in ("3.1", "3.2", "3.3", "3.4")
     for hours in (1, 2, 4, 8)
 }
 

@@ -357,7 +357,8 @@ model, effort and runtime without its duration, and hours are 1, 2, 4 or 8
 | --- | --- | --- |
 | `tutorial3.1` | No | No |
 | `tutorial3.2` | Yes | No |
-| `tutorial3.3` | Yes | Yes |
+| `tutorial3.3` | Yes | Yes (batch tool) |
+| `tutorial3.4` | Yes | Yes (chat) |
 
 With KataGo, the pinned CPU build is mounted read-only at `/opt/katago`
 (`/arena/bin/katago`), and every network of the configured opponent ladder at
@@ -379,6 +380,15 @@ At most 4 calls run at once; more wait for a slot. The host runs these calls
 through a Unix socket while the learning clock runs, and wall time continues
 during them. When the clock stops, running calls end after their current
 request. There is no spending cap.
+
+In 3.4 the teacher chats with students instead: `from student import Student,
+move_prompt` in the sandbox's Python. Each student is a named, persistent
+multi-turn conversation with the target in the Track 1 harness; `send` returns
+at once and `reply()` never blocks. Students end at the Track 1 context limit
+instead of resetting. Transcripts appear live under `/arena/students/`. Student
+requests are capped at $50 per learning run; replies still pending when the cap
+is reached are paid for but discarded. See
+[track3-student-chat.md](track3-student-chat.md) for the full protocol.
 
 Learning runs once per arena run and player, before that player's first
 game, and is reused by every later game. The checkpoint lives under

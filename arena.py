@@ -99,6 +99,7 @@ from gobench.llm_conversation import (
     CONVERSATION_VERSION,
     APIConversation,
     ConversationClient,
+    byte_estimate,
     qwen_cache_messages,
     cap_output_to_context,
 )
@@ -3470,7 +3471,7 @@ def _llm_player_manifest(name):
         learner_api, learner = _registered_llm_player(tutorial_player.learner_player)
         manifest.update(
             track=3,
-            tutorial_protocol=_tutorial.PROTOCOL_VERSION,
+            tutorial_protocol=tutorial_player.protocol,
             subtrack=tutorial_player.subtrack,
             target_player=tutorial_player.target,
             learner_player=tutorial_player.learner_player,
@@ -3483,7 +3484,10 @@ def _llm_player_manifest(name):
             learning_katago_access=tutorial_player.katago,
             learning_subagents=False,
             student_calls=tutorial_player.student,
-            student_max_concurrency=_tutorial.STUDENT_MAX_CONCURRENCY,
+            **({"student_interface": "chat",
+                "student_cost_limit_usd": _tutorial.STUDENT_COST_LIMIT_USD}
+               if tutorial_player.chat
+               else {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY}),
             tutorial_token_limit=_tutorial.TOKEN_LIMIT,
             tutorial_tokenizer=f"tiktoken {_tutorial.TOKENIZER}",
             tutorial_placement="first user message of every conversation session",
@@ -3644,7 +3648,8 @@ class _OpenAIOAuthClient:
         )
 
 
-def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None):
+def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None,
+                conversation_class=APIConversation):
     api, player = _llm_player_config(player_name)
     if (tutorial_player := _tutorial_player(player_name)) is not None:
         if work_dir is None:
@@ -3711,7 +3716,7 @@ def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None):
         )
         return ConversationClient(
             client,
-            APIConversation(
+            conversation_class(
                 api.name,
                 player.model,
                 player_name,
@@ -6965,6 +6970,11 @@ class _ArenaRun:
                 "evaluation": "target multi-turn API player with the tutorial "
                               "opening every conversation session",
             }
+            if any(_tutorial_player(name).chat for name in learning):
+                run_config["tutorial_distillation"].update(
+                    chat_protocol=_tutorial.CHAT_PROTOCOL_VERSION,
+                    student_cost_limit_usd=_tutorial.STUDENT_COST_LIMIT_USD,
+                )
         return run_config
 
     def _open(self, resume_run_dir):
@@ -9521,6 +9531,10 @@ class _CodexGameClient:
         """Additional (host path, sandbox path) read-only mounts for this harness."""
         return ()
 
+    def _extra_environment(self):
+        """Additional sandbox environment variables for this harness."""
+        return {}
+
     def _capture_preparation_outputs(self, preparation):
         """Read finished preparation results while the training volume is mounted."""
 
@@ -9810,6 +9824,7 @@ class _CodexGameClient:
                 "TMPDIR": "/tmp",
                 "ARENA_PROXY_PORT": str(_Arena.CODEX_WORKSPACE_PROXY_PORT),
                 "ARENA_PROXY_TOKEN": "arena-proxy-no-provider-secret",
+                **self._extra_environment(),
             }
             inner = (
                 "/usr/bin/python3",
@@ -11004,6 +11019,7 @@ class _ClaudeCodeGameClient(_CodexGameClient):
             "DISABLE_ERROR_REPORTING": "1",
             "DISABLE_BUG_COMMAND": "1",
             "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+            **self._extra_environment(),
         }
 
     def _cli_options(self):
@@ -11279,6 +11295,52 @@ class _StudentAborted(ArenaError):
     """The learning clock stopped while a student conversation was running."""
 
 
+class _StudentContextLimit(ArenaError):
+    """A 3.4 student's conversation reached the Track 1 context limit."""
+
+
+class _StudentConversation(APIConversation):
+    """The Track 1 multi-turn history, which ends at the context limit instead of resetting."""
+
+    def reset(self, reason):
+        raise _StudentContextLimit("context limit reached; start a new student")
+
+    def fits(self, prompt):
+        """Whether one more turn with `prompt` stays under the limit, estimated as prepare() does."""
+        estimate = self.observed_tokens or (byte_estimate(self.history) if self.history else 0)
+        return estimate + byte_estimate(self.user_items(prompt)) < self.limit
+
+    @property
+    def full(self):
+        return self.observed_tokens >= self.limit
+
+
+class _StudentChat:
+    """Host state of one 3.4 student: its conversation client, turns and request ledger."""
+
+    def __init__(self, name, number, log, state="open"):
+        self.name, self.number, self.log, self.state = name, number, log, state
+        self.turns = []
+        self.client = None
+        self.log_offset = 0
+
+    @property
+    def pending(self):
+        return bool(self.turns) and self.turns[-1]["status"] == "pending"
+
+    def new_cost(self):
+        """Cost of the ledger entries written since the last call."""
+        if not self.log.exists():
+            return 0.0
+        with self.log.open("rb") as source:
+            source.seek(self.log_offset)
+            data = source.read()
+        complete = data[:data.rfind(b"\n") + 1]
+        self.log_offset += len(complete)
+        return sum(float(json.loads(line).get("cost_usd") or 0)
+                   for line in complete.splitlines() if line.strip())
+
+
 class _TutorialToolHandler(socketserver.StreamRequestHandler):
     def handle(self):
         line = self.rfile.readline(self.server.MAX_REQUEST_BYTES + 1)
@@ -11307,14 +11369,19 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
 
     `tokens` counts text with the fixed tutorial tokenizer. In Track 3.3,
     `student` runs one multi-turn conversation of the target player in the
-    Track 1 harness, tutorial first. Student calls run only while the
-    learning clock does; their ledgers are part of the learning cost.
+    Track 1 harness, tutorial first. In Track 3.4 the `student_*` operations
+    keep named multi-turn conversations of the target player, each send
+    answered on its own thread, and `move_prompt` renders a Track 1 prompt.
+    Student calls run only while the learning clock does; their ledgers are
+    part of the learning cost.
     """
 
     daemon_threads = True
     MAX_REQUEST_BYTES = 8 * 1024 * 1024
+    CHAT_OPERATIONS = ("student_open", "student_send", "student_reply", "student_close",
+                       "move_prompt")
 
-    def __init__(self, directory, tutorial_player):
+    def __init__(self, directory, tutorial_player, transcripts=None):
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.tutorial_player = tutorial_player
@@ -11326,6 +11393,15 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
                    for path in self.directory.glob("call-*.jsonl")]
         self._numbers = iter(range(max(numbers, default=0) + 1, sys.maxsize))
         self._number_lock = threading.Lock()
+        # Track 3.4: ledgers under chats/, teacher-visible transcripts elsewhere.
+        self.chats = self.directory / "chats"
+        self.transcripts = (Path(transcripts) if transcripts is not None
+                            else self.directory / "transcripts")
+        self.students = {}
+        self.student_cost = 0.0
+        self.cost_limit_reached = False
+        if tutorial_player.chat:
+            self._load_students()
         self._temp = tempfile.TemporaryDirectory(prefix="gobench-tools-")
         self.socket_path = Path(self._temp.name) / "arena-tools.sock"
         super().__init__(str(self.socket_path), _TutorialToolHandler)
@@ -11347,6 +11423,9 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         self.shutdown()
         self.server_close()
         self._thread.join(timeout=2)
+        for student in self.students.values():
+            if student.client is not None:
+                student.client.close()
         self._temp.cleanup()
 
     def dispatch(self, request):
@@ -11358,7 +11437,193 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             return {"tokens": _tutorial.count_tokens(text), "limit": _tutorial.TOKEN_LIMIT}
         if operation == "student":
             return self.student(request.get("tutorial"), request.get("positions"))
+        if operation in self.CHAT_OPERATIONS:
+            if not self.tutorial_player.chat:
+                raise ValueError(
+                    f"student chats are not available in Track {self.tutorial_player.subtrack}"
+                )
+            return getattr(self, operation)(request)
         raise ValueError(f"unknown operation: {operation!r}")
+
+    # Track 3.4 student chats.
+
+    def _load_students(self):
+        """Students from an interrupted learning process keep their names and cost."""
+        self.chats.mkdir(parents=True, exist_ok=True, mode=0o700)
+        self.transcripts.mkdir(parents=True, exist_ok=True)
+        for log in sorted(self.chats.glob("*.jsonl")):
+            entries = _read_jsonl_objects(log, "student requests", allow_partial_tail=True)
+            number = entries[0]["game"] if entries else len(self.students) + 1
+            student = _StudentChat(log.stem, number, log, state="ended")
+            self.student_cost += student.new_cost()
+            self.students[student.name] = student
+            transcript = self.transcripts / f"{student.name}.md"
+            if transcript.exists():
+                with transcript.open("a", encoding="utf-8") as out:
+                    out.write("\n(Learning was restarted; this student has ended.)\n")
+        self.cost_limit_reached = self.student_cost >= _tutorial.STUDENT_COST_LIMIT_USD
+        self._write_cost()
+
+    def _student(self, request):
+        name = request.get("name")
+        if not isinstance(name, str) or name not in self.students:
+            raise ValueError(f"no student named {name!r}; create it with Student(name)")
+        return self.students[name]
+
+    def _write_transcript(self, student):
+        _replace_text(self.transcripts / f"{student.name}.md", _tutorial.student_transcript(
+            student.name, self.target_player.model, self.target_player.level,
+            student.state, student.turns))
+
+    def _write_cost(self):
+        limit = _tutorial.STUDENT_COST_LIMIT_USD
+        _workspace_atomic_json(self.transcripts / "cost.json", {
+            "spent_usd": round(self.student_cost, 6),
+            "limit_usd": limit,
+            "remaining_usd": round(max(limit - self.student_cost, 0.0), 6),
+            "limit_reached": self.cost_limit_reached,
+            "pending_replies": sum(student.pending for student in self.students.values()),
+        })
+
+    @property
+    def target_player(self):
+        return _registered_llm_player(self.tutorial_player.target)[1]
+
+    @staticmethod
+    def _cost_limit_message():
+        return f"student cost limit reached (${_tutorial.STUDENT_COST_LIMIT_USD:g})"
+
+    def student_open(self, request):
+        name = request.get("name")
+        if name is not None and (not isinstance(name, str)
+                                 or not _tutorial.STUDENT_NAME.fullmatch(name)):
+            raise ValueError("a student name is 1-64 letters, digits, '_' or '-'")
+        with self.condition:
+            if name is None:
+                count = len(self.students) + 1
+                while f"student-{count}" in self.students:
+                    count += 1
+                name = f"student-{count}"
+            if name not in self.students:
+                self._check_enabled()
+                number = max((student.number for student in self.students.values()),
+                             default=0) + 1
+                self.students[name] = _StudentChat(name, number, self.chats / f"{name}.jsonl")
+                self._write_transcript(self.students[name])
+        return {"name": name}
+
+    def student_send(self, request):
+        student = self._student(request)
+        text = request.get("text")
+        if not isinstance(text, str) or not text:
+            raise ValueError("send requires a nonempty message")
+        with self.condition:
+            self._check_enabled()
+            if student.state == "ended":
+                raise ValueError("this student ended when learning was restarted")
+            if student.state == "context_limit":
+                raise ValueError("context limit reached; start a new student")
+            if student.state == "closed":
+                raise ValueError("this student is closed")
+            if student.pending:
+                raise ValueError(f"student {student.name} is still replying")
+            if self.cost_limit_reached:
+                raise ValueError(self._cost_limit_message())
+            if student.client is None:
+                student.client = _llm_client(
+                    self.tutorial_player.target, work_dir=self.chats,
+                    game_number=student.number, conversation_class=_StudentConversation)
+            conversation = student.client.conversation
+            if not conversation.fits(text):
+                if not conversation.history:
+                    raise ValueError("this message alone exceeds the context limit")
+                student.state = "context_limit"
+                self._write_transcript(student)
+                raise ValueError("context limit reached; start a new student")
+            student.turns.append({"message": text, "status": "pending"})
+            turn = len(student.turns)
+            self.active_calls += 1
+            self._write_transcript(student)
+            self._write_cost()
+        threading.Thread(target=self._answer, args=(student, turn, text),
+                         name=f"arena-student-{student.name}", daemon=True).start()
+        return {"turn": turn}
+
+    def _answer(self, student, turn, text):
+        def abort_retry(*_args):
+            self._check_enabled()
+            if student.state == "closed":
+                raise _StudentAborted("the student was closed")
+            if self.cost_limit_reached:
+                raise _StudentAborted(self._cost_limit_message())
+
+        record, full = {"status": "failed"}, False
+        try:
+            reply, _seconds, _cost = _call_llm_move(
+                student.client, text, player_name=self.tutorial_player.target,
+                log_path=student.log, first_prompt_path=self.directory / "first_prompt.txt",
+                game_number=student.number, move_number=turn, attempt=1, retry=abort_retry,
+            )
+            record = {"status": "done", "reply": reply}
+            full = student.client.conversation.full
+        except _StudentContextLimit as exc:
+            record["error"], full = str(exc), True
+        except ArenaError as exc:
+            record["error"] = str(exc)[:1000]
+        except Exception as exc:
+            _append_jsonl(self.directory / "tool-errors.jsonl", {
+                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                "error": f"{type(exc).__name__}: {exc}",
+            })
+            record["error"] = f"internal arena error ({type(exc).__name__})"
+        finally:
+            with self.condition:
+                cost = student.new_cost()
+                limit_reached_before = self.cost_limit_reached
+                self.student_cost += cost
+                if self.student_cost >= _tutorial.STUDENT_COST_LIMIT_USD:
+                    self.cost_limit_reached = True
+                if record["status"] == "done":
+                    # The reply that crosses the limit is kept; later ones are not.
+                    if student.state == "closed":
+                        record = {"status": "discarded", "error": "the student was closed"}
+                    elif limit_reached_before:
+                        record = {"status": "discarded", "error": self._cost_limit_message()}
+                if full and student.state == "open":
+                    student.state = "context_limit"
+                student.turns[turn - 1].update(record, cost_usd=cost)
+                self.active_calls -= 1
+                self._write_transcript(student)
+                self._write_cost()
+                self.condition.notify_all()
+
+    def student_reply(self, request):
+        student = self._student(request)
+        with self.condition:
+            if student.state == "ended":
+                raise ValueError("this student ended when learning was restarted")
+            if student.state == "closed" and student.pending:
+                raise ValueError("the student was closed")
+            if not student.turns or student.pending:
+                return {"reply": None}
+            last = student.turns[-1]
+            if last["status"] != "done":
+                raise ValueError(last["error"])
+            return {"reply": last["reply"]}
+
+    def student_close(self, request):
+        student = self._student(request)
+        with self.condition:
+            if student.state == "open":
+                student.state = "closed"
+                self._write_transcript(student)
+        return {}
+
+    def move_prompt(self, request):
+        position = _tutorial.replay_position(request.get("moves"), _Arena.BOARD_SIZE)
+        return {"prompt": _llm_move_prompt(position, list(position.legal_moves),
+                                           list(position.ko_illegal_moves),
+                                           position.recent_moves)}
 
     def _check_enabled(self):
         if not self.enabled:
@@ -11369,6 +11634,8 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             raise ValueError(
                 f"student calls are not available in Track {self.tutorial_player.subtrack}"
             )
+        if self.tutorial_player.chat:
+            raise ValueError("Track 3.4 students are chats; use the student Python module")
         if not isinstance(tutorial, str):
             raise ValueError("student requires tutorial text")
         if not isinstance(positions, list) or not positions:
@@ -11519,17 +11786,23 @@ class _TutorialLearnerMixin:
 
     def _tutorial_specification(self):
         spec = self.tutorial_player
+        if spec.chat:
+            students = {"student_interface": "chat",
+                        "student_cost_limit_usd": _tutorial.STUDENT_COST_LIMIT_USD,
+                        "student_context_limit_tokens": CONTEXT_RESET_TOKENS}
+        else:
+            students = {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
+                        "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
+                        "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS}
         return {
-            "protocol": _tutorial.PROTOCOL_VERSION,
+            "protocol": spec.protocol,
             "subtrack": spec.subtrack, "target": spec.target,
             "target_model": self.target.model, "target_effort": self.target.level,
             "katago": spec.katago, "student": spec.student, "subagents": False,
             "token_limit": _tutorial.TOKEN_LIMIT,
             "tokenizer": f"tiktoken {_tutorial.TOKENIZER}",
             "tiktoken_version": importlib.metadata.version("tiktoken"),
-            "student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
-            "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
-            "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS,
+            **students,
             "instructions_sha256": hashlib.sha256(
                 self._instructions(self.settings.training_seconds).encode()
             ).hexdigest(),
@@ -11555,7 +11828,8 @@ class _TutorialLearnerMixin:
                 ensure_katago_installed()
                 ensure_arena_networks(_tutorial_ladder_networks())
             self._tool_server = _TutorialToolServer(
-                self.checkpoint_root / "preparation" / "student", self.tutorial_player
+                self.checkpoint_root / "preparation" / "student", self.tutorial_player,
+                transcripts=self.checkpoint_root / "preparation" / "public" / "students",
             )
             try:
                 self._resource_lock = CoreLease()
@@ -11599,6 +11873,11 @@ class _TutorialLearnerMixin:
                 f"{self.settings.max_tasks} processes/threads; there is no GPU or swap. "
                 "Subagents are disabled.")
 
+    def _extra_environment(self):
+        if self.tutorial_player.chat:
+            return {"PYTHONPATH": _tutorial.SANDBOX_PYTHON_DIR}
+        return {}
+
     def _extra_readonly_mounts(self):
         mounts = [(self._tool_server.socket_path, _tutorial.SANDBOX_TOOL_SOCKET)]
         if self.tutorial_player.katago:
@@ -11612,7 +11891,11 @@ class _TutorialLearnerMixin:
         tools = public / "bin"
         tools.mkdir(parents=True, exist_ok=True)
         programs = {"tutorial-tokens": _tutorial.TOKENS_PROGRAM}
-        if self.tutorial_player.student:
+        if self.tutorial_player.chat:
+            (public / "python").mkdir(exist_ok=True)
+            (public / "python" / "student.py").write_text(_tutorial.STUDENT_MODULE,
+                                                         encoding="utf-8")
+        elif self.tutorial_player.student:
             programs["student"] = _tutorial.STUDENT_PROGRAM
         if self.tutorial_player.katago:
             programs["katago"] = _tutorial.KATAGO_PROGRAM
@@ -11665,7 +11948,9 @@ class _TutorialLearnerMixin:
                 "/arena/ladder.tsv lists each ladder player with its network file, Elo and "
                 "speed, and explains how each opponent is configured."
             )
-        if spec.student:
+        if spec.chat:
+            tools.append(self._student_chat_instructions())
+        elif spec.student:
             tools.append(
                 "- `/arena/bin/student TUTORIAL POSITIONS.json [-o OUT.json]` runs the "
                 f"evaluation model ({target.model}, {target.level} effort) in the exact "
@@ -11722,6 +12007,51 @@ class _TutorialLearnerMixin:
             "These instructions are also in /arena/instructions.md.",
         ]) + "\n"
 
+    def _student_chat_instructions(self):
+        target, limit = self.target, _tutorial.STUDENT_COST_LIMIT_USD
+        return "\n".join([
+            "- Students: in Python, `from student import Student, move_prompt` (the module "
+            f"is {_tutorial.SANDBOX_PYTHON_DIR}/student.py, already on PYTHONPATH). A student "
+            f"is the evaluation model ({target.model}, {target.level} effort) in the exact "
+            "evaluation harness: one multi-turn conversation that keeps its own reasoning "
+            "between turns, with no tools and no system prompt. It sees only the messages you "
+            "send, exactly as written. Nothing is prepended or cut, so to test your tutorial "
+            "as evaluation will, send the tutorial wrapper shown above with a move prompt, "
+            "and keep the tutorial within the token limit yourself.",
+            "  - `Student(name)` creates a student or reattaches to an existing one by name "
+            "(1-64 letters, digits, `_` or `-`); `Student()` picks a name, available as "
+            "`s.name`. Students live on the arena host for the whole learning period, so any "
+            "later process can reattach.",
+            "  - `s.send(text)` sends one message and returns at once. A student holds one "
+            "message at a time: sending while its reply is pending raises `StudentError`.",
+            "  - `s.reply()` never blocks. It returns the reply to the latest send, or None "
+            "while that reply is pending, and raises `StudentError` if the send failed. "
+            "Replies are not checked or retried: a reply is whatever the model wrote.",
+            "  - `s.close()` ends a student; a pending reply is discarded.",
+            "  - `move_prompt(moves)` returns the exact move prompt evaluation sends after "
+            "`moves`, a list from the empty board, Black first, such as [\"E5\", \"C3\"] or "
+            "[\"B E5\", \"W pass\"]. The referee computes it; it costs nothing.",
+            f"  - A student ends when its conversation reaches {CONTEXT_RESET_TOKENS:,} tokens. "
+            "The reply that reaches the limit is delivered; after that `send` raises and you "
+            "need a new student. Students are never reset.",
+            f"  - Transcripts are in {_tutorial.SANDBOX_STUDENT_DIR}/<name>.md, updated as "
+            f"messages are sent and answered. {_tutorial.SANDBOX_STUDENT_DIR}/cost.json "
+            "shows student spending.",
+            f"  - Student messages cost at most ${limit:g} in total for this learning period. "
+            f"When spending reaches ${limit:g}, replies still pending are discarded (their "
+            "cost still counts) and `send` fails, so plan how to spend it. You can create as "
+            "many students as you like and have them reply at the same time. A student is a "
+            "multi-turn conversation: earlier turns are cached, so sending several messages "
+            "to one student is usually faster and cheaper than sending each message to a "
+            "new student.",
+            "  - If it helps, you can build batching from these primitives. For example, test "
+            "many positions by giving each of several students a share of them and, from a "
+            "script, polling each student's `reply()` and sending it its next `move_prompt` "
+            "when the reply arrives. This is only an option; use the students however you "
+            "like.",
+            "  - Student replies use your wall time, and their cost counts as learning cost.",
+        ])
+
     def _preparation_prompt(self):
         return (
             self._instructions(self._clock.remaining)
@@ -11746,7 +12076,9 @@ class _TutorialLearnerMixin:
         os.chmod(staging / "tutorial.md", 0o400)
         data = (staging / "tutorial.md").read_bytes()
         calls = []
-        for path in sorted((preparation / "student").glob("call-*.jsonl")):
+        ledgers = sorted((preparation / "student").glob("call-*.jsonl"))
+        chats = sorted((preparation / "student" / "chats").glob("*.jsonl"))
+        for path in ledgers + chats:
             calls += _read_jsonl_objects(path, "student calls")
         student_cost = sum(float(entry.get("cost_usd") or 0) for entry in calls)
         counts = [_llm_token_usage(self.target_api, entry.get("usage") or {})
@@ -11768,6 +12100,7 @@ class _TutorialLearnerMixin:
             "student_tokens": {field.name: sum(getattr(count, field.name) for count in counts)
                                for field in fields(_LLMTokenUsage)},
             "student_cost_usd": student_cost,
+            **({"students": len(chats)} if self.tutorial_player.chat else {}),
             "learning_cost_usd": agent_cost + student_cost,
         }
 

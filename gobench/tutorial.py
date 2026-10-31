@@ -3,6 +3,8 @@
 A learning agent writes one tutorial in a Track 2 style sandbox. Evaluation
 prepends that fixed text to a Track 1 multi-turn player's conversation. This
 module holds the provider-neutral pieces; arena.py runs the agents and calls.
+In 3.3 the learner tests its tutorial with a batch student tool; in 3.4 it
+chats with students through a Python module.
 """
 
 from __future__ import annotations
@@ -17,6 +19,7 @@ from dataclasses import dataclass
 from gobench.go_rules import COLS, TrompTaylorRules
 
 PROTOCOL_VERSION = "tutorial-distillation-v1"
+CHAT_PROTOCOL_VERSION = "tutorial-distillation-v2"
 TOKEN_LIMIT = 5000
 TOKENIZER = "o200k_base"
 HOURS = (1, 2, 4, 8)
@@ -26,22 +29,30 @@ STUDENT_MAX_ATTEMPTS = 5
 STUDENT_MAX_POSITIONS = 200
 # Read at most this much of the agent's file; the cap keeps only 5,000 tokens.
 MAX_SOURCE_BYTES = 1024 * 1024
+# 3.4: all student requests of one learning run. Replies still pending when
+# spending reaches the limit finish and count, but are discarded.
+STUDENT_COST_LIMIT_USD = 50.0
+STUDENT_NAME = re.compile(r"[A-Za-z0-9_-]{1,64}")
 SANDBOX_TUTORIAL_PATH = "/workspace/tutorial.md"
 SANDBOX_TOOL_SOCKET = "/runtime/arena-tools.sock"
 SANDBOX_KATAGO_DIR = "/opt/katago"
 SANDBOX_NETWORK_DIR = "/opt/katago-networks"
+SANDBOX_STUDENT_DIR = "/arena/students"
+SANDBOX_PYTHON_DIR = "/arena/python"
 
 
 @dataclass(frozen=True)
 class Subtrack:
     katago: bool
     student: bool
+    chat: bool = False
 
 
 SUBTRACKS = {
     "3.1": Subtrack(katago=False, student=False),
     "3.2": Subtrack(katago=True, student=False),
     "3.3": Subtrack(katago=True, student=True),
+    "3.4": Subtrack(katago=True, student=True, chat=True),
 }
 
 _NAME = re.compile(
@@ -86,6 +97,15 @@ class TutorialPlayer:
     @property
     def student(self):
         return SUBTRACKS[self.subtrack].student
+
+    @property
+    def chat(self):
+        """Students are chats through the Python module, not the batch tool."""
+        return SUBTRACKS[self.subtrack].chat
+
+    @property
+    def protocol(self):
+        return CHAT_PROTOCOL_VERSION if self.chat else PROTOCOL_VERSION
 
 
 def parse_player(name):
@@ -330,3 +350,120 @@ KATAGO_PROGRAM = (
     "#!/bin/sh\n"
     f'exec {SANDBOX_KATAGO_DIR}/squashfs-root/AppRun "$@"\n'
 )
+
+
+STUDENT_STATES = {
+    "open": "open",
+    "closed": "closed",
+    "context_limit": "finished: context limit reached",
+    "ended": "finished: learning was restarted",
+}
+
+
+def student_transcript(name, model, effort, state, turns):
+    """The read-only Markdown transcript the teacher sees for one 3.4 student.
+
+    Each turn is a dict with `message`, `status` (pending, done, failed or
+    discarded) and, once finished, `reply` or `error` and `cost_usd`.
+    """
+    cost = sum(turn.get("cost_usd") or 0 for turn in turns)
+    lines = [f"# Student {name}", "",
+             f"Model: {model}, {effort} effort. Status: {STUDENT_STATES[state]}. "
+             f"Cost so far: ${cost:.4f}.", ""]
+    for number, turn in enumerate(turns, 1):
+        lines += [f"## {number}. Teacher", "", turn["message"], ""]
+        if turn["status"] == "pending":
+            lines += [f"## {number}. Student", "", "(waiting for the reply)", ""]
+            continue
+        lines += [f"## {number}. Student (${turn.get('cost_usd') or 0:.4f})", ""]
+        if turn["status"] == "done":
+            lines += [turn["reply"], ""]
+        else:
+            lines += [f"({turn['status']}: {turn['error']})", ""]
+    return "\n".join(lines)
+
+
+# 3.4 sandbox module, importable as `student` from SANDBOX_PYTHON_DIR. Every
+# call is one request on SANDBOX_TOOL_SOCKET; students live on the host.
+STUDENT_MODULE = r'''"""Chat with students: the evaluation model in its Track 1 multi-turn harness.
+
+    from student import Student, move_prompt
+
+    s = Student("ladders")   # create, or reattach to an existing student by name
+    s = Student()            # create with a generated name
+    s.send(text)             # send one message; returns immediately
+    s.reply()                # the reply to the latest send, or None while pending
+    s.close()                # end the student
+    move_prompt(moves)       # the exact Track 1 move prompt for a position
+
+Transcripts are in /arena/students/<name>.md and spending in
+/arena/students/cost.json.
+"""
+
+import json
+import socket
+
+__all__ = ["Student", "StudentError", "move_prompt"]
+
+SOCKET = "__SOCKET__"
+
+
+class StudentError(Exception):
+    """The arena refused a request or a reply failed."""
+
+
+def _call(request):
+    connection = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        connection.connect(SOCKET)
+    except OSError as exc:
+        raise StudentError(f"arena tools are unavailable: {exc}") from None
+    with connection, connection.makefile("rwb") as stream:
+        stream.write(json.dumps(request).encode() + b"\n")
+        stream.flush()
+        line = stream.readline()
+    if not line:
+        raise StudentError("arena tools closed the connection without a response")
+    response = json.loads(line)
+    if "error" in response:
+        raise StudentError(response["error"])
+    return response
+
+
+class Student:
+    """One multi-turn conversation with the evaluation model, kept on the host."""
+
+    def __init__(self, name=None):
+        if name is not None and not isinstance(name, str):
+            raise TypeError("name must be a string")
+        self.name = _call({"op": "student_open", "name": name})["name"]
+
+    def send(self, text):
+        """Send one message and return at once. Raises while a reply is pending."""
+        if not isinstance(text, str):
+            raise TypeError("text must be a string")
+        _call({"op": "student_send", "name": self.name, "text": text})
+
+    def reply(self):
+        """Never blocks: the reply to the latest send, or None while it is pending.
+
+        Raises StudentError if that send failed.
+        """
+        return _call({"op": "student_reply", "name": self.name})["reply"]
+
+    def close(self):
+        """End this student. A pending reply is discarded."""
+        _call({"op": "student_close", "name": self.name})
+
+    def __repr__(self):
+        return f"Student({self.name!r})"
+
+
+def move_prompt(moves):
+    """The exact Track 1 move prompt after `moves`, from the empty board, Black first.
+
+    Moves are coordinates or "pass", optionally with a color: ["B E5", "W C3"].
+    Computed by the arena referee; no model call and no cost.
+    """
+    return _call({"op": "move_prompt", "moves": moves})["prompt"]
+'''.replace("__SOCKET__", SANDBOX_TOOL_SOCKET)
