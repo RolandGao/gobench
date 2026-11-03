@@ -29,8 +29,9 @@ STUDENT_MAX_ATTEMPTS = 5
 STUDENT_MAX_POSITIONS = 200
 # Read at most this much of the agent's file; the cap keeps only 5,000 tokens.
 MAX_SOURCE_BYTES = 1024 * 1024
-# 3.4: all student requests of one learning run. Replies still pending when
-# spending reaches the limit finish and count, but are discarded.
+# 3.4: all student requests of one learning run, unless the player name has a
+# budget tag. Replies still pending when spending reaches the limit finish and
+# count, but are discarded.
 STUDENT_COST_LIMIT_USD = 50.0
 STUDENT_NAME = re.compile(r"[A-Za-z0-9_-]{1,64}")
 SANDBOX_TUTORIAL_PATH = "/workspace/tutorial.md"
@@ -56,18 +57,20 @@ SUBTRACKS = {
 }
 
 _NAME = re.compile(
-    r"(?P<target>.+-api-multi)-tutorial(?P<subtrack>3\.[0-9]+)-"
+    r"(?P<target>.+-api-multi)-tutorial(?P<subtrack>3\.[0-9]+)"
+    r"(?:-(?P<budget>[1-9][0-9]*)usd)?-"
     r"(?P<learner>.+-(?:codex|claude-code))-(?P<hours>[1-9][0-9]*)h(?P<replica>[0-9]*)"
 )
 
 
 @dataclass(frozen=True)
 class TutorialPlayer:
-    """`<target>-tutorial<subtrack>-<learner>-<hours>h[replica]`.
+    """`<target>-tutorial<subtrack>[-<budget>usd]-<learner>-<hours>h[replica]`.
 
     The target is the Track 1 multi-turn player that reads the tutorial during
     evaluation and answers student calls. The learner is a Track 2 workspace
     model/effort/runtime without its duration, e.g. `claude-opus-5-5-high-claude-code`.
+    A budget tag (chat subtracks only) replaces the default student cost limit.
     """
 
     name: str
@@ -76,6 +79,7 @@ class TutorialPlayer:
     learner: str
     hours: int
     replica: str
+    student_cost_limit_usd: float = STUDENT_COST_LIMIT_USD
 
     @property
     def canonical(self):
@@ -120,8 +124,12 @@ def parse_player(name):
         return None
     if match.group("replica").startswith("0"):
         return None
+    budget = match.group("budget")
+    if budget is not None and not SUBTRACKS[match.group("subtrack")].chat:
+        return None
     return TutorialPlayer(name, match.group("target"), match.group("subtrack"),
-                          match.group("learner"), hours, match.group("replica"))
+                          match.group("learner"), hours, match.group("replica"),
+                          float(budget) if budget is not None else STUDENT_COST_LIMIT_USD)
 
 
 @functools.cache

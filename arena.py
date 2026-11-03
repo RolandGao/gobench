@@ -3491,7 +3491,7 @@ def _llm_player_manifest(name):
             learning_subagents=False,
             student_calls=tutorial_player.student,
             **({"student_interface": "chat",
-                "student_cost_limit_usd": _tutorial.STUDENT_COST_LIMIT_USD}
+                "student_cost_limit_usd": tutorial_player.student_cost_limit_usd}
                if tutorial_player.chat
                else {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY}),
             tutorial_token_limit=_tutorial.TOKEN_LIMIT,
@@ -6976,11 +6976,16 @@ class _ArenaRun:
                 "evaluation": "target multi-turn API player with the tutorial "
                               "opening every conversation session",
             }
-            if any(_tutorial_player(name).chat for name in learning):
+            limits = {name: spec.student_cost_limit_usd for name in learning
+                      if (spec := _tutorial_player(name)).chat}
+            if limits:
                 run_config["tutorial_distillation"].update(
                     chat_protocol=_tutorial.CHAT_PROTOCOL_VERSION,
                     student_cost_limit_usd=_tutorial.STUDENT_COST_LIMIT_USD,
                 )
+                if set(limits.values()) != {_tutorial.STUDENT_COST_LIMIT_USD}:
+                    run_config["tutorial_distillation"][
+                        "student_cost_limit_usd_by_player"] = limits
         return run_config
 
     def _open(self, resume_run_dir):
@@ -11467,7 +11472,7 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             if transcript.exists():
                 with transcript.open("a", encoding="utf-8") as out:
                     out.write("\n(Learning was restarted; this student has ended.)\n")
-        self.cost_limit_reached = self.student_cost >= _tutorial.STUDENT_COST_LIMIT_USD
+        self.cost_limit_reached = self.student_cost >= self.cost_limit_usd
         self._write_cost()
 
     def _student(self, request):
@@ -11481,8 +11486,12 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             student.name, self.target_player.model, self.target_player.level,
             student.state, student.turns))
 
+    @property
+    def cost_limit_usd(self):
+        return self.tutorial_player.student_cost_limit_usd
+
     def _write_cost(self):
-        limit = _tutorial.STUDENT_COST_LIMIT_USD
+        limit = self.cost_limit_usd
         _workspace_atomic_json(self.transcripts / "cost.json", {
             "spent_usd": round(self.student_cost, 6),
             "limit_usd": limit,
@@ -11495,9 +11504,8 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
     def target_player(self):
         return _registered_llm_player(self.tutorial_player.target)[1]
 
-    @staticmethod
-    def _cost_limit_message():
-        return f"student cost limit reached (${_tutorial.STUDENT_COST_LIMIT_USD:g})"
+    def _cost_limit_message(self):
+        return f"student cost limit reached (${self.cost_limit_usd:g})"
 
     def student_open(self, request):
         name = request.get("name")
@@ -11587,7 +11595,7 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
                 cost = student.new_cost()
                 limit_reached_before = self.cost_limit_reached
                 self.student_cost += cost
-                if self.student_cost >= _tutorial.STUDENT_COST_LIMIT_USD:
+                if self.student_cost >= self.cost_limit_usd:
                     self.cost_limit_reached = True
                 if record["status"] == "done":
                     # The reply that crosses the limit is kept; later ones are not.
@@ -11794,7 +11802,7 @@ class _TutorialLearnerMixin:
         spec = self.tutorial_player
         if spec.chat:
             students = {"student_interface": "chat",
-                        "student_cost_limit_usd": _tutorial.STUDENT_COST_LIMIT_USD,
+                        "student_cost_limit_usd": spec.student_cost_limit_usd,
                         "student_context_limit_tokens": CONTEXT_RESET_TOKENS}
         else:
             students = {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
@@ -12014,7 +12022,7 @@ class _TutorialLearnerMixin:
         ]) + "\n"
 
     def _student_chat_instructions(self):
-        target, limit = self.target, _tutorial.STUDENT_COST_LIMIT_USD
+        target, limit = self.target, self.tutorial_player.student_cost_limit_usd
         return "\n".join([
             "- Students: in Python, `from student import Student, move_prompt` (the module "
             f"is {_tutorial.SANDBOX_PYTHON_DIR}/student.py, already on PYTHONPATH). A student "

@@ -349,7 +349,9 @@ Players are named `<target>-tutorial<subtrack>-<learner>-<hours>h`, for example
 The target must be an `-api-multi` player. The learner is a Track 2 workspace
 model, effort and runtime without its duration, and hours are 1, 2, 4 or 8
 (the "0h" baseline is the target itself, with no tutorial). Numbered replicas
-(`...-4h2`) are independent learning runs. Profiles such as
+(`...-4h2`) are independent learning runs. In `tutorial3.4`, a budget tag after the subtrack
+(`-tutorial3.4-200usd-`) sets the student cost limit, $50 by default
+([details](track3-student-chat.md#cost-and-limits)). Profiles such as
 `python3 arena.py --run-type gpt6-astra-tutorial3.3-2h` evaluate
 `gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h` (20 games).
 

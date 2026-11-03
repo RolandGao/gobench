@@ -153,6 +153,10 @@ code.
   The total can therefore pass $50 by the cost of the requests in progress at
   that moment. Every student request counts toward `learning_cost_usd`, as in
   3.3.
+- A budget tag in the player name replaces the $50 limit:
+  `gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6-astra-high-codex-4h` allows
+  $200. Untagged names keep $50. The limit is recorded in the checkpoint
+  specification and the player manifest (`student_cost_limit_usd`).
 - The teacher's own model cost has no limit.
 - The learning wall clock keeps running while replies are pending. At the
   deadline, pending replies end after their current request and still count.

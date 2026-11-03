@@ -207,6 +207,16 @@ _TUTORIAL_PLAYERS = {
     )
     for subtrack in ("3.1", "3.2", "3.3", "3.4")
     for hours in (1, 2, 4, 8)
+} | {
+    # 3.4 with a $200 student budget instead of the default $50.
+    "gpt6-astra-tutorial3.4-200usd-4h": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial3.4-200usd-gpt6-astra-high-codex-4h",
+    ),
+    "claude-opus-5-5-to-gpt6-astra-tutorial3.4-200usd-4h": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial3.4-200usd-claude-opus-5-5-high-claude-code-4h",
+    ),
 }
 
 

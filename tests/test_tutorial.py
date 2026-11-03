@@ -46,9 +46,21 @@ class NameTests(unittest.TestCase):
             PLAYER.replace("-api-multi-", "-api-"),
             PLAYER.replace("claude-opus-5-5", "claude-unknown"),
             PLAYER + "0",
+            # Budget tags only apply to chat subtracks.
+            PLAYER.replace("tutorial3.3", "tutorial3.3-200usd"),
+            PLAYER.replace("tutorial3.3", "tutorial3.4-0usd"),
         ):
             with self.subTest(name=name):
                 self.assertFalse(arena._is_active_llm_player(name))
+
+    def test_budget_tag_sets_the_student_cost_limit(self):
+        tagged = arena._tutorial_player(PLAYER.replace("tutorial3.3", "tutorial3.4-200usd"))
+        self.assertEqual((tagged.subtrack, tagged.student_cost_limit_usd), ("3.4", 200.0))
+        self.assertEqual(tagged.learner_player, "claude-opus-5-5-high-claude-code-4h")
+        manifest = arena._llm_player_manifest(tagged.name)
+        self.assertEqual(manifest["student_cost_limit_usd"], 200.0)
+        default = arena._tutorial_player(PLAYER.replace("tutorial3.3", "tutorial3.4"))
+        self.assertEqual(default.student_cost_limit_usd, 50.0)
 
     def test_manifest_records_learning_and_evaluation(self):
         manifest = arena._llm_player_manifest(PLAYER)
