@@ -182,10 +182,15 @@ _FINAL_RUNS = (
     # "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-2h",
     # "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-4h",
     # "gpt6-astra-high-api-multi-tutorial3.3-gpt6-astra-high-codex-8h",
-    "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-1h",
-    "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-2h",
+    # Track 3.4 with the default $50 student budget; only 4h is reported.
+    # "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-1h",
+    # "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-2h",
     "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-4h",
-    "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-8h",
+    # "gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-8h",
+    # "claude-opus-5-5-high-api-multi-tutorial3.4-claude-opus-5-5-high-claude-code-2h",
+    # Track 3.4 with a $200 student budget.
+    "gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6-astra-high-codex-4h",
+    "gpt6-astra-high-api-multi-tutorial3.4-200usd-claude-opus-5-5-high-claude-code-4h",
     # Track 2 with code-only evaluation (5-minute clock).
     # "gpt6-astra-high-codex-engine-1h",
     # "gpt6-astra-high-codex-engine-2h",
@@ -206,6 +211,7 @@ _FINAL_RUNS = (
     "gpt5.6-sol-high-codex-engine-60s-8h",
     "claude-opus-5-5-high-claude-code-engine-60s-1h",
     "claude-opus-5-5-high-claude-code-engine-60s-2h",
+    "claude-opus-5-5-high-claude-code-engine-60s-4h",
     "DeepSeek-V4.1-Flash-1017-max-api-multi",
 )
 
