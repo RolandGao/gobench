@@ -168,6 +168,7 @@ _FINAL_RUNS = (
     "gpt6-astra-low-api-multi",
     "fable-5.1-high-api-multi",
     "fable-5.1-max-api-multi",
+    "fable-5.2-high-api-multi",
     "opus-5-max-api-multi",
     "gpt6-sol-high-api-multi2",
     "gpt6-luna-high-api-multi2",
@@ -214,6 +215,8 @@ _FINAL_RUNS = (
     "claude-opus-5-5-high-claude-code-engine-60s-1h",
     "claude-opus-5-5-high-claude-code-engine-60s-2h",
     "claude-opus-5-5-high-claude-code-engine-60s-4h",
+    "fable-5.2-high-claude-code-engine-60s-1h",
+    "fable-5.2-high-claude-code-engine-60s-2h",
     "DeepSeek-V4.1-Flash-1017-max-api-multi",
 )
 
