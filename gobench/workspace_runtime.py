@@ -29,6 +29,9 @@ from pathlib import Path
 PROTOCOL_VERSION = "codex-preparation-v2"
 SDK_VERSION = "0.162.1"
 CLAUDE_CODE_VERSION = "2.1.296"
+# Models first evaluated on a later Claude Code build keep that build fixed;
+# every other model keeps CLAUDE_CODE_VERSION.
+CLAUDE_CODE_MODEL_VERSIONS = {"claude-fable-5-2": "2.1.322"}
 
 
 class WorkspaceError(RuntimeError):
@@ -550,15 +553,20 @@ def runtime_identity():
     return {"sdk": SDK_VERSION, **_host_identity()}
 
 
-def claude_code_runtime_identity(binary):
+def claude_code_version(model):
+    """The pinned Claude Code build for a model."""
+    return CLAUDE_CODE_MODEL_VERSIONS.get(model, CLAUDE_CODE_VERSION)
+
+
+def claude_code_runtime_identity(binary, pinned):
     """Claude Code checkpoints record the exact CLI build instead of the Codex SDK."""
     binary = Path(binary)
     output = checked([binary, "--version"], env=os.environ | {"DISABLE_AUTOUPDATER": "1"})
     version = output.split()[0] if output else "unknown"
-    if version != CLAUDE_CODE_VERSION:
+    if version != pinned:
         raise WorkspaceError(
-            f"Claude Code must be pinned to {CLAUDE_CODE_VERSION} (found {version} at {binary}); "
-            f"install it with `curl -fsSL https://claude.ai/install.sh | bash -s {CLAUDE_CODE_VERSION}`"
+            f"Claude Code must be pinned to {pinned} (found {version} at {binary}); "
+            f"install it with `curl -fsSL https://claude.ai/install.sh | bash -s {pinned}`"
         )
     return {"claude_code": {"version": version, "sha256": file_sha256(binary)},
             **_host_identity()}

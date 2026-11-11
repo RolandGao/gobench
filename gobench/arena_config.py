@@ -217,6 +217,10 @@ _TUTORIAL_PLAYERS = {
         "gpt6-astra-high-api-multi",
         "tutorial3.4-200usd-claude-opus-5-5-high-claude-code-4h",
     ),
+    "fable-5.2-to-gpt6-astra-tutorial3.4-200usd-4h": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial3.4-200usd-fable-5.2-high-claude-code-4h",
+    ),
 }
 
 

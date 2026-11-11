@@ -98,6 +98,20 @@ class ClaudeCodeAccountingTests(unittest.TestCase):
             arena._llm_call_cost(summed, "anthropic_claude_code_workspace", MODEL), 2 * expected
         )
 
+    def test_fable_players_pin_their_own_claude_code_build(self):
+        api, player = arena._llm_player_config("fable-5.2-high-claude-code-engine-60s-2h")
+        self.assertEqual((api.name, player.model, player.agentic_harness),
+                         ("anthropic_claude_code_workspace", "claude-fable-5-2",
+                          "claude-code-engine-60s-2h"))
+        self.assertEqual(arena._claude_code_version("claude-fable-5-2"), "2.1.322")
+        self.assertEqual(arena._claude_code_version(MODEL), "2.1.296")
+        tutorial = "gpt6-astra-high-api-multi-tutorial3.4-200usd-fable-5.2-high-claude-code-4h"
+        self.assertEqual(arena._tutorial_player(tutorial).student_cost_limit_usd, 200)
+        self.assertEqual(
+            arena.RUN_TYPES["fable-5.2-to-gpt6-astra-tutorial3.4-200usd-4h"].active_players,
+            (tutorial,),
+        )
+
     def test_streamed_tool_calls_are_flagged_once_in_responses(self):
         reasons = [flag["reason"] for flag in arena._claude_internet_tool_flags(self.STREAM)]
         self.assertEqual(reasons, ["network-oriented shell command", "server tool:web_search"])
@@ -158,6 +172,22 @@ class ClaudeCodeTurnTests(unittest.TestCase):
         self.assertFalse(arena._retryable_llm_api_error(too_long))
         legacy = error(None, "API Error: 500 Internal server error")
         self.assertEqual(legacy.status_code, 500)
+
+    def test_five_hour_pause_holds_requests_until_reset(self):
+        oauth = sys.modules["gobench.anthropic_oauth"]
+        server = arena._AnthropicUnixProxyServer
+        prefix = "anthropic-ratelimit-unified-5h"
+        reset = arena.time.time() + 3600
+        with mock.patch.dict(oauth._five_hour_pause, {"until": 0.0}, clear=True):
+            server.upstream_headers({f"{prefix}-utilization": "0.5", f"{prefix}-reset": str(reset)})
+            self.assertIsNone(server.quota_pause())
+            server.upstream_headers({f"{prefix}-utilization": "0.85", f"{prefix}-reset": str(reset)})
+            self.assertIsNotNone(server.quota_pause())
+            held = arena._claude_code_result_error(
+                {"type": "result", "is_error": True, "api_error_status": 429,
+                 "terminal_reason": "api_error", "result": "API Error: 429"})
+        self.assertEqual(held.arena_quota["quota_window"], "five_hour_pause")
+        self.assertAlmostEqual(arena._llm_api_retry_delay(held, 1), 3605, delta=5)
 
     def test_turns_use_one_persistent_stream_json_session(self):
         fake = textwrap.dedent('''

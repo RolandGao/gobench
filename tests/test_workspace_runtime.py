@@ -267,6 +267,39 @@ class EvaluationTests(unittest.TestCase):
         self.assertGreater(clock.spent, 0)
         self.assertFalse(json.loads((self.root / "clock.json").read_text())["active"])
 
+    def test_preparation_quota_waits_pause_the_clock(self):
+        client = self.client(seconds=30)
+        now = [100.0]
+        client._clock = AgentClock(self.root / "clock.json", 30, monotonic=lambda: now[0])
+        clock = client._clock
+        client.settings = WorkspaceSettings()
+        client._resource_instructions = mock.Mock(return_value="resources")
+        client._persistent_thread = mock.Mock()
+        client._turn_options = mock.Mock(return_value={})
+        client._dispose_runtime = mock.Mock()
+        client._expire_runtime = mock.Mock()
+        quota = arena._ClaudeCodeTurnError("API Error: 429", status_code=429, retryable=True)
+        quota.arena_quota = {"quota_window": "five_hour_pause", "quota_reset_at": 0}
+        quota.arena_quota_retry_after = 3600
+
+        def turn(*_args, **_kwargs):
+            now[0] += 5 if client._run_turn.call_count == 1 else 25
+            if client._run_turn.call_count == 1:
+                raise quota
+            return mock.Mock(usage=None, final_response="done"), []
+
+        def wait(delay):
+            self.assertEqual(delay, 3600)
+            self.assertFalse(json.loads((self.root / "clock.json").read_text())["active"])
+            now[0] += delay
+
+        client._run_turn = mock.Mock(side_effect=turn)
+        with mock.patch.object(arena.time, "sleep", side_effect=wait) as sleep:
+            client._run_preparation()
+        sleep.assert_called_once()
+        self.assertEqual(client._run_turn.call_count, 2)
+        self.assertEqual(clock.spent, 30)
+
     def test_evaluation_404_retries_preserve_clock_and_exclude_backoff(self):
         client = self.client(seconds=30)
         now = [100.0]

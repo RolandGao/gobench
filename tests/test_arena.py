@@ -742,6 +742,8 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
             ("fable-5.1-high-api", "high"),
             ("fable-5.1-xhigh-api", "xhigh"),
             ("fable-5.1-max-api", "max"),
+            ("fable-5.2-high-api", "high"),
+            ("fable-5.2-max-api", "max"),
         )
         for base_name, effort in cases:
             for suffix in ("", "-multi"):

@@ -11,8 +11,12 @@ import errno
 import hashlib
 import json
 import math
+import getpass
 import os
+import re
 import socket
+import subprocess
+import sys
 import tempfile
 import threading
 import time
@@ -28,10 +32,15 @@ CLIENT_ID = "9d1c250a-e61b-44d9-88ed-5944d1962f5e"
 TOKEN_URL = "https://platform.claude.com/v1/oauth/token"
 HEADERS = {
     "anthropic-beta": "claude-code-20250219,oauth-2025-04-20",
-    "user-agent": "claude-cli/2.1.280",
+    "user-agent": "claude-cli/2.1.309",
     "x-app": "cli",
 }
 AUTH_POLL_SECONDS = 60
+# On macOS, Claude Code keeps its login in the login keychain, not a file.
+KEYCHAIN_SERVICE = "Claude Code-credentials"
+# Pause new requests once the account's five-hour window reaches this
+# fraction, leaving the rest for other Claude work. 1 waits for exhaustion.
+FIVE_HOUR_PAUSE_UTILIZATION = float(os.environ.get("ARENA_CLAUDE_5H_PAUSE_AT", "0.8"))
 
 
 class ClaudeOAuthError(RuntimeError):
@@ -127,9 +136,54 @@ def _directory_lock(lock):
             lock.rmdir()
 
 
+def _uses_keychain(path):
+    # Claude Code falls back to the file when the keychain is unavailable.
+    return (sys.platform == "darwin" and "ARENA_ANTHROPIC_AUTH_PATH" not in os.environ
+            and not path.exists())
+
+
+def _keychain(*args, stdin=None):
+    try:
+        return subprocess.run(
+            ["security", *args], input=stdin, capture_output=True, text=True,
+            check=True, timeout=30,
+        ).stdout
+    except (subprocess.SubprocessError, OSError):
+        # Never surface security's output: it may contain the secret.
+        raise OSError(f"cannot access the {KEYCHAIN_SERVICE!r} keychain item") from None
+
+
+def _keychain_account():
+    match = re.search(r'"acct"<blob>="([^"]*)"',
+                      _keychain("find-generic-password", "-s", KEYCHAIN_SERVICE))
+    return match[1] if match else getpass.getuser()
+
+
+def _auth_text(path):
+    if _uses_keychain(path):
+        return _keychain("find-generic-password", "-s", KEYCHAIN_SERVICE, "-w")
+    return path.read_text(encoding="utf-8")
+
+
+def _save_auth(path, data, check_lock):
+    if not _uses_keychain(path):
+        _atomic_json(path, data, check_lock)
+        return
+    check_lock()
+    text = json.dumps(data)
+    # Hex on stdin keeps the secret out of argv and needs no quoting.
+    _keychain("-i", stdin=(
+        f'add-generic-password -U -a "{_keychain_account()}" '
+        f'-s "{KEYCHAIN_SERVICE}" -X {text.encode().hex()}\n'
+    ))
+    # security -i reports command failures on stderr but still exits 0.
+    if _auth_text(path).strip() != text:
+        raise OSError(f"cannot save the {KEYCHAIN_SERVICE!r} keychain item")
+
+
 def _read_auth(path):
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = json.loads(_auth_text(path))
         cred = data["claudeAiOauth"]
         if not _valid_token(cred["accessToken"]):
             raise ValueError
@@ -140,7 +194,8 @@ def _read_auth(path):
         return data, cred
     except (OSError, KeyError, TypeError, ValueError):
         raise ClaudeOAuthError(
-            f"A Claude subscription OAuth login is required at {path}; "
+            f"A Claude subscription OAuth login is required at "
+            f"{f'the {KEYCHAIN_SERVICE!r} keychain item' if _uses_keychain(path) else path}; "
             "sign in with Claude Code, or set ARENA_ANTHROPIC_AUTH_PATH "
             "to your Claude Code .credentials.json"
         ) from None
@@ -336,7 +391,7 @@ def access_token(*, rejected_token=None):
                 return latest["accessToken"]
             raise ClaudeOAuthError("Claude credentials changed during refresh", retryable=True)
         data["claudeAiOauth"] = latest | updated
-        _atomic_json(path, data, check_lock)
+        _save_auth(path, data, check_lock)
         check_lock()
         path.with_name(f"{path.name}.arena-refresh.json").unlink(missing_ok=True)
         return updated["accessToken"]
@@ -430,6 +485,42 @@ def _quota_wait(exc):
         exc.arena_quota = {"quota_window": "unknown"}
 
 
+_five_hour_pause = {"until": 0.0}
+_five_hour_pause_lock = threading.Lock()
+
+
+def note_five_hour_usage(headers):
+    """Successful responses report account-wide use, including other Claude work."""
+    prefix = "anthropic-ratelimit-unified-5h"
+    utilization = _number(headers.get(f"{prefix}-utilization"))
+    reset = _timestamp(headers.get(f"{prefix}-reset"))
+    if (utilization is None or reset is None or reset <= time.time()
+            or utilization < FIVE_HOUR_PAUSE_UTILIZATION):
+        return
+    with _five_hour_pause_lock:
+        _five_hour_pause["until"] = max(_five_hour_pause["until"], reset)
+        _five_hour_pause["utilization"] = utilization
+
+
+def five_hour_wait():
+    """Hold requests before sending, so no paid turn is discarded."""
+    with _five_hour_pause_lock:
+        reset = _five_hour_pause["until"]
+        utilization = _five_hour_pause.get("utilization")
+    now = time.time()
+    if reset <= now:
+        return None
+    error = ClaudeOAuthError(
+        f"Claude five-hour usage reached {utilization:.0%} "
+        f"(pause threshold {FIVE_HOUR_PAUSE_UTILIZATION:.0%})",
+        retryable=True,
+    )
+    error.arena_auth_mode = "oauth"
+    error.arena_quota_retry_after = reset - now + 5
+    error.arena_quota = {"quota_window": "five_hour_pause", "quota_reset_at": reset}
+    return error
+
+
 class AnthropicClient:
     """Subscription-only Messages transport; the arena owns waiting and retries."""
 
@@ -453,6 +544,8 @@ class AnthropicClient:
         self._client.close()
 
     def create(self, **request):
+        if (pause := five_hour_wait()) is not None:
+            raise pause
         # Authentication runs inside arena's logged retry loop, even at startup.
         try:
             token = access_token(rejected_token=self._force_refresh)
@@ -520,6 +613,7 @@ class AnthropicClient:
                         "Claude OAuth stream ended without message_stop", retryable=True
                     )
                 response = stream.get_final_message()
+                note_five_hour_usage(getattr(getattr(stream, "response", None), "headers", {}))
         except (httpx2.TransportError, ClaudeOAuthError) as exc:
             error = exc if isinstance(exc, ClaudeOAuthError) else ClaudeOAuthError(
                 "Claude OAuth stream transport failed", retryable=True

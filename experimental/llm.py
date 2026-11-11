@@ -124,6 +124,8 @@ MODEL_REGISTRY = (
               ("opus-5",)),
     ModelSpec("anthropic", "claude-fable-5-1", ("low", "medium", "high", "xhigh", "max"),
               ("fable-5.1",)),
+    ModelSpec("anthropic", "claude-fable-5-2", ("low", "medium", "high", "xhigh", "max"),
+              ("fable-5.2",)),
 )
 
 

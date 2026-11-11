@@ -111,6 +111,7 @@ class ClaudeOAuthTests(unittest.TestCase):
         self.stack.enter_context(mock.patch.object(
             arena.subprocess, "Popen", side_effect=AssertionError("Agent process launched")
         ))
+        self.stack.enter_context(mock.patch.dict(oauth._five_hour_pause, {"until": 0.0}, clear=True))
         self.requests = []
         self.reply = lambda: sse(message_events())
         sdk_class = anthropic.Anthropic
@@ -230,6 +231,73 @@ class ClaudeOAuthTests(unittest.TestCase):
         recovered = self.client(name)
         self.assertEqual(self.call(recovered, name, move=3), ("D4", 0, 0))
         self.assertEqual(len(self.requests), 3)
+
+    def test_five_hour_usage_threshold_pauses_before_the_next_request(self):
+        name = "opus-5-high-api-multi2"
+        prefix = "anthropic-ratelimit-unified-5h"
+        reset = time.time() + 3600
+
+        def reply(utilization):
+            response = sse(message_events())
+            response.headers[f"{prefix}-utilization"] = str(utilization)
+            response.headers[f"{prefix}-reset"] = str(reset)
+            return response
+
+        client = self.client(name)
+        replies = iter([reply(0.79), reply(0.81), reply(0.2)])
+        self.reply = lambda: next(replies)
+        # The mocked sleep stands in for waiting until the window resets.
+        with (mock.patch.object(arena._Arena, "LLM_API_MAX_ATTEMPTS", 0),
+              mock.patch.object(arena.time, "sleep", side_effect=lambda _seconds:
+                                oauth._five_hour_pause.update(until=0.0)) as sleep):
+            self.call(client, name)
+            self.call(client, name, move=3)
+            sleep.assert_not_called()
+            self.assertEqual(self.call(client, name, move=5)[0], "D4")
+        self.assertEqual(len(self.requests), 3)
+        sleep.assert_called_once()
+        self.assertAlmostEqual(sleep.call_args[0][0], reset - time.time() + 5, delta=5)
+        entries = [json.loads(line) for line in (self.root / "compact.jsonl").read_text().splitlines()]
+        self.assertEqual(entries[2]["recovery_action"], "wait_for_quota_reset")
+        self.assertEqual(entries[2]["quota_window"], "five_hour_pause")
+
+    def test_macos_keychain_login_is_read_and_refreshed_in_place(self):
+        config = self.root / "claude"
+        config.mkdir()
+        self.write_auth(expires=0)
+        stored = {"secret": self.auth.read_text()}
+        commands = []
+
+        def security(args, *, input=None, **_kwargs):
+            commands.append((args, input))
+            if args[1:] == ["find-generic-password", "-s", oauth.KEYCHAIN_SERVICE, "-w"]:
+                return mock.Mock(stdout=stored["secret"] + "\n")
+            if args[1:] == ["find-generic-password", "-s", oauth.KEYCHAIN_SERVICE]:
+                return mock.Mock(stdout='    "acct"<blob>="player"\n')
+            if args[1:] == ["-i"]:
+                hexed = input.split(" -X ")[1].strip()
+                stored["secret"] = bytes.fromhex(hexed).decode()
+                return mock.Mock(stdout="")
+            raise AssertionError(args)
+
+        updated = {"accessToken": "sk-ant-oat-renewed", "refreshToken": "rotated",
+                   "expiresAt": time.time() * 1000 + 3600000}
+        os.environ.pop("ARENA_ANTHROPIC_AUTH_PATH")
+        with (mock.patch.dict(os.environ, {"CLAUDE_CONFIG_DIR": str(config)}),
+              mock.patch.object(oauth.sys, "platform", "darwin"),
+              mock.patch.object(oauth.subprocess, "run", side_effect=security),
+              mock.patch.object(oauth, "_refresh", return_value=updated)):
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-renewed")
+            self.assertEqual(oauth.access_token(), "sk-ant-oat-renewed")
+        saved = json.loads(stored["secret"])
+        self.assertEqual(saved["claudeAiOauth"]["refreshToken"], "rotated")
+        self.assertEqual(saved["claudeAiOauth"]["subscriptionType"], "max")
+        self.assertEqual(saved["organizationUuid"], "organization-id")
+        self.assertIn('-a "player"', [i for a, i in commands if a[1:] == ["-i"]][0])
+        # The secret travels on stdin, never in argv.
+        self.assertFalse(any("renewed" in " ".join(a) or "rotated" in " ".join(a)
+                             for a, _ in commands))
+        self.assertFalse((config / ".credentials.json").exists())
 
     def test_quota_reset_timing(self):
         prefix = "anthropic-ratelimit-unified"

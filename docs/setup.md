@@ -227,23 +227,25 @@ the agent runtime differs.
 | `claude-code-4h` | 4 hours |
 | `claude-code-8h` | 8 hours |
 
-Players are named like `claude-opus-5-5-high-claude-code-4h` (efforts `low`
-through `max`; numbered replicas such as `...-claude-code-4h2` keep the
-budget). Select them in `CONFIG` or with `python3 arena.py --run-type
+Players are named like `claude-opus-5-5-high-claude-code-4h` or
+`fable-5.2-high-claude-code-4h` (efforts `low` through `max`; numbered
+replicas such as `...-claude-code-4h2` keep the budget). Select them in `CONFIG` or with `python3 arena.py --run-type
 claude-code-4h`, which evaluates `claude-opus-5-5-high-claude-code-4h`.
 
 Requirements, in addition to the Codex workspace host requirements above:
 
 - The **native** Claude Code executable for Linux (the self-contained ELF
-  build, not the npm package), pinned to **2.1.296**
-  (`CLAUDE_CODE_VERSION` in `gobench/workspace_runtime.py`):
+  build, not the npm package), pinned per model: Opus 5.5 uses **2.1.296**
+  (`CLAUDE_CODE_VERSION` in `gobench/workspace_runtime.py`) and Fable 5.2 uses
+  **2.1.322** (`CLAUDE_CODE_MODEL_VERSIONS`):
 
   ```sh
   curl -fsSL https://claude.ai/install.sh | bash -s 2.1.296
+  curl -fsSL https://claude.ai/install.sh | bash -s 2.1.322
   ```
 
   Arena uses `ARENA_CLAUDE_CODE_BIN` when set, otherwise
-  `~/.local/share/claude/versions/2.1.296`, otherwise `claude` on `PATH`; any
+  `~/.local/share/claude/versions/<version>`, otherwise `claude` on `PATH`; any
   other version is rejected. Because the versioned file is used directly, a
   later auto-update of `claude` on `PATH` does not affect runs. The binary's
   SHA-256 is also recorded in the checkpoint specification.
@@ -264,6 +266,13 @@ token); the host-side proxy accepts only `POST /v1/messages` (and
 Anthropic-defined server tools (web search, web fetch, code execution), and
 re-signs each request with the host login. Missing or rejected host
 credentials pause the move, as for the Claude API players.
+
+Claude API and Claude Code players share one five-hour subscription pause:
+once a response reports five-hour utilization at or above
+`ARENA_CLAUDE_5H_PAUSE_AT` (default 0.8), new requests wait for that window's
+reset. The proxy answers held Claude Code requests with HTTP 429; the arena
+then waits with the agent clock paused, including during preparation, where
+ordinary retry overhead still counts against the training clock.
 
 Every exchange is logged to `anthropic-proxy.jsonl` beside the phase's clock,
 with streamed tool calls checked for internet use. Per-request usage goes to

@@ -37,6 +37,7 @@ class PricingTests(unittest.TestCase):
             "claude-opus-5-5": (4, .2, 20),
             "claude-sonnet-5-5": (2, .2, 10),
             "claude-fable-5-1": (10, .25, 50),
+            "claude-fable-5-2": (8, .2, 40),
         }
         for api in arena._Arena.LLM_APIS:
             for name, player in api.players.items():

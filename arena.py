@@ -50,6 +50,8 @@ from gobench.anthropic_oauth import IDENTITY as CLAUDE_OAUTH_IDENTITY
 from gobench.anthropic_oauth import AnthropicClient, ClaudeOAuthError
 from gobench.anthropic_oauth import AUTH_POLL_SECONDS as CLAUDE_AUTH_POLL_SECONDS
 from gobench.anthropic_oauth import access_token as _claude_oauth_access_token
+from gobench.anthropic_oauth import five_hour_wait as _claude_five_hour_wait
+from gobench.anthropic_oauth import note_five_hour_usage as _claude_note_five_hour_usage
 from gobench.arena_config import (
     ArenaConfig,
     _CHEAP_B6C96_PLAYER_POOL,
@@ -85,8 +87,8 @@ from gobench.workspace_runtime import (
     WorkspaceTimeExpired,
     WorkspaceVolume,
     atomic_json as _workspace_atomic_json,
-    CLAUDE_CODE_VERSION,
     claude_code_runtime_identity as _claude_code_runtime_identity,
+    claude_code_version as _claude_code_version,
     copy_image as _copy_workspace_image,
     file_sha256 as _workspace_file_sha256,
     read_json as _workspace_read_json,
@@ -284,9 +286,12 @@ CONFIG = ArenaConfig(
         # "gpt5.6-sol-high-codex-engine-60s-8h",
         # "claude-opus-5-5-high-claude-code-engine-60s-1h",
         # "claude-opus-5-5-high-claude-code-engine-60s-2h",
-        "claude-opus-5-5-high-claude-code-engine-60s-4h",
+        # "claude-opus-5-5-high-claude-code-engine-60s-4h",
         # "DeepSeek-V4.1-Flash-1017-high-api-multi",
         # "DeepSeek-V4.1-Flash-1017-max-api-multi",
+        # "fable-5.2-high-api-multi",
+        "fable-5.2-high-claude-code-engine-60s-1h",
+        "fable-5.2-high-claude-code-engine-60s-2h",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
     total_games=300,
@@ -770,13 +775,17 @@ class _Arena:
                 name: player
                 for harness in (*_CLAUDE_CODE_TRAINING_SECONDS,
                                 *_CLAUDE_CODE_ENGINE_TRAINING_SECONDS)
+                for label, model, prices, cache_write_price in (
+                    ("claude-opus-5-5", "claude-opus-5-5", (4.0, 0.2, 20.0), 5.0),
+                    ("fable-5.2", "claude-fable-5-2", (8.0, 0.2, 40.0), 10.0),
+                )
                 for name, player in _llm_effort_players(
-                    "claude-opus-5-5", "claude-opus-5-5",
+                    label, model,
                     ("low", "medium", "high", "xhigh", "max"),
-                    (4.0, 0.2, 20.0),
+                    prices,
                     suffix=harness,
                     agentic_harness=harness,
-                    cache_write_price=5.0,
+                    cache_write_price=cache_write_price,
                     max_output_tokens=128_000,
                 ).items()
             },
@@ -1140,6 +1149,17 @@ class _Arena:
         _LLMAPIConfig(
             name="anthropic",
             players={
+                # Fable 5.2 rates, efforts, and limits checked 2026-11-10:
+                # https://platform.claude.com/docs/en/about-claude/pricing
+                # https://platform.claude.com/docs/en/models/fable-5-2/overview
+                **_llm_effort_players(
+                    "fable-5.2",
+                    "claude-fable-5-2",
+                    ("low", "medium", "high", "xhigh", "max"),
+                    (8.0, 0.2, 40.0),
+                    cache_write_price=10.0,
+                    max_output_tokens=128_000,
+                ),
                 **_llm_effort_players(
                     "fable-5.1",
                     "claude-fable-5-1",
@@ -8342,6 +8362,9 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                     or filtered_body.get("model") != self.server.allowed_model):
                 self._error_response(403, "request must use this player's configured model")
                 return
+            if (pause := self.server.quota_pause()) is not None:
+                self._error_response(429, str(pause))
+                return
 
         connection = None
         tracked_socket = None
@@ -8428,6 +8451,9 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
             status = upstream.status
             self.server.upstream_status(status, credential)
             upstream_headers = upstream.getheaders()
+            self.server.upstream_headers(
+                {name.lower(): value for name, value in upstream_headers}
+            )
             response_headers = dict(upstream_headers)
             content_type = next(
                 (
@@ -8581,6 +8607,14 @@ class _OpenAIUnixProxyServer(
         return dict(credential.headers)
 
     def upstream_status(self, _status, _credential):
+        return
+
+    @staticmethod
+    def quota_pause():
+        return None
+
+    @staticmethod
+    def upstream_headers(_headers):
         return
 
     @staticmethod
@@ -8814,6 +8848,15 @@ class _AnthropicUnixProxyServer(_OpenAIUnixProxyServer):
         if self.OAUTH_BETA not in betas:
             betas.append(self.OAUTH_BETA)
         return {"anthropic-beta": ",".join(betas)}
+
+    @staticmethod
+    def quota_pause():
+        # Claude Code shares the account's five-hour pause with API players.
+        return _claude_five_hour_wait()
+
+    @staticmethod
+    def upstream_headers(headers):
+        _claude_note_five_hour_usage(headers)
 
     def upstream_status(self, status, credential):
         # One rejected access token forces a coordinated refresh next request.
@@ -9689,14 +9732,22 @@ class _CodexGameClient:
                         ) or not _workspace_codex_transport_failure(exc)):
                         raise
                     self._dispose_runtime()
-                    # The training clock continues through retry overhead.
-                    delay = min(_llm_api_retry_delay(exc, failures), self._clock.remaining)
+                    delay = _llm_api_retry_delay(exc, failures)
+                    quota = getattr(exc, "arena_quota", None)
+                    if quota is not None:
+                        # Waiting for the account's quota reset is not agent time.
+                        self._clock.pause()
+                    else:
+                        # The training clock continues through retry overhead.
+                        delay = min(delay, self._clock.remaining)
                     _append_jsonl(self._phase_dir / "training-events.jsonl", {
                         "event": "preparation_retry", "attempt": failures,
                         "error": type(exc).__name__, "http_status": _llm_api_error(exc)[1],
-                        "retry_in_seconds": delay,
+                        "retry_in_seconds": delay, "quota": quota,
                     })
                     time.sleep(max(delay, 0))
+                    if quota is not None:
+                        self._clock.start(self._expire_runtime)
                     if self._clock.remaining <= 0:
                         break
                     self._start_runtime()
@@ -10796,20 +10847,20 @@ class _CodexEngineGameClient(_CodeOnlyEvaluationMixin, _CodexGameClient):
     run_config_key = "codex_engine_workspace"
 
 
-def _claude_code_binary():
+def _claude_code_binary(version):
     """The pinned, self-contained native Claude Code executable mounted into the sandbox.
 
     The native installer keeps every version under ~/.local/share/claude/versions,
     so the pinned build is used even after `claude` on PATH auto-updates.
     """
-    pinned = Path.home() / ".local/share/claude/versions" / CLAUDE_CODE_VERSION
+    pinned = Path.home() / ".local/share/claude/versions" / version
     configured = (os.environ.get("ARENA_CLAUDE_CODE_BIN")
                   or (str(pinned) if pinned.is_file() else None)
                   or shutil.which("claude"))
     if not configured:
         raise ArenaError(
-            f"Claude Code {CLAUDE_CODE_VERSION} is required for claude-code players; install it "
-            f"with `curl -fsSL https://claude.ai/install.sh | bash -s {CLAUDE_CODE_VERSION}`"
+            f"Claude Code {version} is required for claude-code players; install it "
+            f"with `curl -fsSL https://claude.ai/install.sh | bash -s {version}`"
         )
     path = Path(configured).expanduser().resolve()
     if not path.is_file() or not os.access(path, os.X_OK):
@@ -10854,7 +10905,12 @@ def _claude_code_result_error(event):
         # The arena proxy's own policy refusals are not authentication failures.
         return _ClaudeCodeTurnError(message)
     retryable = status is not None and (status in {408, 409, 429} or status >= 500)
-    return _ClaudeCodeTurnError(message, status_code=status, retryable=retryable)
+    error = _ClaudeCodeTurnError(message, status_code=status, retryable=retryable)
+    if status == 429 and (pause := _claude_five_hour_wait()) is not None:
+        # The proxy held the request at the five-hour pause; wait for its reset.
+        error.arena_quota = pause.arena_quota
+        error.arena_quota_retry_after = pause.arena_quota_retry_after
+    return error
 
 
 @dataclass(frozen=True)
@@ -11049,8 +11105,9 @@ class _ClaudeCodeGameClient(_CodexGameClient):
 
     def _runtime_specification(self):
         options = {"environment": self._environment(), "cli": list(self._cli_options())}
+        version = _claude_code_version(self.player.model)
         return {
-            "runtime": _claude_code_runtime_identity(_claude_code_binary()),
+            "runtime": _claude_code_runtime_identity(_claude_code_binary(version), version),
             "claude_code_options_sha256": hashlib.sha256(
                 json.dumps(options, sort_keys=True).encode()
             ).hexdigest(),
@@ -11094,7 +11151,7 @@ class _ClaudeCodeGameClient(_CodexGameClient):
         return projects.is_dir() and any(projects.glob(f"*/{session}.jsonl"))
 
     def _workspace_runtime(self, workspace, runtime_dir, proxy_log):
-        binary = _claude_code_binary()
+        binary = _claude_code_binary(_claude_code_version(self.player.model))
         runtime_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         claude_home = runtime_dir / "claude-home"
         claude_home.mkdir(mode=0o700, exist_ok=True)

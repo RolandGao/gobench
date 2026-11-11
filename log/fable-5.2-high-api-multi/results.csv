@@ -1,0 +1,17 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,fable-5.2-high-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,fable-5.2-high-api-multi,1,44,anthropic_messages_api,22,0,0,433.385455,2.033459000000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,fable-5.2-high-api-multi,W+R,fable-5.2-high-api-multi,0,45,anthropic_messages_api,22,0,0,210.888601,1.026392800000
+3,2,fable-5.2-high-api-multi,kata1-b6c96-s21371392-d3529696,W+38.0,kata1-b6c96-s21371392-d3529696,0,84,anthropic_messages_api,42,0,0,2148.733713,10.770237200000
+4,2,kata1-b6c96-s21371392-d3529696,fable-5.2-high-api-multi,W+R,fable-5.2-high-api-multi,0,41,anthropic_messages_api,20,0,0,1392.364686,6.290577000000
+5,3,fable-5.2-high-api-multi,kata1-b6c96-s21371392-d3529696,W+88.0,kata1-b6c96-s21371392-d3529696,0,96,anthropic_messages_api,48,0,0,1825.983585,8.791944200000
+6,3,kata1-b6c96-s21371392-d3529696,fable-5.2-high-api-multi,B+48.0,kata1-b6c96-s21371392-d3529696,1,99,anthropic_messages_api,49,0,0,1075.689837,5.292717200000
+7,4,fable-5.2-high-api-multi,kata1-b6c96-s18429184-d3197121,B+R,fable-5.2-high-api-multi,1,52,anthropic_messages_api,26,0,0,1407.432903,7.280931200000
+8,4,kata1-b6c96-s18429184-d3197121,fable-5.2-high-api-multi,W+R,fable-5.2-high-api-multi,0,61,anthropic_messages_api,30,0,0,319.851134,1.793032400000
+9,5,fable-5.2-high-api-multi,kata1-b6c96-s20302336-d3388395,B+R,fable-5.2-high-api-multi,1,48,anthropic_messages_api,24,0,0,1067.808096,4.822023600000
+10,5,kata1-b6c96-s20302336-d3388395,fable-5.2-high-api-multi,0,,0.5,85,anthropic_messages_api,42,0,0,1609.091039,7.599507800000
+11,6,fable-5.2-high-api-multi,kata1-b6c96-s21371392-d3529696,W+40.0,kata1-b6c96-s21371392-d3529696,0,94,anthropic_messages_api,47,0,0,2419.967950,12.359646200000
+12,6,kata1-b6c96-s21371392-d3529696,fable-5.2-high-api-multi,B+22.0,kata1-b6c96-s21371392-d3529696,1,81,anthropic_messages_api,40,0,0,1252.042540,5.909833800000
+13,7,fable-5.2-high-api-multi,kata1-b6c96-s20302336-d3388395,B+R,fable-5.2-high-api-multi,1,56,anthropic_messages_api,28,0,0,707.225044,3.143317000000
+14,7,kata1-b6c96-s20302336-d3388395,fable-5.2-high-api-multi,B+14.0,kata1-b6c96-s20302336-d3388395,1,110,anthropic_messages_api,55,0,0,1774.386889,8.549688200000
+15,8,fable-5.2-high-api-multi,kata1-b6c96-s20302336-d3388395,B+2.0,fable-5.2-high-api-multi,1,59,anthropic_messages_api,30,0,0,638.738746,2.999388200000
+16,8,kata1-b6c96-s20302336-d3388395,fable-5.2-high-api-multi,W+4.0,fable-5.2-high-api-multi,0,66,anthropic_messages_api,33,0,0,684.914190,3.220890800000
