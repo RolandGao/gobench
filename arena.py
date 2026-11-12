@@ -194,6 +194,7 @@ _FINAL_RUNS = (
     # Track 3.4 with a $200 student budget.
     "gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6-astra-high-codex-4h",
     "gpt6-astra-high-api-multi-tutorial3.4-200usd-claude-opus-5-5-high-claude-code-4h",
+    "gpt6-astra-high-api-multi-tutorial3.4-200usd-fable-5.2-high-claude-code-4h",
     # Track 2 with code-only evaluation (5-minute clock).
     # "gpt6-astra-high-codex-engine-1h",
     # "gpt6-astra-high-codex-engine-2h",
@@ -217,6 +218,7 @@ _FINAL_RUNS = (
     "claude-opus-5-5-high-claude-code-engine-60s-4h",
     "fable-5.2-high-claude-code-engine-60s-1h",
     "fable-5.2-high-claude-code-engine-60s-2h",
+    "fable-5.2-high-claude-code-engine-60s-4h",
     "DeepSeek-V4.1-Flash-1017-max-api-multi",
 )
 
