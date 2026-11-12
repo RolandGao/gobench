@@ -3607,6 +3607,13 @@ class _OAuthResponseError(ArenaError):
         self.body = {"retryable": retryable}
 
 
+# Codex backend error codes for temporary server conditions, including
+# "Our servers are currently overloaded" (server_is_overloaded).
+_OPENAI_OAUTH_RETRYABLE_CODES = frozenset(
+    {"server_error", "rate_limit_exceeded", "server_is_overloaded", "slow_down"}
+)
+
+
 class _OpenAIOAuthClient:
     """Use the SDK only as an HTTP/SSE transport for the Codex OAuth endpoint.
 
@@ -3629,6 +3636,7 @@ class _OpenAIOAuthClient:
 
     def create(self, **request):
         from httpx2 import TransportError
+        from openai import APIError, APIStatusError
 
         credential = _openai_oauth_proxy_credential()
         headers = dict(credential.headers) | {
@@ -3652,6 +3660,15 @@ class _OpenAIOAuthClient:
             raise _OAuthResponseError(
                 "OAuth stream transport failed", retryable=True
             ) from exc
+        except APIError as exc:
+            if isinstance(exc, APIStatusError):
+                raise
+            # The SDK raises a bare APIError, without an HTTP status, for an
+            # error payload received inside an otherwise successful stream.
+            raise _OAuthResponseError(
+                f"OAuth stream error ({exc.code}): {exc.message}",
+                retryable=bool({exc.code, exc.type} & _OPENAI_OAUTH_RETRYABLE_CODES),
+            ) from exc
 
     @staticmethod
     def _read_response(stream):
@@ -3672,12 +3689,12 @@ class _OpenAIOAuthClient:
                 code = getattr(detail, "code", "")
                 raise _OAuthResponseError(
                     f"OAuth response {response.status}: {detail}",
-                    retryable=code in {"server_error", "rate_limit_exceeded"},
+                    retryable=code in _OPENAI_OAUTH_RETRYABLE_CODES,
                 )
             elif event.type == "error":
                 raise _OAuthResponseError(
                     f"OAuth response error ({event.code}): {event.message}",
-                    retryable=event.code in {"server_error", "rate_limit_exceeded"},
+                    retryable=event.code in _OPENAI_OAUTH_RETRYABLE_CODES,
                 )
         raise _OAuthResponseError(
             "OAuth stream ended without a completed response", retryable=True

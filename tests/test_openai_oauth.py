@@ -387,12 +387,39 @@ class OAuthTests(unittest.TestCase):
                     arena._llm_api_retry_delay(raised.exception, 1), 120
                 )
 
+    def test_stream_error_payloads_retry_only_temporary_conditions(self):
+        client = self.client()
+        api, player = arena._llm_player_config("gpt5.6-sol-high-api")
+        request = arena._llm_request(api, player, "prompt")
+        for code, retryable in (
+            ("server_is_overloaded", True),
+            ("slow_down", True),
+            ("server_error", True),
+            ("invalid_prompt", False),
+        ):
+            with self.subTest(code=code):
+                # The SDK raises a status-less APIError for these payloads.
+                self.reply = lambda: sse([{
+                    "type": "error",
+                    "error": {
+                        "type": "invalid_request_error",
+                        "code": code,
+                        "message": "Our servers are currently overloaded.",
+                    },
+                }])
+                with self.assertRaisesRegex(arena.ArenaError, code) as raised:
+                    client.create(**request)
+                self.assertEqual(
+                    arena._retryable_llm_api_error(raised.exception), retryable
+                )
+
     def test_failed_and_incomplete_responses_are_not_moves(self):
         client = self.client()
         api, player = arena._llm_player_config("gpt5.6-sol-high-api")
         request = arena._llm_request(api, player, "prompt")
         for status, code, retryable in (
             ("failed", "server_error", True),
+            ("failed", "server_is_overloaded", True),
             ("failed", "context_length_exceeded", False),
             ("incomplete", "max_output_tokens", False),
         ):
