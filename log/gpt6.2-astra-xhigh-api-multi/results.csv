@@ -15,3 +15,17 @@ game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_ille
 14,7,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,B+14.0,kata1-b6c96-s18429184-d3197121,1,103,openai_responses_api,51,0,0,1487.070061,2.140366400000
 15,8,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,W+20.0,kata1-b6c96-s18429184-d3197121,0,90,openai_responses_api,45,0,0,915.259038,1.309548800000
 16,8,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s18429184-d3197121,1,66,openai_responses_api,33,0,0,914.295888,1.493179200000
+17,9,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s17434112-d3038653,B+R,gpt6.2-astra-xhigh-api-multi,1,28,openai_responses_api,14,0,0,248.377956,0.392536000000
+18,9,kata1-b6c96-s17434112-d3038653,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s17434112-d3038653,1,94,openai_responses_api,47,0,0,1033.706083,2.083118400000
+19,10,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s17434112-d3038653,B+R,gpt6.2-astra-xhigh-api-multi,1,50,openai_responses_api,25,0,0,625.999105,1.078337600000
+20,10,kata1-b6c96-s17434112-d3038653,gpt6.2-astra-xhigh-api-multi,W+2.0,gpt6.2-astra-xhigh-api-multi,0,76,openai_responses_api,38,0,0,1077.401193,1.841254400000
+21,11,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,W+R,kata1-b6c96-s18429184-d3197121,0,79,openai_responses_api,40,0,0,1155.775525,1.805604800000
+22,11,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,W+2.0,gpt6.2-astra-xhigh-api-multi,0,75,openai_responses_api,37,0,0,543.293717,1.127947200000
+23,12,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,W+R,kata1-b6c96-s18429184-d3197121,0,69,openai_responses_api,35,0,0,842.660544,1.569528000000
+24,12,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,W+R,gpt6.2-astra-xhigh-api-multi,0,49,openai_responses_api,24,0,0,551.003273,0.936412800000
+25,13,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,B+R,gpt6.2-astra-xhigh-api-multi,1,30,openai_responses_api,15,0,0,271.555971,0.346436800000
+26,13,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,W+R,gpt6.2-astra-xhigh-api-multi,0,57,openai_responses_api,28,0,0,943.955997,1.429750400000
+27,14,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,W+R,kata1-b6c96-s18429184-d3197121,0,63,openai_responses_api,32,0,0,917.223890,1.207800000000
+28,14,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s18429184-d3197121,1,78,openai_responses_api,39,0,0,900.305199,1.129934400000
+29,15,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,B+4.0,gpt6.2-astra-xhigh-api-multi,1,65,openai_responses_api,33,0,0,604.745925,0.868966400000
+30,15,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,B+22.0,kata1-b6c96-s18429184-d3197121,1,105,openai_responses_api,52,0,0,1719.257367,2.502444800000
