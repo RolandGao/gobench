@@ -13,6 +13,7 @@
 | `paper_learning_results.json` | Frozen Section 3.2 Astra/Sol Codex results, including the preliminary 10-game Sol 4h evaluation, source hashes, and termination counts |
 | `katago_network_speed_elo.txt` | Recorded network speed and Elo comparison |
 | `tutorials/katago_book_9x9tt.md` | Track 3 tutorial (under 5,000 tokens) converted from KataGo's 9x9 Tromp-Taylor opening book |
+| `tutorials/katago_book_9x9tt_v2.md` | The book aimed at GPT-6 Astra's mistakes against logged opponent moves; `_v2_probes.jsonl` holds the student's probed answers |
 
 Compact arena records remain in [log/](../log/). The
 [analysis commands](../analysis/README.md) read these records and generate

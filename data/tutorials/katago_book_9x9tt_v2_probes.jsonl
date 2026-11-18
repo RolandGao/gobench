@@ -1,0 +1,967 @@
+{"player": "gpt6-astra-high-api-multi", "path": [], "move": "E5", "outputs": ["E5"], "cost_usd": 0.0}
+{"player": "gpt6-astra-high-api-multi", "path": ["J7"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00715}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.01381}
+{"player": "gpt6-astra-high-api-multi", "path": ["J8"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00735}
+{"player": "gpt6-astra-high-api-multi", "path": ["J6"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.0072}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.008}
+{"player": "gpt6-astra-high-api-multi", "path": ["G6"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.0092}
+{"player": "gpt6-astra-high-api-multi", "path": ["H5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00794}
+{"player": "gpt6-astra-high-api-multi", "path": ["G5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.01005}
+{"player": "gpt6-astra-high-api-multi", "path": ["J9"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00725}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.011}
+{"player": "gpt6-astra-high-api-multi", "path": ["H7"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00764}
+{"player": "gpt6-astra-high-api-multi", "path": ["H6"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00829}
+{"player": "gpt6-astra-high-api-multi", "path": ["J5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00775}
+{"player": "gpt6-astra-high-api-multi", "path": ["G7"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.01345}
+{"player": "gpt6-astra-high-api-multi", "path": ["H8"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.00844}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01101}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "H5"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.01377}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01161}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.01251}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01411}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01602}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "H6"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01712}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.00803}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01358}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01222}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01123}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01347}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01373}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.01471}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01494}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01229}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01428}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01673}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01894}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01184}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01345}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01438}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01289}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01209}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01794}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01843}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02754}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01445}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01434}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01858}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01531}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02061}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.02193}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02481}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02974}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.01526}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0151}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7"], "move": "H6", "outputs": ["H6"], "cost_usd": 0.01695}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01667}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01856}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E4"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02036}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02257}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02857}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.01059}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02083}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01273}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.01946}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02135}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02147}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02444}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02984}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02903}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.00991}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01907}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0149}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0146}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02039}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02289}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02402}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.03015}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01123}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E4"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01816}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01403}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02248}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.02413}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.025}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.0285}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03163}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01333}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01326}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E4", "D4", "D3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01461}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01613}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0123}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02371}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "C4"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.02118}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02698}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.05751}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01236}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01469}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01358}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01775}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01852}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.0296}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02972}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0313}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01028}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01441}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "C8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01512}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02004}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.0175}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.027}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01804}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02503}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "C4", "B5", "E7"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.03802}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7", "C7", "E7"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01169}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01427}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01471}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.01923}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "H7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02567}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.02606}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4"], "move": "B5", "outputs": ["B5"], "cost_usd": 0.03343}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5", "G3", "C4"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.05241}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01461}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01671}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E4"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01349}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01959}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.02134}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.02329}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "D8"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.03824}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.0301}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3"], "move": "B6", "outputs": ["B6"], "cost_usd": 0.04728}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "C6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.00962}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "F3"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01022}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5", "G3", "C4", "B5", "E3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.0134}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.01716}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01644}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01789}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02345}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "H7", "E6", "E7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03066}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.01255}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01809}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.01731}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0229}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.02286}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "C3"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.02345}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01601}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8"], "move": "E8", "outputs": ["E8"], "cost_usd": 0.04815}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8"], "move": "E8", "outputs": ["E8"], "cost_usd": 0.0823}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01049}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "F3", "G4", "H5"], "move": "H4", "outputs": ["H4"], "cost_usd": 0.0144}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01805}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02517}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.0261}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B5"], "move": "H6", "outputs": ["H6"], "cost_usd": 0.03148}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02863}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2"], "move": "C8", "outputs": ["C8"], "cost_usd": 0.04502}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01166}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01619}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01591}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01594}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01858}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "C4"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.01596}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02586}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02801}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "H5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02941}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01066}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "F3", "G4", "H5", "E3", "D4"], "move": "H4", "outputs": ["H4"], "cost_usd": 0.02159}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B5", "C3", "B3"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.02547}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "F7"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.03043}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04092}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "C6", "D5", "C8"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.03595}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "D8", "D5", "E2"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.05167}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "C6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.00817}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7", "C7", "E7", "D3", "F3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02115}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02252}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E4", "D4", "E3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0272}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02906}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03488}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01333}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E7"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.03093}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04234}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.07403}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01423}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01881}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B5", "C3", "B3", "D4", "B4"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01911}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01904}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02707}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03741}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7", "C7", "E7", "D3", "F3", "C8", "D2"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01335}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.01486}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D7"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.0162}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02283}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6", "E6", "E8"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02221}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02315}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02647}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04988}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4", "E4", "G3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05183}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05398}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "C4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01547}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "H7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01783}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0184}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01974}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E7", "D8", "F8"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.02853}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04346}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F7"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01126}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.0182}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4", "E4", "G3", "G2", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02387}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3", "C3", "C2"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.0251}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02643}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.0377}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02595}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6", "C6", "E4"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02988}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "E4"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.04242}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02894}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F2", "F4", "G2"], "move": "E9", "outputs": ["E9"], "cost_usd": 0.07767}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01169}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "G6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.011}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01277}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01573}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02625}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5", "G3", "C3"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.02211}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3", "E3", "D2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01155}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.01246}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6", "C6", "E4", "D7", "E6"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.01842}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3", "C3", "C2", "F7", "F6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.0229}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E2"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01481}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02869}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "C3"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.03142}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "F7"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.0154}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F2", "F4", "G2", "D9", "E1"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03082}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "C6", "D5", "C8", "B7", "E2"], "move": "B6", "outputs": ["B6"], "cost_usd": 0.03604}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4", "E4", "G3", "G2", "F2", "E3", "H2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05542}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01191}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "G6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02646}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "C6", "D5", "C8"], "move": "B7", "outputs": ["B7"], "cost_usd": 0.0274}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "G7"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02814}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.03157}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01426}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02168}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4", "F3", "G3"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02065}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "E4", "E5", "F5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02446}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3", "E3", "D2", "D5", "D6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01973}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02103}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "H8"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01881}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "F4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01672}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "E2"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.02449}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "C6", "D5", "C8", "B7", "E2", "D8", "E7"], "move": "E8", "outputs": ["E8"], "cost_usd": 0.05198}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0439}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5"], "move": "H7", "outputs": ["H7"], "cost_usd": 0.01216}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "C8", "B8", "G8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01776}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03152}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "C6", "D5", "C8", "B7", "E2"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.05379}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.0133}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01452}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.00933}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "D7"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.02154}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "G2", "D9", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02258}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01787}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3", "E3", "D2", "D5", "D6", "C5", "B4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02601}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.04058}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04779}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "F3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03022}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "D6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.03949}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C6", "C5", "B5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0121}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7"], "move": "H8", "outputs": ["H8"], "cost_usd": 0.02835}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "C6", "D5", "C8", "B7", "E2", "D8", "E7"], "move": "B8", "outputs": ["B8"], "cost_usd": 0.04748}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5", "G3", "D4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03676}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6", "E7", "E5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01319}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01437}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "H5", "E4", "E6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02196}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "E6"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01992}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "F3"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.02154}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "D6", "D5", "E6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.03063}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "G8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01492}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4", "E4", "G3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02928}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.02799}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0261}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "E7"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02394}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04323}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01411}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01751}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D7", "C4", "F3"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.03605}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E6"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01268}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "E6", "F6", "D6"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01151}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01438}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D5"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.00873}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4", "E4", "G3", "G2", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02082}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02678}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "G4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02244}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02016}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.03163}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.03163}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.04453}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D6"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.01}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "G7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01367}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.0305}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E4", "D4", "E3", "D3", "H6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.03939}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F7", "G7", "E2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.03165}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "C6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.00995}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0183}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02486}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6", "E4", "F7"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.00974}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5", "G3", "C3", "G8", "G7"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03126}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D5", "C6", "D4"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.03347}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3"], "move": "F2", "outputs": ["F2"], "cost_usd": 0.03147}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "G3", "F8", "E8"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.04533}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "F4", "E4", "G3", "G2", "F2", "E3", "H2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05107}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B3"], "move": "H6", "outputs": ["H6"], "cost_usd": 0.03954}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01337}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.02136}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6", "E7", "E5", "H5", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02619}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "D5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02739}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2", "C2", "C3"], "move": "H6", "outputs": ["H6"], "cost_usd": 0.05261}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2", "B4", "D2"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01474}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "H5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01361}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "F3", "C5", "F7"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01669}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3", "F2", "H4"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.02597}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "F3", "G3", "H8"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.023}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5", "F6", "D6"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.03145}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "G4", "F6", "F3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02372}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7", "H5", "H4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.05146}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.05725}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C4"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01336}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3", "C3", "C2", "F7", "F6", "E6", "E8"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.0214}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D6"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02194}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02671}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6", "E7", "E5", "H5", "D7", "D8", "C7"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.05618}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2", "C2", "C3", "D2", "D3"], "move": "B3", "outputs": ["B3"], "cost_usd": 0.04054}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "G2", "D9", "F2", "E3", "E1"], "move": "H8", "outputs": ["H8"], "cost_usd": 0.09697}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "C4", "D3", "F4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01566}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "F7", "C4", "D7"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01523}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02045}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7", "H8", "G3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02194}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2", "B4", "D2", "E3", "E2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02547}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02837}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5", "F6", "D6", "G6", "D5"], "move": "B6", "outputs": ["B6"], "cost_usd": 0.03138}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2", "E3", "F2"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.0317}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6", "C6", "E4", "D7", "E6", "D3", "E3"], "move": "E2", "outputs": ["E2"], "cost_usd": 0.03086}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "H5"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01641}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01681}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01871}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D6", "E6", "E7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01434}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6", "E6", "E8", "F5", "H6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02415}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6", "E7", "E5", "H5", "D7", "D8", "C7", "C8", "G8"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.04241}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3", "E3", "D2", "D5", "D6", "C5", "B4", "B5", "H3"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.04346}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E4", "D4", "D3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01111}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C4", "D4", "C3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01379}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2", "B4", "D2", "E3", "E2", "H5", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01501}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B6"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.02662}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "E9"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.02097}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G6"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.03165}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7", "E6", "F7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02567}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "F4", "G3", "G4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.04524}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8", "B7", "C8"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.05663}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01274}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.01335}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6", "E6", "E8", "F5", "H6", "G7", "H7"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.01733}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7", "H5", "H4", "G4", "J5"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01766}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01879}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5", "C5", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02306}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.02783}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "D8", "D5", "E2", "C2", "C3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.04091}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D7", "C4", "F3", "G3", "G2"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.00869}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4", "C4", "F3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01693}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C2"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02817}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02852}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "D7"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.02475}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "F2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.04465}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2", "B4", "D2", "E3", "E2", "H5", "G4", "H4", "H3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.06276}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3", "E2", "F2"], "move": "G2", "outputs": ["G2"], "cost_usd": 0.06632}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "G6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.0127}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G5"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01159}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01754}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6", "E6", "E8", "F5", "H6", "G7", "H7", "B5", "H4"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.02023}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7", "H5", "H4", "G4", "J5", "G3", "F4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02759}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E6", "D5", "E7"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.02789}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.04143}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "D8", "D5", "E2", "C2", "C3", "D2", "D3"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.04084}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3", "E2", "F2", "D3", "E4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02072}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F7", "E6", "D5"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02186}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C6", "B6", "B5"], "move": "B7", "outputs": ["B7"], "cost_usd": 0.01903}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4", "F3", "G3", "F2", "D4"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.03154}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3", "F2", "H4", "D4", "E6"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.04931}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2", "B4", "D2", "E3", "E2", "H5", "G4", "H4", "H3", "H8", "G7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.05039}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "E4", "E5", "F5", "F3", "E2"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.05486}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "G2"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.10887}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "G6", "H6", "F5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.00953}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D5", "C6", "D4", "D8", "H5"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01338}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E6", "F4", "C6"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.01994}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "F3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01637}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "F4", "G3", "G4", "H4", "E3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01774}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "D3"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.03032}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "E6", "F8", "E8"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.05224}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "D5"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01014}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2", "E3", "F2", "C3", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01344}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C5"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.01655}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F7", "E6", "D5", "E7", "F8"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.02857}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7", "C7", "E7", "D3", "F3", "C8", "D2", "G4", "F4"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.02749}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4", "F3", "G3", "F2", "D4", "D5", "C4"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.03147}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D6", "C6", "D7"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.04149}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G6", "G7", "E4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01357}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2", "C2", "C3", "D2", "D3", "E3", "F3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.00893}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "H7", "E7", "H5"], "move": "J6", "outputs": ["J6"], "cost_usd": 0.02169}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E4", "F7", "C4"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.02671}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03908}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "C6", "D5", "C8"], "move": "B7", "outputs": ["B7"], "cost_usd": 0.02818}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.04001}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "C3", "G3", "E2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.04692}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8", "B7", "C8", "A8", "B9"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.05713}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "C7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02215}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C4", "H7", "D3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0308}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "D5", "C6", "G7"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02832}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "E4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.04069}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.06833}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "F7"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.00984}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "G6", "C7", "E2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.0162}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E4", "F7", "C4", "D3", "D4"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.0156}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "G8", "C4", "C3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01571}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G5"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02131}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "H7", "E7", "H5", "H4", "J6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02379}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D5", "C6", "D4", "D8", "H5", "H4", "H6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01978}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G6", "G7", "E4", "G5", "F4"], "move": "H6", "outputs": ["H6"], "cost_usd": 0.02927}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G5", "G4", "G6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.03165}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "C4"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01963}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7", "E6", "F7", "E7", "E8"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.0165}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F4", "E4", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.01923}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C4", "H7", "D3", "E3", "D2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01734}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "C4", "D3", "C3"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02374}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F2", "F4", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03122}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "D6", "D5", "E6", "G3", "G2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.04547}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "C4", "D4", "D3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01101}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F7", "G7", "E2", "D6", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01034}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "C8", "B8", "H5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02141}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "G4", "F6", "F3", "C6", "C7"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.01836}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "F7", "D4", "F3"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02248}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02313}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "F6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02171}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "D5", "C4", "F7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02693}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "G5"], "move": "H4", "outputs": ["H4"], "cost_usd": 0.02998}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5", "F6", "D6", "G6", "D5", "E7", "E8"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.05343}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "E2"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01227}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F2", "F4", "G2", "D9", "E1"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02667}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "C4", "D3", "F4", "G4", "G3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.03164}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7", "E6", "F7", "E7", "E8", "F8", "G8"], "move": "H7", "outputs": ["H7"], "cost_usd": 0.05745}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "H6"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01177}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.0129}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "C4", "D4", "D3", "E4", "C5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0147}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2", "E3", "F2", "C3", "G4", "G3", "F3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01619}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "F5"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01764}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F3"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02526}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02146}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3", "E3", "D2", "D5", "D6", "C5", "B4", "B5", "H3", "B2", "B6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02042}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "C2"], "move": "B5", "outputs": ["B5"], "cost_usd": 0.02854}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "D5", "C6", "G7", "H6", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02951}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3", "C3", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03165}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "D8", "D5", "E2", "C2", "C3", "D2", "D3", "E3", "F3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.00928}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "G6", "F4", "F5"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.0093}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "B3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01262}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7", "E6", "F7", "E7", "E8", "F8", "G8", "D8", "F9"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.0358}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "D5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.04273}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F4", "H7", "C6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01646}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "E7"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02044}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H5"], "move": "H7", "outputs": ["H7"], "cost_usd": 0.01974}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "C2", "E5", "F4"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.02748}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G4"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.02586}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G5", "G4", "G6", "D5", "H4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01699}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.03154}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2", "E3", "F2", "C3", "G4", "G3", "F3", "G5", "H4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.03038}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "G8"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.04552}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "E2", "D4", "C2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.03847}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "D3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04093}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6", "C6", "C7"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.01109}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02508}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C2", "F4", "G3"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.03156}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F7", "G7", "E2", "D6", "E6", "F8", "E8"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.06719}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "E7", "D7", "F2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01164}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G4"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.0131}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3", "E2", "F2", "D3", "E4", "G2", "D2"], "move": "F1", "outputs": ["F1"], "cost_usd": 0.01621}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "H6", "F6", "G3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0192}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.00813}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "B3", "E8", "G5"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01706}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "C2", "E5", "F4", "E4", "E3"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.03131}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8", "D8", "H6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02363}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "G7", "H6", "G4"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01983}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H5", "H7", "H8"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.07069}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.08308}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "F3", "C5", "F7", "G7", "G8"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01083}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "G3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01536}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6", "C6", "C7", "D7", "E6"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02162}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "D7", "G7", "H4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02717}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G4", "H4", "H3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01128}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G6", "G5", "D8"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01354}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "G6", "F4", "F5", "G4", "H6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02283}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8", "D8", "H6", "H5", "B6"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02327}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "C3", "H4", "D7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0195}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "F7", "G5", "E3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01823}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "E7", "D7", "F2", "E3", "D8"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03384}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3", "E2", "F2", "D3", "E4", "G2", "D2", "F1", "H8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04708}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.04193}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8", "B7", "C8", "A8", "B9", "E9", "E6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.05707}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "G2", "D9", "E1"], "move": "F9", "outputs": ["F9"], "cost_usd": 0.08087}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D7", "C7", "C8"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02104}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "C7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.03389}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2", "C2", "H3"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.05457}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "E2", "D4", "B2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.04653}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "C3", "G3", "F2"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.04782}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G4", "H4", "H3", "D3", "E2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01294}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6", "D6", "F6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01777}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "F4"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.014}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "C3", "H4", "D7", "C4", "B3"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01973}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "D4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02278}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F4", "H7", "C7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03891}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "F7", "G5", "E3", "D3", "E4"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.04122}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3", "E2", "F2", "D3", "E4", "G2", "D2", "F1", "H8", "C3", "B4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.04481}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F3", "C4", "G6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.03171}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "D7"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.031}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "E7", "D7", "F2", "E3", "D8", "E8", "F7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.05733}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D6", "E6", "E7"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01782}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "D5", "C5", "D3"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.02892}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "C7", "D6", "D7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.03158}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "D5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0093}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6", "D6", "F6", "C7", "D5"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.01195}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F3", "C4", "G6", "H6", "G7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01136}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "F7", "G5", "B3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01762}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G4", "H4", "H3", "D3", "E2", "F8", "E8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02284}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "E2", "D4", "C2", "H7", "H6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02257}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "D7", "B5", "B4"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.01969}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.02495}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E6", "F4", "C6", "G5", "G6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02542}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02797}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E4", "D4", "F3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.04411}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "G7", "G5", "E4"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.04012}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D6", "E6", "E7", "F7", "D7"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.01242}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C7", "G3", "C4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0194}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E7"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01779}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "D7", "B5", "B4", "C4", "C3"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.00798}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D7", "C4", "F3", "G3", "G2", "F4", "H3"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.0077}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "E6", "F6", "D6", "F7", "D5"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01065}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F3"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01924}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C6", "C7", "E6"], "move": "B6", "outputs": ["B6"], "cost_usd": 0.0197}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F6", "G7", "F7"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.0282}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "G7", "G5", "E4", "E5", "F5"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.03116}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "F6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.0411}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "F3"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.04139}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F3"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.03964}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F4", "E4", "F2", "E3", "E1"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03112}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H5", "H7", "H8", "F4", "H3"], "move": "J4", "outputs": ["J4"], "cost_usd": 0.08323}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "F7", "C4", "D7", "F6", "G5"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01607}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C7", "G3", "C4", "H7", "D3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01909}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "D7", "G7", "D5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02451}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8", "C8", "F4"], "move": "D9", "outputs": ["D9"], "cost_usd": 0.04847}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "E2", "E3", "H7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01416}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01679}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "F6", "E5", "F4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02604}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D7", "C4", "F3", "G3", "G2", "F4", "H3", "G4", "E3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02788}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C6", "C7", "E6", "B6", "E7"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.02574}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F3", "G7", "F6"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.02437}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C5"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.02914}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "F3", "D4", "C2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.07773}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C7", "G3", "C4", "H7", "D3", "E3", "D2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01154}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01393}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G6", "G5", "D7", "C7", "D8", "D5", "E2", "C2", "H3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02037}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7", "C7", "E7", "D3", "F3", "C8", "D2", "G4", "G5"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.03153}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "D7", "C7", "F3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02885}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C4", "D4", "C3", "B5", "E2"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.03399}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "F3", "G4", "H5", "E3", "D4", "G3", "H6"], "move": "F2", "outputs": ["F2"], "cost_usd": 0.03968}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C2", "E6", "F6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.03996}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C5", "D5", "C3"], "move": "B4", "outputs": ["B4"], "cost_usd": 0.01733}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5", "C5", "G4", "C3", "F3"], "move": "B4", "outputs": ["B4"], "cost_usd": 0.01455}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7", "E6", "F7", "E7", "E8", "F8", "G8", "D8", "F9", "C7", "D3"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01845}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D7"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02065}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "F6", "E5", "F4", "E4", "E3"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.03897}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "D3", "G3", "F2"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.04322}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "G7", "H6", "D5"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.03668}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "E6", "F8", "E8", "F6", "B5"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01654}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C5", "C4", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01293}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "E6", "F6", "D6", "F7", "F5"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.01521}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8", "H3", "H2"], "move": "H4", "outputs": ["H4"], "cost_usd": 0.01627}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "G6", "F4", "H6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02201}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4", "C4", "F3", "D3", "F6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02753}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C2", "E6", "F6", "E5", "F4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0294}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6", "D6", "F6", "C7", "D5", "D8", "C6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.00954}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G5", "C4", "C5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01337}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2", "E3", "F2", "C3", "G4", "G3", "F3", "G5", "H4", "F5", "G6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01821}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "C4", "D4", "D3", "E4", "C5", "F4", "F7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0205}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "D5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02683}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3", "C3", "G3", "F7", "F6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0316}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5", "C5", "G4", "C3", "F3", "D7", "E8"], "move": "B4", "outputs": ["B4"], "cost_usd": 0.03521}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0282}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "G7"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.03138}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01297}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "D7", "C7", "F3", "C8", "D2"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01265}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "H4"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.01649}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7", "H5", "H4", "G4", "J5", "G3", "F4", "F5", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02149}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "E6", "F6", "D6", "F7", "F5", "F4", "G5"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02199}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C2", "E6", "F6", "E5", "F4", "E4", "E3"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02313}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "E6", "F8", "E8", "F6", "B5", "E7", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.04881}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G6", "G7", "E4", "G5", "F4", "H6", "D5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01008}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B3", "D4", "D3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01683}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E5", "H5", "E6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02059}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "C8", "B8", "H5", "H6", "C4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0239}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6", "D6", "F6", "C7", "D5", "D8", "C6", "B6", "D7"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.03146}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "H8", "D7", "F3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.03152}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3", "F2", "H4", "D4", "E6", "F8", "F7"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.03852}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "E2", "E3", "F2", "C3", "G4", "G3", "F3", "G5", "H4", "F5", "G6", "H5", "H3"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.04315}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "E6", "F6", "D6", "F7", "F5", "F4", "G5", "D5", "C5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01262}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "H4", "D6", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01309}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C5", "B5", "D5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01378}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E4", "D4", "E3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02015}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C2", "E6", "F6", "E5", "F4", "E4", "E3", "F3", "F2"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02423}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "F7", "D4", "F3", "E7", "F8"], "move": "E8", "outputs": ["E8"], "cost_usd": 0.02098}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "D7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02616}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "C6", "D5", "C8", "B7", "G6"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.05381}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "G6"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.0196}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B3", "D4", "D3", "B4", "C3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02732}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6", "D6", "F6", "C7", "D5", "D8", "C6", "B6", "D7", "E3", "B5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02404}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "D6", "C6", "C7", "D7", "E6", "B7", "C8"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.04262}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3", "F2", "H4", "D4", "E6", "F8", "F7", "G7", "E8"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.04801}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B3"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.07406}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.07048}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C5", "B5", "D5", "G3", "B4"], "move": "B6", "outputs": ["B6"], "cost_usd": 0.01168}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F6", "G7", "E2"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01621}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "D6", "D5", "E6", "G3", "G2", "G4", "C7"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02415}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3", "F2", "H4", "D4", "C7"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.02866}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G5", "G4", "G6", "D5", "H4", "G3", "C4"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.03514}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E4", "D4", "E3", "D3", "C7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.03159}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F7"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02629}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "C6", "D5", "C8", "B7", "G6", "G5", "E2"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.04414}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "E2", "D4", "B2", "H7", "H6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.05723}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D7", "E7", "F7", "E8", "E6", "D6", "F6", "C7", "D5", "D8", "C6", "B6", "D7", "E3", "B5", "D6", "C5"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.01429}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D6", "E6", "E7", "F7", "D7", "D5", "F6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0182}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B3", "D8", "E8"], "move": "C8", "outputs": ["C8"], "cost_usd": 0.026}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C7", "G3", "C4", "H7", "D3", "E3", "D2", "C3", "C2"], "move": "B3", "outputs": ["B3"], "cost_usd": 0.02652}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "G2", "D9", "F2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.03083}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F7", "G7", "E2", "D6", "E6", "F8", "E8", "B6", "G8"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.05108}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "C3", "D3", "C2", "B4", "D2", "E3", "E2", "H5", "G4", "H4", "H3", "H8", "G7", "G8", "C6"], "move": "J7", "outputs": ["J7"], "cost_usd": 0.08298}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "D5", "E6", "D4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01559}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "H6", "F6", "G3", "D8", "B4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01865}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "G7", "H6", "D5", "C6", "G4"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02451}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "D3", "C4", "H5", "E4", "E3", "H6", "E7", "F3", "G3", "F2", "H4", "D4", "C7", "G2", "H2"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.03129}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F7", "E6", "D5", "E7", "F8", "H7", "D7"], "move": "E8", "outputs": ["E8"], "cost_usd": 0.02571}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F7", "G7", "F6"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.03021}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "C6", "D5", "C8", "B7", "G6", "G5", "E2", "D8", "E7"], "move": "B8", "outputs": ["B8"], "cost_usd": 0.04998}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "H5"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.04717}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H5", "H7", "H8", "F4", "H3", "C6", "H2"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.06858}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B3", "D8", "E8", "E6", "F6"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01615}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C6", "C5", "B5", "C4", "G3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02534}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D7", "D6", "C7"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02414}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "D7", "H8", "F3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02007}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "D3", "C3", "C2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0284}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "D6", "E6", "E7", "F7", "D7", "D5", "F6", "G7", "H7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.03963}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "G6", "H6", "F5", "H5", "H7"], "move": "G2", "outputs": ["G2"], "cost_usd": 0.04477}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E6", "D5", "E7", "H5", "H4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.02839}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "D5", "E6", "D4", "F3", "D6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03504}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "G8", "H8", "C8"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.04137}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "E4", "E5", "F5", "F3", "E2", "D5", "B3"], "move": "D2", "outputs": ["D2"], "cost_usd": 0.05182}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "F2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.011}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "H4", "D6", "D7", "F5", "G6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01343}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F3", "G7", "F6", "C4", "F7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02106}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H7", "C6", "B5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02182}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "F7", "G5", "E3", "D3", "E4", "E5", "F5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02191}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G6", "G5", "D8", "D5", "E2"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.03152}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D7", "D6", "C7", "G4", "G5"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.03159}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "H6"], "move": "H7", "outputs": ["H7"], "cost_usd": 0.02886}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "G6", "H6", "F5", "H5", "H7", "G2", "F2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03221}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "D8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04199}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6", "E4", "F7", "G6", "G7"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.01056}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8", "D8", "H6", "H5", "B6", "H7", "G6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01676}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "H7", "F8", "D2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01858}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G5", "G6", "B5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02635}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "G8", "H8", "C8", "E8", "C6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.02711}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "E6", "F8", "E8", "F6", "B5", "E7", "D7", "D2", "G4"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01413}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "G3", "H3", "G6", "H6", "F5", "H5", "H7", "G2", "F2", "F4", "F3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0174}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03128}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D7", "D6", "C7", "G4", "G5", "E6", "E7"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03151}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "E3"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02708}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F3", "G7", "F6", "C4", "F7", "H7", "B5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03141}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "E7", "D7", "F2", "E3", "D8", "E8", "F7", "C8", "E2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03137}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8", "B7", "C8", "A8", "B9", "E9", "E6", "D8", "B5"], "move": "D9", "outputs": ["D9"], "cost_usd": 0.04141}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3", "E8", "F8"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02217}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F7", "E6", "D5", "E7", "F8", "H7", "D7", "E8", "D8"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.0737}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E5", "H5", "E6", "E7", "D7"], "move": "E8", "outputs": ["E8"], "cost_usd": 0.04909}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01396}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7", "D3", "G6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01895}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6", "E4", "F7", "G6", "G7", "D6", "E7"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.0215}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "G8", "H8", "C8", "E8", "C6", "D6", "D7"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.0605}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C4", "H7", "D3", "E3", "D2", "C7", "D6"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01334}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "F7", "G5", "H6"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01656}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E2", "C3", "C2"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02055}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E3", "C3", "C2", "F7", "F6", "E6", "F8"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02556}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E5", "H5", "E6", "E7", "D7", "D8", "C7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02998}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "E5", "D5", "E4", "D3", "D7", "D6", "C7", "G4", "G5", "E6", "E7", "F3", "H5"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.0301}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "E3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02736}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7", "H8", "G3", "D7", "D8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02334}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B6", "C7", "C3"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.03151}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "F3", "G3", "H8", "D7", "D6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0271}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C5", "H7", "E3", "E2", "H8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02116}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B3", "D8", "E8", "E6", "F6", "D6", "E7"], "move": "C8", "outputs": ["C8"], "cost_usd": 0.04752}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D3", "E2", "C4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02346}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "G8", "H8", "C8", "E8", "C6", "D6", "D7", "B7", "E4"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02994}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E2", "C3", "F3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02766}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "D5"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02508}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C4", "D4", "C3", "B5", "E2", "F3", "F2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0276}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "G6", "C7", "E2", "E3", "F2"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.03154}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6", "E4", "F7", "G6", "G7", "D6", "E7", "H6", "D7"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02859}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E2", "C3", "C2", "D3", "D2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.03058}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5", "F6", "D6", "G6", "D5", "E7", "E8", "F8", "D8"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.03676}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E5", "H5", "E6", "E7", "D7", "D8", "C7", "C8", "G8"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.04411}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B3", "D8", "E8", "E6", "F6", "D6", "E7", "F5", "E4"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.05087}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D7", "C7", "D3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.0196}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "G8", "H8", "C8", "E8", "C6", "D6", "D7", "B7", "E4", "D4", "D8"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02697}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "C7", "G3", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02095}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G5", "G4", "G6", "D5", "H4", "G3", "C4", "D2", "B6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.0208}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "E2", "C3", "F3", "F7", "F6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02576}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F3", "D7", "E7"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02968}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D3", "E2", "C4", "B5", "C5"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.03765}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3", "E8", "F8", "F7", "G7"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.00971}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C6", "C7", "B6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.0186}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "G6", "C7", "E2", "E3", "F2", "C3", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02013}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "D3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02194}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "D7", "G6", "G7", "E6", "F7", "E7", "E8", "F8", "G8", "D8", "F9", "C7", "D3", "E2", "C5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02125}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "D5", "C5", "G3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02758}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B3", "D8", "E8", "E6", "F6", "D6", "E7", "F5", "E4", "B6", "H6"], "move": "A5", "outputs": ["A5"], "cost_usd": 0.03121}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "D7", "H8", "F3", "G3", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03081}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F3", "C4", "G6", "H6", "G7", "H7", "E3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.05719}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "G6", "H6", "G4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01115}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "G5", "G4", "G6", "D5", "H4", "G3", "C4", "D2", "B6", "E7", "H3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01895}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "C7", "G3", "G4", "H3", "E4"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.01924}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "F4", "G3", "G4", "H4", "E3", "D4", "E4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.03159}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "D6"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05488}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8", "G4", "E8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.012}
+{"player": "gpt6-astra-high-api-multi", "path": ["G6", "D4", "F5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.01299}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6", "E6", "E8", "F5", "E2"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.01625}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "E6", "F8", "E8", "F6", "B5", "E7", "D7", "D2", "G4", "B4", "F7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.03133}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "H6", "F6", "G3", "D8", "B4", "B5", "C5"], "move": "B6", "outputs": ["B6"], "cost_usd": 0.03009}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "E7", "C3", "D3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02323}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "H8", "D7", "C6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.04391}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.04875}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "C3", "G3", "E2", "E3", "D2"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.0556}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "H7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01028}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F4", "H7", "C6", "D3", "F2"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01357}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "G6", "H6", "G4", "F4", "F5"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01962}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H4", "F5", "H5", "G3", "D4", "C6", "C5"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02755}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "G3", "C7", "C4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.03674}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "C7", "G3", "G4", "H3", "E4", "E3", "D4"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.04653}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C5", "C4", "G4", "G3", "F5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01383}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G6", "F3", "G3", "B5", "C5"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01804}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G3"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01186}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8", "G4", "E8", "D7", "G2"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02751}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C6", "B6", "B5", "H7", "E3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02562}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "G6", "F4", "F5", "G4", "H6", "C4", "B5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02687}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F6", "G7", "F7", "D6", "D5"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.02818}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "D7", "C7", "E7", "D3", "F3", "C8", "D2", "G4", "F4", "G5", "G7"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.03148}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "C3", "G3", "E2", "E3", "F2"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.06156}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "F7", "C4", "D7", "F6", "G5", "G7", "F5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01196}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "D4", "C4", "D5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01391}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "H7", "G7", "F6"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.01982}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "G6", "H6", "G4", "F4", "F5", "H5", "G7"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02468}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "C7", "G3", "G4", "H3", "E4", "E3", "D4", "C4", "C3"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.03037}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F6", "G7", "E2", "D6", "D5"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.03159}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E6", "D5", "E7", "H5", "H4", "H6", "G3"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.03718}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "D6"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01108}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8", "G4", "E8", "D7", "G2", "H5", "H8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02216}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D5", "C5", "C6", "C7", "B6", "C3", "D3", "E6", "C2", "E5", "F4", "E4", "E3", "B2", "F6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.03126}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C5", "C4", "G4", "G3", "F5", "H4", "G5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02812}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "G7", "F3", "C6", "B6", "B5", "H7", "E3", "C7", "B7"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03531}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "C4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03978}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E6", "D5", "E7", "H5", "G3"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03998}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "G5", "C5", "C4", "C6", "B4", "D3", "E2", "D4", "C2", "H7", "H6", "H4", "E3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.0919}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "F7", "C4", "D7", "F6", "G5", "G7", "F5", "E6", "F4"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02124}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D5"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.02232}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7", "D3", "G4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02145}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7", "H5", "H4", "G4", "J5", "G3", "F4", "F5", "H5"], "move": "H3", "outputs": ["H3"], "cost_usd": 0.02169}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "C7", "G3", "G4", "H3", "E4", "E3", "D4", "C4", "C3", "B4", "B6"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02681}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "F3", "C5", "F7", "G7", "G8", "G6", "G3"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.02661}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "G2", "D9", "F2", "E3", "E1"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.07962}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "F3", "G7", "F6", "C4", "F7", "H7", "B5", "D3", "E3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0723}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "H5", "G4", "H4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01785}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "B3", "E8", "G5", "F4", "E7"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01691}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "D4", "C5", "E7", "C7", "G8", "C4", "C3", "H5", "H7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02146}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8", "G4", "E8", "D7", "G2", "H5", "H8", "H6", "H7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.03131}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "D6", "D5", "E6", "G3", "C7"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.0457}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "C6"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.01089}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "D7", "H4", "D5", "C5", "G3", "H3", "D3"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.01392}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H7", "C6", "B5", "C3", "C7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01576}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D6", "E6", "E7", "D7", "D8"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.01684}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7", "D3", "G4", "F4", "F5"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02687}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "G1"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02907}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "H8", "D7", "D6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02186}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "G6", "C7", "E2", "E3", "D3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03664}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "F3", "C5", "F7", "G7", "G8", "G6", "G3", "F6", "E6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.04231}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "H5", "G4", "H4", "E5", "D5"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01888}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "D6", "D5", "E6", "G3", "C7", "B7", "G2"], "move": "C8", "outputs": ["C8"], "cost_usd": 0.02631}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02553}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6", "E4", "F7", "G6", "D6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03527}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "B3", "E8", "G5", "F4", "E7", "G7", "H4"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.03575}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8", "G4", "E8", "D7", "G2", "H5", "H8", "H6", "H7", "H2", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.04375}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.0431}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G4", "F7", "G6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.01481}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E6", "D5", "E7", "H5", "G3", "F8", "E8"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.02043}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C5", "B5", "D5", "G3", "B4", "D7", "B6"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.02608}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "B5"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.03165}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8", "C8", "F4", "E4", "F2"], "move": "D9", "outputs": ["D9"], "cost_usd": 0.05037}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "F3", "C5", "F7", "G7", "G8", "G6", "G3", "F6", "E6", "F8", "E7"], "move": "H8", "outputs": ["H8"], "cost_usd": 0.05269}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "H5", "G4", "H4", "E5", "D5", "G3", "C6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02551}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "G4"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02664}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "C3", "C7", "B5", "C5", "B6"], "move": "B7", "outputs": ["B7"], "cost_usd": 0.03215}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "F3", "C4", "C7", "H5", "H4", "G4", "J5", "G3", "F4", "F5", "G2", "H3", "H2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03025}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "D7", "B5", "B4", "C4", "C3", "C5", "F3"], "move": "B3", "outputs": ["B3"], "cost_usd": 0.05282}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E7", "D8", "F8", "H5", "E3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01569}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7", "D3", "G4", "F4", "F5", "G6", "G7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02588}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "F2", "G7", "G8"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01439}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "B5", "E3", "F3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.03892}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "H5", "D5", "G5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01405}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "H7"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01792}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "H7"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.02325}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "F8", "G4", "E8", "D7", "G2", "H5", "H8", "H6", "H7", "H2", "G3", "H3", "F4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.03846}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D6", "E6", "E7", "D7", "D8", "C7", "F8"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.03825}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C5", "B5", "D5", "G3", "B4", "D7", "B6", "B7", "A5"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.03948}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "E6"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.00867}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "G4", "F7", "F3"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01287}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "D3", "E3", "D2", "D5", "D6", "C5", "B4", "B5", "H3", "B2", "B6", "A5", "E2"], "move": "F3", "outputs": ["F3"], "cost_usd": 0.03165}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C5", "D5", "C3", "B4", "E4"], "move": "B5", "outputs": ["B5"], "cost_usd": 0.04142}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F6", "G7", "E2", "D6", "D5", "C5", "C7"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.03513}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "H8", "D7", "C6", "C7", "F3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.04135}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "F6", "E6", "H6"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.00897}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "F2", "G7", "G8", "F6", "E7"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01973}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "E3", "E2", "D3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02259}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G6", "G7", "F4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02248}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E3", "D3", "D7", "H4", "H5", "D5", "G5", "G4", "J4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.02932}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D6", "E6", "E7", "D7", "D8", "C7", "F8", "C3", "C6"], "move": "B7", "outputs": ["B7"], "cost_usd": 0.02923}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "F4", "G6", "E4", "D5", "C3", "H4", "E7"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02624}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4", "C4", "F3", "D3", "F6", "F5", "G5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.05991}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F7", "E6", "D5", "E7", "F8", "H7", "E8"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.05736}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8", "H3", "H2", "F3", "H4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.04893}
+{"player": "gpt6-astra-high-api-multi", "path": ["G6", "D4", "D6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.01413}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "E3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02329}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "G4"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02679}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "C3"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02144}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D5", "E6", "E5", "F6", "G6", "G7", "H7", "C5", "C4"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.03131}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "E2", "G7", "F7", "D6", "D7"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01943}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "G4", "F7", "E2"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0164}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C4", "F5", "D6"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.03077}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "G3", "C7", "C8"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03053}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5", "F6", "D6", "G6", "D5", "E7", "E8", "F8", "D8", "C3", "D4"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.0356}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E7", "D8", "F8", "H5", "H6"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.03099}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "H5", "G4", "H4", "E5", "D5", "G3", "C6", "C7", "B6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.06138}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "G7"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.0221}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8", "H3", "H2", "F3", "H4", "G4", "G2"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.05313}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4", "C4", "F3", "D3", "F6", "F5", "G5", "E6", "F8"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03686}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G5", "E6", "F7"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01782}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "G7", "H6", "G4", "F3", "D5"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01888}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7", "H8", "G3", "D7", "D8", "C7", "E3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01838}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "F4", "E4", "G5"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02333}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8", "B7", "C8"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.04753}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4", "C4", "F3", "D3", "F6", "F5", "G5", "E6", "F8", "F7", "G8"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01898}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G5", "C4", "C5", "D5", "F3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.01971}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G6", "D3", "E2"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.02016}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "H7", "G4", "H5"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02612}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "C6", "E7", "D4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02503}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C4"], "move": "H7", "outputs": ["H7"], "cost_usd": 0.02226}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "G2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02937}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "D7", "B4", "B5", "C5", "B3", "E6", "F5", "F6", "D6", "G6", "D5", "E7", "E8", "F8", "D8", "C3", "D4", "B2", "A4"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.03391}
+{"player": "gpt6-astra-high-api-multi", "path": ["G6", "D4", "D6", "F4", "C4"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.02014}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7", "H8", "G3", "D7", "D8", "C7", "E3", "D4", "G8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02643}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "C3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.0259}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F5", "G4", "G6", "H6", "H7", "G7", "F6", "H8", "C4"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03772}
+{"player": "gpt6-astra-high-api-multi", "path": ["G5", "E5", "D7"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01313}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "C5", "E8", "E7", "D8", "F8", "H5", "G4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01568}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C6", "C5", "B5", "C4", "G3", "C7", "D6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.02143}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8", "C8", "G2"], "move": "D9", "outputs": ["D9"], "cost_usd": 0.02157}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8", "H3", "H4"], "move": "H2", "outputs": ["H2"], "cost_usd": 0.02437}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "G4", "C4", "F3", "D3", "F6", "F5", "G5", "E6", "F8", "F7", "G8", "G6", "H6"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.02385}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "H7", "F7", "H8", "D7", "D6", "C7", "F3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.0294}
+{"player": "gpt6-astra-high-api-multi", "path": ["G5", "E5", "F6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02248}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "G6", "H6", "G4", "F4", "F5", "H5", "G7", "H7", "E3"], "move": "G3", "outputs": ["G3"], "cost_usd": 0.02587}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "H5", "C6", "E6"], "move": "D6", "outputs": ["D6"], "cost_usd": 0.03895}
+{"player": "gpt6-astra-high-api-multi", "path": ["G6", "D4", "C6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01293}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "G3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.02239}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7", "D3", "G6", "H6", "E4"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.0264}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "H7", "E6", "E7", "C5", "D3"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02784}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7", "H8", "G3", "D7", "D8", "C7", "E3", "D4", "G8", "H9", "E8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.03727}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "G7", "G8", "D3"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.042}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "H5", "C6", "E6", "D6", "D3"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.04785}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8", "H3", "H4", "G4", "H2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04507}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "G3", "F7", "E6"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.01828}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "H7", "E6", "E7", "C5", "D3", "H4", "C2"], "move": "C4", "outputs": ["C4"], "cost_usd": 0.03058}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "H5", "C6", "E6", "D6", "D3", "E2", "D5"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03705}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "G3", "G7", "C3", "B5", "G8", "H3", "H4", "G4", "H2", "F3", "G2"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.05653}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "H5", "C6", "E6", "D6", "D3", "E2", "D5", "E3", "C5"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.06657}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "E9", "D8"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.03088}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "E9", "D8", "D9"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.07965}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "F4", "E4", "F2", "E3", "E9", "D8", "D9", "C9"], "move": "F9", "outputs": ["F9"], "cost_usd": 0.01767}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "C4", "D3", "F4", "G4", "G3", "H3", "G2"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.0407}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F3"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.01776}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "E7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.01998}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E6", "D5", "E7", "D3", "F3"], "move": "D7", "outputs": ["D7"], "cost_usd": 0.01757}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "F7", "D4", "F3", "E7", "F8", "D2", "C7"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02662}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.04788}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2", "C2", "D2"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.05006}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F2", "E3", "F4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05427}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4", "F3", "G3", "F2", "E6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.0157}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "G5", "G6", "E4", "D4", "E3", "D3", "H6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02499}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "G5", "H4", "C4"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.02813}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8", "D8", "H6", "H5", "B6", "H7", "G6", "F5", "G7"], "move": "H8", "outputs": ["H8"], "cost_usd": 0.04824}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "G4"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.02101}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C4", "D4", "C3", "B5", "F2"], "move": "C7", "outputs": ["C7"], "cost_usd": 0.0226}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C6", "C5", "B5", "C4", "F3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0227}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D7", "D6", "C7", "H6", "C6", "C3", "D4", "C4", "D5", "E6", "C5"], "move": "F7", "outputs": ["F7"], "cost_usd": 0.03139}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F5", "F6", "E6", "D5", "E7", "H5", "H4", "H6", "F3"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.03124}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "E7", "F8", "F6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.04319}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "C2", "E6", "C6"], "move": "B5", "outputs": ["B5"], "cost_usd": 0.0446}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D8", "D5", "E2", "C2", "D2", "C3", "H3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.04951}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F4", "C4", "F7", "G7", "G8"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.0111}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "D5", "C4", "F7", "B6", "B7"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.02767}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4", "F3", "G3", "F2", "E6", "D5", "E7"], "move": "D4", "outputs": ["D4"], "cost_usd": 0.02938}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D5", "C6", "D4", "D8", "H5", "H4", "H6", "E3", "E4"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.03992}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H7", "F3", "G4", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "G2", "D9", "F4", "E4", "F2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05353}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8", "D8", "H6", "H5", "B6", "H7", "G6", "F5", "G7", "H8", "J6"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.10317}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C6", "C5", "B5", "C4", "F3", "H5", "H4"], "move": "J5", "outputs": ["J5"], "cost_usd": 0.021}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "G3"], "move": "E5", "outputs": ["E5"], "cost_usd": 0.027}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "E4", "F7", "C5"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.02017}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "D3", "C3", "D5", "C5", "E7", "F8", "F6", "D7", "E8"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.03122}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C7", "F7", "F6", "E6", "E8", "F5", "H5"], "move": "G5", "outputs": ["G5"], "cost_usd": 0.03035}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E7", "C5", "C4", "D4", "C3", "B5", "F2", "F6", "F7"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.03335}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "D7", "G7", "D5", "C5", "H4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.0439}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "B3", "E8", "G5", "F4", "E7", "G7", "H4", "H3", "F7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.05529}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5", "C5", "G4", "C3", "F3", "D7", "E8", "G7", "G8"], "move": "B4", "outputs": ["B4"], "cost_usd": 0.03139}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "C6", "C4", "H6", "F6", "G3", "D8", "B4", "B5", "C5", "B3", "D4"], "move": "A4", "outputs": ["A4"], "cost_usd": 0.0159}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "F4", "E4", "G5", "F3", "G3"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.01622}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "E6", "D6", "E7", "D5", "D7", "C7", "D3", "E2", "C4"], "move": "F5", "outputs": ["F5"], "cost_usd": 0.02425}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "E6", "D6", "D7", "C7", "D5", "C6", "D4", "D8", "H5", "H4", "H6", "E3", "E4", "F3", "D3"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.04011}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "H6", "F6", "C5", "D4", "C4", "H7", "D3", "E3", "D2", "C7", "D6", "D7", "G3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.04253}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "D4", "G3", "B5", "E7", "E8", "F6", "E6", "D7", "F8", "D8", "H6", "H5", "B6", "H7", "G6", "F5", "G7", "H8", "J6", "G8", "F4"], "move": "J5", "outputs": ["J5"], "cost_usd": 0.09701}
+{"player": "gpt6-astra-high-api-multi", "path": ["G5", "E5", "C6"], "move": "C3", "outputs": ["C3"], "cost_usd": 0.01152}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C5", "F3", "F7", "D3", "G6", "H6", "E4", "E3", "H7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01317}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "G3", "F7", "E6", "D5", "E7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.01518}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "G3", "H6", "H7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01526}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E4", "F4", "G5", "G6", "G4", "F3", "G3", "F2", "D4", "D5", "C4", "C5", "H6"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02545}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C3", "G3", "F2"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.04747}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C4", "C3", "C5", "G4", "B3", "E8", "G5", "F4", "E7", "G7", "H4", "H3", "F7", "F8", "D8"], "move": "G8", "outputs": ["G8"], "cost_usd": 0.06634}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "G4"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.01035}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G7", "E7", "F4", "E4", "G5", "F3", "G3", "F5", "G4"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.0144}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H7", "C6", "B5", "C3", "C7", "B6", "B7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02425}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "C6", "D3", "F3", "C4", "G6", "H6", "G7", "H7", "E3", "D6", "D5"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02206}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8", "C8", "F2"], "move": "D9", "outputs": ["D9"], "cost_usd": 0.02617}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F6", "F3", "C4", "D3", "C3", "D7", "F4"], "move": "E3", "outputs": ["E3"], "cost_usd": 0.02495}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "G4", "D4", "F4", "E3", "D7", "G7", "D5", "C5", "G8"], "move": "G6", "outputs": ["G6"], "cost_usd": 0.02396}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F5", "F6", "E6", "E4", "F7", "G6", "G7", "D6", "E7", "H6", "D7", "F3", "C6"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01114}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "G3", "H6", "H7", "H5", "F8"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.01762}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "D5", "C6", "G7", "H6", "G4", "F3", "D4"], "move": "E7", "outputs": ["E7"], "cost_usd": 0.02537}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "E7", "C4", "D3", "C6", "C3", "B5", "G3"], "move": "G7", "outputs": ["G7"], "cost_usd": 0.02258}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6", "E7", "E5", "H5", "D7", "D8", "C7", "C8", "G8", "F9", "H3"], "move": "C6", "outputs": ["C6"], "cost_usd": 0.02986}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "G3", "F7", "E6", "D5", "E7", "F8", "H7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.02918}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "G6", "G5", "D6", "E6", "E7", "D7", "D8", "C7", "F8", "C3", "C6", "B7", "B6"], "move": "C5", "outputs": ["C5"], "cost_usd": 0.03986}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "C4", "C3", "G5", "H4", "B3", "E8", "F8", "F7", "G7", "E7", "G8", "C7", "B8", "B7", "C8", "A8", "B9"], "move": "D8", "outputs": ["D8"], "cost_usd": 0.06688}
+{"player": "gpt6-astra-high-api-multi", "path": ["G6", "D4", "E4"], "move": "D5", "outputs": ["D5"], "cost_usd": 0.01062}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "G4", "H5", "H4"], "move": "H6", "outputs": ["H6"], "cost_usd": 0.01435}
+{"player": "gpt6-astra-high-api-multi", "path": ["G7", "D4", "D6"], "move": "F4", "outputs": ["F4"], "cost_usd": 0.01534}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "H7", "F7", "E6", "D6", "E7", "D7", "F8", "E8", "F7", "C5", "G3", "E2", "D8", "C8", "F2", "F4", "G2"], "move": "D9", "outputs": ["D9"], "cost_usd": 0.03616}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G6", "G4", "C6", "E7", "D4", "E4", "D3"], "move": "F6", "outputs": ["F6"], "cost_usd": 0.04368}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "G4", "F3", "F7", "G3", "H7", "C6", "B5", "C3", "C7", "B6", "B7", "D6", "D7"], "move": "H5", "outputs": ["H5"], "cost_usd": 0.09843}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "C6", "F4", "G4", "G3", "G5", "E7", "E6", "D7", "C4", "F7", "G7", "G8", "D3", "E3", "D2"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01519}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "F6", "F5", "E6", "D6", "D7", "C7", "G5", "G6", "D5", "C6", "G7", "H6", "G4", "F3", "D4", "F7", "E7"], "move": "F8", "outputs": ["F8"], "cost_usd": 0.01586}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5", "C5", "B4"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.01707}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D6", "F4", "C4", "C3", "B4"], "move": "E4", "outputs": ["E4"], "cost_usd": 0.01973}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "G6", "F6", "F5", "G7", "H6", "H5", "H7", "F7", "H8", "G3", "D7", "E3"], "move": "E6", "outputs": ["E6"], "cost_usd": 0.02463}
+{"player": "gpt6-astra-high-api-multi", "path": ["F6", "D4", "D5", "E4", "C5", "G4", "G5", "H4", "C3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.02798}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "C4", "G3", "F4", "D4", "D5", "C5", "C3"], "move": "D3", "outputs": ["D3"], "cost_usd": 0.03752}
+{"player": "gpt6-astra-high-api-multi", "path": ["E5", "G5", "F7", "C6", "F3", "C4", "F5", "D7", "G6", "D3", "D5"], "move": "G4", "outputs": ["G4"], "cost_usd": 0.02745}
+{"player": "gpt6-astra-high-api-multi", "path": ["F5", "D6", "D4", "F7", "G7", "C4", "C3", "C5", "D3", "F6", "G6", "G5", "E6", "E7", "E5", "H5", "D7", "D8", "C7", "C8", "G8", "F9", "H3", "G3", "G2"], "move": "B7", "outputs": ["B7"], "cost_usd": 0.05646}

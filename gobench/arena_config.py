@@ -230,6 +230,11 @@ _TUTORIAL_PLAYERS = {
         "gpt6-astra-high-api-multi",
         "tutorial-file-katago_book_9x9tt",
     ),
+    # The book aimed at this student's mistakes (analysis/katago_book_student.py).
+    "gpt6-astra-tutorial-file-katago_book_9x9tt_v2": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial-file-katago_book_9x9tt_v2",
+    ),
 }
 
 

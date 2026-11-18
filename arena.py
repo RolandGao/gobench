@@ -201,6 +201,7 @@ _FINAL_RUNS = (
     "gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h",
     # Track 3 with a fixed tutorial file (data/tutorials/).
     "gpt6-astra-high-api-multi-tutorial-file-katago_book_9x9tt",
+    "gpt6-astra-high-api-multi-tutorial-file-katago_book_9x9tt_v2",
     # Track 2 with code-only evaluation (5-minute clock).
     # "gpt6-astra-high-codex-engine-1h",
     # "gpt6-astra-high-codex-engine-2h",

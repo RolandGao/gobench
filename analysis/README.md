@@ -14,6 +14,7 @@ relative to your working directory.
 | `audit_native_selfmatches` | Generate and audit native self-matches | `untracked_log/` |
 | `benchmark_katago_selfplay` | Measure native self-play timing | `log/katago_selfplay_benchmark.json` |
 | `katago_book_crawl`, `katago_book_render` | Convert an extracted KataGo 9x9 book into a Track 3 tutorial | `data/tutorials/` |
+| `katago_book_student`, `katago_book_evaluate` | Build a Track 3 book tutorial from logged opponent moves and probes of the student's own moves, with KataGo losses for moves the book does not list | `data/tutorials/` |
 | `matchmaking_ablation` | Replay matchmaking variants | CSV paths supplied through CLI |
 | `color_advantage_model` | Fit and compare color-advantage models | `data/color_advantage/` |
 | `color_advantage_all_models_player_split_experiment` | Compare models on player splits | Output path supplied through CLI |
