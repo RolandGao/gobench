@@ -5,3 +5,13 @@ game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_ille
 4,2,kata1-b6c96-s21371392-d3529696,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s21371392-d3529696,1,92,openai_responses_api,46,0,0,1675.069485,1.811830400000
 5,3,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s21371392-d3529696,W+22.0,kata1-b6c96-s21371392-d3529696,0,76,openai_responses_api,38,0,0,1573.663161,1.731148800000
 6,3,kata1-b6c96-s21371392-d3529696,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s21371392-d3529696,1,64,openai_responses_api,32,0,0,1078.291018,1.246803200000
+7,4,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,B+R,gpt6.2-astra-xhigh-api-multi,1,32,openai_responses_api,16,0,0,364.474298,0.404572800000
+8,4,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,W+R,gpt6.2-astra-xhigh-api-multi,0,43,openai_responses_api,21,0,0,601.568235,0.625380800000
+9,5,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s20302336-d3388395,W+R,kata1-b6c96-s20302336-d3388395,0,71,openai_responses_api,36,0,0,1650.130264,1.814232000000
+10,5,kata1-b6c96-s20302336-d3388395,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s20302336-d3388395,1,64,openai_responses_api,32,0,0,1324.509683,1.551044800000
+11,6,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s19408128-d3280178,W+R,kata1-b6c96-s19408128-d3280178,0,67,openai_responses_api,34,0,0,1544.940227,1.918712000000
+12,6,kata1-b6c96-s19408128-d3280178,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s19408128-d3280178,1,66,openai_responses_api,33,0,0,1260.173261,1.831870400000
+13,7,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,B+R,gpt6.2-astra-xhigh-api-multi,1,30,openai_responses_api,15,0,0,260.471993,0.458648000000
+14,7,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,B+14.0,kata1-b6c96-s18429184-d3197121,1,103,openai_responses_api,51,0,0,1487.070061,2.140366400000
+15,8,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s18429184-d3197121,W+20.0,kata1-b6c96-s18429184-d3197121,0,90,openai_responses_api,45,0,0,915.259038,1.309548800000
+16,8,kata1-b6c96-s18429184-d3197121,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s18429184-d3197121,1,66,openai_responses_api,33,0,0,914.295888,1.493179200000

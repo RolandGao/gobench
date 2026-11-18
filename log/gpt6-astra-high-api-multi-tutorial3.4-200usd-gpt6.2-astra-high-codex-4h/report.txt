@@ -4,7 +4,7 @@ Canonical machine-readable data: run.json, results.csv, and the optional LLM-onl
 
 ## Elo ratings
 
-Games: 325060
+Games: 325082
 Anchor: kata1-random = 0 Elo
 Color advantage model: average_elo_piecewise_linear_1500
 Black advantage at average-Elo nodes:
@@ -130,10 +130,10 @@ opus-5-max-api-multi                                                            
 kata1-b6c96-s16525312-d2925067                                                    2244    ± 28   3122-3699-105   6926
 gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-4h                    2243   ± 112         34-15-1     50
 gpt6-astra-high-api-multi                                                         2225   ± 138         17-12-1     30
-gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h           2205   ± 141         13-13-0     26
+gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h           2206   ± 104         25-22-1     48
 gpt6.1-sol-high-api-multi                                                         2171   ± 175          12-7-1     20
-kata1-b6c96-s15704832-d2832803                                                    2162    ± 29    1752-2122-64   3938
-kata1-b6c96-s16525312-d2925067-temp-0.5                                           2159    ± 27   3027-3534-109   6670
+kata1-b6c96-s15704832-d2832803                                                    2162    ± 29    1756-2126-64   3946
+kata1-b6c96-s16525312-d2925067-temp-0.5                                           2159    ± 27   3032-3542-110   6684
 fable-5.1-high-api-multi                                                          2120   ± 134         14-16-0     30
 kata1-b6c96-s14649344-d2727367                                                    2107    ± 29    1800-2167-81   4048
 claude-sonnet-5-5-high-api-multi                                                  2085   ± 174          11-9-0     20
@@ -269,18 +269,18 @@ Rank  LLM                                                                       
  1-5  gpt6-astra-high-api-multi-tutorial3.4-200usd-fable-5.2-high-claude-code-4h        2330   ± 107     50   1742             0/1742            0/1742             95.36%                  489.14             21.82s  $99.574630000000  $0.057161096440872562  $225.942337200000
  1-5  gpt6-astra-high-api-multi-tutorial3.4-200usd-claude-opus-5-5-high-claude-code-4h  2281   ± 106     50   1804             0/1804            0/1804             93.39%                  164.18              8.41s  $57.661694000000  $0.031963245011086473  $320.793663600000
  1-5  gpt6-astra-high-api-multi-tutorial3.4-gpt6-astra-high-codex-4h                    2243   ± 112     50   1716             0/1716            0/1716             94.16%                  241.92             12.04s  $66.325182000000  $0.038651038461538459   $65.620930000000
- 1-5  gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h           2205   ± 141     26   1027             0/1027            0/1027             94.09%                  226.70             10.61s  $45.800846000000  $0.044596734177215193  $246.471124400000
+ 1-5  gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h           2206   ± 104     48   1965             0/1965            0/1965             94.39%                  238.70             11.01s  $88.564752000000  $0.045071120610687021  $246.471124400000
 
 ## Active-player matchup results
 
 Active player: gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h
-Opponent                                 Opp Elo  95% CI  W-L-D
----------------------------------------------------------------
-kata1-b6c96-s17434112-d3038653              2311    ± 28  1-5-0
-kata1-b6c96-s16525312-d2925067              2244    ± 28  4-6-0
-kata1-b6c96-s15704832-d2832803              2162    ± 29  3-1-0
-kata1-b6c96-s16525312-d2925067-temp-0.5     2159    ± 27  2-0-0
-kata1-b6c96-s16525312-d2925067-temp-0.7     2010    ± 27  3-1-0
+Opponent                                 Opp Elo  95% CI   W-L-D
+----------------------------------------------------------------
+kata1-b6c96-s17434112-d3038653              2311    ± 28   1-5-0
+kata1-b6c96-s16525312-d2925067              2244    ± 28   4-6-0
+kata1-b6c96-s15704832-d2832803              2162    ± 29   7-5-0
+kata1-b6c96-s16525312-d2925067-temp-0.5     2159    ± 27  10-5-1
+kata1-b6c96-s16525312-d2925067-temp-0.7     2010    ± 27   3-1-0
 
 ## All LLM matchup results
 
@@ -993,13 +993,13 @@ kata1-b6c96-s11888896-d2416753-temp-0.5     1741    ± 26  2-0-0
 kata1-b6c96-s8080640-d1961030-temp-0.7       996    ± 22  2-0-0
 
 LLM: gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h
-Opponent                                 Opp Elo  95% CI  W-L-D
----------------------------------------------------------------
-kata1-b6c96-s17434112-d3038653              2311    ± 28  1-5-0
-kata1-b6c96-s16525312-d2925067              2244    ± 28  4-6-0
-kata1-b6c96-s15704832-d2832803              2162    ± 29  3-1-0
-kata1-b6c96-s16525312-d2925067-temp-0.5     2159    ± 27  2-0-0
-kata1-b6c96-s16525312-d2925067-temp-0.7     2010    ± 27  3-1-0
+Opponent                                 Opp Elo  95% CI   W-L-D
+----------------------------------------------------------------
+kata1-b6c96-s17434112-d3038653              2311    ± 28   1-5-0
+kata1-b6c96-s16525312-d2925067              2244    ± 28   4-6-0
+kata1-b6c96-s15704832-d2832803              2162    ± 29   7-5-0
+kata1-b6c96-s16525312-d2925067-temp-0.5     2159    ± 27  10-5-1
+kata1-b6c96-s16525312-d2925067-temp-0.7     2010    ± 27   3-1-0
 
 LLM: gpt6.1-sol-high-api-multi
 Opponent                                 Opp Elo  95% CI  W-L-D
