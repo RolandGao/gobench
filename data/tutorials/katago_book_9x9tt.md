@@ -1,0 +1,181 @@
+# 9x9 opening book (KataGo, Tromp-Taylor rules, komi 7: the same as this game)
+
+Converted from KataGo's 9x9 opening book (katagobooks.org/book9x9tt). With best play Black wins about 48%, so the opening is balanced. While the game is in the book, play the book move: it is far stronger than reasoning from scratch.
+
+## How to read the book
+- Each line lists moves from the empty board. Odd numbers are Black, even numbers White.
+- The first move after any position is the book's best move for that side. An indented line is a variation: it replaces the moves of the nearest less-indented line above it, starting at its own move number.
+- `?` marks a mistake (loses at least 5% win rate) and `??` a blunder (at least 15%). The moves after it show how to punish it.
+- `[n]` at the end of a line is Black's win % at that point with best play.
+- As Black, start with 1.F6 so the game matches the book directly. As White, answer whatever Black plays from the lines below.
+
+## Symmetry
+The book shows one orientation of each position. Number the columns A=1 B=2 C=3 D=4 E=5 F=6 G=7 H=8 J=9 (there is no I). A point (column c, row r) can be moved by eight maps: (c,r) (10-c,r) (c,10-r) (10-c,10-r) (r,c) (10-r,c) (r,10-c) (10-r,10-c).
+1. Find the map T that sends every stone of your game onto the stones of a book line.
+2. Your move is the point that T sends onto the book's reply. For the first four maps and for (r,c) and (10-r,10-c), apply T itself to the book move. For (10-r,c) apply (r,10-c), and vice versa.
+Example: the book has 1.F6 2.D4, but your game went 1.D4 2.F6. The map (10-c,10-r) sends D4 to F6 and F6 to D4, so play the book's third move through the same map.
+
+## After the book ends
+- Scoring is strict Tromp-Taylor area scoring with no dead-stone removal. A dead enemy stone left inside your area makes the empty points around it neutral. Before passing, capture every dead enemy stone in your area, and never pass while the opponent can still do this to you.
+- Count before passing: with komi 7 and every point owned, Black wins with 45 or more of the 81 points (stones plus surrounded empty points), White with 38 or more; 44 to 37 is a draw.
+
+## Book
+
+1.F6 2.D4 3.D5 4.C5 5.C6 6.C4 7.G4 8.B6 9.E3 10.C7 11.D6 12.D7 13.E7 14.E5 15.E6 16.E4 17.F3 18.E8 19.F8 20.F5 21.D8 22.C8 23.B7 24.B8 25.G5 [50]
+ 2.E4 3.D6 4.C4 5.G4 6.G3 7.H3 8.F3 9.C5 10.B5 11.B6 12.F7 13.G7 14.G6 15.H6 16.E6 17.F5 [50]
+  4.C5 5.G4 6.C6 7.C7 8.B7 9.F3 [51]
+  10.G6 11.F7 12.B5 13.B6 [50]
+  10.F7 [53]
+ 2.F4 3.D5 4.E3 5.C4 6.D7 7.E8 8.C6 9.D8 10.B4 11.D3 12.B3 13.E2 14.F2 15.C2 16.E1 17.D2 18.C5 19.E6 20.G5 21.B7 22.B6 23.C7 24.E4 [51]
+  4.D3 5.C3 [50]
+  6.G7 7.F7 8.G6 9.F5 10.G5 11.G4 12.G3 13.E4 14.H4 15.D3 16.E2 [50]
+   12.E5 13.E6 14.G3 15.E4 16.H4 17.D3 [51]
+    14.E4? 15.G3 16.D6 17.D7 18.C6 19.F8 20.C7 21.C3 [56]
+   14.F3 [49]
+   16.F8 [51]
+  6.C7 7.D8 [50]
+  6.D8 7.C7 8.G7 9.G6 10.F7 11.H7 12.H8 13.H5 [50]
+   8.D7?? [77]
+   8.C8?? 9.F8 10.B7 11.B6 [92]
+  6.F7 7.G7 8.E7 9.C7 [52]
+  16.E5?? 17.E6 [82]
+  20.E4?? [86]
+ 2.D3 3.D4 4.E5 5.E4 6.F5 7.D7 [50]
+  4.E3 5.C4 6.G4 7.D6 [52]
+ 2.F3 3.E4 4.E3 5.C4 6.F4 7.D7 8.E5 9.D6 [51]
+ 2.E3 3.D6 4.C4 5.C5 6.D4 7.F4 [57]
+ 2.G4 3.F4 4.F3 5.E4 6.E3 [53]
+ 3.D6?? 4.F4 5.E2 6.E3 7.F2 8.C3 9.G4 10.G3 11.F3 12.G5 13.H4 14.F5 15.G6 16.H5 17.H3 18.B6 [12]
+  5.D2 [16]
+ 4.C4 5.F4 6.C5 7.D7 8.H5 9.G7 10.G3 11.F3 12.F2 13.G4 14.E2 15.H3 16.G2 17.H4 18.B7 19.B8 20.C7 21.C8 22.D6 [50]
+  6.E5 7.E6 8.F5 9.G5 10.E4 11.F3 12.G6 13.H5 14.G7 15.D6 16.B6 [50]
+   8.C5 9.D6 10.G5 11.F5 [51]
+   12.G4 13.H4 [52]
+   14.G4 15.H4 16.C7 17.D6 18.C5 19.D8 20.C8 21.F8 [52]
+  6.F7 7.G7 8.G6 9.E6 [50]
+  8.C7?? 9.D6 10.C8 11.E4 12.D2 13.E2 [83]
+  12.G2 13.F2 14.H7 15.G4 16.H4 17.H6 18.G5 19.G6 20.H2 21.J5 22.J3 23.D2 [50]
+   20.F5 21.E5 [52]
+  16.C7 17.C8 18.G2 [50]
+  18.C7 [50]
+ 4.E4 5.C4 6.C3 7.C5 8.G4 9.G5 10.H4 11.B3 12.E8 13.F8 14.F7 15.G7 16.E7 17.G8 18.C7 19.C2 [50]
+  10.B3 11.H4 12.D7 13.B7 [52]
+  10.E8 11.H4 [51]
+  10.C7 11.B3 12.F8 13.H4 14.G3 15.B8 [52]
+   14.D2?? 15.C2 16.D3 17.G8 [69]
+  10.D7?? 11.B3 12.F8 13.G8 14.E8 [77]
+ 4.E5 5.E6 6.C5 7.D6 8.C4 9.G4 [53]
+ 4.F4 5.C4 [54]
+ 5.D6 6.E4 7.C4 8.C3 9.B4 10.B3 11.B5 12.G5 13.G6 14.C6 15.C7 16.H5 [49]
+  11.G4?? 12.B5 [6]
+ 5.E4 6.E3 7.E5 8.G7 9.F3 10.D3 11.C6 12.F2 13.F7? 14.G3 [37]
+  7.C4?? 8.D3 9.C6 10.B5 11.D6 12.G7 13.B4 14.H5 [18]
+  9.D3?? 10.C4 11.C3 12.C7 [10]
+ 5.C4?? 6.C3 7.B4 8.E5 9.D6 10.E6 11.E7 12.F5 13.F7 [5]
+ 6.E5 7.D6 8.E4 9.E6 10.G4 11.C4 12.C3 13.B5 14.H5 15.H6 16.B3 17.G5 18.F5 19.G6 20.H4 21.B4 [50]
+  8.G4 9.C4 10.C3 11.B5 12.E4 13.E6 [51] = transposes
+   10.E4?? 11.C3 12.E6 13.E7 14.F7 15.F8 16.G7 17.D8 18.G8 19.E2 [93]
+  8.F5 9.E6 10.G5 11.C4 12.C3 13.B5 14.E3 15.G6 16.B3 17.H5 18.H4 19.H6 20.J5 21.J6 22.J4 [51]
+   14.D3 15.F3 [53]
+   16.H6 17.H7 18.B3 19.H5 20.H4 21.J6 22.J4 [50]
+   16.B4 17.H5 18.H4 19.H6 20.C5 [51]
+   20.J4 21.A4 [51]
+  8.F4 9.E6 10.B5 [50]
+  8.E6 9.E7 10.E4 11.F7 12.G4 13.C4 14.C3 15.B5 16.B3 17.H5 18.H4 19.F4 [50]
+   10.F5 11.F7 12.G5 [53]
+  8.C4?? 9.E4 10.F5 11.F4 [79]
+  10.G5 11.C4 12.C3 13.B5 14.G4 15.G6 [50]
+  14.G5 [50] = transposes
+  14.H6 15.B3 16.G7 17.E2 18.D2 19.F3 20.G5 [49]
+  16.B4 17.B3 18.C5 19.G5 20.F5 21.G6 22.C4 23.H4 24.H3 25.J5 [51]
+  18.H4 19.D3 20.E3 [51]
+ 6.B6 7.C4 8.B5 9.E4 10.D3 11.E3 12.C3 13.D2 14.C2 15.D6 16.G6 17.G7 [49]
+  12.D6 13.E5 14.C3 15.D2 [52]
+ 6.E4 7.C4 8.B5 9.C3 10.E5 11.D6 12.E6 13.B6 14.F7 15.G7 [52]
+ 6.B5 7.E4 8.D3 [51]
+ 6.F4 7.C4 8.B5 9.B6 [54]
+ 7.D6 8.G4 [48]
+ 7.F3?? 8.E5 9.D6 10.G4 11.E4 12.F5 [15]
+ 7.F5?? 8.B6 [14]
+ 7.F4?? 8.E5 9.D6? 10.E6 11.E7 12.E4 13.G7 14.F3 15.G4 16.G3 [3]
+ 8.F3 9.D6 10.G3 11.H3 12.F4 13.G5 [50]
+  10.F4 11.G5 12.G7 13.E8 [49]
+ 8.F7 9.E7 10.F3 11.G3 [49]
+  10.B6 11.E3 [50]
+ 8.G6 [50]
+ 8.E5 [51]
+ 8.F4 9.F3 [52]
+ 9.D6 10.B7 11.E3 12.G7 13.F8 14.F7 15.E8 16.E4 17.F4 18.E5 19.E6 20.F5 21.G5 22.G6 23.D8 24.E2 25.F2 26.H5 27.H4 [48]
+  11.F3?? 12.F8 13.E8 14.F7 15.G6 16.D8 [9]
+  13.G6 14.E4 15.F4 16.F8 17.C2 [45]
+   15.F3? 16.E8 17.F7 18.F8 19.G8 20.F4 21.C2 22.D2 23.D3 [34]
+  13.F7?? 14.E4 15.F4 16.F8 17.E8 18.H8 [14]
+ 9.B7 10.F7 11.E7 12.G6 13.G7 14.F3 15.G3 16.C7 17.D6 18.B8 19.F2 20.E2 [48]
+  11.D7? 12.G6 13.F5 14.H5 15.D2? 16.C2 [30]
+  11.D6? 12.G6 13.E4? 14.E3 15.F3? 16.F5 17.E2 18.D3 [23]
+   13.E3?? 14.F5 [22]
+  13.F5?? 14.C7 15.D6 16.B8 17.E4 18.G8 [21]
+ 9.D7? 10.G6 11.B7 12.F7 [42] = transposes
+  11.G7?? 12.F7 [9]
+ 9.C7?? 10.G7 11.F7 12.G6 13.G5 14.B7 [29]
+  11.G6? 12.F7 13.E7 [15]
+ 9.F3?? 10.F5 [6]
+ 10.G6 11.G7 12.D6 13.C2 [49]
+ 10.D6 11.E7 12.D8 13.E8 14.E2 15.F2 16.D2 17.D7 18.C7 [50]
+  12.H4 13.H5 [50]
+  12.D7 13.D8 14.C8 15.E8 [50]
+  14.D7 15.E4 [50]
+ 10.E5 11.E7 12.D7 13.D8 [50]
+ 10.F7 11.E7 [50] = transposes
+ 10.D7 11.E7 [50]
+ 10.E4 11.F4 [50]
+ 11.E4 12.F8 13.E8 14.E7 15.F7 16.D8 17.D6 18.E9 19.B7?? 20.B5 [15]
+  13.D6 14.D7 15.B7 16.B5 [49]
+  17.G8?? 18.D2 19.D3 20.C3 21.C2 22.B2 23.F9 24.E2 25.F2 26.E5 27.E1 [2]
+ 11.F8?? 12.E2 13.D2 14.G3 15.F3 16.H4 [16]
+  13.F2? 14.E7 [11]
+ 11.E7?? 12.G5 [15]
+ 11.E8?? 12.E4 13.F4 14.E2 15.D3 16.F7 [5]
+ 12.E4 13.F4 14.D7 15.E7 [50]
+ 13.E4 14.F8 [49] = transposes
+ 14.E4 15.F4 [50] = transposes
+ 14.E8 15.F8 16.E5 17.E6 18.E4 19.B7 20.B8 21.F3 22.F5 23.D8 24.C8 [50] = transposes
+ 17.B7 18.B8 19.F3 20.E8 21.F8 [50] = transposes
+  19.F4 20.E8 21.D8 22.C8 23.B5 24.A7 25.C2 26.F5 [49]
+  19.D8 20.C8 [49]
+  21.D8 22.C8 23.F8 24.F5 [50] = transposes
+  21.C2 22.F5 23.G6 [45]
+ 17.F4 18.E8 [46]
+ 19.B7 20.B8 [50] = transposes
+ 19.D8 20.C8 21.F8 22.D9 23.F5 [47]
+ 21.G5 [49]
+1.E5 2.G5 3.G6 4.F6 5.F5 6.G7 7.H6 8.G4 9.F3 10.H7 11.F7 12.E6 13.D6 14.E7 15.D7 16.F8 17.E8 18.F7 19.C5 20.G3 21.E2 22.F4 23.E4 24.F2 25.E3 26.E9 [50]
+ 3.C6 4.D3 5.F4 6.C4 7.E2 8.G7 9.F7 10.D6 11.E6 12.F8 13.E8 14.B6 [47]
+  5.G6 6.H6 7.F6 8.F3 9.H7 10.C4 11.E3 12.E4 13.F4 14.E2 [48]
+  5.F3 6.C4 7.G6 8.H6 9.G7 10.H7 [47]
+  5.G4?? [17]
+  7.F7 8.G7 9.E2 [48] = transposes
+  7.G4 [45]
+  7.F6? 8.G7 9.F7 10.D6 [41]
+   9.E2 10.D6 [40]
+ 3.C5 4.F3 5.F7 6.D4 7.D5 8.G7 [47]
+ 3.F7 4.C6 [45]
+ 11.D7?? 12.F7 13.C6 14.D3 15.E3 16.D5 [23]
+ 19.C3 20.G3 21.F2?? 22.D5 [11]
+ 19.D3?? 20.G3 [5]
+1.F5 2.D5 3.E7 4.E3 5.F3 6.F2 7.E4 8.G3 9.F4 10.E6 11.F6 12.D7 13.E8 14.D3 15.D4 16.C4 17.G2 18.H2 [49]
+ 3.C7 4.D7 5.D8 6.E7 [46]
+ 5.D4 6.E4 7.E5 8.C4 9.D6 10.C5 11.F4 12.F3 13.G3 14.G4 15.H3 16.H5 17.E2 18.D3 19.F2 20.G8 [45]
+  11.G3 12.G4 13.F4 14.F3 [45] = transposes
+  17.G5 18.H7 [45]
+ 5.E4?? 6.D4 7.F3 8.E6 9.F6 10.D7 [11]
+ 9.D4 10.F4 11.G4 12.H4 13.F3 14.D7 15.F4 16.E6 17.F7 [45]
+  17.G2?? 18.F6 19.C7 20.E8 [24]
+1.G5 2.D5 3.E5 4.E4 5.D4 6.E3 7.D6 8.C5 9.C6 10.C4 11.E6 12.G7 [49]
+ 3.D4?? 4.E5 5.E4? 6.F5 [7]
+ 5.D6 6.C6 7.E6 8.D4 9.C7 10.F4 [48]
+  7.D4 8.C5 9.E6 10.D3 11.F4 12.E3 [45]
+   9.E3?? [15]
+ 7.E6 8.C4 9.D6 10.D3 [47]
+ 9.E6 10.C6 11.C7 12.B7 13.G3 14.C4 [47]
+1.G6?? 2.D4 3.E4 4.D5 [9]

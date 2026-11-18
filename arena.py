@@ -1560,11 +1560,44 @@ def _tutorial_player(player_name):
     return spec
 
 
+def _file_tutorial_player(player_name):
+    """A Track 3 player whose target reads a fixed tutorial file, or None."""
+    spec = _tutorial.parse_file_player(player_name)
+    if spec is None:
+        return None
+    target = _registered_llm_player(spec.target)
+    if target is None or target[1].agentic_harness != "api-multi":
+        return None
+    return spec
+
+
+def _is_tutorial_player(player_name):
+    """Any Track 3 player: a learned tutorial or a fixed tutorial file."""
+    return (_tutorial_player(player_name) is not None
+            or _file_tutorial_player(player_name) is not None)
+
+
+@cache
+def _file_tutorial(spec):
+    """(text, sha256, tokens), read once per process so a run uses one version."""
+    try:
+        text = (_Arena.ROOT / spec.relative_path).read_text()
+    except OSError as exc:
+        raise ArenaError(f"cannot read tutorial file {spec.relative_path}: {exc}") from exc
+    tokens = _tutorial.count_tokens(text)
+    if tokens > _tutorial.TOKEN_LIMIT:
+        raise ArenaError(f"{spec.relative_path} has {tokens} tokens; "
+                         f"the limit is {_tutorial.TOKEN_LIMIT}")
+    return text, hashlib.sha256(text.encode()).hexdigest(), tokens
+
+
 def _canonical_active_llm_player_name(player_name):
     if not isinstance(player_name, str):
         return None
     if (tutorial_player := _tutorial_player(player_name)) is not None:
         return tutorial_player.canonical
+    if (file_tutorial := _file_tutorial_player(player_name)) is not None:
+        return file_tutorial.canonical
     # Read old histories without exposing authentication as a player variant.
     player_name = re.sub(r"-oauth(?=-multi(?:\d+)?$|\d*$)", "-api", player_name)
     if any(player_name in api.players for api in _Arena.LLM_APIS):
@@ -1596,7 +1629,7 @@ def _result_llm_players(player_names):
 
 def _is_result_api_llm_player(player_name):
     canonical = _canonical_active_llm_player_name(player_name)
-    if _tutorial_player(player_name) is not None:
+    if _is_tutorial_player(player_name):
         return False
     if canonical is not None:
         for api in _Arena.LLM_APIS:
@@ -1616,7 +1649,7 @@ LLM_TRACK_COMPARISONS = (
 
 
 def _result_llm_track(player_name):
-    if _tutorial_player(player_name) is not None:
+    if _is_tutorial_player(player_name):
         return 3
     if _is_result_api_llm_player(player_name):
         return 1
@@ -1948,7 +1981,7 @@ def _configure(config):
 def _is_checkpoint_player(player_name):
     """Players rated as one run's fresh preparation (Track 2) or tutorial (Track 3)."""
     return _is_active_llm_player(player_name) and (
-        _tutorial_player(player_name) is not None
+        _is_tutorial_player(player_name)
         or _llm_player_config(player_name)[1].agentic_harness in _WORKSPACE_HARNESSES
     )
 
@@ -3447,6 +3480,8 @@ def _llm_player_config(name):
         raise ArenaError(f"unknown LLM player {name}")
     if (tutorial_player := _tutorial_player(canonical)) is not None:
         return _registered_llm_player(tutorial_player.target)
+    if (file_tutorial := _file_tutorial_player(canonical)) is not None:
+        return _registered_llm_player(file_tutorial.target)
     for api in _Arena.LLM_APIS:
         if canonical in api.players:
             return api, api.players[canonical]
@@ -3552,6 +3587,19 @@ def _llm_player_manifest(name):
                 "student_cost_limit_usd": tutorial_player.student_cost_limit_usd}
                if tutorial_player.chat
                else {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY}),
+            tutorial_token_limit=_tutorial.TOKEN_LIMIT,
+            tutorial_tokenizer=f"tiktoken {_tutorial.TOKENIZER}",
+            tutorial_placement="first user message of every conversation session",
+        )
+    if (file_tutorial := _file_tutorial_player(name)) is not None:
+        _, sha256, tokens = _file_tutorial(file_tutorial)
+        manifest.update(
+            track=3,
+            tutorial_protocol=_tutorial.FILE_PROTOCOL_VERSION,
+            target_player=file_tutorial.target,
+            tutorial_source=file_tutorial.relative_path,
+            tutorial_sha256=sha256,
+            tutorial_tokens=tokens,
             tutorial_token_limit=_tutorial.TOKEN_LIMIT,
             tutorial_tokenizer=f"tiktoken {_tutorial.TOKENIZER}",
             tutorial_placement="first user message of every conversation session",
@@ -3736,6 +3784,8 @@ def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None,
         if work_dir is None:
             raise ArenaError("tutorial players require a game work directory")
         tutorial = _ensure_tutorial(tutorial_player, work_dir)
+    elif (file_tutorial := _file_tutorial_player(player_name)) is not None:
+        tutorial = _file_tutorial(file_tutorial)[0]
     if player.agentic_harness in _CODEX_ENGINE_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
             raise ArenaError("Codex engine players require a game work directory and number")
@@ -6609,7 +6659,7 @@ def _restore_archived_api_games(run, meta, temp_dir, valid_size):
         )
     if not active or any(
         not _is_active_llm_player(name)
-        or _tutorial_player(name) is not None
+        or _is_tutorial_player(name)
         or _llm_player_config(name)[1].agentic_harness not in {"api", "api-multi"}
         for name in active
     ):

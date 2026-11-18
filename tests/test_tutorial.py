@@ -1,5 +1,6 @@
 """Track 3 tutorial distillation without sandboxes, KataGo, or provider calls."""
 
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -71,6 +72,61 @@ class NameTests(unittest.TestCase):
         self.assertTrue(manifest["student_calls"])
         self.assertFalse(manifest["learning_subagents"])
         self.assertEqual(manifest["tutorial_token_limit"], 5000)
+
+
+FILE_PLAYER = f"{TARGET}-tutorial-file-katago_book_9x9tt"
+
+
+class FileTutorialTests(unittest.TestCase):
+    def test_file_player_plays_as_its_target_in_track_3(self):
+        spec = arena._file_tutorial_player(FILE_PLAYER)
+        self.assertEqual((spec.target, spec.relative_path),
+                         (TARGET, "data/tutorials/katago_book_9x9tt.md"))
+        self.assertIsNone(arena._tutorial_player(FILE_PLAYER))
+        self.assertEqual(arena._canonical_active_llm_player_name(FILE_PLAYER), FILE_PLAYER)
+        self.assertEqual(arena._llm_player_config(FILE_PLAYER), arena._llm_player_config(TARGET))
+        self.assertEqual(arena._result_llm_track(FILE_PLAYER), 3)
+        self.assertTrue(arena._is_checkpoint_player(FILE_PLAYER))
+        self.assertFalse(arena._is_result_api_llm_player(FILE_PLAYER))
+        for name in (
+            FILE_PLAYER.replace("-api-multi-", "-api-"),
+            "gpt6-astra-high-codex-4h-tutorial-file-katago_book_9x9tt",
+            FILE_PLAYER + "-v2",
+        ):
+            with self.subTest(name=name):
+                self.assertFalse(arena._is_active_llm_player(name))
+
+    def test_manifest_records_the_file_version(self):
+        text = (arena._Arena.ROOT / "data/tutorials/katago_book_9x9tt.md").read_text()
+        manifest = arena._llm_player_manifest(FILE_PLAYER)
+        self.assertEqual(manifest["track"], 3)
+        self.assertEqual(manifest["tutorial_protocol"], tutorial.FILE_PROTOCOL_VERSION)
+        self.assertEqual(manifest["tutorial_source"], "data/tutorials/katago_book_9x9tt.md")
+        self.assertEqual(manifest["tutorial_sha256"],
+                         hashlib.sha256(text.encode()).hexdigest())
+        self.assertEqual(manifest["tutorial_tokens"], tutorial.count_tokens(text))
+        self.assertLessEqual(manifest["tutorial_tokens"], tutorial.TOKEN_LIMIT)
+        self.assertNotIn("learner_player", manifest)
+
+    def test_eval_client_reads_the_file_without_learning(self):
+        text = (arena._Arena.ROOT / "data/tutorials/katago_book_9x9tt.md").read_text()
+        with TemporaryDirectory() as directory, \
+                patch.object(arena, "_ensure_tutorial") as ensure, \
+                patch.object(arena, "AnthropicClient"), anthropic_sdk():
+            client = arena._llm_client(FILE_PLAYER, work_dir=Path(directory), game_number=3)
+        ensure.assert_not_called()
+        self.assertEqual(client.conversation.tutorial, text)
+        self.assertEqual(client.conversation.identity["player"], FILE_PLAYER)
+
+    def test_files_over_the_token_limit_are_rejected(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / tutorial.FILE_DIR).mkdir(parents=True)
+            (root / tutorial.FILE_DIR / "too_long.md").write_text("go " * 6000)
+            spec = arena._file_tutorial_player(f"{TARGET}-tutorial-file-too_long")
+            with patch.object(arena._Arena, "ROOT", root), \
+                    self.assertRaisesRegex(arena.ArenaError, "limit is 5000"):
+                arena._file_tutorial(spec)
 
 
 class TokenAndFileTests(unittest.TestCase):

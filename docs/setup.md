@@ -414,6 +414,18 @@ student request (`student/call-*.jsonl` and `calls.jsonl` under
 for audit. `run.json` copies the manifests under `tutorial_checkpoints`.
 Evaluation game costs are reported separately, as for the target player.
 
+A tutorial written outside the arena can be evaluated the same way: name the
+player `<target>-tutorial-file-<stem>` to give the target
+`data/tutorials/<stem>.md` (letters, digits and underscores) in place of a
+learned tutorial. There is no learning phase, so the learning cost is N/A and
+only the target's API login is needed. A file over 5,000 tokens is rejected
+rather than truncated. The player manifest records the path, SHA-256 and
+token count; resuming after the file changes is refused, so use a new stem for
+a new version. For example,
+`gpt6-astra-high-api-multi-tutorial-file-katago_book_9x9tt` evaluates
+[katago_book_9x9tt.md](../data/tutorials/katago_book_9x9tt.md), converted from
+KataGo's 9x9 Tromp-Taylor opening book.
+
 The host needs the Track 2 workspace requirements (and the Claude Code binary
 or Codex SDK for the learner), the target's API login, and `tiktoken`, which
 downloads the `o200k_base` file once from OpenAI's public blob storage.

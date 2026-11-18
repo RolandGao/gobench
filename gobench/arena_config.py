@@ -225,6 +225,11 @@ _TUTORIAL_PLAYERS = {
         "gpt6-astra-high-api-multi",
         "tutorial3.4-200usd-gpt6.2-astra-high-codex-4h",
     ),
+    # A fixed tutorial file instead of a learned one (data/tutorials/).
+    "gpt6-astra-tutorial-file-katago_book_9x9tt": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial-file-katago_book_9x9tt",
+    ),
 }
 
 

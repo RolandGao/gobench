@@ -132,6 +132,43 @@ def parse_player(name):
                           float(budget) if budget is not None else STUDENT_COST_LIMIT_USD)
 
 
+FILE_PROTOCOL_VERSION = "tutorial-file-v1"
+# Relative to the repository root.
+FILE_DIR = "data/tutorials"
+_FILE_NAME = re.compile(r"(?P<target>.+-api-multi)-tutorial-file-(?P<stem>[A-Za-z0-9_]+)")
+
+
+@dataclass(frozen=True)
+class FileTutorialPlayer:
+    """`<target>-tutorial-file-<stem>`: a tutorial written outside the arena.
+
+    The target reads `data/tutorials/<stem>.md` exactly as it would read a
+    learned tutorial. There is no learning phase.
+    """
+
+    name: str
+    target: str
+    stem: str
+
+    @property
+    def canonical(self):
+        return self.name
+
+    @property
+    def relative_path(self):
+        return f"{FILE_DIR}/{self.stem}.md"
+
+
+def parse_file_player(name):
+    """Parse a file tutorial player name, or return None for any other player."""
+    if not isinstance(name, str):
+        return None
+    match = _FILE_NAME.fullmatch(name)
+    if match is None:
+        return None
+    return FileTutorialPlayer(name, match.group("target"), match.group("stem"))
+
+
 @functools.cache
 def _encoding():
     import tiktoken
