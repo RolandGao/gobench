@@ -1,0 +1,674 @@
+[
+ {
+  "name": "kata1-zhizi-b40c768nbt-fdx6c",
+  "elo": 4208.0,
+  "sha256": "8a5616446ca2407a37967ae67a2e45e352cf526f63fe904cd4c41b060f57257a",
+  "size": 863624732,
+  "file": "kata1-zhizi-b40c768nbt-fdx6c.bin.gz"
+ },
+ {
+  "name": "kata1-b28c512nbt-s12313658112-d5687582971",
+  "elo": 4192.0,
+  "sha256": "576807fdbfe5f1cd6994f393c8787d70eb2ab1b995de14630763da8f2194bbfd",
+  "size": 271446578,
+  "file": "kata1-b28c512nbt-s12313658112-d5687582971.bin.gz"
+ },
+ {
+  "name": "kata1-b28c512nbt-s8566598912-d4691918754",
+  "elo": 4183.0,
+  "sha256": "ca59f8d60bdd2bac04030a20a9a42cb888e6aeaba8961357f054b1b07366378d",
+  "size": 271378874,
+  "file": "kata1-b28c512nbt-s8566598912-d4691918754.bin.gz"
+ },
+ {
+  "name": "kata1-b28c512nbt-s7229617920-d4333415784",
+  "elo": 4153.0,
+  "sha256": "06ab9438bfd04cc29650195f326b2d50872025c50b7caa6be3b372c82f6fc8fe",
+  "size": 271357460,
+  "file": "kata1-b28c512nbt-s7229617920-d4333415784.bin.gz"
+ },
+ {
+  "name": "kata1-b18c384nbt-s9761732864-d4253420187",
+  "elo": 4122.0,
+  "sha256": "7754306f1b00f43d1832e7d85b6419afc0d01fa977291b32832dbb7666ade38f",
+  "size": 97896221,
+  "file": "kata1-b18c384nbt-s9761732864-d4253420187.bin.gz"
+ },
+ {
+  "name": "kata1-b60c320-s6678602752-d3043834427",
+  "elo": 4094.0,
+  "sha256": "dfe6a9f44f7c3651d0b2e71bc6c3728a9d9752ad243e74b8dfe44a5bf1cb3539",
+  "size": 403545684,
+  "file": "kata1-b60c320-s6678602752-d3043834427.bin.gz"
+ },
+ {
+  "name": "kata1-b40c256-s11840935168-d2898845681",
+  "elo": 4062.0,
+  "sha256": "4179c907f5e8850ff3fa9d1d2d4e590ef7d1643ab4d4bd7324e6519c8d0562bc",
+  "size": 173553002,
+  "file": "kata1-b40c256-s11840935168-d2898845681.bin.gz"
+ },
+ {
+  "name": "kata1-b40c256-s8049900800-d1952632576",
+  "elo": 4055.0,
+  "sha256": "c4dad06d2e67efb9006fb42cdcee775914081d6afb65ded8d227aaf924df808f",
+  "size": 173539941,
+  "file": "kata1-b40c256-s8049900800-d1952632576.bin.gz"
+ },
+ {
+  "name": "kata1-b40c256x2-s4120339456-d1045882697",
+  "elo": 4019.0,
+  "sha256": "201fffe8e00e1e98b8ce1369041b308c9be9c5e06beca955986bf3290bb80358",
+  "size": 173524960,
+  "file": "kata1-b40c256x2-s4120339456-d1045882697.bin.gz"
+ },
+ {
+  "name": "kata1-b40c256-s5793846528-d1395151722",
+  "elo": 3986.0,
+  "sha256": "cd2d74969f74dba499b9ed226ed8581e645c8f6995d81e05a55ccbaa717b0dc9",
+  "size": 173518704,
+  "file": "kata1-b40c256-s5793846528-d1395151722.bin.gz"
+ },
+ {
+  "name": "kata1-b40c256x2-s4833666560-d1179059206",
+  "elo": 3980.0,
+  "sha256": "384ba1f330abd81b95d53203ae563199e88ab15356a216c6c682924028774d21",
+  "size": 173514953,
+  "file": "kata1-b40c256x2-s4833666560-d1179059206.bin.gz"
+ },
+ {
+  "name": "kata1-b20c256x2-s5055114240-d1149032340",
+  "elo": 3924.0,
+  "sha256": "4817615f6707e3c218a9f2aa802b46f3589b46d8cbd788abb84ead0fe147b028",
+  "size": 87356821,
+  "file": "kata1-b20c256x2-s5055114240-d1149032340.bin.gz"
+ },
+ {
+  "name": "kata1-b20c256x2-s3354994176-d716845198",
+  "elo": 3889.0,
+  "sha256": "fa73912ad2fc84940e5b9edc78a3ef2d775ed18f3c9a735f4051c378b7526d6e",
+  "size": 87358604,
+  "file": "kata1-b20c256x2-s3354994176-d716845198.bin.gz"
+ },
+ {
+  "name": "kata1-b20c256x2-s2430231552-d525879064",
+  "elo": 3854.0,
+  "sha256": "770f65c5cfa6e7ebba1b972768406668afdfc2e65d61e45b8cb468677f5fea4d",
+  "size": 87357603,
+  "file": "kata1-b20c256x2-s2430231552-d525879064.bin.gz"
+ },
+ {
+  "name": "kata1-b20c256x2-s1610809600-d384128195",
+  "elo": 3840.0,
+  "sha256": "89e65f5f90a32a5908f4585a04b3ae326fed0451e46f1699df1affb9c1c3e0e7",
+  "size": 113618218,
+  "file": "kata1-b20c256x2-s1610809600-d384128195.txt.gz"
+ },
+ {
+  "name": "kata1-b20c256x2-s1039565568-d285739972",
+  "elo": 3832.0,
+  "sha256": "b69a9c06ca8a0068e3082928545159977c71d6604293f34fd0b49f2b853750e3",
+  "size": 113595921,
+  "file": "kata1-b20c256x2-s1039565568-d285739972.txt.gz"
+ },
+ {
+  "name": "kata1-b20c256x2-s668214784-d222255714",
+  "elo": 3790.0,
+  "sha256": "004d29b91ac386ab3b2df4e6a30ff9405858b053fdb65464dc50a34443a3d837",
+  "size": 113598426,
+  "file": "kata1-b20c256x2-s668214784-d222255714.txt.gz"
+ },
+ {
+  "name": "kata1-b15c192-s1062526208-d272346422",
+  "elo": 3745.0,
+  "sha256": "85c2060eb61ed5baa498e3c6d8bd52eaa6f20348eb43cc69d71607d53735380c",
+  "size": 48030280,
+  "file": "kata1-b15c192-s1062526208-d272346422.txt.gz"
+ },
+ {
+  "name": "kata1-b15c192-s798345984-d202388589",
+  "elo": 3743.0,
+  "sha256": "f529a0d1c0c4741772c19440423782a9113b685880552facc8c061ff785a48b0",
+  "size": 48021185,
+  "file": "kata1-b15c192-s798345984-d202388589.txt.gz"
+ },
+ {
+  "name": "kata1-b20c256-s241116160-d150094945",
+  "elo": 3728.0,
+  "sha256": "b9d4946b5038ca0e505aefb899d0361f2c0b29a371b2bc37afba24dadfcfb93b",
+  "size": 113808504,
+  "file": "kata1-b20c256-s241116160-d150094945.txt.gz"
+ },
+ {
+  "name": "kata1-b15c192-s449394432-d140458288",
+  "elo": 3694.0,
+  "sha256": "751504d8f818b91eb5c8008e79a0a66526122d3fdc1250fa4857f49e874e046f",
+  "size": 48014892,
+  "file": "kata1-b15c192-s449394432-d140458288.txt.gz"
+ },
+ {
+  "name": "kata1-b15c192-s315428352-d115173910",
+  "elo": 3683.0,
+  "sha256": "291e330a53345b4af77ea2ba9dc885640a1a92837c7ba762dde98dacda1aa1a5",
+  "size": 48035961,
+  "file": "kata1-b15c192-s315428352-d115173910.txt.gz"
+ },
+ {
+  "name": "kata1-b15c192-s230670592-d99188084",
+  "elo": 3633.0,
+  "sha256": "44f1f1bbb56986bb3787132bd2796ad6cda1739612cc42b02b80d31abb3c48ba",
+  "size": 48063827,
+  "file": "kata1-b15c192-s230670592-d99188084.txt.gz"
+ },
+ {
+  "name": "kata1-b15c192-s172540416-d88080224",
+  "elo": 3627.0,
+  "sha256": "5ff95d9e4f8743041720c2d77ba59f0a78c16ff3fc3b98dac8c4bc10ebbfd199",
+  "size": 48099137,
+  "file": "kata1-b15c192-s172540416-d88080224.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s501483520-d110698189",
+  "elo": 3562.0,
+  "sha256": "7b1d18a75871d455a44690d7a1f122f6b31cffc21dfc1233ee6e7a65c930132e",
+  "size": 14466494,
+  "file": "kata1-b10c128-s501483520-d110698189.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s356821760-d90717864",
+  "elo": 3550.0,
+  "sha256": "4c1d3035dd00986e455cb9a47e13c9cfa7db51097364d92e78bae0c770dc02fb",
+  "size": 14468292,
+  "file": "kata1-b10c128-s356821760-d90717864.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s182492416-d63545831",
+  "elo": 3529.0,
+  "sha256": "3e01afbb7de23fb99181eb78cb25206bf5a9b35ed6dae4e8c6a98342a0f14642",
+  "size": 14473763,
+  "file": "kata1-b10c128-s182492416-d63545831.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s258941696-d77667876",
+  "elo": 3523.0,
+  "sha256": "b0ce4a7fa0d961cd14a5758569cc3170e9051bc1586bd62ff2ba334de130d9ab",
+  "size": 14472513,
+  "file": "kata1-b10c128-s258941696-d77667876.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s146897408-d54258564",
+  "elo": 3502.0,
+  "sha256": "af94ec4a0551a3d11236c33c22667edac1deada29d448e43d824329e8db89394",
+  "size": 14480443,
+  "file": "kata1-b10c128-s146897408-d54258564.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s108710656-d44395882",
+  "elo": 3489.0,
+  "sha256": "76c71239f0ce9747ea8e83ebc52b806ad9ab010160c19ffd7164840040dfbeb3",
+  "size": 14488412,
+  "file": "kata1-b10c128-s108710656-d44395882.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s82632704-d37596868",
+  "elo": 3454.0,
+  "sha256": "7ecd04a772ef319021a56b591117bf6f91c6045593f2924bead6e7e58205efb0",
+  "size": 14495709,
+  "file": "kata1-b10c128-s82632704-d37596868.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s56992512-d31122236",
+  "elo": 3431.0,
+  "sha256": "553f9ab42a2250a40f6713f0bde680b594081fec1e6effa8da747dce251db36d",
+  "size": 14510662,
+  "file": "kata1-b10c128-s56992512-d31122236.txt.gz"
+ },
+ {
+  "name": "kata1-b10c128-s41138688-d27396855",
+  "elo": 3386.0,
+  "sha256": "dfc3fe98d85d394cb46420bb46577ca563174663a4e37c6dafc8986c3a65f022",
+  "size": 14525424,
+  "file": "kata1-b10c128-s41138688-d27396855.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s175395328-d26788732",
+  "elo": 3329.0,
+  "sha256": "48d6754de3c4754f95bf6a5ca40957a49e5e915aaaeede133a17b9ccf8fa5fcb",
+  "size": 4967720,
+  "file": "kata1-b6c96-s175395328-d26788732.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s152505856-d23152636",
+  "elo": 3309.0,
+  "sha256": "3ab2b8316a6748c09bc808da77d7e8a6850bcbb42bde79c4a34273f042475159",
+  "size": 4967634,
+  "file": "kata1-b6c96-s152505856-d23152636.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s165180416-d25130434",
+  "elo": 3308.0,
+  "sha256": "57e556289bc7bdbf11dbd999ff6a1bd0b31ffeadfa5f1d8cc9ffdf83321634c8",
+  "size": 4966278,
+  "file": "kata1-b6c96-s165180416-d25130434.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s141089536-d21243181",
+  "elo": 3297.0,
+  "sha256": "99f67063521d4096b05ffba65325fe3288fb2bf136b57202cef941ea7fa3c0b7",
+  "size": 4969984,
+  "file": "kata1-b6c96-s141089536-d21243181.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s122554112-d18283013",
+  "elo": 3297.0,
+  "sha256": "dc20b5092ce9a2358f631a684319b54986b11946eccc349e0ca7f778013c1b25",
+  "size": 4970402,
+  "file": "kata1-b6c96-s122554112-d18283013.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s130521856-d19523626",
+  "elo": 3292.0,
+  "sha256": "373dca3a11476978a08fc70c2308b66a0d3cf61d57b1a687c6a7275c595891ca",
+  "size": 4969757,
+  "file": "kata1-b6c96-s130521856-d19523626.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s115648256-d17228996",
+  "elo": 3284.0,
+  "sha256": "178ea3ee8ad293b2e1b776e5dc553d980dd3907ad15930885767e03eda1dd733",
+  "size": 4971334,
+  "file": "kata1-b6c96-s115648256-d17228996.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s103950080-d15368530",
+  "elo": 3269.0,
+  "sha256": "3e8f1c1db247a7ff02c2d8b9a71a28de50b37cae5e849c3ad6f5de856f9e88f1",
+  "size": 4971927,
+  "file": "kata1-b6c96-s103950080-d15368530.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s108812288-d16129874",
+  "elo": 3266.0,
+  "sha256": "001e6a99ef23923c9343a51642ac09a84dd35d880247f0fe09b8ffec7a8f5029",
+  "size": 4972102,
+  "file": "kata1-b6c96-s108812288-d16129874.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s95425792-d14091095",
+  "elo": 3257.0,
+  "sha256": "020109ee344188344e96b531d0f32d6932ae2d97d4aaa5b39d46e6d8773b3e45",
+  "size": 4971931,
+  "file": "kata1-b6c96-s95425792-d14091095.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s89508352-d13124432",
+  "elo": 3244.0,
+  "sha256": "cfada6dd84dabdc5fb0afb35b900b8a5172c9b9d3935864239004ad886f33248",
+  "size": 4973323,
+  "file": "kata1-b6c96-s89508352-d13124432.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s83588096-d12203675",
+  "elo": 3239.0,
+  "sha256": "2254f2f4ea83efe3175af3d50556c3e33367d20ba185b895a153f3ae0078153d",
+  "size": 4973248,
+  "file": "kata1-b6c96-s83588096-d12203675.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s73091584-d10630987",
+  "elo": 3223.0,
+  "sha256": "28243e6d4a3414db7c842713d5c53e83e1593b3d01095d2ca1e7c3f863a6f378",
+  "size": 4974569,
+  "file": "kata1-b6c96-s73091584-d10630987.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s78659584-d11478487",
+  "elo": 3221.0,
+  "sha256": "7553ba808087b3561e1cdf5dd1ba464187e77d5d617fd7bc315eb256adb44f86",
+  "size": 4973561,
+  "file": "kata1-b6c96-s78659584-d11478487.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s69427456-d10051148",
+  "elo": 3194.0,
+  "sha256": "c1ec21a19069b265373df27018f28dcb07993e75a3a750d45c3b2dcc05dd6ed8",
+  "size": 4973824,
+  "file": "kata1-b6c96-s69427456-d10051148.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s65341184-d9428755",
+  "elo": 3183.0,
+  "sha256": "c99f9f4ce544bcf9f742b6a73ca4112a8507681782873f555227bd0469eec0e6",
+  "size": 4975729,
+  "file": "kata1-b6c96-s65341184-d9428755.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s59560704-d8589539",
+  "elo": 3174.0,
+  "sha256": "67025b9b4ad8ca1b2028e2ddd6b6d8c183d17879559f2446466db43967f2340a",
+  "size": 4974970,
+  "file": "kata1-b6c96-s59560704-d8589539.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s63439616-d9138325",
+  "elo": 3162.0,
+  "sha256": "5db3e5ac0a38e4ef40acd2127ad7bf22d0702d652514d280e2f2803db6dbbb52",
+  "size": 4974495,
+  "file": "kata1-b6c96-s63439616-d9138325.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s55682304-d7995124",
+  "elo": 3146.0,
+  "sha256": "02d3a9035483a4e1fbb155e08bd30fac262b77db1e1a4b9f6877b1c9fc59a2fd",
+  "size": 4975545,
+  "file": "kata1-b6c96-s55682304-d7995124.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s56669696-d8173106",
+  "elo": 3143.0,
+  "sha256": "47fe687902715415f3a041d7487a21b9354a0b683525caab53c4cea76180efcb",
+  "size": 4973731,
+  "file": "kata1-b6c96-s56669696-d8173106.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s52864512-d7635581",
+  "elo": 3113.0,
+  "sha256": "233ba003e45a8b4e0b071ffcad2028cb7f4922254af00c02f417fe5a755dfc40",
+  "size": 4975078,
+  "file": "kata1-b6c96-s52864512-d7635581.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s50894592-d7380655",
+  "elo": 3112.0,
+  "sha256": "f27003f5b13822e365a27e0bd2918dce6adef018f5cec102f0a15a34205ec228",
+  "size": 4975526,
+  "file": "kata1-b6c96-s50894592-d7380655.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s48921344-d7092247",
+  "elo": 3104.0,
+  "sha256": "c25d903af62fccaee89ff2af31e47f9cb4346689b027f03fe7951b7eddb5e69c",
+  "size": 4974609,
+  "file": "kata1-b6c96-s48921344-d7092247.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s46949632-d6822967",
+  "elo": 3077.0,
+  "sha256": "9af5ac70976ee7c4fa8801faaae554b189604a6bad372251629ddcb1592a5f14",
+  "size": 4975898,
+  "file": "kata1-b6c96-s46949632-d6822967.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s45189632-d6589032",
+  "elo": 3065.0,
+  "sha256": "c9d12819d6bf3efd78ec4478dccb264084d2ea2934ac6537876c1a5303c9f22a",
+  "size": 4975563,
+  "file": "kata1-b6c96-s45189632-d6589032.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s43286272-d6326857",
+  "elo": 3061.0,
+  "sha256": "1c4f24d160568491485ed90c142ec60d6a0f33f19428bd07d860fadf9220d6ca",
+  "size": 4976037,
+  "file": "kata1-b6c96-s43286272-d6326857.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s41312768-d6061202",
+  "elo": 3033.0,
+  "sha256": "69bc62f29136bcc8c0c3a497a1cc6732dd991afda279eb2ff3aaebb7a47f1c80",
+  "size": 4975427,
+  "file": "kata1-b6c96-s41312768-d6061202.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s39339776-d5828519",
+  "elo": 3011.0,
+  "sha256": "0f5c5585d00c6de131c8cb41a6ca6442c710f903e08d64ede621d48e01d907d0",
+  "size": 4974984,
+  "file": "kata1-b6c96-s39339776-d5828519.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s37368064-d5536083",
+  "elo": 2983.0,
+  "sha256": "d186af769250d8e522da34c1183ed715a1d5e98978be6e3b00acea11b688bdaf",
+  "size": 4975020,
+  "file": "kata1-b6c96-s37368064-d5536083.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s35356160-d5299514",
+  "elo": 2942.0,
+  "sha256": "f34a29a3c27fda87f630d42c36b39f0c3df1a258d5ebd4e4d54bff0002c3872b",
+  "size": 4974820,
+  "file": "kata1-b6c96-s35356160-d5299514.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s33239552-d5016295",
+  "elo": 2918.0,
+  "sha256": "f52168e69813815589ca0fcb0a574c0631e05d6ed6ffa5d4f77ae0cca060a99b",
+  "size": 4974090,
+  "file": "kata1-b6c96-s33239552-d5016295.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s32344832-d4917369",
+  "elo": 2899.0,
+  "sha256": "1e5f1466c37ba08292b93ca9c766db28386bdb66b0b695df4df74a688090b494",
+  "size": 4974400,
+  "file": "kata1-b6c96-s32344832-d4917369.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s30394624-d4635675",
+  "elo": 2863.0,
+  "sha256": "6fdba41fd1e191aa4df310fe0b179437da086f9750d8ad8e408af261ebdd2e03",
+  "size": 4973600,
+  "file": "kata1-b6c96-s30394624-d4635675.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s31390976-d4781382",
+  "elo": 2860.0,
+  "sha256": "eccc8a5e0dd5032aaf20cc4c103b70effe263497c41eb58302a822dda8b667f5",
+  "size": 4974071,
+  "file": "kata1-b6c96-s31390976-d4781382.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s29422336-d4533650",
+  "elo": 2833.0,
+  "sha256": "fcff2eb7537ca65538971d8232f6a4d35c007563a09308bcb550ce42729d4544",
+  "size": 4974162,
+  "file": "kata1-b6c96-s29422336-d4533650.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s28460288-d4388379",
+  "elo": 2810.0,
+  "sha256": "cf9f3553e88ed9ac64ff462cf5317f29bf4b1044eb1e5f5a32f5d5641ea4233c",
+  "size": 4974541,
+  "file": "kata1-b6c96-s28460288-d4388379.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s27415296-d4256697",
+  "elo": 2784.0,
+  "sha256": "0cb0c8c9fc5708ede398cf3d3a585838600ffba42976ce28145bad8ec6d8ec36",
+  "size": 4974591,
+  "file": "kata1-b6c96-s27415296-d4256697.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s26363136-d4119819",
+  "elo": 2735.0,
+  "sha256": "6fa9b8da962b6473a67694c89842eb086063e5aec56430c92a8735bd67431e2e",
+  "size": 4975051,
+  "file": "kata1-b6c96-s26363136-d4119819.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s25461504-d4002500",
+  "elo": 2717.0,
+  "sha256": "a40750917e0dd273fcdb44dd0872b41d43d56e378c001e30666ce06bd06ae4f2",
+  "size": 4974031,
+  "file": "kata1-b6c96-s25461504-d4002500.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s24455424-d3879081",
+  "elo": 2692.0,
+  "sha256": "36420d10c6a4bbf243d991b4a2920dc6ff42f6c2d0a1cfaa438a4daf2b0254ac",
+  "size": 4975306,
+  "file": "kata1-b6c96-s24455424-d3879081.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s23401472-d3742377",
+  "elo": 2636.0,
+  "sha256": "30f647891fc441865b2a07c0bffa36a71a8b6e4a3636a29c5c54e2e4b3165d79",
+  "size": 4975958,
+  "file": "kata1-b6c96-s23401472-d3742377.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s22371328-d3612586",
+  "elo": 2602.0,
+  "sha256": "f95ca648493bc201b5dca41d8712c2aa84be7c0f66c409ff92d30e30b2c9bd16",
+  "size": 4974125,
+  "file": "kata1-b6c96-s22371328-d3612586.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s21371392-d3529696",
+  "elo": 2578.0,
+  "sha256": "ccac3bdb94386ccb83693eae596455273f7ee6c7abe0c81e1b617e56f4244b46",
+  "size": 4975873,
+  "file": "kata1-b6c96-s21371392-d3529696.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s20302336-d3388395",
+  "elo": 2492.0,
+  "sha256": "4ffbc5914426291bd4320ef8e145c019ad293b20486a4fcbcd69d285f798b55b",
+  "size": 4977166,
+  "file": "kata1-b6c96-s20302336-d3388395.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s19408128-d3280178",
+  "elo": 2453.0,
+  "sha256": "3952fe4b02579982ea211bc7b65f22a233c9a5da370bce7c9b835e6cedd00d6b",
+  "size": 4976760,
+  "file": "kata1-b6c96-s19408128-d3280178.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s18429184-d3197121",
+  "elo": 2383.0,
+  "sha256": "fc59caa7083de7937cc515042e372e9ae90bb7f3954cafddee3eeac83e39ae99",
+  "size": 4978412,
+  "file": "kata1-b6c96-s18429184-d3197121.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s17434112-d3038653",
+  "elo": 2310.0,
+  "sha256": "5c9c52344befe2d57acf10b829cf699e999d7972cc00372c98bfe2b713253b4c",
+  "size": 4978626,
+  "file": "kata1-b6c96-s17434112-d3038653.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s16525312-d2925067",
+  "elo": 2243.0,
+  "sha256": "d37e7501e498c9bc754d869438d8d3b4a736619fe9d7055022426aaff5dd6470",
+  "size": 4980520,
+  "file": "kata1-b6c96-s16525312-d2925067.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s15704832-d2832803",
+  "elo": 2161.0,
+  "sha256": "42f0c7a1cf07ba9828a4ad5c23da01c5d9ad6cd62e7603036417cc2f0dfb3627",
+  "size": 4981625,
+  "file": "kata1-b6c96-s15704832-d2832803.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s14649344-d2727367",
+  "elo": 2106.0,
+  "sha256": "b079db0a116698ce3cb07348fa39b9172e176a356b6fe2f670c5471e32b1f9ce",
+  "size": 4982801,
+  "file": "kata1-b6c96-s14649344-d2727367.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s13733120-d2631546",
+  "elo": 1978.0,
+  "sha256": "23dcbed4f9abd264283dbd762463350abe760f46cb976dd7f83069788cdf8483",
+  "size": 4984114,
+  "file": "kata1-b6c96-s13733120-d2631546.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s12849664-d2510774",
+  "elo": 1941.0,
+  "sha256": "3f564f58cc603e6fdb2838ae870839748347be495700cdfc86740ef1ae785fa9",
+  "size": 4985563,
+  "file": "kata1-b6c96-s12849664-d2510774.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s11888896-d2416753",
+  "elo": 1818.0,
+  "sha256": "25d8f45292d99493c2ba059a3c4527c5eb61d88c66744d3aac664efcaf6fd260",
+  "size": 4987223,
+  "file": "kata1-b6c96-s11888896-d2416753.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s10825472-d2300510",
+  "elo": 1739.0,
+  "sha256": "2f0f13bcce764e4e3a647dae53d1d9c3d365bf40cf8ad418dd5fca3835e2e7aa",
+  "size": 4989382,
+  "file": "kata1-b6c96-s10825472-d2300510.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s10014464-d2201128",
+  "elo": 1651.0,
+  "sha256": "760206c686a481e83bbb859c8b0062177c4717742c76ca81d8b23f960a54bfa7",
+  "size": 4991481,
+  "file": "kata1-b6c96-s10014464-d2201128.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s8982784-d2082583",
+  "elo": 1570.0,
+  "sha256": "7b7d561835c2821c9ddfb1c8fd1688ba20e4a252f1dea15268b0361653ef7b59",
+  "size": 4995550,
+  "file": "kata1-b6c96-s8982784-d2082583.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s8080640-d1961030",
+  "elo": 1521.0,
+  "sha256": "bb7cac22fab47560a8778fd291069fbb2f42ea3323ad6a9f2a952cff44b81463",
+  "size": 4999191,
+  "file": "kata1-b6c96-s8080640-d1961030.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s6127360-d1754797",
+  "elo": 1247.0,
+  "sha256": "493f3537fe0adfef16c898c223eaa78f243a199ac3f6c00343f0da3b9ba12b51",
+  "size": 5008928,
+  "file": "kata1-b6c96-s6127360-d1754797.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s5214720-d1690538",
+  "elo": 1167.0,
+  "sha256": "9c12b6b02f9b52052ed12ea586921fe9f8c05795d88cfcac3acb6eadc2a89f5e",
+  "size": 5017539,
+  "file": "kata1-b6c96-s5214720-d1690538.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s4136960-d1510003",
+  "elo": 1101.0,
+  "sha256": "cf197f535434d11dc55ca0302f785edb18141433ea6c54f04ee55dd2ff9aa2f9",
+  "size": 5025737,
+  "file": "kata1-b6c96-s4136960-d1510003.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s1995008-d1329786",
+  "elo": 521.0,
+  "sha256": "a05dae87faab9a6a1559ce337af320dcfe8af7009f27881ff6ed6d382484cbe9",
+  "size": 5054936,
+  "file": "kata1-b6c96-s1995008-d1329786.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s938496-d1208807",
+  "elo": 327.0,
+  "sha256": "d07ae856740d284494325661d7cbcde0d1aa3ece3ede6b54c70f2fa5da9e0c09",
+  "size": 5077550,
+  "file": "kata1-b6c96-s938496-d1208807.txt.gz"
+ },
+ {
+  "name": "kata1-b6c96-s1248000-d550347",
+  "elo": 119.0,
+  "sha256": "53213c59621497291dfad3415b44465ac82e302c3fd606381027581832be0f58",
+  "size": 5074165,
+  "file": "kata1-b6c96-s1248000-d550347.txt.gz"
+ }
+]

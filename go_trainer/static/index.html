@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Go Trainer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="board-wrap">
+      <svg id="board" viewBox="0 0 1000 1000" aria-label="Go board"></svg>
+    </section>
+
+    <aside class="panel">
+      <header class="title">
+        <h1>Go Trainer</h1>
+        <span class="muted">9×9 · Tromp-Taylor</span>
+      </header>
+
+      <section class="card">
+        <label class="field">
+          <span>Opponent</span>
+          <select id="opponent"></select>
+        </label>
+        <div class="row">
+          <div class="field grow">
+            <span>You play</span>
+            <div class="segmented" id="color">
+              <button data-color="B">Black</button>
+              <button data-color="W">White</button>
+              <button data-color="random">Random</button>
+            </div>
+          </div>
+          <label class="field komi">
+            <span>Komi</span>
+            <input id="komi" type="number" step="0.5" value="7.5">
+          </label>
+        </div>
+        <button id="new-game" class="primary">New game</button>
+        <div id="download" class="download" hidden>
+          <div class="bar"><div id="download-fill"></div></div>
+          <span id="download-text" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div id="status" class="status"></div>
+        <div id="substatus" class="muted small"></div>
+        <div class="row actions">
+          <button id="pass">Pass</button>
+          <button id="undo" title="Undo (U or ⌘Z)">Undo</button>
+          <button id="toggle-teacher" title="Show/hide teacher (H)">Hide teacher</button>
+        </div>
+        <div id="error" class="error" hidden></div>
+      </section>
+
+      <section class="card" id="teacher">
+        <div class="teacher-head">
+          <strong>Teacher</strong>
+          <div class="segmented small-seg" id="overlay-mode">
+            <button data-mode="loss">Points lost</button>
+            <button data-mode="win">Win % lost</button>
+            <button data-mode="policy">Policy</button>
+          </div>
+        </div>
+        <div id="bar-caption" class="muted small"></div>
+        <div class="winbar"><div id="winbar-black"></div></div>
+        <div class="row between small">
+          <span id="win-text"></span>
+          <span id="score-text"></span>
+        </div>
+        <div id="feedback" class="feedback"></div>
+        <div id="hover" class="muted small"></div>
+        <div id="legend" class="legend small"></div>
+        <div id="summary" class="small"></div>
+      </section>
+
+      <section class="card moves-card">
+        <strong>Moves</strong>
+        <ol id="moves" class="moves"></ol>
+      </section>
+    </aside>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
