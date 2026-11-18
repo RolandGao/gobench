@@ -169,6 +169,9 @@ _FINAL_RUNS = (
     "fable-5.1-high-api-multi",
     "fable-5.1-max-api-multi",
     "fable-5.2-high-api-multi",
+    "gpt6.2-astra-high-api-multi",
+    "gpt6.2-astra-xhigh-api-multi",
+    "gpt6.2-astra-max-api-multi",
     "opus-5-max-api-multi",
     "gpt6-sol-high-api-multi2",
     "gpt6-luna-high-api-multi2",
@@ -195,6 +198,7 @@ _FINAL_RUNS = (
     "gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6-astra-high-codex-4h",
     "gpt6-astra-high-api-multi-tutorial3.4-200usd-claude-opus-5-5-high-claude-code-4h",
     "gpt6-astra-high-api-multi-tutorial3.4-200usd-fable-5.2-high-claude-code-4h",
+    "gpt6-astra-high-api-multi-tutorial3.4-200usd-gpt6.2-astra-high-codex-4h",
     # Track 2 with code-only evaluation (5-minute clock).
     # "gpt6-astra-high-codex-engine-1h",
     # "gpt6-astra-high-codex-engine-2h",
@@ -219,6 +223,9 @@ _FINAL_RUNS = (
     "fable-5.2-high-claude-code-engine-60s-1h",
     "fable-5.2-high-claude-code-engine-60s-2h",
     "fable-5.2-high-claude-code-engine-60s-4h",
+    "gpt6.2-astra-high-codex-engine-60s-1h",
+    "gpt6.2-astra-high-codex-engine-60s-2h",
+    "gpt6.2-astra-high-codex-engine-60s-4h",
     "DeepSeek-V4.1-Flash-1017-max-api-multi",
 )
 
@@ -297,10 +304,13 @@ CONFIG = ArenaConfig(
         # "fable-5.2-high-api-multi",
         # "fable-5.2-high-claude-code-engine-60s-1h",
         # "fable-5.2-high-claude-code-engine-60s-2h",
-        "fable-5.2-high-claude-code-engine-60s-4h",
+        # "fable-5.2-high-claude-code-engine-60s-4h",
+        # "gpt6.2-astra-high-api-multi",
+        # "gpt6.2-astra-max-api-multi",
+        "gpt6.2-astra-xhigh-api-multi",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
-    total_games=300,
+    total_games=30,
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
@@ -753,13 +763,17 @@ class _Arena:
                 **{
                     name: player
                     for harness in (*_CODEX_TRAINING_SECONDS, *_CODEX_ENGINE_TRAINING_SECONDS)
+                    for label, model, prices, cache_write_price in (
+                        ("gpt6-astra", "gpt-6-astra", (10.0, 1.0, 50.0), 12.5),
+                        ("gpt6.2-astra", "gpt-6.2-astra", (8.0, 0.4, 40.0), 10.0),
+                    )
                     for name, player in _llm_effort_players(
-                        "gpt6-astra", "gpt-6-astra",
+                        label, model,
                         ("low", "medium", "high", "xhigh", "max"),
-                        (10.0, 1.0, 50.0),
+                        prices,
                         suffix=harness,
                         agentic_harness=harness,
-                        cache_write_price=12.5,
+                        cache_write_price=cache_write_price,
                         max_output_tokens=128_000,
                         long_context_min_tokens=272_001,
                         long_context_multipliers=(2.0, 2.0, 1.5),
@@ -883,6 +897,18 @@ class _Arena:
                     ("high", "max"),
                     (2.0, 0.1, 10.0),
                     cache_write_price=2.5,
+                    max_output_tokens=128_000,
+                    long_context_min_tokens=272_001,
+                    long_context_multipliers=(2.0, 2.0, 1.5),
+                ),
+                # GPT-6.2 Astra rates and limits checked 2026-11-17:
+                # https://developers.openai.com/api/docs/models/gpt-6.2-astra
+                # The page lists no efforts beyond rejecting none; GPT-6 Astra's are assumed.
+                **_llm_effort_players(
+                    "gpt6.2-astra", "gpt-6.2-astra",
+                    ("low", "medium", "high", "xhigh", "max"),
+                    (8.0, 0.4, 40.0),
+                    cache_write_price=10.0,
                     max_output_tokens=128_000,
                     long_context_min_tokens=272_001,
                     long_context_multipliers=(2.0, 2.0, 1.5),
@@ -6471,6 +6497,9 @@ def _validate_named_extension(meta, run_config):
         "llm_pricing_usd_per_1m_tokens",
         "report_file",
         "matchup_results_file",
+        # The same pinned KataGo is a release AppImage on Linux and a source
+        # build on macOS; moving hosts changes only its path, kept per extension.
+        "katago_binary",
     }
     def comparable(key, value):
         if key == "batch_policy" and isinstance(value, dict):
@@ -6696,6 +6725,11 @@ def _open_run(resume_dir, run_config, past_dirs, valid_size, extra):
                     **(
                         {"previous_batch_policy": meta.get("batch_policy")}
                         if meta.get("batch_policy") != run_config.get("batch_policy")
+                        else {}
+                    ),
+                    **(
+                        {"previous_katago_binary": meta.get("katago_binary")}
+                        if meta.get("katago_binary") != run_config.get("katago_binary")
                         else {}
                     ),
                 }

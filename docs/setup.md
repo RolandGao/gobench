@@ -74,7 +74,9 @@ and [rate-limit reference](https://platform.claude.com/docs/en/api/rate-limits).
 Set the relevant provider key for other LLMs: `MODEL_API_KEY`, `XAI_API_KEY`,
 `DEEPSEEK_API_KEY`, `OPENROUTER_API_KEY`,
 `GEMINI_API_KEY`. KataGo binaries and pinned networks
-are downloaded automatically when required.
+are downloaded automatically when required. On macOS, which has no official
+KataGo CPU build, the pinned release source is compiled with the Eigen backend
+instead; install the build tools once with `brew install cmake eigen`.
 
 The Codex profiles use an existing Codex subscription login rather than an API
 key when available; run `codex login` once first. The writable workspace modes

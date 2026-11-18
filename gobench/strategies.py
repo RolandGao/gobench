@@ -6,8 +6,11 @@ from __future__ import annotations
 import hashlib
 import random
 import shutil
+import os
 import subprocess
 import sys
+import tarfile
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -36,7 +39,13 @@ RANDOM_SEED: int | None = None
 KATAGO_VERSION = "1.16.5"
 KATAGO_HOME = ROOT / f".venv/katago/v{KATAGO_VERSION}-eigenavx2"
 KATAGO_APPIMAGE = KATAGO_HOME / "katago"
-KATAGO_BINARY = KATAGO_HOME / "squashfs-root/AppRun"
+# macOS has no official CPU build, so the pinned source is compiled with the
+# same Eigen backend; the release archive still supplies default_gtp.cfg.
+KATAGO_BINARY = (
+    KATAGO_HOME / "macos-eigen/katago"
+    if sys.platform == "darwin"
+    else KATAGO_HOME / "squashfs-root/AppRun"
+)
 KATAGO_MODEL = KATAGO_HOME / "lionffen_b6c64_3x3_v10.txt.gz"
 KATAGO_CONFIG = KATAGO_HOME / "default_gtp.cfg"
 KATAGO_CUDA_RELEASE = "cuda12.8-cudnn9.8.0"
@@ -60,6 +69,13 @@ KATAGO_ARCHIVE_URL = (
 )
 KATAGO_ARCHIVE_SHA256 = (
     "ffb39c5af6eb9d4f344f058649bcec2069a26c44d26dea5b3a00f785f3437468"
+)
+KATAGO_SOURCE_ARCHIVE = KATAGO_HOME / f"KataGo-{KATAGO_VERSION}.tar.gz"
+KATAGO_SOURCE_URL = (
+    f"https://github.com/lightvector/KataGo/archive/refs/tags/v{KATAGO_VERSION}.tar.gz"
+)
+KATAGO_SOURCE_SHA256 = (
+    "50d2aa0fb4d5e697dcfa47ddc111c17d3d193dce0604a5592f5fc02501cb49e1"
 )
 KATAGO_CUDA_ARCHIVE = KATAGO_CUDA_HOME / (
     f"katago-v{KATAGO_VERSION}-{KATAGO_CUDA_RELEASE}-linux-x64.zip"
@@ -188,24 +204,28 @@ def ensure_katago_installed() -> None:
         _download(KATAGO_ARCHIVE_URL, KATAGO_ARCHIVE, KATAGO_ARCHIVE_SHA256)
         try:
             with zipfile.ZipFile(KATAGO_ARCHIVE) as archive:
-                archive.extract("katago", KATAGO_HOME)
+                if sys.platform != "darwin":
+                    archive.extract("katago", KATAGO_HOME)
                 archive.extract("default_gtp.cfg", KATAGO_HOME)
         except (OSError, zipfile.BadZipFile, KeyError) as exc:
             raise GoEngineError(f"could not extract KataGo: {exc}") from exc
-        KATAGO_APPIMAGE.chmod(0o755)
-        try:
-            subprocess.run(
-                [str(KATAGO_APPIMAGE), "--appimage-extract"],
-                cwd=KATAGO_HOME,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                text=True,
-                check=True,
-            )
-        except (OSError, subprocess.CalledProcessError) as exc:
-            detail = getattr(exc, "stderr", "") or str(exc)
-            raise GoEngineError(f"could not unpack KataGo AppImage: {detail}") from exc
-        KATAGO_BINARY.chmod(0o755)
+        if sys.platform == "darwin":
+            _build_katago_from_source()
+        else:
+            KATAGO_APPIMAGE.chmod(0o755)
+            try:
+                subprocess.run(
+                    [str(KATAGO_APPIMAGE), "--appimage-extract"],
+                    cwd=KATAGO_HOME,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    check=True,
+                )
+            except (OSError, subprocess.CalledProcessError) as exc:
+                detail = getattr(exc, "stderr", "") or str(exc)
+                raise GoEngineError(f"could not unpack KataGo AppImage: {detail}") from exc
+            KATAGO_BINARY.chmod(0o755)
         KATAGO_APPIMAGE.unlink(missing_ok=True)
         KATAGO_ARCHIVE.unlink(missing_ok=True)
     _download(KATAGO_MODEL_URL, KATAGO_MODEL, KATAGO_MODEL_SHA256)
@@ -224,6 +244,37 @@ def ensure_katago_installed() -> None:
         raise GoEngineError(
             f"expected KataGo v{KATAGO_VERSION}, got: {version.splitlines()[0]}"
         )
+
+
+def _build_katago_from_source() -> None:
+    """Compile the pinned KataGo source with the Eigen CPU backend."""
+    _download(KATAGO_SOURCE_URL, KATAGO_SOURCE_ARCHIVE, KATAGO_SOURCE_SHA256)
+    with tempfile.TemporaryDirectory(dir=KATAGO_HOME) as staging:
+        staging = Path(staging)
+        build = staging / "build"
+        print("Building KataGo from source...", flush=True)
+        try:
+            with tarfile.open(KATAGO_SOURCE_ARCHIVE) as archive:
+                archive.extractall(staging, filter="data")
+            for command in (
+                ["cmake", "-S", str(staging / f"KataGo-{KATAGO_VERSION}/cpp"),
+                 "-B", str(build), "-DUSE_BACKEND=EIGEN", "-DNO_GIT_REVISION=1",
+                 "-DCMAKE_BUILD_TYPE=Release"],
+                ["cmake", "--build", str(build), "-j", str(os.cpu_count() or 1)],
+            ):
+                subprocess.run(
+                    command,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    check=True,
+                )
+        except (OSError, tarfile.TarError, subprocess.CalledProcessError) as exc:
+            detail = getattr(exc, "stderr", "") or str(exc)
+            raise GoEngineError(f"could not build KataGo: {detail}") from exc
+        KATAGO_BINARY.parent.mkdir(parents=True, exist_ok=True)
+        (build / "katago").replace(KATAGO_BINARY)
+    KATAGO_SOURCE_ARCHIVE.unlink(missing_ok=True)
 
 
 def ensure_katago_cuda_installed() -> None:

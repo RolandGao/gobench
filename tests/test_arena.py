@@ -714,6 +714,8 @@ class LLMConfigurationAndRecoveryTests(unittest.TestCase):
             ("gpt5.6-sol-max-api", "max"),
             ("gpt5.6-luna-medium-api", "medium"),
             ("gpt6-astra-max-api", "max"),
+            ("gpt6.2-astra-high-api", "high"),
+            ("gpt6.2-astra-max-api", "max"),
             ("gpt6-sol-high-api", "high"),
             ("gpt6-luna-high-api", "high"),
             ("gpt6-sol-none-api", "none"),
@@ -2248,13 +2250,14 @@ class CodexPlayerTests(unittest.TestCase):
         }
 
         expected.update(
-            ("gpt-6-astra", effort, f"{harness}-{hours}h")
+            (model, effort, f"{harness}-{hours}h")
+            for model in ("gpt-6-astra", "gpt-6.2-astra")
             for effort in ("low", "medium", "high", "xhigh", "max")
             for harness in ("codex", "codex-engine", "codex-engine-60s")
             for hours in (0, 1, 2, 4, 8)
         )
         self.assertEqual(actual, expected)
-        self.assertEqual(len(api.players), 165)
+        self.assertEqual(len(api.players), 240)
         for harness in ("codex-0h", "codex-1h", "codex-2h", "codex-4h", "codex-8h"):
             name = f"gpt6-astra-high-{harness}"
             self.assertFalse(arena._active_players_are_katago((name,)))

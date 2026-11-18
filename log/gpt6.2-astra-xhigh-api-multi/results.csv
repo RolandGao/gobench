@@ -1,0 +1,7 @@
+game,batch,black,white,result,winner,score_black,moves,source,llm_moves,llm_illegal_moves,llm_api_problems,llm_api_seconds,llm_cost_usd
+1,1,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s16525312-d2925067-temp-0.7,B+R,gpt6.2-astra-xhigh-api-multi,1,58,openai_responses_api,29,0,0,519.444082,0.642110400000
+2,1,kata1-b6c96-s16525312-d2925067-temp-0.7,gpt6.2-astra-xhigh-api-multi,W+2.0,gpt6.2-astra-xhigh-api-multi,0,76,openai_responses_api,38,0,0,1050.758012,1.396633600000
+3,2,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s21371392-d3529696,B+R,gpt6.2-astra-xhigh-api-multi,1,48,openai_responses_api,24,0,0,503.757959,0.572350400000
+4,2,kata1-b6c96-s21371392-d3529696,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s21371392-d3529696,1,92,openai_responses_api,46,0,0,1675.069485,1.811830400000
+5,3,gpt6.2-astra-xhigh-api-multi,kata1-b6c96-s21371392-d3529696,W+22.0,kata1-b6c96-s21371392-d3529696,0,76,openai_responses_api,38,0,0,1573.663161,1.731148800000
+6,3,kata1-b6c96-s21371392-d3529696,gpt6.2-astra-xhigh-api-multi,B+R,kata1-b6c96-s21371392-d3529696,1,64,openai_responses_api,32,0,0,1078.291018,1.246803200000

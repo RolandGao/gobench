@@ -120,6 +120,8 @@ MODEL_REGISTRY = (
               ("gpt5.6-luna",)),
     ModelSpec("openai", "gpt-6-astra", ("low", "medium", "high", "xhigh", "max"),
               ("gpt6-astra",)),
+    ModelSpec("openai", "gpt-6.2-astra", ("low", "medium", "high", "xhigh", "max"),
+              ("gpt6.2-astra",)),
     ModelSpec("anthropic", "claude-opus-5", ("low", "medium", "high", "xhigh", "max"),
               ("opus-5",)),
     ModelSpec("anthropic", "claude-fable-5-1", ("low", "medium", "high", "xhigh", "max"),

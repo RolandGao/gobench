@@ -18,6 +18,7 @@ class PricingTests(unittest.TestCase):
             "gpt-6-sol": (2, .2, 10),
             "gpt-6-luna": (.1, .01, .5),
             "gpt-6.1-sol": (2, .1, 10),
+            "gpt-6.2-astra": (8, .4, 40),
             "muse-spark-1.2": (1.25, .15, 4.25),
             "muse-spark-1.3-contributor": (.1, .002, .2),
             "muse-wonder-1.0": (4, .2, 20),
