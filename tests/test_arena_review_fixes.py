@@ -322,6 +322,38 @@ class ReviewFixTests(unittest.TestCase):
                 "# Write a tutorial\n",
             )
 
+    def test_save_reports_publishes_final_books(self):
+        with mock.patch.multiple(
+            arena._Arena,
+            ROOT=self.root,
+            LOG_ROOT=self.root / "log",
+            UNTRACKED_LOG_ROOT=self.root / "untracked_log",
+        ):
+            run = arena._ArenaRun(None)
+            run.done = [self.record(1)]
+            run.meta.update(completed_games=1, batch_sizes=[1], completed_batch_ids=[1])
+            checkpoint = (run.temp_dir / arena._BookLearnerMixin.checkpoint_dirname
+                          / "bot-book3.5-learner-1h" / "checkpoint")
+            checkpoint.mkdir(parents=True)
+            (checkpoint / "manifest.json").write_text('{"learning_cost_usd": 1.5}')
+            (checkpoint / "book.txt").write_text("B E5 C4 D4\n")
+            public = checkpoint.parent / "preparation" / "public"
+            public.mkdir(parents=True)
+            (public / "instructions.md").write_text("# Track 3.5: opening book\n")
+            run._save_reports()
+            self.assertEqual(
+                (run.run / "books" / "bot-book3.5-learner-1h.txt").read_text(),
+                "B E5 C4 D4\n",
+            )
+            self.assertEqual(
+                (run.run / "books" / "bot-book3.5-learner-1h.learner-prompt.md").read_text(),
+                "# Track 3.5: opening book\n",
+            )
+            self.assertEqual(run.meta["book_checkpoints"],
+                             {"bot-book3.5-learner-1h": {"learning_cost_usd": 1.5}})
+            self.assertEqual(arena._learning_costs([run.meta]),
+                             {"bot-book3.5-learner-1h": 1.5})
+
     def test_results_replacement_keeps_previous_csv_on_failure(self):
         path = self.root / "results.csv"
         arena._write_results(path, [self.record(1)])

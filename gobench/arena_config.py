@@ -7,6 +7,7 @@ Edit the pools, report exclusions, or named profiles here.
 from dataclasses import dataclass, replace
 
 from gobench.strategies import KATAGO_NETWORKS
+from gobench.tutorial import BOOK_STUDENT
 from gobench.workspace_runtime import WorkspaceSettings
 
 
@@ -235,7 +236,33 @@ _TUTORIAL_PLAYERS = {
         "gpt6-astra-high-api-multi",
         "tutorial-file-katago_book_9x9tt_v2",
     ),
+    # Books of the moves that made a 2241-Elo KataGo bot beat a 2603-Elo one most
+    # often (analysis/rollout_book_search.py), cut to 2,000 and 5,000 tokens.
+    "gpt6-astra-tutorial-file-rollout_book_2k": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial-file-rollout_book_2k",
+    ),
+    "gpt6-astra-tutorial-file-rollout_book_5k": _llm_player_name(
+        "gpt6-astra-high-api-multi",
+        "tutorial-file-rollout_book_5k",
+    ),
 }
+
+
+# Track 3.5 opening books: <student network>-book3.5-<learner>-<hours>h. The
+# student is a KataGo bot that follows the learner's book against one opponent.
+_BOOK_PLAYERS = {
+    f"book3.5-{short}-{hours}h": f"{BOOK_STUDENT}-book3.5-{learner}-{hours}h"
+    for short, learner in (
+        ("gpt6-astra", "gpt6-astra-high-codex"),
+        ("gpt6.2-astra", "gpt6.2-astra-high-codex"),
+        ("claude-opus-5-5", "claude-opus-5-5-high-claude-code"),
+        ("fable-5.2", "fable-5.2-high-claude-code"),
+    )
+    for hours in (1, 2, 4, 8)
+}
+# KataGo-only games cost nothing, so a book is measured to about +-3 points.
+_BOOK_GAMES = 1000
 
 
 _IGNORED_REPORT_PLAYERS = (
@@ -330,6 +357,10 @@ def build_run_types(past_run_names):
         **{
             profile: _llm_run_config((player,))
             for profile, player in _TUTORIAL_PLAYERS.items()
+        },
+        **{
+            profile: _llm_run_config((player,), total_games=_BOOK_GAMES)
+            for profile, player in _BOOK_PLAYERS.items()
         },
         "result_aggregation": _llm_run_config(_OPENROUTER_PLAYERS, total_games=0),
     }

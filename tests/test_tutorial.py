@@ -105,7 +105,8 @@ class FileTutorialTests(unittest.TestCase):
         self.assertEqual(manifest["tutorial_sha256"],
                          hashlib.sha256(text.encode()).hexdigest())
         self.assertEqual(manifest["tutorial_tokens"], tutorial.count_tokens(text))
-        self.assertLessEqual(manifest["tutorial_tokens"], tutorial.TOKEN_LIMIT)
+        self.assertLessEqual(manifest["tutorial_tokens"], tutorial.FILE_TOKEN_LIMIT)
+        self.assertEqual(manifest["tutorial_token_limit"], tutorial.FILE_TOKEN_LIMIT)
         self.assertNotIn("learner_player", manifest)
 
     def test_eval_client_reads_the_file_without_learning(self):
@@ -122,10 +123,10 @@ class FileTutorialTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             root = Path(directory)
             (root / tutorial.FILE_DIR).mkdir(parents=True)
-            (root / tutorial.FILE_DIR / "too_long.md").write_text("go " * 6000)
+            (root / tutorial.FILE_DIR / "too_long.md").write_text("go " * 31000)
             spec = arena._file_tutorial_player(f"{TARGET}-tutorial-file-too_long")
             with patch.object(arena._Arena, "ROOT", root), \
-                    self.assertRaisesRegex(arena.ArenaError, "limit is 5000"):
+                    self.assertRaisesRegex(arena.ArenaError, "limit is 30000"):
                 arena._file_tutorial(spec)
 
 

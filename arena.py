@@ -95,6 +95,7 @@ from gobench.workspace_runtime import (
     runtime_identity as _workspace_runtime_identity,
 )
 from gobench.go_rules import LEGALITY_ENFORCEMENT_VERSION
+from gobench import opening_book as _opening_book
 from gobench import tutorial as _tutorial
 from gobench.llm_conversation import (
     CONTEXT_RESET_TOKENS,
@@ -1574,10 +1575,33 @@ def _file_tutorial_player(player_name):
     return spec
 
 
+# A Track 3.5 player makes no API calls. This stands in wherever a player's API
+# configuration is read: it costs nothing and matches no API or workspace harness.
+_BOOK_API = _LLMAPIConfig(
+    name="katago_book", players={}, sdk_module="", sdk_client_path=(), api_key_env="",
+    manifest_kind="katago_book", manifest_level_name="effort", protocol=_LLMProtocol,
+    endpoint_path=(),
+)
+
+
+def _book_player(player_name):
+    """A Track 3.5 player whose learner is executable and whose bots are ladder networks."""
+    spec = _tutorial.parse_book_player(player_name)
+    if spec is None:
+        return None
+    learner = _registered_llm_player(spec.learner_player)
+    if (learner is None or learner[1].agentic_harness not in _WORKSPACE_HARNESSES
+            or spec.network not in _Arena.NETWORKS_BY_NAME
+            or spec.opponent not in _Arena.NETWORKS_BY_NAME):
+        return None
+    return spec
+
+
 def _is_tutorial_player(player_name):
-    """Any Track 3 player: a learned tutorial or a fixed tutorial file."""
+    """Any Track 3 player: a learned tutorial, a fixed tutorial file, or a book bot."""
     return (_tutorial_player(player_name) is not None
-            or _file_tutorial_player(player_name) is not None)
+            or _file_tutorial_player(player_name) is not None
+            or _book_player(player_name) is not None)
 
 
 @cache
@@ -1588,9 +1612,9 @@ def _file_tutorial(spec):
     except OSError as exc:
         raise ArenaError(f"cannot read tutorial file {spec.relative_path}: {exc}") from exc
     tokens = _tutorial.count_tokens(text)
-    if tokens > _tutorial.TOKEN_LIMIT:
+    if tokens > _tutorial.FILE_TOKEN_LIMIT:
         raise ArenaError(f"{spec.relative_path} has {tokens} tokens; "
-                         f"the limit is {_tutorial.TOKEN_LIMIT}")
+                         f"the limit is {_tutorial.FILE_TOKEN_LIMIT}")
     return text, hashlib.sha256(text.encode()).hexdigest(), tokens
 
 
@@ -1601,6 +1625,8 @@ def _canonical_active_llm_player_name(player_name):
         return tutorial_player.canonical
     if (file_tutorial := _file_tutorial_player(player_name)) is not None:
         return file_tutorial.canonical
+    if (book_player := _book_player(player_name)) is not None:
+        return book_player.canonical
     # Read old histories without exposing authentication as a player variant.
     player_name = re.sub(r"-oauth(?=-multi(?:\d+)?$|\d*$)", "-api", player_name)
     if any(player_name in api.players for api in _Arena.LLM_APIS):
@@ -3477,10 +3503,14 @@ class LLMGameRecovery:
 
 
 def _llm_player_config(name):
-    """The API player that makes each move. A tutorial player plays as its target."""
+    """The API player that makes each move. A tutorial player plays as its target;
+    a book bot has a stand-in, because no model moves for it."""
     canonical = _canonical_active_llm_player_name(name)
     if canonical is None:
         raise ArenaError(f"unknown LLM player {name}")
+    if (book_player := _book_player(canonical)) is not None:
+        return _BOOK_API, _LLMPlayerConfig(book_player.network, "", (0.0, 0.0, 0.0),
+                                           agentic_harness="book")
     if (tutorial_player := _tutorial_player(canonical)) is not None:
         return _registered_llm_player(tutorial_player.target)
     if (file_tutorial := _file_tutorial_player(canonical)) is not None:
@@ -3516,6 +3546,32 @@ def _codex_workspace_settings(harness):
 
 
 def _llm_player_manifest(name):
+    if (book_player := _book_player(name)) is not None:
+        learner_api, learner = _registered_llm_player(book_player.learner_player)
+        return {
+            "name": name,
+            "kind": _BOOK_API.manifest_kind,
+            "track": 3,
+            "subtrack": book_player.subtrack,
+            "book_protocol": book_player.protocol,
+            "network": book_player.network,
+            "opponent": book_player.opponent,
+            "max_visits": _Arena.MAX_VISITS,
+            "chosen_move_temperature_early": _Arena.ORIGINAL_TEMPERATURE_EARLY,
+            "chosen_move_temperature": _Arena.ORIGINAL_TEMPERATURE,
+            "book_move_limit": _tutorial.BOOK_MOVE_LIMIT,
+            "book_matching": "move sequence from the empty board, up to board symmetry",
+            "learner_player": book_player.learner_player,
+            "learner_kind": learner_api.manifest_kind,
+            "learner_model": learner.model,
+            "learner_effort": learner.level,
+            "learning_seconds": book_player.training_seconds,
+            "learning_resources": replace(_State.config.workspace, training_seconds=
+                                          book_player.training_seconds).manifest(),
+            "learning_katago_access": True,
+            "learning_subagents": False,
+            "student_calls": False,
+        }
     api, player = _llm_player_config(name)
     manifest = {
         "name": name,
@@ -3603,7 +3659,7 @@ def _llm_player_manifest(name):
             tutorial_source=file_tutorial.relative_path,
             tutorial_sha256=sha256,
             tutorial_tokens=tokens,
-            tutorial_token_limit=_tutorial.TOKEN_LIMIT,
+            tutorial_token_limit=_tutorial.FILE_TOKEN_LIMIT,
             tutorial_tokenizer=f"tiktoken {_tutorial.TOKENIZER}",
             tutorial_placement="first user message of every conversation session",
         )
@@ -5075,6 +5131,107 @@ def _llm_game_worker_count(player_name, game_count):
     return min(2, game_count)
 
 
+class _BookStrategy:
+    """A KataGo network bot that plays its opening book's move while the game is in it."""
+
+    def __init__(self, name, book, network_strategy):
+        self.name, self.book, self.network = name, book, network_strategy
+        self.book_moves = 0
+
+    def choose_move(self, game):
+        history = [move for _color, move in game.get_move_history()]
+        move = self.book.move(game.to_move, history)
+        # The referee stays authoritative: a book move it would refuse is not played.
+        if move is not None and move in game.get_possible_moves()[0]:
+            self.book_moves += 1
+            return move
+        return self.network.choose_move(game)
+
+
+def _book_game_worker_count(game_count):
+    # A game runs one KataGo evaluation at a time, on one core.
+    return max(1, min(game_count, (os.cpu_count() or 2) // 2))
+
+
+def _run_book_games(book_player, todo, opponent_of, work, records_path, log, track):
+    """Track 3.5 evaluation: the student network with its frozen book against KataGo.
+
+    This is where learning runs, once, before the first game. Each worker
+    keeps one referee and two bots for all its games.
+    """
+    book = _ensure_book(book_player, work)
+    network = _Arena.NETWORKS_BY_NAME[book_player.network]
+    with _State.game_dependencies_lock:
+        if network.name not in _State.installed_arena_networks:
+            ensure_arena_networks([network])
+            _State.installed_arena_networks.add(network.name)
+    student_bot = Player(
+        network.name, network.path.resolve(), network.name,
+        _Arena.ORIGINAL_TEMPERATURE_EARLY, _Arena.ORIGINAL_TEMPERATURE, None,
+    )
+    opponents = {opp.name: opp for opp in opponent_of.values()}
+    _check(any(opp.network is None for opp in opponents.values()))
+    cfgs = _write_random_bot_configs([student_bot, *opponents.values()], work)
+    slots = queue.SimpleQueue()
+    for slot in todo:
+        slots.put(slot)
+    records, record_lock = [], threading.Lock()
+
+    def worker():
+        with contextlib.ExitStack() as resources:
+            game = own = None
+            rivals = {}
+            while True:
+                try:
+                    slot = slots.get_nowait()
+                except queue.Empty:
+                    return
+                _call(track and track.start_game, slot)
+                game_id = f"game-{slot.number:06d}"
+                if game is None:
+                    game = resources.enter_context(_game_engine(work, game_id))
+                    own = _network_strategy(student_bot, cfgs[student_bot.name], work)
+                    resources.callback(own.close)
+                else:
+                    game.reset_for_game(game_id=game_id, log_dir=work)
+                    own.reset_for_game(game)
+                opp = opponent_of[slot.number]
+                if opp.name not in rivals:
+                    rivals[opp.name] = _network_strategy(opp, cfgs[opp.name], work)
+                    resources.callback(rivals[opp.name].close)
+                rival = rivals[opp.name]
+                rival.reset_for_game(game)
+                student = _BookStrategy(book_player.name, book, own)
+                attempt = 1
+                while True:
+                    black, white = ((student, rival) if slot.black == book_player.name
+                                    else (rival, student))
+                    res, moves = _play_random_anchor_game(game, black, white)
+                    if res is not None:
+                        break
+                    attempt += 1
+                    game.reset_for_game(game_id=f"{game_id}-retry-{attempt}", log_dir=work)
+                    own.reset_for_game(game)
+                    rival.reset_for_game(game)
+                    student.book_moves = 0
+                rec = _finished_record(slot, res, moves, _BOOK_API.manifest_kind)
+                with record_lock:
+                    _append_jsonl(records_path, _game_entry(rec, numbered_moves=False))
+                    records.append(rec)
+                _call(track and track.finish_game, slot.number, len(rec.moves))
+                _call(
+                    log,
+                    f"Batch {slot.batch}: game {slot.number} finished {res.score} after "
+                    f"{len(moves)} moves, {student.book_moves} from the book",
+                )
+
+    count = _book_game_worker_count(len(todo))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=count) as executor:
+        for future in [executor.submit(worker) for _ in range(count)]:
+            future.result()
+    return records
+
+
 def run_llm_games(
     schedule,
     player_values,
@@ -5118,6 +5275,10 @@ def run_llm_games(
     if not todo:
         return sorted(saved_games, key=lambda game: game.number)
     _ensure_game_dependencies(todo, player_values)
+    if (book_player := _book_player(llm_name)) is not None:
+        new_games = _run_book_games(
+            book_player, todo, opponent_of, work, records_path, log, track)
+        return sorted([*saved_games, *new_games], key=lambda game: game.number)
     harness = _llm_player_config(llm_name)[1].agentic_harness
     if harness in _WORKSPACE_HARNESSES:
         _workspace_client_class(harness).prune_evaluation_images(
@@ -5527,10 +5688,14 @@ def _load_saved_schedule(work_dir):
 
 
 def _llm_matchmaking_opponents(player_names):
+    # A book bot is measured against its one opponent, not placed on the ladder.
+    fixed = {spec.opponent for name in _State.config.active_players
+             if (spec := _book_player(name)) is not None}
     return [
         name
         for name in player_names
         if name not in _State.config.active_players and not _is_active_llm_player(name)
+        and (not fixed or name in fixed)
     ]
 
 
@@ -7095,6 +7260,22 @@ class _ArenaRun:
                     if len(set(evaluation.values())) == 1 and len(evaluation) == len(training):
                         run_config[key]["evaluation_seconds"] = next(iter(evaluation.values()))
                 run_config["move_cap_policy"] = "workspace evaluation: forfeit at move limit"
+        book_learning = {
+            name: spec.training_seconds for name in self.info_names
+            if (spec := _book_player(name)) is not None
+        }
+        if book_learning:
+            run_config["book_workspace"] = _State.config.workspace.manifest()
+            run_config["book_workspace"]["learning_seconds_by_player"] = book_learning
+            run_config["opening_book"] = {
+                "protocol": _tutorial.BOOK_PROTOCOL_VERSION,
+                "student": _tutorial.BOOK_STUDENT,
+                "opponent": _tutorial.BOOK_OPPONENT,
+                "move_limit": _tutorial.BOOK_MOVE_LIMIT,
+                "size": "distinct moves in the per-color prefix trees, up to board symmetry",
+                "evaluation": "the student network follows the frozen book and plays "
+                              "only the opponent, half the games as each color",
+            }
         learning = {
             name: spec.training_seconds for name in self.info_names
             if (spec := _tutorial_player(name)) is not None
@@ -7193,6 +7374,19 @@ class _ArenaRun:
             for name, source in published.items():
                 if source.exists():
                     _replace_text(self.run / "tutorials" / name,
+                                  source.read_text(encoding="utf-8"))
+        book_root = self.temp_dir / _BookLearnerMixin.checkpoint_dirname
+        for path in book_root.glob("*/checkpoint/book.txt"):
+            root = path.parents[1]
+            published = {
+                f"{root.name}.txt": path,
+                f"{root.name}.learner-prompt.md":
+                    root / "preparation" / "public" / "instructions.md",
+            }
+            (self.run / "books").mkdir(exist_ok=True)
+            for name, source in published.items():
+                if source.exists():
+                    _replace_text(self.run / "books" / name,
                                   source.read_text(encoding="utf-8"))
 
     def _history_reference(self):
@@ -7534,6 +7728,12 @@ class _ArenaRun:
                 path.parents[1].name: _workspace_read_json(path)
                 for path in tutorial_root.glob("*/checkpoint/manifest.json")
             }
+        book_root = self.temp_dir / _BookLearnerMixin.checkpoint_dirname
+        if book_root.is_dir():
+            self.meta["book_checkpoints"] = {
+                path.parents[1].name: _workspace_read_json(path)
+                for path in book_root.glob("*/checkpoint/manifest.json")
+            }
         self.write_reports()
         _write_json(self.run / "run.json", self.meta)
 
@@ -7842,6 +8042,8 @@ def _config_from_metadata(metadata):
     workspace_keys = sorted(client_class.run_config_key for client_class in workspace_classes)
     if any(_tutorial_player(name) is not None for name in active_players):
         workspace_keys.append("tutorial_workspace")
+    if any(_book_player(name) is not None for name in active_players):
+        workspace_keys.append("book_workspace")
     for key in workspace_keys:
         saved_workspace = metadata.get(key)
         if not isinstance(saved_workspace, dict) or saved_workspace.get("protocol") != WORKSPACE_PROTOCOL_VERSION:
@@ -11619,6 +11821,11 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             if not isinstance(text, str):
                 raise ValueError("tokens requires text")
             return {"tokens": _tutorial.count_tokens(text), "limit": _tutorial.TOKEN_LIMIT}
+        if operation == "book":
+            text = request.get("text")
+            if not isinstance(text, str):
+                raise ValueError("book requires text")
+            return _opening_book.parse(text, _tutorial.BOOK_MOVE_LIMIT).summary()
         if operation == "student":
             return self.student(request.get("tutorial"), request.get("positions"))
         if operation in self.CHAT_OPERATIONS:
@@ -11957,6 +12164,8 @@ class _TutorialLearnerMixin:
     """
 
     checkpoint_dirname = "tutorial-checkpoints"
+    # The tool that measures the output file as evaluation will.
+    output_programs = (("tutorial-tokens", _tutorial.TOKENS_PROGRAM),)
 
     def __init__(self, tutorial_player, work_dir):
         api, player = _registered_llm_player(tutorial_player.learner_player)
@@ -12077,7 +12286,7 @@ class _TutorialLearnerMixin:
         public = self._phase_dir / "public"
         tools = public / "bin"
         tools.mkdir(parents=True, exist_ok=True)
-        programs = {"tutorial-tokens": _tutorial.TOKENS_PROGRAM}
+        programs = dict(self.output_programs)
         if self.tutorial_player.chat:
             (public / "python").mkdir(exist_ok=True)
             (public / "python" / "student.py").write_text(_tutorial.STUDENT_MODULE,
@@ -12257,6 +12466,14 @@ class _TutorialLearnerMixin:
         if source is not None:
             (preparation / "tutorial-source.md").write_text(source, encoding="utf-8")
 
+    def _agent_cost(self, preparation):
+        return sum(
+            _llm_call_cost(entry["usage"], self.api_name, self.player.model,
+                           started_at=entry.get("started_at"))
+            for entry in _read_jsonl_objects(
+                preparation / f"{self.proxy_log_name}.usage.jsonl", "training usage")
+        )
+
     def _checkpoint_fields(self, preparation, staging):
         capture = _workspace_read_json(preparation / "tutorial-capture.json")
         shutil.copyfile(preparation / "tutorial.md", staging / "tutorial.md")
@@ -12270,12 +12487,7 @@ class _TutorialLearnerMixin:
         student_cost = sum(float(entry.get("cost_usd") or 0) for entry in calls)
         counts = [_llm_token_usage(self.target_api, entry.get("usage") or {})
                   for entry in calls]
-        agent_cost = sum(
-            _llm_call_cost(entry["usage"], self.api_name, self.player.model,
-                           started_at=entry.get("started_at"))
-            for entry in _read_jsonl_objects(
-                preparation / f"{self.proxy_log_name}.usage.jsonl", "training usage")
-        )
+        agent_cost = self._agent_cost(preparation)
         return {
             "tutorial_sha256": hashlib.sha256(data).hexdigest(),
             "tutorial_tokens": _tutorial.count_tokens(data.decode("utf-8")),
@@ -12305,6 +12517,208 @@ class _ClaudeCodeTutorialLearner(_TutorialLearnerMixin, _ClaudeCodeGameClient):
         # Claude Code 2.x names its subagent tool Agent; older builds call it Task.
         options[index] = ",".join((*_Arena.CLAUDE_CODE_DISALLOWED_TOOLS, "Agent", "Task"))
         return tuple(options)
+
+
+class _BookLearnerMixin(_TutorialLearnerMixin):
+    """Track 3.5 learning: the Track 3.2 sandbox, with an opening book as the only output.
+
+    The learner has KataGo and the ladder's networks and no student tool. Its
+    book is cut to the move limit at the deadline and frozen; evaluation gives
+    it to a KataGo bot, so no language model is involved after learning.
+    """
+
+    checkpoint_dirname = "book-checkpoints"
+    output_programs = (("book-check", _tutorial.BOOK_PROGRAM),)
+
+    def __init__(self, book_player, work_dir):
+        api, player = _registered_llm_player(book_player.learner_player)
+        ladder = {network.name for network in _tutorial_ladder_networks()}
+        if not {book_player.network, book_player.opponent} <= ladder:
+            raise ArenaError(
+                f"{book_player.name} needs {book_player.network} and {book_player.opponent} "
+                "among opponent_players, so that the learner's sandbox has them"
+            )
+        self.tutorial_player = book_player
+        self.target_api = self.target = None
+        self.tutorial = None
+        self._tool_server = None
+        super(_TutorialLearnerMixin, self).__init__(
+            book_player.name, player, work_dir, 0, **self._learner_options(api))
+
+    def _tutorial_specification(self):
+        spec = self.tutorial_player
+        return {
+            "protocol": spec.protocol, "subtrack": spec.subtrack,
+            "network": spec.network, "opponent": spec.opponent,
+            "katago": True, "student": False, "subagents": False,
+            "book_move_limit": _tutorial.BOOK_MOVE_LIMIT,
+            "instructions_sha256": hashlib.sha256(
+                self._instructions(self.settings.training_seconds).encode()
+            ).hexdigest(),
+            "katago_version": KATAGO_VERSION,
+            "networks": [[network.name, network.sha256]
+                         for network in _tutorial_ladder_networks()],
+        }
+
+    def _load_tutorial(self, specification):
+        checkpoint = self.checkpoint_root / "checkpoint"
+        if not (checkpoint / "manifest.json").exists():
+            return False
+        manifest = _workspace_read_json(checkpoint / "manifest.json")
+        if manifest.get("specification") != specification:
+            raise WorkspaceError(
+                "book checkpoint configuration/runtime changed; start a new run"
+            )
+        data = (checkpoint / "book.txt").read_bytes()
+        if hashlib.sha256(data).hexdigest() != manifest.get("book_sha256"):
+            raise WorkspaceError("immutable book was modified")
+        self.checkpoint = manifest
+        self.tutorial = data.decode("utf-8")
+        return True
+
+    def _instructions(self, remaining):
+        spec, limit = self.tutorial_player, _tutorial.BOOK_MOVE_LIMIT
+        elo = {row[0]: row[2] for row in _tutorial_ladder_rows()}
+        engine = (
+            f"{_tutorial.SANDBOX_KATAGO_DIR}/squashfs-root/AppRun gtp -model "
+            f"{_tutorial.SANDBOX_NETWORK_DIR}/<network file> -config "
+            f"{_tutorial.SANDBOX_KATAGO_DIR}/default_gtp.cfg -override-config "
+            f"maxVisits={_Arena.MAX_VISITS},numSearchThreads={_Arena.NUM_SEARCH_THREADS},"
+            f"chosenMoveTemperatureEarly={_Arena.ORIGINAL_TEMPERATURE_EARLY:g},"
+            f"chosenMoveTemperature={_Arena.ORIGINAL_TEMPERATURE:g}"
+        )
+        return "\n".join([
+            f"# Track {spec.subtrack}: opening book",
+            "",
+            "Compute an opening book that makes one KataGo bot beat a stronger KataGo bot "
+            f"as often as possible. Your only output is {_tutorial.SANDBOX_BOOK_PATH}. When "
+            f"this learning period ends, the book is cut to its first {limit} moves, counted "
+            "as described below, and frozen. Nothing else in your workspace is kept.",
+            "",
+            "## Evaluation",
+            f"The student is the ladder player {spec.network} ({elo.get(spec.network, '?')} "
+            f"Elo). Its opponent is {spec.opponent} ({elo.get(spec.opponent, '?')} Elo). They "
+            f"play {_State.config.total_games} complete 9x9 games, the student Black in half "
+            f"and White in half, under Tromp-Taylor rules with komi {_Arena.KOMI:g} and "
+            "positional superko. A win scores 1, a draw 0.5 and a loss 0; your result is the "
+            "student's total. No language model plays or is consulted.",
+            "",
+            "Each bot is one KataGo process:",
+            "",
+            "```",
+            engine,
+            "```",
+            "",
+            f"It is sent `boardsize {_Arena.BOARD_SIZE}`, `komi {_Arena.KOMI:g}` and "
+            f"`kata-set-rules {_Arena.RULES}`, told the other side's moves with `play`, and "
+            "asked for its own with `genmove`. So a move is one neural-network evaluation, "
+            "sampled from the policy with a temperature that falls during the game: games "
+            "between the same two bots differ. Either bot may resign.",
+            "",
+            "Whenever it is the student's turn and the game so far is in your book, the "
+            "student plays the book's move instead of its own; otherwise it plays its own "
+            "move. A line must match from the first move, so a game that has left the book "
+            "does not return to it. The opponent never sees the book.",
+            "",
+            "## The book",
+            "A book is text. A line is the student's color, B or W, then moves from the empty "
+            "board, Black first, as vertices (E5) or `pass`:",
+            "",
+            "```",
+            "B E5 C4 D4 C3 C5",
+            "W E5 C5 E3 E7",
+            "```",
+            "",
+            "On a B line the odd moves are the student's: the book plays them. The even moves "
+            "are opponent moves the book has an answer to. A W line is the reverse. Text after "
+            "`#` is a comment.",
+            "",
+            "A game is in the book while some symmetry of the board (the eight rotations and "
+            "mirror images) maps its moves, in order, onto the start of a line of the "
+            "student's color; the book's next move is mapped back to the game. So one line "
+            "also stands for its seven images.",
+            "",
+            "The size of a book is the number of distinct moves in its two prefix trees, one "
+            "per color. Every move of every line counts, the opponent's too, but a prefix "
+            "shared by several lines counts once, and so do lines that are images of each "
+            f"other. The limit is {limit}. A book over the limit keeps the moves that come "
+            "first in the file. A line is kept up to its first problem: an unreadable or "
+            "illegal move, or a student move where an earlier line already chose a different "
+            f"one. Only the first {_tutorial.MAX_SOURCE_BYTES // 1024} KiB of the file are read. "
+            "A missing file is an empty book.",
+            "",
+            "## Your environment",
+            f"You have {remaining:.0f} seconds of wall time. Read /arena/clock.json for a live "
+            "deadline. The runtime stops at the deadline with no extra time, so save the "
+            "book early and keep it updated. Python3, g++, and make are available; build "
+            "tools in /workspace. There is no internet access. " + self._resource_instructions(),
+            "",
+            f"- `/arena/bin/book-check [FILE]` reads FILE (default {_tutorial.SANDBOX_BOOK_PATH}) "
+            "exactly as evaluation will and reports its size, the moves beyond the limit, and "
+            "the lines cut short.",
+            "- KataGo and every network of the ladder are available read-only. "
+            "/arena/ladder.tsv lists each ladder player with its network file, Elo and "
+            "speed, and explains how the players are configured. You may use any of them, "
+            "for example stronger networks as advisers.",
+            "- There is no student tool: the student is the KataGo bot above, which you can "
+            "run yourself.",
+            "",
+            "These instructions are also in /arena/instructions.md.",
+        ]) + "\n"
+
+    def _preparation_prompt(self):
+        return (
+            self._instructions(self._clock.remaining)
+            + "\nIf a previous turn ended, continue improving and testing the book "
+            "until time expires.\n"
+        )
+
+    def _capture_preparation_outputs(self, preparation):
+        source = _tutorial.read_source(self.cwd / "book.txt")
+        book = _opening_book.parse(source or "", _tutorial.BOOK_MOVE_LIMIT)
+        _workspace_atomic_json(preparation / "book-capture.json", {
+            "source_present": source is not None, **book.summary(),
+        })
+        (preparation / "book.txt").write_text(book.text(), encoding="utf-8")
+        if source is not None:
+            (preparation / "book-source.txt").write_text(source, encoding="utf-8")
+
+    def _checkpoint_fields(self, preparation, staging):
+        capture = _workspace_read_json(preparation / "book-capture.json")
+        shutil.copyfile(preparation / "book.txt", staging / "book.txt")
+        os.chmod(staging / "book.txt", 0o400)
+        return {
+            "book_sha256": hashlib.sha256((staging / "book.txt").read_bytes()).hexdigest(),
+            "book_size": capture["size"],
+            "book_move_limit": capture["limit"],
+            "book_student_moves": capture["book_moves"],
+            "book_source_present": capture["source_present"],
+            "book_source_lines": capture["lines"],
+            "book_dropped_moves": capture["dropped_moves"],
+            "book_problem_lines": len(capture["problems"]),
+            "learning_cost_usd": self._agent_cost(preparation),
+        }
+
+
+class _CodexBookLearner(_BookLearnerMixin, _CodexTutorialLearner):
+    pass
+
+
+class _ClaudeCodeBookLearner(_BookLearnerMixin, _ClaudeCodeTutorialLearner):
+    pass
+
+
+def _ensure_book(book_player, work_dir):
+    """Run or reuse this arena run's learning phase; return the frozen book."""
+    _, learner = _registered_llm_player(book_player.learner_player)
+    learner_class = (_ClaudeCodeBookLearner
+                     if learner.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
+                     else _CodexBookLearner)
+    client = learner_class(book_player, work_dir)
+    try:
+        return _opening_book.parse(client.tutorial, _tutorial.BOOK_MOVE_LIMIT)
+    finally:
+        client.close()
 
 
 def _ensure_tutorial(tutorial_player, work_dir):

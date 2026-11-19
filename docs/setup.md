@@ -418,8 +418,8 @@ A tutorial written outside the arena can be evaluated the same way: name the
 player `<target>-tutorial-file-<stem>` to give the target
 `data/tutorials/<stem>.md` (letters, digits and underscores) in place of a
 learned tutorial. There is no learning phase, so the learning cost is N/A and
-only the target's API login is needed. A file over 5,000 tokens is rejected
-rather than truncated. The player manifest records the path, SHA-256 and
+only the target's API login is needed. A file may be longer than a learned
+tutorial: one over 30,000 tokens is rejected rather than truncated. The player manifest records the path, SHA-256 and
 token count; resuming after the file changes is refused, so use a new stem for
 a new version. For example,
 `gpt6-astra-high-api-multi-tutorial-file-katago_book_9x9tt` evaluates
@@ -429,3 +429,46 @@ KataGo's 9x9 Tromp-Taylor opening book.
 The host needs the Track 2 workspace requirements (and the Claude Code binary
 or Codex SDK for the learner), the target's API login, and `tiktoken`, which
 downloads the `o200k_base` file once from OpenAI's public blob storage.
+
+### Track 3.5: an opening book for a KataGo student
+
+Track 3.5 replaces the language-model reader with a KataGo bot, so the
+learner's work is measured without any model's ability to read it. The student
+is the ladder network `kata1-b6c96-s16525312-d2925067` (2241 Elo, about the
+strength of the best Track 1 models) and its opponent is
+`kata1-b6c96-s22371328-d3612586` (2603 Elo). Alone the student scores about
+12% against it. The learner computes an opening book that the student follows.
+
+Players are named `<student network>-book3.5-<learner>-<hours>h`, for example
+`kata1-b6c96-s16525312-d2925067-book3.5-fable-5.2-high-claude-code-4h`, with
+the same learners, hours and replicas as the other subtracks. Profiles such as
+`python3 arena.py --run-type book3.5-fable-5.2-4h` evaluate one.
+
+The learner's sandbox is Track 3.2's: KataGo, every ladder network and
+`/arena/ladder.tsv`, no student tool, subagents disabled. The instructions
+name both bots with their Elo and give the exact engine command, so the
+learner can play the evaluation games itself. Its only output is
+`/workspace/book.txt` ([format](../gobench/opening_book.py)): a line is the
+student's color and moves from the empty board, such as `B E5 C4 D4`. A game
+is in the book while a board symmetry maps its moves onto the start of a line
+of the student's color. The size of a book is the number of distinct moves in
+its two prefix trees: the opponent's moves count, shared prefixes and mirror
+images count once. At the deadline the book is cut to its first **3,000
+moves** in file order and frozen. `/arena/bin/book-check` reads a book as
+evaluation will and reports its size and the lines cut short.
+
+Evaluation plays 1,000 games against the opponent only, half as each color,
+with the arena's usual one-visit settings for both bots. On its turn the
+student plays the book's move when the game is in the book and its own move
+otherwise. No language model plays, so games cost nothing; the learning cost
+is the agent's. The checkpoint lives under
+`untracked_log/<run>/book-checkpoints/<player>/` (`checkpoint/book.txt` and
+`manifest.json` with the book's hash, size, dropped moves and cost), `run.json`
+copies the manifests under `book_checkpoints`, and the frozen book and learner
+prompt are published in `log/<run>/books/`. The player is rated like any
+other and appears in the Track 3 comparison table, where the per-move API
+columns are zero.
+
+`analysis/rollout_book_search.py` and `analysis/rollout_book_render.py --moves
+3000` are a reference solution run outside the sandbox on 16 threads: after
+about 280,000 search games its book of 2,137 moves scored 36.7% in 600 games.

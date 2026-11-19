@@ -24,6 +24,11 @@ relative to your working directory.
 | `plot_report_llm_costs` | Plot LLM cost/rating comparisons | `paper/` |
 | `plot_summary_details` | Plot Astra/Sol learning-time results and the color function | `data/paper_learning_results.json`, `log/summary/results.json` → `paper/` |
 | `analyze_simplebench_correlation` | Compare GoBench with SimpleBench results | Console |
+| `rollout_book_search` | Search for book moves that make a student-strength KataGo bot beat a stronger one | State directory supplied through CLI (`untracked_log/rollout_book/`) |
+| `rollout_book_render` | Rank the search's fixes and write a tutorial file under a token cap, or a Track 3.5 book under a move limit | `data/tutorials/` |
+| `rollout_book_eval` | Play the proxy with and without tutorial books in fresh games | Console, optional JSON lines |
+| `rollout_book_teachers` | Compare the networks that proposed the book moves | Console |
+| `book_to_tutorial` | Write a Track 3.5 opening book as a tutorial file for a language model | Output path supplied through CLI |
 
 Inspect a command before running an experiment:
 

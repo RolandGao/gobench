@@ -132,7 +132,76 @@ def parse_player(name):
                           float(budget) if budget is not None else STUDENT_COST_LIMIT_USD)
 
 
+BOOK_PROTOCOL_VERSION = "opening-book-v1"
+BOOK_SUBTRACK = "3.5"
+# The student is a KataGo ladder bot rated like the strongest Track 1 models,
+# and the opponent the next rung a book should reach: about 360 Elo above it.
+BOOK_STUDENT = "kata1-b6c96-s16525312-d2925067"
+BOOK_OPPONENT = "kata1-b6c96-s22371328-d3612586"
+# Distinct moves in the book's prefix trees (gobench/opening_book.py).
+BOOK_MOVE_LIMIT = 3000
+SANDBOX_BOOK_PATH = "/workspace/book.txt"
+_BOOK_NAME = re.compile(
+    r"(?P<network>kata1-[A-Za-z0-9-]+?)-book3\.5-"
+    r"(?P<learner>.+-(?:codex|claude-code))-(?P<hours>[1-9][0-9]*)h(?P<replica>[0-9]*)"
+)
+
+
+@dataclass(frozen=True)
+class BookPlayer:
+    """`<network>-book3.5-<learner>-<hours>h[replica]`: Track 3.5.
+
+    The player is the KataGo bot `network` following an opening book that the
+    learner, a Track 2 workspace model/effort/runtime, computed in the Track
+    3.2 sandbox. It is evaluated against `opponent` only. No language model
+    plays or is consulted.
+    """
+
+    name: str
+    network: str
+    learner: str
+    hours: int
+    replica: str
+    opponent: str = BOOK_OPPONENT
+    subtrack: str = BOOK_SUBTRACK
+    protocol: str = BOOK_PROTOCOL_VERSION
+    # The learner's sandbox is Track 3.2's: KataGo, no student tool.
+    katago: bool = True
+    student: bool = False
+    chat: bool = False
+    target: None = None
+    student_cost_limit_usd: float = 0.0
+
+    @property
+    def canonical(self):
+        return self.name.removesuffix(self.replica) if self.replica else self.name
+
+    @property
+    def learner_player(self):
+        return f"{self.learner}-{self.hours}h"
+
+    @property
+    def training_seconds(self):
+        return self.hours * 3600
+
+
+def parse_book_player(name):
+    """Parse a Track 3.5 player name, or return None for any other player."""
+    if not isinstance(name, str):
+        return None
+    match = _BOOK_NAME.fullmatch(name)
+    if match is None or match.group("network") != BOOK_STUDENT:
+        return None
+    if int(match.group("hours")) not in HOURS or match.group("replica").startswith("0"):
+        return None
+    return BookPlayer(name, match.group("network"), match.group("learner"),
+                      int(match.group("hours")), match.group("replica"))
+
+
 FILE_PROTOCOL_VERSION = "tutorial-file-v1"
+# A file is not a learning result, so its cap is its own: large enough to
+# compare books of several sizes (5,000 tokens up to this) on one student.
+FILE_TOKEN_LIMIT = 30_000
 # Relative to the repository root.
 FILE_DIR = "data/tutorials"
 _FILE_NAME = re.compile(r"(?P<target>.+-api-multi)-tutorial-file-(?P<stem>[A-Za-z0-9_]+)")
@@ -353,6 +422,30 @@ with open(path, encoding="utf-8", errors="replace") as source:
 result = call({"op": "tokens", "text": text})
 print(f"{result['tokens']} tokens (limit {result['limit']})"
       + ("; text after the limit will be cut" if result["tokens"] > result["limit"] else ""))
+'''
+
+BOOK_PROGRAM = "#!/usr/bin/python3\n" + _CLIENT + r'''
+
+USAGE = """usage: book-check [FILE]
+
+Read FILE (default /workspace/book.txt) exactly as evaluation will: report its
+size against the limit, the moves dropped beyond the limit, and every line
+that was cut short and why."""
+
+if len(sys.argv) > 2 or sys.argv[1:] in (["-h"], ["--help"]):
+    sys.exit(USAGE)
+path = sys.argv[1] if len(sys.argv) == 2 else "/workspace/book.txt"
+with open(path, encoding="utf-8", errors="replace") as source:
+    text = source.read()
+result = call({"op": "book", "text": text})
+print(f"{result['size']} moves kept (limit {result['limit']}) from {result['lines']} lines; "
+      f"{result['book_moves']} of them are the student's")
+if result["dropped_moves"]:
+    print(f"{result['dropped_moves']} moves are beyond the limit and will be dropped")
+for number, problem in result["problems"][:50]:
+    print(f"line {number}: {problem}")
+if len(result["problems"]) > 50:
+    print(f"... and {len(result['problems']) - 50} more lines with problems")
 '''
 
 STUDENT_PROGRAM = "#!/usr/bin/python3\n" + _CLIENT + r'''
