@@ -103,9 +103,13 @@ def katago_players(ratings, benchmark):
     return players
 
 
-def llm_games(past_dirs, comparisons, root):
-    """Join full move records to the committed results prefix of each source."""
-    expected = {row["player"]: row for row in comparisons}
+def llm_games(past_dirs, comparisons, root, game_players=None):
+    """Join full move records to the committed results prefix of each source.
+
+    game_players limits the exported games to those players; None exports all.
+    """
+    expected = {row["player"]: row for row in comparisons
+                if game_players is None or row["player"] in game_players}
     counts = {name: [0, 0] for name in expected}
     games, sources = [], []
     for run in past_dirs:
@@ -183,7 +187,7 @@ def llm_games(past_dirs, comparisons, root):
 
 
 def build_results(*, root, log_root, past_dirs, ratings, comparisons, settings,
-                  rating_games, color_advantage_curve):
+                  rating_games, color_advantage_curve, game_players=None):
     benchmark_path = log_root / "katago_selfplay_benchmark.json"
     benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
     rating_by_name = {row["player"]: row for row in ratings}
@@ -192,7 +196,8 @@ def build_results(*, root, log_root, past_dirs, ratings, comparisons, settings,
             for row in comparisons]
     llm_names = {row["player"] for row in llms}
     katago = katago_players([row for row in ratings if row["player"] not in llm_names], benchmark)
-    games, sources = llm_games(past_dirs, comparisons, root)
+    games, sources = llm_games(past_dirs, comparisons, root, game_players)
+    game_names = {game["llm_player"] for game in games}
     return {
         "schema_version": 4,
         "title": "GoBench historical summary results",
@@ -217,7 +222,7 @@ def build_results(*, root, log_root, past_dirs, ratings, comparisons, settings,
         "games": {
             "records": "#/datasets/llm_vs_katago_games", "count": len(games),
             "move_count": sum(len(game["moves"]) for game in games),
-            "model_count": len(llms), "included_players": sorted(llm_names),
+            "model_count": len(game_names), "included_players": sorted(game_names),
             "result_datasets": ["#/datasets/llm_players"], **settings,
             "moves_note": "Complete board-move sequences for both colors; llm_players.moves counts only LLM moves.",
         },

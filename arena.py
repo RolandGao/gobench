@@ -203,6 +203,9 @@ _FINAL_RUNS = (
     # Track 3 with a fixed tutorial file (data/tutorials/).
     "gpt6-astra-high-api-multi-tutorial-file-katago_book_9x9tt",
     "gpt6-astra-high-api-multi-tutorial-file-katago_book_9x9tt_v2",
+    # Track 3.5 opening books for a KataGo student.
+    "kata1-b6c96-s16525312-d2925067-book3.5-gpt6.2-astra-high-codex-2h",
+    "kata1-b6c96-s16525312-d2925067-book3.5-claude-opus-5-5-high-claude-code-2h",
     # Track 2 with code-only evaluation (5-minute clock).
     # "gpt6-astra-high-codex-engine-1h",
     # "gpt6-astra-high-codex-engine-2h",
@@ -7892,6 +7895,9 @@ def run_summary(config):
                 ratings=[asdict(record) for record in snap.records],
                 comparisons=comparisons, rating_games=len(games),
                 color_advantage_curve=snap.curve,
+                # Track 3.5 games are KataGo against KataGo; only their ratings are kept.
+                game_players={row["player"] for row in comparisons
+                              if _book_player(row["player"]) is None},
                 settings={"board_size": _Arena.BOARD_SIZE, "komi": _Arena.KOMI,
                           "rules": _Arena.RULES, "max_moves": _Arena.MAX_MOVES},
             )
