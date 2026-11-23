@@ -314,10 +314,11 @@ CONFIG = ArenaConfig(
         # "fable-5.2-high-claude-code-engine-60s-4h",
         # "gpt6.2-astra-high-api-multi",
         # "gpt6.2-astra-max-api-multi",
-        "gpt6.2-astra-xhigh-api-multi",
+        # "gpt6.2-astra-xhigh-api-multi",
+        "gemini-4-neon-high-api-multi2",
     ),
     opponent_players=_CURRENT_PLAYER_POOL,
-    total_games=30,
+    total_games=20,
     batch_games=2,
     past_run_names=_FINAL_RUNS,
     ignore_players=tuple(),
@@ -547,8 +548,11 @@ class _OpenRouterChatProtocol(_ChatProtocol):
                 "allow_fallbacks": False,
             }
         return {
-            "messages": (qwen_cache_messages([{"role": "user", "content": prompt}])
-                         if player.route == "alibaba" else [{"role": "user", "content": prompt}]),
+            "messages": (
+                qwen_cache_messages([{"role": "user", "content": prompt}])
+                if player.route == "alibaba"
+                else [{"role": "user", "content": prompt}]
+            ),
             "stream": False,
             "extra_body": extra_body,
         }
@@ -578,7 +582,9 @@ class _DeepSeekChatProtocol(_ChatProtocol):
             "stream": False,
             **({"reasoning_effort": player.level} if player.level != "none" else {}),
             "extra_body": {
-                "thinking": {"type": "disabled" if player.level == "none" else "enabled"}
+                "thinking": {
+                    "type": "disabled" if player.level == "none" else "enabled"
+                }
             },
             **_deepseek_dummy_tool_options(),
         }
@@ -769,13 +775,17 @@ class _Arena:
                 **_agent_players(_CODEX_ENGINE_TRAINING_SECONDS),
                 **{
                     name: player
-                    for harness in (*_CODEX_TRAINING_SECONDS, *_CODEX_ENGINE_TRAINING_SECONDS)
+                    for harness in (
+                        *_CODEX_TRAINING_SECONDS,
+                        *_CODEX_ENGINE_TRAINING_SECONDS,
+                    )
                     for label, model, prices, cache_write_price in (
                         ("gpt6-astra", "gpt-6-astra", (10.0, 1.0, 50.0), 12.5),
                         ("gpt6.2-astra", "gpt-6.2-astra", (8.0, 0.4, 40.0), 10.0),
                     )
                     for name, player in _llm_effort_players(
-                        label, model,
+                        label,
+                        model,
                         ("low", "medium", "high", "xhigh", "max"),
                         prices,
                         suffix=harness,
@@ -800,14 +810,17 @@ class _Arena:
             name="anthropic_claude_code_workspace",
             players={
                 name: player
-                for harness in (*_CLAUDE_CODE_TRAINING_SECONDS,
-                                *_CLAUDE_CODE_ENGINE_TRAINING_SECONDS)
+                for harness in (
+                    *_CLAUDE_CODE_TRAINING_SECONDS,
+                    *_CLAUDE_CODE_ENGINE_TRAINING_SECONDS,
+                )
                 for label, model, prices, cache_write_price in (
                     ("claude-opus-5-5", "claude-opus-5-5", (4.0, 0.2, 20.0), 5.0),
                     ("fable-5.2", "claude-fable-5-2", (8.0, 0.2, 40.0), 10.0),
                 )
                 for name, player in _llm_effort_players(
-                    label, model,
+                    label,
+                    model,
                     ("low", "medium", "high", "xhigh", "max"),
                     prices,
                     suffix=harness,
@@ -880,7 +893,8 @@ class _Arena:
                 # https://developers.openai.com/api/docs/models/gpt-6-sol
                 # https://developers.openai.com/api/docs/models/gpt-6-luna
                 **_llm_effort_players(
-                    "gpt6-sol", "gpt-6-sol",
+                    "gpt6-sol",
+                    "gpt-6-sol",
                     ("none", "low", "medium", "high", "xhigh", "max"),
                     (2.0, 0.2, 10.0),
                     cache_write_price=2.5,
@@ -889,7 +903,8 @@ class _Arena:
                     long_context_multipliers=(2.0, 2.0, 1.5),
                 ),
                 **_llm_effort_players(
-                    "gpt6-luna", "gpt-6-luna",
+                    "gpt6-luna",
+                    "gpt-6-luna",
                     ("none", "low", "medium", "high", "xhigh", "max"),
                     (0.1, 0.01, 0.5),
                     cache_write_price=0.125,
@@ -900,7 +915,8 @@ class _Arena:
                 # GPT-6.1 Sol rates and limits checked 2026-09-29:
                 # https://developers.openai.com/api/docs/models/gpt-6.1-sol
                 **_llm_effort_players(
-                    "gpt6.1-sol", "gpt-6.1-sol",
+                    "gpt6.1-sol",
+                    "gpt-6.1-sol",
                     ("high", "max"),
                     (2.0, 0.1, 10.0),
                     cache_write_price=2.5,
@@ -912,7 +928,8 @@ class _Arena:
                 # https://developers.openai.com/api/docs/models/gpt-6.2-astra
                 # The page lists no efforts beyond rejecting none; GPT-6 Astra's are assumed.
                 **_llm_effort_players(
-                    "gpt6.2-astra", "gpt-6.2-astra",
+                    "gpt6.2-astra",
+                    "gpt-6.2-astra",
                     ("low", "medium", "high", "xhigh", "max"),
                     (8.0, 0.4, 40.0),
                     cache_write_price=10.0,
@@ -1115,7 +1132,9 @@ class _Arena:
                 ),
                 # Preserve the original high-effort player name for saved runs.
                 _llm_player_name("deepseek-v4-pro"): _LLMPlayerConfig(
-                    "deepseek-v4-pro", "high", (0.66, 0.022, 1.98),
+                    "deepseek-v4-pro",
+                    "high",
+                    (0.66, 0.022, 1.98),
                     max_output_tokens=393_216,
                     peak_prices=(1.32, 0.044, 3.96),
                     peak_utc_hours=((1, 4), (6, 10)),
@@ -1163,6 +1182,16 @@ class _Arena:
                     (2.0, 0.1, 10.0),
                     max_output_tokens=65_536,
                     scheduled_prices=(("2026-12-01", (4.0, 0.2, 20.0)),),
+                ),
+                # Gemini 4 Neon rates, levels and limits checked 2026-11-22:
+                # https://ai.google.dev/gemini-api/docs/pricing
+                # https://ai.google.dev/gemini-api/docs/models/gemini-4-neon
+                **_llm_effort_players(
+                    "gemini-4-neon",
+                    "gemini-4-neon",
+                    ("low", "medium", "high", "xhigh"),
+                    (3.0, 0.15, 15.0),
+                    max_output_tokens=65_536,
                 ),
                 **_llm_effort_players(
                     "gemini-3.1-pro",
@@ -1561,8 +1590,12 @@ def _tutorial_player(player_name):
         return None
     target = _registered_llm_player(spec.target)
     learner = _registered_llm_player(spec.learner_player)
-    if (target is None or target[1].agentic_harness != "api-multi"
-            or learner is None or learner[1].agentic_harness not in _WORKSPACE_HARNESSES):
+    if (
+        target is None
+        or target[1].agentic_harness != "api-multi"
+        or learner is None
+        or learner[1].agentic_harness not in _WORKSPACE_HARNESSES
+    ):
         return None
     return spec
 
@@ -1581,8 +1614,14 @@ def _file_tutorial_player(player_name):
 # A Track 3.5 player makes no API calls. This stands in wherever a player's API
 # configuration is read: it costs nothing and matches no API or workspace harness.
 _BOOK_API = _LLMAPIConfig(
-    name="katago_book", players={}, sdk_module="", sdk_client_path=(), api_key_env="",
-    manifest_kind="katago_book", manifest_level_name="effort", protocol=_LLMProtocol,
+    name="katago_book",
+    players={},
+    sdk_module="",
+    sdk_client_path=(),
+    api_key_env="",
+    manifest_kind="katago_book",
+    manifest_level_name="effort",
+    protocol=_LLMProtocol,
     endpoint_path=(),
 )
 
@@ -1593,18 +1632,23 @@ def _book_player(player_name):
     if spec is None:
         return None
     learner = _registered_llm_player(spec.learner_player)
-    if (learner is None or learner[1].agentic_harness not in _WORKSPACE_HARNESSES
-            or spec.network not in _Arena.NETWORKS_BY_NAME
-            or spec.opponent not in _Arena.NETWORKS_BY_NAME):
+    if (
+        learner is None
+        or learner[1].agentic_harness not in _WORKSPACE_HARNESSES
+        or spec.network not in _Arena.NETWORKS_BY_NAME
+        or spec.opponent not in _Arena.NETWORKS_BY_NAME
+    ):
         return None
     return spec
 
 
 def _is_tutorial_player(player_name):
     """Any Track 3 player: a learned tutorial, a fixed tutorial file, or a book bot."""
-    return (_tutorial_player(player_name) is not None
-            or _file_tutorial_player(player_name) is not None
-            or _book_player(player_name) is not None)
+    return (
+        _tutorial_player(player_name) is not None
+        or _file_tutorial_player(player_name) is not None
+        or _book_player(player_name) is not None
+    )
 
 
 @cache
@@ -1613,11 +1657,15 @@ def _file_tutorial(spec):
     try:
         text = (_Arena.ROOT / spec.relative_path).read_text()
     except OSError as exc:
-        raise ArenaError(f"cannot read tutorial file {spec.relative_path}: {exc}") from exc
+        raise ArenaError(
+            f"cannot read tutorial file {spec.relative_path}: {exc}"
+        ) from exc
     tokens = _tutorial.count_tokens(text)
     if tokens > _tutorial.FILE_TOKEN_LIMIT:
-        raise ArenaError(f"{spec.relative_path} has {tokens} tokens; "
-                         f"the limit is {_tutorial.FILE_TOKEN_LIMIT}")
+        raise ArenaError(
+            f"{spec.relative_path} has {tokens} tokens; "
+            f"the limit is {_tutorial.FILE_TOKEN_LIMIT}"
+        )
     return text, hashlib.sha256(text.encode()).hexdigest(), tokens
 
 
@@ -1676,7 +1724,11 @@ def _is_result_api_llm_player(player_name):
 LLM_TRACK_COMPARISONS = (
     (1, "Track 1 (API) LLM comparisons", "track1_llm_comparisons.txt"),
     (2, "Track 2 (agentic workspace) LLM comparisons", "track2_llm_comparisons.txt"),
-    (3, "Track 3 (tutorial distillation) LLM comparisons", "track3_llm_comparisons.txt"),
+    (
+        3,
+        "Track 3 (tutorial distillation) LLM comparisons",
+        "track3_llm_comparisons.txt",
+    ),
 )
 
 
@@ -1701,9 +1753,12 @@ def _learning_costs(metadata):
             if not key.endswith("_checkpoints") or not isinstance(checkpoints, dict):
                 continue
             for player, manifest in checkpoints.items():
-                cost = manifest.get("learning_cost_usd", manifest.get("training_cost_usd"))
-                if (not manifest.get("training_model_requests")
-                        and manifest.get("training_requests_without_reported_usage")):
+                cost = manifest.get(
+                    "learning_cost_usd", manifest.get("training_cost_usd")
+                )
+                if not manifest.get("training_model_requests") and manifest.get(
+                    "training_requests_without_reported_usage"
+                ):
                     cost = None
                 costs[player] = cost
     return costs
@@ -1728,13 +1783,15 @@ def _run_dir_learning_costs(run_dirs, overrides=None):
 LEARNING_COST_TRACKS = frozenset({2, 3})
 
 
-def _write_llm_track_comparisons(directory, games, records, *, ignore_players=(),
-                                 learning_costs=None):
+def _write_llm_track_comparisons(
+    directory, games, records, *, ignore_players=(), learning_costs=None
+):
     """Write one comparison table per track with visible players; return its sections."""
     sections = []
     for track, title, filename in LLM_TRACK_COMPARISONS:
         players = {
-            record.player for record in records
+            record.player
+            for record in records
             if _result_llm_track(record.player) == track
             and record.player not in ignore_players
         }
@@ -1742,9 +1799,15 @@ def _write_llm_track_comparisons(directory, games, records, *, ignore_players=()
             continue
         path = directory / filename
         _write_llm_comparisons(
-            path, games, records, title=title,
-            include_players=players, ignore_players=ignore_players,
-            learning_costs=(learning_costs or {}) if track in LEARNING_COST_TRACKS else None,
+            path,
+            games,
+            records,
+            title=title,
+            include_players=players,
+            ignore_players=ignore_players,
+            learning_costs=(learning_costs or {})
+            if track in LEARNING_COST_TRACKS
+            else None,
         )
         sections.append((title, path))
     return sections
@@ -1770,8 +1833,11 @@ def _active_players_are_katago(active_players):
         if _network_name_for_player(name) in _Arena.NETWORKS_BY_NAME
     ]
     llm_players = [name for name in active_players if _is_active_llm_player(name)]
-    unknown = [name for name in active_players
-               if name not in kata_players and name not in llm_players]
+    unknown = [
+        name
+        for name in active_players
+        if name not in kata_players and name not in llm_players
+    ]
     if unknown:
         raise ArenaError(f"unknown active player(s): {', '.join(map(str, unknown))}")
     if len(kata_players) == len(active_players):
@@ -1802,7 +1868,8 @@ def _historical_katago_player_names(run_dirs):
                 for name in (row["black"], row["white"])
             )
             names += [
-                name for name in run_names
+                name
+                for name in run_names
                 if name == _Arena.ANCHOR
                 or network_name(name) in _Arena.NETWORKS_BY_NAME
             ]
@@ -1821,8 +1888,11 @@ class _PastRunConfig:
 
 def _historical_run_name(name):
     renamed = re.sub(r"-oauth(?=-multi(?:\d+)?$|\d*$)", "-api", name)
-    if (renamed != name and not (_Arena.LOG_ROOT / name).exists()
-            and (_Arena.LOG_ROOT / renamed).is_dir()):
+    if (
+        renamed != name
+        and not (_Arena.LOG_ROOT / name).exists()
+        and (_Arena.LOG_ROOT / renamed).is_dir()
+    ):
         return renamed
     return name
 
@@ -1942,9 +2012,12 @@ def _historical_player_priors(config):
 
 
 def _configure_history(config):
-    config = replace(config, past_run_names=tuple(dict.fromkeys(
-        _historical_run_name(name) for name in config.past_run_names
-    )))
+    config = replace(
+        config,
+        past_run_names=tuple(
+            dict.fromkeys(_historical_run_name(name) for name in config.past_run_names)
+        ),
+    )
     past_dirs = tuple(_Arena.LOG_ROOT / name for name in config.past_run_names)
     missing = [path for path in past_dirs if not path.is_dir()]
     if missing:
@@ -1953,9 +2026,9 @@ def _configure_history(config):
     _State.config = config
     _State.past_run_dirs = past_dirs
     _State.past_player_priors = _historical_player_priors(config)
-    _State.katago_rating_player_names = tuple(dict.fromkeys(
-        (*historical, *config.active_players)
-    ))
+    _State.katago_rating_player_names = tuple(
+        dict.fromkeys((*historical, *config.active_players))
+    )
 
 
 def _configure(config):
@@ -2564,22 +2637,38 @@ def fit_free_ratings(games, free_names, ratings, color_advantage):
     )
 
     def offsets(fixed, model=None):
-        return np.array([
-            (0.0 if black in pos else fixed[black])
-            - (0.0 if white in pos else fixed[white])
-            + (model.advantage(black, white) if model else 0.0)
-            for black, white in matchups
-        ])
+        return np.array(
+            [
+                (0.0 if black in pos else fixed[black])
+                - (0.0 if white in pos else fixed[white])
+                + (model.advantage(black, white) if model else 0.0)
+                for black, white in matchups
+            ]
+        )
 
     base = color_advantage.baseline_ratings
-    vals = _fit_logit(design, scores, totals, np.array([base[name] for name in names]),
-                      means, prec, offsets(base))
-    color = replace(color_advantage, baseline_ratings={
-        **base, **dict(zip(names, map(float, vals)))
-    })
+    vals = _fit_logit(
+        design,
+        scores,
+        totals,
+        np.array([base[name] for name in names]),
+        means,
+        prec,
+        offsets(base),
+    )
+    color = replace(
+        color_advantage, baseline_ratings={**base, **dict(zip(names, map(float, vals)))}
+    )
     fixed = offsets(ratings, color)
-    vals = _fit_logit(design, scores, totals,
-                      np.array([ratings[name] for name in names]), means, prec, fixed)
+    vals = _fit_logit(
+        design,
+        scores,
+        totals,
+        np.array([ratings[name] for name in names]),
+        means,
+        prec,
+        fixed,
+    )
     return {**ratings, **dict(zip(names, map(float, vals)))}, color
 
 
@@ -2594,7 +2683,9 @@ def _rating_information(games, positions, ratings, color=None, include_color=Tru
     )
     diffs = np.array(
         [
-            ratings[black] - ratings[white] + (color.advantage(black, white) if color else 0)
+            ratings[black]
+            - ratings[white]
+            + (color.advantage(black, white) if color else 0)
             for black, white in matchups
         ]
     )
@@ -3512,8 +3603,9 @@ def _llm_player_config(name):
     if canonical is None:
         raise ArenaError(f"unknown LLM player {name}")
     if (book_player := _book_player(canonical)) is not None:
-        return _BOOK_API, _LLMPlayerConfig(book_player.network, "", (0.0, 0.0, 0.0),
-                                           agentic_harness="book")
+        return _BOOK_API, _LLMPlayerConfig(
+            book_player.network, "", (0.0, 0.0, 0.0), agentic_harness="book"
+        )
     if (tutorial_player := _tutorial_player(canonical)) is not None:
         return _registered_llm_player(tutorial_player.target)
     if (file_tutorial := _file_tutorial_player(canonical)) is not None:
@@ -3542,10 +3634,13 @@ def _codex_workspace_settings(harness):
     """The player name fixes preparation time, including for numbered replicas,
     and the evaluation clock when the harness carries a clock tag."""
     configured = _State.config.workspace
-    return replace(configured,
-                   training_seconds=_workspace_training_seconds(harness),
-                   evaluation_seconds=_workspace_evaluation_seconds(
-                       harness, configured.evaluation_seconds))
+    return replace(
+        configured,
+        training_seconds=_workspace_training_seconds(harness),
+        evaluation_seconds=_workspace_evaluation_seconds(
+            harness, configured.evaluation_seconds
+        ),
+    )
 
 
 def _llm_player_manifest(name):
@@ -3569,8 +3664,9 @@ def _llm_player_manifest(name):
             "learner_model": learner.model,
             "learner_effort": learner.level,
             "learning_seconds": book_player.training_seconds,
-            "learning_resources": replace(_State.config.workspace, training_seconds=
-                                          book_player.training_seconds).manifest(),
+            "learning_resources": replace(
+                _State.config.workspace, training_seconds=book_player.training_seconds
+            ).manifest(),
             "learning_katago_access": True,
             "learning_subagents": False,
             "student_calls": False,
@@ -3595,12 +3691,15 @@ def _llm_player_manifest(name):
         )
     if player.agentic_harness in _WORKSPACE_HARNESSES:
         settings = _codex_workspace_settings(player.agentic_harness)
-        claude_code = player.agentic_harness in (_CLAUDE_CODE_WORKSPACE_HARNESSES
-                                                 | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES)
+        claude_code = player.agentic_harness in (
+            _CLAUDE_CODE_WORKSPACE_HARNESSES | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES
+        )
         manifest.update(
             conversation="independent_checkpoint_copy_per_game",
             sandbox="bubblewrap_workspace_write",
-            network_access="anthropic_proxy_only" if claude_code else "openai_proxy_only",
+            network_access="anthropic_proxy_only"
+            if claude_code
+            else "openai_proxy_only",
             workspace_retained=True,
             persistence="immutable_preparation_checkpoint_with_private_evaluation_copies",
             preparation_seconds=settings.training_seconds,
@@ -3611,12 +3710,16 @@ def _llm_player_manifest(name):
             training_katago_access=False,
             apply_patch_preflight=False,
         )
-        if player.agentic_harness in (_CODEX_ENGINE_WORKSPACE_HARNESSES
-                                      | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES):
+        if player.agentic_harness in (
+            _CODEX_ENGINE_WORKSPACE_HARNESSES | _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES
+        ):
             manifest.update(
                 conversation="none_during_evaluation",
-                network_access=("anthropic_proxy_during_preparation_only" if claude_code
-                                else "openai_proxy_during_preparation_only"),
+                network_access=(
+                    "anthropic_proxy_during_preparation_only"
+                    if claude_code
+                    else "openai_proxy_during_preparation_only"
+                ),
                 evaluation="code_only",
                 engine_interface=_CodeOnlyEvaluationMixin.INTERFACE,
                 engine_path=_CodeOnlyEvaluationMixin.ENGINE_PATH,
@@ -3640,15 +3743,21 @@ def _llm_player_manifest(name):
             learner_model=learner.model,
             learner_effort=learner.level,
             learning_seconds=tutorial_player.training_seconds,
-            learning_resources=replace(_State.config.workspace, training_seconds=
-                                       tutorial_player.training_seconds).manifest(),
+            learning_resources=replace(
+                _State.config.workspace,
+                training_seconds=tutorial_player.training_seconds,
+            ).manifest(),
             learning_katago_access=tutorial_player.katago,
             learning_subagents=False,
             student_calls=tutorial_player.student,
-            **({"student_interface": "chat",
-                "student_cost_limit_usd": tutorial_player.student_cost_limit_usd}
-               if tutorial_player.chat
-               else {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY}),
+            **(
+                {
+                    "student_interface": "chat",
+                    "student_cost_limit_usd": tutorial_player.student_cost_limit_usd,
+                }
+                if tutorial_player.chat
+                else {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY}
+            ),
             tutorial_token_limit=_tutorial.TOKEN_LIMIT,
             tutorial_tokenizer=f"tiktoken {_tutorial.TOKENIZER}",
             tutorial_placement="first user message of every conversation session",
@@ -3670,7 +3779,11 @@ def _llm_player_manifest(name):
         manifest["base_url"] = api.base_url
     manifest.update(api.protocol.manifest_options(player))
     if player.max_output_tokens is not None:
-        _set_output_limit(manifest, api.max_tokens_field or "max_output_tokens", player.max_output_tokens)
+        _set_output_limit(
+            manifest,
+            api.max_tokens_field or "max_output_tokens",
+            player.max_output_tokens,
+        )
         if api.max_tokens_field is None:
             manifest["output_limit_control"] = "subscription_server"
     elif api.name == "xai":
@@ -3839,8 +3952,14 @@ class _OpenAIOAuthClient:
         )
 
 
-def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None,
-                conversation_class=APIConversation):
+def _llm_client(
+    player_name,
+    *,
+    work_dir=None,
+    game_number=None,
+    tutorial=None,
+    conversation_class=APIConversation,
+):
     api, player = _llm_player_config(player_name)
     if (tutorial_player := _tutorial_player(player_name)) is not None:
         if work_dir is None:
@@ -3850,7 +3969,9 @@ def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None,
         tutorial = _file_tutorial(file_tutorial)[0]
     if player.agentic_harness in _CODEX_ENGINE_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
-            raise ArenaError("Codex engine players require a game work directory and number")
+            raise ArenaError(
+                "Codex engine players require a game work directory and number"
+            )
         return _CodexEngineGameClient(
             player_name,
             player,
@@ -3870,11 +3991,15 @@ def _llm_client(player_name, *, work_dir=None, game_number=None, tutorial=None,
         )
     if player.agentic_harness in _CLAUDE_CODE_ENGINE_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
-            raise ArenaError("Claude Code engine players require a game work directory and number")
+            raise ArenaError(
+                "Claude Code engine players require a game work directory and number"
+            )
         return _ClaudeCodeEngineGameClient(player_name, player, work_dir, game_number)
     if player.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES:
         if work_dir is None or game_number is None:
-            raise ArenaError("Claude Code players require a game work directory and number")
+            raise ArenaError(
+                "Claude Code players require a game work directory and number"
+            )
         return _ClaudeCodeGameClient(player_name, player, work_dir, game_number)
     try:
         client_cls = __import__(api.sdk_module, fromlist=[api.sdk_client_path[0]])
@@ -4071,7 +4196,8 @@ def _llm_call_cost(usage, provider, model, *, started_at=None):
     # Claude Code ledgers mark one-hour cache writes, billed at twice the base
     # input rate rather than the five-minute cache_write_price.
     long_cache_writes = min(
-        _first_token_count(usage, "input_tokens_details.cache_write_1h_tokens"), cache_writes
+        _first_token_count(usage, "input_tokens_details.cache_write_1h_tokens"),
+        cache_writes,
     )
     cache_write_cost += long_cache_writes * (2 * input_price - cache_write_price)
     return (
@@ -4140,14 +4266,21 @@ def _request_prompt_text(request):
     if isinstance(prompt, str):
         return prompt
     messages = request.get("messages")
-    if not isinstance(messages, list) or not messages or not isinstance(messages[0], dict):
+    if (
+        not isinstance(messages, list)
+        or not messages
+        or not isinstance(messages[0], dict)
+    ):
         return ""
     content = messages[0].get("content")
     if isinstance(content, str):
         return content
     if isinstance(content, list):
-        return "".join(block["text"] for block in content
-                       if isinstance(block, dict) and isinstance(block.get("text"), str))
+        return "".join(
+            block["text"]
+            for block in content
+            if isinstance(block, dict) and isinstance(block.get("text"), str)
+        )
     return ""
 
 
@@ -4236,8 +4369,12 @@ def _compact_llm_call(entry):
             response_status=entry.get("response_status"),
         )
         for field in (
-            "http_status", "recovery_action", "auth_mode", "quota_window",
-            "quota_reset_at", "stop_reason",
+            "http_status",
+            "recovery_action",
+            "auth_mode",
+            "quota_window",
+            "quota_reset_at",
+            "stop_reason",
         ):
             if field in entry:
                 compact[field] = entry[field]
@@ -4318,7 +4455,9 @@ def _llm_api_error(exc):
         if match:
             return body, int(match[1])
     if type(exc).__name__ == "ClaudeOAuthError":
-        match = re.match(r"Claude OAuth refresh failed \(HTTP ([1-5][0-9]{2})\)", str(exc))
+        match = re.match(
+            r"Claude OAuth refresh failed \(HTTP ([1-5][0-9]{2})\)", str(exc)
+        )
         if match:
             return body, int(match[1])
     return body, None
@@ -4398,10 +4537,11 @@ def _llm_api_retry_delay(exc, failed_attempt):
     # Cap the exponent before exponentiating: retries can now last indefinitely.
     max_exponent = (
         max(0, math.ceil(math.log2(maximum) - math.log2(initial)))
-        if initial and maximum else 0
+        if initial and maximum
+        else 0
     )
     exponent = min(max(failed_attempt - 1, 0), max_exponent)
-    backoff = min(initial * 2.0 ** exponent, maximum)
+    backoff = min(initial * 2.0**exponent, maximum)
     delay = max(
         (backoff, *(retry_delay for retry_delay in delays if retry_delay is not None))
     )
@@ -4411,9 +4551,8 @@ def _llm_api_retry_delay(exc, failed_attempt):
 
 def _llm_api_attempts_remaining(attempt, *, codex_not_found_failures=0):
     return (
-        (_Arena.LLM_API_MAX_ATTEMPTS <= 0 or attempt < _Arena.LLM_API_MAX_ATTEMPTS)
-        and codex_not_found_failures < _Arena.CODEX_NOT_FOUND_MAX_ATTEMPTS
-    )
+        _Arena.LLM_API_MAX_ATTEMPTS <= 0 or attempt < _Arena.LLM_API_MAX_ATTEMPTS
+    ) and codex_not_found_failures < _Arena.CODEX_NOT_FOUND_MAX_ATTEMPTS
 
 
 def _llm_auth_recovery_hint(exc, api):
@@ -4423,11 +4562,14 @@ def _llm_auth_recovery_hint(exc, api):
             "OpenAI credentials were rejected; renew the host login with `codex login` "
             "then use --resume."
         )
-    if api.name in {"anthropic", "anthropic_oauth", "anthropic_claude_code_workspace"} and (
+    if api.name in {
+        "anthropic",
+        "anthropic_oauth",
+        "anthropic_claude_code_workspace",
+    } and (
         status in {401, 403}
-        or type(exc).__name__ == "ClaudeOAuthError" and any(
-            text in str(exc).lower() for text in ("sign in", "login has expired")
-        )
+        or type(exc).__name__ == "ClaudeOAuthError"
+        and any(text in str(exc).lower() for text in ("sign in", "login has expired"))
     ):
         return (
             "Claude credentials were rejected; sign in with Claude Code again "
@@ -4488,7 +4630,9 @@ def _call_llm_move(
         if not isinstance(prompt, str):
             raise ArenaError(f"{api.name} produced a non-text turn prompt")
     req = _llm_request(api, player, prompt)
-    cache_key = hashlib.sha256(f"{Path(log).resolve()}:{name}:{game_number}".encode()).hexdigest()
+    cache_key = hashlib.sha256(
+        f"{Path(log).resolve()}:{name}:{game_number}".encode()
+    ).hexdigest()
     if api.name in {"openai", "xai"}:
         req["prompt_cache_key"] = cache_key
     elif api.name == "openrouter":
@@ -4571,11 +4715,16 @@ def _call_llm_move(
                 failed_usage, api.name, player.model, started_at=started_at
             )
             failed_cost += cost
-            auth_mode = getattr(exc, "arena_auth_mode", getattr(endpoint, "auth_mode", None))
+            auth_mode = getattr(
+                exc, "arena_auth_mode", getattr(endpoint, "auth_mode", None)
+            )
             if auth_mode in {"oauth", "api_key"}:
                 log_entry["auth_mode"] = auth_mode
-                log_entry["request"] = (req | {"system": [{"type": "text", "text": CLAUDE_OAUTH_IDENTITY}]}
-                                        if auth_mode == "oauth" and api.name == "anthropic" else req)
+                log_entry["request"] = (
+                    req | {"system": [{"type": "text", "text": CLAUDE_OAUTH_IDENTITY}]}
+                    if auth_mode == "oauth" and api.name == "anthropic"
+                    else req
+                )
             quota_wait = getattr(exc, "arena_quota", None)
             auth_wait = getattr(exc, "arena_auth_wait", False)
             response_diagnostics = getattr(exc, "arena_response_diagnostics", {})
@@ -4589,17 +4738,28 @@ def _call_llm_move(
                 and context_resets == 0
             )
             retryable = reset_context or _retryable_llm_api_error(exc)
-            if (isinstance(exc, _WorkspaceCodexTransportError)
-                    and _workspace_codex_not_found(exc)):
+            if isinstance(
+                exc, _WorkspaceCodexTransportError
+            ) and _workspace_codex_not_found(exc):
                 codex_not_found_failures += 1
-            retrying = retryable and _llm_api_attempts_remaining(
-                api_try, codex_not_found_failures=codex_not_found_failures
-            ) and claude_refusals < _Arena.CLAUDE_REFUSAL_MAX_ATTEMPTS
+            retrying = (
+                retryable
+                and _llm_api_attempts_remaining(
+                    api_try, codex_not_found_failures=codex_not_found_failures
+                )
+                and claude_refusals < _Arena.CLAUDE_REFUSAL_MAX_ATTEMPTS
+            )
             retry_delay = _llm_api_retry_delay(exc, api_try) if retrying else None
             status = _llm_api_error(exc)[1]
             recovery_hint = _llm_auth_recovery_hint(exc, api)
-            if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded,
-                                WorkspaceEngineForfeit)):
+            if isinstance(
+                exc,
+                (
+                    WorkspaceTimeExpired,
+                    WorkspaceResourceExceeded,
+                    WorkspaceEngineForfeit,
+                ),
+            ):
                 recovery_action = "record_game_forfeit"
             elif retrying and auth_wait:
                 recovery_action = "wait_for_authentication"
@@ -4610,7 +4770,9 @@ def _call_llm_move(
             elif recovery_hint:
                 recovery_action = "renew_login_then_resume"
             else:
-                recovery_action = "retry_limit_reached" if retryable else "inspect_error_then_resume"
+                recovery_action = (
+                    "retry_limit_reached" if retryable else "inspect_error_then_resume"
+                )
             _append_llm_call(
                 log,
                 compact_log_path,
@@ -4631,8 +4793,14 @@ def _call_llm_move(
                 **response_diagnostics,
             )
             if retry_delay is None:
-                if isinstance(exc, (WorkspaceTimeExpired, WorkspaceResourceExceeded,
-                                WorkspaceEngineForfeit)):
+                if isinstance(
+                    exc,
+                    (
+                        WorkspaceTimeExpired,
+                        WorkspaceResourceExceeded,
+                        WorkspaceEngineForfeit,
+                    ),
+                ):
                     exc.arena_api_seconds = total_time
                     exc.arena_cost_usd = failed_cost
                     raise
@@ -4665,8 +4833,11 @@ def _call_llm_move(
     auth_mode = getattr(endpoint, "auth_mode", None)
     if auth_mode in {"oauth", "api_key"}:
         log_entry["auth_mode"] = auth_mode
-        log_entry["request"] = (req | {"system": [{"type": "text", "text": CLAUDE_OAUTH_IDENTITY}]}
-                                if auth_mode == "oauth" and api.name == "anthropic" else req)
+        log_entry["request"] = (
+            req | {"system": [{"type": "text", "text": CLAUDE_OAUTH_IDENTITY}]}
+            if auth_mode == "oauth" and api.name == "anthropic"
+            else req
+        )
     text = _llm_response_text(api, response)
     if getattr(response, "reused", False) is True:
         _repair_compact_llm_calls(log, compact_log_path)
@@ -4681,7 +4852,11 @@ def _call_llm_move(
             observed += counts.cached_input_tokens + counts.cache_write_tokens
         if api.protocol.reasoning_is_billed:
             observed += counts.reasoning_tokens
-        if not (counts.input_tokens or counts.cached_input_tokens or counts.cache_write_tokens):
+        if not (
+            counts.input_tokens
+            or counts.cached_input_tokens
+            or counts.cache_write_tokens
+        ):
             observed = 0  # Missing input usage: estimate the full retained payload.
         event = conversation.completed_event(response, observed)
         log_entry["conversation"] = event
@@ -5169,8 +5344,12 @@ def _run_book_games(book_player, todo, opponent_of, work, records_path, log, tra
             ensure_arena_networks([network])
             _State.installed_arena_networks.add(network.name)
     student_bot = Player(
-        network.name, network.path.resolve(), network.name,
-        _Arena.ORIGINAL_TEMPERATURE_EARLY, _Arena.ORIGINAL_TEMPERATURE, None,
+        network.name,
+        network.path.resolve(),
+        network.name,
+        _Arena.ORIGINAL_TEMPERATURE_EARLY,
+        _Arena.ORIGINAL_TEMPERATURE,
+        None,
     )
     opponents = {opp.name: opp for opp in opponent_of.values()}
     _check(any(opp.network is None for opp in opponents.values()))
@@ -5207,13 +5386,18 @@ def _run_book_games(book_player, todo, opponent_of, work, records_path, log, tra
                 student = _BookStrategy(book_player.name, book, own)
                 attempt = 1
                 while True:
-                    black, white = ((student, rival) if slot.black == book_player.name
-                                    else (rival, student))
+                    black, white = (
+                        (student, rival)
+                        if slot.black == book_player.name
+                        else (rival, student)
+                    )
                     res, moves = _play_random_anchor_game(game, black, white)
                     if res is not None:
                         break
                     attempt += 1
-                    game.reset_for_game(game_id=f"{game_id}-retry-{attempt}", log_dir=work)
+                    game.reset_for_game(
+                        game_id=f"{game_id}-retry-{attempt}", log_dir=work
+                    )
                     own.reset_for_game(game)
                     rival.reset_for_game(game)
                     student.book_moves = 0
@@ -5280,7 +5464,8 @@ def run_llm_games(
     _ensure_game_dependencies(todo, player_values)
     if (book_player := _book_player(llm_name)) is not None:
         new_games = _run_book_games(
-            book_player, todo, opponent_of, work, records_path, log, track)
+            book_player, todo, opponent_of, work, records_path, log, track
+        )
         return sorted([*saved_games, *new_games], key=lambda game: game.number)
     harness = _llm_player_config(llm_name)[1].agentic_harness
     if harness in _WORKSPACE_HARNESSES:
@@ -5313,7 +5498,8 @@ def run_llm_games(
 
     def on_api_retry(slot, move, player, attempt, delay, error):
         limit = (
-            f"/{_Arena.LLM_API_MAX_ATTEMPTS}" if _Arena.LLM_API_MAX_ATTEMPTS > 0
+            f"/{_Arena.LLM_API_MAX_ATTEMPTS}"
+            if _Arena.LLM_API_MAX_ATTEMPTS > 0
             else " (automatic recovery)"
         )
         _call(
@@ -5398,16 +5584,22 @@ def run_llm_games(
                         illegal_move=on_illegal_move,
                         initial_moves=opening,
                     )
-                except (WorkspaceTimeExpired, WorkspaceResourceExceeded,
-                        WorkspaceEngineForfeit) as exc:
+                except (
+                    WorkspaceTimeExpired,
+                    WorkspaceResourceExceeded,
+                    WorkspaceEngineForfeit,
+                ) as exc:
                     stats.api_seconds += getattr(exc, "arena_api_seconds", 0)
                     stats.cost_usd += getattr(exc, "arena_cost_usd", 0)
                     winner = "W" if slot.black == llm_name else "B"
                     if isinstance(exc, WorkspaceEngineForfeit):
                         reason = f"engine_{exc.reason}"
                     else:
-                        reason = ("agent_time_limit" if isinstance(exc, WorkspaceTimeExpired)
-                                  else "agent_memory_limit")
+                        reason = (
+                            "agent_time_limit"
+                            if isinstance(exc, WorkspaceTimeExpired)
+                            else "agent_memory_limit"
+                        )
                     suffix = "T" if isinstance(exc, WorkspaceTimeExpired) else "F"
                     res = GameResult(True, winner, f"{winner}+{suffix}", reason)
                     moves = tuple(game.get_move_history())
@@ -5692,12 +5884,16 @@ def _load_saved_schedule(work_dir):
 
 def _llm_matchmaking_opponents(player_names):
     # A book bot is measured against its one opponent, not placed on the ladder.
-    fixed = {spec.opponent for name in _State.config.active_players
-             if (spec := _book_player(name)) is not None}
+    fixed = {
+        spec.opponent
+        for name in _State.config.active_players
+        if (spec := _book_player(name)) is not None
+    }
     return [
         name
         for name in player_names
-        if name not in _State.config.active_players and not _is_active_llm_player(name)
+        if name not in _State.config.active_players
+        and not _is_active_llm_player(name)
         and (not fixed or name in fixed)
     ]
 
@@ -6035,7 +6231,8 @@ def _with_llm_token_counts(games, run):
             llm_cached_input_tokens=totals[game.number][1],
             llm_output_tokens=totals[game.number][2],
         )
-        if game.number in totals else game
+        if game.number in totals
+        else game
         for game in games
     ]
 
@@ -6109,9 +6306,7 @@ def _load_past_games(run_dirs, eligible_players):
                     continue
                 game = int(row["game"]), int(row["batch"]), black, white
                 repriced_players = {
-                    name
-                    for name in (black, white)
-                    if needs_repricing(name)
+                    name for name in (black, white) if needs_repricing(name)
                 }
                 _check(len(repriced_players) > 1)
                 outcome = (
@@ -6325,10 +6520,13 @@ def _llm_comparison_records(games, rating_records):
                 "elo_ci_95": (rec.ci_high - rec.ci_low) / 2,
                 "games": rec.games,
                 "moves": total_moves_count,
-                "cached_input_rate": cached / inputs if usage_known and inputs else None,
+                "cached_input_rate": cached / inputs
+                if usage_known and inputs
+                else None,
                 "output_tokens_per_move": (
                     outputs / total_moves_count
-                    if usage_known and total_moves_count else None
+                    if usage_known and total_moves_count
+                    else None
                 ),
                 "illegal_moves": illegal_moves,
                 "api_problems": api_problems,
@@ -6378,23 +6576,37 @@ def _write_llm_comparisons(
             item["moves"],
             f"{item['illegal_moves']}/{item['moves']}",
             f"{item['api_problems']}/{item['moves']}",
-            (f"{item['cached_input_rate']:.2%}"
-             if item["cached_input_rate"] is not None else "N/A"),
-            (f"{item['output_tokens_per_move']:.2f}"
-             if item["output_tokens_per_move"] is not None else "N/A"),
+            (
+                f"{item['cached_input_rate']:.2%}"
+                if item["cached_input_rate"] is not None
+                else "N/A"
+            ),
+            (
+                f"{item['output_tokens_per_move']:.2f}"
+                if item["output_tokens_per_move"] is not None
+                else "N/A"
+            ),
             f"{item['api_seconds_per_move']:.2f}s",
             f"${item['cost_usd']:.12f}",
             f"${item['cost_usd_per_move']:.18f}",
-        ) + (() if learning_costs is None else (
-            "N/A" if learning_costs.get(item["player"]) is None
-            else f"${learning_costs[item['player']]:.12f}",
-        ))
+        )
+        + (
+            ()
+            if learning_costs is None
+            else (
+                "N/A"
+                if learning_costs.get(item["player"]) is None
+                else f"${learning_costs[item['player']]:.12f}",
+            )
+        )
         for item in comparisons
     ]
     lines = [title]
     if learning_costs is not None:
-        lines.append("Learning cost is the one-time continual-learning phase; "
-                     "all other columns cover evaluation games only.")
+        lines.append(
+            "Learning cost is the one-time continual-learning phase; "
+            "all other columns cover evaluation games only."
+        )
     lines += _aligned_table(
         (
             "Rank",
@@ -6410,7 +6622,8 @@ def _write_llm_comparisons(
             "API time per move",
             "Total cost",
             "Cost per move",
-        ) + (() if learning_costs is None else ("Learning cost",)),
+        )
+        + (() if learning_costs is None else ("Learning cost",)),
         rows,
         left_aligned=(1,),
     )
@@ -6477,12 +6690,17 @@ def _write_matchup_results(path, games, rating_records, *, ignore_players=()):
             rating = rating_map[opp]
             wins, losses, draws = results[active, opp]
             rows.append(
-                (opp, f"{rating.elo:.0f}",
-                 f"± {(rating.ci_high - rating.ci_low) / 2:.0f}",
-                 f"{wins}-{losses}-{draws}")
+                (
+                    opp,
+                    f"{rating.elo:.0f}",
+                    f"± {(rating.ci_high - rating.ci_low) / 2:.0f}",
+                    f"{wins}-{losses}-{draws}",
+                )
             )
         lines += _aligned_table(
-            ("Opponent", "Opp Elo", "95% CI", "W-L-D"), rows, left_aligned=(0,),
+            ("Opponent", "Opp Elo", "95% CI", "W-L-D"),
+            rows,
+            left_aligned=(0,),
         )
     _replace_text(path, "\n".join(lines) + "\n")
 
@@ -6695,14 +6913,16 @@ def _check_named_run_reuse(run):
         )
 
 
-_LLM_SAMPLING_POLICY_KEYS = frozenset({
-    "rule",
-    "maximum_games_per_batch",
-    "sampling_after_ci_half_width_elo",
-    "sampling_selection",
-    "sampling_top_p",
-    "random_seed",
-})
+_LLM_SAMPLING_POLICY_KEYS = frozenset(
+    {
+        "rule",
+        "maximum_games_per_batch",
+        "sampling_after_ci_half_width_elo",
+        "sampling_selection",
+        "sampling_top_p",
+        "random_seed",
+    }
+)
 
 
 def _validate_named_extension(meta, run_config):
@@ -6722,20 +6942,26 @@ def _validate_named_extension(meta, run_config):
         # build on macOS; moving hosts changes only its path, kept per extension.
         "katago_binary",
     }
+
     def comparable(key, value):
         if key == "batch_policy" and isinstance(value, dict):
             # Switching an extension to sampled remaining games keeps the
             # experiment; the extension record keeps the previous policy.
             return {
-                name: setting for name, setting in value.items()
+                name: setting
+                for name, setting in value.items()
                 if name not in _LLM_SAMPLING_POLICY_KEYS
             }
         if key == "bots" and isinstance(value, list):
             # Authentication is a transport choice, not a new model/player.
             return [
-                {key: value for key, value in bot.items()
-                 if key not in {"auth_mode", "cost_basis", "oauth_system_prompt"}}
-                if bot.get("kind") == "anthropic_messages_api" else bot
+                {
+                    key: value
+                    for key, value in bot.items()
+                    if key not in {"auth_mode", "cost_basis", "oauth_system_prompt"}
+                }
+                if bot.get("kind") == "anthropic_messages_api"
+                else bot
                 for bot in value
             ]
         return value
@@ -6743,7 +6969,8 @@ def _validate_named_extension(meta, run_config):
     changed = [
         key
         for key, value in run_config.items()
-        if key not in mutable and comparable(key, meta.get(key)) != comparable(key, value)
+        if key not in mutable
+        and comparable(key, meta.get(key)) != comparable(key, value)
     ]
     if changed:
         raise ArenaError(
@@ -6849,15 +7076,31 @@ def _restore_archived_api_games(run, meta, temp_dir, valid_size):
             raise ValueError("results.csv and complete game records disagree")
         for record, row in zip(saved, results):
             if (
-                (record.number, record.batch, record.black, record.white,
-                 record.result, len(record.moves))
-                != (int(row["game"]), int(row["batch"]), row["black"],
-                    row["white"], row["result"], int(row["moves"]))
+                (
+                    record.number,
+                    record.batch,
+                    record.black,
+                    record.white,
+                    record.result,
+                    len(record.moves),
+                )
+                != (
+                    int(row["game"]),
+                    int(row["batch"]),
+                    row["black"],
+                    row["white"],
+                    row["result"],
+                    int(row["moves"]),
+                )
                 or len(set(active) & {record.black, record.white}) != 1
-                or any(color != ("B" if index % 2 == 0 else "W") or not move
-                       for index, (color, move) in enumerate(record.moves))
+                or any(
+                    color != ("B" if index % 2 == 0 else "W") or not move
+                    for index, (color, move) in enumerate(record.moves)
+                )
             ):
-                raise ValueError(f"game {record.number} disagrees with its committed result")
+                raise ValueError(
+                    f"game {record.number} disagrees with its committed result"
+                )
         # Validate batch boundaries before creating or writing any recovery files.
         _recover_committed_batches(meta, temp_dir, valid_size, saved_games=saved)
     except (OSError, ValueError, KeyError, TypeError, ArenaError) as exc:
@@ -6933,7 +7176,11 @@ def _open_run(resume_dir, run_config, past_dirs, valid_size, extra):
             _Arena.ROOT / temp_path if not temp_path.is_absolute() else temp_path
         ).resolve()
         if not (temp_dir / "games.jsonl").exists():
-            if not temp_dir.is_dir() or meta.get("finished_at") or meta.get("completed_games", 0):
+            if (
+                not temp_dir.is_dir()
+                or meta.get("finished_at")
+                or meta.get("completed_games", 0)
+            ):
                 _restore_archived_api_games(run, meta, temp_dir, valid_size)
         done, batch = _recover_committed_batches(meta, temp_dir, valid_size)
         if extending:
@@ -7085,8 +7332,11 @@ class _ArenaRun:
         }
         # A new preparation is a new experimental subject. Old results for the
         # same model/harness name must not be counted as this checkpoint's games.
-        self.past = [game for game in self.past
-                     if not checkpoint_players.intersection(_game_players(game))]
+        self.past = [
+            game
+            for game in self.past
+            if not checkpoint_players.intersection(_game_players(game))
+        ]
         history_names = (bot for game in self.past for bot in (game.black, game.white))
         self.fit_names = list(dict.fromkeys((*self.names, *history_names)))
 
@@ -7169,8 +7419,7 @@ class _ArenaRun:
 
     def valid_size(self, size):
         return isinstance(size, int) and (
-            size == _State.config.batch_games
-            or _llm_sampling_batch_size(size)
+            size == _State.config.batch_games or _llm_sampling_batch_size(size)
         )
 
     def _run_metadata(self):
@@ -7243,9 +7492,13 @@ class _ArenaRun:
             )
         for client_class in _WORKSPACE_CLIENT_CLASSES:
             training = {
-                name: _workspace_training_seconds(_llm_player_config(name)[1].agentic_harness)
-                for name in self.info_names if _is_active_llm_player(name)
-                and _llm_player_config(name)[1].agentic_harness in client_class.harnesses
+                name: _workspace_training_seconds(
+                    _llm_player_config(name)[1].agentic_harness
+                )
+                for name in self.info_names
+                if _is_active_llm_player(name)
+                and _llm_player_config(name)[1].agentic_harness
+                in client_class.harnesses
             }
             if training:
                 key = client_class.run_config_key
@@ -7254,17 +7507,29 @@ class _ArenaRun:
                 if len(set(training.values())) == 1:
                     run_config[key]["training_seconds"] = next(iter(training.values()))
                 evaluation = {
-                    name: seconds for name in training
-                    if (seconds := _workspace_evaluation_seconds(
-                        _llm_player_config(name)[1].agentic_harness, None)) is not None
+                    name: seconds
+                    for name in training
+                    if (
+                        seconds := _workspace_evaluation_seconds(
+                            _llm_player_config(name)[1].agentic_harness, None
+                        )
+                    )
+                    is not None
                 }
                 if evaluation:
                     run_config[key]["evaluation_seconds_by_player"] = evaluation
-                    if len(set(evaluation.values())) == 1 and len(evaluation) == len(training):
-                        run_config[key]["evaluation_seconds"] = next(iter(evaluation.values()))
-                run_config["move_cap_policy"] = "workspace evaluation: forfeit at move limit"
+                    if len(set(evaluation.values())) == 1 and len(evaluation) == len(
+                        training
+                    ):
+                        run_config[key]["evaluation_seconds"] = next(
+                            iter(evaluation.values())
+                        )
+                run_config["move_cap_policy"] = (
+                    "workspace evaluation: forfeit at move limit"
+                )
         book_learning = {
-            name: spec.training_seconds for name in self.info_names
+            name: spec.training_seconds
+            for name in self.info_names
             if (spec := _book_player(name)) is not None
         }
         if book_learning:
@@ -7277,10 +7542,11 @@ class _ArenaRun:
                 "move_limit": _tutorial.BOOK_MOVE_LIMIT,
                 "size": "distinct moves in the per-color prefix trees, up to board symmetry",
                 "evaluation": "the student network follows the frozen book and plays "
-                              "only the opponent, half the games as each color",
+                "only the opponent, half the games as each color",
             }
         learning = {
-            name: spec.training_seconds for name in self.info_names
+            name: spec.training_seconds
+            for name in self.info_names
             if (spec := _tutorial_player(name)) is not None
         }
         if learning:
@@ -7294,10 +7560,13 @@ class _ArenaRun:
                 "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
                 "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS,
                 "evaluation": "target multi-turn API player with the tutorial "
-                              "opening every conversation session",
+                "opening every conversation session",
             }
-            limits = {name: spec.student_cost_limit_usd for name in learning
-                      if (spec := _tutorial_player(name)).chat}
+            limits = {
+                name: spec.student_cost_limit_usd
+                for name in learning
+                if (spec := _tutorial_player(name)).chat
+            }
             if limits:
                 run_config["tutorial_distillation"].update(
                     chat_protocol=_tutorial.CHAT_PROTOCOL_VERSION,
@@ -7305,7 +7574,8 @@ class _ArenaRun:
                 )
                 if set(limits.values()) != {_tutorial.STUDENT_COST_LIMIT_USD}:
                     run_config["tutorial_distillation"][
-                        "student_cost_limit_usd_by_player"] = limits
+                        "student_cost_limit_usd_by_player"
+                    ] = limits
         return run_config
 
     def _open(self, resume_run_dir):
@@ -7370,27 +7640,34 @@ class _ArenaRun:
             root = path.parents[1]
             published = {
                 f"{root.name}.md": path,
-                f"{root.name}.learner-prompt.md":
-                    root / "preparation" / "public" / "instructions.md",
+                f"{root.name}.learner-prompt.md": root
+                / "preparation"
+                / "public"
+                / "instructions.md",
             }
             (self.run / "tutorials").mkdir(exist_ok=True)
             for name, source in published.items():
                 if source.exists():
-                    _replace_text(self.run / "tutorials" / name,
-                                  source.read_text(encoding="utf-8"))
+                    _replace_text(
+                        self.run / "tutorials" / name,
+                        source.read_text(encoding="utf-8"),
+                    )
         book_root = self.temp_dir / _BookLearnerMixin.checkpoint_dirname
         for path in book_root.glob("*/checkpoint/book.txt"):
             root = path.parents[1]
             published = {
                 f"{root.name}.txt": path,
-                f"{root.name}.learner-prompt.md":
-                    root / "preparation" / "public" / "instructions.md",
+                f"{root.name}.learner-prompt.md": root
+                / "preparation"
+                / "public"
+                / "instructions.md",
             }
             (self.run / "books").mkdir(exist_ok=True)
             for name, source in published.items():
                 if source.exists():
-                    _replace_text(self.run / "books" / name,
-                                  source.read_text(encoding="utf-8"))
+                    _replace_text(
+                        self.run / "books" / name, source.read_text(encoding="utf-8")
+                    )
 
     def _history_reference(self):
         """Joint fit of the historical games, computed once per process.
@@ -7405,7 +7682,9 @@ class _ArenaRun:
             active = set(self.info_names)
             active_past, fixed = [], []
             for game in self.past:
-                (fixed if _game_players(game).isdisjoint(active) else active_past).append(game)
+                (
+                    fixed if _game_players(game).isdisjoint(active) else active_past
+                ).append(game)
             names = [name for name in self.fit_names if name != _Arena.ANCHOR]
             pos = {name: index for (index, name) in enumerate(names)}
             info = _rating_information(fixed, pos, snap.ratings, snap.color) + np.diag(
@@ -7454,10 +7733,19 @@ class _ArenaRun:
                 else 0.0
             )
             elo = self.elos[name]
-            records.append(RatingRecord(
-                name, elo, elo - half_width, elo + half_width, 2 * half_width,
-                count, wins, losses, count - wins - losses,
-            ))
+            records.append(
+                RatingRecord(
+                    name,
+                    elo,
+                    elo - half_width,
+                    elo + half_width,
+                    2 * half_width,
+                    count,
+                    wins,
+                    losses,
+                    count - wins - losses,
+                )
+            )
         records.sort(key=lambda record: (-record.elo, record.player))
         return _RatingSnapshot(
             self.elos, self.color, reference.color_sds, records, reference.curve
@@ -7476,8 +7764,9 @@ class _ArenaRun:
             snap = self._active_rating_snapshot()
         if not _State.katago_mode:
             self.meta["rating_fit"] = (
-                "joint" if exact else
-                "active players only; historical ratings and Black advantage held "
+                "joint"
+                if exact
+                else "active players only; historical ratings and Black advantage held "
                 "at their joint fit (the finished run's report uses the joint fit)"
             )
         self.elos, self.color = snap.ratings, snap.color
@@ -7505,10 +7794,13 @@ class _ArenaRun:
         for obsolete in ("api_llm_comparisons.txt", "all_llm_comparisons.txt"):
             (self.temp_dir / obsolete).unlink(missing_ok=True)
         comparison_sections = _write_llm_track_comparisons(
-            self.temp_dir, fit, snap.records,
+            self.temp_dir,
+            fit,
+            snap.records,
             ignore_players=_State.config.ignore_players,
             learning_costs=_run_dir_learning_costs(
-                [*self.past_dirs, self.run.resolve()], {self.run.resolve(): self.meta}),
+                [*self.past_dirs, self.run.resolve()], {self.run.resolve(): self.meta}
+            ),
         )
         if not _State.katago_mode:
             llms = [
@@ -7718,12 +8010,17 @@ class _ArenaRun:
                 for path in preparation_root.glob("*/checkpoint/manifest.json")
             }
             self.meta[f"{prefix}_evaluations"] = [
-                summary for summary in (
-                    _workspace_read_json(path) for path in sorted(self.temp_dir.glob(
-                        "batch-*/agent-workspaces/game-*/evaluation-summary.json"
-                    ))
+                summary
+                for summary in (
+                    _workspace_read_json(path)
+                    for path in sorted(
+                        self.temp_dir.glob(
+                            "batch-*/agent-workspaces/game-*/evaluation-summary.json"
+                        )
+                    )
                 )
-                if _workspace_client_class_for_player(summary.get("player")) is client_class
+                if _workspace_client_class_for_player(summary.get("player"))
+                is client_class
             ]
         tutorial_root = self.temp_dir / _TutorialLearnerMixin.checkpoint_dirname
         if tutorial_root.is_dir():
@@ -7865,15 +8162,19 @@ def run_summary(config):
     started = time.perf_counter()
     started_at = dt.datetime.now(dt.timezone.utc).isoformat()
     # No active LLM: configuration must not exclude its own historical records.
-    _configure_history(replace(
-        config,
-        active_players=(),
-        opponent_players=(),
-        total_games=0,
-        past_run_names=tuple(dict.fromkeys(
-            name for name in config.past_run_names if name != "summary"
-        )),
-    ))
+    _configure_history(
+        replace(
+            config,
+            active_players=(),
+            opponent_players=(),
+            total_games=0,
+            past_run_names=tuple(
+                dict.fromkeys(
+                    name for name in config.past_run_names if name != "summary"
+                )
+            ),
+        )
+    )
     past_dirs = list(_State.past_run_dirs)
     eligible = set(_State.katago_rating_player_names) | set(_Arena.RESULT_LLM_PLAYERS)
     eligible.update(_State.past_player_priors)
@@ -7881,25 +8182,45 @@ def run_summary(config):
         raise ArenaError("no committed historical games available for --summary")
     try:
         with history_snapshot(past_dirs, _Arena.ROOT, _Arena.LOG_ROOT) as (
-            snapshot_root, snapshot_log, snapshot_dirs,
+            snapshot_root,
+            snapshot_log,
+            snapshot_dirs,
         ):
             games = _load_past_games(snapshot_dirs, eligible)
             if not games:
-                raise ArenaError("no committed historical games available for --summary")
-            names = list(dict.fromkeys(name for game in games for name in (game.black, game.white)))
-            snap = _rating_snapshot(games, names, {name: _rating_prior(name)[0] for name in names}, None)
+                raise ArenaError(
+                    "no committed historical games available for --summary"
+                )
+            names = list(
+                dict.fromkeys(
+                    name for game in games for name in (game.black, game.white)
+                )
+            )
+            snap = _rating_snapshot(
+                games, names, {name: _rating_prior(name)[0] for name in names}, None
+            )
             comparisons = _llm_comparison_records(games, snap.records)
             learning_costs = _run_dir_learning_costs(snapshot_dirs)
             results = build_results(
-                root=snapshot_root, log_root=snapshot_log, past_dirs=snapshot_dirs,
+                root=snapshot_root,
+                log_root=snapshot_log,
+                past_dirs=snapshot_dirs,
                 ratings=[asdict(record) for record in snap.records],
-                comparisons=comparisons, rating_games=len(games),
+                comparisons=comparisons,
+                rating_games=len(games),
                 color_advantage_curve=snap.curve,
                 # Track 3.5 games are KataGo against KataGo; only their ratings are kept.
-                game_players={row["player"] for row in comparisons
-                              if _book_player(row["player"]) is None},
-                settings={"board_size": _Arena.BOARD_SIZE, "komi": _Arena.KOMI,
-                          "rules": _Arena.RULES, "max_moves": _Arena.MAX_MOVES},
+                game_players={
+                    row["player"]
+                    for row in comparisons
+                    if _book_player(row["player"]) is None
+                },
+                settings={
+                    "board_size": _Arena.BOARD_SIZE,
+                    "komi": _Arena.KOMI,
+                    "rules": _Arena.RULES,
+                    "max_moves": _Arena.MAX_MOVES,
+                },
             )
     except (OSError, ValueError, KeyError) as exc:
         raise ArenaError(f"cannot build summary results: {exc}") from exc
@@ -7914,57 +8235,86 @@ def run_summary(config):
         with tempfile.TemporaryDirectory(prefix="arena-summary-") as temporary:
             staging = Path(temporary)
             _write_ratings(
-                staging / "ratings.txt", snap.records, games=len(games),
-                color=snap.color, color_sds=snap.color_sds,
+                staging / "ratings.txt",
+                snap.records,
+                games=len(games),
+                color=snap.color,
+                color_sds=snap.color_sds,
                 ignore_players=config.ignore_players,
             )
-            sections = [staging / "ratings.txt", *(
-                path for _title, path in _write_llm_track_comparisons(
-                    staging, games, snap.records, ignore_players=config.ignore_players,
-                    learning_costs=learning_costs,
-                )
-            )]
+            sections = [
+                staging / "ratings.txt",
+                *(
+                    path
+                    for _title, path in _write_llm_track_comparisons(
+                        staging,
+                        games,
+                        snap.records,
+                        ignore_players=config.ignore_players,
+                        learning_costs=learning_costs,
+                    )
+                ),
+            ]
             matchup = staging / "all_llm_matchup_results.txt"
             _write_all_llm_matchup_results(
-                matchup, games, snap.records, ignore_players=config.ignore_players,
+                matchup,
+                games,
+                snap.records,
+                ignore_players=config.ignore_players,
             )
             sections.append(matchup)
-            report = "\n\n".join([
-                "Arena report\nMachine-readable results: results.json; run metadata: run.json.",
-                *(path.read_text(encoding="utf-8").strip() for path in sections),
-            ]) + "\n"
+            report = (
+                "\n\n".join(
+                    [
+                        "Arena report\nMachine-readable results: results.json; run metadata: run.json.",
+                        *(
+                            path.read_text(encoding="utf-8").strip()
+                            for path in sections
+                        ),
+                    ]
+                )
+                + "\n"
+            )
         _replace_text(run / "report.txt", report)
         _write_json(run / "results.json", results)
-        _write_json(run / "run.json", {
-            "arena_log_schema_version": 4,
-            "tracked_log_privacy_schema_version": 1,
-            "run_directory_scheme": "summary",
-            "started_at": started_at,
-            "finished_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "elapsed_seconds": time.perf_counter() - started,
-            "past_run_dirs": [str(Path("log") / path.name) for path in past_dirs],
-            "active_players": [],
-            "ignore_players": list(config.ignore_players),
-            "total_games": 0,
-            "planned_current_games": 0,
-            "completed_games": 0,
-            "past_games": len(games),
-            "rating_games": len(games),
-            "games_scope": "historical_summary",
-            "results_scope": "historical_summary",
-            "anchor": _Arena.ANCHOR,
-            "confidence_level": 0.95,
-            "color_advantage_model": _Arena.COLOR_ADVANTAGE_MODEL,
-            "color_advantage_curve": snap.curve,
-            "ratings": [asdict(record) for record in snap.records],
-            "llm_comparisons": comparisons,
-            "cumulative_llm_cost_usd": sum(game.llm_cost_usd for game in games),
-            "report_file": "report.txt",
-            "results_file": "results.json",
-        })
-        for obsolete in ("report.md", "results.csv", "ratings.txt",
-                         "api_llm_comparisons.txt", "all_llm_comparisons.txt",
-                         "all_llm_matchup_results.txt"):
+        _write_json(
+            run / "run.json",
+            {
+                "arena_log_schema_version": 4,
+                "tracked_log_privacy_schema_version": 1,
+                "run_directory_scheme": "summary",
+                "started_at": started_at,
+                "finished_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                "elapsed_seconds": time.perf_counter() - started,
+                "past_run_dirs": [str(Path("log") / path.name) for path in past_dirs],
+                "active_players": [],
+                "ignore_players": list(config.ignore_players),
+                "total_games": 0,
+                "planned_current_games": 0,
+                "completed_games": 0,
+                "past_games": len(games),
+                "rating_games": len(games),
+                "games_scope": "historical_summary",
+                "results_scope": "historical_summary",
+                "anchor": _Arena.ANCHOR,
+                "confidence_level": 0.95,
+                "color_advantage_model": _Arena.COLOR_ADVANTAGE_MODEL,
+                "color_advantage_curve": snap.curve,
+                "ratings": [asdict(record) for record in snap.records],
+                "llm_comparisons": comparisons,
+                "cumulative_llm_cost_usd": sum(game.llm_cost_usd for game in games),
+                "report_file": "report.txt",
+                "results_file": "results.json",
+            },
+        )
+        for obsolete in (
+            "report.md",
+            "results.csv",
+            "ratings.txt",
+            "api_llm_comparisons.txt",
+            "all_llm_comparisons.txt",
+            "all_llm_matchup_results.txt",
+        ):
             (run / obsolete).unlink(missing_ok=True)
     return run
 
@@ -8033,8 +8383,12 @@ def _config_from_metadata(metadata):
     sampling_ci = policy.get("sampling_after_ci_half_width_elo")
     sampling_top_p = 0.95
     if not mode and sampling_ci is not None:
-        sampling_ci = number(sampling_ci, "batch_policy.sampling_after_ci_half_width_elo")
-        sampling_top_p = number(policy.get("sampling_top_p"), "batch_policy.sampling_top_p")
+        sampling_ci = number(
+            sampling_ci, "batch_policy.sampling_after_ci_half_width_elo"
+        )
+        sampling_top_p = number(
+            policy.get("sampling_top_p"), "batch_policy.sampling_top_p"
+        )
     else:
         # Runs saved before sampling existed keep maximum-gain pairs to the end.
         sampling_ci = None
@@ -8045,19 +8399,29 @@ def _config_from_metadata(metadata):
         if _is_active_llm_player(name)
         and _llm_player_config(name)[1].agentic_harness in _WORKSPACE_HARNESSES
     }
-    workspace_keys = sorted(client_class.run_config_key for client_class in workspace_classes)
+    workspace_keys = sorted(
+        client_class.run_config_key for client_class in workspace_classes
+    )
     if any(_tutorial_player(name) is not None for name in active_players):
         workspace_keys.append("tutorial_workspace")
     if any(_book_player(name) is not None for name in active_players):
         workspace_keys.append("book_workspace")
     for key in workspace_keys:
         saved_workspace = metadata.get(key)
-        if not isinstance(saved_workspace, dict) or saved_workspace.get("protocol") != WORKSPACE_PROTOCOL_VERSION:
-            raise ArenaError("legacy Codex workspace runs use a different experiment protocol; start a new run")
+        if (
+            not isinstance(saved_workspace, dict)
+            or saved_workspace.get("protocol") != WORKSPACE_PROTOCOL_VERSION
+        ):
+            raise ArenaError(
+                "legacy Codex workspace runs use a different experiment protocol; start a new run"
+            )
         try:
-            workspace = WorkspaceSettings(**{
-                field.name: saved_workspace[field.name] for field in fields(WorkspaceSettings)
-            })
+            workspace = WorkspaceSettings(
+                **{
+                    field.name: saved_workspace[field.name]
+                    for field in fields(WorkspaceSettings)
+                }
+            )
         except (KeyError, WorkspaceError) as exc:
             raise ArenaError(f"invalid saved workspace configuration: {exc}") from exc
     return ArenaConfig(
@@ -8086,7 +8450,9 @@ def _read_run_config(run_dir):
     if not isinstance(metadata, dict):
         raise ArenaError(f"run metadata is not a JSON object: {path}")
     if metadata.get("run_directory_scheme") == "summary":
-        raise ArenaError("summary directories cannot be resumed; use --summary to refresh")
+        raise ArenaError(
+            "summary directories cannot be resumed; use --summary to refresh"
+        )
     return metadata, _config_from_metadata(metadata)
 
 
@@ -8140,8 +8506,9 @@ def _resume_runs(value, total_games=None, sample_remaining=False):
                 run = future.result()
             except Exception as exc:
                 failed = True
-                print(f"error: {futures[future].name}: {exc}", file=sys.stderr,
-                      flush=True)
+                print(
+                    f"error: {futures[future].name}: {exc}", file=sys.stderr, flush=True
+                )
             else:
                 print(f"Arena complete: {run}", flush=True)
     return int(failed)
@@ -8151,20 +8518,26 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group()
     selection.add_argument(
-        "--resume", metavar="RUN[,RUN...]",
+        "--resume",
+        metavar="RUN[,RUN...]",
         help="resume saved run names or directory paths; multiple runs use separate processes",
     )
     selection.add_argument("--run-type", choices=_run_type_names(), metavar="TYPE")
     selection.add_argument(
-        "--summary", action="store_true",
+        "--summary",
+        action="store_true",
         help="write past-run reports to log/summary without playing new games",
     )
     parser.add_argument(
-        "-n", "--num-games", type=int, metavar="NUM_GAMES",
+        "-n",
+        "--num-games",
+        type=int,
+        metavar="NUM_GAMES",
         help="override the cumulative game target (applies to each run with --resume)",
     )
     parser.add_argument(
-        "--sample-remaining", action="store_true",
+        "--sample-remaining",
+        action="store_true",
         help="with --resume: enable gain-sampled remaining games for LLM runs saved "
         "before sampling existed",
     )
@@ -8672,13 +9045,20 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
             self.server.append_log(entry)
             self._error_response(403, self.server.FORBIDDEN_PATH_MESSAGE)
             return
-        if getattr(self.server, "allowed_model", None) is not None and self.server.is_model_path(canonical_path):
+        if getattr(
+            self.server, "allowed_model", None
+        ) is not None and self.server.is_model_path(canonical_path):
             if not self.server.enabled:
                 self._error_response(403, "agent clock is not running")
                 return
-            if (self.command != "POST" or not isinstance(filtered_body, dict)
-                    or filtered_body.get("model") != self.server.allowed_model):
-                self._error_response(403, "request must use this player's configured model")
+            if (
+                self.command != "POST"
+                or not isinstance(filtered_body, dict)
+                or filtered_body.get("model") != self.server.allowed_model
+            ):
+                self._error_response(
+                    403, "request must use this player's configured model"
+                )
                 return
             if (pause := self.server.quota_pause()) is not None:
                 self._error_response(429, str(pause))
@@ -8717,7 +9097,8 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                     # Codex responses also carry a per-item token attribution
                     # map that grows with the conversation; costs need only totals.
                     "usage": {
-                        name: value for name, value in response["usage"].items()
+                        name: value
+                        for name, value in response["usage"].items()
                         if name != "attribution"
                     },
                 },
@@ -8731,21 +9112,30 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                 credential = self.server.current_credential()
             except ArenaError:
                 status = 401
-                entry.update(ok=False, response_status=status,
-                             error="host OAuth login unavailable")
+                entry.update(
+                    ok=False,
+                    response_status=status,
+                    error="host OAuth login unavailable",
+                )
                 self._error_response(status, self.server.LOGIN_UNAVAILABLE_MESSAGE)
                 return
             connection = http.client.HTTPSConnection(
                 credential.host,
-                timeout=30 if getattr(self.server, "allowed_model", None) is not None else None,
+                timeout=30
+                if getattr(self.server, "allowed_model", None) is not None
+                else None,
             )
-            if getattr(self.server, "allowed_model", None) is not None and self.server.is_model_path(canonical_path):
+            if getattr(
+                self.server, "allowed_model", None
+            ) is not None and self.server.is_model_path(canonical_path):
                 connection.connect()
                 tracked_socket = connection.sock
                 tracked_socket.settimeout(None)  # the agent clock bounds model thinking
                 with self.server.connection_lock:
                     if not self.server.enabled:
-                        raise ConnectionAbortedError("agent clock stopped before forwarding request")
+                        raise ConnectionAbortedError(
+                            "agent clock stopped before forwarding request"
+                        )
                     self.server.connections.add(tracked_socket)
             headers = {
                 name: value
@@ -8781,7 +9171,11 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
                 ),
                 None,
             )
-            if content_type is None and isinstance(request_body, dict) and request_body.get("stream") is True:
+            if (
+                content_type is None
+                and isinstance(request_body, dict)
+                and request_body.get("stream") is True
+            ):
                 # The ChatGPT Codex backend streams SSE without a Content-Type.
                 content_type = "text/event-stream"
             content_type = content_type or ""
@@ -8819,7 +9213,9 @@ class _OpenAIProxyHandler(http.server.BaseHTTPRequestHandler):
             self.close_connection = True
             decoded_response = _decoded_proxy_body(response_body, content_type)
             stream_events = _proxy_stream_events(decoded_response)
-            response_flags = self.server.response_flags(stream_events or decoded_response)
+            response_flags = self.server.response_flags(
+                stream_events or decoded_response
+            )
             entry["potential_internet_tool_calls"] += response_flags
             entry.update(
                 ok=200 <= upstream.status < 400,
@@ -8864,7 +9260,9 @@ class _OpenAIUnixProxyServer(
 ):
     daemon_threads = True
 
-    def __init__(self, socket_path, credential, log_path, *, write_readable, allowed_model=None):
+    def __init__(
+        self, socket_path, credential, log_path, *, write_readable, allowed_model=None
+    ):
         self.credential = credential
         self.allowed_model = allowed_model
         self.enabled = allowed_model is None
@@ -8887,7 +9285,9 @@ class _OpenAIUnixProxyServer(
             _append_readable_proxy_log(self.readable_log_path, sanitized)
 
     # Provider hooks. The Anthropic proxy for Claude Code overrides these.
-    FORBIDDEN_PATH_MESSAGE = "the arena proxy permits only OpenAI Responses and model catalog"
+    FORBIDDEN_PATH_MESSAGE = (
+        "the arena proxy permits only OpenAI Responses and model catalog"
+    )
     LOGIN_UNAVAILABLE_MESSAGE = "Host OpenAI OAuth login unavailable; run codex login"
     REPLACED_HEADERS = frozenset(
         {"authorization", "accept-encoding", "chatgpt-account-id", "originator"}
@@ -8939,7 +9339,9 @@ class _OpenAIUnixProxyServer(
     def completed_usage(value, _state):
         """Return the response object whose usage completes this exchange."""
         response = value.get("response", value)
-        if not isinstance(response, dict) or not isinstance(response.get("usage"), dict):
+        if not isinstance(response, dict) or not isinstance(
+            response.get("usage"), dict
+        ):
             return None
         return response
 
@@ -8949,7 +9351,9 @@ class _OpenAIReverseProxy:
 
     _server_class = _OpenAIUnixProxyServer
 
-    def __init__(self, credential, log_path, *, write_readable=True, allowed_model=None):
+    def __init__(
+        self, credential, log_path, *, write_readable=True, allowed_model=None
+    ):
         self.log_path = Path(log_path)
         self.log_path.parent.mkdir(parents=True, exist_ok=True)
         self._temp = tempfile.TemporaryDirectory(prefix="gobench-openai-proxy-")
@@ -9006,18 +9410,23 @@ class _OpenAIReverseProxy:
         self._temp.cleanup()
 
 
-
 def _anthropic_usage_as_responses(usage):
     """Express one Messages call's usage in the arena's Responses ledger shape."""
 
     def count(value):
-        return value if isinstance(value, int) and not isinstance(value, bool) and value >= 0 else 0
+        return (
+            value
+            if isinstance(value, int) and not isinstance(value, bool) and value >= 0
+            else 0
+        )
 
     cache_read = count(usage.get("cache_read_input_tokens"))
     cache_write = count(usage.get("cache_creation_input_tokens"))
     breakdown = usage.get("cache_creation")
     long_cache_write = (
-        count(breakdown.get("ephemeral_1h_input_tokens")) if isinstance(breakdown, dict) else 0
+        count(breakdown.get("ephemeral_1h_input_tokens"))
+        if isinstance(breakdown, dict)
+        else 0
     )
     return {
         "input_tokens": count(usage.get("input_tokens")) + cache_read + cache_write,
@@ -9049,7 +9458,9 @@ def _anthropic_tool_uses(value):
                     blocks[index] = [f"$.events[{position}]", block, []]
             elif event.get("type") == "content_block_delta" and index in blocks:
                 delta = event.get("delta")
-                if isinstance(delta, dict) and isinstance(delta.get("partial_json"), str):
+                if isinstance(delta, dict) and isinstance(
+                    delta.get("partial_json"), str
+                ):
                     blocks[index][2].append(delta["partial_json"])
         for path, block, parts in blocks.values():
             tool_input = block.get("input")
@@ -9062,24 +9473,45 @@ def _anthropic_tool_uses(value):
         return
     if isinstance(value, dict) and isinstance(value.get("content"), list):
         for position, block in enumerate(value["content"]):
-            if isinstance(block, dict) and str(block.get("type", "")).endswith("tool_use"):
-                yield f"$.content[{position}]", block.get("type"), block.get("name"), block.get("input")
+            if isinstance(block, dict) and str(block.get("type", "")).endswith(
+                "tool_use"
+            ):
+                yield (
+                    f"$.content[{position}]",
+                    block.get("type"),
+                    block.get("name"),
+                    block.get("input"),
+                )
 
 
 def _claude_internet_tool_flags(value):
     flags = []
     for path, block_type, name, tool_input in _anthropic_tool_uses(value):
         if block_type != "tool_use":
-            flags.append({"source": "response", "path": path,
-                          "reason": f"server tool:{name or block_type}"})
+            flags.append(
+                {
+                    "source": "response",
+                    "path": path,
+                    "reason": f"server tool:{name or block_type}",
+                }
+            )
         elif name in _Arena.CLAUDE_CODE_DISALLOWED_TOOLS:
             flags.append({"source": "response", "path": path, "reason": f"tool:{name}"})
         elif name == "Bash":
-            command = tool_input.get("command") if isinstance(tool_input, dict) else tool_input
+            command = (
+                tool_input.get("command")
+                if isinstance(tool_input, dict)
+                else tool_input
+            )
             if isinstance(command, str) and _Arena.NETWORK_COMMAND_RE.search(command):
-                flags.append({"source": "response", "path": path,
-                              "reason": "network-oriented shell command",
-                              "excerpt": command[:500]})
+                flags.append(
+                    {
+                        "source": "response",
+                        "path": path,
+                        "reason": "network-oriented shell command",
+                        "excerpt": command[:500],
+                    }
+                )
     return flags
 
 
@@ -9122,7 +9554,9 @@ class _AnthropicUnixProxyServer(_OpenAIUnixProxyServer):
         removed = []
         filtered = body
         if "mcp_servers" in body:
-            filtered = {name: item for name, item in body.items() if name != "mcp_servers"}
+            filtered = {
+                name: item for name, item in body.items() if name != "mcp_servers"
+            }
             removed.append("mcp_servers")
         tools = body.get("tools")
         if isinstance(tools, list):
@@ -9189,8 +9623,12 @@ class _AnthropicUnixProxyServer(_OpenAIUnixProxyServer):
         if event_type == "message":
             usage = value.get("usage")
             return (
-                {"model": value.get("model"), "usage": _anthropic_usage_as_responses(usage)}
-                if isinstance(usage, dict) else None
+                {
+                    "model": value.get("model"),
+                    "usage": _anthropic_usage_as_responses(usage),
+                }
+                if isinstance(usage, dict)
+                else None
             )
         if event_type == "message_start" and isinstance(value.get("message"), dict):
             message = value["message"]
@@ -9199,11 +9637,17 @@ class _AnthropicUnixProxyServer(_OpenAIUnixProxyServer):
                 state["usage"] = dict(message["usage"])
         elif event_type == "message_delta" and isinstance(value.get("usage"), dict):
             state.setdefault("usage", {}).update(
-                {name: item for name, item in value["usage"].items() if item is not None}
+                {
+                    name: item
+                    for name, item in value["usage"].items()
+                    if item is not None
+                }
             )
         elif event_type == "message_stop" and isinstance(state.get("usage"), dict):
-            return {"model": state.get("model"),
-                    "usage": _anthropic_usage_as_responses(state["usage"])}
+            return {
+                "model": state.get("model"),
+                "usage": _anthropic_usage_as_responses(state["usage"]),
+            }
         return None
 
 
@@ -9221,6 +9665,7 @@ class _AnthropicReverseProxy(_OpenAIReverseProxy):
             write_readable=False,
             allowed_model=allowed_model,
         )
+
 
 def _workspace_proxy_launcher():
     return r"""#!/usr/bin/python3
@@ -9353,7 +9798,9 @@ class _WorkspaceBubblewrap:
         self.workspace = Path(workspace).resolve()
         self.runtime_dir = Path(runtime_dir).resolve()
         # Code-only evaluation has no model proxy and therefore no socket.
-        self.proxy_socket = None if proxy_socket is None else Path(proxy_socket).resolve()
+        self.proxy_socket = (
+            None if proxy_socket is None else Path(proxy_socket).resolve()
+        )
         self._configured_binary = binary
 
     def _binary(self):
@@ -9849,12 +10296,16 @@ class _CodexGameClient:
 
     def _prepare(self):
         if self.private_dir.is_symlink():
-            raise ArenaError(f"unsafe {self._harness_label} private path: {self.private_dir}")
+            raise ArenaError(
+                f"unsafe {self._harness_label} private path: {self.private_dir}"
+            )
         self.private_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         os.chmod(self.private_dir, 0o700)
         specification = {
-            **self.settings.manifest(), "player": self.player_name,
-            "model": self.player.model, "effort": self.player.level,
+            **self.settings.manifest(),
+            "player": self.player_name,
+            "model": self.player.model,
+            "effort": self.player.level,
             **self._runtime_specification(),
         }
         # Color-swapped games share one immutable checkpoint. Wait for training
@@ -9866,30 +10317,46 @@ class _CodexGameClient:
             self._ensure_checkpoint(specification)
         self._set_phase(self.private_dir, training=False)
         marker = self.private_dir / "evaluation.json"
-        expected = {"protocol": WORKSPACE_PROTOCOL_VERSION,
-                    "checkpoint_id": self.checkpoint["checkpoint_id"],
-                    "game": self.game_number}
+        expected = {
+            "protocol": WORKSPACE_PROTOCOL_VERSION,
+            "checkpoint_id": self.checkpoint["checkpoint_id"],
+            "game": self.game_number,
+        }
         if marker.exists():
             if _workspace_read_json(marker) != expected:
-                raise WorkspaceError("evaluation belongs to a different training checkpoint")
+                raise WorkspaceError(
+                    "evaluation belongs to a different training checkpoint"
+                )
         else:
             if self.state_path.exists() or self._volume.image.exists():
-                raise WorkspaceError("legacy/incomplete evaluation state cannot be silently reused")
+                raise WorkspaceError(
+                    "legacy/incomplete evaluation state cannot be silently reused"
+                )
             _workspace_atomic_json(marker, expected)
         ProcessScope.recover(self._phase_dir)
         self._volume.create(self.checkpoint_root / "checkpoint" / "disk.img")
         checkpoint_thread = self.checkpoint_root / "checkpoint" / "thread.json"
         if not self.state_path.exists() and checkpoint_thread.exists():
-            _workspace_atomic_json(self.state_path, _workspace_read_json(checkpoint_thread))
+            _workspace_atomic_json(
+                self.state_path, _workspace_read_json(checkpoint_thread)
+            )
         self._volume.mount()
-        self._clock = AgentClock(self._phase_dir / "clock.json", self.settings.evaluation_seconds,
-                                 display_path=self._phase_dir / "public" / "clock.json")
+        self._clock = AgentClock(
+            self._phase_dir / "clock.json",
+            self.settings.evaluation_seconds,
+            display_path=self._phase_dir / "public" / "clock.json",
+        )
         if os.path.lexists(self.workspace_view):
-            if not self.workspace_view.is_symlink() or self.workspace_view.resolve() != self.cwd.resolve():
+            if (
+                not self.workspace_view.is_symlink()
+                or self.workspace_view.resolve() != self.cwd.resolve()
+            ):
                 raise WorkspaceError("legacy or mismatched per-game workspace view")
         else:
-            self.workspace_view.symlink_to(os.path.relpath(self.cwd, self.workspace_view.parent),
-                                           target_is_directory=True)
+            self.workspace_view.symlink_to(
+                os.path.relpath(self.cwd, self.workspace_view.parent),
+                target_is_directory=True,
+            )
         # Runtime startup is deferred until the first move. A finished clock
         # can therefore be recovered as a timeout without starting Codex.
 
@@ -9898,7 +10365,9 @@ class _CodexGameClient:
             raise ArenaError("OpenAI proxy credentials are required for Codex")
         return {
             "runtime": _workspace_runtime_identity(),
-            "codex_config_sha256": hashlib.sha256(self._codex_config_text().encode()).hexdigest(),
+            "codex_config_sha256": hashlib.sha256(
+                self._codex_config_text().encode()
+            ).hexdigest(),
         }
 
     @staticmethod
@@ -9937,13 +10406,22 @@ class _CodexGameClient:
         if manifest.exists():
             self.checkpoint = _workspace_read_json(manifest)
             if self.checkpoint.get("specification") != specification:
-                raise WorkspaceError("checkpoint configuration/runtime changed; start a new run")
-            if _workspace_file_sha256(checkpoint_dir / "disk.img") != self.checkpoint["image_sha256"]:
+                raise WorkspaceError(
+                    "checkpoint configuration/runtime changed; start a new run"
+                )
+            if (
+                _workspace_file_sha256(checkpoint_dir / "disk.img")
+                != self.checkpoint["image_sha256"]
+            ):
                 raise WorkspaceError("immutable training checkpoint image was modified")
             thread_file = checkpoint_dir / "thread.json"
-            digest = _workspace_file_sha256(thread_file) if thread_file.exists() else None
+            digest = (
+                _workspace_file_sha256(thread_file) if thread_file.exists() else None
+            )
             if digest != self.checkpoint.get("thread_sha256"):
-                raise WorkspaceError("immutable training checkpoint thread was modified")
+                raise WorkspaceError(
+                    "immutable training checkpoint thread was modified"
+                )
             # The published checkpoint is the retained training image.
             (self.checkpoint_root / "preparation" / "disk.img").unlink(missing_ok=True)
             return
@@ -9959,8 +10437,11 @@ class _CodexGameClient:
         ProcessScope.recover(preparation)
         self._volume.create()
         self._volume.mount()
-        self._clock = AgentClock(preparation / "clock.json", self.settings.training_seconds,
-                                 display_path=preparation / "public" / "clock.json")
+        self._clock = AgentClock(
+            preparation / "clock.json",
+            self.settings.training_seconds,
+            display_path=preparation / "public" / "clock.json",
+        )
         try:
             if self._clock.remaining > 0:
                 self._run_preparation()
@@ -9973,34 +10454,55 @@ class _CodexGameClient:
             finally:
                 self._volume.close()
         if self._clock.remaining > 0:
-            raise WorkspaceError("preparation stopped before its allocated time was consumed")
+            raise WorkspaceError(
+                "preparation stopped before its allocated time was consumed"
+            )
         staging = self.checkpoint_root / f".checkpoint-{uuid.uuid4().hex}"
         staging.mkdir()
         try:
             _copy_workspace_image(self._volume.image, staging / "disk.img")
             image_digest = _workspace_file_sha256(staging / "disk.img")
             if self.state_path.exists():
-                _workspace_atomic_json(staging / "thread.json", _workspace_read_json(self.state_path))
-            usages = _read_jsonl_objects(preparation / f"{self.proxy_log_name}.usage.jsonl",
-                                         "training usage")
-            exchanges = _read_jsonl_objects(preparation / f"{self.proxy_log_name}.jsonl",
-                                            "training exchanges")
+                _workspace_atomic_json(
+                    staging / "thread.json", _workspace_read_json(self.state_path)
+                )
+            usages = _read_jsonl_objects(
+                preparation / f"{self.proxy_log_name}.usage.jsonl", "training usage"
+            )
+            exchanges = _read_jsonl_objects(
+                preparation / f"{self.proxy_log_name}.jsonl", "training exchanges"
+            )
             accounted = {entry["exchange_id"] for entry in usages}
-            unaccounted = sum(entry.get("method") == "POST"
-                              and entry.get("exchange_id") not in accounted
-                              for entry in exchanges)
-            cost = sum(_llm_call_cost(entry["usage"], self.api_name,
-                                      self.player.model,
-                                      started_at=entry.get("started_at")) for entry in usages)
+            unaccounted = sum(
+                entry.get("method") == "POST"
+                and entry.get("exchange_id") not in accounted
+                for entry in exchanges
+            )
+            cost = sum(
+                _llm_call_cost(
+                    entry["usage"],
+                    self.api_name,
+                    self.player.model,
+                    started_at=entry.get("started_at"),
+                )
+                for entry in usages
+            )
             self.checkpoint = {
                 "checkpoint_id": uuid.uuid4().hex,
-                "specification": specification, "image_sha256": image_digest,
-                "thread_sha256": (_workspace_file_sha256(staging / "thread.json")
-                                  if (staging / "thread.json").exists() else None),
+                "specification": specification,
+                "image_sha256": image_digest,
+                "thread_sha256": (
+                    _workspace_file_sha256(staging / "thread.json")
+                    if (staging / "thread.json").exists()
+                    else None
+                ),
                 "training_seconds": self._clock.spent,
-                "training_model_requests": len(usages), "training_cost_usd": cost,
+                "training_model_requests": len(usages),
+                "training_cost_usd": cost,
                 "training_requests_without_reported_usage": unaccounted,
-                "training_usage": _sum_response_usages([entry["usage"] for entry in usages]),
+                "training_usage": _sum_response_usages(
+                    [entry["usage"] for entry in usages]
+                ),
                 "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
                 **self._checkpoint_fields(preparation, staging),
             }
@@ -10014,10 +10516,14 @@ class _CodexGameClient:
         self._clock = None
 
     def _run_preparation(self):
-        _append_jsonl(self._phase_dir / "training-events.jsonl", {
-            "event": "preparation_started", "remaining_seconds": self._clock.remaining,
-            "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-        })
+        _append_jsonl(
+            self._phase_dir / "training-events.jsonl",
+            {
+                "event": "preparation_started",
+                "remaining_seconds": self._clock.remaining,
+                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            },
+        )
         self._clock.start(self._expire_runtime)
         failures = 0
         codex_not_found_failures = 0
@@ -10033,10 +10539,15 @@ class _CodexGameClient:
                     )
                     if result.usage is not None:
                         self._turn_usage(result)
-                    _append_jsonl(self._phase_dir / "training-events.jsonl", {
-                        "event": "preparation_turn", "remaining_seconds": self._clock.remaining,
-                        "output": result.final_response, "request_usages": requests,
-                    })
+                    _append_jsonl(
+                        self._phase_dir / "training-events.jsonl",
+                        {
+                            "event": "preparation_turn",
+                            "remaining_seconds": self._clock.remaining,
+                            "output": result.final_response,
+                            "request_usages": requests,
+                        },
+                    )
                     failures = 0
                     codex_not_found_failures = 0
                 except Exception as exc:
@@ -10045,9 +10556,9 @@ class _CodexGameClient:
                     failures += 1
                     if _workspace_codex_not_found(exc):
                         codex_not_found_failures += 1
-                    if (not _llm_api_attempts_remaining(
-                            failures, codex_not_found_failures=codex_not_found_failures
-                        ) or not _workspace_codex_transport_failure(exc)):
+                    if not _llm_api_attempts_remaining(
+                        failures, codex_not_found_failures=codex_not_found_failures
+                    ) or not _workspace_codex_transport_failure(exc):
                         raise
                     self._dispose_runtime()
                     delay = _llm_api_retry_delay(exc, failures)
@@ -10058,11 +10569,17 @@ class _CodexGameClient:
                     else:
                         # The training clock continues through retry overhead.
                         delay = min(delay, self._clock.remaining)
-                    _append_jsonl(self._phase_dir / "training-events.jsonl", {
-                        "event": "preparation_retry", "attempt": failures,
-                        "error": type(exc).__name__, "http_status": _llm_api_error(exc)[1],
-                        "retry_in_seconds": delay, "quota": quota,
-                    })
+                    _append_jsonl(
+                        self._phase_dir / "training-events.jsonl",
+                        {
+                            "event": "preparation_retry",
+                            "attempt": failures,
+                            "error": type(exc).__name__,
+                            "http_status": _llm_api_error(exc)[1],
+                            "retry_in_seconds": delay,
+                            "quota": quota,
+                        },
+                    )
                     time.sleep(max(delay, 0))
                     if quota is not None:
                         self._clock.start(self._expire_runtime)
@@ -10100,16 +10617,22 @@ class _CodexGameClient:
         )
 
     def _resource_instructions(self):
-        return ("Your entire agent has exclusive use of 1 physical CPU core "
-                f"with {len(self._resource_lock.cpus)} logical CPUs, "
-                f"{self.settings.memory_mib} MiB RAM, {self.settings.storage_mib} MiB "
-                f"writable storage and {self.settings.max_tasks} processes/threads; "
-                "there is no GPU or swap. Subagents share these limits.")
+        return (
+            "Your entire agent has exclusive use of 1 physical CPU core "
+            f"with {len(self._resource_lock.cpus)} logical CPUs, "
+            f"{self.settings.memory_mib} MiB RAM, {self.settings.storage_mib} MiB "
+            f"writable storage and {self.settings.max_tasks} processes/threads; "
+            "there is no GPU or swap. Subagents share these limits."
+        )
 
     def _turn_options(self):
-        return {"approval_mode": self._sdk.ApprovalMode.deny_all,
-                "cwd": "/workspace", "effort": self.player.level,
-                "model": self.player.model, "sandbox": self._sdk.Sandbox.full_access}
+        return {
+            "approval_mode": self._sdk.ApprovalMode.deny_all,
+            "cwd": "/workspace",
+            "effort": self.player.level,
+            "model": self.player.model,
+            "sandbox": self._sdk.Sandbox.full_access,
+        }
 
     def _expire_runtime(self):
         if self._proxy is not None:
@@ -10189,7 +10712,9 @@ class _CodexGameClient:
         os.chmod(launcher_path, 0o600)
         os.chmod(config_path, 0o600)
         proxy = _OpenAIReverseProxy(
-            self._proxy_credential, proxy_log, write_readable=False,
+            self._proxy_credential,
+            proxy_log,
+            write_readable=False,
             allowed_model=self.player.model,
         )
         scope = ProcessScope(self._phase_dir, self.settings, core=self._resource_lock)
@@ -10231,8 +10756,10 @@ class _CodexGameClient:
                     (self._phase_dir / "public", "/arena"),
                     *self._extra_readonly_mounts(),
                 ),
-                writable_mounts=((codex_home, "/harness-home"),
-                                 (self._volume.mountpoint / "tmp", "/tmp")),
+                writable_mounts=(
+                    (codex_home, "/harness-home"),
+                    (self._volume.mountpoint / "tmp", "/tmp"),
+                ),
                 hidden_paths=_workspace_hidden_katago_paths(),
             )
             config = sdk.CodexConfig(
@@ -10405,8 +10932,10 @@ class _CodexGameClient:
         return counts
 
     def _save_thread_state(self):
-        state = {"thread_id": self._thread.id,
-                 "has_turns": getattr(self, "_thread_has_turns", False)}
+        state = {
+            "thread_id": self._thread.id,
+            "has_turns": getattr(self, "_thread_has_turns", False),
+        }
         if self._usage_total is not None:
             state["usage_total"] = self._usage_total
         _workspace_atomic_json(self.state_path, state)
@@ -10620,7 +11149,9 @@ class _CodexGameClient:
                     except FileNotFoundError:
                         self._scope.dead = True
                         if failure is None:
-                            failure = WorkspaceError("agent runtime exited before it could be frozen")
+                            failure = WorkspaceError(
+                                "agent runtime exited before it could be frozen"
+                            )
                     except (OSError, WorkspaceError) as exc:
                         # OOM can remove the cgroup before cleanup. Do not let
                         # a failed freeze hide the original resource failure.
@@ -10630,23 +11161,34 @@ class _CodexGameClient:
                 clock.pause()
         if clock.expired or clock.remaining <= 0:
             expired = WorkspaceTimeExpired("agent's cumulative game clock is exhausted")
-            expired.arena_usage = (response.usage if response is not None
-                                   else getattr(failure, "arena_usage", {}))
+            expired.arena_usage = (
+                response.usage
+                if response is not None
+                else getattr(failure, "arena_usage", {})
+            )
             raise expired from failure
         if failure is not None:
             # Also cover failures outside _run_turn, including a cgroup that
             # disappears after the SDK returns but before we freeze it.
-            if (not isinstance(failure, WorkspaceResourceExceeded)
-                    and self._scope is not None
-                    and self._scope.failure_reason() == "oom-kill"):
-                exceeded = WorkspaceResourceExceeded("agent exceeded its memory allocation")
-                exceeded.arena_usage = (response.usage if response is not None
-                                       else getattr(failure, "arena_usage", {}))
+            if (
+                not isinstance(failure, WorkspaceResourceExceeded)
+                and self._scope is not None
+                and self._scope.failure_reason() == "oom-kill"
+            ):
+                exceeded = WorkspaceResourceExceeded(
+                    "agent exceeded its memory allocation"
+                )
+                exceeded.arena_usage = (
+                    response.usage
+                    if response is not None
+                    else getattr(failure, "arena_usage", {})
+                )
                 raise exceeded from failure
             raise failure
         if self._pending_turn is not None:
-            self._pending_turn.update(state="completed", output=response.output_text,
-                                      usage=response.usage)
+            self._pending_turn.update(
+                state="completed", output=response.output_text, usage=response.usage
+            )
             _workspace_atomic_json(self._journal_path(), self._pending_turn)
         return response
 
@@ -10662,14 +11204,23 @@ class _CodexGameClient:
             return None
         saved = _workspace_read_json(path)
         if saved.get("prompt_sha256") != self._turn_context["prompt_sha256"]:
-            raise WorkspaceError("saved evaluation turn does not match the current position")
+            raise WorkspaceError(
+                "saved evaluation turn does not match the current position"
+            )
         return saved
 
     def _journal_response(self, saved):
         context = self._turn_context
-        logged = any(entry.get("ok") is True and entry.get("player") == self.player_name
-                     and all(entry.get(key) == context[key] for key in ("game", "move", "attempt"))
-                     for entry in _read_jsonl_objects(Path(context["log_path"]), "Codex move log"))
+        logged = any(
+            entry.get("ok") is True
+            and entry.get("player") == self.player_name
+            and all(
+                entry.get(key) == context[key] for key in ("game", "move", "attempt")
+            )
+            for entry in _read_jsonl_objects(
+                Path(context["log_path"]), "Codex move log"
+            )
+        )
         return _CodexMoveResponse(saved["output"], saved["usage"], reused=logged)
 
     def _proxy_usage_since(self, offset):
@@ -10691,7 +11242,9 @@ class _CodexGameClient:
             if not matched:
                 for wrapped in turn.items:
                     item = getattr(wrapped, "root", wrapped)
-                    if getattr(item, "type", None) == "userMessage" and marker in json.dumps(
+                    if getattr(
+                        item, "type", None
+                    ) == "userMessage" and marker in json.dumps(
                         item.model_dump(mode="json")
                     ):
                         matched = True
@@ -10726,15 +11279,22 @@ class _CodexGameClient:
                 recovered = self._recover_codex_turn(thread, saved)
                 if recovered is not None:
                     requests = self._proxy_usage_since(saved["usage_offset"])
-                    saved.update(state="completed", output=recovered,
-                                 usage=_sum_response_usages(requests), recovered_from_thread=True)
+                    saved.update(
+                        state="completed",
+                        output=recovered,
+                        usage=_sum_response_usages(requests),
+                        recovered_from_thread=True,
+                    )
                     self._pending_turn = saved
                     return self._journal_response(saved)
-                prompt = ("The previous execution of this request was interrupted. "
-                          "Continue from your retained files and conversation, checking "
-                          "existing work before repeating tool effects.\n" + prompt)
+                prompt = (
+                    "The previous execution of this request was interrupted. "
+                    "Continue from your retained files and conversation, checking "
+                    "existing work before repeating tool effects.\n" + prompt
+                )
             self._pending_turn = {
-                "state": "inflight", "prompt_sha256": self._turn_context["prompt_sha256"],
+                "state": "inflight",
+                "prompt_sha256": self._turn_context["prompt_sha256"],
                 "usage_offset": usage_offset,
             }
             _workspace_atomic_json(self._journal_path(), self._pending_turn)
@@ -10762,8 +11322,13 @@ class _CodexGameClient:
                     exc.arena_usage = _sum_response_usages(proxy_requests)
                 if self._clock.expired:
                     raise
-                if self._scope is not None and self._scope.failure_reason() == "oom-kill":
-                    failure = WorkspaceResourceExceeded("agent exceeded its memory allocation")
+                if (
+                    self._scope is not None
+                    and self._scope.failure_reason() == "oom-kill"
+                ):
+                    failure = WorkspaceResourceExceeded(
+                        "agent exceeded its memory allocation"
+                    )
                     failure.arena_usage = getattr(exc, "arena_usage", {})
                     raise failure from exc
             if not _workspace_codex_transport_failure(exc):
@@ -10782,7 +11347,9 @@ class _CodexGameClient:
         return _CodexMoveResponse(result.final_response or "", usage)
 
     def reset_game(self):
-        raise WorkspaceError("checkpoint evaluation games cannot reset their state or clock")
+        raise WorkspaceError(
+            "checkpoint evaluation games cannot reset their state or clock"
+        )
 
     def mark_complete(self):
         # Publish completion only after stopping writers and trimming/unmounting.
@@ -10790,11 +11357,13 @@ class _CodexGameClient:
         self._dispose_runtime()
         self._clock.pause()
         self._volume.close()
-        requests = _read_jsonl_objects(self._phase_dir / f"{self.proxy_log_name}.usage.jsonl",
-                                       "evaluation usage")
+        requests = _read_jsonl_objects(
+            self._phase_dir / f"{self.proxy_log_name}.usage.jsonl", "evaluation usage"
+        )
         summary = {
             "protocol": WORKSPACE_PROTOCOL_VERSION,
-            "game": self.game_number, "player": self.player_name,
+            "game": self.game_number,
+            "player": self.player_name,
             "checkpoint_id": self.checkpoint["checkpoint_id"],
             "agent_seconds": self._clock.spent,
             "remaining_seconds": self._clock.remaining,
@@ -10806,7 +11375,9 @@ class _CodexGameClient:
             summary["completed_at_ns"] = time.time_ns()
             _workspace_atomic_json(self._phase_dir / "evaluation-summary.json", summary)
             # Keep only this newest completed image even inside a large batch.
-            self._prune_completed_images(self.run_dir, self.player_name, {self._phase_dir})
+            self._prune_completed_images(
+                self.run_dir, self.player_name, {self._phase_dir}
+            )
 
     @classmethod
     def prune_evaluation_images(cls, run_dir, player_name, keep_directories):
@@ -10832,8 +11403,10 @@ class _CodexGameClient:
             if marker.parent in keep_directories:
                 continue
             summary = _workspace_read_json(marker)
-            if (summary.get("protocol") != WORKSPACE_PROTOCOL_VERSION
-                    or summary.get("player") != player_name):
+            if (
+                summary.get("protocol") != WORKSPACE_PROTOCOL_VERSION
+                or summary.get("player") != player_name
+            ):
                 continue
             if os.path.ismount(marker.parent / "fs"):
                 raise WorkspaceError("completed evaluation image is still mounted")
@@ -10864,13 +11437,17 @@ class _GTPEngineProcess:
 
     def __init__(self, command, *, stderr_path):
         self.process = subprocess.Popen(
-            list(map(str, command)), stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            list(map(str, command)),
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
         self._lines = queue.Queue()
         self._readers = [
             threading.Thread(target=self._read_stdout, daemon=True),
-            threading.Thread(target=self._read_stderr, args=(Path(stderr_path),), daemon=True),
+            threading.Thread(
+                target=self._read_stderr, args=(Path(stderr_path),), daemon=True
+            ),
         ]
         for reader in self._readers:
             reader.start()
@@ -10903,7 +11480,9 @@ class _GTPEngineProcess:
                 return self._lines.get(timeout=max(0.05, deadline - time.monotonic()))
             except queue.Empty:
                 if time.monotonic() >= deadline:
-                    raise WorkspaceEngineForfeit("no_reply", "the program stopped responding")
+                    raise WorkspaceEngineForfeit(
+                        "no_reply", "the program stopped responding"
+                    )
 
     def command(self, text, *, deadline):
         """Send one command; return (success, reply text) from its GTP response."""
@@ -10911,7 +11490,9 @@ class _GTPEngineProcess:
             self.process.stdin.write(text.encode() + b"\n")
             self.process.stdin.flush()
         except (BrokenPipeError, OSError, ValueError) as exc:
-            raise WorkspaceEngineForfeit("crash", f"stdin closed before {text!r}") from exc
+            raise WorkspaceEngineForfeit(
+                "crash", f"stdin closed before {text!r}"
+            ) from exc
         line = ""
         while not line.strip():
             line = self._next_line(deadline)
@@ -10919,7 +11500,9 @@ class _GTPEngineProcess:
                 raise WorkspaceEngineForfeit("crash", f"program exited during {text!r}")
         line = line.strip()
         if line[0] not in "=?":
-            raise WorkspaceEngineForfeit("protocol_error", f"{text!r} got {line[:200]!r}")
+            raise WorkspaceEngineForfeit(
+                "protocol_error", f"{text!r} got {line[:200]!r}"
+            )
         success = line[0] == "="
         # Optional numeric command ids are allowed by GTP; the arena sends none.
         reply = [line[1:].lstrip("0123456789").strip()]
@@ -10966,8 +11549,11 @@ class _CodeOnlyEvaluationMixin:
         super().__init__(*args, **kwargs)
 
     def _runtime_specification(self):
-        return {**super()._runtime_specification(),
-                "evaluation": "code_only", "engine_interface": self.INTERFACE}
+        return {
+            **super()._runtime_specification(),
+            "evaluation": "code_only",
+            "engine_interface": self.INTERFACE,
+        }
 
     def _preparation_prompt(self):
         seconds = f"{self.settings.evaluation_seconds:g}"
@@ -11025,11 +11611,13 @@ class _CodeOnlyEvaluationMixin:
         )
 
     def _resource_instructions(self):
-        return ("Your entire agent, and during evaluation your program, has exclusive "
-                f"use of 1 physical CPU core with {len(self._resource_lock.cpus)} logical "
-                f"CPUs, {self.settings.memory_mib} MiB RAM, {self.settings.storage_mib} MiB "
-                f"writable storage and {self.settings.max_tasks} processes/threads; "
-                "there is no GPU or swap. Subagents share these limits.")
+        return (
+            "Your entire agent, and during evaluation your program, has exclusive "
+            f"use of 1 physical CPU core with {len(self._resource_lock.cpus)} logical "
+            f"CPUs, {self.settings.memory_mib} MiB RAM, {self.settings.storage_mib} MiB "
+            f"writable storage and {self.settings.max_tasks} processes/threads; "
+            "there is no GPU or swap. Subagents share these limits."
+        )
 
     def observe_game(self, game):
         self._game = game
@@ -11041,34 +11629,48 @@ class _CodeOnlyEvaluationMixin:
     def _engine_command(self, text, *, required=True):
         success, reply = self._engine.command(text, deadline=self._engine_deadline())
         if required and not success:
-            raise WorkspaceEngineForfeit("protocol_error", f"{text!r} failed: {reply[:200]!r}")
+            raise WorkspaceEngineForfeit(
+                "protocol_error", f"{text!r} failed: {reply[:200]!r}"
+            )
         return success, reply
 
     def _start_engine(self):
         program = self.cwd / "engine"
         if not os.path.lexists(program):
-            raise WorkspaceEngineForfeit("missing_program", f"{self.ENGINE_PATH} does not exist")
+            raise WorkspaceEngineForfeit(
+                "missing_program", f"{self.ENGINE_PATH} does not exist"
+            )
         runtime = self._phase_dir / "engine-runtime"
         runtime.mkdir(mode=0o700, exist_ok=True)
         scope = ProcessScope(self._phase_dir, self.settings, core=self._resource_lock)
         self._scope = scope
-        sandbox = _WorkspaceBubblewrap(self.cwd, runtime, None,
-                                       binary=self._workspace_bwrap_binary())
+        sandbox = _WorkspaceBubblewrap(
+            self.cwd, runtime, None, binary=self._workspace_bwrap_binary()
+        )
         launch = sandbox.command(
             (self.ENGINE_PATH,),
-            {"HOME": "/harness-home", "PATH": "/usr/bin:/bin", "LANG": "C.UTF-8",
-             "TMPDIR": "/tmp"},
+            {
+                "HOME": "/harness-home",
+                "PATH": "/usr/bin:/bin",
+                "LANG": "C.UTF-8",
+                "TMPDIR": "/tmp",
+            },
             readonly_mounts=((self._phase_dir / "public", "/arena"),),
             writable_mounts=((self._volume.mountpoint / "tmp", "/tmp"),),
             hidden_paths=_workspace_hidden_katago_paths(),
         )
-        self._engine = _GTPEngineProcess(scope.command(launch),
-                                         stderr_path=self._phase_dir / "engine-stderr.log")
+        self._engine = _GTPEngineProcess(
+            scope.command(launch), stderr_path=self._phase_dir / "engine-stderr.log"
+        )
         self._engine_moves = []
-        _append_jsonl(self._phase_dir / "engine-events.jsonl", {
-            "event": "engine_started", "remaining_seconds": self._clock.remaining,
-            "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-        })
+        _append_jsonl(
+            self._phase_dir / "engine-events.jsonl",
+            {
+                "event": "engine_started",
+                "remaining_seconds": self._clock.remaining,
+                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            },
+        )
         # A reply proves the service exists, so its cgroup can be verified.
         self._engine_command(self.SETUP_COMMANDS[0])
         scope.attach()
@@ -11080,17 +11682,25 @@ class _CodeOnlyEvaluationMixin:
             self._start_engine()
         else:
             self._scope.thaw()
-        if tuple(self._engine_moves) != history[:len(self._engine_moves)]:
+        if tuple(self._engine_moves) != history[: len(self._engine_moves)]:
             raise WorkspaceError("engine board diverged from the referee history")
-        for played_color, move in history[len(self._engine_moves):]:
+        for played_color, move in history[len(self._engine_moves) :]:
             self._engine_command(f"play {played_color} {move}")
             self._engine_moves.append((played_color, move))
-        self._engine_command(f"time_left {color} {int(self._clock.remaining)} 0", required=False)
+        self._engine_command(
+            f"time_left {color} {int(self._clock.remaining)} 0", required=False
+        )
         _success, reply = self._engine_command(f"genmove {color}")
         words = reply.split()
         if len(words) != 1:
-            raise WorkspaceEngineForfeit("protocol_error", f"genmove replied {reply[:200]!r}")
-        move = words[0].lower() if words[0].lower() in ("pass", "resign") else words[0].upper()
+            raise WorkspaceEngineForfeit(
+                "protocol_error", f"genmove replied {reply[:200]!r}"
+            )
+        move = (
+            words[0].lower()
+            if words[0].lower() in ("pass", "resign")
+            else words[0].upper()
+        )
         if move != "resign":
             self._engine_moves.append((color, move))
         return move
@@ -11111,35 +11721,59 @@ class _CodeOnlyEvaluationMixin:
             failure = exc
         finally:
             try:
-                if self._scope is not None and not self._scope.dead and self._scope.cgroup is not None:
+                if (
+                    self._scope is not None
+                    and not self._scope.dead
+                    and self._scope.cgroup is not None
+                ):
                     try:
                         self._scope.freeze()
                     except FileNotFoundError:
                         self._scope.dead = True
-                        failure = failure or WorkspaceEngineForfeit("crash", "program exited")
+                        failure = failure or WorkspaceEngineForfeit(
+                            "crash", "program exited"
+                        )
                     except (OSError, WorkspaceError) as exc:
                         failure = failure or exc
             finally:
                 clock.pause()
         if clock.expired or clock.remaining <= 0:
-            raise WorkspaceTimeExpired("program's cumulative game clock is exhausted") from failure
+            raise WorkspaceTimeExpired(
+                "program's cumulative game clock is exhausted"
+            ) from failure
         if failure is not None:
-            if (self._scope is not None and self._scope.cgroup is not None
-                    and self._scope.failure_reason() == "oom-kill"):
-                raise WorkspaceResourceExceeded("program exceeded its memory allocation") from failure
+            if (
+                self._scope is not None
+                and self._scope.cgroup is not None
+                and self._scope.failure_reason() == "oom-kill"
+            ):
+                raise WorkspaceResourceExceeded(
+                    "program exceeded its memory allocation"
+                ) from failure
             if isinstance(failure, WorkspaceEngineForfeit):
-                _append_jsonl(self._phase_dir / "engine-events.jsonl", {
-                    "event": "engine_forfeit", "reason": failure.reason, "detail": str(failure),
-                    "move": len(history) + 1,
-                    "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-                })
+                _append_jsonl(
+                    self._phase_dir / "engine-events.jsonl",
+                    {
+                        "event": "engine_forfeit",
+                        "reason": failure.reason,
+                        "detail": str(failure),
+                        "move": len(history) + 1,
+                        "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                    },
+                )
             raise failure
         legal, _superko = game.get_possible_moves()
         if move not in (*legal, "resign"):
-            _append_jsonl(self._phase_dir / "engine-events.jsonl", {
-                "event": "engine_forfeit", "reason": "illegal_move", "detail": move,
-                "move": len(history) + 1, "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            })
+            _append_jsonl(
+                self._phase_dir / "engine-events.jsonl",
+                {
+                    "event": "engine_forfeit",
+                    "reason": "illegal_move",
+                    "detail": move,
+                    "move": len(history) + 1,
+                    "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                },
+            )
             raise WorkspaceEngineForfeit("illegal_move", move)
         return _CodexMoveResponse(move, {})
 
@@ -11172,9 +11806,11 @@ def _claude_code_binary(version):
     so the pinned build is used even after `claude` on PATH auto-updates.
     """
     pinned = Path.home() / ".local/share/claude/versions" / version
-    configured = (os.environ.get("ARENA_CLAUDE_CODE_BIN")
-                  or (str(pinned) if pinned.is_file() else None)
-                  or shutil.which("claude"))
+    configured = (
+        os.environ.get("ARENA_CLAUDE_CODE_BIN")
+        or (str(pinned) if pinned.is_file() else None)
+        or shutil.which("claude")
+    )
     if not configured:
         raise ArenaError(
             f"Claude Code {version} is required for claude-code players; install it "
@@ -11211,7 +11847,9 @@ class _ClaudeCodeTurnError(RuntimeError):
 def _claude_code_result_error(event):
     text = event.get("result")
     if not isinstance(text, str) or not text:
-        text = json.dumps(event.get("errors") or event.get("subtype"), ensure_ascii=False)
+        text = json.dumps(
+            event.get("errors") or event.get("subtype"), ensure_ascii=False
+        )
     status = event.get("api_error_status")
     if not isinstance(status, int) or isinstance(status, bool):
         match = re.search(r"API Error: ([1-5][0-9]{2})\b", text)
@@ -11244,15 +11882,24 @@ class _ClaudeCodeProcess:
 
     def __init__(self, command, *, cwd, stderr_path):
         self.process = subprocess.Popen(
-            command, cwd=cwd, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            command,
+            cwd=cwd,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
         self.stderr_tail = deque(maxlen=200)
         self._events = queue.Queue()
         self._threads = (
-            threading.Thread(target=self._read_stdout, name="claude-code-stdout", daemon=True),
-            threading.Thread(target=self._read_stderr, args=(Path(stderr_path),),
-                             name="claude-code-stderr", daemon=True),
+            threading.Thread(
+                target=self._read_stdout, name="claude-code-stdout", daemon=True
+            ),
+            threading.Thread(
+                target=self._read_stderr,
+                args=(Path(stderr_path),),
+                name="claude-code-stderr",
+                daemon=True,
+            ),
         )
         for thread in self._threads:
             thread.start()
@@ -11268,8 +11915,10 @@ class _ClaudeCodeProcess:
                 except ValueError:
                     event = None
                 if not isinstance(event, dict):
-                    event = {"type": "arena_unparsed_stdout",
-                             "line": line[:2000].decode("utf-8", errors="replace")}
+                    event = {
+                        "type": "arena_unparsed_stdout",
+                        "line": line[:2000].decode("utf-8", errors="replace"),
+                    }
                 self._events.put(event)
         except (OSError, ValueError):
             pass
@@ -11282,7 +11931,9 @@ class _ClaudeCodeProcess:
                 for line in self.process.stderr:
                     out.write(line)
                     out.flush()
-                    self.stderr_tail.append(line.decode("utf-8", errors="replace").rstrip())
+                    self.stderr_tail.append(
+                        line.decode("utf-8", errors="replace").rstrip()
+                    )
         except (OSError, ValueError):
             pass
 
@@ -11351,10 +12002,20 @@ def _claude_code_tool_calls(message):
         if name == "Bash" and isinstance(tool_input.get("command"), str):
             item = {"command": tool_input["command"], "status": "requested"}
         else:
-            item = {"name": name, "status": "requested",
-                    **({"changes": [{"kind": name.lower(), "path": tool_input["file_path"]}]}
-                       if name in {"Edit", "Write", "MultiEdit", "NotebookEdit"}
-                       and isinstance(tool_input.get("file_path"), str) else {})}
+            item = {
+                "name": name,
+                "status": "requested",
+                **(
+                    {
+                        "changes": [
+                            {"kind": name.lower(), "path": tool_input["file_path"]}
+                        ]
+                    }
+                    if name in {"Edit", "Write", "MultiEdit", "NotebookEdit"}
+                    and isinstance(tool_input.get("file_path"), str)
+                    else {}
+                ),
+            }
         calls.append({"type": name, "item": item})
     return calls
 
@@ -11415,17 +12076,29 @@ class _ClaudeCodeGameClient(_CodexGameClient):
 
     def _cli_options(self):
         return (
-            "-p", "--input-format", "stream-json", "--output-format", "stream-json",
-            "--verbose", "--model", self.player.model, "--effort", self.player.level,
-            "--dangerously-skip-permissions", "--strict-mcp-config",
-            "--disallowedTools", ",".join(_Arena.CLAUDE_CODE_DISALLOWED_TOOLS),
+            "-p",
+            "--input-format",
+            "stream-json",
+            "--output-format",
+            "stream-json",
+            "--verbose",
+            "--model",
+            self.player.model,
+            "--effort",
+            self.player.level,
+            "--dangerously-skip-permissions",
+            "--strict-mcp-config",
+            "--disallowedTools",
+            ",".join(_Arena.CLAUDE_CODE_DISALLOWED_TOOLS),
         )
 
     def _runtime_specification(self):
         options = {"environment": self._environment(), "cli": list(self._cli_options())}
         version = _claude_code_version(self.player.model)
         return {
-            "runtime": _claude_code_runtime_identity(_claude_code_binary(version), version),
+            "runtime": _claude_code_runtime_identity(
+                _claude_code_binary(version), version
+            ),
             "claude_code_options_sha256": hashlib.sha256(
                 json.dumps(options, sort_keys=True).encode()
             ).hexdigest(),
@@ -11459,10 +12132,13 @@ class _ClaudeCodeGameClient(_CodexGameClient):
         return self._thread
 
     def _save_thread_state(self):
-        _workspace_atomic_json(self.state_path, {
-            "session_id": self._thread,
-            "has_turns": getattr(self, "_thread_has_turns", False),
-        })
+        _workspace_atomic_json(
+            self.state_path,
+            {
+                "session_id": self._thread,
+                "has_turns": getattr(self, "_thread_has_turns", False),
+            },
+        )
 
     def _session_exists(self, session):
         projects = self.home / "claude-home" / "projects"
@@ -11487,19 +12163,29 @@ class _ClaudeCodeGameClient(_CodexGameClient):
         session = self._persistent_thread()
         # Claude Code writes a session file with its first message. Resume it
         # when present; a session that never started is created afresh.
-        session_args = (("--resume", session) if self._session_exists(session)
-                        else ("--session-id", session))
+        session_args = (
+            ("--resume", session)
+            if self._session_exists(session)
+            else ("--session-id", session)
+        )
         proxy = _AnthropicReverseProxy(proxy_log, allowed_model=self.player.model)
         scope = ProcessScope(self._phase_dir, self.settings, core=self._resource_lock)
         self._scope = scope
         process = None
         try:
             sandbox = _WorkspaceBubblewrap(
-                workspace, runtime_dir, proxy.socket_path,
+                workspace,
+                runtime_dir,
+                proxy.socket_path,
                 binary=self._workspace_bwrap_binary(),
             )
-            inner = ("/usr/bin/python3", "/runtime/launcher.py", "/runtime/claude",
-                     *self._cli_options(), *session_args)
+            inner = (
+                "/usr/bin/python3",
+                "/runtime/launcher.py",
+                "/runtime/claude",
+                *self._cli_options(),
+                *session_args,
+            )
             launch_args = sandbox.command(
                 inner,
                 self._environment(),
@@ -11511,8 +12197,10 @@ class _ClaudeCodeGameClient(_CodexGameClient):
                     (self._phase_dir / "public", "/arena"),
                     *self._extra_readonly_mounts(),
                 ),
-                writable_mounts=((claude_home, "/harness-home"),
-                                 (self._volume.mountpoint / "tmp", "/tmp")),
+                writable_mounts=(
+                    (claude_home, "/harness-home"),
+                    (self._volume.mountpoint / "tmp", "/tmp"),
+                ),
                 hidden_paths=_workspace_hidden_katago_paths(),
             )
             if self._clock.remaining <= 0:
@@ -11520,7 +12208,8 @@ class _ClaudeCodeGameClient(_CodexGameClient):
             ready = self._volume.mountpoint / "tmp" / "arena-proxy-ready"
             ready.unlink(missing_ok=True)
             process = _ClaudeCodeProcess(
-                scope.command(launch_args), cwd=str(workspace),
+                scope.command(launch_args),
+                cwd=str(workspace),
                 stderr_path=self._phase_dir / "claude-code-stderr.log",
             )
             # The bridge reports readiness from inside the service, so its
@@ -11528,7 +12217,8 @@ class _ClaudeCodeGameClient(_CodexGameClient):
             while not ready.exists():
                 if not process.alive():
                     raise _ClaudeCodeTurnError(
-                        "Claude Code sandbox exited during startup: " + process.exit_summary(),
+                        "Claude Code sandbox exited during startup: "
+                        + process.exit_summary(),
                         retryable=True,
                     )
                 if self._clock.remaining <= 0:
@@ -11579,42 +12269,55 @@ class _ClaudeCodeGameClient(_CodexGameClient):
             cleanup_errors.append(f"{type(cleanup_exc).__name__}: {cleanup_exc}")
         _append_jsonl(
             self.private_dir / "runtime-events.jsonl",
-            _sanitize_private_log_value({
-                "schema_version": 1,
-                "event": "workspace_runtime_restart",
-                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-                "runtime_generation": self._runtime_generation,
-                "error_type": type(exc).__name__,
-                "error": str(exc),
-                "stderr_tail": stderr_tail,
-                "cleanup_errors": cleanup_errors,
-            }),
+            _sanitize_private_log_value(
+                {
+                    "schema_version": 1,
+                    "event": "workspace_runtime_restart",
+                    "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                    "runtime_generation": self._runtime_generation,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                    "stderr_tail": stderr_tail,
+                    "cleanup_errors": cleanup_errors,
+                }
+            ),
         )
 
     def _run_turn(self, session, prompt, **_options):
         process = self._claude
         stale = process.pending_events()
         if stale:
-            _append_jsonl(self._phase_dir / "claude-code-events.jsonl",
-                          {"event": "unsolicited_output", "events": stale})
+            _append_jsonl(
+                self._phase_dir / "claude-code-events.jsonl",
+                {"event": "unsolicited_output", "events": stale},
+            )
         self._thread_has_turns = True
         self._save_thread_state()
-        process.send({"type": "user", "session_id": session, "parent_tool_use_id": None,
-                      "message": {"role": "user", "content": prompt}})
+        process.send(
+            {
+                "type": "user",
+                "session_id": session,
+                "parent_tool_use_id": None,
+                "message": {"role": "user", "content": prompt},
+            }
+        )
         tool_calls = []
         while True:
             event = process.next_event()
             if event is None:
                 raise _ClaudeCodeTurnError(
-                    "Claude Code exited before completing the turn: " + process.exit_summary(),
+                    "Claude Code exited before completing the turn: "
+                    + process.exit_summary(),
                     retryable=True,
                 )
             if event.get("type") == "assistant":
                 tool_calls += _claude_code_tool_calls(event.get("message"))
             elif event.get("type") == "result":
                 break
-        _append_jsonl(self._phase_dir / "claude-code-events.jsonl",
-                      {"event": "turn_result", "result": event})
+        _append_jsonl(
+            self._phase_dir / "claude-code-events.jsonl",
+            {"event": "turn_result", "result": event},
+        )
         if event.get("is_error") or event.get("subtype") != "success":
             raise _claude_code_result_error(event)
         result = event.get("result")
@@ -11624,9 +12327,13 @@ class _ClaudeCodeGameClient(_CodexGameClient):
 
     def _create_response(self, **request):
         if request.get("model") != self.player.model:
-            raise ArenaError("Claude Code request model does not match player specification")
+            raise ArenaError(
+                "Claude Code request model does not match player specification"
+            )
         if request.get("reasoning", {}).get("effort") != self.player.level:
-            raise ArenaError("Claude Code request effort does not match player specification")
+            raise ArenaError(
+                "Claude Code request effort does not match player specification"
+            )
         prompt = request.get("input")
         if not isinstance(prompt, str):
             raise ArenaError("Claude Code move prompt is not text")
@@ -11637,11 +12344,14 @@ class _ClaudeCodeGameClient(_CodexGameClient):
         usage_offset = path.stat().st_size if path.exists() else 0
         if self._clock is not None:
             if self._saved_turn() is not None:
-                prompt = ("The previous execution of this request was interrupted. "
-                          "Continue from your retained files and conversation, checking "
-                          "existing work before repeating tool effects.\n" + prompt)
+                prompt = (
+                    "The previous execution of this request was interrupted. "
+                    "Continue from your retained files and conversation, checking "
+                    "existing work before repeating tool effects.\n" + prompt
+                )
             self._pending_turn = {
-                "state": "inflight", "prompt_sha256": self._turn_context["prompt_sha256"],
+                "state": "inflight",
+                "prompt_sha256": self._turn_context["prompt_sha256"],
                 "usage_offset": usage_offset,
             }
             _workspace_atomic_json(self._journal_path(), self._pending_turn)
@@ -11661,7 +12371,9 @@ class _ClaudeCodeGameClient(_CodexGameClient):
             if self._clock is not None and self._clock.expired:
                 raise
             if self._scope is not None and self._scope.failure_reason() == "oom-kill":
-                failure = WorkspaceResourceExceeded("agent exceeded its memory allocation")
+                failure = WorkspaceResourceExceeded(
+                    "agent exceeded its memory allocation"
+                )
                 failure.arena_usage = getattr(exc, "arena_usage", {})
                 raise failure from exc
             if self._claude is not None and not self._claude.alive():
@@ -11699,7 +12411,9 @@ class _StudentConversation(APIConversation):
 
     def fits(self, prompt):
         """Whether one more turn with `prompt` stays under the limit, estimated as prepare() does."""
-        estimate = self.observed_tokens or (byte_estimate(self.history) if self.history else 0)
+        estimate = self.observed_tokens or (
+            byte_estimate(self.history) if self.history else 0
+        )
         return estimate + byte_estimate(self.user_items(prompt)) < self.limit
 
     @property
@@ -11727,10 +12441,13 @@ class _StudentChat:
         with self.log.open("rb") as source:
             source.seek(self.log_offset)
             data = source.read()
-        complete = data[:data.rfind(b"\n") + 1]
+        complete = data[: data.rfind(b"\n") + 1]
         self.log_offset += len(complete)
-        return sum(float(json.loads(line).get("cost_usd") or 0)
-                   for line in complete.splitlines() if line.strip())
+        return sum(
+            float(json.loads(line).get("cost_usd") or 0)
+            for line in complete.splitlines()
+            if line.strip()
+        )
 
 
 class _TutorialToolHandler(socketserver.StreamRequestHandler):
@@ -11747,10 +12464,13 @@ class _TutorialToolHandler(socketserver.StreamRequestHandler):
             response = {"error": str(exc)}
         except Exception as exc:
             # Unexpected host errors can mention host paths; keep them in host logs.
-            _append_jsonl(self.server.directory / "tool-errors.jsonl", {
-                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-                "error": f"{type(exc).__name__}: {exc}",
-            })
+            _append_jsonl(
+                self.server.directory / "tool-errors.jsonl",
+                {
+                    "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                    "error": f"{type(exc).__name__}: {exc}",
+                },
+            )
             response = {"error": f"internal arena error ({type(exc).__name__})"}
         with contextlib.suppress(OSError):
             self.wfile.write(json.dumps(response, ensure_ascii=False).encode() + b"\n")
@@ -11770,8 +12490,13 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
 
     daemon_threads = True
     MAX_REQUEST_BYTES = 8 * 1024 * 1024
-    CHAT_OPERATIONS = ("student_open", "student_send", "student_reply", "student_close",
-                       "move_prompt")
+    CHAT_OPERATIONS = (
+        "student_open",
+        "student_send",
+        "student_reply",
+        "student_close",
+        "move_prompt",
+    )
 
     def __init__(self, directory, tutorial_player, transcripts=None):
         self.directory = Path(directory)
@@ -11781,14 +12506,19 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         self.condition = threading.Condition()
         self.active_calls = 0
         self.slots = threading.BoundedSemaphore(_tutorial.STUDENT_MAX_CONCURRENCY)
-        numbers = [int(path.stem.removeprefix("call-"))
-                   for path in self.directory.glob("call-*.jsonl")]
+        numbers = [
+            int(path.stem.removeprefix("call-"))
+            for path in self.directory.glob("call-*.jsonl")
+        ]
         self._numbers = iter(range(max(numbers, default=0) + 1, sys.maxsize))
         self._number_lock = threading.Lock()
         # Track 3.4: ledgers under chats/, teacher-visible transcripts elsewhere.
         self.chats = self.directory / "chats"
-        self.transcripts = (Path(transcripts) if transcripts is not None
-                            else self.directory / "transcripts")
+        self.transcripts = (
+            Path(transcripts)
+            if transcripts is not None
+            else self.directory / "transcripts"
+        )
         self.students = {}
         self.student_cost = 0.0
         self.cost_limit_reached = False
@@ -11798,8 +12528,9 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         self.socket_path = Path(self._temp.name) / "arena-tools.sock"
         super().__init__(str(self.socket_path), _TutorialToolHandler)
         os.chmod(self.socket_path, 0o600)
-        self._thread = threading.Thread(target=self.serve_forever,
-                                        name="arena-tutorial-tools", daemon=True)
+        self._thread = threading.Thread(
+            target=self.serve_forever, name="arena-tutorial-tools", daemon=True
+        )
         self._thread.start()
 
     def set_enabled(self, enabled):
@@ -11826,7 +12557,10 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             text = request.get("text")
             if not isinstance(text, str):
                 raise ValueError("tokens requires text")
-            return {"tokens": _tutorial.count_tokens(text), "limit": _tutorial.TOKEN_LIMIT}
+            return {
+                "tokens": _tutorial.count_tokens(text),
+                "limit": _tutorial.TOKEN_LIMIT,
+            }
         if operation == "book":
             text = request.get("text")
             if not isinstance(text, str):
@@ -11849,7 +12583,9 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         self.chats.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.transcripts.mkdir(parents=True, exist_ok=True)
         for log in sorted(self.chats.glob("*.jsonl")):
-            entries = _read_jsonl_objects(log, "student requests", allow_partial_tail=True)
+            entries = _read_jsonl_objects(
+                log, "student requests", allow_partial_tail=True
+            )
             number = entries[0]["game"] if entries else len(self.students) + 1
             student = _StudentChat(log.stem, number, log, state="ended")
             self.student_cost += student.new_cost()
@@ -11868,9 +12604,16 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         return self.students[name]
 
     def _write_transcript(self, student):
-        _replace_text(self.transcripts / f"{student.name}.md", _tutorial.student_transcript(
-            student.name, self.target_player.model, self.target_player.level,
-            student.state, student.turns))
+        _replace_text(
+            self.transcripts / f"{student.name}.md",
+            _tutorial.student_transcript(
+                student.name,
+                self.target_player.model,
+                self.target_player.level,
+                student.state,
+                student.turns,
+            ),
+        )
 
     @property
     def cost_limit_usd(self):
@@ -11878,13 +12621,18 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
 
     def _write_cost(self):
         limit = self.cost_limit_usd
-        _workspace_atomic_json(self.transcripts / "cost.json", {
-            "spent_usd": round(self.student_cost, 6),
-            "limit_usd": limit,
-            "remaining_usd": round(max(limit - self.student_cost, 0.0), 6),
-            "limit_reached": self.cost_limit_reached,
-            "pending_replies": sum(student.pending for student in self.students.values()),
-        })
+        _workspace_atomic_json(
+            self.transcripts / "cost.json",
+            {
+                "spent_usd": round(self.student_cost, 6),
+                "limit_usd": limit,
+                "remaining_usd": round(max(limit - self.student_cost, 0.0), 6),
+                "limit_reached": self.cost_limit_reached,
+                "pending_replies": sum(
+                    student.pending for student in self.students.values()
+                ),
+            },
+        )
 
     @property
     def target_player(self):
@@ -11895,8 +12643,9 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
 
     def student_open(self, request):
         name = request.get("name")
-        if name is not None and (not isinstance(name, str)
-                                 or not _tutorial.STUDENT_NAME.fullmatch(name)):
+        if name is not None and (
+            not isinstance(name, str) or not _tutorial.STUDENT_NAME.fullmatch(name)
+        ):
             raise ValueError("a student name is 1-64 letters, digits, '_' or '-'")
         with self.condition:
             if name is None:
@@ -11906,9 +12655,16 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
                 name = f"student-{count}"
             if name not in self.students:
                 self._check_enabled()
-                number = max((student.number for student in self.students.values()),
-                             default=0) + 1
-                self.students[name] = _StudentChat(name, number, self.chats / f"{name}.jsonl")
+                number = (
+                    max(
+                        (student.number for student in self.students.values()),
+                        default=0,
+                    )
+                    + 1
+                )
+                self.students[name] = _StudentChat(
+                    name, number, self.chats / f"{name}.jsonl"
+                )
                 self._write_transcript(self.students[name])
         return {"name": name}
 
@@ -11931,8 +12687,11 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
                 raise ValueError(self._cost_limit_message())
             if student.client is None:
                 student.client = _llm_client(
-                    self.tutorial_player.target, work_dir=self.chats,
-                    game_number=student.number, conversation_class=_StudentConversation)
+                    self.tutorial_player.target,
+                    work_dir=self.chats,
+                    game_number=student.number,
+                    conversation_class=_StudentConversation,
+                )
             conversation = student.client.conversation
             if not conversation.fits(text):
                 if not conversation.history:
@@ -11945,8 +12704,12 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
             self.active_calls += 1
             self._write_transcript(student)
             self._write_cost()
-        threading.Thread(target=self._answer, args=(student, turn, text),
-                         name=f"arena-student-{student.name}", daemon=True).start()
+        threading.Thread(
+            target=self._answer,
+            args=(student, turn, text),
+            name=f"arena-student-{student.name}",
+            daemon=True,
+        ).start()
         return {"turn": turn}
 
     def _answer(self, student, turn, text):
@@ -11960,9 +12723,15 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         record, full = {"status": "failed"}, False
         try:
             reply, _seconds, _cost = _call_llm_move(
-                student.client, text, player_name=self.tutorial_player.target,
-                log_path=student.log, first_prompt_path=self.directory / "first_prompt.txt",
-                game_number=student.number, move_number=turn, attempt=1, retry=abort_retry,
+                student.client,
+                text,
+                player_name=self.tutorial_player.target,
+                log_path=student.log,
+                first_prompt_path=self.directory / "first_prompt.txt",
+                game_number=student.number,
+                move_number=turn,
+                attempt=1,
+                retry=abort_retry,
             )
             record = {"status": "done", "reply": reply}
             full = student.client.conversation.full
@@ -11971,10 +12740,13 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
         except ArenaError as exc:
             record["error"] = str(exc)[:1000]
         except Exception as exc:
-            _append_jsonl(self.directory / "tool-errors.jsonl", {
-                "at": dt.datetime.now(dt.timezone.utc).isoformat(),
-                "error": f"{type(exc).__name__}: {exc}",
-            })
+            _append_jsonl(
+                self.directory / "tool-errors.jsonl",
+                {
+                    "at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                    "error": f"{type(exc).__name__}: {exc}",
+                },
+            )
             record["error"] = f"internal arena error ({type(exc).__name__})"
         finally:
             with self.condition:
@@ -11986,9 +12758,15 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
                 if record["status"] == "done":
                     # The reply that crosses the limit is kept; later ones are not.
                     if student.state == "closed":
-                        record = {"status": "discarded", "error": "the student was closed"}
+                        record = {
+                            "status": "discarded",
+                            "error": "the student was closed",
+                        }
                     elif limit_reached_before:
-                        record = {"status": "discarded", "error": self._cost_limit_message()}
+                        record = {
+                            "status": "discarded",
+                            "error": self._cost_limit_message(),
+                        }
                 if full and student.state == "open":
                     student.state = "context_limit"
                 student.turns[turn - 1].update(record, cost_usd=cost)
@@ -12021,9 +12799,14 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
 
     def move_prompt(self, request):
         position = _tutorial.replay_position(request.get("moves"), _Arena.BOARD_SIZE)
-        return {"prompt": _llm_move_prompt(position, list(position.legal_moves),
-                                           list(position.ko_illegal_moves),
-                                           position.recent_moves)}
+        return {
+            "prompt": _llm_move_prompt(
+                position,
+                list(position.legal_moves),
+                list(position.ko_illegal_moves),
+                position.recent_moves,
+            )
+        }
 
     def _check_enabled(self):
         if not self.enabled:
@@ -12035,7 +12818,9 @@ class _TutorialToolServer(socketserver.ThreadingMixIn, socketserver.UnixStreamSe
                 f"student calls are not available in Track {self.tutorial_player.subtrack}"
             )
         if self.tutorial_player.chat:
-            raise ValueError("Track 3.4 students are chats; use the student Python module")
+            raise ValueError(
+                "Track 3.4 students are chats; use the student Python module"
+            )
         if not isinstance(tutorial, str):
             raise ValueError("student requires tutorial text")
         if not isinstance(positions, list) or not positions:
@@ -12078,7 +12863,9 @@ def _run_student_conversation(server, number, tutorial, source_tokens, positions
     log = server.directory / f"call-{number:06d}.jsonl"
     started_at = dt.datetime.now(dt.timezone.utc).isoformat()
     summary = {
-        "call": number, "target": target, "started_at": started_at,
+        "call": number,
+        "target": target,
+        "started_at": started_at,
         "tutorial_sha256": hashlib.sha256(tutorial.encode()).hexdigest(),
         "tutorial_tokens": min(source_tokens, _tutorial.TOKEN_LIMIT),
         "tutorial_truncated": source_tokens > _tutorial.TOKEN_LIMIT,
@@ -12092,31 +12879,51 @@ def _run_student_conversation(server, number, tutorial, source_tokens, positions
         server._check_enabled()
 
     total_cost = 0.0
-    client = _llm_client(target, work_dir=server.directory, game_number=number,
-                         tutorial=tutorial)
+    client = _llm_client(
+        target, work_dir=server.directory, game_number=number, tutorial=tutorial
+    )
     try:
         for index, position in enumerate(positions, 1):
-            prompt = _llm_move_prompt(position, list(position.legal_moves),
-                                      list(position.ko_illegal_moves), position.recent_moves)
-            answer = {"position": index, "to_move": position.to_move,
-                      "move_number": position.move_number + 1,
-                      "attempts": [], "move": None, "legal": False}
+            prompt = _llm_move_prompt(
+                position,
+                list(position.legal_moves),
+                list(position.ko_illegal_moves),
+                position.recent_moves,
+            )
+            answer = {
+                "position": index,
+                "to_move": position.to_move,
+                "move_number": position.move_number + 1,
+                "attempts": [],
+                "move": None,
+                "legal": False,
+            }
             summary["positions"].append(answer)
             try:
                 for attempt in range(1, _tutorial.STUDENT_MAX_ATTEMPTS + 1):
                     server._check_enabled()
                     raw, seconds, cost = _call_llm_move(
-                        client, prompt, player_name=target, log_path=log,
+                        client,
+                        prompt,
+                        player_name=target,
+                        log_path=log,
                         first_prompt_path=server.directory / "first_prompt.txt",
-                        game_number=number, move_number=index, attempt=attempt,
+                        game_number=number,
+                        move_number=index,
+                        attempt=attempt,
                         retry=abort_retry,
                     )
                     total_cost += cost
                     move = raw.strip()
                     legal = move in position.legal_moves
-                    answer["attempts"].append({"output": raw, "legal": legal,
-                                               "seconds": round(seconds, 3),
-                                               "cost_usd": cost})
+                    answer["attempts"].append(
+                        {
+                            "output": raw,
+                            "legal": legal,
+                            "seconds": round(seconds, 3),
+                            "cost_usd": cost,
+                        }
+                    )
                     if legal:
                         answer.update(move=move, legal=True)
                         break
@@ -12127,8 +12934,10 @@ def _run_student_conversation(server, number, tutorial, source_tokens, positions
                 break
     finally:
         client.close()
-        summary.update(cost_usd=total_cost,
-                       finished_at=dt.datetime.now(dt.timezone.utc).isoformat())
+        summary.update(
+            cost_usd=total_cost,
+            finished_at=dt.datetime.now(dt.timezone.utc).isoformat(),
+        )
         _append_jsonl(server.directory / "calls.jsonl", summary)
     return summary
 
@@ -12146,18 +12955,22 @@ def _tutorial_ladder_rows():
             continue
         data = measured.get(bot.name, {})
         speed = data.get("speed_seconds_per_player_game")
-        rows.append((
-            bot.name,
-            bot.network.name if bot.network is not None else "-",
-            data.get("elo", "-"),
-            f"{float(speed):.3f}" if speed else "-",
-        ))
+        rows.append(
+            (
+                bot.name,
+                bot.network.name if bot.network is not None else "-",
+                data.get("elo", "-"),
+                f"{float(speed):.3f}" if speed else "-",
+            )
+        )
     return rows
 
 
 def _tutorial_ladder_networks():
     names = {_network_name_for_player(name) for name in _State.config.opponent_players}
-    return tuple(network for network in _Arena.ALL_KATAGO_NETWORKS if network.name in names)
+    return tuple(
+        network for network in _Arena.ALL_KATAGO_NETWORKS if network.name in names
+    )
 
 
 class _TutorialLearnerMixin:
@@ -12179,8 +12992,9 @@ class _TutorialLearnerMixin:
         self.target_api, self.target = _registered_llm_player(tutorial_player.target)
         self.tutorial = None
         self._tool_server = None
-        super().__init__(tutorial_player.name, player, work_dir, 0,
-                         **self._learner_options(api))
+        super().__init__(
+            tutorial_player.name, player, work_dir, 0, **self._learner_options(api)
+        )
 
     @staticmethod
     def _learner_options(_api):
@@ -12189,18 +13003,26 @@ class _TutorialLearnerMixin:
     def _tutorial_specification(self):
         spec = self.tutorial_player
         if spec.chat:
-            students = {"student_interface": "chat",
-                        "student_cost_limit_usd": spec.student_cost_limit_usd,
-                        "student_context_limit_tokens": CONTEXT_RESET_TOKENS}
+            students = {
+                "student_interface": "chat",
+                "student_cost_limit_usd": spec.student_cost_limit_usd,
+                "student_context_limit_tokens": CONTEXT_RESET_TOKENS,
+            }
         else:
-            students = {"student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
-                        "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
-                        "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS}
+            students = {
+                "student_max_concurrency": _tutorial.STUDENT_MAX_CONCURRENCY,
+                "student_max_attempts": _tutorial.STUDENT_MAX_ATTEMPTS,
+                "student_max_positions": _tutorial.STUDENT_MAX_POSITIONS,
+            }
         return {
             "protocol": spec.protocol,
-            "subtrack": spec.subtrack, "target": spec.target,
-            "target_model": self.target.model, "target_effort": self.target.level,
-            "katago": spec.katago, "student": spec.student, "subagents": False,
+            "subtrack": spec.subtrack,
+            "target": spec.target,
+            "target_model": self.target.model,
+            "target_effort": self.target.level,
+            "katago": spec.katago,
+            "student": spec.student,
+            "subagents": False,
             "token_limit": _tutorial.TOKEN_LIMIT,
             "tokenizer": f"tiktoken {_tutorial.TOKENIZER}",
             "tiktoken_version": importlib.metadata.version("tiktoken"),
@@ -12209,15 +13031,21 @@ class _TutorialLearnerMixin:
                 self._instructions(self.settings.training_seconds).encode()
             ).hexdigest(),
             "katago_version": KATAGO_VERSION if spec.katago else None,
-            "networks": [[network.name, network.sha256]
-                         for network in _tutorial_ladder_networks()] if spec.katago else [],
+            "networks": [
+                [network.name, network.sha256]
+                for network in _tutorial_ladder_networks()
+            ]
+            if spec.katago
+            else [],
         }
 
     def _prepare(self):
         specification = {
-            **self.settings.manifest(), "player": self.player_name,
+            **self.settings.manifest(),
+            "player": self.player_name,
             "learner": self.tutorial_player.learner_player,
-            "model": self.player.model, "effort": self.player.level,
+            "model": self.player.model,
+            "effort": self.player.level,
             **self._runtime_specification(),
             "tutorial": self._tutorial_specification(),
         }
@@ -12230,8 +13058,12 @@ class _TutorialLearnerMixin:
                 ensure_katago_installed()
                 ensure_arena_networks(_tutorial_ladder_networks())
             self._tool_server = _TutorialToolServer(
-                self.checkpoint_root / "preparation" / "student", self.tutorial_player,
-                transcripts=self.checkpoint_root / "preparation" / "public" / "students",
+                self.checkpoint_root / "preparation" / "student",
+                self.tutorial_player,
+                transcripts=self.checkpoint_root
+                / "preparation"
+                / "public"
+                / "students",
             )
             try:
                 self._resource_lock = CoreLease()
@@ -12269,11 +13101,13 @@ class _TutorialLearnerMixin:
     def _resource_instructions(self):
         lock = self._resource_lock
         cpus = len(lock.cpus) if lock is not None else "all its"
-        return ("Your agent has exclusive use of 1 physical CPU core "
-                f"with {cpus} logical CPUs, {self.settings.memory_mib} MiB RAM, "
-                f"{self.settings.storage_mib} MiB writable storage and "
-                f"{self.settings.max_tasks} processes/threads; there is no GPU or swap. "
-                "Subagents are disabled.")
+        return (
+            "Your agent has exclusive use of 1 physical CPU core "
+            f"with {cpus} logical CPUs, {self.settings.memory_mib} MiB RAM, "
+            f"{self.settings.storage_mib} MiB writable storage and "
+            f"{self.settings.max_tasks} processes/threads; there is no GPU or swap. "
+            "Subagents are disabled."
+        )
 
     def _extra_environment(self):
         if self.tutorial_player.chat:
@@ -12284,8 +13118,10 @@ class _TutorialLearnerMixin:
         mounts = [(self._tool_server.socket_path, _tutorial.SANDBOX_TOOL_SOCKET)]
         if self.tutorial_player.katago:
             mounts.append((KATAGO_HOME, _tutorial.SANDBOX_KATAGO_DIR))
-            mounts += [(network.path, f"{_tutorial.SANDBOX_NETWORK_DIR}/{network.path.name}")
-                       for network in _tutorial_ladder_networks()]
+            mounts += [
+                (network.path, f"{_tutorial.SANDBOX_NETWORK_DIR}/{network.path.name}")
+                for network in _tutorial_ladder_networks()
+            ]
         return tuple(mounts)
 
     def _write_public_files(self):
@@ -12295,8 +13131,9 @@ class _TutorialLearnerMixin:
         programs = dict(self.output_programs)
         if self.tutorial_player.chat:
             (public / "python").mkdir(exist_ok=True)
-            (public / "python" / "student.py").write_text(_tutorial.STUDENT_MODULE,
-                                                         encoding="utf-8")
+            (public / "python" / "student.py").write_text(
+                _tutorial.STUDENT_MODULE, encoding="utf-8"
+            )
         elif self.tutorial_player.student:
             programs["student"] = _tutorial.STUDENT_PROGRAM
         if self.tutorial_player.katago:
@@ -12338,8 +13175,12 @@ class _TutorialLearnerMixin:
     def _instructions(self, remaining):
         spec, target = self.tutorial_player, self.target
         position = _tutorial.replay_position(["E5", "C3"])
-        example = _llm_move_prompt(position, list(position.legal_moves),
-                                   list(position.ko_illegal_moves), position.recent_moves)
+        example = _llm_move_prompt(
+            position,
+            list(position.legal_moves),
+            list(position.ko_illegal_moves),
+            position.recent_moves,
+        )
         tools = [
             f"- `/arena/bin/tutorial-tokens [FILE]` counts FILE (default "
             f"{_tutorial.SANDBOX_TUTORIAL_PATH}) with the fixed tokenizer.",
@@ -12368,91 +13209,103 @@ class _TutorialLearnerMixin:
                 "Student calls use your wall time, and their cost counts as learning cost."
             )
         if not spec.katago:
-            tools.append("- You have no access to KataGo or any other existing Go engine.")
+            tools.append(
+                "- You have no access to KataGo or any other existing Go engine."
+            )
         if not spec.student:
-            tools.append("- There is no student tool; nobody reads the tutorial before evaluation.")
-        return "\n".join([
-            f"# Track {spec.subtrack}: tutorial distillation",
-            "",
-            "Write a tutorial that makes another language model play 9x9 Go as strongly as "
-            f"possible. Your only output is {_tutorial.SANDBOX_TUTORIAL_PATH}. When this "
-            "learning period ends, its contents are cut to the first "
-            f"{_tutorial.TOKEN_LIMIT} tokens of the tiktoken {_tutorial.TOKENIZER} tokenizer "
-            "and frozen. Nothing else in your workspace is kept or seen by the reader.",
-            "",
-            "## Evaluation",
-            f"The reader is {target.model} at {target.level} effort, without tools. It plays "
-            "complete games against a ladder of KataGo opponents, one move per turn, with no "
-            "game clock. Each game is one multi-turn conversation. Your tutorial is placed "
-            "at the start of the conversation's first user message:",
-            "",
-            "```",
-            _tutorial.with_tutorial("<your tutorial>", "<move prompt>"),
-            "```",
-            "",
-            "Later turns contain only the move prompt. If the conversation grows past "
-            f"{CONTEXT_RESET_TOKENS:,} tokens, it is cleared and the next turn again starts "
-            "with the tutorial. An example move prompt:",
-            "",
-            "```",
-            example,
-            "```",
-            "",
-            "## Your environment",
-            f"You have {remaining:.0f} seconds of wall time. Read /arena/clock.json for a live "
-            "deadline. The runtime stops at the deadline with no extra time, so save the "
-            "tutorial early and keep it updated. Python3, g++, and make are available; build "
-            "tools in /workspace. There is no internet access. " + self._resource_instructions(),
-            "",
-            *tools,
-            "",
-            "These instructions are also in /arena/instructions.md.",
-        ]) + "\n"
+            tools.append(
+                "- There is no student tool; nobody reads the tutorial before evaluation."
+            )
+        return (
+            "\n".join(
+                [
+                    f"# Track {spec.subtrack}: tutorial distillation",
+                    "",
+                    "Write a tutorial that makes another language model play 9x9 Go as strongly as "
+                    f"possible. Your only output is {_tutorial.SANDBOX_TUTORIAL_PATH}. When this "
+                    "learning period ends, its contents are cut to the first "
+                    f"{_tutorial.TOKEN_LIMIT} tokens of the tiktoken {_tutorial.TOKENIZER} tokenizer "
+                    "and frozen. Nothing else in your workspace is kept or seen by the reader.",
+                    "",
+                    "## Evaluation",
+                    f"The reader is {target.model} at {target.level} effort, without tools. It plays "
+                    "complete games against a ladder of KataGo opponents, one move per turn, with no "
+                    "game clock. Each game is one multi-turn conversation. Your tutorial is placed "
+                    "at the start of the conversation's first user message:",
+                    "",
+                    "```",
+                    _tutorial.with_tutorial("<your tutorial>", "<move prompt>"),
+                    "```",
+                    "",
+                    "Later turns contain only the move prompt. If the conversation grows past "
+                    f"{CONTEXT_RESET_TOKENS:,} tokens, it is cleared and the next turn again starts "
+                    "with the tutorial. An example move prompt:",
+                    "",
+                    "```",
+                    example,
+                    "```",
+                    "",
+                    "## Your environment",
+                    f"You have {remaining:.0f} seconds of wall time. Read /arena/clock.json for a live "
+                    "deadline. The runtime stops at the deadline with no extra time, so save the "
+                    "tutorial early and keep it updated. Python3, g++, and make are available; build "
+                    "tools in /workspace. There is no internet access. "
+                    + self._resource_instructions(),
+                    "",
+                    *tools,
+                    "",
+                    "These instructions are also in /arena/instructions.md.",
+                ]
+            )
+            + "\n"
+        )
 
     def _student_chat_instructions(self):
         target, limit = self.target, self.tutorial_player.student_cost_limit_usd
-        return "\n".join([
-            "- Students: in Python, `from student import Student, move_prompt` (the module "
-            f"is {_tutorial.SANDBOX_PYTHON_DIR}/student.py, already on PYTHONPATH). A student "
-            f"is the evaluation model ({target.model}, {target.level} effort) in the exact "
-            "evaluation harness: one multi-turn conversation that keeps its own reasoning "
-            "between turns, with no tools and no system prompt. It sees only the messages you "
-            "send, exactly as written. Nothing is prepended or cut, so to test your tutorial "
-            "as evaluation will, send the tutorial wrapper shown above with a move prompt, "
-            "and keep the tutorial within the token limit yourself.",
-            "  - `Student(name)` creates a student or reattaches to an existing one by name "
-            "(1-64 letters, digits, `_` or `-`); `Student()` picks a name, available as "
-            "`s.name`. Students live on the arena host for the whole learning period, so any "
-            "later process can reattach.",
-            "  - `s.send(text)` sends one message and returns at once. A student holds one "
-            "message at a time: sending while its reply is pending raises `StudentError`.",
-            "  - `s.reply()` never blocks. It returns the reply to the latest send, or None "
-            "while that reply is pending, and raises `StudentError` if the send failed. "
-            "Replies are not checked or retried: a reply is whatever the model wrote.",
-            "  - `s.close()` ends a student; a pending reply is discarded.",
-            "  - `move_prompt(moves)` returns the exact move prompt evaluation sends after "
-            "`moves`, a list from the empty board, Black first, such as [\"E5\", \"C3\"] or "
-            "[\"B E5\", \"W pass\"]. The referee computes it; it costs nothing.",
-            f"  - A student ends when its conversation reaches {CONTEXT_RESET_TOKENS:,} tokens. "
-            "The reply that reaches the limit is delivered; after that `send` raises and you "
-            "need a new student. Students are never reset.",
-            f"  - Transcripts are in {_tutorial.SANDBOX_STUDENT_DIR}/<name>.md, updated as "
-            f"messages are sent and answered. {_tutorial.SANDBOX_STUDENT_DIR}/cost.json "
-            "shows student spending.",
-            f"  - Student messages cost at most ${limit:g} in total for this learning period. "
-            f"When spending reaches ${limit:g}, replies still pending are discarded (their "
-            "cost still counts) and `send` fails, so plan how to spend it. You can create as "
-            "many students as you like and have them reply at the same time. A student is a "
-            "multi-turn conversation: earlier turns are cached, so sending several messages "
-            "to one student is usually faster and cheaper than sending each message to a "
-            "new student.",
-            "  - If it helps, you can build batching from these primitives. For example, test "
-            "many positions by giving each of several students a share of them and, from a "
-            "script, polling each student's `reply()` and sending it its next `move_prompt` "
-            "when the reply arrives. This is only an option; use the students however you "
-            "like.",
-            "  - Student replies use your wall time, and their cost counts as learning cost.",
-        ])
+        return "\n".join(
+            [
+                "- Students: in Python, `from student import Student, move_prompt` (the module "
+                f"is {_tutorial.SANDBOX_PYTHON_DIR}/student.py, already on PYTHONPATH). A student "
+                f"is the evaluation model ({target.model}, {target.level} effort) in the exact "
+                "evaluation harness: one multi-turn conversation that keeps its own reasoning "
+                "between turns, with no tools and no system prompt. It sees only the messages you "
+                "send, exactly as written. Nothing is prepended or cut, so to test your tutorial "
+                "as evaluation will, send the tutorial wrapper shown above with a move prompt, "
+                "and keep the tutorial within the token limit yourself.",
+                "  - `Student(name)` creates a student or reattaches to an existing one by name "
+                "(1-64 letters, digits, `_` or `-`); `Student()` picks a name, available as "
+                "`s.name`. Students live on the arena host for the whole learning period, so any "
+                "later process can reattach.",
+                "  - `s.send(text)` sends one message and returns at once. A student holds one "
+                "message at a time: sending while its reply is pending raises `StudentError`.",
+                "  - `s.reply()` never blocks. It returns the reply to the latest send, or None "
+                "while that reply is pending, and raises `StudentError` if the send failed. "
+                "Replies are not checked or retried: a reply is whatever the model wrote.",
+                "  - `s.close()` ends a student; a pending reply is discarded.",
+                "  - `move_prompt(moves)` returns the exact move prompt evaluation sends after "
+                '`moves`, a list from the empty board, Black first, such as ["E5", "C3"] or '
+                '["B E5", "W pass"]. The referee computes it; it costs nothing.',
+                f"  - A student ends when its conversation reaches {CONTEXT_RESET_TOKENS:,} tokens. "
+                "The reply that reaches the limit is delivered; after that `send` raises and you "
+                "need a new student. Students are never reset.",
+                f"  - Transcripts are in {_tutorial.SANDBOX_STUDENT_DIR}/<name>.md, updated as "
+                f"messages are sent and answered. {_tutorial.SANDBOX_STUDENT_DIR}/cost.json "
+                "shows student spending.",
+                f"  - Student messages cost at most ${limit:g} in total for this learning period. "
+                f"When spending reaches ${limit:g}, replies still pending are discarded (their "
+                "cost still counts) and `send` fails, so plan how to spend it. You can create as "
+                "many students as you like and have them reply at the same time. A student is a "
+                "multi-turn conversation: earlier turns are cached, so sending several messages "
+                "to one student is usually faster and cheaper than sending each message to a "
+                "new student.",
+                "  - If it helps, you can build batching from these primitives. For example, test "
+                "many positions by giving each of several students a share of them and, from a "
+                "script, polling each student's `reply()` and sending it its next `move_prompt` "
+                "when the reply arrives. This is only an option; use the students however you "
+                "like.",
+                "  - Student replies use your wall time, and their cost counts as learning cost.",
+            ]
+        )
 
     def _preparation_prompt(self):
         return (
@@ -12464,20 +13317,28 @@ class _TutorialLearnerMixin:
     def _capture_preparation_outputs(self, preparation):
         source = _tutorial.read_source(self.cwd / "tutorial.md")
         tutorial, source_tokens = _tutorial.truncate(source or "")
-        _workspace_atomic_json(preparation / "tutorial-capture.json", {
-            "source_present": source is not None,
-            "source_tokens": source_tokens,
-        })
+        _workspace_atomic_json(
+            preparation / "tutorial-capture.json",
+            {
+                "source_present": source is not None,
+                "source_tokens": source_tokens,
+            },
+        )
         (preparation / "tutorial.md").write_text(tutorial, encoding="utf-8")
         if source is not None:
             (preparation / "tutorial-source.md").write_text(source, encoding="utf-8")
 
     def _agent_cost(self, preparation):
         return sum(
-            _llm_call_cost(entry["usage"], self.api_name, self.player.model,
-                           started_at=entry.get("started_at"))
+            _llm_call_cost(
+                entry["usage"],
+                self.api_name,
+                self.player.model,
+                started_at=entry.get("started_at"),
+            )
             for entry in _read_jsonl_objects(
-                preparation / f"{self.proxy_log_name}.usage.jsonl", "training usage")
+                preparation / f"{self.proxy_log_name}.usage.jsonl", "training usage"
+            )
         )
 
     def _checkpoint_fields(self, preparation, staging):
@@ -12491,8 +13352,10 @@ class _TutorialLearnerMixin:
         for path in ledgers + chats:
             calls += _read_jsonl_objects(path, "student calls")
         student_cost = sum(float(entry.get("cost_usd") or 0) for entry in calls)
-        counts = [_llm_token_usage(self.target_api, entry.get("usage") or {})
-                  for entry in calls]
+        counts = [
+            _llm_token_usage(self.target_api, entry.get("usage") or {})
+            for entry in calls
+        ]
         agent_cost = self._agent_cost(preparation)
         return {
             "tutorial_sha256": hashlib.sha256(data).hexdigest(),
@@ -12502,8 +13365,10 @@ class _TutorialLearnerMixin:
             "tutorial_truncated": capture["source_tokens"] > _tutorial.TOKEN_LIMIT,
             "student_requests": len(calls),
             "student_failed_requests": sum(not entry.get("ok") for entry in calls),
-            "student_tokens": {field.name: sum(getattr(count, field.name) for count in counts)
-                               for field in fields(_LLMTokenUsage)},
+            "student_tokens": {
+                field.name: sum(getattr(count, field.name) for count in counts)
+                for field in fields(_LLMTokenUsage)
+            },
             "student_cost_usd": student_cost,
             **({"students": len(chats)} if self.tutorial_player.chat else {}),
             "learning_cost_usd": agent_cost + student_cost,
@@ -12521,7 +13386,9 @@ class _ClaudeCodeTutorialLearner(_TutorialLearnerMixin, _ClaudeCodeGameClient):
         options = list(super()._cli_options())
         index = options.index("--disallowedTools") + 1
         # Claude Code 2.x names its subagent tool Agent; older builds call it Task.
-        options[index] = ",".join((*_Arena.CLAUDE_CODE_DISALLOWED_TOOLS, "Agent", "Task"))
+        options[index] = ",".join(
+            (*_Arena.CLAUDE_CODE_DISALLOWED_TOOLS, "Agent", "Task")
+        )
         return tuple(options)
 
 
@@ -12549,21 +13416,28 @@ class _BookLearnerMixin(_TutorialLearnerMixin):
         self.tutorial = None
         self._tool_server = None
         super(_TutorialLearnerMixin, self).__init__(
-            book_player.name, player, work_dir, 0, **self._learner_options(api))
+            book_player.name, player, work_dir, 0, **self._learner_options(api)
+        )
 
     def _tutorial_specification(self):
         spec = self.tutorial_player
         return {
-            "protocol": spec.protocol, "subtrack": spec.subtrack,
-            "network": spec.network, "opponent": spec.opponent,
-            "katago": True, "student": False, "subagents": False,
+            "protocol": spec.protocol,
+            "subtrack": spec.subtrack,
+            "network": spec.network,
+            "opponent": spec.opponent,
+            "katago": True,
+            "student": False,
+            "subagents": False,
             "book_move_limit": _tutorial.BOOK_MOVE_LIMIT,
             "instructions_sha256": hashlib.sha256(
                 self._instructions(self.settings.training_seconds).encode()
             ).hexdigest(),
             "katago_version": KATAGO_VERSION,
-            "networks": [[network.name, network.sha256]
-                         for network in _tutorial_ladder_networks()],
+            "networks": [
+                [network.name, network.sha256]
+                for network in _tutorial_ladder_networks()
+            ],
         }
 
     def _load_tutorial(self, specification):
@@ -12593,84 +13467,90 @@ class _BookLearnerMixin(_TutorialLearnerMixin):
             f"chosenMoveTemperatureEarly={_Arena.ORIGINAL_TEMPERATURE_EARLY:g},"
             f"chosenMoveTemperature={_Arena.ORIGINAL_TEMPERATURE:g}"
         )
-        return "\n".join([
-            f"# Track {spec.subtrack}: opening book",
-            "",
-            "Compute an opening book that makes one KataGo bot beat a stronger KataGo bot "
-            f"as often as possible. Your only output is {_tutorial.SANDBOX_BOOK_PATH}. When "
-            f"this learning period ends, the book is cut to its first {limit} moves, counted "
-            "as described below, and frozen. Nothing else in your workspace is kept.",
-            "",
-            "## Evaluation",
-            f"The student is the ladder player {spec.network} ({elo.get(spec.network, '?')} "
-            f"Elo). Its opponent is {spec.opponent} ({elo.get(spec.opponent, '?')} Elo). They "
-            f"play {_State.config.total_games} complete 9x9 games, the student Black in half "
-            f"and White in half, under Tromp-Taylor rules with komi {_Arena.KOMI:g} and "
-            "positional superko. A win scores 1, a draw 0.5 and a loss 0; your result is the "
-            "student's total. No language model plays or is consulted.",
-            "",
-            "Each bot is one KataGo process:",
-            "",
-            "```",
-            engine,
-            "```",
-            "",
-            f"It is sent `boardsize {_Arena.BOARD_SIZE}`, `komi {_Arena.KOMI:g}` and "
-            f"`kata-set-rules {_Arena.RULES}`, told the other side's moves with `play`, and "
-            "asked for its own with `genmove`. So a move is one neural-network evaluation, "
-            "sampled from the policy with a temperature that falls during the game: games "
-            "between the same two bots differ. Either bot may resign.",
-            "",
-            "Whenever it is the student's turn and the game so far is in your book, the "
-            "student plays the book's move instead of its own; otherwise it plays its own "
-            "move. A line must match from the first move, so a game that has left the book "
-            "does not return to it. The opponent never sees the book.",
-            "",
-            "## The book",
-            "A book is text. A line is the student's color, B or W, then moves from the empty "
-            "board, Black first, as vertices (E5) or `pass`:",
-            "",
-            "```",
-            "B E5 C4 D4 C3 C5",
-            "W E5 C5 E3 E7",
-            "```",
-            "",
-            "On a B line the odd moves are the student's: the book plays them. The even moves "
-            "are opponent moves the book has an answer to. A W line is the reverse. Text after "
-            "`#` is a comment.",
-            "",
-            "A game is in the book while some symmetry of the board (the eight rotations and "
-            "mirror images) maps its moves, in order, onto the start of a line of the "
-            "student's color; the book's next move is mapped back to the game. So one line "
-            "also stands for its seven images.",
-            "",
-            "The size of a book is the number of distinct moves in its two prefix trees, one "
-            "per color. Every move of every line counts, the opponent's too, but a prefix "
-            "shared by several lines counts once, and so do lines that are images of each "
-            f"other. The limit is {limit}. A book over the limit keeps the moves that come "
-            "first in the file. A line is kept up to its first problem: an unreadable or "
-            "illegal move, or a student move where an earlier line already chose a different "
-            f"one. Only the first {_tutorial.MAX_SOURCE_BYTES // 1024} KiB of the file are read. "
-            "A missing file is an empty book.",
-            "",
-            "## Your environment",
-            f"You have {remaining:.0f} seconds of wall time. Read /arena/clock.json for a live "
-            "deadline. The runtime stops at the deadline with no extra time, so save the "
-            "book early and keep it updated. Python3, g++, and make are available; build "
-            "tools in /workspace. There is no internet access. " + self._resource_instructions(),
-            "",
-            f"- `/arena/bin/book-check [FILE]` reads FILE (default {_tutorial.SANDBOX_BOOK_PATH}) "
-            "exactly as evaluation will and reports its size, the moves beyond the limit, and "
-            "the lines cut short.",
-            "- KataGo and every network of the ladder are available read-only. "
-            "/arena/ladder.tsv lists each ladder player with its network file, Elo and "
-            "speed, and explains how the players are configured. You may use any of them, "
-            "for example stronger networks as advisers.",
-            "- There is no student tool: the student is the KataGo bot above, which you can "
-            "run yourself.",
-            "",
-            "These instructions are also in /arena/instructions.md.",
-        ]) + "\n"
+        return (
+            "\n".join(
+                [
+                    f"# Track {spec.subtrack}: opening book",
+                    "",
+                    "Compute an opening book that makes one KataGo bot beat a stronger KataGo bot "
+                    f"as often as possible. Your only output is {_tutorial.SANDBOX_BOOK_PATH}. When "
+                    f"this learning period ends, the book is cut to its first {limit} moves, counted "
+                    "as described below, and frozen. Nothing else in your workspace is kept.",
+                    "",
+                    "## Evaluation",
+                    f"The student is the ladder player {spec.network} ({elo.get(spec.network, '?')} "
+                    f"Elo). Its opponent is {spec.opponent} ({elo.get(spec.opponent, '?')} Elo). They "
+                    f"play {_State.config.total_games} complete 9x9 games, the student Black in half "
+                    f"and White in half, under Tromp-Taylor rules with komi {_Arena.KOMI:g} and "
+                    "positional superko. A win scores 1, a draw 0.5 and a loss 0; your result is the "
+                    "student's total. No language model plays or is consulted.",
+                    "",
+                    "Each bot is one KataGo process:",
+                    "",
+                    "```",
+                    engine,
+                    "```",
+                    "",
+                    f"It is sent `boardsize {_Arena.BOARD_SIZE}`, `komi {_Arena.KOMI:g}` and "
+                    f"`kata-set-rules {_Arena.RULES}`, told the other side's moves with `play`, and "
+                    "asked for its own with `genmove`. So a move is one neural-network evaluation, "
+                    "sampled from the policy with a temperature that falls during the game: games "
+                    "between the same two bots differ. Either bot may resign.",
+                    "",
+                    "Whenever it is the student's turn and the game so far is in your book, the "
+                    "student plays the book's move instead of its own; otherwise it plays its own "
+                    "move. A line must match from the first move, so a game that has left the book "
+                    "does not return to it. The opponent never sees the book.",
+                    "",
+                    "## The book",
+                    "A book is text. A line is the student's color, B or W, then moves from the empty "
+                    "board, Black first, as vertices (E5) or `pass`:",
+                    "",
+                    "```",
+                    "B E5 C4 D4 C3 C5",
+                    "W E5 C5 E3 E7",
+                    "```",
+                    "",
+                    "On a B line the odd moves are the student's: the book plays them. The even moves "
+                    "are opponent moves the book has an answer to. A W line is the reverse. Text after "
+                    "`#` is a comment.",
+                    "",
+                    "A game is in the book while some symmetry of the board (the eight rotations and "
+                    "mirror images) maps its moves, in order, onto the start of a line of the "
+                    "student's color; the book's next move is mapped back to the game. So one line "
+                    "also stands for its seven images.",
+                    "",
+                    "The size of a book is the number of distinct moves in its two prefix trees, one "
+                    "per color. Every move of every line counts, the opponent's too, but a prefix "
+                    "shared by several lines counts once, and so do lines that are images of each "
+                    f"other. The limit is {limit}. A book over the limit keeps the moves that come "
+                    "first in the file. A line is kept up to its first problem: an unreadable or "
+                    "illegal move, or a student move where an earlier line already chose a different "
+                    f"one. Only the first {_tutorial.MAX_SOURCE_BYTES // 1024} KiB of the file are read. "
+                    "A missing file is an empty book.",
+                    "",
+                    "## Your environment",
+                    f"You have {remaining:.0f} seconds of wall time. Read /arena/clock.json for a live "
+                    "deadline. The runtime stops at the deadline with no extra time, so save the "
+                    "book early and keep it updated. Python3, g++, and make are available; build "
+                    "tools in /workspace. There is no internet access. "
+                    + self._resource_instructions(),
+                    "",
+                    f"- `/arena/bin/book-check [FILE]` reads FILE (default {_tutorial.SANDBOX_BOOK_PATH}) "
+                    "exactly as evaluation will and reports its size, the moves beyond the limit, and "
+                    "the lines cut short.",
+                    "- KataGo and every network of the ladder are available read-only. "
+                    "/arena/ladder.tsv lists each ladder player with its network file, Elo and "
+                    "speed, and explains how the players are configured. You may use any of them, "
+                    "for example stronger networks as advisers.",
+                    "- There is no student tool: the student is the KataGo bot above, which you can "
+                    "run yourself.",
+                    "",
+                    "These instructions are also in /arena/instructions.md.",
+                ]
+            )
+            + "\n"
+        )
 
     def _preparation_prompt(self):
         return (
@@ -12682,9 +13562,13 @@ class _BookLearnerMixin(_TutorialLearnerMixin):
     def _capture_preparation_outputs(self, preparation):
         source = _tutorial.read_source(self.cwd / "book.txt")
         book = _opening_book.parse(source or "", _tutorial.BOOK_MOVE_LIMIT)
-        _workspace_atomic_json(preparation / "book-capture.json", {
-            "source_present": source is not None, **book.summary(),
-        })
+        _workspace_atomic_json(
+            preparation / "book-capture.json",
+            {
+                "source_present": source is not None,
+                **book.summary(),
+            },
+        )
         (preparation / "book.txt").write_text(book.text(), encoding="utf-8")
         if source is not None:
             (preparation / "book-source.txt").write_text(source, encoding="utf-8")
@@ -12694,7 +13578,9 @@ class _BookLearnerMixin(_TutorialLearnerMixin):
         shutil.copyfile(preparation / "book.txt", staging / "book.txt")
         os.chmod(staging / "book.txt", 0o400)
         return {
-            "book_sha256": hashlib.sha256((staging / "book.txt").read_bytes()).hexdigest(),
+            "book_sha256": hashlib.sha256(
+                (staging / "book.txt").read_bytes()
+            ).hexdigest(),
             "book_size": capture["size"],
             "book_move_limit": capture["limit"],
             "book_student_moves": capture["book_moves"],
@@ -12717,9 +13603,11 @@ class _ClaudeCodeBookLearner(_BookLearnerMixin, _ClaudeCodeTutorialLearner):
 def _ensure_book(book_player, work_dir):
     """Run or reuse this arena run's learning phase; return the frozen book."""
     _, learner = _registered_llm_player(book_player.learner_player)
-    learner_class = (_ClaudeCodeBookLearner
-                     if learner.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
-                     else _CodexBookLearner)
+    learner_class = (
+        _ClaudeCodeBookLearner
+        if learner.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
+        else _CodexBookLearner
+    )
     client = learner_class(book_player, work_dir)
     try:
         return _opening_book.parse(client.tutorial, _tutorial.BOOK_MOVE_LIMIT)
@@ -12730,9 +13618,11 @@ def _ensure_book(book_player, work_dir):
 def _ensure_tutorial(tutorial_player, work_dir):
     """Run or reuse this arena run's learning phase; return the frozen tutorial."""
     _, learner = _registered_llm_player(tutorial_player.learner_player)
-    learner_class = (_ClaudeCodeTutorialLearner
-                     if learner.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
-                     else _CodexTutorialLearner)
+    learner_class = (
+        _ClaudeCodeTutorialLearner
+        if learner.agentic_harness in _CLAUDE_CODE_WORKSPACE_HARNESSES
+        else _CodexTutorialLearner
+    )
     client = learner_class(tutorial_player, work_dir)
     try:
         return client.tutorial
@@ -12740,8 +13630,12 @@ def _ensure_tutorial(tutorial_player, work_dir):
         client.close()
 
 
-_WORKSPACE_CLIENT_CLASSES = (_CodexGameClient, _CodexEngineGameClient, _ClaudeCodeGameClient,
-                             _ClaudeCodeEngineGameClient)
+_WORKSPACE_CLIENT_CLASSES = (
+    _CodexGameClient,
+    _CodexEngineGameClient,
+    _ClaudeCodeGameClient,
+    _ClaudeCodeEngineGameClient,
+)
 
 
 def _workspace_client_class(harness):
@@ -12756,6 +13650,7 @@ def _workspace_client_class_for_player(player_name):
         return None
     harness = _llm_player_config(player_name)[1].agentic_harness
     return _workspace_client_class(harness) if harness in _WORKSPACE_HARNESSES else None
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

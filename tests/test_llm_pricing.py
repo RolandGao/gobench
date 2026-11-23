@@ -34,6 +34,7 @@ class PricingTests(unittest.TestCase):
             "gemini-3.8-flash": (.75, .075, 3.75),
             "gemini-3.1-pro-preview": (2, .2, 12),
             "gemini-4-argon": (2, .1, 10),
+            "gemini-4-neon": (3, .15, 15),
             "claude-opus-5": (5, .5, 25),
             "claude-opus-5-5": (4, .2, 20),
             "claude-sonnet-5-5": (2, .2, 10),
